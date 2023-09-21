@@ -1,0 +1,77 @@
+body {
+    background-color: #F6F7F8;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.sidebar{
+    background-color: #2A3647;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 232px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: #CDCDCD;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+.logo{
+    background-image: url("./IMG/LogoWhite.png");
+    background-size: cover;
+    width: 101px;
+    height: 124px;
+}
+.navs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.navs:hover{
+    cursor: pointer;
+}
+.bgDark{
+    
+}
+.summary{
+    background-image: url("./IMG/Summary.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.board{
+    background-image: url("./IMG/Board.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    
+}
+.board h3{
+    text-align: left;
+}
+.addTask{
+    background-image: url("./IMG/addTask.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.contacts{
+    background-image: url("./IMG/Contacts.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
