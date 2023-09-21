@@ -36,12 +36,13 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    
 }
 .navs:hover{
     cursor: pointer;
 }
 .bgDark{
-    
+    background-color: #091931;
 }
 .summary{
     background-image: url("./IMG/Summary.png");
