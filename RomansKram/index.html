@@ -10,15 +10,15 @@
         <body>
             <div id="createTaskWindow" class="createTaskWindow">
                 <h1>Add Task</h1>
-                <form onsubmit="logEnding('Task submitted')" action="">
+                <form onsubmit="createTask('Test Nutzer')" action="">
                     <div><!--Spalte 1-->
                         <div>
                             <label for="addTaskTitle">Title</label>
-                            <input id="addTaskTitle" type="text" placeholder="Enter a title">                        
+                            <input required id="addTaskTitle" type="text" placeholder="Enter a title">                        
                         </div>
                         <div>
                             <label for="addTaskDescription">Description</label>
-                            <input id="addTaskDescription" type="text" placeholder="Enter a Description">                        
+                            <input required id="addTaskDescription" type="text" placeholder="Enter a Description">                        
                         </div>
                         <div>
                             <label for="assignTaskToContacts">Assigned to</label>
@@ -32,7 +32,7 @@
                     <div><!--Spalte 2-->
                         <div>
                             <label for="addTaskDeadline">Due date</label>
-                            <input id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
+                            <input required id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
                         </div>
                         <div>
                             <label>Prio</label>
@@ -49,7 +49,7 @@
                                 <option value="Stefan"><img src="#">User Story <input type="checkbox"></option>
                             </section>
                         </div>
-                        
+
                         <div id="addTaskControl">
                             <div onclick="logEnding('Leave add Task')">Clear x</div>
                             <button type="submit">Create Task v</button>
