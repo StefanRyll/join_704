@@ -31,19 +31,31 @@ body {
     width: 101px;
     height: 124px;
 }
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 .navs{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    width: 232px;
+    padding-left: 30%;
+    padding-right: -30%;
     
 }
 .navs:hover{
     cursor: pointer;
-}
-.bgDark{
     background-color: #091931;
+
 }
+/* .bgDark{
+    background-color: #091931;
+} */
 .summary{
     background-image: url("./IMG/Summary.png");
     background-size: cover;
@@ -75,4 +87,38 @@ body {
     width: 30px;
     height: 30px;
     margin-right: 20px;
+}
+.header{
+    height:  96px;
+    /* padding: 0px 1140px 0px 700px; */
+    padding-left: 300px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.infoButton{
+    background-image: url("./IMG/help.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+.userImg{
+    width: 56px;
+    height: 56px;
+    /* border-radius: 30px;
+    border: 3px solid #2A3647 ; */
+}
+.accountIssues{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width : 104px
 }
