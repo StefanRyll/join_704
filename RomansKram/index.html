@@ -5,57 +5,27 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="style.css">
-            <title>Task Formular</title>
+            <title>Document</title>
         </head>
         <body>
-            <div id="createTaskWindow" class="createTaskWindow">
-                <h1>Add Task</h1>
-                <form class="taskWindowForm" onsubmit="createTask('Test Nutzer')" action="">
-                    <div class="taskWindowColumn"><!--Spalte 1-->
-                        <div class="inputParameter">
-                            <label for="addTaskTitle">Title</label>
-                            <input  id="addTaskTitle" type="text" placeholder="Enter a title">                        
+            <div id="addContactOverlay" class="addContactOverlay">
+                <div class="overlaySide">
+                    <div class="logoContact"></div>
+                    <h1>Add contact</h1>
+                    <p>Tasks are better with a team</p>
+                </div>
+                <div class="formularSide">
+                    <div class="userImg"></div>
+                    <form id="contactForm" class="contactForm" onsubmit="createContact()">
+                        <input required type="text" placeholder="Name" id="inputName">
+                        <input required type="email" placeholder="Email" id="inputEmail">
+                        <input required type="tel" placeholder="Phone" id="inputPhone">
+                        <div>
+                            <button>Cancel X</button>
+                            <button type="submit">Create Contact V</button>
                         </div>
-                        <div class="inputParameter">
-                            <label for="addTaskDescription">Description</label>
-                            <textarea name="addTaskDescription" id="addTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>      
-                        </div>
-                        <div class="inputParameter">
-                            <label for="assignTaskToContacts">Assigned to</label>
-                            <select id="assignTaskToContacts">
-                                <option value="Stefan">Stefan</option> <!--Hier Accounts rein rendern-->
-                                <option value="Dominik">Dominik</option>
-                                <option value="Roman">Roman</option>
-                            </select>
-                        </div>                        
-                    </div>
-                    <div class="taskWindowColumn"><!--Spalte 2-->
-                        <div class="inputParameter">
-                            <label for="addTaskDeadline">Due date</label>
-                            <input  id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
-                        </div>
-                        <div class="inputParameter">
-                            <label>Prio</label>
-                            <div class="taskPrios">
-                                <div><input class="radioButton" type="radio" value="01" name="prio" id="prio01" checked>Urgent</div>
-                                <div><input class="radioButton" type="radio" value="02" name="prio" id="prio02">Medium</div>
-                                <div><input class="radioButton" type="radio" value="03" name="prio" id="prio03">Low</div>
-                            </div>
-                        </div>
-                        <div class="inputParameter">
-                            <label for="addTaskCategory">Assigned to</label>
-                            <section id="addTaskCategory">
-                                <option value="Technical Task">Technical Task</option> <!--Hier Task.catergory rein rendern-->
-                                <option value="User Story">User Story</option>
-                            </section>
-                        </div>
-
-                        <div id="addTaskControl">
-                            <div onclick="logEnding('Leave add Task')">Clear x</div>
-                            <button type="submit">Create Task v</button>
-                        </div>                        
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
             <script src="./script.js"></script>
         </body>
