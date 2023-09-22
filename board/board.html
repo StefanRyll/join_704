@@ -6,10 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join - Board</title>
     <link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="/css/sidebarAndHeader.css">
+    <link rel="stylesheet" href="/fonts/fonts.css">
     <script src="board.js"></script>
 </head>
 
-<body>
+<body onload="init()">
+
+    <div w3-include-html="../templates/sidebarAndHeader.html"></div>
+    <div class="frame-192">
+        <h2>
+            Board
+        </h2>
+        <div class="frame-123">
+            <div class="input-search">
+                <input type="search" name="find task" id="" placeholder="Find Task">
+                <img class="separator-find-task" src="/assets/img/Vector 3.png" alt="separator searchfield">
+                <img class="search-icon" src="/assets/img/search.png" alt="search Image">
+            </div>
+            <div class="button-add-task">
+                <button>Add task</button>
+                <img src="/assets/img/add.png" alt="add Task Logo">
+            </div>
+        </div>
+    </div>
+
 
 </body>
 

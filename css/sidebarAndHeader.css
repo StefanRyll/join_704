@@ -1,0 +1,125 @@
+body {
+    font-family: 'Inter';
+    background-color: #F6F7F8;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    overflow: hidden;
+}
+.sidebar{
+    background-color: #2A3647;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 232px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color: #CDCDCD;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+.logo{
+    background-image: url("/assets/img/LogoWhite.png");
+    background-size: cover;
+    width: 101px;
+    height: 124px;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.navs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: flex-start; */
+    width: 232px;
+    padding-left: 30%;
+    padding-right: -30%;
+    
+}
+.navs:hover{
+    cursor: pointer;
+    background-color: #091931;
+
+}
+/* .bgDark{
+    background-color: #091931;
+} */
+.summary{
+    background-image: url("/assets/img/Summary.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.board{
+    background-image: url("/assets/img/Board.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    
+}
+.board h3{
+    text-align: left;
+}
+.addTask{
+    background-image: url("/assets/img/addTask.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.contacts{
+    background-image: url("/assets/img/Contacts.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.header{
+    height:  96px;
+    /* padding: 0px 1140px 0px 700px; */
+    padding-left: 300px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.infoButton{
+    background-image: url("/assets/img/help.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+.userImg{
+    width: 56px;
+    height: 56px;
+    /* border-radius: 30px;
+    border: 3px solid #2A3647 ; */
+}
+.accountIssues{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width : 104px
+}
