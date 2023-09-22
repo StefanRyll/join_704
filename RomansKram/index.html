@@ -14,39 +14,40 @@
                     <div><!--Spalte 1-->
                         <div>
                             <label for="addTaskTitle">Title</label>
-                            <input required id="addTaskTitle" type="text" placeholder="Enter a title">                        
+                            <input  id="addTaskTitle" type="text" placeholder="Enter a title">                        
                         </div>
                         <div>
                             <label for="addTaskDescription">Description</label>
-                            <input required id="addTaskDescription" type="text" placeholder="Enter a Description">                        
+                            <input  id="addTaskDescription" type="text" placeholder="Enter a Description">                        
                         </div>
                         <div>
                             <label for="assignTaskToContacts">Assigned to</label>
-                            <section id="assignTaskToContacts">
+                            <select id="assignTaskToContacts">
                                 <option value="Stefan"><img src="#">Stefan <input type="checkbox"></option> <!--Hier Accounts rein rendern-->
-                                <option value="Stefan"><img src="#">Dominik <input type="checkbox"></option>
-                                <option value="Stefan"><img src="#">Roman <input type="checkbox"></option>
-                            </section>
+                                <option value="Dominik"><img src="#">Dominik <input type="checkbox"></option>
+                                <option value="Roman"><img src="#">Roman <input type="checkbox"></option>
+                            </select>
                         </div>                        
                     </div>
                     <div><!--Spalte 2-->
                         <div>
                             <label for="addTaskDeadline">Due date</label>
-                            <input required id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
+                            <input  id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
                         </div>
                         <div>
                             <label>Prio</label>
                             <div>
-                                <div>Urgent <img src="#"></div>
-                                <div>Medium <img src="#"></div>
-                                <div>Low <img src="#"></div>
+                                
+                                <div><input type="radio" name="prio" id="prio01" checked>Urgent <img src="#"></div>
+                                <div><input type="radio" name="prio" id="prio02">Medium <img src="#"></div>
+                                <div><input type="radio" name="prio" id="prio03">Low <img src="#"></div>
                             </div>
                         </div>
                         <div>
                             <label for="addTaskCategory">Assigned to</label>
                             <section id="addTaskCategory">
-                                <option value="Stefan"><img src="#">Technical Task <input type="checkbox"></option> <!--Hier Task.catergory rein rendern-->
-                                <option value="Stefan"><img src="#">User Story <input type="checkbox"></option>
+                                <option value="Technical Task"><img src="#">Technical Task</option> <!--Hier Task.catergory rein rendern-->
+                                <option value="User Story"><img src="#">User Story</option>
                             </section>
                         </div>
 
