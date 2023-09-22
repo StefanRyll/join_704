@@ -5,22 +5,22 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="style.css">
-            <title>Document</title>
+            <title>Task Formular</title>
         </head>
         <body>
             <div id="createTaskWindow" class="createTaskWindow">
                 <h1>Add Task</h1>
-                <form onsubmit="createTask('Test Nutzer')" action="">
-                    <div><!--Spalte 1-->
-                        <div>
+                <form class="taskWindowForm" onsubmit="createTask('Test Nutzer')" action="">
+                    <div class="taskWindowColumn"><!--Spalte 1-->
+                        <div class="inputParameter">
                             <label for="addTaskTitle">Title</label>
                             <input  id="addTaskTitle" type="text" placeholder="Enter a title">                        
                         </div>
-                        <div>
+                        <div class="inputParameter">
                             <label for="addTaskDescription">Description</label>
-                            <input  id="addTaskDescription" type="text" placeholder="Enter a Description">                        
+                            <textarea name="addTaskDescription" id="addTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>      
                         </div>
-                        <div>
+                        <div class="inputParameter">
                             <label for="assignTaskToContacts">Assigned to</label>
                             <select id="assignTaskToContacts">
                                 <option value="Stefan">Stefan</option> <!--Hier Accounts rein rendern-->
@@ -29,24 +29,24 @@
                             </select>
                         </div>                        
                     </div>
-                    <div><!--Spalte 2-->
-                        <div>
+                    <div class="taskWindowColumn"><!--Spalte 2-->
+                        <div class="inputParameter">
                             <label for="addTaskDeadline">Due date</label>
                             <input  id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
                         </div>
-                        <div>
+                        <div class="inputParameter">
                             <label>Prio</label>
-                            <div>
-                                <div><input type="radio" value="01" name="prio" id="prio01" checked>Urgent <img src="#"></div>
-                                <div><input type="radio" value="02" name="prio" id="prio02">Medium <img src="#"></div>
-                                <div><input type="radio" value="03" name="prio" id="prio03">Low <img src="#"></div>
+                            <div class="taskPrios">
+                                <div><input class="radioButton" type="radio" value="01" name="prio" id="prio01" checked>Urgent</div>
+                                <div><input class="radioButton" type="radio" value="02" name="prio" id="prio02">Medium</div>
+                                <div><input class="radioButton" type="radio" value="03" name="prio" id="prio03">Low</div>
                             </div>
                         </div>
-                        <div>
+                        <div class="inputParameter">
                             <label for="addTaskCategory">Assigned to</label>
                             <section id="addTaskCategory">
-                                <option value="Technical Task"><img src="#">Technical Task</option> <!--Hier Task.catergory rein rendern-->
-                                <option value="User Story"><img src="#">User Story</option>
+                                <option value="Technical Task">Technical Task</option> <!--Hier Task.catergory rein rendern-->
+                                <option value="User Story">User Story</option>
                             </section>
                         </div>
 
