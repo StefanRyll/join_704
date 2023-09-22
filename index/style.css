@@ -90,7 +90,14 @@ section {
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
+.frame-159 {
+    width: 315px;
+    height: 89px;
+    gap: 16px;
+}
+
 h1 {
+    margin: 0;
     font-size: 61px;
     font-weight: 700;
     line-height: 73px;
@@ -112,4 +119,16 @@ h1 {
     gap: 10px;
     border: 1px solid rgba(209, 209, 209, 1);
     color: var(--placeholder);
+    display: flex;
+    align-items: center;
+}
+
+.frame-157[type=email] {
+    background-image: url(../assets/img/mail.png);
+    background-repeat: no-repeat;
+    width: 380px;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    border: none;
 }
