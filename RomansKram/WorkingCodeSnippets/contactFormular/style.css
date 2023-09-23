@@ -56,3 +56,9 @@ body{
     width: 422px;
     height:50px;
 }
+.retro-password {
+    font-family: 'fontello', monospace; /* Wählen Sie eine Schriftart aus, die retro aussieht */
+    letter-spacing: 4px; /* Ändern Sie den Buchstabenzwischenraum, um den retro-Look zu verstärken */
+    -webkit-text-security: disc; /* Zeigen Sie die Passworteingabe als Sterne (*) in WebKit-basierten Browsern (wie Chrome und Safari) an */
+    text-security: disc; /* Zeigen Sie die Passworteingabe als Sterne (*) in anderen Browsern an */
+}

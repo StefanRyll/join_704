@@ -28,9 +28,9 @@ function createContact(){
     const phone = document.getElementById('inputPhone').value;
     let newContact = new Contact(name, email, phone)
     contactList.push(newContact);
-    // console.log(newContact);
+    console.log(newContact);
 }
 console.log(Jan.asCard());
-function logEnding(x){
-    console.log(x);
-}
+// function logEnding(x){
+//     console.log(x);
+// }
