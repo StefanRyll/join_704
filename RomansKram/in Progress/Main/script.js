@@ -4,6 +4,34 @@ class Page {
         this.signedAccount = null;
     }
     // Components
+    logInContent(){
+        return /*html*/`
+            <header>
+                <div class="frame-156">
+                    <p>Not a Join user?</p>
+                    <button onclick="#">Sign up</button>
+                </div>
+            </header>
+            <section>
+                <div class="frame-153">
+                    <div class="frame-159">
+                        <h1>Log In</h1>
+                        <img src="../assets/img/vector-5.png">
+                    </div>
+                    <form onsubmit="logInUser()">
+                        <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
+                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
+                        <label for=""><input type="checkbox" name="" id="">Remember me</label>
+                        <div>
+                            <button type="submit">Log In</button><button onclick="guestLogin()">Guest Log In</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </section>
+
+        `
+    }
     startAnimation(){
         body.innerHTML = "";
         return /*html*/`
@@ -17,6 +45,12 @@ class Page {
             <div id="SideAndHead"></div>
             <div id="content"></div>
 
+        `
+    }
+    loginLayout(){
+        return /*html*/`
+            <div id="logoArea"></div>
+            <div id="windowArea"></div>        
         `
     }
     SideAndHead(){
@@ -263,18 +297,37 @@ class Account {
         this.contacts.push(x);
     }
 }
+
 // Deklarationen
 let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
+const user1 = new Account("Roman", "roman.schroeder@inclufilm.com", "Gregor2023")
+Join.accounts.push(user1)
+
+
 let body = document.getElementById('body')
-Join.signedAccount = guest;
 
 // Login
 function guestLogin(){
     Join.signedAccount = guest;
     summeryPage();
 }
-
+function logInUser(){
+    const user = document.getElementById('loginEmail').value;
+    const pw = document.getElementById('loginPassword').value;
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const userAccount = Join.accounts[i];
+        if (user === userAccount.email){
+            if (pw === userAccount.password){
+                Join.signedAccount = userAccount;
+                summeryPage()
+            }
+        }else{
+            alert("Entweder Passwort oder Email Stimmen nicht überein")
+        }
+        
+    }
+}
 // Sign Up
 function createAccount() {
     let pw = passwordCheck();
@@ -315,7 +368,12 @@ function ppCheck() {
 }
 // Onload Funktion
 function startPage(){
-    body.innerHTML = Join.startAnimation()
+    // body.innerHTML = Join.loginLayout()
+    // let logoArea = document.getElementById('logoArea')
+    // let windowArea = document.getElementById('windowArea')
+    body.innerHTML = Join.startAnimation();
+    body.innerHTML = Join.logInContent();
+    // console.log(windowArea);
 }
 // Sidebar and Header
 function showSideAndHead(){
@@ -371,4 +429,5 @@ function contactsPage(){
     showSideAndHead()
     content.innerHTML = "Join.contactsContent()";
 }
-legalPage()
+// contactsPage()
+startPage()

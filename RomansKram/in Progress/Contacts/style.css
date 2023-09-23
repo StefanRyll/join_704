@@ -1,0 +1,27 @@
+body{
+    margin:0;
+    height: 100vh;
+}
+.contactWindow{
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.contactList{
+    width: 456px;
+    height: 928px;
+    top: 96px;
+    left: 232px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: brown;
+
+}
+.newContactBtn{
+    width: 100%;
+    
+}
