@@ -8,6 +8,17 @@
             <title>Document</title>
         </head>
         <body>
+            <div id="signUpWindow" class="signUpWindow">
+                <h1>Sign up</h1>
+                <form class="accountForm" onsubmit="createAccount()" action="">
+                    <div class="signUpInputArea"><input required type="text" id="signUpInputName" placeholder="Name" class="signUpInput"></div>
+                    <div class="signUpInputArea"><input required type="email" id="signUpInputEmail" placeholder="Email" class="signUpInput"></div>
+                    <div class="signUpInputArea"><input required type="password" id="signUpInputPassword" placeholder="Password" class="signUpInput"></div>
+                    <div id="passwordCheckArea" class="signUpInputArea"><input required type="password" id="signUpInputPassword2" placeholder="Confirm Password" class="signUpInput"></div>
+                    <label><input required type="checkbox" name="ppCheck" id="ppCheck">I accept the <a href="">Privacy policy</a></label>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
             <script src="./script.js"></script>
         </body>
         </html>
