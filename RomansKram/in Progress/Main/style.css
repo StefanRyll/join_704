@@ -1,6 +1,9 @@
 body{
     background-color: rgb(68, 68, 68);
+    font-family: sans-serif;
+
 }
+
 .signUpWindow{
     width: 598px;
     height: 630px;
@@ -43,4 +46,17 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 70%;
+}
+#content{
+    background-color: aqua;
+    position: absolute;
+    width:66.5%;
+    height:71%;
+    text-align: justify;
+    text-overflow: clip;
+    padding: 90px;
+    left: 232px;
+    top: 98px;
+    overflow: hidden;
+    overflow-y: scroll;
 }

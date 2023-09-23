@@ -1,6 +1,6 @@
 class Page {
     constructor() {
-        this.accounts = [guest];
+        this.accounts = [];
         this.signedAccount = null;
     }
     // Components
@@ -24,7 +24,7 @@ class Page {
             <header class="header">
                 <h2>Kanban Projekt Management Tool</h2>
                 <div class="accountIssues">
-                    <div id="hInfo" class="infoButton"></div>
+                    <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
                     <img src="./IMG/defaultUser.png" alt="" class="userImg">
                 </div>
             </header>
@@ -98,6 +98,7 @@ class Page {
                             Have more questions about Join? Feel free to contact us at [Your Contact Email]. We're here to help you!
                             </p></li>
                 </ol>
+
                 <h2>Enjoy using Join!</h2>
 
 
@@ -129,12 +130,13 @@ class Account {
 let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
 let body = document.getElementById('body')
-
+Join.signedAccount = guest;
 
 // Login
 function guestLogin(){
     Join.signedAccount = guest;
 }
+
 // Sign Up
 function createAccount() {
     let pw = passwordCheck();
@@ -182,9 +184,10 @@ function showSideAndHead(){
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
 }
-function helpTest(){
+function helpPage(){
     body.innerHTML = "";
-    body.innerHTML = pageLayoutMain()
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
     showSideAndHead()
+    content.innerHTML = Join.helpContent();
 }
-helpTest()

@@ -5,10 +5,10 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: sans-serif;
 }
 h1{
     font-size: 61px;
-    font-family: sans-serif;
 }
 .loginWindow{
     width: 652px;
