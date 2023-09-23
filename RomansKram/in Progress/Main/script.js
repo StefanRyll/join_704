@@ -1,9 +1,49 @@
 class Page {
     constructor() {
-        this.accounts = [];
+        this.accounts = [guest];
         this.signedAccount = null;
     }
     // Components
+    startAnimation(){
+        body.innerHTML = "";
+        return /*html*/`
+            <div id="logoMain" class="logoAnimationImg"></div>
+
+        `
+    }
+    pageLayoutMain(){
+        body.innerHTML = "";
+        return /*html*/`
+            <div id="SideAndHead"></div>
+            <div id="content"></div>
+
+        `
+    }
+    SideAndHead(){
+        return /*html*/`
+            <header class="header">
+                <h2>Kanban Projekt Management Tool</h2>
+                <div class="accountIssues">
+                    <div id="hInfo" class="infoButton"></div>
+                    <img src="./IMG/defaultUser.png" alt="" class="userImg">
+                </div>
+            </header>
+            <div id="sidebar" class="sidebar">
+                <div id="logo" class="logo"></div>
+                <nav>
+                    <div class="navs bgDark"><div class="summary"></div><h3>Summery</h3></div>
+                    <div class="navs"><div class="board"></div><h3>Board</h3></div>
+                    <div class="navs"><div class="addTask"></div><h3>Add Task</h3></div>
+                    <div class="navs"><div class="contacts"></div><h3>Contacts</h3></div>
+                </nav>
+                <div>
+                    <p>Private Policy</p>
+                    <p>Legal notice</p>
+                </div>
+            </div>
+
+        `
+    }
     signUpWindow() {
         return /*html*/`
             <div id="signUpWindow" class="signUpWindow">
@@ -48,11 +88,14 @@ class Account {
 
 let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
-Join.forceSignIn(guest)
-console.log(Join.signedAccount.name);
+let body = document.getElementById('body')
 
 
-
+// Login
+function guestLogin(){
+    Join.signedAccount = guest;
+}
+// Sign Up
 function createAccount() {
     let pw = passwordCheck();
     let policy = ppCheck();
@@ -67,7 +110,6 @@ function createAccount() {
         alert('Passwort nicht valide')
     }
 }
-
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
@@ -90,4 +132,13 @@ function ppCheck() {
     } else {
         return false;
     }
+}
+// Onload Funktion
+function startPage(){
+    body.innerHTML = Join.startAnimation()
+}
+// Sidebar and Header
+function showSideAndHead(){
+    const SNH = document.getElementById('SideAndHead');
+    SNH.innerHTML = Join.SideAndHead();
 }
