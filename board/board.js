@@ -1,5 +1,6 @@
 async function init() {
     await includeHTML();
+    renderAddTask();
 }
 
 
@@ -15,4 +16,38 @@ async function includeHTML() {
           element.innerHTML = 'Page not found';
       }
     }
+}
+
+function renderAddTask() {
+  let addTask = document.getElementById('addTask');
+  addTask.innerHTML = '';
+  addTask.innerHTML += generateHTMLaddTask();
+}
+
+function generateHTMLaddTask() {
+  return /*html*/`
+  <div class="bg-task">
+    <div class="add-task">
+      <h3>Add Task</h3>
+      <div class="">
+        <div>
+          <div class="input-title">
+            <p>Title</p>
+            <input placeholder="Enter a title" type="text" id="" name="" required>
+          </div>
+          <div class="input-description">
+            <textarea name="" id="" cols="30" rows="10">Enter a Description</textarea>
+          </div>
+          <div class="assigned-contact">
+            <p>Assigned to</p>
+            
+          </div>
+        </div>
+        <div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  `
 }

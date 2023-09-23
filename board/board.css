@@ -1,3 +1,19 @@
+:root {
+    --white: rgba(255, 255, 255, 1);
+    --general-button-inactive: rgba(42, 54, 71, 1);
+    --general-button-hover: rgba(41, 171, 226, 1);
+    --general-button-active: rgba(9, 25, 49, 1);
+    --lightgrey: rgba(246, 247, 248, 1);
+    --placeholder: rgba(209, 209, 209, 1);
+    --menu-color: #42526E;
+    --version-2-main-color: #2A3647;
+}
+
+body {
+    font-family: inter, sans-serif;
+}
+
+
 .frame-192 {
     display: flex;
     justify-content: space-around;
@@ -28,9 +44,21 @@
     font-weight: 400;
 }
 
+.input-search:hover {
+    cursor: pointer;
+}
+
+.input-search input:hover {
+    cursor: pointer;
+}
+
+.input-search input:focus {
+    outline: none;
+}
+
 .input-search {
-    border: 1px solid ;
-    background-color: white;
+    border: 1px solid #A8A8A8;
+    background-color: #FFF;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -44,38 +72,114 @@
     width: 32px;
     height: 32px;
     padding-right: 16px;
+    overflow: hidden;
 }
 
-.frame-123 button {
-    color: white;
-    background-color: #2A3647;
-    border: none;
-    width: 160px;
-    height: 48px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-radius: 10px;
-    font-size: 21px;
-    font-weight: 700;
+
+.search-icon img:hover {
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 100%;
 }
+
 
 .button-add-task {
+    height: 48px;
+    margin-left: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #2A3647;
-    border: 1px solid;
+    display: flex;
+    padding: 8px 16px;
+    gap: 4px;
     border-radius: 10px;
-    margin-left: 32px;
+    border: 1px solid #2A3647;
+    border: none;
+}
+
+.button-add-task:hover {
+    cursor: pointer;
+    background-color: var(--general-button-hover);
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.button-add-task p {
+    color: white;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
 }
 
 .button-add-task img {
     width: 32px;
     height: 32px;
-    /* padding-left: 4px; */
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+}
+
+.frame-136 {
+    display: flex;
+    padding: 0px 64px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 294px;
+}
+
+.board-actionbar {
+    display: flex;
+    width: 244px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.board-actionbar p {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--menu-color);
+}
+
+.board-plus {
+    height: 24px;
+    width: 24px;
+    border: 2px solid #2A3647;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px solid var(--version-2-main-color, #2A3647);
+}
+
+.board-plus img {
+    height: 8px;
+    top: 12.08px;
+    left: 16px;
+    border: 2px;
+}
+
+
+/*********************************RENDER ADD TASK ********************************************/
+
+
+.bg-task {
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    width: 100;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.add-task {
+    background-color: #fff;
+    width: 1116px;
+    height: 870px;
+    border-radius: 30px;
 }
