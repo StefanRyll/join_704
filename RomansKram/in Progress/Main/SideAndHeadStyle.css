@@ -1,13 +1,3 @@
-body {
-    background-color: #F6F7F8;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
 .sidebar{
     background-color: #2A3647;
     position: absolute;

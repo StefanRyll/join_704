@@ -29,12 +29,12 @@ class Page {
                 </div>
             </header>
             <div id="sidebar" class="sidebar">
-                <div id="logo" class="logo"></div>
+                <div id="logo" onclick="summeryPage()" class="logo"></div>
                 <nav>
-                    <div class="navs bgDark"><div class="summary"></div><h3>Summery</h3></div>
-                    <div class="navs"><div class="board"></div><h3>Board</h3></div>
-                    <div class="navs"><div class="addTask"></div><h3>Add Task</h3></div>
-                    <div class="navs"><div class="contacts"></div><h3>Contacts</h3></div>
+                    <div class="navs bgDark" onclick="summeryPage()"><div class="summary"></div><h3>Summery</h3></div>
+                    <div class="navs" onclick="boardPage()" ><div class="board"></div><h3>Board</h3></div>
+                    <div class="navs" onclick="addTaskPage()"><div class="addTask"></div><h3>Add Task</h3></div>
+                    <div class="navs" onclick="contactsPage()"><div class="contacts"></div><h3>Contacts</h3></div>
                 </nav>
                 <div>
                     <p onclick="privacyPage()">Privacy Policy</p>
@@ -186,6 +186,61 @@ class Page {
             <p>Date: July 26, 2023</p>
         `
     }
+    addTaskContent(){
+        return /*html*/`
+            <div id="createTaskWindow" class="createTaskWindow">
+                <h1>Add Task</h1>
+                <form class="taskWindowForm" onsubmit="createTask('Test Nutzer')">
+                    <div class="taskWindowColumn"><!--Spalte 1-->
+                        <div class="inputParameter">
+                            <label for="addTaskTitle">Title</label>
+                            <input  id="addTaskTitle" type="text" placeholder="Enter a title">                        
+                        </div>
+                        <div class="inputParameter">
+                            <label for="addTaskDescription">Description</label>
+                            <textarea name="addTaskDescription" id="addTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>      
+                        </div>
+                        <div class="inputParameter">
+                            <label for="assignTaskToContacts">Assigned to</label>
+                            <select id="assignTaskToContacts">
+                                <option value="Stefan">Stefan</option> <!--Hier Accounts rein rendern-->
+                                <option value="Dominik">Dominik</option>
+                                <option value="Roman">Roman</option>
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="taskWindowColumn"><!--Spalte 2-->
+                        <div class="inputParameter">
+                            <label for="addTaskDeadline">Due date</label>
+                            <input  id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
+                        </div>
+                        <div class="inputParameter">
+                            <label>Prio</label>
+                            <div class="taskPrios">
+                                <div><input class="radioButton" type="radio" value="01" name="prio" id="prio01" checked>Urgent</div>
+                                <div><input class="radioButton" type="radio" value="02" name="prio" id="prio02">Medium</div>
+                                <div><input class="radioButton" type="radio" value="03" name="prio" id="prio03">Low</div>
+                            </div>
+                        </div>
+                        <div class="inputParameter">
+                            <label for="addTaskCategory">Assigned to</label>
+                            <select id="addTaskCategory">
+                                <option value="Technical Task">Technical Task</option> <!--Hier Task.catergory rein rendern-->
+                                <option value="User Story">User Story</option>
+                            </select>
+                        </div>
+
+                        <div id="addTaskControl">
+                            <div onclick="logEnding('Leave add Task')">Clear x</div>
+                            <button type="submit">Create Task v</button>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+
+        `
+    }
+    
 }
 
 class Account {
@@ -208,7 +263,7 @@ class Account {
         this.contacts.push(x);
     }
 }
-
+// Deklarationen
 let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
 let body = document.getElementById('body')
@@ -217,6 +272,7 @@ Join.signedAccount = guest;
 // Login
 function guestLogin(){
     Join.signedAccount = guest;
+    summeryPage();
 }
 
 // Sign Up
@@ -286,5 +342,33 @@ function legalPage(){
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.legalNoticeContent();
+}
+function addTaskPage(){
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = Join.addTaskContent();
+}
+function summeryPage(){
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = "Join.summeryContent()";
+}
+function boardPage(){
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = "Join.boardContent()";
+}
+function contactsPage(){
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = "Join.contactsContent()";
 }
 legalPage()
