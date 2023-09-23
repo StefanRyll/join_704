@@ -81,9 +81,7 @@ section {
     align-items: center;
     width: 652px;
     height: 493px;
-    top: 265.5px;
-    left: 394px;
-    padding: 48px, 115px, 48px, 115px;
+    padding: 48px 115px 48px 115px;
     border-radius: 30px;
     gap: 32px;
     background-color: var(--white);
@@ -94,6 +92,7 @@ section {
     width: 315px;
     height: 89px;
     gap: 16px;
+    margin-bottom: 32px;
 }
 
 h1 {
@@ -103,32 +102,50 @@ h1 {
     line-height: 73px;
     letter-spacing: 0em;
     text-align: center;
-}
-
-.login-container {
-    width: 422px;
-    height: Fixed 152px;
-    gap: 32px;
+    margin-bottom: 16px;
 }
 
 .frame-14 {
     width: 422px;
-    height: 48px;
+    height: 32px;
     padding: 12px 21px 12px 21px;
     border-radius: 10px;
     gap: 10px;
     border: 1px solid rgba(209, 209, 209, 1);
-    color: var(--placeholder);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.frame-157[type=email] {
+.frame-157 {
     background-image: url(../assets/img/mail.png);
     background-repeat: no-repeat;
+    background-position: right;
     width: 380px;
     height: 24px;
-    display: flex;
-    justify-content: space-between;
     border: none;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.frame-158 {
+    background-image: url(../assets/img/lock.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 380px;
+    height: 24px;
+    border: none;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+::placeholder {
+    padding: 4px;
+    color: var(--placeholder);
 }
