@@ -9,7 +9,7 @@ class Page {
             <header>
                 <div class="frame-156">
                     <p>Not a Join user?</p>
-                    <button onclick="#">Sign up</button>
+                    <button onclick="signUp()">Sign up</button>
                 </div>
             </header>
             <section>
@@ -36,6 +36,13 @@ class Page {
         body.innerHTML = "";
         return /*html*/`
             <div id="logoMain" class="logoAnimationImg"></div>
+
+        `
+    }
+    logoLogin(){
+        body.innerHTML = "";
+        return /*html*/`
+            <div id="logoMain" class="logoAnimationImg2"></div>
 
         `
     }
@@ -82,7 +89,7 @@ class Page {
         return /*html*/`
             <div id="signUpWindow" class="signUpWindow">
                 <h1>Sign up</h1>
-                <form class="accountForm" onsubmit="createAccount1()" action="">
+                <form class="accountForm" onsubmit="createAccount1()">
                     <div class="signUpInputArea"><input required type="text" id="signUpInputName" placeholder="Name" class="signUpInput"></div>
                     <div class="signUpInputArea"><input required type="email" id="signUpInputEmail" placeholder="Email" class="signUpInput"></div>
                     <div class="signUpInputArea"><input required type="password" id="signUpInputPassword" placeholder="Password" class="signUpInput"></div>
@@ -90,6 +97,7 @@ class Page {
                     <label><input required type="checkbox" name="ppCheck" id="ppCheck">I accept the <a href="">Privacy policy</a></label>
                     <button type="submit">Sign Up</button>
                 </form>
+                <button class="backBtn"><</button>
             </div>
 
         `
@@ -338,10 +346,14 @@ function createAccount() {
         let password = document.getElementById('signUpInputPassword').value;
         let account = new Account(name, Email, password);
         Join.accounts.push(account);
+        startPage2()
     }
     else if (pw != true) {
         alert('Passwort nicht valide')
+    }else{
+        alert('You musst accept the Privacy Policy!')
     }
+
 }
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
@@ -373,6 +385,22 @@ function startPage(){
     // let windowArea = document.getElementById('windowArea')
     body.innerHTML = Join.startAnimation();
     body.innerHTML = Join.logInContent();
+    // console.log(windowArea);
+}
+function startPage2(){
+    // body.innerHTML = Join.loginLayout()
+    // let logoArea = document.getElementById('logoArea')
+    // let windowArea = document.getElementById('windowArea')
+    body.innerHTML = Join.logoLogin();
+    body.innerHTML = Join.logInContent();
+    // console.log(windowArea);
+}
+function signUp(){
+    // body.innerHTML = Join.loginLayout()
+    // let logoArea = document.getElementById('logoArea')
+    // let windowArea = document.getElementById('windowArea')
+    body.innerHTML = Join.logoLogin();
+    body.innerHTML = Join.signUpWindow();
     // console.log(windowArea);
 }
 // Sidebar and Header

@@ -20,6 +20,18 @@
     left: 45px;
 
 }
+.logoAnimationImg2 {
+    background-image: url("./IMG/Capa 1.png");
+    /* width: 274px;
+    height: 334.07px; */
+    width: 101px;
+    height: 124px;
+    background-size: cover;
+    position: absolute;
+    top: 45px;
+    left: 45px;
+
+}
 
 /* Animation */
 @keyframes logoAnimation {
