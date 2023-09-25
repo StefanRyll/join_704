@@ -114,9 +114,9 @@ h1 {
     gap: 32px;
 }
 
-.frame-14 {
-    width: 422px;
-    height: 32px;
+.frame-14 {}
+
+.frame-157 {
     padding: 12px 21px 12px 21px;
     border-radius: 10px;
     gap: 10px;
@@ -124,43 +124,34 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.frame-157 {
-    background-image: url(./IMG/mail.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    width: 380px;
-    height: 24px;
-    border: none;
+    width: 422px;
+    height: 32px;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
+}
+
+.frame-157:hover {
+    cursor: pointer;
 }
 
 .frame-157:focus {
     outline: none;
-}
-
-.frame-14:hover {
-    cursor: pointer;
-}
-
-
-/* .frame-14:focus {
-    outline: var(--lightblue);
     border: 1px solid var(--lightblue);
-} */
+}
 
 .frame-158 {
-    background-image: url(./IMG/lock.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    width: 380px;
-    height: 24px;
-    border: none;
+    padding: 12px 21px 12px 21px;
+    border-radius: 10px;
+    gap: 10px;
+    border: 1px solid rgba(209, 209, 209, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 422px;
+    height: 32px;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
@@ -168,11 +159,27 @@ h1 {
     text-align: left;
 }
 
-.frame-158:focus {
-    outline: none;
+.frame-158:hover {
+    cursor: pointer;
 }
 
-::placeholder {
+.frame-158:focus {
+    outline: none;
+    border: 1px solid var(--lightblue);
+}
+
+.frame-157::placeholder {
+    background-image: url(./IMG/mail.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 4px;
+    color: var(--placeholder);
+}
+
+.frame-158::placeholder {
+    background-image: url(./IMG/lock.png);
+    background-repeat: no-repeat;
+    background-position: right;
     padding: 4px;
     color: var(--placeholder);
 }
@@ -223,4 +230,10 @@ h1 {
 .guest-login-style:active {
     border: 1px solid var(--white-btn-active);
     color: var(--white-btn-active);
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
 }

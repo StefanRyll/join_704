@@ -20,9 +20,9 @@ class Page {
                         <img src="./IMG/vector-5.png">
                     </div>
                     <div class="login-container" onsubmit="logInUser()">
-                        <form class="frame-14" id="frame14Email"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></form>
-                        <form class="frame-14" id="frame14Password"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></form>
-                        <label class="remember-me" for=""><input type="checkbox" name="" id="">Remember me</label>
+                        <form class="frame-14"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></form>
+                        <form class="frame-14"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></form>
+                        <label class="remember-me" for=""><input class="checkbox" type="checkbox" name="" id="">Remember me</label>
                         <div class="frame-176">
                             <button class="login-btn" type="submit">Log In</button>
                             <button class="guest-login-style" onclick="guestLogin()">Guest Log In</button>
@@ -175,8 +175,9 @@ class Page {
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
-                <li>Stefan, Dominik, Roman</li>
-                <li>Roman Schröder <br> Siebengebirgsweg 10 <br> 53424 Remagen</li>
+                <li>Stefan, Dominik, Roman</li><br>
+                <li>Roman Schröder <br> Siebengebirgsweg 10 <br> 53424 Remagen</li><br>
+                <li>Stefan Ryll <br> Mittelstraße 5 <br> 67547 Worms</li>
             </ul>
             <h3>Exploring</h3>
             <p>Email: roman.schroeder@inclufilm.com</p>
@@ -493,14 +494,4 @@ function contactsPage() {
     content.innerHTML = "Join.contactsContent()";
 }
 // contactsPage()
-
-function borderChangeInputEmail() {
-    document.getElementById('frame14Email').classList.add('lightBlue');
-    document.getElementById('frame14Password').classList.remove('lightBlue');
-}
-
-function borderChangeInputPassword() {
-    document.getElementById('frame14Password').classList.add('lightBlue');
-    document.getElementById('frame14Email').classList.remove('lightBlue');
-}
 startPage()
