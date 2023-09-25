@@ -20,11 +20,11 @@ class Page {
                         <img src="./IMG/vector-5.png">
                     </div>
                     <div class="login-container" onsubmit="logInUser()">
-                        <form class="frame-14"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></form>
-                        <form class="frame-14"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></form>
+                        <div class="frame-14"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
+                        <div class="frame-14"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
                         <label class="remember-me" for=""><input class="checkbox" type="checkbox" name="" id="">Remember me</label>
                         <div class="frame-176">
-                            <button class="login-btn" type="submit">Log In</button>
+                            <button onclick="logInUser()" class="login-btn" >Log In</button>
                             <button class="guest-login-style" onclick="guestLogin()">Guest Log In</button>
                         </div>
                     </div>
@@ -344,7 +344,7 @@ function logInUser() {
                 summeryPage()
             }
         } else {
-            alert("Entweder Passwort oder Email Stimmen nicht überein")
+            alert("Entweder Passwort oder Email stimmen nicht überein")
         }
 
     }
