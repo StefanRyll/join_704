@@ -6,6 +6,7 @@
     --lightgrey: rgba(246, 247, 248, 1);
     --placeholder: rgba(209, 209, 209, 1);
     --lightblue: rgba(41, 171, 226, 1);
+    --white-btn-active: rgba(9, 25, 49, 1);
 }
 
 body {
@@ -147,6 +148,12 @@ h1 {
     cursor: pointer;
 }
 
+
+/* .frame-14:focus {
+    outline: var(--lightblue);
+    border: 1px solid var(--lightblue);
+} */
+
 .frame-158 {
     background-image: url(./IMG/lock.png);
     background-repeat: no-repeat;
@@ -168,6 +175,10 @@ h1 {
 ::placeholder {
     padding: 4px;
     color: var(--placeholder);
+}
+
+.lightBlue {
+    border: 1px solid var(--lightblue);
 }
 
 .remember-me {
@@ -207,4 +218,9 @@ h1 {
     background-color: var(--white);
     border: 1px solid var(--lightblue);
     color: var(--lightblue);
+}
+
+.guest-login-style:active {
+    border: 1px solid var(--white-btn-active);
+    color: var(--white-btn-active);
 }

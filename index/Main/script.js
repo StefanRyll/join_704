@@ -19,16 +19,15 @@ class Page {
                         <h1>Log In</h1>
                         <img src="./IMG/vector-5.png">
                     </div>
-                    <form class="login-container" onsubmit="logInUser()">
-                        <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
-                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
+                    <div class="login-container" onsubmit="logInUser()">
+                        <form class="frame-14" id="frame14Email"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></form>
+                        <form class="frame-14" id="frame14Password"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></form>
                         <label class="remember-me" for=""><input type="checkbox" name="" id="">Remember me</label>
                         <div class="frame-176">
                             <button class="login-btn" type="submit">Log In</button>
                             <button class="guest-login-style" onclick="guestLogin()">Guest Log In</button>
                         </div>
-                        
-                    </form>
+                    </div>
                 </div>
             </section>
 
@@ -494,4 +493,14 @@ function contactsPage() {
     content.innerHTML = "Join.contactsContent()";
 }
 // contactsPage()
+
+function borderChangeInputEmail() {
+    document.getElementById('frame14Email').classList.add('lightBlue');
+    document.getElementById('frame14Password').classList.remove('lightBlue');
+}
+
+function borderChangeInputPassword() {
+    document.getElementById('frame14Password').classList.add('lightBlue');
+    document.getElementById('frame14Email').classList.remove('lightBlue');
+}
 startPage()
