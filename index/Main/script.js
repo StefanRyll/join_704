@@ -22,7 +22,10 @@ class Page {
                     <div class="login-container">
                         <div class="frame-14"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
                         <div class="frame-14"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
-                        <label class="remember-me" for=""><input class="checkbox" type="checkbox" name="" id="">Remember me</label>
+                        <label class="remember-me" for="">
+                            <img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox" alt="">
+                            Remember me
+                        </label>
                         <div class="frame-176">
                             <button onclick="logInUser()" class="login-btn" >Log In</button>
                             <button class="guest-login-style" onclick="guestLogin()">Guest Log In</button>
@@ -175,9 +178,9 @@ class Page {
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
-                <li>Stefan, Dominik, Roman</li><br>
                 <li>Roman Schröder <br> Siebengebirgsweg 10 <br> 53424 Remagen</li><br>
-                <li>Stefan Ryll <br> Mittelstraße 5 <br> 67547 Worms</li>
+                <li>Stefan Ryll <br> Mittelstraße 5 <br> 67547 Worms</li><br>
+                <li>Dominik Hucka <br> Peteräcker 6 <br> 72581 Dettingen an der Erms</li><br>
             </ul>
             <h3>Exploring</h3>
             <p>Email: roman.schroeder@inclufilm.com</p>
@@ -494,4 +497,14 @@ function contactsPage() {
     content.innerHTML = "Join.contactsContent()";
 }
 // contactsPage()
+
+function checkbox() {
+    document.getElementById('checkbox').src = './IMG/checkboxFilled.png';
+    document.getElementById('checkbox').src = './IMG/checkboxEmpty.png';
+}
+
+// function checkboxRemove() {
+//     document.getElementById('checkbox-on').classList.add('d-none');
+//     document.getElementById('checkbox-none').classList.remove('d-none');
+// }
 startPage()

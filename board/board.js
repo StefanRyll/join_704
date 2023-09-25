@@ -1,7 +1,4 @@
-let toDo = [];
-let inProgress = [];
-let awaitFeedback = [];
-let done = [];
+let allTasks = [];
 
 
 async function init() {

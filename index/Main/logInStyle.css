@@ -114,8 +114,6 @@ h1 {
     gap: 32px;
 }
 
-.frame-14 {}
-
 .frame-157 {
     padding: 12px 21px 12px 21px;
     border-radius: 10px;
@@ -189,6 +187,7 @@ h1 {
 }
 
 .remember-me {
+    max-height: 19px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -236,4 +235,8 @@ h1 {
     width: 24px;
     height: 24px;
     border-radius: 3px;
+}
+
+.d-none {
+    display: none;
 }
