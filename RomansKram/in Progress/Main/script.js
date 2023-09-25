@@ -97,7 +97,7 @@ class Page {
                     <label><input required type="checkbox" name="ppCheck" id="ppCheck">I accept the <a href="">Privacy policy</a></label>
                     <button type="submit">Sign Up</button>
                 </form>
-                <button class="backBtn"><</button>
+                <button class="backBtn" onclick="startPage2()"><</button>
             </div>
 
         `
