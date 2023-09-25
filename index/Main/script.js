@@ -1,12 +1,12 @@
 class Page {
     constructor() {
-        this.accounts = [];
-        this.signedAccount = null;
-        this.tasks = [];
-    }
-    // Components
-    logInContent(){
-        return /*html*/`
+            this.accounts = [];
+            this.signedAccount = null;
+            this.tasks = [];
+        }
+        // Components
+    logInContent() {
+        return /*html*/ `
             <header>
                 <div class="frame-156">
                     <p>Not a Join user?</p>
@@ -17,14 +17,15 @@ class Page {
                 <div class="frame-153">
                     <div class="frame-159">
                         <h1>Log In</h1>
-                        <img src="../assets/img/vector-5.png">
+                        <img src="./IMG/vector-5.png">
                     </div>
-                    <form onsubmit="logInUser()">
+                    <form class="login-container" onsubmit="logInUser()">
                         <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
                         <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
-                        <label for=""><input type="checkbox" name="" id="">Remember me</label>
-                        <div>
-                            <button type="submit">Log In</button><button onclick="guestLogin()">Guest Log In</button>
+                        <label class="remember-me" for=""><input type="checkbox" name="" id="">Remember me</label>
+                        <div class="frame-176">
+                            <button class="login-btn" type="submit">Log In</button>
+                            <button class="guest-login-style" onclick="guestLogin()">Guest Log In</button>
                         </div>
                         
                     </form>
@@ -33,36 +34,36 @@ class Page {
 
         `
     }
-    startAnimation(){
+    startAnimation() {
         body.innerHTML = "";
-        return /*html*/`
+        return /*html*/ `
             <div id="logoMain" class="logoAnimationImg"></div>
 
         `
     }
-    logoLogin(){
+    logoLogin() {
         body.innerHTML = "";
-        return /*html*/`
+        return /*html*/ `
             <div id="logoMain" class="logoAnimationImg2"></div>
 
         `
     }
-    pageLayoutMain(){
+    pageLayoutMain() {
         body.innerHTML = "";
-        return /*html*/`
+        return /*html*/ `
             <div id="SideAndHead"></div>
             <div id="content"></div>
 
         `
     }
-    loginLayout(){
-        return /*html*/`
+    loginLayout() {
+        return /*html*/ `
             <div id="logoArea"></div>
             <div id="windowArea"></div>        
         `
     }
-    SideAndHead(){
-        return /*html*/`
+    SideAndHead() {
+        return /*html*/ `
             <header class="header">
                 <h2>Kanban Projekt Management Tool</h2>
                 <div class="accountIssues">
@@ -87,7 +88,7 @@ class Page {
         `
     }
     signUpWindow() {
-        return /*html*/`
+        return /*html*/ `
             <div id="signUpWindow" class="signUpWindow">
                 <h1>Sign up</h1>
                 <form class="accountForm" onsubmit="createAccount1()">
@@ -103,11 +104,11 @@ class Page {
 
         `
     }
-    forceSignIn(x){
+    forceSignIn(x) {
         this.signedAccount = x;
     }
-    helpContent(){
-        return /*html*/`
+    helpContent() {
+        return /*html*/ `
             <h1>Help</h1>
                 <p>Welcome to the help page for Join, 
                     your guide to using our kanban project 
@@ -147,8 +148,8 @@ class Page {
 
         `
     }
-    privacyContent(){
-        return /*html*/`
+    privacyContent() {
+        return /*html*/ `
             <h1>Privacy Policy</h1>
             <h2>Subtitle</h2>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
@@ -170,8 +171,8 @@ class Page {
                 eligendi, cupiditate nam reprehenderit asperiores sapiente.</p>
         `
     }
-    legalNoticeContent(){
-        return /*html*/`
+    legalNoticeContent() {
+        return /*html*/ `
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
@@ -229,8 +230,8 @@ class Page {
             <p>Date: July 26, 2023</p>
         `
     }
-    addTaskContent(){
-        return /*html*/`
+    addTaskContent() {
+        return /*html*/ `
             <div id="createTaskWindow" class="createTaskWindow">
                 <h1>Add Task</h1>
                 <form class="taskWindowForm" onsubmit="createTask()">
@@ -283,7 +284,7 @@ class Page {
 
         `
     }
-    
+
 }
 class Account {
     constructor(name, email, password) {
@@ -304,8 +305,8 @@ class Account {
         this.contacts.push(x);
     }
 }
-class Task{
-    constructor(creator, title, worker, desc, date = "No need", prio, Categroy ) {
+class Task {
+    constructor(creator, title, worker, desc, date = "No need", prio, Categroy) {
         this.creator = creator;
         this.title = title;
         this.worker = worker;
@@ -327,24 +328,25 @@ Join.accounts.push(user1)
 let body = document.getElementById('body')
 
 // Login
-function guestLogin(){
+function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
-function logInUser(){
+
+function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
     for (let i = 0; i < Join.accounts.length; i++) {
         const userAccount = Join.accounts[i];
-        if (user === userAccount.email){
-            if (pw === userAccount.password){
+        if (user === userAccount.email) {
+            if (pw === userAccount.password) {
                 Join.signedAccount = userAccount;
                 summeryPage()
             }
-        }else{
+        } else {
             alert("Entweder Passwort oder Email Stimmen nicht überein")
         }
-        
+
     }
 }
 // Sign Up
@@ -358,29 +360,30 @@ function createAccount() {
         let account = new Account(name, Email, password);
         Join.accounts.push(account);
         startPage2()
-    }
-    else if (pw != true) {
+    } else if (pw != true) {
         alert('Passwort nicht valide')
-    }else{
+    } else {
         alert('You musst accept the Privacy Policy!')
     }
 
 }
+
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
-    if (pw1.length >= 8){
+    if (pw1.length >= 8) {
         if (pw1 === pw2) {
             return true;
         } else {
             return false;
-        }        
-    }else{
+        }
+    } else {
 
         return false;
     }
 
 }
+
 function ppCheck() {
     let checkbox = document.getElementById('ppCheck');
     if (checkbox.checked) {
@@ -390,7 +393,7 @@ function ppCheck() {
     }
 }
 // Onload Funktion
-function startPage(){
+function startPage() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
@@ -398,7 +401,8 @@ function startPage(){
     body.innerHTML = Join.logInContent();
     // console.log(windowArea);
 }
-function startPage2(){
+
+function startPage2() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
@@ -406,7 +410,8 @@ function startPage2(){
     body.innerHTML = Join.logInContent();
     // console.log(windowArea);
 }
-function signUp(){
+
+function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
@@ -415,39 +420,44 @@ function signUp(){
     // console.log(windowArea);
 }
 // Sidebar and Header
-function showSideAndHead(){
+function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
 }
-function helpPage(){
+
+function helpPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.helpContent();
 }
-function privacyPage(){
+
+function privacyPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.privacyContent();
 }
-function legalPage(){
+
+function legalPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.legalNoticeContent();
 }
-function addTaskPage(){
+
+function addTaskPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.addTaskContent();
 }
-function createTask(){
+
+function createTask() {
     const creator = "Ich";
     const title = document.getElementById("addTaskTitle").value;
     const worker = document.getElementById('assignTaskToContacts').value;
@@ -460,21 +470,23 @@ function createTask(){
     console.log(Join.tasks);
 }
 
-function summeryPage(){
+function summeryPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = "Join.summeryContent()";
 }
-function boardPage(){
+
+function boardPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = "Join.boardContent()";
 }
-function contactsPage(){
+
+function contactsPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
