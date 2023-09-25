@@ -2,6 +2,7 @@ class Page {
     constructor() {
         this.accounts = [];
         this.signedAccount = null;
+        this.tasks = [];
     }
     // Components
     logInContent(){
@@ -232,7 +233,7 @@ class Page {
         return /*html*/`
             <div id="createTaskWindow" class="createTaskWindow">
                 <h1>Add Task</h1>
-                <form class="taskWindowForm" onsubmit="createTask('Test Nutzer')">
+                <form class="taskWindowForm" onsubmit="createTask()">
                     <div class="taskWindowColumn"><!--Spalte 1-->
                         <div class="inputParameter">
                             <label for="addTaskTitle">Title</label>
@@ -284,14 +285,12 @@ class Page {
     }
     
 }
-
 class Account {
     constructor(name, email, password) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.tel = null;
-        this.tasks = [];
         this.contacts = [];
 
     }
@@ -303,6 +302,18 @@ class Account {
     }
     addContact(x) {
         this.contacts.push(x);
+    }
+}
+class Task{
+    constructor(creator, title, worker, desc, date = "No need", prio, Categroy ) {
+        this.creator = creator;
+        this.title = title;
+        this.worker = worker;
+        this.desc = desc;
+        this.date = date;
+        this.prio = prio;
+        this.Categroy = Categroy;
+        this.subTasks = [];
     }
 }
 
@@ -436,6 +447,19 @@ function addTaskPage(){
     showSideAndHead()
     content.innerHTML = Join.addTaskContent();
 }
+function createTask(){
+    const creator = "Ich";
+    const title = document.getElementById("addTaskTitle").value;
+    const worker = document.getElementById('assignTaskToContacts').value;
+    const desc = document.getElementById("addTaskDescription").value;
+    const date = document.getElementById("addTaskDescription").value;
+    const prio = getPrio();
+    const category = document.getElementById('addTaskCategory').value;
+    let newTask = new Task(creator, title, worker, desc, date, prio, category);
+    Join.tasks.push(newTask)
+    console.log(Join.tasks);
+}
+
 function summeryPage(){
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
