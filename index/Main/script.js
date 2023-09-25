@@ -19,7 +19,7 @@ class Page {
                         <h1>Log In</h1>
                         <img src="./IMG/vector-5.png">
                     </div>
-                    <div class="login-container" onsubmit="logInUser()">
+                    <div class="login-container">
                         <div class="frame-14"><input onclick="borderChangeInputEmail()" type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
                         <div class="frame-14"><input onclick="borderChangeInputPassword()" type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
                         <label class="remember-me" for="">
