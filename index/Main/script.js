@@ -2,7 +2,7 @@ class Page {
     constructor() {
             this.accounts = [];
             this.signedAccount = null;
-            this.tasks = [];
+            this.tasks = []; // Hier sind die Tasks in Join.tasks rein pushen!
         }
         // Components
     logInContent() {
@@ -317,7 +317,7 @@ class Task {
         this.subTasks = [];
     }
 }
-
+let newTask = new Task()
 // Deklarationen
 let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
