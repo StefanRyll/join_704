@@ -1,0 +1,129 @@
+body{
+    margin:0;
+    width:1440px;
+    font-family: sans-serif;
+}
+.contentArea{
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+.summery{
+    display: flex;
+    flex-direction: column;
+}
+.summeryHeadline{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.summeryHeadline h1{
+    font-size: 61px;
+}
+.summeryHeadline p{
+    font-size: 27px;
+}
+.chipsArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+.chip2x{
+    background-color: white;
+    width: 230px;
+    padding: 38px 19px 38px 19px;
+    border-radius: 30px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0px 0px 4px 0px #0000009a;
+
+
+
+}
+.chipIcon{
+    width: 69px;
+    height: 69px;
+}
+.chipData2x{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.chipData2x h1{
+    margin: 0;
+    font-size: 69px;
+}
+.chipData2x p{
+    margin: 0;
+    font-size: 20px;
+}
+.chip1x{
+    background-color: white;
+    width: 100%;
+    padding: 38px 19px 38px 19px;
+    border-radius: 30px;
+    gap: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 4px 0px #0000009a;
+
+}
+.chip3x{
+    background-color: white;
+    width: 25%;
+    height: 60px;
+    padding: 38px 19px 38px 19px;
+    border-radius: 30px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0px 0px 4px 0px #0000009a;
+
+}
+.chipData3x{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.chipData3x h2{
+    font-size: 69px;
+    margin: 0;
+}
+.chipData3x p{
+    font-size: 21px;
+    margin: 0;
+    font-weight: 400;
+}
+
+.chipsAreaRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 560px;
+}
+.greetingArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.greetingArea h3{
+    font-size: 47px;
+    margin:0;
+}
+.greetingArea h4{
+    font-size: 64px;
+    color:#29ABE2;
+    margin:0;
+
+}
