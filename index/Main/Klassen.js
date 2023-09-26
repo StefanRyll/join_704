@@ -122,6 +122,7 @@ class Page {
     }
     summeryContent(){
         let daytime = this.sayDaytime()
+        let doneTasks = this.checkTasksDone()
         return /*html*/`
         <div id="summery" class="summery">
             <div class="summeryHeadline">
@@ -135,14 +136,14 @@ class Page {
                         <div class="chip2x">
                             <img class="chipIcon" src="./IMG/pen.png" alt="Nix">
                             <div class="chipData2x">
-                                <h1>1</h1>
+                                <h1>${this.tasks.length}</h1>
                                 <p>to do</p>
                             </div>
                         </div>
                         <div class="chip2x">
                             <img src="./IMG/check.png" alt="Nix">
                             <div class="chipData2x">
-                                <h1>1</h1>
+                                <h1>${doneTasks}</h1>
                                 <p>Done</p>
                             </div>
 
@@ -189,6 +190,17 @@ class Page {
         </div>
 
             `
+    }
+    checkTasksDone(){
+        let count = 0
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i];
+            if (task.done == true){
+                count++
+            }
+            
+        }
+        return count;
     }
     helpContent(){
         return /*html*/`
@@ -344,9 +356,9 @@ class Page {
                         <div class="inputParameter">
                             <label>Prio</label>
                             <div class="taskPrios">
-                                <div><input class="radioButton" type="radio" value="01" name="prio" id="prio01" checked>Urgent</div>
-                                <div><input class="radioButton" type="radio" value="02" name="prio" id="prio02">Medium</div>
-                                <div><input class="radioButton" type="radio" value="03" name="prio" id="prio03">Low</div>
+                                <div><input class="radioButton" type="radio" name="prio" id="prio01" checked>Urgent</div>
+                                <div><input class="radioButton" type="radio" name="prio" id="prio02">Medium</div>
+                                <div><input class="radioButton" type="radio" name="prio" id="prio03">Low</div>
                             </div>
                         </div>
                         <div class="inputParameter">
@@ -389,14 +401,14 @@ class Account {
     }
 }
 class Task{
-    constructor(creator, title, worker, desc, date = "No need", prio, Categroy ) {
-        this.creator = creator;
+    constructor(title, worker, desc, jahr, monat, tag, prio, Categroy ) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
-        this.date = date;
+        this.date = new Date(jahr, monat - 1, tag);
         this.prio = prio;
         this.Categroy = Categroy;
+        this.done = false;
         this.subTasks = [];
     }
 }

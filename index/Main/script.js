@@ -300,15 +300,23 @@
 //         this.subTasks = [];
 //     }
 // }
-// Deklarationen
+
 
 let Join = new Page()
+// Accounts
 const guest = new Account("Guest", "email@join.de", "");
 const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
-Join.accounts.push(user1)
-Join.accounts.push(user2)
+Join.accounts.push(user1);
+Join.accounts.push(user2);
 
+// Tasks
+let task01 = new Task("Einkaufen gehen", "Stefan", "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
+let task02 = new Task("Abwaschen goes Big", "Dominik", "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
+let task03 = new Task("Aufbau", "Roman", "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
+Join.tasks.push(task01);
+Join.tasks.push(task02);
+Join.tasks.push(task03);
 
 let body = document.getElementById('body')
 
@@ -378,6 +386,7 @@ function ppCheck() {
     }
 }
 // Onload Funktion
+
 function startPage() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -443,18 +452,27 @@ function addTaskPage() {
 }
 
 function createTask() {
-    const creator = "Ich";
     const title = document.getElementById("addTaskTitle").value;
     const worker = document.getElementById('assignTaskToContacts').value;
     const desc = document.getElementById("addTaskDescription").value;
     const date = document.getElementById("addTaskDescription").value;
     const prio = getPrio();
     const category = document.getElementById('addTaskCategory').value;
-    let newTask = new Task(creator, title, worker, desc, date, prio, category);
+    let newTask = new Task(title, worker, desc, date, prio, category);
     Join.tasks.push(newTask)
     console.log(Join.tasks);
 }
-
+function getPrio(){
+    let prio01 = document.getElementById('prio01')
+    let prio02 = document.getElementById('prio02')
+    if (prio01.checked){
+        return "Urgent";
+    }else if(prio02.checked){
+        return "Medium";
+    }else{
+        return "Low";
+    }
+}
 function summeryPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -478,7 +496,6 @@ function contactsPage() {
     showSideAndHead()
     content.innerHTML = "Join.contactsContent()";
 }
-// contactsPage()
 
 function checkbox() {
     document.getElementById('checkbox').src = './IMG/checkboxFilled.png';
