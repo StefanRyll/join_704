@@ -19,7 +19,11 @@ class Page {
         }
     }
     // Components
-    logInContent(){
+    /**
+     *  Diese Methoder stellt das Log In Fenster da
+     * @returns {string} -- 
+     * */
+    logInContent(){ 
         return /*html*/`
             <header>
                 <div class="frame-156">
@@ -47,6 +51,10 @@ class Page {
 
         `
     }
+    /**
+     * Die Methode stellt die Logo Animation am anfang dar
+     * @returns {string}
+     */
     startAnimation(){
         body.innerHTML = "";
         return /*html*/`
@@ -55,7 +63,6 @@ class Page {
         `
     }
     logoLogin(){
-        body.innerHTML = "";
         return /*html*/`
             <div id="logoMain" class="logoAnimationImg2"></div>
 
