@@ -6,6 +6,8 @@ body{
 .contentArea{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 50px;
     width: 80%;
 }
 .summery{
@@ -113,8 +115,8 @@ body{
 .greetingArea{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    /* align-items: center; */
     width: 100%;
 }
 .greetingArea h3{

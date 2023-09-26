@@ -4,6 +4,20 @@ class Page {
         this.signedAccount = null;
         this.tasks = [];
     }
+    // Methoden
+    sayDaytime(){
+        let datum = new Date();
+        let daytime = datum.getHours()
+        if (datum <= 5 && datum >= 18){
+            return "Good&nbsp;Evening";
+        }
+        else if (datum <= 6 && datum <= 12) {
+            return "Good&nbsp;Morning";
+        }
+        else{
+            return "Good&nbsp;Afternoon";
+        }
+    }
     // Components
     logInContent(){
         return /*html*/`
@@ -107,6 +121,7 @@ class Page {
         this.signedAccount = x;
     }
     summeryContent(){
+        let daytime = this.sayDaytime()
         return /*html*/`
         <div id="summery" class="summery">
             <div class="summeryHeadline">
@@ -130,7 +145,7 @@ class Page {
                                 <h1>1</h1>
                                 <p>Done</p>
                             </div>
-        
+
                         </div>
                     </div>
                     <div class="chipsAreaRow">
@@ -169,10 +184,10 @@ class Page {
                     </div>
                     <div></div>
                 </div>
-                <div class="greetingArea"><h3>Good Morning</h3><h4>Sophia Müller</h4></div>
+                <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div>
             </div>
         </div>
-        
+
             `
     }
     helpContent(){

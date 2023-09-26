@@ -304,7 +304,7 @@
 
 let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
-const user1 = new Account("Roman", "roman.schroeder@inclufilm.com", "Gregor2023")
+const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
 Join.accounts.push(user1)
 Join.accounts.push(user2)
@@ -460,7 +460,7 @@ function summeryPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = "Join.summeryContent()";
+    content.innerHTML = Join.summeryContent();
 }
 
 function boardPage() {
