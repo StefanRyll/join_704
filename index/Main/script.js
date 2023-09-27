@@ -197,7 +197,7 @@ function boardPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = "Join.boardContent()";
+    content.innerHTML = Join.boardContent();
 }
 
 function contactsPage() {
