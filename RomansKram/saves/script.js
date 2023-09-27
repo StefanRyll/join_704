@@ -1,5 +1,9 @@
+/**
+ * Lege neue Seite an
+ * @param {Page}
+ */
 let Join = new Page()
-    // Accounts
+// Accounts
 const guest = new Account("Guest", "email@join.de", "");
 const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
@@ -82,20 +86,6 @@ function ppCheck() {
 }
 // Onload Funktion
 
-function viewPassword() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passStatus = document.getElementById('pass-status');
-
-    if (passwordInput.type == 'password') {
-        passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
-    } else {
-        passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
-    }
-}
-
-
 function startPage() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -171,19 +161,17 @@ function createTask() {
     Join.tasks.push(newTask)
     console.log(Join.tasks);
 }
-
-function getPrio() {
+function getPrio(){
     let prio01 = document.getElementById('prio01')
     let prio02 = document.getElementById('prio02')
-    if (prio01.checked) {
+    if (prio01.checked){
         return "Urgent";
-    } else if (prio02.checked) {
+    }else if(prio02.checked){
         return "Medium";
-    } else {
+    }else{
         return "Low";
     }
 }
-
 function summeryPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -210,7 +198,7 @@ function contactsPage() {
 
 function checkbox() {
     document.getElementById('checkbox').src = './IMG/checkboxFilled.png';
-    document.getElementById('checkbox').src = './IMG/checkboxEmpty.png';
+    // document.getElementById('checkbox').src = './IMG/checkboxEmpty.png';
 }
 
 // function checkboxRemove() {

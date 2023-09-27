@@ -1,42 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
 
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="style.css">
-            <title>Document</title>
-        </head>
-        <body>
-            <div class="taskCard">
-                <div class="taskCardHeader">
-                    <div class="taskCardHeaderCategory">User Story</div>
-                    <div class="taskCardHeaderClose">X</div>
-                </div>
-                <h1>Kochwelt Page & Recipe Recommender</h1>
-                <p>'Decription'Build start page with recipe recommendation.</p>
-                <div class="taskCardAttribute">
-                    <p>Date Due: </p>
-                    <p>10/05/2023</p>
-                </div>
-                <div class="taskCardAttribute">
-                    <p>Priority: </p>
-                    <p>Medium</p>
-                </div>
-                <div class="taskCardAssignment">
-                    <p>Assigned to: </p>
-                    <div id="taskCardAssinedList"></div>
-                </div>
-                <div class="taskCardSubtasks">
-                    <p>Subtasks</p>
-                    <div id="subtasksList"></div>
-                </div>
-                <div class="taskCardFooter">
-                    <div class="deleteBtn"></div>
-                    <div class="editBtn"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="taskCard" class="taskCard">
+        <h1>Kochwelt Page & Recipe Recommender</h1>
+        <p>'Decription'Build start page with recipe recommendation.</p>
+        <div class="taskCardAttribute">
+            <p>Date Due: </p>
+            <p>10/05/2023</p>
+        </div>
+        <div class="taskCardAttribute">
+            <p>Priority: </p>
+            <p>Medium</p>
+        </div>
+        <div class="taskCardAssignment">
+            <p>Assigned to: </p>
+            <div id="taskCardAssinedList">
+                <div class="tinyAccountCard">
+                    <div class="accountTag">AB</div>
+                    <div>Sören Sörensen</div>
                 </div>
             </div>
-            <script src="./script.js"></script>
-        </body>
-        </html>
-        
+        </div>
+        <div class="taskCardSubtasks">
+            <p>Subtasks</p>
+            <div id="subtasksList"></div>
+        </div>
+        <div class="taskCardFooter">
+            <div class="deleteBtn"></div>
+            <div class="editBtn"></div>
+        </div>
+    </div>
+        <script src="./script.js"></script>
+</body>
+
+</html>
