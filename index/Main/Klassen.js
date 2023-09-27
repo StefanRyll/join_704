@@ -1,30 +1,28 @@
 class Page {
     constructor() {
-        this.accounts = [];
-        this.signedAccount = null;
-        this.tasks = [];
-    }
-    // Methoden
-    sayDaytime(){
-        let datum = new Date();
-        let daytime = datum.getHours()
-        if (datum <= 5 && datum >= 18){
-            return "Good&nbsp;Evening";
+            this.accounts = [];
+            this.signedAccount = null;
+            this.tasks = [];
         }
-        else if (datum <= 6 && datum <= 12) {
-            return "Good&nbsp;Morning";
+        // Methoden
+    sayDaytime() {
+            let datum = new Date();
+            let daytime = datum.getHours()
+            if (datum <= 5 && datum >= 18) {
+                return "Good&nbsp;Evening";
+            } else if (datum <= 6 && datum <= 12) {
+                return "Good&nbsp;Morning";
+            } else {
+                return "Good&nbsp;Afternoon";
+            }
         }
-        else{
-            return "Good&nbsp;Afternoon";
-        }
-    }
-    // Components
-    /**
-     *  Diese Methoder stellt das Log In Fenster da
-     * @returns {string} -- 
-     * */
-    logInContent(){ 
-        return /*html*/`
+        // Components
+        /**
+         *  Diese Methoder stellt das Log In Fenster da
+         * @returns {string} -- 
+         * */
+    logInContent() {
+        return /*html*/ `
             <header>
                 <div class="frame-156">
                     <p>Not a Join user?</p>
@@ -35,55 +33,59 @@ class Page {
                 <div class="frame-153">
                     <div class="frame-159">
                         <h1>Log In</h1>
-                        <img src="../assets/img/vector-5.png">
+                        <img src="./IMG/vector-5.png">
                     </div>
-                    <form onsubmit="logInUser()">
+                    <form class="login-container" onsubmit="logInUser()">
                         <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
                         <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
-                        <label for=""><input type="checkbox" name="" id="">Remember me</label>
-                        <div class="loginButtons">
-                            <button type="submit">Log&nbsp;In</button><button onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
+                        <label class="remember-me" for=""><img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox" alt="">
+                            Remember me
+                        </label>
+                        <div class="frame-176">
+                            <div class="loginButtons">
+                            <button class="login-btn" type="submit">Log&nbsp;In</button><button class="guest-login-style" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
+                            </div>
                         </div>
-                        
                     </form>
                 </div>
             </section>
 
         `
     }
+
     /**
      * Die Methode stellt die Logo Animation am anfang dar
      * @returns {string}
      */
-    startAnimation(){
+    startAnimation() {
         body.innerHTML = "";
-        return /*html*/`
+        return /*html*/ `
             <div id="logoMain" class="logoAnimationImg"></div>
 
         `
     }
-    logoLogin(){
-        return /*html*/`
+    logoLogin() {
+        return /*html*/ `
             <div id="logoMain" class="logoAnimationImg2"></div>
 
         `
     }
-    pageLayoutMain(){
+    pageLayoutMain() {
         body.innerHTML = "";
-        return /*html*/`
+        return /*html*/ `
             <div id="SideAndHead"></div>
             <div id="content"></div>
 
         `
     }
-    loginLayout(){
-        return /*html*/`
+    loginLayout() {
+        return /*html*/ `
             <div id="logoArea"></div>
             <div id="windowArea"></div>        
         `
     }
-    SideAndHead(){
-        return /*html*/`
+    SideAndHead() {
+        return /*html*/ `
             <header class="header">
                 <h2>Kanban Projekt Management Tool</h2>
                 <div class="accountIssues">
@@ -108,7 +110,7 @@ class Page {
         `
     }
     signUpWindow() {
-        return /*html*/`
+        return /*html*/ `
             <div id="signUpWindow" class="signUpWindow">
                 <h1>Sign up</h1>
                 <form class="accountForm" onsubmit="createAccount1()">
@@ -124,13 +126,13 @@ class Page {
 
         `
     }
-    forceSignIn(x){
+    forceSignIn(x) {
         this.signedAccount = x;
     }
-    summeryContent(){
+    summeryContent() {
         let daytime = this.sayDaytime()
         let doneTasks = this.checkTasksDone()
-        return /*html*/`
+        return /*html*/ `
         <div id="summery" class="summery">
             <div class="summeryHeadline">
                 <h1 class="">Join 704</h1>
@@ -198,19 +200,19 @@ class Page {
 
             `
     }
-    checkTasksDone(){
+    checkTasksDone() {
         let count = 0
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
-            if (task.done == true){
+            if (task.done == true) {
                 count++
             }
-            
+
         }
         return count;
     }
-    helpContent(){
-        return /*html*/`
+    helpContent() {
+        return /*html*/ `
             <h1>Help</h1>
                 <p>Welcome to the help page for Join, 
                     your guide to using our kanban project 
@@ -250,8 +252,8 @@ class Page {
 
         `
     }
-    privacyContent(){
-        return /*html*/`
+    privacyContent() {
+        return /*html*/ `
             <h1>Privacy Policy</h1>
             <h2>Subtitle</h2>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
@@ -273,8 +275,8 @@ class Page {
                 eligendi, cupiditate nam reprehenderit asperiores sapiente.</p>
         `
     }
-    legalNoticeContent(){
-        return /*html*/`
+    legalNoticeContent() {
+        return /*html*/ `
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
@@ -332,8 +334,8 @@ class Page {
             <p>Date: July 26, 2023</p>
         `
     }
-    addTaskContent(){
-        return /*html*/`
+    addTaskContent() {
+        return /*html*/ `
             <div id="createTaskWindow" class="createTaskWindow">
                 <h1>Add Task</h1>
                 <form class="taskWindowForm" onsubmit="createTask()">
@@ -386,7 +388,7 @@ class Page {
 
         `
     }
-    
+
 }
 class Account {
     constructor(name, email, password) {
@@ -407,8 +409,8 @@ class Account {
         this.contacts.push(x);
     }
 }
-class Task{
-    constructor(title, worker, desc, jahr, monat, tag, prio, Categroy ) {
+class Task {
+    constructor(title, worker, desc, jahr, monat, tag, prio, Categroy) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
