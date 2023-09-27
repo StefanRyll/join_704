@@ -211,9 +211,9 @@
 //                 Akademie, and our affiliates, partners, officers, directors, agents, and employees,
 //                 from and against any claim, demand, loss, damage, cost, or liability (including reasonable
 //                 legal fees) arising out of or relating to your use of Join and/or your breach of this Legal Notice. </p>
-             
+
 //             <p>For any questions or notices, please contact us at [Contact Email].</p>
-             
+
 //             <p>Date: July 26, 2023</p>
 //         `
 //     }
@@ -303,7 +303,7 @@
 
 
 let Join = new Page()
-// Accounts
+    // Accounts
 const guest = new Account("Guest", "email@join.de", "");
 const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
@@ -462,17 +462,19 @@ function createTask() {
     Join.tasks.push(newTask)
     console.log(Join.tasks);
 }
-function getPrio(){
+
+function getPrio() {
     let prio01 = document.getElementById('prio01')
     let prio02 = document.getElementById('prio02')
-    if (prio01.checked){
+    if (prio01.checked) {
         return "Urgent";
-    }else if(prio02.checked){
+    } else if (prio02.checked) {
         return "Medium";
-    }else{
+    } else {
         return "Low";
     }
 }
+
 function summeryPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -499,7 +501,6 @@ function contactsPage() {
 
 function checkbox() {
     document.getElementById('checkbox').src = './IMG/checkboxFilled.png';
-    document.getElementById('checkbox').src = './IMG/checkboxEmpty.png';
 }
 
 // function checkboxRemove() {

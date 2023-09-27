@@ -7,6 +7,7 @@
     --placeholder: rgba(209, 209, 209, 1);
     --lightblue: rgba(41, 171, 226, 1);
     --white-btn-active: rgba(9, 25, 49, 1);
+    --text-button: rgba(168, 168, 168, 1);
 }
 
 body {
@@ -29,13 +30,14 @@ a {
     text-decoration: none;
     color: black;
 }
-.loginButtons{
+
+.loginButtons {
     display: flex;
     justify-content: center;
     gap: 40px;
     margin-top: 40px;
-    
 }
+
 .frame-156 {
     display: flex;
     justify-content: center;
@@ -245,4 +247,37 @@ h1 {
 
 .d-none {
     display: none;
+}
+
+footer {
+    min-width: 300px;
+    position: absolute;
+    bottom: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.text-button {
+    min-width: 130px;
+    background-color: var(--lightgrey);
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-button);
+    font-weight: 400;
+}
+
+.text-button:hover {
+    background-color: var(--lightgrey);
+    border: none;
+    box-shadow: none;
+    color: var(--Ligth-blue, #29ABE2);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 19.2px */
 }
