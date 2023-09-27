@@ -125,12 +125,13 @@ h1 {
 .frame-14 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid rgba(209, 209, 209, 1);
     border-radius: 10px;
     padding: 12px 21px 12px 21px;
 }
 
-.frame-14:focus {
+.frame-14:focus-within {
     border: 1px solid var(--lightblue);
 }
 
