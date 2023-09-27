@@ -37,9 +37,8 @@ class Page {
                     </div>
                     <form class="login-container" onsubmit="logInUser()">
                         <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
-                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword">
-                        <img id="pass-status" src="./IMG/visibility_off.png" onClick="viewPassword()">                        </div>
-                        <label class="remember-me" for=""><img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox">
+                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
+                        <label class="remember-me" for=""><img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox" alt="">
                             Remember me
                         </label>
                         <div class="frame-176">
@@ -49,10 +48,6 @@ class Page {
                         </div>
                     </form>
                 </div>
-                <footer>
-                    <button onclick="privacyPage()" class="text-button">Privacy Policy</button>
-                    <button onclick="legalPage()" class="text-button">Legal notice</button>
-                </footer>
             </section>
 
         `
@@ -285,9 +280,8 @@ class Page {
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
-                <li>Roman Schröder <br> Siebengebirgsweg 10 <br> 53424 Remagen</li><br>
-                <li>Stefan Ryll <br> Mittelstraße 5 <br> 67547 Worms</li><br>
-                <li>Dominik Hucka <br> Peteräcker 6 <br> 72581 Dettingen an der Ems</li><br>
+                <li>Stefan, Dominik, Roman</li>
+                <li>Roman Schröder <br> Siebengebirgsweg 10 <br> 53424 Remagen</li>
             </ul>
             <h3>Exploring</h3>
             <p>Email: roman.schroeder@inclufilm.com</p>
