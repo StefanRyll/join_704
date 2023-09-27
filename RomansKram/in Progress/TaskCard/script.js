@@ -65,5 +65,5 @@ function editTask(){
 
 }
 
-// const taskCard = document.getElementById('taskCard')
-// taskCard.innerHTML = taskCardNormal()
+const taskCard = document.getElementById('taskCard')
+taskCard.innerHTML = taskCardEdit()
