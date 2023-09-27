@@ -37,7 +37,8 @@ class Page {
                     </div>
                     <form class="login-container" onsubmit="logInUser()">
                         <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail"></div>
-                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword"></div>
+                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword">
+                        <img id="pass-status" src="./IMG/visibility_off.png" onClick="viewPassword()">                        </div>
                         <label class="remember-me" for=""><img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox">
                             Remember me
                         </label>

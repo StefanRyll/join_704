@@ -387,6 +387,20 @@ function ppCheck() {
 }
 // Onload Funktion
 
+function viewPassword() {
+    let passwordInput = document.getElementById('loginPassword');
+    let passStatus = document.getElementById('pass-status');
+
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
+    } else {
+        passwordInput.type = 'password';
+        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
+    }
+}
+
+
 function startPage() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
