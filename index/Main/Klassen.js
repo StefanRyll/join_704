@@ -341,7 +341,7 @@ class Page {
         `
     }
     addTaskContent() {
-        return /*html*/ `
+        let html = /*html*/ `
             <div id="createTaskWindow" class="createTaskWindow">
                 <h1>Add Task</h1>
                 <form class="taskWindowForm" onsubmit="createTask()">
@@ -357,9 +357,6 @@ class Page {
                         <div class="inputParameter">
                             <label for="assignTaskToContacts">Assigned to</label>
                             <select id="assignTaskToContacts">
-                                <option value="Stefan">Stefan</option> <!--Hier Accounts rein rendern-->
-                                <option value="Dominik">Dominik</option>
-                                <option value="Roman">Roman</option>
                             </select>
                         </div>                        
                     </div>
@@ -393,6 +390,7 @@ class Page {
             </div>
 
         `
+        
     }
 
 }
@@ -403,17 +401,27 @@ class Account {
         this.password = password;
         this.tel = null;
         this.contacts = [];
+        this.shortname =  this.name.charAt(0)
 
     }
     tinyCard() {
         return /*html*/`
         <div class="tinyAccountCard">
-            <div class="accountTag">AB</div>
+            <div class="accountTag">${this.shortname}</div>
             <div>${this.name}</div>
         </div>
-
         `
     }
+    tinyCardCheck(x) {
+        return /*html*/`
+        <div class="tinyAccountCard">
+            <div class="accountTag">${this.shortname}</div>
+            <div>${this.name}</div>
+            <input type="checkbox" name="" id="ac${x}">
+        </div>
+        `
+    }
+    
     addTel(x) {
         this.tel = x;
     }
