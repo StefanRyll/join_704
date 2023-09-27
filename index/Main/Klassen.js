@@ -1,26 +1,26 @@
 class Page {
     constructor() {
-        this.accounts = [];
-        this.signedAccount = null;
-        this.tasks = [];
-    }
-    // Methoden
-    sayDaytime() {
-        let datum = new Date();
-        let daytime = datum.getHours()
-        if (datum <= 5 && datum >= 18) {
-            return "Good&nbsp;Evening";
-        } else if (datum <= 6 && datum <= 12) {
-            return "Good&nbsp;Morning";
-        } else {
-            return "Good&nbsp;Afternoon";
+            this.accounts = [];
+            this.signedAccount = null;
+            this.tasks = [];
         }
-    }
-    // Components
-    /**
-     *  Diese Methoder stellt das Log In Fenster da
-     * @returns {string} -- 
-     * */
+        // Methoden
+    sayDaytime() {
+            let datum = new Date();
+            let daytime = datum.getHours()
+            if (datum <= 5 && datum >= 18) {
+                return "Good&nbsp;Evening";
+            } else if (datum <= 6 && datum <= 12) {
+                return "Good&nbsp;Morning";
+            } else {
+                return "Good&nbsp;Afternoon";
+            }
+        }
+        // Components
+        /**
+         *  Diese Methoder stellt das Log In Fenster da
+         * @returns {string} -- 
+         * */
     logInContent() {
         return /*html*/ `
             <header>
@@ -57,7 +57,6 @@ class Page {
                     <button onclick="legalPage()" class="text-button">Legal notice</button>
                 </footer>
             </section>
-
         `
     }
 
@@ -393,7 +392,7 @@ class Page {
             </div>
 
         `
-        
+
     }
 
 }
@@ -404,11 +403,11 @@ class Account {
         this.password = password;
         this.tel = null;
         this.contacts = [];
-        this.shortname =  this.name.charAt(0)
+        this.shortname = this.name.charAt(0)
 
     }
     tinyCard() {
-        return /*html*/`
+        return /*html*/ `
         <div class="tinyAccountCard">
             <div class="accountTag">${this.shortname}</div>
             <div>${this.name}</div>
@@ -416,7 +415,7 @@ class Account {
         `
     }
     tinyCardCheck(x) {
-        return /*html*/`
+        return /*html*/ `
         <div class="tinyAccountCard">
             <div class="accountTag">${this.shortname}</div>
             <div>${this.name}</div>
@@ -424,7 +423,7 @@ class Account {
         </div>
         `
     }
-    
+
     addTel(x) {
         this.tel = x;
     }
@@ -447,7 +446,7 @@ class Task {
         this.subTasks = [];
     }
     taskCardNormal() {
-        let html = /*html*/`
+        let html = /*html*/ `
             </div>
             <h1>${this.title}</h1>
             <p>${this.desc}</p>
@@ -461,12 +460,12 @@ class Task {
             </div>
             <div class="taskCardAssignment">
                 <p>Assigned to: </p>`
-        
+
         for (let i = 0; i < this.worker.length; i++) {
             const worker = this.worker[i];
-            html += worker.tinyCard() 
+            html += worker.tinyCard()
         }
-        html += /*html*/`
+        html += /*html*/ `
         <div id="taskCardAssinedList"></div>
             </div >
             <div class="taskCardSubtasks">
@@ -477,7 +476,7 @@ class Task {
             const subTask = this.subTasks[j];
             html += subTask;
         }
-        html = /*html*/`        
+        html = /*html*/ `        
                 </div>
             </div>
             <div class="taskCardFooter">
@@ -487,8 +486,8 @@ class Task {
         `
         return html;
     }
-    taskCardEdit(){
-        return /*html*/`
+    taskCardEdit() {
+        return /*html*/ `
             < div class="taskCardHeader" >
                 <div></div>
                 <div class="taskCardHeaderClose">X</div>
@@ -522,9 +521,9 @@ class Task {
 
                         `
     }
-    editTask(){
+    editTask() {
         let taskCard = document.getElementById('taskCard')
         taskCard.innerHTML = this.taskCardEdit()
     }
-    
+
 }
