@@ -21,6 +21,7 @@ function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
+
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -82,16 +83,21 @@ function ppCheck() {
 }
 // Onload Funktion
 
+function visibility() {
+    document.getElementById('pass-status').classList.add('d-none');
+    document.getElementById('pass-status-eye').classList.remove('d-none');
+}
+
 function viewPassword() {
     let passwordInput = document.getElementById('loginPassword');
-    let passStatus = document.getElementById('pass-status');
+    let passStatus = document.getElementById('pass-status-eye');
 
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
+        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
     } else {
         passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
+        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
     }
 }
 

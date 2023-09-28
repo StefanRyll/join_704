@@ -37,10 +37,11 @@ class Page {
                     </div>
                     <form class="login-container" onsubmit="logInUser()">
                         <div class="frame-14"><input type="email" class="frame-157" placeholder="Email" id="loginEmail">
-                            <img src="./IMG/mail.png"> 
+                            <img class="input-icon" src="./IMG/mail.png"> 
                         </div>                       
-                        <div class="frame-14"><input type="password" class="frame-158" placeholder="Password" id="loginPassword">
-                            <img id="pass-status" src="./IMG/lock.png" onClick="viewPassword()">                        
+                        <div class="frame-14" onclick="visibility()"><input type="password" class="frame-158" placeholder="Password" id="loginPassword">
+                            <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onClick="viewPassword()">                      
+                            <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onClick="viewPassword()">                      
                         </div>
                         <label class="remember-me" for=""><img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox">
                             Remember me
@@ -218,8 +219,8 @@ class Page {
         }
         return count;
     }
-    boardContent(){
-        return /*html*/`
+    boardContent() {
+        return /*html*/ `
         <div class="frame-192">
             <h2>
                 Board
