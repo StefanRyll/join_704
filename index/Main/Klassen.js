@@ -43,7 +43,9 @@ class Page {
                             <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                             <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                         </div>
-                        <label onclick="checkboxActivate()" class="remember-me"><img src="./IMG/checkboxEmpty.png" id="checkbox" >
+                        <label  class="remember-me">
+                            <img class="checkbox-empty" src="./IMG/checkboxEmpty.png" id="checkbox" onclick="checkboxActivate()">
+                            <img class="d-none" src="./IMG/checkboxFilled.png" id="checkbox-active" onclick="checkboxDeactivate()">
                             Remember me
                         </label>
                         <div class="frame-176">

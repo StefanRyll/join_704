@@ -215,37 +215,13 @@ function contactsPage() {
 }
 
 function checkboxActivate() {
-    let checkbox = document.getElementById('checkbox');
-    let checkBoxEmpty = "./IMG/checkboxEmpty.png";
-    let checkBoxFilled = "./IMG/checkboxFilled.png";
-    let toggleStatus = checkBoxEmpty;
-
-    if (toggleStatus === checkBoxEmpty) {
-        toggleStatus = checkBoxFilled;
-    } else {
-        toggleStatus = checkBoxEmpty;
-    }
-    checkbox.src = toggleStatus;
+    document.getElementById('checkbox').classList.add('d-none');
+    document.getElementById('checkbox-active').classList.remove('d-none');
 }
 
+function checkboxDeactivate() {
+    document.getElementById('checkbox-active').classList.add('d-none');
+    document.getElementById('checkbox').classList.remove('d-none');
+}
 
-
-
-// function checkboxActivate() {
-//     let checkbox = document.getElementById('checkbox');
-//     let checkBoxEmpty = "./IMG/checkboxEmpty.png";
-//     let checkBoxFilled = "./IMG/checkboxFilled.png";
-
-
-//     if (checkbox == checkBoxEmpty) {
-//         checkbox = checkBoxFilled;
-//     } else {
-//         checkBoxEmpty;
-//     }
-// }
-
-// function checkboxRemove() {
-//     document.getElementById('checkbox-on').classList.add('d-none');
-//     document.getElementById('checkbox-none').classList.remove('d-none');
-// }
 startPage()
