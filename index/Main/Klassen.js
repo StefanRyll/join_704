@@ -44,8 +44,8 @@ class Page {
                             <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                         </div>
                         <label  class="remember-me">
-                            <img class="checkbox-empty" src="./IMG/checkboxEmpty.png" id="checkbox" onclick="checkboxActivate()">
-                            <img class="d-none" src="./IMG/checkboxFilled.png" id="checkbox-active" onclick="checkboxDeactivate()">
+                            <img class="check-box" src="./IMG/Property 1=Default.png" id="checkbox" onclick="checkboxActivate()">
+                            <img class="check-box d-none" src="./IMG/checkboxFilled.png" id="checkbox-active" onclick="checkboxDeactivate()">
                             Remember me
                         </label>
                         <div class="frame-176">

@@ -202,9 +202,19 @@ h1 {
     border: 1px solid var(--lightblue);
 }
 
+.check-box {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
 .remember-me {
     cursor: pointer;
-    max-width: 140px;
+    max-width: 150px;
     max-height: 19px;
     display: flex;
     justify-content: flex-start;
