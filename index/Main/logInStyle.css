@@ -203,6 +203,8 @@ h1 {
 }
 
 .remember-me {
+    cursor: pointer;
+    max-width: 140px;
     max-height: 19px;
     display: flex;
     justify-content: flex-start;

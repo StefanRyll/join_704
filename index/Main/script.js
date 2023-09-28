@@ -214,9 +214,16 @@ function contactsPage() {
     content.innerHTML = "Join.contactsContent()";
 }
 
-function checkbox() {
-    document.getElementById('checkbox').src = './IMG/checkboxFilled.png';
-    document.getElementById('checkbox').src = './IMG/checkboxEmpty.png';
+function checkboxActivate() {
+    let checkbox = document.getElementById('checkbox');
+    let checkBoxEmpty = "./IMG/checkboxEmpty.png";
+    let checkBoxFilled = "./IMG/checkboxFilled.png";
+
+    if (checkbox == checkBoxEmpty) {
+        checkbox = checkBoxFilled;
+    } else {
+        checkBoxEmpty;
+    }
 }
 
 // function checkboxRemove() {

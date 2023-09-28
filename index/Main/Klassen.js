@@ -40,10 +40,10 @@ class Page {
                             <img class="input-icon" src="./IMG/mail.png"> 
                         </div>                       
                         <div class="frame-14" onclick="visibility()"><input type="password" class="frame-158" placeholder="Password" id="loginPassword">
-                            <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onClick="viewPassword()">                      
-                            <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onClick="viewPassword()">                      
+                            <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
+                            <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                         </div>
-                        <label class="remember-me" for=""><img src="./IMG/checkboxEmpty.png" onclick="checkbox()" id="checkbox">
+                        <label onclick="checkboxActivate()" class="remember-me"><img src="./IMG/checkboxEmpty.png" id="checkbox" >
                             Remember me
                         </label>
                         <div class="frame-176">
