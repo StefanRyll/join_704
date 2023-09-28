@@ -218,13 +218,31 @@ function checkboxActivate() {
     let checkbox = document.getElementById('checkbox');
     let checkBoxEmpty = "./IMG/checkboxEmpty.png";
     let checkBoxFilled = "./IMG/checkboxFilled.png";
+    let toggleStatus = checkBoxEmpty;
 
-    if (checkbox == checkBoxEmpty) {
-        checkbox = checkBoxFilled;
+    if (toggleStatus === checkBoxEmpty) {
+        toggleStatus = checkBoxFilled;
     } else {
-        checkBoxEmpty;
+        toggleStatus = checkBoxEmpty;
     }
+    checkbox.src = toggleStatus;
 }
+
+
+
+
+// function checkboxActivate() {
+//     let checkbox = document.getElementById('checkbox');
+//     let checkBoxEmpty = "./IMG/checkboxEmpty.png";
+//     let checkBoxFilled = "./IMG/checkboxFilled.png";
+
+
+//     if (checkbox == checkBoxEmpty) {
+//         checkbox = checkBoxFilled;
+//     } else {
+//         checkBoxEmpty;
+//     }
+// }
 
 // function checkboxRemove() {
 //     document.getElementById('checkbox-on').classList.add('d-none');
