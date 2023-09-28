@@ -74,7 +74,6 @@ class Page {
             </section>
         `
     }
-
     /**
      * Die Methode stellt die Logo Animation am anfang dar
      * @returns {string}

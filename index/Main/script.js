@@ -224,4 +224,3 @@ function checkboxDeactivate() {
     document.getElementById('checkbox').classList.remove('d-none');
 }
 
-startPage()
