@@ -72,31 +72,27 @@ function generateHTMLAssignedTo() {
               <div id="selectContacts" class="assign-container">
                 <input  onclick="openContactsAssign()" type="button" value="Select contacts to assign" id="">
                  <img onclick="openContactsAssign()" src="/assets/img/arrow_drop_downaa.png" alt="">
-                <!-- <svg class="assign-down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <mask id="mask0_88947_4985" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                        <rect width="24" height="24" fill="#D9D9D9"/>
-                      </mask>
-                      <g mask="url(#mask0_88947_4985)">
-                          <path d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z" fill="#2A3647"/>
-                      </g>
-                </svg>
-                <svg class="assign-up" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                      <mask id="mask0_75597_14130" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
-                        <rect y="0.96582" width="24" height="24" fill="#D9D9D9"/>
-                      </mask>
-                      <g mask="url(#mask0_75597_14130)">
-                        <path class="d-none" d="M12.6995 11.2659L15.2995 13.8659C15.6162 14.1826 15.687 14.5451 15.512 14.9534C15.337 15.3618 15.0245 15.5659 14.5745 15.5659H9.42454C8.97454 15.5659 8.66204 15.3618 8.48704 14.9534C8.31204 14.5451 8.38287 14.1826 8.69954 13.8659L11.2995 11.2659C11.3995 11.1659 11.5079 11.0909 11.6245 11.0409C11.7412 10.9909 11.8662 10.9659 11.9995 10.9659C12.1329 10.9659 12.2579 10.9909 12.3745 11.0409C12.4912 11.0909 12.5995 11.1659 12.6995 11.2659Z" fill="#2A3647"/>
-                      </g>
-                </svg> -->
               </div>
-              <div id="closeContacts" class="assign-container d-none">
-                  <input type="text">
-                  <img src="/assets/img/arrow_dropdown.png" alt="">
-                  <div class="checkbox-container">
-                    <label>
-                      <span>Roman</span>
-                      <input type="checkbox" name="" id="">
-                    </label>
+              <div id="closeContacts" class="open-assign-container2 d-none">
+                  <div class="assign-container assign-container-style">
+                    <input  type="text">
+                    <img onclick="closeContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
+                  </div>
+                  <div id="assignedToContacts" class="checkbox-container">
+                      <table>
+                        <tr>
+                          <td><label for="contacts">Roman</label></td>
+                          <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td><label for="contacts">Dominik</label></td>
+                          <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                        <tr>
+                          <td><label for="contacts">Stefan</label></td>
+                          <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                      </table>
                   </div>
                 </div>
           </div>
@@ -107,6 +103,11 @@ function generateHTMLAssignedTo() {
 function openContactsAssign() {
   document.getElementById('selectContacts').classList.add('d-none');
   document.getElementById('closeContacts').classList.remove('d-none');
+}
+
+function closeContactsAssign() {
+  document.getElementById('selectContacts').classList.remove('d-none');
+  document.getElementById('closeContacts').classList.add('d-none');
 }
 
 
@@ -209,9 +210,46 @@ function generateHTMLCategory() {
       <div class="category-sub">
         <label for="category">Category<sub>*</sub></label>
       </div>
-      <input type="button" value="Select task category">
+      <div id="hiddenSelectCategory" class="assign-container">
+        <input onclick="openCategory()" type="button" value="Select task category">
+        <img onclick="openCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
+      </div>
+      <!-- <div id="showSelectCategory" class="select-category">
+        <div class="select-task-category-container d-none">
+          <span>Techincal Task</span>
+        </div>
+        <div class="select-task-category-container d-none">
+          <span>User Story</span>
+        </div>
+      </div> -->
+      <div id="showSelectCategory" class="d-none">
+        <div class="assign-container">
+          <input onclick="closeCategory()" type="button" value="Select task category">
+          <img onclick="closeCategory()" src="/assets/img/arrow_dropdown.png" alt="">
+        </div>
+        <div  class="select-category">
+          <div class="select-task-category-container">
+            <span>Techincal Task</span>
+          </div>
+          <div class="select-task-category-container">
+            <span>User Story</span>
+          </div>
+        </div>
+      </div>
     </div>
   `
+}
+
+
+function openCategory() {
+  document.getElementById('showSelectCategory').classList.remove('d-none');
+  document.getElementById('hiddenSelectCategory').classList.add('d-none');
+}
+
+
+function closeCategory() {
+  document.getElementById('showSelectCategory').classList.add('d-none');
+  document.getElementById('hiddenSelectCategory').classList.remove('d-none');
 }
 
 
