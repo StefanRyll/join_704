@@ -44,20 +44,20 @@ class Page {
                             <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                         </div>
                         <label class="remember-me">
-
-                            <div id="checkbox" onclick="checkboxActivate()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                    <rect x="4" y="4.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <div class="d-none" id="checkbox-active" onclick="checkboxDeactivate()">
-                                <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Group 19">
+                        <div class="check-box" id="checkbox" onclick="checkboxActivate()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                <rect x="4" y="4.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="check-box d-none" id="checkbox-active" onclick="checkboxDeactivate()">
+                            <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="Group 19">
                                     <path id="Vector 9" d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                                     <path id="Vector 17" d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </g>
-                                </svg>
-                            </div>
+                                </g>
+                            </svg>
+                        </div>
+
                             Remember me
                         </label>
                         <div class="frame-176">
@@ -74,6 +74,7 @@ class Page {
             </section>
         `
     }
+
     /**
      * Die Methode stellt die Logo Animation am anfang dar
      * @returns {string}
