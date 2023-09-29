@@ -134,7 +134,14 @@ class Page {
     signUpWindow() {
         return /*html*/ `
             <div id="signUpWindow" class="signUpWindow">
-                <h1>Sign up</h1>
+                <div class="d-flex-headline">
+                    <button class="backBtn" onclick="startPage2()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M10.4373 14.6667H25.3333C26.0696 14.6667 26.6666 15.2637 26.6666 16.0001C26.6666 16.7364 26.0696 17.3334 25.3333 17.3334H10.4373L16.6466 23.5427C17.1672 24.0634 17.1672 24.9074 16.6466 25.4281C16.126 25.9487 15.2819 25.9487 14.7613 25.4281L6.74746 17.4143C5.96642 16.6332 5.96642 15.3669 6.74747 14.5858L14.7613 6.57206C15.2819 6.05144 16.126 6.05144 16.6466 6.57206C17.1672 7.09268 17.1672 7.93677 16.6466 8.45739L10.4373 14.6667Z" fill="#29ABE2"/>
+                        </svg>
+                    </button>
+                    <h1>Sign up</h1>
+                </div>
                 <form class="accountForm" onsubmit="createAccount1()">
                     <div class="signUpInputArea"><input required type="text" id="signUpInputName" placeholder="Name" class="signUpInput"></div>
                     <div class="signUpInputArea"><input required type="email" id="signUpInputEmail" placeholder="Email" class="signUpInput"></div>
@@ -143,7 +150,6 @@ class Page {
                     <label><input required type="checkbox" name="ppCheck" id="ppCheck">I accept the <a href="">Privacy policy</a></label>
                     <button type="submit">Sign Up</button>
                 </form>
-                <button class="backBtn" onclick="startPage2()"><</button>
             </div>
 
         `

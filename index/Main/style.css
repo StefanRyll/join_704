@@ -13,7 +13,7 @@ body {
     height: 630px;
     top: 197px;
     left: 421px;
-    padding: 48px, 88px, 48px, 88px;
+    padding: 48px 88px;
     border-radius: 30px;
     gap: 32px;
     background-color: white;
@@ -56,7 +56,8 @@ body {
     height: 70%;
 }
 
-#content {
+
+/* #content {
     position: absolute;
     height: 71%;
     text-align: justify;
@@ -67,10 +68,26 @@ body {
     right: -15px;
     overflow: hidden;
     overflow-y: scroll;
+} */
+
+.d-flex-headline {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .backBtn {
-    position: fixed;
-    top: 20px;
-    left: 40px;
+    position: absolute;
+    top: 8px;
+    left: -32px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: var(--white);
+}
+
+.backBtn:hover {
+    background-color: var(--white);
+    box-shadow: none;
 }
