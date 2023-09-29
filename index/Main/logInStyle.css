@@ -205,8 +205,8 @@ h1 {
 .check-box {
     cursor: pointer;
     display: flex;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     padding: 4px;
     justify-content: center;
     align-items: center;
@@ -214,8 +214,8 @@ h1 {
 }
 
 .remember-me {
-    max-width: 1650px;
-    max-height: 19px;
+    max-width: 170px;
+    max-height: 28px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
