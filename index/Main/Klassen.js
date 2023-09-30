@@ -18,7 +18,7 @@ class Page {
         }
         // Components
         /**
-         *  Diese Methoder stellt das Log In Fenster da
+         *  Diese Methode stellt das Log In Fenster da
          * @returns {string} -- 
          * */
     logInContent() {
@@ -518,7 +518,12 @@ class Account {
         </div>
         `
     }
+    accountTag(){
+        return /*html*/`
+            <div class="accountTag">${this.shortname}</div>
 
+        `
+    }
     addTel(x) {
         this.tel = x;
     }
@@ -615,6 +620,32 @@ class Task {
 
 
                         `
+    }
+    tinyTaskCard(){
+        let html = /*html*/`
+            <div class="tinyTaskCard" draggable>
+                <div>${this.Categroy}</div>
+                <h1>${this.title}</h1>
+                <p class="tinyTaskCardDescription">${this.desc.substring(0,50)}</p>
+                <div class="subtasks">
+                    <div>Ladebalken</div>
+                    <p>1/2 Subtasks</p>
+                </div>
+                <div>
+                    <div>`
+        for (let i = 0; i < this.worker.length; i++) {
+            const worker = this.worker[i];
+            html += worker.accountTag();
+            
+        }
+        html += /*html*/`
+            </div>
+                    <div>Prio Symbol</div>
+                </div>
+            </div>
+
+        `
+        return html;
     }
     editTask() {
         let taskCard = document.getElementById('taskCard')
