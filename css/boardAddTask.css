@@ -53,11 +53,10 @@
 .add-task {
     display: flex;
     justify-content: space-between;
-    position: relative;
     background-color: #fff;
-    width: 1116px;
     height: 870px;
     border-radius: 30px;
+    position: relative;
 }
 
 .header-add-task {
@@ -85,9 +84,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    left: 74px;
-    top: 174px;
-    position: absolute;
+    padding: 20px;
 }
 
 
@@ -109,22 +106,22 @@
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     background: #FFF;
-    width: 400px;
-    padding: 12px 21px;
+    width: 22em;
+    padding: 0.75em 1.3em;
     font-size: 20px;
     font-weight: 400;
     font-style: normal;
 }
 
 .board-task-input-button-style input {
-    width: 440px; 
+    width: 22em; 
     display: flex;
     align-items: center;
     align-self: stretch;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     background: #FFF;
-    padding: 12px 21px;
+    padding: 0.75em 1.3em;
     font-size: 20px;
     font-weight: 400;
     font-style: normal;
@@ -155,7 +152,7 @@
 }
 
 .placeholder-enter {
-    padding: 12px 21px;
+    padding: 0.75em 1.3em;
 }
 
 .input-description {
@@ -175,7 +172,7 @@
 .input-description textarea {
     display: flex;
     height: 120px;
-    padding: 18px 16px;
+    padding: 1.1em 1em;
     align-items: flex-start;
     align-self: stretch;
     border-radius: 10px;
@@ -183,7 +180,7 @@
     background: #FFF;
     font-size: 20px;
     font-weight: 400;
-    width: 410px;
+    width: 22em;
     resize: none;
 }
 
@@ -212,7 +209,7 @@
 
 .assign-container {
     display: flex;
-    width: 440px;
+    width: 27.5em;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
@@ -235,9 +232,9 @@
 }
 
 .field-required-text {
-    position: fixed;
+    position: absolute;
     display: flex;
-    bottom: 64px;
+    bottom: 25px;
 }
 
 .field-required-text sub {
@@ -260,9 +257,7 @@
 /*********************************   SEPORATOR  ********************************************/
 
 .seperator-add-task {
-    position: absolute;
-    top: 190px;
-    right: 550px;
+    padding-top: 26%;
 }
 
 
@@ -274,12 +269,9 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    width: 440px;
-    margin: 24px;
-    position: absolute;
-    top: 160px;
-    right: 65.75px;
+    padding: 24px;
     gap: 24px;
+    padding-top: 80px;
 
 }
 
@@ -324,7 +316,7 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    width: 440px;
+    width: 27.5em;
     height: 56px;
 }
 
@@ -403,10 +395,10 @@
 .board-input-date {
     display: flex;
     align-items: center;
-    width: 428px;
+    width: 27.5em;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding-right: 12px;
+    padding-right: 1em;
     height: 48px;
 }
 
@@ -439,8 +431,8 @@
 .bottom-button {
     display: flex;
     position: absolute;
-    bottom: -234px;
-    right: 0;
+    bottom: 30px;
+    right: 25px;
     gap: 25px;
 }
 

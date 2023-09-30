@@ -1,3 +1,6 @@
+let createTasks = [];
+
+
 /**
  * All this function from ln 7 to 163 generate the HTML in addTask 
  * @param {string} addTask - This is the div Container that swiped in, when you push the button Add task +
@@ -15,11 +18,7 @@ function generateHTMLaddTask() {
         <div id="slideAddTask" class="bg-task">
           <div class="add-task">
            ${generateHTMLLeftSide()}
-           <div class="seperator-add-task">
-              <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
-                <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round"/>
-              </svg>
-            </div>
+           ${generateHTMLSeperator()}
             ${generateHTMLRightSide()}
             ${generateHTMLCloseButtonInSVG()}
           </div>
@@ -49,7 +48,7 @@ function generateHTMLTitle() {
   return /*html*/`
           <form class="input-title board-task-input">
               <label for="pflichtfeld">Title<sup>*</sup></label>
-              <input type="text" id="" name="" required  placeholder="Enter a title">
+              <input type="text" id="boardTaskTitle" name="" required  placeholder="Enter a title">
           </form>
   `
 }
@@ -57,10 +56,10 @@ function generateHTMLTitle() {
 
 function generateHTMLDescription() {
   return /*html*/`
-          <div class="input-description">
+          <form class="input-description">
               <p>Description</p>
-              <textarea name="" id="" cols="30" rows="10" placeholder="Enter a Description"></textarea>
-          </div>
+              <textarea name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+          </form>
   `
 }
 
@@ -69,45 +68,89 @@ function generateHTMLAssignedTo() {
   return /*html*/`
           <div class="assigned-contact board-task-input">
               <p>Assigned to</p>
-              <div id="selectContacts" class="assign-container">
-                <input  onclick="openContactsAssign()" type="button" value="Select contacts to assign" id="">
-                 <img onclick="openContactsAssign()" src="/assets/img/arrow_drop_downaa.png" alt="">
-              </div>
+              ${generateHTMLSelectContactsToogleFunction()}
               <div id="closeContacts" class="open-assign-container2 d-none">
                   <div class="assign-container assign-container-style">
                     <input  type="text">
-                    <img onclick="closeContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
+                    <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                   </div>
                   <div id="assignedToContacts" class="checkbox-container">
-                      <table>
-                        <tr>
-                          <td><label for="contacts">Roman</label></td>
-                          <td><input type="checkbox" name="" id=""></td>
-                        </tr>
-                        <tr>
-                          <td><label for="contacts">Dominik</label></td>
-                          <td><input type="checkbox" name="" id=""></td>
-                        </tr>
-                        <tr>
-                          <td><label for="contacts">Stefan</label></td>
-                          <td><input type="checkbox" name="" id=""></td>
-                        </tr>
-                      </table>
+                      ${generateHTMLCheckbox()}
+                      ${generateHTMLAddToCotactButton()}
                   </div>
-                </div>
+              </div>
           </div>
   ` 
 }
 
 
-function openContactsAssign() {
-  document.getElementById('selectContacts').classList.add('d-none');
-  document.getElementById('closeContacts').classList.remove('d-none');
+function generateHTMLSelectContactsToogleFunction() {
+  return /*html*/`
+              <div id="selectContacts" class="assign-container">
+                <input  onclick="toggleContactsAssign()" type="button" value="Select contacts to assign" id="">
+                <img onclick="toggleContactsAssign()" src="/assets/img/arrow_drop_downaa.png" alt="">
+              </div>
+  ` 
 }
 
-function closeContactsAssign() {
-  document.getElementById('selectContacts').classList.remove('d-none');
-  document.getElementById('closeContacts').classList.add('d-none');
+
+function generateHTMLCheckbox() {
+  return /*html*/`
+    <table>
+      <tr>
+          <td>
+            <label for="contacts">Roman</label>
+            <input type="checkbox" name="" id="boardTaskAddContact">
+          </td>
+                          
+      </tr>
+      <tr>
+          <td>
+              <label for="contacts">Dominik</label>
+              <input type="checkbox" name="" id="">
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <label for="contacts">Stefan</label>
+              <input type="checkbox" name="" id="">
+          </td>
+      </tr>
+    </table>
+  `
+}
+
+
+function generateHTMLAddToCotactButton() {
+  return /*html*/`
+    <button class="add-new-contact">Add new contact
+        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+            <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
+              <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
+            </mask>
+            <g mask="url(#mask0_71338_5843)">
+              <path d="M25.3975 18.6667C25.0816 18.6667 24.818 18.5602 24.6069 18.3473C24.3958 18.1343 24.2903 17.8704 24.2903 17.5556V14.4445H21.1791C20.8643 14.4445 20.6004 14.3376 20.3875 14.1239C20.1745 13.9102 20.068 13.6454 20.068 13.3295C20.068 13.0136 20.1745 12.7501 20.3875 12.5389C20.6004 12.3278 20.8643 12.2223 21.1791 12.2223H24.2903V9.11115C24.2903 8.79635 24.3971 8.53246 24.6108 8.31948C24.8245 8.10653 25.0894 8.00005 25.4053 8.00005C25.7212 8.00005 25.9847 8.10653 26.1958 8.31948C26.4069 8.53246 26.5125 8.79635 26.5125 9.11115V12.2223H29.6236C29.9384 12.2223 30.2023 12.3291 30.4153 12.5428C30.6282 12.7566 30.7347 13.0214 30.7347 13.3373C30.7347 13.6532 30.6282 13.9167 30.4153 14.1278C30.2023 14.3389 29.9384 14.4445 29.6236 14.4445H26.5125V17.5556C26.5125 17.8704 26.4056 18.1343 26.1919 18.3473C25.9782 18.5602 25.7134 18.6667 25.3975 18.6667ZM12.068 15.9778C10.6014 15.9778 9.38284 15.4926 8.41247 14.5223C7.44211 13.5519 6.95693 12.3334 6.95693 10.8667C6.95693 9.40005 7.44211 8.18154 8.41247 7.21118C9.38284 6.2408 10.6014 5.75562 12.068 5.75562C13.5347 5.75562 14.7532 6.2408 15.7236 7.21118C16.694 8.18154 17.1791 9.40005 17.1791 10.8667C17.1791 12.3334 16.694 13.5519 15.7236 14.5223C14.7532 15.4926 13.5347 15.9778 12.068 15.9778ZM2.51247 26.6667C2.19767 26.6667 1.93378 26.5602 1.7208 26.3473C1.50784 26.1343 1.40137 25.8704 1.40137 25.5556V23.3334C1.40137 22.563 1.59951 21.8612 1.9958 21.2279C2.39211 20.5945 2.93471 20.1186 3.6236 19.8C5.19398 19.0815 6.64833 18.5649 7.98667 18.25C9.32502 17.9352 10.6843 17.7779 12.0644 17.7779C13.4446 17.7779 14.8051 17.9352 16.1458 18.25C17.4865 18.5649 18.9347 19.0815 20.4903 19.8C21.1792 20.1334 21.7254 20.613 22.1291 21.2389C22.5328 21.8649 22.7347 22.563 22.7347 23.3334V25.5556C22.7347 25.8704 22.6282 26.1343 22.4153 26.3473C22.2023 26.5602 21.9384 26.6667 21.6236 26.6667H2.51247ZM3.62357 24.4445H20.5125V23.3334C20.5125 23.0149 20.4329 22.7149 20.2736 22.4334C20.1143 22.1519 19.8754 21.9408 19.5569 21.8C18.1199 21.0963 16.831 20.6204 15.6903 20.3723C14.5495 20.1241 13.3421 20 12.068 20C10.794 20 9.58656 20.1278 8.4458 20.3834C7.30507 20.6389 6.00878 21.1112 4.55693 21.8C4.26802 21.9408 4.04023 22.1519 3.87357 22.4334C3.7069 22.7149 3.62357 23.0149 3.62357 23.3334V24.4445ZM12.068 13.7556C12.8903 13.7556 13.5773 13.4797 14.1291 12.9278C14.681 12.376 14.9569 11.6889 14.9569 10.8667C14.9569 10.0445 14.681 9.35746 14.1291 8.80562C13.5773 8.25375 12.8903 7.97782 12.068 7.97782C11.2458 7.97782 10.5588 8.25375 10.0069 8.80562C9.45507 9.35746 9.17913 10.0445 9.17913 10.8667C9.17913 11.6889 9.45507 12.376 10.0069 12.9278C10.5588 13.4797 11.2458 13.7556 12.068 13.7556Z" fill="white"/>
+            </g>
+        </svg>
+    </button>
+  `
+}
+
+
+function toggleContactsAssign() {
+  document.getElementById('selectContacts').classList.toggle('d-none');
+  document.getElementById('closeContacts').classList.toggle('d-none');
+}
+
+
+function generateHTMLSeperator() {
+  return /*html*/`
+        <div class="seperator-add-task">
+          <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
+            <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round"/>
+          </svg>
+            </div>
+  `
 }
 
 
@@ -129,7 +172,7 @@ function generateHTMLDateForm() {
             <form class="input-date board-task-input">
               <label for="pflichtfeld">Due date<sup>*</sup></label>
               <div class="board-input-date">
-                <input type="text" name="" id="" placeholder="dd/mm/yyyy">
+                <input type="text" name="" id="boardTaskAddDate" placeholder="dd/mm/yyyy">
                 <img src="/assets/img/calender.png" alt="">
               </div>
             </form>
@@ -153,7 +196,7 @@ function generateHTMLPrioCategory() {
 
 function generateHTMLUrgent() {
   return /*html*/`
-                <button class="category-button category-button-red">
+                <button id="boardTaskUrgent" class="category-button category-button-red">
                   <p>Urgent</p>
                   <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
                     <g clip-path="url(#clip0_88061_5027)">
@@ -173,7 +216,7 @@ function generateHTMLUrgent() {
 
 function generateHTMLMedium() {
   return /*html*/`
-                <button class="category-button category-button-yellow">
+                <button id="boardTaskMedium" class="category-button category-button-yellow">
                   <p>Medium</p>
                   <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8" fill="none">
                       <g clip-path="url(#clip0_88061_5034)">
@@ -193,7 +236,7 @@ function generateHTMLMedium() {
 
 function generateHTMLPrio() {
   return /*html*/`
-                <button class="category-button category-button-green">
+                <button id="boardTaskLow" class="category-button category-button-green">
                   <p>Low</p>
                   <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
                     <path d="M10.2485 9.50614C10.0139 9.50654 9.7854 9.4317 9.59655 9.29262L0.693448 2.72288C0.57761 2.63733 0.47977 2.52981 0.405515 2.40647C0.33126 2.28313 0.282043 2.14638 0.260675 2.00404C0.217521 1.71655 0.290421 1.42372 0.463337 1.18994C0.636253 0.956173 0.895022 0.800615 1.18272 0.757493C1.47041 0.71437 1.76347 0.787216 1.99741 0.960004L10.2485 7.04248L18.4997 0.960004C18.6155 0.874448 18.7471 0.812529 18.8869 0.777782C19.0266 0.743035 19.1719 0.736141 19.3144 0.757493C19.4568 0.778844 19.5937 0.828025 19.7171 0.902225C19.8405 0.976425 19.9481 1.07419 20.0337 1.18994C20.1194 1.3057 20.1813 1.43717 20.2161 1.57685C20.2509 1.71653 20.2578 1.86169 20.2364 2.00404C20.215 2.14638 20.1658 2.28313 20.0916 2.40647C20.0173 2.52981 19.9195 2.63733 19.8036 2.72288L10.9005 9.29262C10.7117 9.4317 10.4831 9.50654 10.2485 9.50614Z" fill="#7AE229"/>
@@ -211,27 +254,19 @@ function generateHTMLCategory() {
         <label for="category">Category<sub>*</sub></label>
       </div>
       <div id="hiddenSelectCategory" class="assign-container">
-        <input onclick="openCategory()" type="button" value="Select task category">
-        <img onclick="openCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
+        <input onclick="toggleCategory()" type="button" value="Select task category">
+        <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
       </div>
-      <!-- <div id="showSelectCategory" class="select-category">
-        <div class="select-task-category-container d-none">
-          <span>Techincal Task</span>
-        </div>
-        <div class="select-task-category-container d-none">
-          <span>User Story</span>
-        </div>
-      </div> -->
       <div id="showSelectCategory" class="d-none">
         <div class="assign-container">
-          <input onclick="closeCategory()" type="button" value="Select task category">
-          <img onclick="closeCategory()" src="/assets/img/arrow_dropdown.png" alt="">
+          <input onclick="toggleCategory()" type="button" value="Select task category">
+          <img onclick="toggleCategory()" src="/assets/img/arrow_dropdown.png" alt="">
         </div>
         <div  class="select-category">
-          <div class="select-task-category-container">
+          <div id="boardTaskTechnical" class="select-task-category-container">
             <span>Techincal Task</span>
           </div>
-          <div class="select-task-category-container">
+          <div id="boardTaskStory" class="select-task-category-container">
             <span>User Story</span>
           </div>
         </div>
@@ -241,15 +276,14 @@ function generateHTMLCategory() {
 }
 
 
-function openCategory() {
-  document.getElementById('showSelectCategory').classList.remove('d-none');
-  document.getElementById('hiddenSelectCategory').classList.add('d-none');
-}
-
-
-function closeCategory() {
-  document.getElementById('showSelectCategory').classList.add('d-none');
-  document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+/**This Function close and open the Categories
+ * 
+ * @param {string}  showSelectCategory show and hidden div
+ * 
+ */
+function toggleCategory() {
+  document.getElementById('showSelectCategory').classList.toggle('d-none');
+  document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
 }
 
 
@@ -273,7 +307,7 @@ function generateHTMLButtons() {
             <line x1="24" y1="0" x2="0" y2="24" stroke="black" stroke-width="2"  class="change-color" />
           </svg>
         </button>
-        <button class="create-task-button">
+        <button onclick="createTaskFromBoard()" class="create-task-button">
           <span>Create Task</span>
           <img src="/assets/img/check.png" alt="check Button in add Task">
         </button>
@@ -297,15 +331,56 @@ function generateHTMLCloseButtonInSVG() {
     `
 }
 
+
+/**
+ * 
+ * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+ * 
+ */
 function openAddTask() {
   slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
 
 
+/**
+ * 
+ * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+ * 
+ */
 function closeAddTask() {
   slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
 }
 
 
+/**
+ * 
+ * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
+ * 
+ */
+function createTaskFromBoard() {
+  let taskTitle = document.getElementById('boardTaskTitle');
+  let taskDescription = document.getElementById('boardTaskDescription');
+  let taskContact = document.getElementById('boardTaskAddContact');
+  let taskDate = document.getElementById('boardTaskAddDate');
+  let taskUrgent = document.getElementById('boardTaskUrgent');
+  let taskMedium = document.getElementById('boardTaskMedium');
+  let taskLow = document.getElementById('boardTaskLow');
+  let taskTechnical = document.getElementById('boardTaskTechnical');
+  let taskStory = document.getElementById('boardTaskStory');
 
-
+  let tasksFromBoard = { //JSON from Board ADD TASK
+    "title": taskTitle.value,
+    "description": taskDescription.value,
+    "contact": taskContact.value,
+    "date": taskDate.value,
+    "prio Urgent": taskUrgent.value,
+    "prio Medium": taskMedium.value,
+    "prio Low": taskLow.value,
+    "category Technical": taskTechnical.value,
+    "category Story": taskStory.value,
+  };
+  
+  createTasks.push(tasksFromBoard);
+  console.log('show JSON', createTasks);
+// ICH MUSS NOCH DIE INPUTFELDER LEEREN 
+}
