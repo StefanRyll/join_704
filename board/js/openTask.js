@@ -1,10 +1,6 @@
-let createTasks = [];
-
-
 /**
- * All this function from ln 7 to 163 generate the HTML in addTask 
- * @param {string} addTask - This is the div Container that swiped in, when you push the button Add task +
- * 
+ * All this function from generate the HTML in addTask 
+ * @param {string} addTask - render add task from board.html
  */
 function renderAddTask() {
   let addTask = document.getElementById('addTask');
@@ -253,37 +249,81 @@ function generateHTMLCategory() {
       <div class="category-sub">
         <label for="category">Category<sub>*</sub></label>
       </div>
-      <div id="hiddenSelectCategory" class="assign-container">
-        <input onclick="toggleCategory()" type="button" value="Select task category">
-        <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
-      </div>
-      <div id="showSelectCategory" class="d-none">
-        <div class="assign-container">
-          <input onclick="toggleCategory()" type="button" value="Select task category">
-          <img onclick="toggleCategory()" src="/assets/img/arrow_dropdown.png" alt="">
-        </div>
-        <div  class="select-category">
-          <div id="boardTaskTechnical" class="select-task-category-container">
-            <span>Techincal Task</span>
-          </div>
-          <div id="boardTaskStory" class="select-task-category-container">
-            <span>User Story</span>
-          </div>
-        </div>
-      </div>
+      ${generateHTMLHiddenCategory()}
+      ${generateHTMLShowCategory()}
     </div>
   `
 }
 
 
+function generateHTMLHiddenCategory() {
+  return /*html*/`
+      <div id="hiddenSelectCategory" class="assign-container">
+        <input id="taskCategoryInput" onclick="toggleCategory()" type="button" value="Select task category">
+        <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
+      </div>
+  `
+}
+
+
+function generateHTMLShowCategory() {
+  return /*html*/`
+      <div id="showSelectCategory" class="d-none">
+        ${generateHTMLToggleCategory()}
+        ${generateHTMLSelectCategory()}
+      </div>
+  `
+}
+
+
+function generateHTMLToggleCategory() {
+  return /*html*/`
+        <div class="assign-container">
+          <input onclick="toggleCategory()" type="button" value="Select task category">
+          <img onclick="toggleCategory()" src="/assets/img/arrow_dropdown.png" alt="">
+        </div>
+  `
+}
+
+
+function generateHTMLSelectCategory() {
+  return /*html*/`
+        <div class="select-category">
+          <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
+            <span id="technicalTask">Techincal Task</span>
+          </div>
+          <div onclick="selectCategoryStory()" id="boardTaskStory" class="select-task-category-container">
+            <span id="userStory">User Story</span>
+          </div>
+        </div>
+  `
+}
 /**This Function close and open the Categories
- * 
  * @param {string}  showSelectCategory show and hidden div
- * 
  */
 function toggleCategory() {
   document.getElementById('showSelectCategory').classList.toggle('d-none');
   document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
+}
+/**This is a select function for Input - > Value
+ * @param {string} technicalTask  select the category Technical Task
+ */
+function selectCategoryTechnical() {
+  let technicalTask = document.getElementById('technicalTask').textContent;
+  let changeInputField = document.getElementById('taskCategoryInput');
+  document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+  document.getElementById('showSelectCategory').classList.add('d-none');
+  changeInputField.value = technicalTask;
+}
+/**This is a select function for Input - > Value
+ * @param {string} userStory  select the category User Story
+ */
+function selectCategoryStory() {
+  let userStory = document.getElementById('userStory').textContent;
+  let changeInputField = document.getElementById('taskCategoryInput');
+  document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+  document.getElementById('showSelectCategory').classList.add('d-none');
+  changeInputField.value = userStory;
 }
 
 
@@ -330,57 +370,19 @@ function generateHTMLCloseButtonInSVG() {
           </div>
     `
 }
-
-
 /**
- * 
- * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
- * 
+ * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
  */
 function openAddTask() {
   slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
-
-
-/**
- * 
+/** 
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
- * 
  */
 function closeAddTask() {
   slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
 }
-
-
-/**
- * 
+/** 
  * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
- * 
  */
-function createTaskFromBoard() {
-  let taskTitle = document.getElementById('boardTaskTitle');
-  let taskDescription = document.getElementById('boardTaskDescription');
-  let taskContact = document.getElementById('boardTaskAddContact');
-  let taskDate = document.getElementById('boardTaskAddDate');
-  let taskUrgent = document.getElementById('boardTaskUrgent');
-  let taskMedium = document.getElementById('boardTaskMedium');
-  let taskLow = document.getElementById('boardTaskLow');
-  let taskTechnical = document.getElementById('boardTaskTechnical');
-  let taskStory = document.getElementById('boardTaskStory');
 
-  let tasksFromBoard = { //JSON from Board ADD TASK
-    "title": taskTitle.value,
-    "description": taskDescription.value,
-    "contact": taskContact.value,
-    "date": taskDate.value,
-    "prio Urgent": taskUrgent.value,
-    "prio Medium": taskMedium.value,
-    "prio Low": taskLow.value,
-    "category Technical": taskTechnical.value,
-    "category Story": taskStory.value,
-  };
-  
-  createTasks.push(tasksFromBoard);
-  console.log('show JSON', createTasks);
-// ICH MUSS NOCH DIE INPUTFELDER LEEREN 
-}
