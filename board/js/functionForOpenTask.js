@@ -9,19 +9,18 @@ function createTaskFromBoard() {
     let taskUrgent = document.getElementById('boardTaskUrgent');
     let taskMedium = document.getElementById('boardTaskMedium');
     let taskLow = document.getElementById('boardTaskLow');
-    let taskTechnical = document.getElementById('boardTaskTechnical');
-    let taskStory = document.getElementById('boardTaskStory');
+    let newCategory = document.getElementById('categoryInput');
+    
   
     let tasksFromBoard = { //JSON from Board ADD TASK
       "title": taskTitle.value,
       "description": taskDescription.value,
       "contact": taskContact.value,
       "date": taskDate.value,
-      "prio Urgent": taskUrgent.value,
-      "prio Medium": taskMedium.value,
-      "prio Low": taskLow.value,
-      "category Technical": taskTechnical.value,
-      "category Story": taskStory.value,
+      "prio urgent": taskUrgent.value,
+      "prio medium": taskMedium.textContent,
+      "prio low": taskLow.textContent,
+      "new category": newCategory,
     };
     
     createTasks.push(tasksFromBoard);
