@@ -338,39 +338,32 @@
     box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-.category-button-red:active,
 .category-button-red:focus {
     background-color: #FF3D00;
     color: #FFF;
 }
 
-.category-button-yellow:active,
 .category-button-yellow:focus {
     background-color: #FFA800;
     color: #FFF;
 }
 
-.category-button-green:active,
 .category-button-green:focus {
     background-color: #7AE229;
     color: #FFF;
 }
 
-.activ-focus:focus,
-.activ-focus:active {
+.activ-focus:focus {
     fill: #FFF;
 }
 
-.category-button:focus path,
-.category-button:active path {
+.category-button:focus path {
     fill: #FFF !important;
 }
 
-.category-button:focus-within path,
-.category-button:active path {
+.category-button:focus path {
     fill: #FFF !important;
 }
-
 
 .category {
     display: flex;
