@@ -8,17 +8,21 @@ function createTaskFromBoard() {
     let date = document.getElementById('boardTaskAddDate');
     let newCategory = document.getElementById('taskCategoryInput');
     
-  
-    let tasksFromBoard = { //JSON from Board ADD TASK
-      "title": title.value,
-      "description":description.value,
-      "contact": contact.value,
-      "date": date.value,
-      "new category": newCategory.value,
-    };
-    createTasks.push(tasksFromBoard);
+    createJsonForAddTask(title, description, contact, date, newCategory);
     console.log('show JSON', createTasks); 
     clearInputs(title, description, contact, date, newCategory);
+}
+
+
+function createJsonForAddTask(title, description, contact, date, newCategory) { 
+  let tasksFromBoard = { //JSON from Board ADD TASK
+    "title": title.value,
+    "description":description.value,
+    "contact": contact.value,
+    "date": date.value,
+    "new category": newCategory.value,
+  };
+  createTasks.push(tasksFromBoard);
 }
 
 
