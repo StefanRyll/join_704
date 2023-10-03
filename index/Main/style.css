@@ -85,3 +85,16 @@ body {
     background-color: #EEE;
     box-shadow: none;
 }
+
+.sign-up-privacy-policy {
+    max-width: 240px;
+    max-height: 28px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 39px;
+}
+
+.link-style {
+    color: blue;
+}
