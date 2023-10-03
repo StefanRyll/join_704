@@ -8,6 +8,7 @@
     --lightblue: rgba(41, 171, 226, 1);
     --white-btn-active: rgba(9, 25, 49, 1);
     --text-button: rgba(168, 168, 168, 1);
+    --link-color: #29abe2;
 }
 
 body {
@@ -229,6 +230,7 @@ h1 {
 .frame-176 {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 35px;
 }
 
@@ -270,6 +272,12 @@ h1 {
 
 .d-none {
     display: none;
+}
+
+.d-flex-mid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 footer {
