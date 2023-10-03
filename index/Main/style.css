@@ -1,108 +1,99 @@
+:root {
+    --white: rgba(255, 255, 255, 1);
+    --general-button-inactive: rgba(42, 54, 71, 1);
+    --general-button-hover: rgba(41, 171, 226, 1);
+    --general-button-active: rgba(9, 25, 49, 1);
+    --lightgrey: rgba(246, 247, 248, 1);
+    --placeholder: rgba(209, 209, 209, 1);
+    --lightblue: rgba(41, 171, 226, 1);
+    --white-btn-active: rgba(9, 25, 49, 1);
+    --text-button: rgba(168, 168, 168, 1);
+    --link-color: #29abe2;
+}
+
 body {
-    background-color: #F6F7F8;
-    height: 100vh;
+    display: flex;
+    background-color: var(--lightgrey);
     margin: 0;
+    font-family: inter, sans-serif;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-.signUpWindow {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3em 5rem;
-    background-color: white;
-    border-radius: 1.875em;
-    box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.03);
-}
-
-.signUpInput {
+button {
     border: none;
-}
-
-.signUpInputArea {
-    border: 1px solid #D1D1D1;
-    width: 422px;
-    height: 48px;
-    padding: 12px 21px 12px 21px;
-    border-radius: 10px;
+    width: 91px;
+    height: 49px;
+    padding: 15px, 16px, 15px, 16px;
+    border-radius: 8px;
     gap: 10px;
+    background: var(--general-button-inactive);
+    color: #ffffff;
+    letter-spacing: 0em;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--general-button-hover);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: 0.1s ease-in-out;
+}
+
+button:active {
+    background-color: var(--general-button-active);
+}
+
+h1 {
+    margin: 0;
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.check-box {
+    cursor: pointer;
     display: flex;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
-.signUpInputArea input {
-    font-size: 20px;
-    color: #d1d1d1
+.d-none {
+    display: none;
 }
 
-.signUpInputArea input:focus {
-    outline: none;
-}
-
-.accountForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 70%;
-}
-
-
-/* #content {
-    position: absolute;
-    height: 71%;
-    text-align: justify;
-    text-overflow: clip;
-    padding: 90px;
-    left: 232px;
-    top: 98px;
-    right: -15px;
-    overflow: hidden;
-    overflow-y: scroll;
-} */
-
-.d-flex-headline {
-    position: relative;
+.d-flex-mid {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.backBtn {
-    position: absolute;
-    top: 3rem;
-    left: 2rem;
-    border: none;
-    background-color: var(--white);
-    border-radius: 100%;
+.text-button {
+    min-width: 130px;
+    background-color: var(--lightgrey);
     display: flex;
-    justify-content: center;
+    padding: 8px;
     align-items: center;
+    gap: 8px;
+    color: var(--text-button);
+    font-weight: 400;
 }
 
-.backBtn:hover {
-    background-color: #EEE;
-    box-shadow: none;
-}
-
-.sign-up-privacy-policy {
-    max-width: 260px;
-    max-height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.link-style {
-    color: var( --link-color);
-}
-
-.link-style:hover {
-    text-decoration: underline;
+.text-button:hover {
     background-color: var(--lightgrey);
     border: none;
     box-shadow: none;
@@ -111,13 +102,19 @@ body {
     font-style: normal;
     line-height: 120%;
     transition: 0.1s ease-in-out;
-    transform: scale(1.02, 1.02);
+    transform: scale(1.05, 1.05);
 }
 
 .mb-72 {
     margin-bottom: 72px !important;
 }
 
-.sign-up-btn {
-    margin-top: 0 !important;
+footer {
+    min-width: 300px;
+    position: absolute;
+    bottom: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
 }
