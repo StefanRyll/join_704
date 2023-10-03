@@ -1,5 +1,5 @@
 let Join = new Page()
-    // Accounts
+// Accounts
 const guest = new Account("Guest", "email@join.de", "");
 const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
@@ -163,19 +163,66 @@ function addTaskPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.addTaskContent();
+    content.innerHTML = Join.generateHTMLaddTaskWindow();
+    // content.innerHTML = Join.generateHTMLaddTask();
+}
+// Board und Tasks
+/**
+ * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
+ */
+function openAddTask() {
+    console.log("openAddTask");
+    Join.renderAddTask()
+    slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
 
-function createTask() {
-    const title = document.getElementById("addTaskTitle").value;
-    const worker = document.getElementById('assignTaskToContacts').value;
-    const desc = document.getElementById("addTaskDescription").value;
-    const date = document.getElementById("addTaskDescription").value;
-    const prio = getPrio();
-    const category = document.getElementById('addTaskCategory').value;
-    let newTask = new Task(title, worker, desc, date, prio, category);
+function createTaskFromBoard() {
+    const title = document.getElementById("boardTaskTitle").value;
+    const contact = document.getElementById('boardTaskAddContact').value;
+    const desc = document.getElementById("boardTaskDescription").value;
+    const date = document.getElementById("boardTaskAddDate").value;
+    const prio = "Wichtig"//getPrio();
+    const category = document.getElementById('taskCategoryInput').value;
+    let newTask = new Task(title, contact, desc, date, prio, category);
     Join.tasks.push(newTask)
     console.log(Join.tasks);
+}
+function toggleContactsAssign() {
+    document.getElementById('selectContacts').classList.toggle('d-none');
+    document.getElementById('closeContacts').classList.toggle('d-none');
+}
+/**This Function close and open the Categories
+ * @param {string}  showSelectCategory show and hidden div
+ */
+function toggleCategory() {
+    document.getElementById('showSelectCategory').classList.toggle('d-none');
+    document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
+}
+/**This is a select function for Input - > Value
+ * @param {string} technicalTask  select the category Technical Task
+ */
+function selectCategoryTechnical() {
+    let technicalTask = document.getElementById('technicalTask').textContent;
+    let changeInputField = document.getElementById('taskCategoryInput');
+    document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+    document.getElementById('showSelectCategory').classList.add('d-none');
+    changeInputField.value = technicalTask;
+}
+/**This is a select function for Input - > Value
+ * @param {string} userStory  select the category User Story
+ */
+function selectCategoryStory() {
+    let userStory = document.getElementById('userStory').textContent;
+    let changeInputField = document.getElementById('taskCategoryInput');
+    document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+    document.getElementById('showSelectCategory').classList.add('d-none');
+    changeInputField.value = userStory;
+}
+/** 
+ * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+ */
+function closeAddTask() {
+    slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
 }
 
 function getPrio() {
@@ -189,7 +236,6 @@ function getPrio() {
         return "Low";
     }
 }
-
 function summeryPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -197,7 +243,6 @@ function summeryPage() {
     showSideAndHead()
     content.innerHTML = Join.summeryContent();
 }
-
 function boardPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -205,7 +250,6 @@ function boardPage() {
     showSideAndHead()
     content.innerHTML = Join.boardContent();
 }
-
 function contactsPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -213,12 +257,10 @@ function contactsPage() {
     showSideAndHead()
     content.innerHTML = "Join.contactsContent()";
 }
-
 function checkboxActivate() {
     document.getElementById('checkbox').classList.add('d-none');
     document.getElementById('checkbox-active').classList.remove('d-none');
 }
-
 function checkboxDeactivate() {
     document.getElementById('checkbox-active').classList.add('d-none');
     document.getElementById('checkbox').classList.remove('d-none');
