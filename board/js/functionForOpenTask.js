@@ -33,3 +33,25 @@ function clearInputs(title, description, contact, date, newCategory) {
   date.value = '';
   newCategory.value = "Select task category";
 }
+/**
+ * @param {function} btnToggleRed change the prio buttons from standard white to red
+ */
+function btnToggleRed() {
+  document.getElementById('btnUrgentWhite').classList.toggle('d-none');
+  document.getElementById('btnUrgentRed').classList.toggle('d-none');
+}
+/**
+ * @param {function} btnToggleRed change the prio buttons from standard white to yellow
+ */
+function btnToggleYellow() {
+  document.getElementById('btnMediumWhite').classList.toggle('d-none');
+  document.getElementById('btnMediumYellow').classList.toggle('d-none');
+}
+/**
+ * @param {function} btnToggleRed change the prio buttons from standard white to green
+ */
+function btnToggleGreen() {
+  document.getElementById('btnLowWhite').classList.toggle('d-none');
+  document.getElementById('btnLowGreen').classList.toggle('d-none');
+}
+
