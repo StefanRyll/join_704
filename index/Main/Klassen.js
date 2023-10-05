@@ -8,11 +8,14 @@ class Page {
     sayDaytime() {
         let datum = new Date();
         let daytime = datum.getHours()
-        if (datum <= 5 && datum >= 18) {
+        console.log(daytime);
+        if (daytime <= 23 && daytime >= 18) {
             return "Good&nbsp;Evening";
-        } else if (datum <= 6 && datum <= 12) {
+        } else if (daytime >= 6 && daytime <= 12) {
             return "Good&nbsp;Morning";
-        } else {
+        } else if (daytime >= 0 && daytime <= 5){
+            return "Good&nbsp;Night"
+        }else {
             return "Good&nbsp;Afternoon";
         }
     }
