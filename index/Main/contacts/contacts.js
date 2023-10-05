@@ -1,35 +1,35 @@
 let contacts = [{
-    "name": "Anton Mayer",
-    "email": "antom@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Anton Mayer",
+    email: "antom@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "Anja Schulz",
-    "email": "schulz@hotmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Anja Schulz",
+    email: "schulz@hotmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "Benedikt Ziegler",
-    "email": "benedikt@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Benedikt Ziegler",
+    email: "benedikt@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "David Eisenberg",
-    "email": "davidberg@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "David Eisenberg",
+    email: "davidberg@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "Eva Fischer",
-    "email": "eva@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Eva Fischer",
+    email: "eva@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "Emmanuel Mauer",
-    "email": "emmanuelma@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Emmanuel Mauer",
+    email: "emmanuelma@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "Marcel Bauer",
-    "email": "bauer@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Marcel Bauer",
+    email: "bauer@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, {
-    "name": "Tatiana Wolf",
-    "email": "wolf@gmail.com",
-    "phone": "+49 1111 111 11 1",
+    name: "Tatiana Wolf",
+    email: "wolf@gmail.com",
+    phone: "+49 1111 111 11 1",
 }, ]
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
@@ -46,5 +46,17 @@ function renderContacts() {
     for (let i = 0; i < contacts.length; i++) {
         const contacts = contacts[i];
 
+        contactsList += /*html*/ `
+            <div class="contactfield-wrapper">
+                <div class="contactfield">
+                    <div class="initials-logo">
+                        <div class="contact">
+                            <span class="name"><p><b>${contacts.name}</b></p></span>
+                            <span class="mail"><p><b>${contacts.email}</b></p></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+`
     }
 }
