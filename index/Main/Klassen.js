@@ -146,14 +146,6 @@ class Page {
                         <h1>Sign Up</h1>
                         <img src="./IMG/vector-5.png">
                     </div>
-                <!-- <form class="accountForm" onsubmit="createAccount1()">
-                    <div class="signUpInputArea"><input required type="text" id="signUpInputName" placeholder="Name" class="signUpInput"></div>
-                    <div class="signUpInputArea"><input required type="email" id="signUpInputEmail" placeholder="Email" class="signUpInput"></div>
-                    <div class="signUpInputArea"><input required type="password" id="signUpInputPassword" placeholder="Password" class="signUpInput"></div>
-                    <div id="passwordCheckArea" class="signUpInputArea"><input required type="password" id="signUpInputPassword2" placeholder="Confirm Password" class="signUpInput"></div>
-                    <label><input required type="checkbox" name="ppCheck" id="ppCheck">I accept the <a href="">Privacy policy</a></label>
-                    <button type="submit">Sign Up</button>
-                </form> -->
                 <form class="login-container" onsubmit="createAccount1()">
                         <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                             <img class="input-icon" src="./IMG/person.png"> 

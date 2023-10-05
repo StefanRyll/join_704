@@ -185,8 +185,17 @@ function createTaskFromBoard() {
     const category = document.getElementById('taskCategoryInput').value;
     let newTask = new Task(title, contact, desc, date, prio, category);
     Join.tasks.push(newTask)
+    clearInputs(title, desc, contact, date, category)
     console.log(Join.tasks);
 }
+function clearInputs(title, description, contact, date, newCategory) {
+    title.value = '';
+    description.value = '';
+    contact.value = '';
+    date.value = '';
+    newCategory.value = "Select task category";
+}
+
 function toggleContactsAssign() {
     document.getElementById('selectContacts').classList.toggle('d-none');
     document.getElementById('closeContacts').classList.toggle('d-none');
@@ -198,6 +207,29 @@ function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
 }
+/**
+ * @param {function} btnToggleRed change the prio buttons from standard white to red
+ */
+function btnToggleRed() {
+    document.getElementById('btnUrgentWhite').classList.toggle('d-none');
+    document.getElementById('btnUrgentRed').classList.toggle('d-none');
+}
+/**
+ * @param {function} btnToggleRed change the prio buttons from standard white to yellow
+ */
+function btnToggleYellow() {
+    document.getElementById('btnMediumWhite').classList.toggle('d-none');
+    document.getElementById('btnMediumYellow').classList.toggle('d-none');
+}
+/**
+ * @param {function} btnToggleRed change the prio buttons from standard white to green
+ */
+function btnToggleGreen() {
+    document.getElementById('btnLowWhite').classList.toggle('d-none');
+    document.getElementById('btnLowGreen').classList.toggle('d-none');
+}
+
+
 /**This is a select function for Input - > Value
  * @param {string} technicalTask  select the category Technical Task
  */
