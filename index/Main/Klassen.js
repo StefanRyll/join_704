@@ -74,7 +74,6 @@ class Page {
             </section>
         `
     }
-
     /**
      * Die Methode stellt die Logo Animation am anfang dar
      * @returns {string}
@@ -480,58 +479,6 @@ class Page {
             <p>Date: July 26, 2023</p>
         `
     }
-    // addTaskContent() {
-    //     let html = /*html*/ `
-    //         <div id="createTaskWindow" class="createTaskWindow">
-    //             <h1>Add Task</h1>
-    //             <form class="taskWindowForm" onsubmit="createTask()">
-    //                 <div class="taskWindowColumn"><!--Spalte 1-->
-    //                     <div class="inputParameter">
-    //                         <label for="addTaskTitle">Title</label>
-    //                         <input  id="addTaskTitle" type="text" placeholder="Enter a title">                        
-    //                     </div>
-    //                     <div class="inputParameter">
-    //                         <label for="addTaskDescription">Description</label>
-    //                         <textarea name="addTaskDescription" id="addTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>      
-    //                     </div>
-    //                     <div class="inputParameter">
-    //                         <label for="assignTaskToContacts">Assigned to</label>
-    //                         <select id="assignTaskToContacts">
-    //                         </select>
-    //                     </div>                        
-    //                 </div>
-    //                 <div class="taskWindowColumn"><!--Spalte 2-->
-    //                     <div class="inputParameter">
-    //                         <label for="addTaskDeadline">Due date</label>
-    //                         <input  id="addTaskDeadline" type="date" placeholder="dd/mm/yyyy">                        
-    //                     </div>
-    //                     <div class="inputParameter">
-    //                         <label>Prio</label>
-    //                         <div class="taskPrios">
-    //                             <div><input class="radioButton" type="radio" name="prio" id="prio01" checked>Urgent</div>
-    //                             <div><input class="radioButton" type="radio" name="prio" id="prio02">Medium</div>
-    //                             <div><input class="radioButton" type="radio" name="prio" id="prio03">Low</div>
-    //                         </div>
-    //                     </div>
-    //                     <div class="inputParameter">
-    //                         <label for="addTaskCategory">Assigned to</label>
-    //                         <select id="addTaskCategory">
-    //                             <option value="Technical Task">Technical Task</option> <!--Hier Task.catergory rein rendern-->
-    //                             <option value="User Story">User Story</option>
-    //                         </select>
-    //                     </div>
-
-    //                     <div id="addTaskControl">
-    //                         <div onclick="logEnding('Leave add Task')">Clear x</div>
-    //                         <button type="submit">Create Task v</button>
-    //                     </div>                        
-    //                 </div>
-    //             </form>
-    //         </div>
-
-    //     `
-
-    // }
     renderAddTask() {
         let addTask = document.getElementById('addTask');
         addTask.innerHTML = '';
