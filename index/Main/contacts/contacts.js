@@ -1,4 +1,4 @@
-let contacts = [{
+let user = [{
     name: "Anton Mayer",
     email: "antom@gmail.com",
     phone: "+49 1111 111 11 1",
@@ -40,23 +40,23 @@ function initContacts() {
 }
 
 function renderContacts() {
-    let contactsList = document.getElementById('contactsList');
-    contactsList.innerHTML = '';
+    let contactsList = '';
 
-    for (let i = 0; i < contacts.length; i++) {
-        const contacts = contacts[i];
+    for (let i = 0; i < user.length; i++) {
+        const contact = user[i];
 
         contactsList += /*html*/ `
             <div class="contactfield-wrapper">
                 <div class="contactfield">
                     <div class="initials-logo">
                         <div class="contact">
-                            <span class="name"><p><b>${contacts.name}</b></p></span>
-                            <span class="mail"><p><b>${contacts.email}</b></p></span>
+                            <span class="name"><p><b>${contact.name}</b></p></span>
+                            <span class="mail"><p><b>${contact.email}</b></p></span>
                         </div>
                     </div>
                 </div>
             </div>
 `
     }
+    document.getElementById('contactsList').innerHTML = contactsList;
 }
