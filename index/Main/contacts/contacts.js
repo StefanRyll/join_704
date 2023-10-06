@@ -41,14 +41,16 @@ function initContacts() {
 
 function renderContacts() {
     let contactsList = '';
+    let currentInitials = '';
 
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
+        const userInitials = user.name[0].toUpperCase();
 
         contactsList += /*html*/ `
             <div class="contactfield-wrapper">
                 <div class="contactfield">
-                    <div class="initials-logo">
+                <div class="initials-logo" style="background-color: ${user.color}">${getInitials(user.name)}</div>
                         <div class="contact">
                             <span class="name"><p><b>${contact.name}</b></p></span>
                             <span class="mail"><p><b>${contact.email}</b></p></span>
@@ -59,4 +61,13 @@ function renderContacts() {
 `
     }
     document.getElementById('contactsList').innerHTML = contactsList;
+}
+
+function getInitials(name) {
+    const parts = name.split(' ');
+    let initials = parts[0][0];
+    if (parts.length > 1) {
+        initials += parts[parts.length - 1][0];
+    }
+    return initials.toUpperCase();
 }
