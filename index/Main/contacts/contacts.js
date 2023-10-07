@@ -45,12 +45,17 @@ function renderContacts() {
 
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
-        const userInitials = user.name[0].toUpperCase();
+        const userInitials = getInitials(contact.name); // Hier wird die Funktion getInitials verwendet
+
+        if (userInitials !== currentInitials) {
+            contactsList += `<div class="alphabet-section" id="alphabet-${userInitials}">${userInitials}</div>`;
+            currentInitials = userInitials;
+        }
 
         contactsList += /*html*/ `
             <div class="contactfield-wrapper">
                 <div class="contactfield">
-                <div class="initials-logo" style="background-color: ${user.color}">${getInitials(user.name)}</div>
+                    <div class="initials-logo" style="background-color: ${contact.color}">${userInitials}</div>
                         <div class="contact">
                             <span class="name"><p><b>${contact.name}</b></p></span>
                             <span class="mail"><p><b>${contact.email}</b></p></span>
@@ -58,10 +63,11 @@ function renderContacts() {
                     </div>
                 </div>
             </div>
-`
+        `;
     }
     document.getElementById('contactsList').innerHTML = contactsList;
 }
+
 
 function getInitials(name) {
     const parts = name.split(' ');
