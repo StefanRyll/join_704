@@ -45,10 +45,10 @@ function renderContacts() {
 
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
-        const userInitials = getInitials(contact.name); // Hier wird die Funktion getInitials verwendet
+        const userInitials = getInitials(contact.name);
 
         if (userInitials !== currentInitials) {
-            contactsList += `<div class="alphabet-section" id="alphabet-${userInitials}">${userInitials}</div>`;
+            // contactsList += `<div class="alphabet-section" id="alphabet-${userInitials}">${userInitials}</div>`;
             currentInitials = userInitials;
         }
 
