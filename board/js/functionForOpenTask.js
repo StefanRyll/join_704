@@ -55,3 +55,19 @@ function btnToggleGreen() {
   document.getElementById('btnLowGreen').classList.toggle('d-none');
 }
 
+
+// function disabledPrioButtons() {
+//   let redButton = document.getElementById('btnUrgentRed');
+//   let yellowButton = document.getElementById('btnMediumYellow');
+//   let greenButton = document.getElementById('btnLowGreen');
+//   if (redButton) {
+//     yellowButton.
+//   } else {
+    
+//   }
+// }
+
+// function disabledPrioButtons() {
+//   let diabledOtherButton = document.querySelectorAll('.d-none');
+//   if
+// }

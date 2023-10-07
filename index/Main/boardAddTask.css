@@ -406,6 +406,21 @@
     background: #FFF;
 }
 
+/* 'input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+}
+
+input[type="date"] {
+    background-image: url(/assets/img/calender.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 24px 24px; 
+}' */
+
+.fc-icon:hover{
+    cursor: pointer;
+}
+
 .board-input-date input[type="date"] {
     font-family: Inter;
     font-size: 20px;
@@ -413,6 +428,8 @@
     font-weight: 400;
     color: #D1D1D1;
 }
+
+
 
 .subtasks {
     display: flex;

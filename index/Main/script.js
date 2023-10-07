@@ -182,17 +182,19 @@ function createTaskFromBoard() {
     const desc = document.getElementById("boardTaskDescription").value;
     const date = document.getElementById("boardTaskAddDate").value;
     const prio = "Wichtig"//getPrio();
+    const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, contact, desc, date, prio, category);
+    let newTask = new Task(title, contact, desc, date, prio, category, medium);
     Join.tasks.push(newTask)
-    clearInputs(title, desc, contact, date, category)
+    clearInputs(title, desc, contact, date, category, medium);
     console.log(Join.tasks);
 }
-function clearInputs(title, description, contact, date, newCategory) {
+function clearInputs(title, description, contact, date, newCategory, medium) {
     title.value = '';
     description.value = '';
     contact.value = '';
     date.value = '';
+    medium.value = '';
     newCategory.value = "Select task category";
 }
 
@@ -207,28 +209,37 @@ function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
 }
-/**
- * @param {function} btnToggleRed change the prio buttons from standard white to red
- */
-function btnToggleRed() {
-    document.getElementById('btnUrgentWhite').classList.toggle('d-none');
-    document.getElementById('btnUrgentRed').classList.toggle('d-none');
-}
-/**
- * @param {function} btnToggleRed change the prio buttons from standard white to yellow
- */
-function btnToggleYellow() {
-    document.getElementById('btnMediumWhite').classList.toggle('d-none');
-    document.getElementById('btnMediumYellow').classList.toggle('d-none');
-}
-/**
- * @param {function} btnToggleRed change the prio buttons from standard white to green
- */
-function btnToggleGreen() {
-    document.getElementById('btnLowWhite').classList.toggle('d-none');
-    document.getElementById('btnLowGreen').classList.toggle('d-none');
-}
 
+
+function btnTaskPrio(prioBtn) {
+    let urgent = document.getElementById('btnUrgentWhite');
+    let medium = document.getElementById('btnMediumWhite');
+    let low = document.getElementById('btnLowWhite');
+    let urgentRed = document.getElementById('btnUrgentRed');
+    let mediumYellow = document.getElementById('btnMediumYellow');
+    let lowGreen = document.getElementById('btnLowGreen');
+    if (prioBtn == 'btnUrgentWhite') {
+        urgent.classList.add('d-none');
+        urgentRed.classList.remove('d-none');
+    } else {
+        urgent.classList.remove('d-none');
+        urgentRed.classList.add('d-none');
+    }
+    if (prioBtn == 'btnMediumWhite') {
+        medium.classList.add('d-none');
+        mediumYellow.classList.remove('d-none');
+    } else {
+        medium.classList.remove('d-none');
+        mediumYellow.classList.add('d-none');
+    }
+    if (prioBtn == 'btnLowWhite') {
+        low.classList.add('d-none');
+        lowGreen.classList.remove('d-none');
+    } else {
+        low.classList.remove('d-none');
+        lowGreen.classList.add('d-none');
+    }
+}
 
 /**This is a select function for Input - > Value
  * @param {string} technicalTask  select the category Technical Task
