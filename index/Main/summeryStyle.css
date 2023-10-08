@@ -1,19 +1,22 @@
-body {
+/* body {
     margin: 0;
     font-family: sans-serif;
-}
+} */
 
 .contentArea {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 50px;
-    width: 80%;
+    /* width: 80%; */
 }
 
 .summery {
     display: flex;
     flex-direction: column;
+    margin-left: 232px;
+    padding-left: 92px;
+    padding-right: 92px;
 }
 
 .summeryHeadline {
@@ -21,6 +24,7 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    padding-top: 170px;
 }
 
 .summeryHeadline h1 {
@@ -123,13 +127,13 @@ body {
     width: 560px;
 }
 
-.greetingArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+/* .greetingArea { */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
     /* align-items: center; */
-    width: 100%;
-}
+    /* width: 100%; */
+/* } */
 
 .greetingArea h3 {
     font-size: 47px;

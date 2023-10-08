@@ -12,14 +12,15 @@
 }
 
 body {
-    display: flex;
+    box-sizing: border-box;
+    /* display: flex; */
     background-color: var(--lightgrey);
     margin: 0;
     font-family: inter, sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* height: 100vh; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     overflow: hidden;
 }
 

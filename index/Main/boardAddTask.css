@@ -417,7 +417,7 @@ input[type="date"] {
     background-size: 24px 24px; 
 }' */
 
-.fc-icon:hover{
+.fc-icon:hover {
     cursor: pointer;
 }
 
@@ -428,8 +428,6 @@ input[type="date"] {
     font-weight: 400;
     color: #D1D1D1;
 }
-
-
 
 .subtasks {
     display: flex;
@@ -445,7 +443,27 @@ input[type="date"] {
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
+}
+
+.open-subtask img {
+    padding: 5px;
+}
+
+.open-subtask input {
+    color: black !important;
+}
+
+.board-task-input input {
+    color: var(--Style, #D1D1D1);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
     line-height: 120%;
+}
+
+.subtask-line:hover {
+    background-color: #FFF !important;
 }
 
 .bottom-button {

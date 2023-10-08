@@ -1,3 +1,4 @@
+let subtasks = []; //@Roman kannst gerne ändern! 
 let Join = new Page()
 // Accounts
 const guest = new Account("Guest", "email@join.de", "");
@@ -309,3 +310,23 @@ function checkboxDeactivate() {
     document.getElementById('checkbox').classList.remove('d-none');
 }
 
+function openSubtask() {
+    document.getElementById('showSubtask').classList.remove('d-none');
+    document.getElementById('hiddenSubtask').classList.add('d-none');
+}
+
+function closeSubtask() {
+    document.getElementById('showSubtask').classList.add('d-none');
+    document.getElementById('hiddenSubtask').classList.remove('d-none');
+}
+
+
+function createSubtask() {
+    let inputSubtask = document.getElementById('inputSubtask');
+    subtasks.push(inputSubtask.value);
+    inputSubtask.value = '';
+    for (let m = 0; m < subtasks.length; m++) {
+        let newSubtasks = subtasks[m];
+        newSubtasks.innerHTML += generateHTMLAddSubtask();
+    }
+}

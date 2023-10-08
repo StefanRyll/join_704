@@ -26,7 +26,7 @@ class Page {
      * */
     logInContent() {
         return /*html*/ `
-            <header>
+            <header class="login-header">
                 <div class="frame-156">
                     <p>Not a Join user?</p>
                     <button onclick="signUp()">Sign up</button>
@@ -110,13 +110,6 @@ class Page {
     }
     SideAndHead() {
         return /*html*/ `
-            <header class="header">
-                <h2>Kanban Projekt Management Tool</h2>
-                <div class="accountIssues">
-                    <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
-                    <img src="./IMG/defaultUser.png" alt="" class="userImg">
-                </div>
-            </header>
             <div id="sidebar" class="sidebar">
                 <div id="logo" onclick="summeryPage()" class="logo"></div>
                 <nav>
@@ -130,6 +123,13 @@ class Page {
                     <p onclick="legalPage()">Legal notice</p>
                 </div>
             </div>
+            <header class="header">
+                <h2>Kanban Projekt Management Tool</h2>
+                <div class="accountIssues">
+                    <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
+                    <img src="./IMG/defaultUser.png" alt="" class="userImg">
+                </div>
+            </header>
 
         `
     }
@@ -620,6 +620,7 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
+                  ${this.generateHTMLAddSubtask()}
                   ${this.generateHTMLButtons()}
             </div>
           `
@@ -805,15 +806,28 @@ class Page {
     // }
     generateHTMLSubtask() {
         return /*html*/`
-        <div class=" subtasks board-task-input-button-style button-hover">
+        <div class="subtasks board-task-input button-hover">
             <p>Subtasks</p>
-            <div class="assign-container">
-                <input type="button" value="Add new subtask">
-                <img src="/assets/img/Subtasks icons11.png" alt="">
+            <div id="hiddenSubtask" class="assign-container">
+                <input onclick="openSubtask()" type="button" value="Add new subtask">
+                <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
+            </div>
+            <div id="showSubtask" class="assign-container open-subtask d-none">
+                <input id="inputSubtask" type="text" placeholder="Add new subtask">
+                <img onclick="closeSubtask()" src="/assets/img/subtask-close.png" alt="">
+                <img class="subtask-line" src="/assets/img/subtask-line.png" alt="">
+                <img onclick="createSubtask()" src="/assets/img/subtask-accept.png" alt="">
             </div>
         </div>
         `
     }
+    
+    generateHTMLAddSubtask() {
+        return /*html*/`
+            <div id="createNewSubtask" class="create-subtask"></div>
+        `
+    }
+    
     generateHTMLButtons() {
         return /*html*/`
             <div class="bottom-button">
@@ -831,7 +845,6 @@ class Page {
             </div>
         `
     }
-
 
     generateHTMLCloseButtonInSVG() {
         return /*html*/`
