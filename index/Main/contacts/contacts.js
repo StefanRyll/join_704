@@ -31,6 +31,8 @@ let user = [{
     email: "wolf@gmail.com",
     phone: "+49 1111 111 11 1",
 }, ]
+let user01 = new Account("Anton Mayer", "antom@gmail.com", null, "+49 1111 111 11 1")
+Join.accounts.push(user01);
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
 const colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
@@ -46,7 +48,10 @@ function renderContacts() {
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
         const userInitials = getInitials(contact.name);
-
+        contact.color = getColor(contact.name);
+        if (!contact.color) {
+            contact.color = colors[Math.floor(Math.random() * colors.length)];
+        }
         if (userInitials !== currentInitials) {
             // contactsList += `<div class="alphabet-section" id="alphabet-${userInitials}">${userInitials}</div>`;
             currentInitials = userInitials;
@@ -76,4 +81,10 @@ function getInitials(name) {
         initials += parts[parts.length - 1][0];
     }
     return initials.toUpperCase();
+}
+
+function getColor(name) {
+    const sum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    const colorIndex = sum % colors.length;
+    return colors[colorIndex];
 }

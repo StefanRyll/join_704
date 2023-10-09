@@ -4,17 +4,23 @@ let Join = new Page()
 const guest = new Account("Guest", "email@join.de", "");
 const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
+const user3 = new Account("Stefan", "florian.rehm@developerakademie.com", "Password123")
+const user4 = new Account("Dominik", "florian.rehm@developerakademie.com", "Password123")
+Join.accounts.push(guest);
 Join.accounts.push(user1);
 Join.accounts.push(user2);
+Join.accounts.push(user3);
+Join.accounts.push(user4);
 
 // Tasks
-let task01 = new Task("Einkaufen gehen", "Stefan", "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
-let task02 = new Task("Abwaschen goes Big", "Dominik", "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
-let task03 = new Task("Aufbau", "Roman", "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
+let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
+let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
+let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
+task01.done = true;
 Join.tasks.push(task01);
 Join.tasks.push(task02);
 Join.tasks.push(task03);
-
+console.log(task01.subTasks);
 let body = document.getElementById('body')
 
 // Login
@@ -181,7 +187,8 @@ function createTaskFromBoard() {
     const title = document.getElementById("boardTaskTitle").value;
     const contact = document.getElementById('boardTaskAddContact').value;
     const desc = document.getElementById("boardTaskDescription").value;
-    const date = document.getElementById("boardTaskAddDate").value;
+    const date = document.getElementById("datum").value;
+    console.log("Date", date);
     const prio = "Wichtig"//getPrio();
     const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
@@ -189,6 +196,7 @@ function createTaskFromBoard() {
     Join.tasks.push(newTask)
     clearInputs(title, desc, contact, date, category, medium);
     console.log(Join.tasks);
+    closeAddTask()
 }
 function clearInputs(title, description, contact, date, newCategory, medium) {
     title.value = '';
@@ -293,6 +301,7 @@ function boardPage() {
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.boardContent();
+    Join.renderTaskTodo();
 }
 function contactsPage() {
     body.innerHTML = "";
@@ -323,12 +332,20 @@ function closeSubtask() {
 
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
+<<<<<<< HEAD
     let subtaskText = inputSubtask.value.trim();
     
     if (subtaskText !== '') {
         subtasks.push(subtaskText);
         inputSubtask.value = '';
         renderSubtasks();
+=======
+    subtasks.push(inputSubtask.value);
+    inputSubtask.value = '';
+    for (let m = 0; m < subtasks.length; m++) {
+        let newSubtasks = subtasks[m];
+        newSubtasks.innerHTML += Join.generateHTMLAddSubtask();
+>>>>>>> 966fbbdbb1c7167746b61a3c92e0cc6789504b15
     }
 }
 

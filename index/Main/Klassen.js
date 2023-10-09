@@ -1,14 +1,14 @@
 class Page {
-    constructor() {
+    constructor(number) {
         this.accounts = [];
         this.signedAccount = null;
         this.tasks = [];
+        this.number = number
     }
     // Methoden
     sayDaytime() {
         let datum = new Date();
         let daytime = datum.getHours()
-        console.log(daytime);
         if (daytime <= 23 && daytime >= 18) {
             return "Good&nbsp;Evening";
         } else if (daytime >= 6 && daytime <= 12) {
@@ -239,7 +239,7 @@ class Page {
                     <div class="chipsAreaRow">
                         <div class="chip3x">
                             <div class="chipData3x">
-                                <h2>5</h2>
+                                <h2>${this.tasks.length}</h2>
                                 <p>Tasks in<br>Board</p>
                             </div>
                         </div>
@@ -344,13 +344,27 @@ class Page {
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
 
-    <div id="renderActionBar"></div>
+    <div id="renderActionBar">Hallo</div>
 
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-    <div id="addTask"></div>
+    <div id="addTask">
+        <div id="kambanTodo"></div>
+        <div id="kambanInprogress"></div>
+        <div id="kambanFeedback"></div>
+        <div id="kambanDone"></div>
+    </div>
 
             `
+    }
+    renderTaskTodo(){
+        let kambanTodo = document.getElementById('kambanTodo')
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i];
+            console.log(task);
+            kambanTodo.innerHTML += task.tinyTaskCard()
+            
+        }
     }
     helpContent() {
         return /*html*/ `
@@ -481,7 +495,6 @@ class Page {
         addTask.innerHTML = '';
         addTask.innerHTML += this.generateHTMLaddTask();
     }
-
     generateHTMLaddTask() {
         return /*html*/`
               <div id="slideAddTask" class="bg-task">
@@ -881,11 +894,11 @@ class Page {
 
 }
 class Account {
-    constructor(name, email, password) {
+    constructor(name, email, password, tel) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.tel = null;
+        this.tel = tel;
         this.contacts = [];
         this.shortname = this.name.charAt(0)
 
@@ -1041,4 +1054,13 @@ class Task {
         taskCard.innerHTML = this.taskCardEdit()
     }
 
+}
+class Subtask{
+    constructor(name){
+        this.name = name;
+        this.done = false;
+    }
+    subTaskDone(){
+        this.done = true;
+    }
 }
