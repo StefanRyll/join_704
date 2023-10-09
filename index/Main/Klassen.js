@@ -355,9 +355,16 @@ class Page {
     </div>
 
             `
-    
+    this.renderTaskTodo()
     }
-    
+    renderTaskTodo(){
+        let kambanTodo = document.getElementById('kambanTodo')
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i];
+            kambanTodo.innerHTML += task.tinyTaskCard()
+            
+        }
+    }
     helpContent() {
         return /*html*/ `
             <h1>Help</h1>
