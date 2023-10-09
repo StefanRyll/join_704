@@ -323,10 +323,35 @@ function closeSubtask() {
 
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
-    subtasks.push(inputSubtask.value);
-    inputSubtask.value = '';
-    for (let m = 0; m < subtasks.length; m++) {
-        let newSubtasks = subtasks[m];
-        newSubtasks.innerHTML += generateHTMLAddSubtask();
+    let subtaskText = inputSubtask.value.trim();
+    
+    if (subtaskText !== '') {
+        subtasks.push(subtaskText);
+        inputSubtask.value = '';
+        renderSubtasks();
     }
 }
+
+function renderSubtasks() {
+    let createNewSubtaskContainer = document.getElementById('createNewSubtask');
+    
+    createNewSubtaskContainer.innerHTML = '';
+    
+    for (let i = 0; i < subtasks.length; i++) {
+        let newSubtaskDiv = document.createElement('li');
+        newSubtaskDiv.className = 'subtask';
+        newSubtaskDiv.textContent = subtasks[i];
+        createNewSubtaskContainer.appendChild(newSubtaskDiv);
+    }
+}
+
+
+// function createSubtask() {
+//     let inputSubtask = document.getElementById('inputSubtask');
+//     subtasks.push(inputSubtask.value);
+//     inputSubtask.value = '';
+//     for (let m = 0; m < subtasks.length; m++) {
+//         let newSubtasks = subtasks[m];
+//         newSubtasks.innerHTML += generateHTMLAddSubtask();
+//     }
+// }
