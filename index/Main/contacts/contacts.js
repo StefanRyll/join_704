@@ -46,7 +46,10 @@ function renderContacts() {
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
         const userInitials = getInitials(contact.name);
-
+        contact.color = getColor(contact.name);
+        if (!contact.color) {
+            contact.color = colors[Math.floor(Math.random() * colors.length)];
+        }
         if (userInitials !== currentInitials) {
             // contactsList += `<div class="alphabet-section" id="alphabet-${userInitials}">${userInitials}</div>`;
             currentInitials = userInitials;
@@ -76,4 +79,10 @@ function getInitials(name) {
         initials += parts[parts.length - 1][0];
     }
     return initials.toUpperCase();
+}
+
+function getColor(name) {
+    const sum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    const colorIndex = sum % colors.length;
+    return colors[colorIndex];
 }
