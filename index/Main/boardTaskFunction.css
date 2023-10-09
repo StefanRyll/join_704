@@ -14,7 +14,21 @@
 }
 
 .open-assign-container2 {
-    width: 27.5em;
+    width: 31em;
+}
+
+.assign-container1 {
+    display: flex;
+    /* width: 100%; */
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    padding-right: 5px;
+}
+
+.assign-container1 input {
+    border: none;
 }
 
 .assign-container-style {
@@ -86,7 +100,7 @@
 .select-task-category-container {
     padding: 12px 16px;
     border-radius: 10px;
-    width: 100%;
+    width: 25.5em;
 }
 
 .select-task-category-container:hover {

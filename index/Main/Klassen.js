@@ -234,6 +234,7 @@ class Page {
                                 <p>Upcoming Deadline</p>
                             </div>
                         </div>
+                        <!-- <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div> -->
                     </div>
                     <div class="chipsAreaRow">
                         <div class="chip3x">
@@ -263,6 +264,7 @@ class Page {
                 <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div>
             </div>
         </div>
+        <!-- <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div> -->
 
             `
     }

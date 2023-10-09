@@ -180,7 +180,7 @@
     background: #FFF;
     font-size: 20px;
     font-weight: 400;
-    width: 22em;
+    width: 22.5em;
     resize: none;
 }
 
@@ -393,7 +393,7 @@
     width: 27.5em;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding-right: 1em;
+    /* padding-right: 1em; */
     height: 48px;
 }
 

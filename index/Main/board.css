@@ -22,8 +22,10 @@
     justify-content: space-between;
     align-items: center;
     height: 232px;
-    padding-left: 0px;
-    /* gap: 30px; */
+    margin-left: 232px;
+    padding-top: 90px;
+    padding-left: 92px;
+    padding-right: 92px;
 }
 
 .frame-192 h2 {
@@ -128,7 +130,10 @@
     padding: 0px 64px;
     justify-content: space-between;
     align-items: flex-start;
-    padding-left: 294px;
+    padding-left: 92px;
+    padding-right: 92px;
+    margin-left: 232px;
+    /* gap: 16px;   */
 }
 
 .board-actionbar {
@@ -137,6 +142,8 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    /* padding-right: 8px; */
+    /* gap: 16px; */
 }
 
 .board-actionbar p {
@@ -151,8 +158,8 @@
     width: 24px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
+    /* gap: 10px; */
+    /* flex-shrink: 0; */
     border-radius: 8px;
     border: 2px solid var(--version-2-main-color, #2A3647);
 }
