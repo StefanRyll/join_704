@@ -355,12 +355,12 @@ class Page {
     </div>
 
             `
-    this.renderTaskTodo()
     }
     renderTaskTodo(){
         let kambanTodo = document.getElementById('kambanTodo')
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
+            console.log(task);
             kambanTodo.innerHTML += task.tinyTaskCard()
             
         }
