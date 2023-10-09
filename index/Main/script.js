@@ -181,7 +181,8 @@ function createTaskFromBoard() {
     const title = document.getElementById("boardTaskTitle").value;
     const contact = document.getElementById('boardTaskAddContact').value;
     const desc = document.getElementById("boardTaskDescription").value;
-    const date = document.getElementById("boardTaskAddDate").value;
+    const date = document.getElementById("datum").value;
+    console.log("Date", date);
     const prio = "Wichtig"//getPrio();
     const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
@@ -189,6 +190,7 @@ function createTaskFromBoard() {
     Join.tasks.push(newTask)
     clearInputs(title, desc, contact, date, category, medium);
     console.log(Join.tasks);
+    closeAddTask()
 }
 function clearInputs(title, description, contact, date, newCategory, medium) {
     title.value = '';

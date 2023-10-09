@@ -8,7 +8,6 @@ class Page {
     sayDaytime() {
         let datum = new Date();
         let daytime = datum.getHours()
-        console.log(daytime);
         if (daytime <= 23 && daytime >= 18) {
             return "Good&nbsp;Evening";
         } else if (daytime >= 6 && daytime <= 12) {
@@ -344,14 +343,21 @@ class Page {
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
 
-    <div id="renderActionBar"></div>
+    <div id="renderActionBar">Hallo</div>
 
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-    <div id="addTask"></div>
+    <div id="addTask">
+        <div id="kambanTodo"></div>
+        <div id="kambanInprogress"></div>
+        <div id="kambanFeedback"></div>
+        <div id="kambanDone"></div>
+    </div>
 
             `
+    
     }
+    
     helpContent() {
         return /*html*/ `
             <h1>Help</h1>
