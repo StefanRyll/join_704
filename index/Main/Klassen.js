@@ -1,8 +1,9 @@
 class Page {
-    constructor() {
+    constructor(number) {
         this.accounts = [];
         this.signedAccount = null;
         this.tasks = [];
+        this.number = number
     }
     // Methoden
     sayDaytime() {
@@ -238,7 +239,7 @@ class Page {
                     <div class="chipsAreaRow">
                         <div class="chip3x">
                             <div class="chipData3x">
-                                <h2>5</h2>
+                                <h2>${this.tasks.length}</h2>
                                 <p>Tasks in<br>Board</p>
                             </div>
                         </div>
@@ -494,7 +495,6 @@ class Page {
         addTask.innerHTML = '';
         addTask.innerHTML += this.generateHTMLaddTask();
     }
-
     generateHTMLaddTask() {
         return /*html*/`
               <div id="slideAddTask" class="bg-task">
@@ -894,11 +894,11 @@ class Page {
 
 }
 class Account {
-    constructor(name, email, password) {
+    constructor(name, email, password, tel) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.tel = null;
+        this.tel = tel;
         this.contacts = [];
         this.shortname = this.name.charAt(0)
 
@@ -1054,4 +1054,13 @@ class Task {
         taskCard.innerHTML = this.taskCardEdit()
     }
 
+}
+class Subtask{
+    constructor(name){
+        this.name = name;
+        this.done = false;
+    }
+    subTaskDone(){
+        this.done = true;
+    }
 }

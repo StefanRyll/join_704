@@ -16,10 +16,11 @@ Join.accounts.push(user4);
 let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
 let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
 let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
+task01.done = true;
 Join.tasks.push(task01);
 Join.tasks.push(task02);
 Join.tasks.push(task03);
-
+console.log(task01.subTasks);
 let body = document.getElementById('body')
 
 // Login
@@ -335,6 +336,6 @@ function createSubtask() {
     inputSubtask.value = '';
     for (let m = 0; m < subtasks.length; m++) {
         let newSubtasks = subtasks[m];
-        newSubtasks.innerHTML += generateHTMLAddSubtask();
+        newSubtasks.innerHTML += Join.generateHTMLAddSubtask();
     }
 }
