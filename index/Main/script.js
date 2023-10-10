@@ -330,45 +330,37 @@ function closeSubtask() {
 }
 
 
-function createSubtask() {
-    let inputSubtask = document.getElementById('inputSubtask');
-<<<<<<< HEAD
-    let subtaskText = inputSubtask.value.trim();
-    
-    if (subtaskText !== '') {
-        subtasks.push(subtaskText);
-        inputSubtask.value = '';
-        renderSubtasks();
-=======
-    subtasks.push(inputSubtask.value);
-    inputSubtask.value = '';
-    for (let m = 0; m < subtasks.length; m++) {
-        let newSubtasks = subtasks[m];
-        newSubtasks.innerHTML += Join.generateHTMLAddSubtask();
->>>>>>> 966fbbdbb1c7167746b61a3c92e0cc6789504b15
-    }
-}
-
-function renderSubtasks() {
-    let createNewSubtaskContainer = document.getElementById('createNewSubtask');
-    
-    createNewSubtaskContainer.innerHTML = '';
-    
-    for (let i = 0; i < subtasks.length; i++) {
-        let newSubtaskDiv = document.createElement('li');
-        newSubtaskDiv.className = 'subtask';
-        newSubtaskDiv.textContent = subtasks[i];
-        createNewSubtaskContainer.appendChild(newSubtaskDiv);
-    }
-}
-
-
 // function createSubtask() {
 //     let inputSubtask = document.getElementById('inputSubtask');
-//     subtasks.push(inputSubtask.value);
-//     inputSubtask.value = '';
-//     for (let m = 0; m < subtasks.length; m++) {
-//         let newSubtasks = subtasks[m];
-//         newSubtasks.innerHTML += generateHTMLAddSubtask();
+
+//     let subtaskText = inputSubtask.value.trim();
+    
+//     if (subtaskText !== '') {
+//         subtasks.push(subtaskText);
+//         inputSubtask.value = '';
+//         renderSubtasks();
 //     }
 // }
+
+
+// function renderSubtasks() {
+//     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
+//     let ulElement = document.createElement('ul');
+//     createNewSubtaskContainer.innerHTML = '';
+    
+//     for (let i = 0; i < subtasks.length; i++) {
+//         let liElement = document.createElement('li');
+//         ulElement.appendChild(liElement);
+//         liElement.className = 'board-add-task-subtask';
+//         liElement.textContent = subtasks[i];
+//         createNewSubtaskContainer.appendChild(ulElement);
+//         ulElement.appendChild(liElement);
+//     }
+// }
+
+function createSubtask() {
+    let inputSubtask = document.getElementById('inputSubtask').value;
+    let todoSubtask = document.getElementById('todoSubtask');
+    inputSubtask.innerHTML += todoSubtask;
+    // console.log('create', inputSubtask);
+}

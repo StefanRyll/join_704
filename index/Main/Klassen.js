@@ -353,6 +353,7 @@ class Page {
         <div id="kambanInprogress"></div>
         <div id="kambanFeedback"></div>
         <div id="kambanDone"></div>
+        <div id="addSubtask"></div>
     </div>
 
             `
@@ -363,7 +364,13 @@ class Page {
             const task = this.tasks[i];
             console.log(task);
             kambanTodo.innerHTML += task.tinyTaskCard()
-            
+        }
+    }
+    renderAddSubtask() {
+        let addSubTask = document.getElementById('addSubtask');
+        for (let m = 0; m <  this.tasks.length; m++) {
+            const subtasksFromBoard = this.tasks[m];
+            addSubTask.innerHTML += subtasksFromBoard.generateHTMLAddSubtask()
         }
     }
     helpContent() {
@@ -821,7 +828,7 @@ class Page {
     // }
     generateHTMLSubtask() {
         return /*html*/`
-        <div class="subtasks board-task-input button-hover">
+        <div class="board-task-input button-hover">
             <p>Subtasks</p>
             <div id="hiddenSubtask" class="assign-container">
                 <input onclick="openSubtask()" type="button" value="Add new subtask">
@@ -839,7 +846,16 @@ class Page {
     
     generateHTMLAddSubtask() {
         return /*html*/`
-            <div id="createNewSubtask" class="create-subtask"></div>
+            <div id="createNewSubtask" class="create-subtask">
+                <ul>
+                    <li id="todoSubtask">test</li>
+                    <div class="subtask-img">
+                        <img src="/assets/img/subtask_trash.png" alt="">
+                        <img src="/assets/img/subtask_seperator.png" alt="">
+                        <img src="/assets/img/subtask_pencil.png" alt="">
+                    </div>
+                </ul>
+            </div>
         `
     }
     

@@ -139,6 +139,17 @@
     cursor: pointer;
 }
 
+.board-task-input p {
+    color: #2A3647;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 .button-hover input::placeholder {
     color: #D1D1D1;
 }
@@ -359,14 +370,6 @@
     color: #FFF;
 }
 
-/* .activ-focus:focus {
-    fill: #FFF;
-}
-
-.category-button:focus path {
-    fill: #FFF !important;
-} */
-
 .category {
     display: flex;
     flex-direction: column;
@@ -393,7 +396,6 @@
     width: 27.5em;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    /* padding-right: 1em; */
     height: 48px;
 }
 
@@ -406,20 +408,6 @@
     background: #FFF;
 }
 
-/* 'input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
-}
-
-input[type="date"] {
-    background-image: url(/assets/img/calender.png);
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 24px 24px; 
-}' */
-
-.fc-icon:hover {
-    cursor: pointer;
-}
 
 .board-input-date input[type="date"] {
     font-family: Inter;
@@ -429,13 +417,13 @@ input[type="date"] {
     color: #D1D1D1;
 }
 
-.subtasks {
+/* .board-task-input {
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
+} */
 
-.subtasks p {
+/* .subtasks p {
     margin-block-start: 0;
     margin-block-end: 0;
     color: #2A3647;
@@ -443,6 +431,33 @@ input[type="date"] {
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
+} */
+
+/* .board-add-task-subtask li {
+    display: flex;
+} */
+
+.create-subtask ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 26em;
+    background-color:#D1D1D1;
+    border-radius: 10px;
+    padding-left: 1.5em;
+    padding-right: .5em;
+    height: 2em;
+}
+
+.create-subtask ul:hover {
+    cursor: pointer;
+}
+
+.subtask-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .open-subtask img {
