@@ -7,8 +7,13 @@ let date01 = new Date();
 
 function checkDate(){
     let date02 = new Date(document.getElementById('dateInput').value);
+    let dif = date01 - date02;
+    let difSek = dif%60;
+    let difMin = (dif/60)%60
+    let difHour = (dif/3600)%24
     console.log("Date01 = " + date01);
     console.log("Date02 = " + date02);
+    console.log("Differenz = " + difHour + ":" + difMin + ":" + difSek);
     if (date01 > date02){
         console.log("Das Datum liegt in der Vergangenheit");
     }else if(date01 < date02){
