@@ -1,9 +1,8 @@
 class Page {
-    constructor(number) {
+    constructor() {
         this.accounts = [];
         this.signedAccount = null;
         this.tasks = [];
-        this.number = number
     }
     // Methoden
     sayDaytime() {
