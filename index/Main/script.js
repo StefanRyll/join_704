@@ -16,11 +16,12 @@ Join.accounts.push(user4);
 let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
 let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
 let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
+let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", 2023, 10, 10, "Medium", "User Story")
 task01.done = true;
 Join.tasks.push(task01);
 Join.tasks.push(task02);
 Join.tasks.push(task03);
-console.log(task01.subTasks);
+Join.tasks.push(task04);
 let body = document.getElementById('body')
 
 // Login
@@ -327,6 +328,36 @@ function openSubtask() {
 function closeSubtask() {
     document.getElementById('showSubtask').classList.add('d-none');
     document.getElementById('hiddenSubtask').classList.remove('d-none');
+}
+
+
+function createSubtask() {
+    let inputSubtask = document.getElementById('inputSubtask');
+    let subtaskText = inputSubtask.value.trim();
+    
+    if (subtaskText !== '') {
+        subtasks.push(subtaskText);
+        inputSubtask.value = '';
+        renderSubtasks();
+    subtasks.push(inputSubtask.value);
+    inputSubtask.value = '';
+    for (let m = 0; m < subtasks.length; m++) {
+        let newSubtasks = subtasks[m];
+        newSubtasks.innerHTML += Join.generateHTMLAddSubtask();
+    }
+}
+}
+function renderSubtasks() {
+    let createNewSubtaskContainer = document.getElementById('createNewSubtask');
+    
+    createNewSubtaskContainer.innerHTML = '';
+    
+    for (let i = 0; i < subtasks.length; i++) {
+        let newSubtaskDiv = document.createElement('li');
+        newSubtaskDiv.className = 'subtask';
+        newSubtaskDiv.textContent = subtasks[i];
+        createNewSubtaskContainer.appendChild(newSubtaskDiv);
+    }
 }
 
 

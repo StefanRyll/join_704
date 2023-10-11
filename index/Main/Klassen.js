@@ -198,6 +198,11 @@ class Page {
     summeryContent() {
         let daytime = this.sayDaytime()
         let doneTasks = this.checkTasksDone()
+        let nextDeadline = this.nextDeadline()
+        let nDDay = nextDeadline.date.getDate()
+        let nDMonth = nextDeadline.date.getMonth()
+        let nDYear = nextDeadline.date.getFullYear()
+        let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
         return /*html*/ `
         <div id="summery" class="summery">
             <div class="summeryHeadline">
@@ -230,8 +235,8 @@ class Page {
                             <p>Urgent</p>
                             <img src="./IMG/Vector 5.png" alt="">
                             <div class="chipData1x">
-                                <h2>October 16, 2022</h2>
-                                <p>Upcoming Deadline</p>
+                                <h2>${fullDate}</h2>
+                                <p>${nextDeadline.title}</p>
                             </div>
                         </div>
                         <!-- <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div> -->
@@ -267,6 +272,20 @@ class Page {
         <!-- <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div> -->
 
             `
+    }
+    nextDeadline(){
+        let today = new Date()
+        let dif = 31536000000;
+        log
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i].date;
+            let difTask = Math.abs(task - today);
+            console.log(this.tasks[i].title);
+            if (difTask <= dif){
+                dif = difTask;
+                return this.tasks[i];
+            }
+        }
     }
     checkTasksDone() {
         let count = 0
@@ -617,8 +636,6 @@ class Page {
     //     document.getElementById('selectContacts').classList.toggle('d-none');
     //     document.getElementById('closeContacts').classList.toggle('d-none');
     // }
-
-
     generateHTMLSeperator() {
         return /*html*/`
               <div class="seperator-add-task">
