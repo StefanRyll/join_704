@@ -332,6 +332,18 @@ function closeSubtask() {
 
 // function createSubtask() {
 //     let inputSubtask = document.getElementById('inputSubtask');
+//     let subtaskText = inputSubtask.value.trim();
+
+//     if (subtaskText !== '') {
+//         subtasks.push(subtaskText);
+//         inputSubtask.value = '';
+//         renderSubtasks();
+//     }
+// }
+
+
+// function createSubtask() {
+//     let inputSubtask = document.getElementById('inputSubtask');
 
 //     let subtaskText = inputSubtask.value.trim();
     
@@ -358,9 +370,11 @@ function closeSubtask() {
 //     }
 // }
 
-function createSubtask() {
-    let inputSubtask = document.getElementById('inputSubtask').value;
-    let todoSubtask = document.getElementById('todoSubtask');
-    inputSubtask.innerHTML += todoSubtask;
-    // console.log('create', inputSubtask);
-}
+// function createSubtask() {
+//     let inputSubtask = document.getElementById('inputSubtask').value;
+//     let todoSubtask = document.getElementById('todoSubtask');
+//     inputSubtask.innerHTML += todoSubtask;
+//     console.log('create', inputSubtask);
+// }
+
+

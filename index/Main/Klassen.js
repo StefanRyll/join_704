@@ -1,8 +1,9 @@
 class Page {
-    constructor() {
+    constructor(number) {
         this.accounts = [];
         this.signedAccount = null;
         this.tasks = [];
+        this.number = number;
     }
     // Methoden
     sayDaytime() {
@@ -352,7 +353,6 @@ class Page {
         <div id="kambanInprogress"></div>
         <div id="kambanFeedback"></div>
         <div id="kambanDone"></div>
-        <div id="addSubtask"></div>
     </div>
 
             `
@@ -365,13 +365,7 @@ class Page {
             kambanTodo.innerHTML += task.tinyTaskCard()
         }
     }
-    renderAddSubtask() {
-        let addSubTask = document.getElementById('addSubtask');
-        for (let m = 0; m <  this.tasks.length; m++) {
-            const subtasksFromBoard = this.tasks[m];
-            addSubTask.innerHTML += subtasksFromBoard.generateHTMLAddSubtask()
-        }
-    }
+    
     helpContent() {
         return /*html*/ `
             <h1>Help</h1>
@@ -641,7 +635,6 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  ${this.generateHTMLAddSubtask()}
                   ${this.generateHTMLButtons()}
             </div>
           `
@@ -750,7 +743,7 @@ class Page {
           </svg>
         </button>
 `
-}
+    }
     generateHTMLCategory() {
         return /*html*/`
           <div class="category board-task-input-button-style button-hover">
@@ -843,21 +836,6 @@ class Page {
         `
     }
     
-    generateHTMLAddSubtask() {
-        return /*html*/`
-            <div id="createNewSubtask" class="create-subtask">
-                <ul>
-                    <li id="todoSubtask">test</li>
-                    <div class="subtask-img">
-                        <img src="/assets/img/subtask_trash.png" alt="">
-                        <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="">
-                    </div>
-                </ul>
-            </div>
-        `
-    }
-    
     generateHTMLButtons() {
         return /*html*/`
             <div class="bottom-button">
@@ -905,9 +883,10 @@ class Page {
     /** 
      * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
      */
-
-
 }
+
+
+
 class Account {
     constructor(name, email, password, tel) {
         this.name = name;
