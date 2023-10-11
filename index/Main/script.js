@@ -16,11 +16,12 @@ Join.accounts.push(user4);
 let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
 let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
 let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
+let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", 2023, 10, 10, "Medium", "User Story")
 task01.done = true;
 Join.tasks.push(task01);
 Join.tasks.push(task02);
 Join.tasks.push(task03);
-console.log(task01.subTasks);
+Join.tasks.push(task04);
 let body = document.getElementById('body')
 
 // Login
@@ -332,23 +333,20 @@ function closeSubtask() {
 
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
-<<<<<<< HEAD
     let subtaskText = inputSubtask.value.trim();
     
     if (subtaskText !== '') {
         subtasks.push(subtaskText);
         inputSubtask.value = '';
         renderSubtasks();
-=======
     subtasks.push(inputSubtask.value);
     inputSubtask.value = '';
     for (let m = 0; m < subtasks.length; m++) {
         let newSubtasks = subtasks[m];
         newSubtasks.innerHTML += Join.generateHTMLAddSubtask();
->>>>>>> 966fbbdbb1c7167746b61a3c92e0cc6789504b15
     }
 }
-
+}
 function renderSubtasks() {
     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
     
