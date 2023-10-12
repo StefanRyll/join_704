@@ -108,7 +108,7 @@ function showDetails(i) {
     const userInitials = getInitials(contact.name);
     const detailsContent = /* html */ `
     <div class="contactView">
-        <div class="detailsLogo" style="background-color: ${user.color}; margin: 0 auto;">${userInitials}</div>
+        <div class="detailsLogo" style="background-color: ${contact.color}; margin: 0 auto;">${userInitials}</div>
         <div class="name">
             <h3>${contact.name}</h3>
             <div class="contactsIcons">
