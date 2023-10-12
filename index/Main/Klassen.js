@@ -361,7 +361,7 @@ class Page {
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
 
-    <div id="renderActionBar">Hallo</div>
+    <div id="renderActionBar"></div>
 
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
@@ -855,28 +855,28 @@ class Page {
                 <img onclick="createSubtask()" src="/assets/img/subtask-accept.png" alt="">
             </div>
         </div>
+        <div id="createNewSubtask" class="create-subtask" onload="renderSubtasks()">
+        </div>
         `
     }
     
-    generateHTMLAddSubtask() {
+    generateHTMLAddSubtask(x = "test", m) {
         return /*html*/`
-            <div id="createNewSubtask" class="create-subtask">
                 <ul>
-                    <li id="todoSubtask">test</li>
+                    <li id="todoSubtask">${x}</li>
                     <div class="subtask-img">
-                        <img src="/assets/img/subtask_trash.png" alt="">
+                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteTask(${m})">
                         <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="">
+                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="editTask()">
                     </div>
                 </ul>
-            </div>
         `
     }
     
     generateHTMLButtons() {
         return /*html*/`
-            <div class="bottom-button">
-              <button onclick="closeAddTask()" class="cancel-button">
+            <div class="bottom-button" >
+              <button onclick="closeAddTask()" class="cancel-button" >
                 <span>Cancel</span>
                   <svg class="cancel-button-stroke" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
                   <line x1="0" y1="0" x2="24" y2="24" stroke="black" stroke-width="2" class="change-color" />
