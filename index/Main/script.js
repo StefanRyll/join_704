@@ -1,4 +1,4 @@
-let subtasks = []; //@Roman kannst gerne ändern! 
+let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
 let Join = new Page()
 // Accounts
 const guest = new Account("Guest", "email@join.de", "");
@@ -108,8 +108,6 @@ function viewPassword() {
         passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
     }
 }
-
-
 function startPage() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -142,38 +140,6 @@ function showSideAndHead() {
     SNH.innerHTML = Join.SideAndHead();
 }
 
-function helpPage() {
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
-    content.innerHTML = Join.helpContent();
-}
-
-function privacyPage() {
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
-    content.innerHTML = Join.privacyContent();
-}
-
-function legalPage() {
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
-    content.innerHTML = Join.legalNoticeContent();
-}
-
-function addTaskPage() {
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
-    content.innerHTML = Join.generateHTMLaddTaskWindow();
-    // content.innerHTML = Join.generateHTMLaddTask();
-}
 // Board und Tasks
 /**
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
@@ -289,6 +255,52 @@ function getPrio() {
         return "Low";
     }
 }
+function checkboxActivate() {
+    document.getElementById('checkbox').classList.add('d-none');
+    document.getElementById('checkbox-active').classList.remove('d-none');
+}
+function checkboxDeactivate() {
+    document.getElementById('checkbox-active').classList.add('d-none');
+    document.getElementById('checkbox').classList.remove('d-none');
+}
+
+function openSubtask() {
+    document.getElementById('showSubtask').classList.remove('d-none');
+    document.getElementById('hiddenSubtask').classList.add('d-none');
+}
+
+function closeSubtask() {
+    document.getElementById('showSubtask').classList.add('d-none');
+    document.getElementById('hiddenSubtask').classList.remove('d-none');
+}
+function createSubtask() {
+    console.log("Hallo");
+    let inputSubtask = document.getElementById('inputSubtask');
+    let subtaskText = inputSubtask.value.trim();
+    console.log("createSubtask()", subtaskText);
+    if (subtaskText !== '') {
+        subtasks.push(subtaskText);
+        inputSubtask.value = '';
+        renderSubtasks()
+}
+}
+
+function renderSubtasks() {
+    let createNewSubtaskContainer = document.getElementById('createNewSubtask');
+    createNewSubtaskContainer.innerHTML = '';
+    
+    for (let m = 0; m < subtasks.length; m++) {
+        let newSubtasks = subtasks[m];
+        createNewSubtaskContainer.innerHTML += Join.generateHTMLAddSubtask(newSubtasks, m);
+    }
+}
+function deleteTask(m){
+    console.log("Hallo");
+    subtasks.splice(m, 1)
+    renderSubtasks();
+}
+
+// Final Pages
 function summeryPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -311,101 +323,35 @@ function contactsPage() {
     showSideAndHead()
     content.innerHTML = "Join.contactsContent()";
 }
-function checkboxActivate() {
-    document.getElementById('checkbox').classList.add('d-none');
-    document.getElementById('checkbox-active').classList.remove('d-none');
-}
-function checkboxDeactivate() {
-    document.getElementById('checkbox-active').classList.add('d-none');
-    document.getElementById('checkbox').classList.remove('d-none');
-}
-
-function openSubtask() {
-    document.getElementById('showSubtask').classList.remove('d-none');
-    document.getElementById('hiddenSubtask').classList.add('d-none');
+function helpPage() {
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = Join.helpContent();
 }
 
-function closeSubtask() {
-    document.getElementById('showSubtask').classList.add('d-none');
-    document.getElementById('hiddenSubtask').classList.remove('d-none');
+function privacyPage() {
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = Join.privacyContent();
 }
 
-
-function createSubtask() {
-    let inputSubtask = document.getElementById('inputSubtask');
-    let subtaskText = inputSubtask.value.trim();
-    
-    if (subtaskText !== '') {
-        subtasks.push(subtaskText);
-        inputSubtask.value = '';
-        renderSubtasks();
-    subtasks.push(inputSubtask.value);
-    inputSubtask.value = '';
-    for (let m = 0; m < subtasks.length; m++) {
-        let newSubtasks = subtasks[m];
-        newSubtasks.innerHTML += Join.generateHTMLAddSubtask();
-    }
-}
-}
-function renderSubtasks() {
-    let createNewSubtaskContainer = document.getElementById('createNewSubtask');
-    
-    createNewSubtaskContainer.innerHTML = '';
-    
-    for (let i = 0; i < subtasks.length; i++) {
-        let newSubtaskDiv = document.createElement('li');
-        newSubtaskDiv.className = 'subtask';
-        newSubtaskDiv.textContent = subtasks[i];
-        createNewSubtaskContainer.appendChild(newSubtaskDiv);
-    }
+function legalPage() {
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = Join.legalNoticeContent();
 }
 
-
-// function createSubtask() {
-//     let inputSubtask = document.getElementById('inputSubtask');
-//     let subtaskText = inputSubtask.value.trim();
-
-//     if (subtaskText !== '') {
-//         subtasks.push(subtaskText);
-//         inputSubtask.value = '';
-//         renderSubtasks();
-//     }
-// }
-
-
-// function createSubtask() {
-//     let inputSubtask = document.getElementById('inputSubtask');
-
-//     let subtaskText = inputSubtask.value.trim();
-    
-//     if (subtaskText !== '') {
-//         subtasks.push(subtaskText);
-//         inputSubtask.value = '';
-//         renderSubtasks();
-//     }
-// }
-
-
-// function renderSubtasks() {
-//     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
-//     let ulElement = document.createElement('ul');
-//     createNewSubtaskContainer.innerHTML = '';
-    
-//     for (let i = 0; i < subtasks.length; i++) {
-//         let liElement = document.createElement('li');
-//         ulElement.appendChild(liElement);
-//         liElement.className = 'board-add-task-subtask';
-//         liElement.textContent = subtasks[i];
-//         createNewSubtaskContainer.appendChild(ulElement);
-//         ulElement.appendChild(liElement);
-//     }
-// }
-
-// function createSubtask() {
-//     let inputSubtask = document.getElementById('inputSubtask').value;
-//     let todoSubtask = document.getElementById('todoSubtask');
-//     inputSubtask.innerHTML += todoSubtask;
-//     console.log('create', inputSubtask);
-// }
-
-
+function addTaskPage() {
+    body.innerHTML = "";
+    body.innerHTML = Join.pageLayoutMain()
+    let content = document.getElementById('content')
+    showSideAndHead()
+    content.innerHTML = Join.generateHTMLaddTaskWindow();
+    // content.innerHTML = Join.generateHTMLaddTask();
+}

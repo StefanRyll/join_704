@@ -67,7 +67,7 @@ function renderContacts() {
 
         contactsList += /*html*/ `
             <div class="contactfield-wrapper">
-                <div class="contactfield">
+                <div class="contactfield" onclick="showDetails(${i})">
                     <div class="initials-logo" style="background-color: ${contact.color}">${userInitials}</div>
                     <div class="contact">
                         <span class="name"><p><b>${contact.name}</b></p></span>
@@ -101,4 +101,29 @@ function getColor(name) {
     const sum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
     const colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
     return colors[colorIndex];
+}
+
+function showDetails(i) {
+    const contact = user[i];
+    const userInitials = getInitials(contact.name);
+    const detailsContent = /* html */ `
+    <div class="contactView">
+        <div class="detailsLogo" style="background-color: ${contact.color}; margin: 0 auto;">${userInitials}</div>
+        <div class="name">
+            <h3>${contact.name}</h3>
+            <div class="contactsIcons">
+                <div class="editIcon">
+                    <img class="editSymbol" src="/assets/img/edit.svg"> <span>Edit</span></div>
+                <div class="deleteIcon" img src="/assets/img/delete.svg"> <span>Delete </span></div>
+        </div>
+    </div>
+    <div class="contactInformation">
+        <h3>Contact Information</h3>
+        <h3>Email</h3><br>
+        <p class="email-blue">${contact.email}</p>
+        <h3>Phone</h3>
+        <p>Phone: ${contact.phone}</p>
+    </div>
+`;
+    document.getElementById('detailsContainer').innerHTML = detailsContent;
 }
