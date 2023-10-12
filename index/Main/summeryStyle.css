@@ -14,9 +14,9 @@
 .summery {
     /* display: flex;
     flex-direction: column; */
-    margin-left: 232px;
-    padding-left: 92px;
-    padding-right: 92px;
+    /* margin-left: 232px; */
+    /* padding-left: 92px; */
+    /* padding-right: 92px; */
 }
 
 .summeryHeadline {
@@ -24,7 +24,7 @@
     /* flex-direction: row; */
     /* align-items: center; */
     gap: 10px;
-    padding-top: 170px;
+    /* padding-top: 170px; */
 }
 
 .summeryHeadline h1 {

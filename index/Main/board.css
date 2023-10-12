@@ -21,11 +21,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 232px;
-    margin-left: 232px;
-    padding-top: 90px;
+    height: 10px;
+    margin-bottom: 4em;
+    /* margin-left: 232px; */
+    /* padding-top: 90px;
     padding-left: 92px;
-    padding-right: 92px;
+    padding-right: 92px; */
 }
 
 .frame-192 h2 {
@@ -88,7 +89,6 @@
     border-radius: 100%;
 }
 
-
 .button-add-task {
     height: 48px;
     margin-left: 32px;
@@ -132,7 +132,7 @@
     align-items: flex-start;
     padding-left: 92px;
     padding-right: 92px;
-    margin-left: 232px;
+    /* margin-left: 232px; */
     /* gap: 16px;   */
 }
 
@@ -185,7 +185,7 @@
     border: 1px dashed #A8A8A8;
     background: #E7E7E7;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
-    margin-left: 294px;
+    /* margin-left: 294px; */
     width: 246px;
 }
 
