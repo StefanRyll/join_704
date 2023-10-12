@@ -276,7 +276,6 @@ class Page {
     nextDeadline(){
         let today = new Date()
         let dif = 31536000000;
-        log
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i].date;
             let difTask = Math.abs(task - today);
@@ -367,7 +366,7 @@ class Page {
 
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-    <div id="addTask">
+    <div class="addTask" id="addTask">
         <div id="kambanTodo"></div>
         <div id="kambanInprogress"></div>
         <div id="kambanFeedback"></div>
@@ -380,7 +379,6 @@ class Page {
         let kambanTodo = document.getElementById('kambanTodo')
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
-            console.log(task);
             kambanTodo.innerHTML += task.tinyTaskCard()
         }
     }
