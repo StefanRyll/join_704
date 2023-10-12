@@ -50,12 +50,12 @@ function renderContacts() {
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
         const userInitials = getInitials(contact.name);
-        contact.color = getColor(contact.name);
-        if (!contact.color) {
-            contact.color = colors[Math.floor(Math.random() * colors.length)];
+        contact.color = getColor(contact.name); // .color ist eine CSS eigenschaft die später die farben ausdem array colors verwertet.
+        if (!contact.color) { // bedingung: hat der contact noch keine farbe (!).
+            contact.color = colors[Math.floor(Math.random() * colors.length)]; //es wird eine zufällige farbe aus dem array colors ausgewählt.
         }
         if (userInitials[0] !== currentInitials) {
-            if (alphabet.includes(userInitials[0])) {
+            if (alphabet.includes(userInitials[0])) { // hier wird überprüft ob der anfangsbuchstabe aus dem userinitials bereits da ist.
                 if (contactsList !== '') {
                     contactsList += '</div>';
                 }
@@ -63,7 +63,6 @@ function renderContacts() {
                 currentInitials = userInitials[0];
                 contactsList += '<div class="contacts-container">';
             }
-
         }
 
         contactsList += /*html*/ `
@@ -99,7 +98,7 @@ function getInitials(name) {
 }
 
 function getColor(name) {
-    const sum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-    const colorIndex = sum % colors.length;
+    const sum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
+    const colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
     return colors[colorIndex];
 }
