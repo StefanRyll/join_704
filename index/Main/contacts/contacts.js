@@ -45,6 +45,8 @@ function renderContacts() {
     let contactsList = '';
     let currentInitials = '';
 
+    user.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
+
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
         const userInitials = getInitials(contact.name);
@@ -52,26 +54,39 @@ function renderContacts() {
         if (!contact.color) {
             contact.color = colors[Math.floor(Math.random() * colors.length)];
         }
-        if (userInitials !== currentInitials) {
-            contactsList += `<div class="alphabet-section" id="alphabet-${userInitials}">${userInitials}</div>`;
-            currentInitials = userInitials;
+        if (userInitials[0] !== currentInitials) {
+            if (alphabet.includes(userInitials[0])) {
+                if (contactsList !== '') {
+                    contactsList += '</div>';
+                }
+                contactsList += `<div class="alphabet-section" id="alphabet-${userInitials[0]}">${userInitials[0]}</div>`;
+                currentInitials = userInitials[0];
+                contactsList += '<div class="contacts-container">';
+            }
+
         }
 
         contactsList += /*html*/ `
             <div class="contactfield-wrapper">
                 <div class="contactfield">
                     <div class="initials-logo" style="background-color: ${contact.color}">${userInitials}</div>
-                        <div class="contact">
-                            <span class="name"><p><b>${contact.name}</b></p></span>
-                            <span class="mail"><p><b>${contact.email}</b></p></span>
-                        </div>
+                    <div class="contact">
+                        <span class="name"><p><b>${contact.name}</b></p></span>
+                        <span class="mail"><p><b>${contact.email}</b></p></span>
                     </div>
                 </div>
             </div>
         `;
     }
+
+    if (contactsList !== '') {
+        contactsList += '</div>';
+    }
+
     document.getElementById('contactsList').innerHTML = contactsList;
 }
+
+
 
 
 function getInitials(name) {
