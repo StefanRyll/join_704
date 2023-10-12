@@ -113,8 +113,11 @@ function showDetails(i) {
             <h3>${contact.name}</h3>
             <div class="contactsIcons">
                 <div class="editIcon">
-                    <img class="editSymbol" src="/assets/img/edit.svg"> <span>Edit</span></div>
-                <div class="deleteIcon" img src="/assets/img/delete.svg"> <span>Delete </span></div>
+                    <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
+                </div>
+                <div class="deleteIcon">
+                    <img src="../IMG/delete.png"> <span>Delete </span>
+                </div>
         </div>
     </div>
     <div class="contactInformation">
