@@ -6,35 +6,40 @@ body {
 
 .contacts-list-section {
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    margin: 10vh 3vw 16px 232px;
+    align-items: flex-start;
+    margin: 13vh 3vw 16px 232px;
     width: calc(100% - 232px);
 }
 
 #contactsList {
     overflow: scroll;
-    padding: 16px;
     margin-bottom: 0;
     padding-bottom: 0;
-    max-width: 500px;
-    min-width: 330px;
     background-color: white;
-    height: 90vh;
+}
+
+.button-width {
     display: flex;
-    flex-direction: column;
+    width: 352px;
+    padding: 12px 16px;
+    justify-content: center;
     align-items: center;
+    gap: 16px;
 }
 
 .button-width:active {
     background-color: #2A3647 !important;
 }
 
-.contactfield {
+.contactfield-wrapper {
+    width: 352px !important;
     display: flex;
+    justify-content: flex-start;
 }
 
 .alphabet-section {
+    width: 352px;
     display: flex;
     padding: 17px 36px;
     flex-direction: column;
@@ -47,10 +52,15 @@ body {
 .contact {
     display: flex;
     flex-direction: column;
-    width: 352px;
     padding: 15px 24px;
     align-items: flex-start;
     gap: 35px;
+}
+
+.contactfield {
+    display: flex;
+    align-items: center;
+    max-width: 352px;
 }
 
 .contactfield:hover {
