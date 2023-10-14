@@ -25,6 +25,7 @@ Join.tasks.push(task03);
 Join.tasks.push(task04);
 let body = document.getElementById('body')
 
+
 // Save and Load
 
 function saveAll(){
@@ -156,8 +157,17 @@ function signUp() {
 function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
-}
+    let accountIssues = document.getElementById('accountIssues')
+    let logoutWindow = document.getElementById('logoutWindow')
+    accountIssues.addEventListener('click', ()=>{
+        logoutWindow.classList.toggle('d-none');
+    })
 
+}
+function logout(){
+    Join.signedAccount = "";
+    startPage()
+}
 // Board und Tasks
 /**
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
@@ -383,3 +393,4 @@ function addTaskPage() {
     content.innerHTML = Join.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
 }
+
