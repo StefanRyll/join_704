@@ -863,11 +863,11 @@ class Page {
     generateHTMLAddSubtask(x = "test", m) {
         return /*html*/`
                 <ul>
-                    <li id="todoSubtask">${x}</li>
+                    <li id="todoSubtask${m}" >${x}</li>
                     <div class="subtask-img">
-                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteTask(${m})">
+                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="editTask()">
+                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="editSubtask(${m})">
                     </div>
                 </ul>
         `
@@ -967,7 +967,7 @@ class Account {
     }
 }
 class Task {
-    constructor(title, worker, desc, jahr, monat, tag, prio = "Wichtig", Categroy) {
+    constructor(title, worker, desc, jahr, monat, tag, prio = "Wichtig", Categroy, subTasks) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -975,7 +975,7 @@ class Task {
         this.prio = prio;
         this.Categroy = Categroy;
         this.done = false;
-        this.subTasks = [];
+        this.subTasks = subTasks;
     }
     taskCardNormal() {
         let html = /*html*/ `

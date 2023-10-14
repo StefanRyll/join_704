@@ -1,4 +1,5 @@
 let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
+// const fs = require('fs');
 let Join = new Page()
 // Accounts
 const guest = new Account("Guest", "email@join.de", "");
@@ -23,6 +24,22 @@ Join.tasks.push(task02);
 Join.tasks.push(task03);
 Join.tasks.push(task04);
 let body = document.getElementById('body')
+
+// Save and Load
+
+function saveAll(){
+    let joinAsJSON = JSON.stringify(Join);
+    localStorage.setItem("Join", joinAsJSON)
+}
+function loadAll(){
+    let loadJoin = localStorage.getItem("Join");
+    let joinParsed = JSON.parse(loadJoin)
+    let Join = new Page()
+    Join.accounts = joinParsed.accounts;
+    Join.signedAccount = joinParsed.signedAccount;
+    Join.tasks = joinParsed.tasks;
+}
+
 
 // Login
 function guestLogin() {
@@ -109,6 +126,7 @@ function viewPassword() {
     }
 }
 function startPage() {
+    // loadAll()
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
@@ -149,7 +167,6 @@ function openAddTask() {
     Join.renderAddTask()
     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
-
 function createTaskFromBoard() {
     const title = document.getElementById("boardTaskTitle").value;
     const contact = document.getElementById('boardTaskAddContact').value;
@@ -159,11 +176,13 @@ function createTaskFromBoard() {
     const prio = "Wichtig"//getPrio();
     const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, contact, desc, date, prio, category, medium);
+    let newTask = new Task(title, contact, desc, date, prio, category, medium, subtasks);
     Join.tasks.push(newTask)
     clearInputs(title, desc, contact, date, category, medium);
-    console.log(Join.tasks);
+    subtasks = []
+    console.log(subtasks.length);
     closeAddTask()
+    // saveAll()
 }
 function clearInputs(title, description, contact, date, newCategory, medium) {
     title.value = '';
@@ -173,7 +192,6 @@ function clearInputs(title, description, contact, date, newCategory, medium) {
     medium.value = '';
     newCategory.value = "Select task category";
 }
-
 function toggleContactsAssign() {
     document.getElementById('selectContacts').classList.toggle('d-none');
     document.getElementById('closeContacts').classList.toggle('d-none');
@@ -185,8 +203,6 @@ function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
 }
-
-
 function btnTaskPrio(prioBtn) {
     let urgent = document.getElementById('btnUrgentWhite');
     let medium = document.getElementById('btnMediumWhite');
@@ -216,7 +232,6 @@ function btnTaskPrio(prioBtn) {
         lowGreen.classList.add('d-none');
     }
 }
-
 /**This is a select function for Input - > Value
  * @param {string} technicalTask  select the category Technical Task
  */
@@ -243,7 +258,6 @@ function selectCategoryStory() {
 function closeAddTask() {
     slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
 }
-
 function getPrio() {
     let prio01 = document.getElementById('prio01')
     let prio02 = document.getElementById('prio02')
@@ -263,12 +277,10 @@ function checkboxDeactivate() {
     document.getElementById('checkbox-active').classList.add('d-none');
     document.getElementById('checkbox').classList.remove('d-none');
 }
-
 function openSubtask() {
     document.getElementById('showSubtask').classList.remove('d-none');
     document.getElementById('hiddenSubtask').classList.add('d-none');
 }
-
 function closeSubtask() {
     document.getElementById('showSubtask').classList.add('d-none');
     document.getElementById('hiddenSubtask').classList.remove('d-none');
@@ -284,7 +296,6 @@ function createSubtask() {
         renderSubtasks()
 }
 }
-
 function renderSubtasks() {
     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
     createNewSubtaskContainer.innerHTML = '';
@@ -294,14 +305,28 @@ function renderSubtasks() {
         createNewSubtaskContainer.innerHTML += Join.generateHTMLAddSubtask(newSubtasks, m);
     }
 }
-function deleteTask(m){
+function deleteSubtask(m){
     console.log("Hallo");
     subtasks.splice(m, 1)
     renderSubtasks();
 }
-
+function editSubtask(m){
+    let editableTask = document.getElementById(`todoSubtask${m}`)
+    console.log("Wird editiert");
+    editableTask.setAttribute('contenteditable', true)
+    editableTask.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13){
+            if (editableTask.value != "")
+            console.log(editableTask.textContent);
+            subtasks[m] = editableTask.textContent;
+            editableTask.setAttribute('contenteditable', false)
+            renderSubtasks()
+        }
+    })
+}
 // Final Pages
 function summeryPage() {
+    // loadAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -309,6 +334,7 @@ function summeryPage() {
     content.innerHTML = Join.summeryContent();
 }
 function boardPage() {
+    // loadAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -317,6 +343,7 @@ function boardPage() {
     Join.renderTaskTodo();
 }
 function contactsPage() {
+    // loadAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -348,6 +375,7 @@ function legalPage() {
 }
 
 function addTaskPage() {
+    // loadAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
