@@ -1,8 +1,9 @@
 class Page {
-    constructor() {
+    constructor(number) {
         this.accounts = [];
         this.signedAccount = null;
         this.tasks = [];
+        this.number = number;
     }
     // Methoden
     sayDaytime() {
@@ -380,7 +381,6 @@ class Page {
         <div id="kambanInprogress"></div>
         <div id="kambanFeedback"></div>
         <div id="kambanDone"></div>
-        <div id="addSubtask"></div>
     </div>
 
             `
@@ -947,9 +947,10 @@ class Page {
     /** 
      * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
      */
-
-
 }
+
+
+
 class Account {
     constructor(name, email, password, tel) {
         this.name = name;
