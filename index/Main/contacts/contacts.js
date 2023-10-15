@@ -37,7 +37,8 @@ let user = [{
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
 const colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 
-function initContacts() {
+async function initContacts() {
+    await includeHTML();
     renderContacts();
 }
 
@@ -113,8 +114,11 @@ function showDetails(i) {
             <h3>${contact.name}</h3>
             <div class="contactsIcons">
                 <div class="editIcon">
-                    <img class="editSymbol" src="/assets/img/edit.svg"> <span>Edit</span></div>
-                <div class="deleteIcon" img src="/assets/img/delete.svg"> <span>Delete </span></div>
+                    <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
+                </div>
+                <div class="deleteIcon">
+                    <img src="../IMG/delete.png"> <span>Delete </span>
+                </div>
         </div>
     </div>
     <div class="contactInformation">
@@ -126,4 +130,18 @@ function showDetails(i) {
     </div>
 `;
     document.getElementById('detailsContainer').innerHTML = detailsContent;
+}
+
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]'); //  Wir rufen unseren DIV im Index auf 
+    for (let i = 0; i < includeElements.length; i++) { // hier iterieren wir alles Obejekte in diesem DIV container sprich alles was in dem Fall im Header Bereich ist 
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html"); // hier liest er den Wert im Index.Html "includes/header.html" aus. Und wir deieser Varibale file zugeordnet 
+        let resp = await fetch(file); // hier laden wir die datei mit fetch 
+        if (resp.ok) {
+            element.innerHTML = await resp.text(); // hier haben wir jetzt alles in der Variable contetn als Text gespeichert^
+        } else {
+            element.innerHTML = 'Page not found';
+        }
+    }
 }

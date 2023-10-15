@@ -10,15 +10,26 @@
     <link rel="stylesheet" href="../board.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="/fonts/fonts.css">
+    <link rel="stylesheet" href="../SideAndHeadStyle.css">
     <script src="contacts.js"></script>
 </head>
 
 <body onload="initContacts()">
+
+    <!----------------------------- HEADER AND SIDEBAR ----------------------------------->
+
+    <div w3-include-html="./sidebarAndHeader.html"></div>
+
+    <!----------------------------- HEADER - BOARD ----------------------------------->
+
     <section class="contacts-list-section">
         <button class="button-add-task button-width"><p>Add new contact</p> </button>
         <nav id="contactsList"></nav>
     </section>
-    <h1>Contacts</h1>
+    <section class="">
+        <h1>Contacts</h1>
+        <img class="vector-blue" src="../IMG/Vector-5blue (1).png">
+    </section>
     <div id="detailsContainer"></div>
 </body>
 

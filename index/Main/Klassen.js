@@ -125,11 +125,21 @@ class Page {
             </div>
             <header class="header">
                 <h2>Kanban Projekt Management Tool</h2>
-                <div class="accountIssues">
+                <div id="accountIssues" class="accountIssues">
                     <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
                     <img src="./IMG/defaultUser.png" alt="" class="userImg">
                 </div>
             </header>
+            ${this.logoutWindow()}
+        `
+    }
+    logoutWindow() {
+        return /*html*/`
+            <div id="logoutWindow" class="popupAccount d-none">
+                <div class="popupAccountBtn" onclick="legalPage()"><p>Legal Notice</p></div>
+                <div class="popupAccountBtn" onclick="privacyPage()"><p>Privacy Policy</p></div>
+                <div class="popupAccountBtn" onclick="logout()"><p>Log out</p></div>
+            </div>
 
         `
     }
@@ -273,14 +283,14 @@ class Page {
 
             `
     }
-    nextDeadline(){
+    nextDeadline() {
         let today = new Date()
         let dif = 31536000000;
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i].date;
             let difTask = Math.abs(task - today);
             console.log(this.tasks[i].title);
-            if (difTask <= dif){
+            if (difTask <= dif) {
                 dif = difTask;
                 return this.tasks[i];
             }
@@ -375,14 +385,20 @@ class Page {
 
             `
     }
-    renderTaskTodo(){
+    renderTaskTodo() {
         let kambanTodo = document.getElementById('kambanTodo')
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
             kambanTodo.innerHTML += task.tinyTaskCard()
         }
     }
-    
+    renderAddSubtask() {
+        let addSubTask = document.getElementById('addSubtask');
+        for (let m = 0; m < this.tasks.length; m++) {
+            const subtasksFromBoard = this.tasks[m];
+            addSubTask.innerHTML += subtasksFromBoard.generateHTMLAddSubtask()
+        }
+    }
     helpContent() {
         return /*html*/ `
             <h1>Help</h1>
@@ -852,20 +868,20 @@ class Page {
         </div>
         `
     }
-    
+
     generateHTMLAddSubtask(x = "test", m) {
         return /*html*/`
                 <ul>
-                    <li id="todoSubtask">${x}</li>
+                    <li id="todoSubtask${m}" >${x}</li>
                     <div class="subtask-img">
-                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteTask(${m})">
+                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="editTask()">
+                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="editSubtask(${m})">
                     </div>
                 </ul>
         `
     }
-    
+
     generateHTMLButtons() {
         return /*html*/`
             <div class="bottom-button" >
@@ -961,7 +977,7 @@ class Account {
     }
 }
 class Task {
-    constructor(title, worker, desc, jahr, monat, tag, prio = "Wichtig", Categroy) {
+    constructor(title, worker, desc, jahr, monat, tag, prio = "Wichtig", Categroy, subTasks) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -969,7 +985,7 @@ class Task {
         this.prio = prio;
         this.Categroy = Categroy;
         this.done = false;
-        this.subTasks = [];
+        this.subTasks = subTasks;
     }
     taskCardNormal() {
         let html = /*html*/ `
@@ -1079,12 +1095,12 @@ class Task {
     }
 
 }
-class Subtask{
-    constructor(name){
+class Subtask {
+    constructor(name) {
         this.name = name;
         this.done = false;
     }
-    subTaskDone(){
+    subTaskDone() {
         this.done = true;
     }
 }

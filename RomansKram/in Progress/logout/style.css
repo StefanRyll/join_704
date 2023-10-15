@@ -1,0 +1,30 @@
+/* body{
+    margin: 0;
+} */
+.popupAccount {
+    background-color: #2A3647;
+    width: 150px;
+    height: 158px;
+    top: 807.97px;
+    left: 1630px;
+    padding: 10px;
+    border-radius: 20px 0px 20px 20px;
+    gap: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.popupAccountBtn {
+    width: 130px;
+    /* height: 46px; */
+    /* padding: 8px 16px 8px 16px; */
+    /* border-radius: 8px; */
+    /* font-size: 16px; */
+    color: #CDCDCD;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
