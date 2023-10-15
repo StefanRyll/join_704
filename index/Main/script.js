@@ -18,7 +18,7 @@ let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi 
 let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
 let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
 let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", 2023, 10, 10, "Medium", "User Story")
-task01.done = true;
+task01.switchStatus("1");
 Join.tasks.push(task01);
 Join.tasks.push(task02);
 Join.tasks.push(task03);
@@ -47,7 +47,6 @@ function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
-
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -64,6 +63,7 @@ function logInUser() {
 
     }
 }
+
 // Sign Up
 function createAccount() {
     let pw = passwordCheck();
@@ -82,7 +82,6 @@ function createAccount() {
     }
 
 }
-
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
@@ -98,7 +97,6 @@ function passwordCheck() {
     }
 
 }
-
 function ppCheck() {
     let checkbox = document.getElementById('ppCheck');
     if (checkbox.checked) {
@@ -107,13 +105,12 @@ function ppCheck() {
         return false;
     }
 }
-// Onload Funktion
 
+// Onload Funktion
 function visibility() {
     document.getElementById('pass-status').classList.add('d-none');
     document.getElementById('pass-status-eye').classList.remove('d-none');
 }
-
 function viewPassword() {
     let passwordInput = document.getElementById('loginPassword');
     let passStatus = document.getElementById('pass-status-eye');
@@ -135,7 +132,6 @@ function startPage() {
     body.innerHTML += Join.logInContent();
     // console.log(windowArea);
 }
-
 function startPage2() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -144,7 +140,6 @@ function startPage2() {
     body.innerHTML += Join.logInContent();
     // console.log(windowArea);
 }
-
 function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -153,6 +148,7 @@ function signUp() {
     body.innerHTML = Join.signUpWindow();
     // console.log(windowArea);
 }
+
 // Sidebar and Header
 function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
@@ -172,12 +168,12 @@ function logout(){
 /**
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
  */
-function openAddTask() {
+function openAddTask(x = 0) {
     console.log("openAddTask");
-    Join.renderAddTask()
+    Join.renderAddTask(x)
     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
-function createTaskFromBoard() {
+function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
     const contact = document.getElementById('boardTaskAddContact').value;
     const desc = document.getElementById("boardTaskDescription").value;
@@ -187,6 +183,15 @@ function createTaskFromBoard() {
     const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
     let newTask = new Task(title, contact, desc, date, prio, category, medium, subtasks);
+    if (x == "1"){
+        newTask.progress = true;
+    }
+    else if (x == "2"){
+        newTask.feedback = true;
+    }
+    else {
+        newTask.todo = true;
+    }
     Join.tasks.push(newTask)
     clearInputs(title, desc, contact, date, category, medium);
     subtasks = []
@@ -334,6 +339,7 @@ function editSubtask(m){
         }
     })
 }
+
 // Final Pages
 function summeryPage() {
     // loadAll()
@@ -350,7 +356,7 @@ function boardPage() {
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.boardContent();
-    Join.renderTaskTodo();
+    Join.renderTask();
 }
 function contactsPage() {
     // loadAll()
@@ -367,7 +373,6 @@ function helpPage() {
     showSideAndHead()
     content.innerHTML = Join.helpContent();
 }
-
 function privacyPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -375,7 +380,6 @@ function privacyPage() {
     showSideAndHead()
     content.innerHTML = Join.privacyContent();
 }
-
 function legalPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -383,7 +387,6 @@ function legalPage() {
     showSideAndHead()
     content.innerHTML = Join.legalNoticeContent();
 }
-
 function addTaskPage() {
     // loadAll()
     body.innerHTML = "";

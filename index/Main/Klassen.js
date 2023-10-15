@@ -320,7 +320,7 @@ class Page {
                     <img src="/assets/img/search.png" alt="search Image">
                 </div>
             </div>
-            <button onclick="openAddTask()" class="button-add-task">
+            <button onclick="openAddTask(0)" class="button-add-task">
                 <p>Add task</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <mask id="mask0_87727_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
@@ -337,7 +337,7 @@ class Page {
     <!----------------------------- ACTION BAR - BOARD ----------------------------------->
 
     <div class="frame-136">
-        <div onclick="openAddTask()" class="board-actionbar">
+        <div onclick="openAddTask(0)" class="board-actionbar">
             <p>To do</p>
             <div class="border-plus">
                 <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -346,7 +346,7 @@ class Page {
                   </svg>
             </div>
         </div>
-        <div onclick="openAddTask()" class="board-actionbar">
+        <div onclick="openAddTask(1)" class="board-actionbar">
             <p>In progress</p>
             <div class="border-plus">
                 <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg"  width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -355,7 +355,7 @@ class Page {
                   </svg>
             </div>
         </div>
-        <div onclick="openAddTask()" class="board-actionbar">
+        <div onclick="openAddTask(2)" class="board-actionbar">
             <p>Await feedback</p>
             <div class="border-plus">
                 <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -375,7 +375,7 @@ class Page {
 
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-    <div class="addTask" id="addTask">
+    <div id="addTask">
         <div id="kambanTodo"></div>
         <div id="kambanInprogress"></div>
         <div id="kambanFeedback"></div>
@@ -385,11 +385,28 @@ class Page {
 
             `
     }
-    renderTaskTodo() {
-        let kambanTodo = document.getElementById('kambanTodo')
+    renderTask() {
+        let kambanTodo = document.getElementById('kambanTodo');
+        let kambanInprogress = document.getElementById('kambanInprogress');
+        let kambanFeedback = document.getElementById('kambanFeedback');
+        let kambanDone = document.getElementById('kambanDone');
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
-            kambanTodo.innerHTML += task.tinyTaskCard()
+            if (task.todo){
+                kambanTodo.innerHTML += task.tinyTaskCard()
+            }
+            else if(task.progress){
+                kambanInprogress.innerHTML += task.tinyTaskCard()
+            }
+            else if(task.feedback){
+                kambanFeedback.innerHTML += task.tinyTaskCard()
+            }
+            else if(task.done){
+                kambanDone.innerHTML += task.tinyTaskCard()
+            }
+            else{
+                kambanTodo.innerHTML += task.tinyTaskCard()
+            }
         }
     }
     renderAddSubtask() {
@@ -523,18 +540,18 @@ class Page {
             <p>Date: July 26, 2023</p>
         `
     }
-    renderAddTask() {
+    renderAddTask(x) {
         let addTask = document.getElementById('addTask');
         addTask.innerHTML = '';
-        addTask.innerHTML += this.generateHTMLaddTask();
+        addTask.innerHTML += this.generateHTMLaddTask(x);
     }
-    generateHTMLaddTask() {
+    generateHTMLaddTask(x) {
         return /*html*/`
               <div id="slideAddTask" class="bg-task">
                 <div class="add-task">
                  ${this.generateHTMLLeftSide()}
                  ${this.generateHTMLSeperator()}
-                  ${this.generateHTMLRightSide()}
+                  ${this.generateHTMLRightSide(x)}
                   ${this.generateHTMLCloseButtonInSVG()}
                 </div>
               </div>
@@ -659,7 +676,7 @@ class Page {
                   </div>
         `
     }
-    generateHTMLRightSide() {
+    generateHTMLRightSide(x) {
         return /*html*/`
             <div class="right-side">
                   ${this.generateHTMLDateForm()}
@@ -667,7 +684,7 @@ class Page {
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
                   ${this.generateHTMLAddSubtask()}
-                  ${this.generateHTMLButtons()}
+                  ${this.generateHTMLButtons(x)}
             </div>
           `
     }
@@ -883,7 +900,7 @@ class Page {
         `
     }
 
-    generateHTMLButtons() {
+    generateHTMLButtons(x) {
         return /*html*/`
             <div class="bottom-button" >
               <button onclick="closeAddTask()" class="cancel-button" >
@@ -893,7 +910,7 @@ class Page {
                   <line x1="24" y1="0" x2="0" y2="24" stroke="black" stroke-width="2"  class="change-color" />
                 </svg>
               </button>
-              <button onclick="createTaskFromBoard()" class="create-task-button">
+              <button onclick="createTaskFromBoard(${x})" class="create-task-button">
                 <span>Create Task</span>
                 <img src="/assets/img/check.png" alt="check Button in add Task">
               </button>
@@ -984,6 +1001,9 @@ class Task {
         this.date = new Date(jahr, monat - 1, tag);
         this.prio = prio;
         this.Categroy = Categroy;
+        this.todo = false;
+        this.progress = false;
+        this.feedback = false;
         this.done = false;
         this.subTasks = subTasks;
     }
@@ -1092,6 +1112,33 @@ class Task {
     editTask() {
         let taskCard = document.getElementById('taskCard')
         taskCard.innerHTML = this.taskCardEdit()
+    }
+    switchStatus(x = 0){
+        if (x == "1"){
+            this.todo = false;
+            this.progress = true;
+            this.feedback = false;
+            this.done = false;
+        }
+        else if (x == "2"){
+            this.todo = false;
+            this.progress = false;
+            this.feedback = true;
+            this.done = false;
+        }
+        else if (x == "3"){
+            this.todo = false;
+            this.progress = false;
+            this.feedback = false;
+            this.done = true;
+        }
+        else{
+            this.todo = true;
+            this.progress = false;
+            this.feedback = false;
+            this.done = false;
+        }
+        
     }
 
 }
