@@ -12,7 +12,9 @@ body {
     width: calc(100% - 232px);
 }
 
-#contactsList {
+.contacts-list {
+    display: flex;
+    justify-content: flex-start !important;
     overflow: scroll;
     margin-bottom: 0;
     padding-bottom: 0;
@@ -54,7 +56,7 @@ body {
     flex-direction: column;
     padding: 15px 24px;
     align-items: flex-start;
-    gap: 35px;
+    width: 352px;
 }
 
 .contactfield {
