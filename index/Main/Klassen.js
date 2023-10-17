@@ -999,7 +999,7 @@ class Task {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
-        this.date = date;
+        this.date = new Date();
         this.prio = prio;
         this.Categroy = Categroy;
         this.todo = false;
