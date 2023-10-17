@@ -3,15 +3,33 @@ let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
 let Join = new Page()
 // Accounts
 const guest = new Account("Guest", "email@join.de", "");
-const user1 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
-const user2 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
-const user3 = new Account("Stefan", "florian.rehm@developerakademie.com", "Password123")
-const user4 = new Account("Dominik", "florian.rehm@developerakademie.com", "Password123")
-Join.accounts.push(guest);
-Join.accounts.push(user1);
-Join.accounts.push(user2);
-Join.accounts.push(user3);
-Join.accounts.push(user4);
+const user01 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
+const user02 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
+const user03 = new Account("Stefan", "florian.rehm@developerakademie.com", "Password123")
+const user04 = new Account("Dominik", "florian.rehm@developerakademie.com", "Password123")
+const user05 = new Account("Anton Mayer","antom@gmail.com","","+49 1111 111 11 1")
+const user06 = new Account("Anja Schulz","schulz@hotmail.com","","+49 1111 111 11 1")
+const user07 = new Account("Benedikt Ziegler","benedikt@gmail.com","","+49 1111 111 11 1")
+const user08 = new Account("David Eisenberg","davidberg@gmail.com","","+49 1111 111 11 1")
+const user09 = new Account("Eva Fischer","eva@gmail.com","","+49 1111 111 11 1")
+const user10 = new Account("Emmanuel Mauer","emmanuelma@gmail.com","","+49 1111 111 11 1")
+const user11 = new Account("Marcel Bauer","bauer@gmail.com","","+49 1111 111 11 1")
+const user12 = new Account("Tatiana Wolf","wolf@gmail.com","","+49 1111 111 11 1")
+
+Join.accounts.push(guest)
+Join.accounts.push(user01)
+Join.accounts.push(user02)
+Join.accounts.push(user03)
+Join.accounts.push(user04)
+Join.accounts.push(user05)
+Join.accounts.push(user06)
+Join.accounts.push(user07)
+Join.accounts.push(user08)
+Join.accounts.push(user09)
+Join.accounts.push(user10)
+Join.accounts.push(user11)
+Join.accounts.push(user12)
+
 
 // Tasks
 let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
@@ -40,7 +58,6 @@ function loadAll(){
     Join.signedAccount = joinParsed.signedAccount;
     Join.tasks = joinParsed.tasks;
 }
-
 
 // Login
 function guestLogin() {
@@ -320,6 +337,14 @@ function renderSubtasks() {
         createNewSubtaskContainer.innerHTML += Join.generateHTMLAddSubtask(newSubtasks, m);
     }
 }
+function renderTaskContacts(){
+    let taskContactList = document.getElementById('taskContactList');
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const account = Join.accounts[i];
+        taskContactList.innerHTML += account.tinyCardCheck(i);
+        
+    }
+}
 function deleteSubtask(m){
     console.log("Hallo");
     subtasks.splice(m, 1)
@@ -339,7 +364,16 @@ function editSubtask(m){
         }
     })
 }
-
+function renderContacts(){
+    let contactsList = document.getElementById('contactsList')
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const account = Join.accounts[i];
+        contactsList.innerHTML += account.tinyCard(i)        
+    }
+}
+function showContact(x){
+    console.log(x);
+}
 // Final Pages
 function summeryPage() {
     // loadAll()
@@ -364,7 +398,8 @@ function contactsPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = "Join.contactsContent()";
+    content.innerHTML = Join.contactsContent();
+    renderContacts()
 }
 function helpPage() {
     body.innerHTML = "";
@@ -397,3 +432,4 @@ function addTaskPage() {
     // content.innerHTML = Join.generateHTMLaddTask();
 }
 
+console.log(Join.accounts);

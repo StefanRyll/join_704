@@ -1,8 +1,9 @@
 class Page {
-    constructor() {
+    constructor(number) {
         this.accounts = [];
         this.signedAccount = null;
         this.tasks = [];
+        this.number = number;
     }
     // Methoden
     sayDaytime() {
@@ -306,19 +307,6 @@ class Page {
         }
         return count;
     }
-    contactsContent() {
-        return /*html*/`
-            <div class="contacts-list-section">
-                <button class="button-add-task button-width"><p>Add new contact</p> </button>
-                <nav id="contactsList"></nav>
-            </div>
-            <div class="">
-                <h1>Contacts</h1>
-                <img class="vector-blue" src="../IMG/Vector-5blue (1).png">
-            </div>
-            <div id="detailsContainer"></div>
-        `
-    }
     boardContent() {
         return /*html*/ `
     <div class="frame-192">
@@ -404,19 +392,19 @@ class Page {
         let kambanDone = document.getElementById('kambanDone');
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
-            if (task.todo) {
+            if (task.todo){
                 kambanTodo.innerHTML += task.tinyTaskCard()
             }
-            else if (task.progress) {
+            else if(task.progress){
                 kambanInprogress.innerHTML += task.tinyTaskCard()
             }
-            else if (task.feedback) {
+            else if(task.feedback){
                 kambanFeedback.innerHTML += task.tinyTaskCard()
             }
-            else if (task.done) {
+            else if(task.done){
                 kambanDone.innerHTML += task.tinyTaskCard()
             }
-            else {
+            else{
                 kambanTodo.innerHTML += task.tinyTaskCard()
             }
         }
@@ -638,16 +626,32 @@ class Page {
     }
     generateHTMLCheckbox() {
         return /*html*/`
-            <div id="taskContactList">
-
-            </div>
-            
-            
-            `
+          <table>
+            <tr>
+                <td>
+                  <label for="contacts">Roman</label>
+                  <input type="checkbox" name="" id="boardTaskAddContact">
+                </td>
+                                
+            </tr>
+            <tr>
+                <td>
+                    <label for="contacts">Dominik</label>
+                    <input type="checkbox" name="" id="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="contacts">Stefan</label>
+                    <input type="checkbox" name="" id="">
+                </td>
+            </tr>
+          </table>
+        `
     }
     generateHTMLAddToContactButton() {
         return /*html*/`
-          <button class="add-new-contact" onload="renderTaskContacts()">Add new contact
+          <button class="add-new-contact">Add new contact
               <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                   <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                     <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
@@ -882,6 +886,7 @@ class Page {
         </div>
         `
     }
+
     generateHTMLAddSubtask(x = "test", m) {
         return /*html*/`
                 <ul>
@@ -894,6 +899,7 @@ class Page {
                 </ul>
         `
     }
+
     generateHTMLButtons(x) {
         return /*html*/`
             <div class="bottom-button" >
@@ -911,6 +917,7 @@ class Page {
             </div>
         `
     }
+
     generateHTMLCloseButtonInSVG() {
         return /*html*/`
                 <div class="style-closebutton">
@@ -941,6 +948,9 @@ class Page {
      * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
      */
 }
+
+
+
 class Account {
     constructor(name, email, password, tel) {
         this.name = name;
@@ -951,14 +961,11 @@ class Account {
         this.shortname = this.name.charAt(0)
 
     }
-    tinyCard(x) {
+    tinyCard() {
         return /*html*/ `
-        <div class="tinyAccountCard" onclick="showContact(${x})">
+        <div class="tinyAccountCard">
             <div class="accountTag">${this.shortname}</div>
-            <div>
-                <div class="contactName">${this.name}</div>
-                <div class="contactEmail">${this.email}</div>
-            </div>
+            <div>${this.name}</div>
         </div>
         `
     }
@@ -1107,32 +1114,32 @@ class Task {
         let taskCard = document.getElementById('taskCard')
         taskCard.innerHTML = this.taskCardEdit()
     }
-    switchStatus(x = 0) {
-        if (x == "1") {
+    switchStatus(x = 0){
+        if (x == "1"){
             this.todo = false;
             this.progress = true;
             this.feedback = false;
             this.done = false;
         }
-        else if (x == "2") {
+        else if (x == "2"){
             this.todo = false;
             this.progress = false;
             this.feedback = true;
             this.done = false;
         }
-        else if (x == "3") {
+        else if (x == "3"){
             this.todo = false;
             this.progress = false;
             this.feedback = false;
             this.done = true;
         }
-        else {
+        else{
             this.todo = true;
             this.progress = false;
             this.feedback = false;
             this.done = false;
         }
-
+        
     }
 
 }
