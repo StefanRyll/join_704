@@ -37,7 +37,6 @@
 
 .checkbox-container {
     display: flex;
-    align-items: center;
     flex-direction: column;
     padding: 0.5em;
     box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);
@@ -49,7 +48,7 @@
     overflow-y: scroll;
     position: absolute;
     width: 27.5em;
-    max-height: 20em;
+    max-height: 9em;
 }
 
 .checkbox-container td {
