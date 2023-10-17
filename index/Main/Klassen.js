@@ -941,15 +941,12 @@ class Page {
      * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
      */
 }
-class Account {
-    constructor(name, email, password, tel) {
+class Contact{
+    constructor(name, email, tel){
         this.name = name;
         this.email = email;
-        this.password = password;
         this.tel = tel;
-        this.contacts = [];
         this.shortname = this.name.charAt(0)
-
     }
     tinyCard(x) {
         return /*html*/ `
@@ -977,14 +974,13 @@ class Account {
 
         `
     }
-    addTel(x) {
-        this.tel = x;
-    }
-    addTask(x) {
-        this.tasks.push(x);
-    }
-    addContact(x) {
-        this.contacts.push(x);
+
+}
+class Account extends Contact{
+    constructor(name, email, password, tel) {
+        super(name, email, tel)
+        this.password = password;
+
     }
 }
 class Task {
