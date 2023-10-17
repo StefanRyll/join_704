@@ -207,11 +207,11 @@ class Page {
     summeryContent() {
         let daytime = this.sayDaytime()
         let doneTasks = this.checkTasksDone()
-        let nextDeadline = this.nextDeadline()
-        let nDDay = nextDeadline.date.getDate()
-        let nDMonth = nextDeadline.date.getMonth()
-        let nDYear = nextDeadline.date.getFullYear()
-        let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
+        // let nextDeadline = this.nextDeadline().date
+        // let nDDay = nextDeadline.getDate()
+        // let nDMonth = nextDeadline.getMonth()
+        // let nDYear = nextDeadline.getFullYear()
+        // let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
         return /*html*/ `
         <div id="summery" class="summery">
             <div class="summeryHeadline">
@@ -244,11 +244,11 @@ class Page {
                             <p>Urgent</p>
                             <img src="./IMG/Vector 5.png" alt="">
                             <div class="chipData1x">
-                                <h2>${fullDate}</h2>
-                                <p>${nextDeadline.title}</p>
+                                <h2>{fullDate}</h2>
+                                <p>{nextDeadline.title}</p>
                             </div>
                         </div>
-                        <!-- <div class="greetingArea"><h3>${daytime}</h3><h4>${this.signedAccount.name}</h4></div> -->
+                        <!-- <div class="greetingArea"><h3>{daytime}</h3><h4>{this.signedAccount.name}</h4></div> -->
                     </div>
                     <div class="chipsAreaRow">
                         <div class="chip3x">
@@ -283,17 +283,22 @@ class Page {
             `
     }
     nextDeadline() {
-        let today = new Date()
-        let dif = 31536000000;
-        for (let i = 0; i < this.tasks.length; i++) {
-            const task = this.tasks[i].date;
-            let difTask = Math.abs(task - today);
-            console.log(this.tasks[i].title);
-            if (difTask <= dif) {
-                dif = difTask;
-                return this.tasks[i];
-            }
-        }
+        let deadlines = Join.tasks.sort((taskA, taskB) => {
+            return taskA.date - taskB.date;
+        })
+        console.log(deadlines);
+        return deadlines[0]
+        // let today = new Date()
+        // let dif = 31536000000;
+        // for (let i = 0; i < this.tasks.length; i++) {
+        //     const task = this.tasks[i].date;
+        //     let difTask = Math.abs(task - today);
+        //     console.log(this.tasks[i].title);
+        //     if (difTask <= dif) {
+        //         dif = difTask;
+        //         return this.tasks[i];
+        //     }
+        // }
     }
     checkTasksDone() {
         let count = 0
@@ -647,7 +652,7 @@ class Page {
     }
     generateHTMLAddToContactButton() {
         return /*html*/`
-          <button class="add-new-contact" onload="renderTaskContacts()">Add new contact
+          <button class="add-new-contact" >Add new contact
               <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                   <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                     <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
@@ -679,7 +684,7 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  ${this.generateHTMLAddSubtask()}
+                  <!-- ${this.generateHTMLAddSubtask()} -->
                   ${this.generateHTMLButtons(x)}
             </div>
           `
@@ -990,11 +995,11 @@ class Account extends Contact{
     }
 }
 class Task {
-    constructor(title, worker, desc, jahr, monat, tag, prio = "Wichtig", Categroy, subTasks) {
+    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, subTasks) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
-        this.date = new Date(jahr, monat - 1, tag);
+        this.date = date;
         this.prio = prio;
         this.Categroy = Categroy;
         this.todo = false;

@@ -147,7 +147,6 @@ function startPage() {
     // let windowArea = document.getElementById('windowArea')
     body.innerHTML = Join.startAnimation();
     body.innerHTML += Join.logInContent();
-    // console.log(windowArea);
 }
 function startPage2() {
     // body.innerHTML = Join.loginLayout()
@@ -155,7 +154,6 @@ function startPage2() {
     // let windowArea = document.getElementById('windowArea')
     body.innerHTML = Join.logoLogin();
     body.innerHTML += Join.logInContent();
-    // console.log(windowArea);
 }
 function signUp() {
     // body.innerHTML = Join.loginLayout()
@@ -163,7 +161,6 @@ function signUp() {
     // let windowArea = document.getElementById('windowArea')
     body.innerHTML = Join.logoLogin();
     body.innerHTML = Join.signUpWindow();
-    // console.log(windowArea);
 }
 
 // Sidebar and Header
@@ -186,20 +183,18 @@ function logout(){
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
  */
 function openAddTask(x = 0) {
-    console.log("openAddTask");
     Join.renderAddTask(x)
     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
 function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
-    const contact = document.getElementById('boardTaskAddContact').value;
+    const assignedUsers = readAssignment()
     const desc = document.getElementById("boardTaskDescription").value;
     const date = document.getElementById("datum").value;
-    console.log("Date", date);
     const prio = "Wichtig"//getPrio();
     const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, contact, desc, date, prio, category, medium, subtasks);
+    let newTask = new Task(title, assignedUsers , desc, date, prio, category, medium, subtasks);
     if (x == "1"){
         newTask.progress = true;
     }
@@ -210,11 +205,22 @@ function createTaskFromBoard(x = 0) {
         newTask.todo = true;
     }
     Join.tasks.push(newTask)
-    clearInputs(title, desc, contact, date, category, medium);
+    clearInputs(title, desc, assignedUsers, date, category, medium);
     subtasks = []
-    console.log(subtasks.length);
     closeAddTask()
     // saveAll()
+}
+function readAssignment(){
+    let assignedUsers = [];
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const account = document.getElementById(`ac${i}`)
+        if (account.checked){
+            let user = Join.accounts[i];
+            assignedUsers.push(user)
+        }
+        
+    }
+    return assignedUsers;
 }
 function clearInputs(title, description, contact, date, newCategory, medium) {
     title.value = '';
@@ -225,6 +231,7 @@ function clearInputs(title, description, contact, date, newCategory, medium) {
     newCategory.value = "Select task category";
 }
 function toggleContactsAssign() {
+    renderTaskContacts()
     document.getElementById('selectContacts').classList.toggle('d-none');
     document.getElementById('closeContacts').classList.toggle('d-none');
 }
@@ -318,10 +325,8 @@ function closeSubtask() {
     document.getElementById('hiddenSubtask').classList.remove('d-none');
 }
 function createSubtask() {
-    console.log("Hallo");
     let inputSubtask = document.getElementById('inputSubtask');
     let subtaskText = inputSubtask.value.trim();
-    console.log("createSubtask()", subtaskText);
     if (subtaskText !== '') {
         subtasks.push(subtaskText);
         inputSubtask.value = '';
@@ -346,18 +351,15 @@ function renderTaskContacts(){
     }
 }
 function deleteSubtask(m){
-    console.log("Hallo");
     subtasks.splice(m, 1)
     renderSubtasks();
 }
 function editSubtask(m){
     let editableTask = document.getElementById(`todoSubtask${m}`)
-    console.log("Wird editiert");
     editableTask.setAttribute('contenteditable', true)
     editableTask.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.keyCode === 13){
             if (editableTask.value != "")
-            console.log(editableTask.textContent);
             subtasks[m] = editableTask.textContent;
             editableTask.setAttribute('contenteditable', false)
             renderSubtasks()
@@ -432,4 +434,3 @@ function addTaskPage() {
     // content.innerHTML = Join.generateHTMLaddTask();
 }
 
-console.log(Join.accounts);
