@@ -1,20 +1,20 @@
 let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
 // const fs = require('fs');
 let Join = new Page()
-// Accounts
+    // Accounts
 const guest = new Account("Guest", "email@join.de", "");
 const user01 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
 const user02 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
 const user03 = new Account("Stefan", "florian.rehm@developerakademie.com", "Password123")
 const user04 = new Account("Dominik", "florian.rehm@developerakademie.com", "Password123")
-const user05 = new Contact("Anton Mayer","antom@gmail.com","+49 1111 111 11 1")
-const user06 = new Contact("Anja Schulz","schulz@hotmail.com","+49 1111 111 11 1")
-const user07 = new Contact("Benedikt Ziegler","benedikt@gmail.com","+49 1111 111 11 1")
-const user08 = new Contact("David Eisenberg","davidberg@gmail.com","+49 1111 111 11 1")
-const user09 = new Contact("Eva Fischer","eva@gmail.com","+49 1111 111 11 1")
-const user10 = new Contact("Emmanuel Mauer","emmanuelma@gmail.com","+49 1111 111 11 1")
-const user11 = new Contact("Marcel Bauer","bauer@gmail.com","+49 1111 111 11 1")
-const user12 = new Contact("Tatiana Wolf","wolf@gmail.com","+49 1111 111 11 1")
+const user05 = new Contact("Anton Mayer", "antom@gmail.com", "+49 1111 111 11 1")
+const user06 = new Contact("Anja Schulz", "schulz@hotmail.com", "+49 1111 111 11 1")
+const user07 = new Contact("Benedikt Ziegler", "benedikt@gmail.com", "+49 1111 111 11 1")
+const user08 = new Contact("David Eisenberg", "davidberg@gmail.com", "+49 1111 111 11 1")
+const user09 = new Contact("Eva Fischer", "eva@gmail.com", "+49 1111 111 11 1")
+const user10 = new Contact("Emmanuel Mauer", "emmanuelma@gmail.com", "+49 1111 111 11 1")
+const user11 = new Contact("Marcel Bauer", "bauer@gmail.com", "+49 1111 111 11 1")
+const user12 = new Contact("Tatiana Wolf", "wolf@gmail.com", "+49 1111 111 11 1")
 
 Join.accounts.push(guest)
 Join.accounts.push(user01)
@@ -46,11 +46,12 @@ let body = document.getElementById('body')
 
 // Save and Load
 
-function saveAll(){
+function saveAll() {
     let joinAsJSON = JSON.stringify(Join);
     localStorage.setItem("Join", joinAsJSON)
 }
-function loadAll(){
+
+function loadAll() {
     let loadJoin = localStorage.getItem("Join");
     let joinParsed = JSON.parse(loadJoin)
     let Join = new Page()
@@ -64,6 +65,7 @@ function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
+
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -99,6 +101,7 @@ function createAccount() {
     }
 
 }
+
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
@@ -114,6 +117,7 @@ function passwordCheck() {
     }
 
 }
+
 function ppCheck() {
     let checkbox = document.getElementById('ppCheck');
     if (checkbox.checked) {
@@ -128,6 +132,7 @@ function visibility() {
     document.getElementById('pass-status').classList.add('d-none');
     document.getElementById('pass-status-eye').classList.remove('d-none');
 }
+
 function viewPassword() {
     let passwordInput = document.getElementById('loginPassword');
     let passStatus = document.getElementById('pass-status-eye');
@@ -140,6 +145,7 @@ function viewPassword() {
         passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
     }
 }
+
 function startPage() {
     // loadAll()
     // body.innerHTML = Join.loginLayout()
@@ -148,6 +154,7 @@ function startPage() {
     body.innerHTML = Join.startAnimation();
     body.innerHTML += Join.logInContent();
 }
+
 function startPage2() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -155,6 +162,7 @@ function startPage2() {
     body.innerHTML = Join.logoLogin();
     body.innerHTML += Join.logInContent();
 }
+
 function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -169,12 +177,13 @@ function showSideAndHead() {
     SNH.innerHTML = Join.SideAndHead();
     let accountIssues = document.getElementById('accountIssues')
     let logoutWindow = document.getElementById('logoutWindow')
-    accountIssues.addEventListener('click', ()=>{
+    accountIssues.addEventListener('click', () => {
         logoutWindow.classList.toggle('d-none');
     })
 
 }
-function logout(){
+
+function logout() {
     Join.signedAccount = "";
     startPage()
 }
@@ -186,42 +195,43 @@ function openAddTask(x = 0) {
     Join.renderAddTask(x)
     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
+
 function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
     const assignedUsers = readAssignment()
     const desc = document.getElementById("boardTaskDescription").value;
     const date = document.getElementById("datum").value;
-    const prio = "Wichtig"//getPrio();
+    const prio = "Wichtig" //getPrio();
     const medium = document.getElementById('btnMediumYellow').value;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, assignedUsers , desc, date, prio, category, medium, subtasks);
-    if (x == "1"){
+    let newTask = new Task(title, assignedUsers, desc, date, prio, category, medium, subtasks);
+    if (x == "1") {
         newTask.progress = true;
-    }
-    else if (x == "2"){
+    } else if (x == "2") {
         newTask.feedback = true;
-    }
-    else {
+    } else {
         newTask.todo = true;
     }
     Join.tasks.push(newTask)
     clearInputs(title, desc, assignedUsers, date, category, medium);
     subtasks = []
     closeAddTask()
-    // saveAll()
+        // saveAll()
 }
-function readAssignment(){
+
+function readAssignment() {
     let assignedUsers = [];
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = document.getElementById(`ac${i}`)
-        if (account.checked){
+        if (account.checked) {
             let user = Join.accounts[i];
             assignedUsers.push(user)
         }
-        
+
     }
     return assignedUsers;
 }
+
 function clearInputs(title, description, contact, date, newCategory, medium) {
     title.value = '';
     description.value = '';
@@ -230,6 +240,7 @@ function clearInputs(title, description, contact, date, newCategory, medium) {
     medium.value = '';
     newCategory.value = "Select task category";
 }
+
 function toggleContactsAssign() {
     renderTaskContacts()
     document.getElementById('selectContacts').classList.toggle('d-none');
@@ -242,6 +253,7 @@ function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
 }
+
 function btnTaskPrio(prioBtn) {
     let urgent = document.getElementById('btnUrgentWhite');
     let medium = document.getElementById('btnMediumWhite');
@@ -297,6 +309,7 @@ function selectCategoryStory() {
 function closeAddTask() {
     slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
 }
+
 function getPrio() {
     let prio01 = document.getElementById('prio01')
     let prio02 = document.getElementById('prio02')
@@ -308,22 +321,27 @@ function getPrio() {
         return "Low";
     }
 }
+
 function checkboxActivate() {
     document.getElementById('checkbox').classList.add('d-none');
     document.getElementById('checkbox-active').classList.remove('d-none');
 }
+
 function checkboxDeactivate() {
     document.getElementById('checkbox-active').classList.add('d-none');
     document.getElementById('checkbox').classList.remove('d-none');
 }
+
 function openSubtask() {
     document.getElementById('showSubtask').classList.remove('d-none');
     document.getElementById('hiddenSubtask').classList.add('d-none');
 }
+
 function closeSubtask() {
     document.getElementById('showSubtask').classList.add('d-none');
     document.getElementById('hiddenSubtask').classList.remove('d-none');
 }
+
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
     let subtaskText = inputSubtask.value.trim();
@@ -331,49 +349,55 @@ function createSubtask() {
         subtasks.push(subtaskText);
         inputSubtask.value = '';
         renderSubtasks()
+    }
 }
-}
+
 function renderSubtasks() {
     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
     createNewSubtaskContainer.innerHTML = '';
-    
+
     for (let m = 0; m < subtasks.length; m++) {
         let newSubtasks = subtasks[m];
         createNewSubtaskContainer.innerHTML += Join.generateHTMLAddSubtask(newSubtasks, m);
     }
 }
-function renderTaskContacts(){
+
+function renderTaskContacts() {
     let taskContactList = document.getElementById('taskContactList');
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];
         taskContactList.innerHTML += account.tinyCardCheck(i);
-        
+
     }
 }
-function deleteSubtask(m){
+
+function deleteSubtask(m) {
     subtasks.splice(m, 1)
     renderSubtasks();
 }
-function editSubtask(m){
+
+function editSubtask(m) {
     let editableTask = document.getElementById(`todoSubtask${m}`)
     editableTask.setAttribute('contenteditable', true)
     editableTask.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.keyCode === 13){
+        if (event.key === 'Enter' || event.keyCode === 13) {
             if (editableTask.value != "")
-            subtasks[m] = editableTask.textContent;
+                subtasks[m] = editableTask.textContent;
             editableTask.setAttribute('contenteditable', false)
             renderSubtasks()
         }
     })
 }
-function renderContacts(){
+
+function renderContacts() {
     let contactsList = document.getElementById('contactsList')
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];
-        contactsList.innerHTML += account.tinyCard(i)        
+        contactsList.innerHTML += account.tinyCard(i)
     }
 }
-function showContact(x){
+
+function showContact(x) {
     console.log(x);
 }
 // Final Pages
@@ -385,6 +409,7 @@ function summeryPage() {
     showSideAndHead()
     content.innerHTML = Join.summeryContent();
 }
+
 function boardPage() {
     // loadAll()
     body.innerHTML = "";
@@ -394,6 +419,7 @@ function boardPage() {
     content.innerHTML = Join.boardContent();
     Join.renderTask();
 }
+
 function contactsPage() {
     // loadAll()
     body.innerHTML = "";
@@ -403,6 +429,7 @@ function contactsPage() {
     content.innerHTML = Join.contactsContent();
     renderContacts()
 }
+
 function helpPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -410,6 +437,7 @@ function helpPage() {
     showSideAndHead()
     content.innerHTML = Join.helpContent();
 }
+
 function privacyPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -417,6 +445,7 @@ function privacyPage() {
     showSideAndHead()
     content.innerHTML = Join.privacyContent();
 }
+
 function legalPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -424,6 +453,7 @@ function legalPage() {
     showSideAndHead()
     content.innerHTML = Join.legalNoticeContent();
 }
+
 function addTaskPage() {
     // loadAll()
     body.innerHTML = "";
@@ -433,4 +463,3 @@ function addTaskPage() {
     content.innerHTML = Join.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
 }
-

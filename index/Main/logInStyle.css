@@ -19,6 +19,34 @@ a {
     margin-top: 40px;
 }
 
+.log-in-side-button {
+    border: none;
+    width: 91px;
+    height: 49px;
+    padding: 15px, 16px, 15px, 16px;
+    border-radius: 8px;
+    gap: 10px;
+    background: var(--general-button-inactive);
+    color: #ffffff;
+    letter-spacing: 0em;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.log-in-side-button:hover {
+    cursor: pointer;
+    background-color: var(--general-button-hover);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: 0.1s ease-in-out;
+}
+
+.log-in-side-button:active {
+    background-color: var(--general-button-active);
+}
+
 .frame-156 {
     display: flex;
     justify-content: center;
@@ -182,12 +210,20 @@ section {
     border-radius: 8px;
     border: 1px solid black;
     gap: 10px;
+    letter-spacing: 0em;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
 }
 
 .guest-login-style:hover {
+    cursor: pointer;
     background-color: var(--white);
     border: 1px solid var(--lightblue);
     color: var(--lightblue);
+    transition: 0.1s ease-in-out;
 }
 
 .guest-login-style:active {
