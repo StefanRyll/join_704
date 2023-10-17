@@ -1,4 +1,6 @@
 let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
+let taskOutput = "";
+
 // const fs = require('fs');
 let Join = new Page()
 // Accounts
@@ -32,10 +34,10 @@ Join.accounts.push(user12)
 
 
 // Tasks
-let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", 2023, 9, 30, "Medium", "User Story")
-let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", 2023, 9, 30, "Medium", "User Story")
-let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", 2023, 9, 29, "Medium", "User Story")
-let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", 2023, 10, 10, "Medium", "User Story")
+let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", "2023-9-30", "Medium", "User Story")
+let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", "2023-9-30", "Medium", "User Story")
+let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", "2023-9-29", "Medium", "User Story")
+let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", "2023-1-10", "Medium", "User Story")
 task01.switchStatus("1");
 Join.tasks.push(task01);
 Join.tasks.push(task02);
@@ -191,10 +193,9 @@ function createTaskFromBoard(x = 0) {
     const assignedUsers = readAssignment()
     const desc = document.getElementById("boardTaskDescription").value;
     const date = document.getElementById("datum").value;
-    const prio = "Wichtig"//getPrio();
-    const medium = document.getElementById('btnMediumYellow').value;
+    const prio = taskOutput;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, assignedUsers , desc, date, prio, category, medium, subtasks);
+    let newTask = new Task(title, assignedUsers , desc, date, prio, category, subtasks);
     if (x == "1"){
         newTask.progress = true;
     }
@@ -205,7 +206,7 @@ function createTaskFromBoard(x = 0) {
         newTask.todo = true;
     }
     Join.tasks.push(newTask)
-    clearInputs(title, desc, assignedUsers, date, category, medium);
+    clearInputs(title, desc, assignedUsers, date, category);
     subtasks = []
     closeAddTask()
     // saveAll()
@@ -222,12 +223,31 @@ function readAssignment(){
     }
     return assignedUsers;
 }
-function clearInputs(title, description, contact, date, newCategory, medium) {
+function readPrio(){
+    let urgent = document.getElementById('btnUrgentWhite');
+    let medium = document.getElementById('btnMediumWhite');
+    let low = document.getElementById('btnLowWhite');
+    let output = "";
+    urgent.addEventListener('click', ()=>{
+        output = "Urgent";
+        console.log(output);
+    })
+    medium.addEventListener('click', ()=>{
+        output = "Medium";
+        console.log(output);
+    })
+    low.addEventListener('click', ()=>{
+        output = "Low";
+        console.log(output);
+    })
+    return output
+}
+function clearInputs(title, description, contact, date, newCategory) {
     title.value = '';
     description.value = '';
     contact.value = '';
     date.value = '';
-    medium.value = '';
+    // medium.value = '';
     newCategory.value = "Select task category";
 }
 function toggleContactsAssign() {

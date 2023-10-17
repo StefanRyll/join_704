@@ -207,11 +207,11 @@ class Page {
     summeryContent() {
         let daytime = this.sayDaytime()
         let doneTasks = this.checkTasksDone()
-        // let nextDeadline = this.nextDeadline().date
-        // let nDDay = nextDeadline.getDate()
-        // let nDMonth = nextDeadline.getMonth()
-        // let nDYear = nextDeadline.getFullYear()
-        // let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
+        let nextDeadline = this.nextDeadline().date
+        let nDDay = nextDeadline.getDate()
+        let nDMonth = nextDeadline.getMonth()
+        let nDYear = nextDeadline.getFullYear()
+        let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
         return /*html*/ `
         <div id="summery" class="summery">
             <div class="summeryHeadline">
@@ -561,6 +561,22 @@ class Page {
         let addTask = document.getElementById('addTask');
         addTask.innerHTML = '';
         addTask.innerHTML += this.generateHTMLaddTask(x);
+
+        // Prio Funktion
+        const urgent = document.getElementById('btnUrgentWhite');
+        const medium = document.getElementById('btnMediumWhite');
+        const low = document.getElementById('btnLowWhite');
+        urgent.addEventListener('click', ()=>{
+            taskOutput = "Urgent";
+        })
+        medium.addEventListener('click', ()=>{
+            taskOutput = "Medium";
+        })
+        low.addEventListener('click', ()=>{
+            taskOutput = "Low";
+        })
+    
+
     }
     generateHTMLaddTask(x) {
         return /*html*/`
@@ -777,6 +793,7 @@ class Page {
         </button>`
     }
     generateHTMLPrio() {
+
         return /*html*/`
         <button id="btnLowWhite" onclick="btnTaskPrio('btnLowWhite')" class="category-button category-button-standard">
           <p>Low</p>
@@ -999,7 +1016,7 @@ class Task {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
-        this.date = new Date();
+        this.date = new Date(date);
         this.prio = prio;
         this.Categroy = Categroy;
         this.todo = false;
