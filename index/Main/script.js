@@ -269,6 +269,7 @@ function btnTaskPrio(prioBtn) {
     let urgentRed = document.getElementById('btnUrgentRed');
     let mediumYellow = document.getElementById('btnMediumYellow');
     let lowGreen = document.getElementById('btnLowGreen');
+    
     if (prioBtn == 'btnUrgentWhite') {
         urgent.classList.add('d-none');
         urgentRed.classList.remove('d-none');
