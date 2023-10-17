@@ -941,6 +941,12 @@ class Page {
      * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
      */
 }
+/**
+ * Contacts sind die Grundlage: 
+ * Accounts sind eine Erweiterung "Vererbung" von Contacts, da diese ein Passwort haben sich anmelden können usw. 
+ * allerding wäre alles rund, wenn jeder, der als Contakt hinzugefügt wird Eine Email erhält, "Mach dir doch einen Account".
+ * Zt Usability, kann halt keiner hinterher sagen, er hat von dem Projekt "nix gewusst". 
+ */
 class Contact{
     constructor(name, email, tel){
         this.name = name;
