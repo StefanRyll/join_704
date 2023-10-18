@@ -19,11 +19,11 @@ body {
     margin-bottom: 0;
     padding-bottom: 0;
     padding: 32px 24px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .add-new-button {
-    padding: 22.5px 52px;
+    padding: 22.5px 0;
 }
 
 .button-width {
@@ -45,7 +45,7 @@ body {
 }
 
 .alphabet-section {
-    width: 352px;
+    width: 282px;
     display: flex;
     padding: 17px 36px;
     flex-direction: column;
@@ -81,6 +81,20 @@ body {
     border-radius: 10px;
     background: var(--version-2-main-color, #2A3647);
     color: white;
+}
+
+.mail {
+    color: rgba(0, 124, 238, 1);
+    margin: 0;
+}
+
+.name {
+    margin: 0;
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 .initials-logo {

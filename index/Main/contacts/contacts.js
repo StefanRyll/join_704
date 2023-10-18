@@ -71,8 +71,8 @@ function renderContacts() {
                 <div class="contactfield" onclick="showDetails(${i})">
                     <div class="initials-logo" style="background-color: ${contact.color}">${userInitials}</div>
                     <div class="contact">
-                        <span class="name"><p><b>${contact.name}</b></p></span>
-                        <span class="mail"><p><b>${contact.email}</b></p></span>
+                        <span class="name">${contact.name}</span>
+                        <span class="mail">${contact.email}</span>
                     </div>
                 </div>
             </div>
