@@ -697,7 +697,6 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  <!-- ${this.generateHTMLAddSubtask()} -->
                   ${this.generateHTMLButtons(x)}
             </div>
           `
@@ -902,16 +901,29 @@ class Page {
     }
     generateHTMLAddSubtask(x = "test", m) {
         return /*html*/ `
+            <div id="containerTodoSubtask${m}">
                 <ul>
                     <li id="todoSubtask${m}" >${x}</li>
                     <div class="subtask-img">
                         <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="editSubtask(${m})">
+                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="toggleSubtask(${m})">
                     </div>
                 </ul>
+            </div>
+            <div id="fixTodoSubtask${m}" class="fix-todo-subtask d-none">
+                <form class="fix-container">
+                        <input id="editFixSubtask" type="text" placeholder="" value="${x}">
+                    <div>
+                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
+                        <img class="subtask-line" src="/assets/img/subtask_seperator.png" alt="">
+                        <img src="/assets/img/subtask-accept.png" alt="" onclick="toggleSubtask(${m})">
+                    </div>
+                </form>
+            </div>
         `
     }
+    
     generateHTMLButtons(x) {
         return /*html*/ `
             <div class="bottom-button" >

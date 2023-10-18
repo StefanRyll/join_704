@@ -481,6 +481,30 @@
     background-color: #FFF !important;
 }
 
+.fix-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 27em;
+    padding-right: 0.5em;
+    height: 2em;
+    border-bottom: solid 1px #005DFF;
+    background-color: white;
+}
+
+.fix-container img:hover {
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 100%;
+}
+
+.fix-todo-subtask input {
+    border: none;
+    outline: none;
+    height: 2em;
+    width: 26em;
+}
+
 .bottom-button {
     display: flex;
     position: absolute;

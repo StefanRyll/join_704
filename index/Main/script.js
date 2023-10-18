@@ -362,6 +362,22 @@ function renderSubtasks() {
     }
 }
 
+
+function toggleSubtask(m) {
+    let containerTodoSubtask = `containerTodoSubtask${m}`;
+    let fixTodoSubtask = `fixTodoSubtask${m}`;
+    document.getElementById(containerTodoSubtask).classList.toggle('d-none');
+    document.getElementById(fixTodoSubtask).classList.toggle('d-none');
+    fixNewSubatsk(containerTodoSubtask, m);
+}
+
+function fixNewSubatsk(containerTodoSubtask) {
+    let editFixSubtask = document.getElementById('editFixSubtask').value;
+    console.log('show Subtask', editFixSubtask);
+    containerTodoSubtask.push(editFixSubtask);
+};
+
+
 function renderTaskContacts() {
     let taskContactList = document.getElementById('taskContactList');
     for (let i = 0; i < Join.accounts.length; i++) {
