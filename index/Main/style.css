@@ -121,9 +121,10 @@ footer {
     align-items: flex-start;
     gap: 16px;
 }
-#content{
+
+#content {
     position: absolute;
-    height:71%;
+    height: 71%;
     text-align: justify;
     text-overflow: clip;
     padding: 90px;
@@ -132,4 +133,26 @@ footer {
     right: -15px;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: var( --general-button-inactive);
+    border-radius: 10px;
+    height: 60px;
 }
