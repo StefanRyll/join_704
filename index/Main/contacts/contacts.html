@@ -21,10 +21,12 @@
     <div w3-include-html="./sidebarAndHeader.html"></div>
 
     <!----------------------------- HEADER - BOARD ----------------------------------->
-
+    <section>
+        <div class="add-contact-overlay d-none slide-in" id="addContactOverlay"></div>
+    </section>
     <section class="contacts-list-section">
         <div class="add-new-button" id="addNewButton">
-            <button class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
+            <button onclick="openAddNewContact()" class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
         </div>
         <nav class="contacts-list" id="contactsList"></nav>
     </section>
@@ -36,6 +38,8 @@
         </div>
         <div class="contact-container slide-in" id="detailsContainer"></div>
     </section>
+
+
 </body>
 
 </html>

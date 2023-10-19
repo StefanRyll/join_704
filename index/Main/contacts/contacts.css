@@ -4,6 +4,16 @@ body {
     height: 100vh;
 }
 
+.slide-in {
+    height: 100%;
+    transform: translateX(200%);
+    transition: transform 0.7s ease;
+}
+
+.slide-in.active {
+    transform: translateX(0);
+}
+
 
 /* ====================================================== <contactslist> =============================================================== */
 
@@ -144,16 +154,6 @@ body {
 
 /* ====================================================== <contacts-details> =============================================================== */
 
-.slide-in {
-    height: 100%;
-    transform: translateX(100%);
-    transition: transform 0.7s ease;
-}
-
-.slide-in.active {
-    transform: translateX(0);
-}
-
 .contacts-view {
     width: 100%;
 }
@@ -205,4 +205,25 @@ body {
 .editIcon:hover img {
     filter: brightness(3.5);
     transition: 0.1s ease-in-out;
+}
+
+
+/* ====================================================== </contacts-details> =============================================================== */
+
+
+/* ====================================================== <add new overlay> =============================================================== */
+
+.add-contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+    border-radius: 30px;
+    background: #FFF;
+    z-index: 2;
 }
