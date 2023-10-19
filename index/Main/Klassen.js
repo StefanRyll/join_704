@@ -197,8 +197,6 @@ class Page {
                         </div>
                     </form>
             </div>
-        
-
         `
     }
     forceSignIn(x) {
@@ -590,10 +588,10 @@ class Page {
     generateHTMLaddTaskWindow() {
         return /*html*/ `
                 <div class="add-taskWindow">
-                 ${this.generateHTMLLeftSide()}
-                 ${this.generateHTMLSeperator()}
-                  ${this.generateHTMLRightSide()}
-                  ${this.generateHTMLCloseButtonInSVG()}
+                    ${this.generateHTMLLeftSide()}
+                    ${this.generateHTMLSeperator()}
+                    ${this.generateHTMLRightSide()}
+                    ${this.generateHTMLCloseButtonInSVG()}
                 </div>
           `
     }

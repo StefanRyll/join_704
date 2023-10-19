@@ -325,12 +325,12 @@ class Page {
                 <p>Add task</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <mask id="mask0_87727_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
-                      <rect width="32" height="32" fill="#D9D9D9"/>
+                    <rect width="32" height="32" fill="#D9D9D9"/>
                     </mask>
                     <g mask="url(#mask0_87727_3931)">
-                      <path d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z" fill="white"/>
+                    <path d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z" fill="white"/>
                     </g>
-                  </svg>
+                </svg>
             </button>
         </div>
     </div>
@@ -344,7 +344,7 @@ class Page {
                 <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path  d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
+                </svg>
             </div>
         </div>
         <div onclick="openAddTask(1)" class="board-actionbar">
@@ -353,7 +353,7 @@ class Page {
                 <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg"  width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
+                </svg>
             </div>
         </div>
         <div onclick="openAddTask(2)" class="board-actionbar">
@@ -362,7 +362,7 @@ class Page {
                 <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
+                </svg>
             </div>
         </div>
         <div class="board-actionbar">
@@ -392,19 +392,19 @@ class Page {
         let kambanDone = document.getElementById('kambanDone');
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
-            if (task.todo){
+            if (task.todo) {
                 kambanTodo.innerHTML += task.tinyTaskCard()
             }
-            else if(task.progress){
+            else if (task.progress) {
                 kambanInprogress.innerHTML += task.tinyTaskCard()
             }
-            else if(task.feedback){
+            else if (task.feedback) {
                 kambanFeedback.innerHTML += task.tinyTaskCard()
             }
-            else if(task.done){
+            else if (task.done) {
                 kambanDone.innerHTML += task.tinyTaskCard()
             }
-            else{
+            else {
                 kambanTodo.innerHTML += task.tinyTaskCard()
             }
         }
@@ -549,7 +549,7 @@ class Page {
         return /*html*/`
               <div id="slideAddTask" class="bg-task">
                 <div class="add-task">
-                 ${this.generateHTMLLeftSide()}
+                 <!-- ${this.generateHTMLLeftSide()} -->
                  ${this.generateHTMLSeperator()}
                   ${this.generateHTMLRightSide(x)}
                   ${this.generateHTMLCloseButtonInSVG()}
@@ -1114,32 +1114,32 @@ class Task {
         let taskCard = document.getElementById('taskCard')
         taskCard.innerHTML = this.taskCardEdit()
     }
-    switchStatus(x = 0){
-        if (x == "1"){
+    switchStatus(x = 0) {
+        if (x == "1") {
             this.todo = false;
             this.progress = true;
             this.feedback = false;
             this.done = false;
         }
-        else if (x == "2"){
+        else if (x == "2") {
             this.todo = false;
             this.progress = false;
             this.feedback = true;
             this.done = false;
         }
-        else if (x == "3"){
+        else if (x == "3") {
             this.todo = false;
             this.progress = false;
             this.feedback = false;
             this.done = true;
         }
-        else{
+        else {
             this.todo = true;
             this.progress = false;
             this.feedback = false;
             this.done = false;
         }
-        
+
     }
 
 }
