@@ -127,7 +127,14 @@ function getColor(name) {
     return colors[colorIndex];
 }
 
+function slideStart() {
+    let slideInElement = document.querySelector('.slide-in');
+    slideInElement.classList.add('active');
+}
+
+
 function showDetails(i) {
+    slideStart();
     const contact = user[i];
     const userInitials = getInitials(contact.name);
     const detailsContent = /* html */ `
@@ -140,7 +147,7 @@ function showDetails(i) {
                     <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
                 </div>
                 <div class="deleteIcon">
-                    <img src="../IMG/delete.png"> <span>Delete </span>
+                    <img class="deleteSymbol" src="../IMG/delete.png"> <span>Delete</span>
                 </div>
             </a>
         </div>
@@ -154,6 +161,7 @@ function showDetails(i) {
     </div>
 `;
     document.getElementById("detailsContainer").innerHTML = detailsContent;
+
 }
 
 async function includeHTML() {

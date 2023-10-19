@@ -144,6 +144,16 @@ body {
 
 /* ====================================================== <contacts-details> =============================================================== */
 
+.slide-in {
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 0.7s ease;
+}
+
+.slide-in.active {
+    transform: translateX(0);
+}
+
 .contacts-view {
     width: 100%;
 }
@@ -169,4 +179,30 @@ body {
 
 .name-headline {
     font-weight: 500;
+}
+
+.contactsIcons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.deleteIcon,
+.editIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteIcon:hover,
+.editIcon:hover {
+    cursor: pointer;
+    color: var(--lightblue);
+    transition: 0.1s ease-in-out;
+}
+
+.deleteIcon:hover img,
+.editIcon:hover img {
+    filter: brightness(3.5);
+    transition: 0.1s ease-in-out;
 }
