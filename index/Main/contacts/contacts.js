@@ -153,8 +153,6 @@ function getColor(name) {
     return colors[colorIndex];
 }
 
-
-
 /**
  * This function renders the user's detailed data
  * 
@@ -215,7 +213,9 @@ function openAddNewContact() {
     addContactForm.classList.remove('d-none');
     addContactForm.innerHTML = '';
     addContactForm.innerHTML = generateHtmlAddContact();
-    slideStart();
+    setTimeout(() => {
+        slideStart();
+    }, 100);
 }
 
 function generateHtmlAddContact() {

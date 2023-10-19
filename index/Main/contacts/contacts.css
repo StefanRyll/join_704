@@ -7,7 +7,7 @@ body {
 .slide-in {
     height: 100%;
     transform: translateX(200%);
-    transition: transform 0.7s ease;
+    transition: transform 0.3s ease;
 }
 
 .slide-in.active {
