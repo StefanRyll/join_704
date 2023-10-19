@@ -315,19 +315,24 @@ function renderSubtasks() {
 }
 
 
-function toggleSubtask(m) {
+function changeSubtask(m) {
     let containerTodoSubtask = `containerTodoSubtask${m}`;
     let fixTodoSubtask = `fixTodoSubtask${m}`;
-    document.getElementById(containerTodoSubtask).classList.toggle('d-none');
-    document.getElementById(fixTodoSubtask).classList.toggle('d-none');
-    fixNewSubatsk(containerTodoSubtask, m);
+    document.getElementById(containerTodoSubtask).classList.add('d-none');
+    document.getElementById(fixTodoSubtask).classList.remove('d-none');
 }
 
-function fixNewSubatsk(containerTodoSubtask) {
-    let editFixSubtask = document.getElementById('editFixSubtask').value;
-    console.log('show Subtask', editFixSubtask);
-    containerTodoSubtask.push(editFixSubtask);
-};
+function fixSubtasks(m) {
+    let containerTodoSubtask = `containerTodoSubtask${m}`;
+    let fixTodoSubtask = `fixTodoSubtask${m}`;
+    document.getElementById(containerTodoSubtask).classList.remove('d-none');
+    document.getElementById(fixTodoSubtask).classList.add('d-none');
+    
+    let editFixSubtask = document.getElementById('editFixSubtask');
+    let todoSubtask = document.getElementById(`todoSubtask${m}`);
+    todoSubtask.textContent = editFixSubtask.value;
+    editFixSubtask.innerHTML = '';
+}
 
 
 function renderTaskContacts() {
@@ -335,7 +340,6 @@ function renderTaskContacts() {
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];
         taskContactList.innerHTML += account.tinyCardCheck(i);
-
     }
 }
 
