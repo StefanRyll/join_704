@@ -66,6 +66,20 @@ async function initContacts() {
     renderContacts();
 }
 
+/**
+ * This function is for a container to start a slide from the right side 
+ * 
+ */
+function slideStart() {
+    let slideInElement = document.querySelector('.slide-in');
+    slideInElement.classList.add('active');
+}
+
+/**
+ * This function generates the user array through a loop and renders it into html
+ * 
+ */
+
 function renderContacts() {
     let contactsList = "";
     let currentInitials = "";
@@ -112,6 +126,12 @@ function renderContacts() {
     document.getElementById("contactsList").innerHTML = contactsList;
 }
 
+/**
+ * This function creates and sorts the user initials
+ * 
+ * @param {string} name - Is needed to recognize the initials from the user names. It is passed in renderContacts().
+ * @returns 
+ */
 function getInitials(name) {
     const parts = name.split(" ");
     let initials = parts[0][0];
@@ -121,18 +141,26 @@ function getInitials(name) {
     return initials.toUpperCase();
 }
 
+/**
+ * This function creates and random the bg-color of the initials container
+ * 
+ * @param {string} name - is needed to add up the first letters and assign them to the colors array.
+ * @returns 
+ */
 function getColor(name) {
     const sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
     const colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
     return colors[colorIndex];
 }
 
-function slideStart() {
-    let slideInElement = document.querySelector('.slide-in');
-    slideInElement.classList.add('active');
-}
 
 
+/**
+ * This function renders the user's detailed data
+ * 
+ * @param {string} i - is required to access the individual users
+ * @returns 
+ */
 function showDetails(i) {
     slideStart();
     const contact = user[i];
@@ -164,6 +192,9 @@ function showDetails(i) {
 
 }
 
+/**
+ *  this function is required to render the header and sidebar
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll("[w3-include-html]"); //  Wir rufen unseren DIV im Index auf
     for (let i = 0; i < includeElements.length; i++) {
@@ -177,4 +208,23 @@ async function includeHTML() {
             element.innerHTML = "Page not found";
         }
     }
+}
+
+function openAddNewContact() {
+    let addContactForm = document.getElementById('addContactOverlay');
+    addContactForm.classList.remove('d-none');
+    addContactForm.innerHTML = '';
+    addContactForm.innerHTML = generateHtmlAddContact();
+    slideStart();
+}
+
+function generateHtmlAddContact() {
+    return /*html*/ `
+    <div class="overlay-container slide-in">
+        <img src="../IMG/LogoWhite.png" alt="join-logo">
+        <h1>Add contact</h1>
+        <span>Tasks are better with a team</span>
+        <img src="../IMG/vector-5.png">
+    </div>
+    `
 }
