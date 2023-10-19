@@ -220,7 +220,7 @@ function openAddNewContact() {
 
 function generateHtmlAddContact() {
     return /*html*/ `
-    <div>
+    <div class="overlay-container slide-in">
         <img src="../IMG/LogoWhite.png" alt="join-logo">
         <h1>Add contact</h1>
         <span>Tasks are better with a team</span>
