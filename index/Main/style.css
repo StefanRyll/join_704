@@ -11,6 +11,10 @@
     --link-color: #29abe2;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     box-sizing: border-box;
     /* display: flex; */
@@ -135,6 +139,9 @@ footer {
     overflow-y: scroll;
 }
 
+
+/* ====================================================== <scrollbalken> =============================================================== */
+
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -156,3 +163,6 @@ footer {
     border-radius: 10px;
     height: 60px;
 }
+
+
+/* ====================================================== </scrollbalken> =============================================================== */
