@@ -19,6 +19,8 @@
     color: white
 }
 .tinyAccountCard{
+    flex-wrap: nowrap;
+    position: relative;
     width: 100%;
     height: 56px;
     display: flex;
@@ -26,6 +28,13 @@
     align-items: center;
     gap: 16px;
     font-size: 19px;
+}
+
+.tinyAccountCard:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1px;
 }
 /* Von Stefan */
 .contacts-list-section {

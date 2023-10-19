@@ -1,30 +1,30 @@
 class Page {
     constructor() {
-            this.accounts = [];
-            this.signedAccount = null;
-            this.tasks = [];
-        }
-        // Methoden
+        this.accounts = [];
+        this.signedAccount = null;
+        this.tasks = [];
+    }
+    // Methoden
     sayDaytime() {
-            let datum = new Date();
-            let daytime = datum.getHours()
-            if (daytime <= 23 && daytime >= 18) {
-                return "Good&nbsp;Evening";
-            } else if (daytime >= 6 && daytime <= 12) {
-                return "Good&nbsp;Morning";
-            } else if (daytime >= 0 && daytime <= 5) {
-                return "Good&nbsp;Night"
-            } else {
-                return "Good&nbsp;Afternoon";
-            }
+        let datum = new Date();
+        let daytime = datum.getHours()
+        if (daytime <= 23 && daytime >= 18) {
+            return "Good&nbsp;Evening";
+        } else if (daytime >= 6 && daytime <= 12) {
+            return "Good&nbsp;Morning";
+        } else if (daytime >= 0 && daytime <= 5) {
+            return "Good&nbsp;Night"
+        } else {
+            return "Good&nbsp;Afternoon";
         }
-        // Components
-        /**
-         *  Diese Methode stellt das Log In Fenster da
-         * @returns {string} -- 
-         * */
+    }
+    // Components
+    /**
+     *  Diese Methode stellt das Log In Fenster da
+     * @returns {string} -- 
+     * */
     logInContent() {
-            return /*html*/ `
+        return /*html*/ `
             <header class="login-header">
                 <div class="frame-156">
                     <p>Not a Join user?</p>
@@ -75,11 +75,11 @@ class Page {
                 </footer>
             </section>
         `
-        }
-        /**
-         * Die Methode stellt die Logo Animation am anfang dar
-         * @returns {string}
-         */
+    }
+    /**
+     * Die Methode stellt die Logo Animation am anfang dar
+     * @returns {string}
+     */
     startAnimation() {
         body.innerHTML = "";
         return /*html*/ `
@@ -207,11 +207,11 @@ class Page {
     summeryContent() {
         let daytime = this.sayDaytime()
         let doneTasks = this.checkTasksDone()
-            // let nextDeadline = this.nextDeadline().date
-            // let nDDay = nextDeadline.getDate()
-            // let nDMonth = nextDeadline.getMonth()
-            // let nDYear = nextDeadline.getFullYear()
-            // let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
+        // let nextDeadline = this.nextDeadline().date
+        // let nDDay = nextDeadline.getDate()
+        // let nDMonth = nextDeadline.getMonth()
+        // let nDYear = nextDeadline.getFullYear()
+        // let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
 
         return /*html*/ `
         <div id="summery" class="summery">
@@ -289,17 +289,17 @@ class Page {
         })
         console.log(deadlines);
         return deadlines[0]
-            // let today = new Date()
-            // let dif = 31536000000;
-            // for (let i = 0; i < this.tasks.length; i++) {
-            //     const task = this.tasks[i].date;
-            //     let difTask = Math.abs(task - today);
-            //     console.log(this.tasks[i].title);
-            //     if (difTask <= dif) {
-            //         dif = difTask;
-            //         return this.tasks[i];
-            //     }
-            // }
+        // let today = new Date()
+        // let dif = 31536000000;
+        // for (let i = 0; i < this.tasks.length; i++) {
+        //     const task = this.tasks[i].date;
+        //     let difTask = Math.abs(task - today);
+        //     console.log(this.tasks[i].title);
+        //     if (difTask <= dif) {
+        //         dif = difTask;
+        //         return this.tasks[i];
+        //     }
+        // }
     }
     checkTasksDone() {
         let count = 0
@@ -563,16 +563,16 @@ class Page {
         const urgent = document.getElementById('btnUrgentWhite');
         const medium = document.getElementById('btnMediumWhite');
         const low = document.getElementById('btnLowWhite');
-        urgent.addEventListener('click', ()=>{
+        urgent.addEventListener('click', () => {
             taskOutput = "Urgent";
         })
-        medium.addEventListener('click', ()=>{
+        medium.addEventListener('click', () => {
             taskOutput = "Medium";
         })
-        low.addEventListener('click', ()=>{
+        low.addEventListener('click', () => {
             taskOutput = "Low";
         })
-    
+
 
     }
     generateHTMLaddTask(x) {
@@ -639,13 +639,19 @@ class Page {
                           <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                         </div>
                         <div id="assignedToContacts" class="checkbox-container">
-                            ${this.generateHTMLCheckbox()}
-                            ${this.generateHTMLAddToContactButton()}
+                            <div class="checkbox-container-style">
+                                ${this.generateHTMLCheckbox()}
+                                <div class="checkbox-container-button">
+                                    ${this.generateHTMLAddToContactButton()}
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
         `
     }
+   
     generateHTMLSelectContactsToogleFunction() {
         return /*html*/ `
                     <div id="selectContacts" class="assign-container">
@@ -656,7 +662,7 @@ class Page {
     }
     generateHTMLCheckbox() {
         return /*html*/ `
-            <div id="taskContactList">
+            <div  id="taskContactList">
 
             </div>
             
@@ -664,7 +670,7 @@ class Page {
             `
     }
     generateHTMLAddToContactButton() {
-            return /*html*/ `
+        return /*html*/ `
           <button class="add-new-contact" >Add new contact
               <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                   <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
@@ -676,11 +682,11 @@ class Page {
               </svg>
           </button>
         `
-        }
-        // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
-        //     document.getElementById('selectContacts').classList.toggle('d-none');
-        //     document.getElementById('closeContacts').classList.toggle('d-none');
-        // }
+    }
+    // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
+    //     document.getElementById('selectContacts').classList.toggle('d-none');
+    //     document.getElementById('closeContacts').classList.toggle('d-none');
+    // }
     generateHTMLSeperator() {
         return /*html*/ `
               <div class="seperator-add-task">
@@ -842,7 +848,7 @@ class Page {
         `
     }
     generateHTMLSelectCategory() {
-            return /*html*/ `
+        return /*html*/ `
               <div class="select-category">
                 <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
                   <span id="technicalTask">Techincal Task</span>
@@ -852,34 +858,34 @@ class Page {
                 </div>
               </div>
         `
-        }
-        /**This Function close and open the Categories
-         * @param {string}  showSelectCategory show and hidden div
-         */
-        // toggleCategory() { // Onclick in script.js
-        //     document.getElementById('showSelectCategory').classList.toggle('d-none');
-        //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
-        // }
-        /**This is a select function for Input - > Value
-         * @param {string} technicalTask  select the category Technical Task
-         */
-        // selectCategoryTechnical() { // onclick in script.js
-        //     let technicalTask = document.getElementById('technicalTask').textContent;
-        //     let changeInputField = document.getElementById('taskCategoryInput');
-        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-        //     document.getElementById('showSelectCategory').classList.add('d-none');
-        //     changeInputField.value = technicalTask;
-        // }
-        /**This is a select function for Input - > Value
-         * @param {string} userStory  select the category User Story
-         */
-        // selectCategoryStory() { // onclick in script.js
-        //     let userStory = document.getElementById('userStory').textContent;
-        //     let changeInputField = document.getElementById('taskCategoryInput');
-        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-        //     document.getElementById('showSelectCategory').classList.add('d-none');
-        //     changeInputField.value = userStory;
-        // }
+    }
+    /**This Function close and open the Categories
+     * @param {string}  showSelectCategory show and hidden div
+     */
+    // toggleCategory() { // Onclick in script.js
+    //     document.getElementById('showSelectCategory').classList.toggle('d-none');
+    //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
+    // }
+    /**This is a select function for Input - > Value
+     * @param {string} technicalTask  select the category Technical Task
+     */
+    // selectCategoryTechnical() { // onclick in script.js
+    //     let technicalTask = document.getElementById('technicalTask').textContent;
+    //     let changeInputField = document.getElementById('taskCategoryInput');
+    //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+    //     document.getElementById('showSelectCategory').classList.add('d-none');
+    //     changeInputField.value = technicalTask;
+    // }
+    /**This is a select function for Input - > Value
+     * @param {string} userStory  select the category User Story
+     */
+    // selectCategoryStory() { // onclick in script.js
+    //     let userStory = document.getElementById('userStory').textContent;
+    //     let changeInputField = document.getElementById('taskCategoryInput');
+    //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+    //     document.getElementById('showSelectCategory').classList.add('d-none');
+    //     changeInputField.value = userStory;
+    // }
     generateHTMLSubtask() {
         return /*html*/ `
         <div class="board-task-input button-hover">
@@ -903,11 +909,11 @@ class Page {
         return /*html*/ `
             <div id="containerTodoSubtask${m}">
                 <ul>
-                    <li id="todoSubtask${m}" >${x}</li>
+                    <li id="todoSubtask${m}">${x}</li>
                     <div class="subtask-img">
                         <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="toggleSubtask(${m})">
+                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="changeSubtask(${m})">
                     </div>
                 </ul>
             </div>
@@ -917,13 +923,13 @@ class Page {
                     <div>
                         <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img class="subtask-line" src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask-accept.png" alt="" onclick="toggleSubtask(${m})">
+                        <img src="/assets/img/subtask-accept.png" alt="" onclick="fixSubtasks(${m})">
                     </div>
                 </form>
             </div>
         `
     }
-    
+
     generateHTMLButtons(x) {
         return /*html*/ `
             <div class="bottom-button" >
@@ -942,7 +948,7 @@ class Page {
         `
     }
     generateHTMLCloseButtonInSVG() {
-            return /*html*/ `
+        return /*html*/ `
                 <div class="style-closebutton">
                   <svg onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -954,22 +960,22 @@ class Page {
                   </svg>
                 </div>
           `
-        }
-        /**
-         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
-         */
-        // openAddTask() { // onclick in script.js
-        //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
-        // }
-        /** 
-         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
-         */
+    }
+    /**
+     * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
+     */
+    // openAddTask() { // onclick in script.js
+    //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
+    // }
+    /** 
+     * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+     */
     closeAddTask() {
-            slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
-        }
-        /** 
-         * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
-         */
+        slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
+    }
+    /** 
+     * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
+     */
 }
 /**
  * Contacts sind die Grundlage: 
@@ -998,9 +1004,14 @@ class Contact {
     tinyCardCheck(x) {
         return /*html*/ `
         <div class="tinyAccountCard">
-            <div class="accountTag">${this.shortname}</div>
-            <div>${this.name}</div>
-            <input type="checkbox" name="" id="ac${x}">
+            <div class="board-addtask-addcontact-contact">
+                <div class="accountTag">${this.shortname}</div>
+                <div>${this.name}</div>
+            </div>
+            <!-- <input type="checkbox" name="" id="ac${x}"> -->
+            <div class="board-addtask-addcontact-checkbox">
+                <img src="IMG/checkboxEmpty.png" alt="">
+            </div>
         </div>
         `
     }
