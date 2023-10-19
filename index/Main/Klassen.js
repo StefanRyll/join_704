@@ -577,10 +577,10 @@ class Page {
         return /*html*/ `
               <div id="slideAddTask" class="bg-task">
                 <div class="add-task">
-                 ${this.generateHTMLLeftSide()}
-                 ${this.generateHTMLSeperator()}
-                  ${this.generateHTMLRightSide(x)}
-                  ${this.generateHTMLCloseButtonInSVG()}
+                    ${this.generateHTMLLeftSide()}
+                    ${this.generateHTMLSeperator()}
+                    ${this.generateHTMLRightSide(x)}
+                    ${this.generateHTMLCloseButtonInSVG()}
                 </div>
               </div>
           `
@@ -626,34 +626,52 @@ class Page {
                 </form>
         `
     }
+    // generateHTMLAssignedTo() {
+    //     return /*html*/ `
+    //             <div class="assigned-contact board-task-input">
+    //                 <p>Assigned to</p>
+    //                 ${this.generateHTMLSelectContactsToogleFunction()}
+    //                 <div id="closeContacts" class="open-assign-container2 d-none">
+    //                     <div class="assign-container assign-container-style">
+    //                       <input  type="text">
+    //                       <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
+    //                     </div>
+    //                     <div id="assignedToContacts" class="checkbox-container">
+    //                         <div class="checkbox-container-style">
+    //                             ${this.generateHTMLCheckbox()}
+    //                             <div class="checkbox-container-button">
+    //                                 ${this.generateHTMLAddToContactButton()}
+    //                             </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //     `
+    // }
+
     generateHTMLAssignedTo() {
-        return /*html*/ `
-                <div class="assigned-contact board-task-input">
-                    <p>Assigned to</p>
-                    ${this.generateHTMLSelectContactsToogleFunction()}
-                    <div id="closeContacts" class="open-assign-container2 d-none">
-                        <div class="assign-container assign-container-style">
-                          <input  type="text">
-                          <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
-                        </div>
-                        <div id="assignedToContacts" class="checkbox-container">
-                            <div class="checkbox-container-style">
-                                ${this.generateHTMLCheckbox()}
-                                <div class="checkbox-container-button">
-                                    ${this.generateHTMLAddToContactButton()}
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+        return /*html*/`
+            <div class="board-task-input">
+                <p>Assigned to</p>
+                ${this.generateHTMLSelectContactsToogleFunction()}
+                <div id="closeContacts" class="open-assign-container assign-container assign-container-style d-none">
+                    <div>
+                        <input type="text">
+                        <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
+                    </div>
+                    <div id="assignedToContacts" class="checkbox-container">
+                        ${this.generateHTMLCheckbox()} 
                     </div>
                 </div>
+            </div>
         `
     }
    
     generateHTMLSelectContactsToogleFunction() {
         return /*html*/ `
                     <div id="selectContacts" class="assign-container">
-                      <input  onclick="toggleContactsAssign()" type="button" value="Select contacts to assign" id="">
+                      <input onclick="toggleContactsAssign()" type="button" value="Select contacts to assign" id="">
                       <img onclick="toggleContactsAssign()" src="/assets/img/arrow_drop_downaa.png" alt="">
                     </div>
         `
