@@ -209,7 +209,7 @@ class Page {
         let nextDeadlineDate = nextDeadline.date; // Datum
         console.log(nextDeadlineDate)
         let nDDay = nextDeadlineDate.getDate()
-        let nDMonth = nextDeadlineDate.getMonth()
+        let nDMonth = nextDeadlineDate.getMonth() + 1
         let nDYear = nextDeadlineDate.getFullYear()
         let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
 
