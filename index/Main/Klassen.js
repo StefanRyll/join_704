@@ -689,9 +689,9 @@ class Page {
         `
     }
 
-    generateHTMLRenderShortNames(shortNames, o) {
+    generateHTMLRenderShortNames(names, x) {
         return /*html*/`
-            <div class="accountTag">${shortNames}</div>
+            <div id="addNewContainer${x}" class="accountTagUnderAssigned">${names}</div>
         `
     }
     // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
@@ -1021,10 +1021,10 @@ class Contact {
 
     generateHTMLCheckedNone(x) {
         return /*html*/`
-            <div id="tinyAccountCardCheckedNone${x}" class="checked-none">
+            <div onclick="addShortNames('tinyAccountCardCheckedNone', ${x}, '${this.shortname}')" id="tinyAccountCardCheckedNone${x}" class="checked-none">
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
-                        <div id="shortname${x}" class="accountTag">${this.shortname}</div>
+                        <div class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>
                     </div>
                     <!-- <input type="checkbox" name="" id="ac${x}"> -->
@@ -1038,7 +1038,7 @@ class Contact {
 
     generateHTMLChecked(x) {
         return /*html*/`
-            <div id="tinyAccountCardChecked${x}" class="checked d-none">
+            <div onclick="removeShortNames('tinyAccountCardChecked', ${x}, '${this.shortname}')" id="tinyAccountCardChecked${x}" class="checked d-none">
                 <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>

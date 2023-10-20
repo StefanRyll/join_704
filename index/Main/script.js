@@ -448,45 +448,30 @@ function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
 }
 
-function addNewContact(x) {
-    let containerShortName = document.getElementById('containerShortName');
-    containerShortName.innerHTML = '';
-    renderShortNames(containerShortName, x);
+
+function addNewContact() {
+    document.getElementById('closeContacts').classList.add('d-none');
+    document.getElementById('selectContacts').classList.remove('d-none');
 }
 
-function renderShortNames(container, x) {
-    for (let o = 0; o < Join.accounts.length; o++) {
-        let shortNames = Join.accounts[o]['shortname'];
-        let checked = `tinyAccountCardChecked${x}`
-        if (checked.id) {
-            container.innerHTML = Join.generateHTMLRenderShortNames(shortNames, o);
-        } else {
-            console.log('Fehler')
-        }
-        document.getElementById('closeContacts').classList.add('d-none');
-        document.getElementById('selectContacts').classList.remove('d-none');
-    }
+function addShortNames(tinyCard, x, name) {
+    renderShortNames(name, x);
 }
 
+function renderShortNames(name, x) {
+    let container = document.getElementById('containerShortName');
+    console.log(name);
+    container.innerHTML += Join.generateHTMLRenderShortNames(name, x);
 
-    
+}
 
-
-
-// function addNewContact(x) {
-//     let checkedContact = document.getElementById(`tinyAccountCardChecked${x}`);
-//     let containerShortName = document.getElementById('containerShortName');
-//     containerShortName.innerHTML = '';
-//     renderShortNames(containerShortName, checkedContact, x);
+// function removeShortNames(name) {
+//     container.innerHTML = '';
+//     renderShortNames();
 // }
 
-// function renderShortNames(container, checked, x) {
-//     if (checked.id.startsWith('tinyAccountCardChecked') && checked.id.endsWith(x)) {
-//         for (let o = 0; o < Join.accounts.length; o++) {
-//             let shortNames = Join.accounts[o]['shortname'];
-//             container.innerHTML += Join.generateHTMLRenderShortNames(shortNames, o);
-//         }
-//         document.getElementById('closeContacts').classList.add('d-none');
-//         document.getElementById('selectContacts').classList.remove('d-none');
-//     }
-// }
+
+
+
+
+
