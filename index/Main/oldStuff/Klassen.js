@@ -685,7 +685,7 @@ class Page {
 
     generateHTMLAddContactShortName() {
         return /*html*/`
-            <div id="ContainerShortName" class="accountTag">
+            <div id="accountTags">
             </div>
         `
     }
@@ -1005,6 +1005,12 @@ class Contact {
                 <div class="contactEmail">${this.email}</div>
             </div>
         </div>
+        `
+    }
+    nameTag(){
+        return /*html*/`
+            <div class="accountTag">${this.shortname}</div>
+
         `
     }
     tinyCardCheck(x) {
