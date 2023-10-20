@@ -106,8 +106,8 @@ function startPage() {
     //catch(e){
     //    console.log("Fehler", e)
     //}finally{
-    //    body.innerHTML = Join.startAnimation();
-    //    body.innerHTML += Join.logInContent();
+    body.innerHTML = Join.startAnimation();
+    body.innerHTML += Join.logInContent();
     //}
 }
 
