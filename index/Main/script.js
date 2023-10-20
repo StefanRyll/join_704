@@ -469,11 +469,30 @@ function renderShortNames(name, x) {
     container.innerHTML += Join.generateHTMLRenderShortNames(name, x);
 }
 
-function removeShortNames(name, x) {
+function removeShortNames(x) {
     let removeName = document.getElementById(`editShortNames${x}`);
     removeName.classList.remove('accountTag');
     removeName.innerHTML = '';
 }
+
+// function filterContactNames() {
+//     let search = document.getElementById('searchContacts').value;
+//     search = search.toLowerCase();
+
+//     let list = document.getElementById('taskContactList');
+//     list.innerHTML = '';
+
+//     for (let p = 0; p < Join.accounts.length; p++) {
+//         let name = Join.accounts[p]['name'];
+        
+//         if (name.toLowerCase().includes(search)) {
+//             list.innerHTML = 
+//         }
+//     }
+   
+// }
+
+
 
 
 
