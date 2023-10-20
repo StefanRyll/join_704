@@ -44,12 +44,12 @@ async function loadTasks(){
   let responseAsJson = await response.json();
   return responseAsJson;
 }
-function // saveAll()(){
+function saveAll(){
   saveAccounts();
   saveTasks();
   console.log("Data saved");
 }
-function // loadAll(){
+function loadAll(){
   Join.accounts = loadAccounts();
   Join.tasks = loadTasks();
   console.log("Data load");
