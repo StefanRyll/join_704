@@ -19,7 +19,6 @@ function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
-
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -36,7 +35,6 @@ function logInUser() {
 
     }
 }
-
 // Sign Up
 async function createAccount() {
     let pw = passwordCheck();
@@ -55,7 +53,6 @@ async function createAccount() {
     }
     // saveAll()()
 }
-
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
@@ -71,7 +68,6 @@ function passwordCheck() {
     }
 
 }
-
 function ppCheck() {
     let checkbox = document.getElementById('ppCheck');
     if (checkbox.checked) {
@@ -185,6 +181,15 @@ function readAssignment() {
 
     }
     return assignedUsers;
+}
+function renderAssignedUsers(){
+    let assignedUsers = readAssignment();
+    const accountTags = document.getElementById('accountTags');
+    accountTags.innerHTML = "";
+    for (let i = 0; i < assignedUsers.length; i++) {
+        const user = assignedUsers[i];
+        accountTags.innerHTML += user.accountTags()
+    }
 }
 function clearInputs(title, description, contact, date, newCategory) {
     title.value = '';
