@@ -205,11 +205,13 @@ class Page {
     summeryContent() {
         let daytime = this.sayDaytime()
         let doneTasks = this.checkTasksDone()
-        // let nextDeadline = this.nextDeadline().date
-        // let nDDay = nextDeadline.getDate()
-        // let nDMonth = nextDeadline.getMonth()
-        // let nDYear = nextDeadline.getFullYear()
-        // let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
+        let nextDeadline = this.nextDeadline(); // Objekt
+        let nextDeadlineDate = nextDeadline.date; // Datum
+        console.log(nextDeadlineDate)
+        let nDDay = nextDeadlineDate.getDate()
+        let nDMonth = nextDeadlineDate.getMonth()
+        let nDYear = nextDeadlineDate.getFullYear()
+        let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
 
         return /*html*/ `
         <div id="summery" class="summery">
@@ -243,8 +245,8 @@ class Page {
                             <p>Urgent</p>
                             <img src="./IMG/Vector 5.png" alt="">
                             <div class="chipData1x">
-                                <h2>{fullDate}</h2>
-                                <p>{nextDeadline.title}</p>
+                                <h2>${fullDate}</h2>
+                                <p>${nextDeadline.title}</p>
                             </div>
                         </div>
                         <!-- <div class="greetingArea"><h3>{daytime}</h3><h4>{this.signedAccount.name}</h4></div> -->
