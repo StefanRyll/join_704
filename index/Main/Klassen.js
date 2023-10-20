@@ -626,48 +626,28 @@ class Page {
                 </form>
         `
     }
-    // generateHTMLAssignedTo() {
-    //     return /*html*/ `
-    //             <div class="assigned-contact board-task-input">
-    //                 <p>Assigned to</p>
-    //                 ${this.generateHTMLSelectContactsToogleFunction()}
-    //                 <div id="closeContacts" class="open-assign-container2 d-none">
-    //                     <div class="assign-container assign-container-style">
-    //                       <input  type="text">
-    //                       <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
-    //                     </div>
-    //                     <div id="assignedToContacts" class="checkbox-container">
-    //                         <div class="checkbox-container-style">
-    //                             ${this.generateHTMLCheckbox()}
-    //                             <div class="checkbox-container-button">
-    //                                 ${this.generateHTMLAddToContactButton()}
-    //                             </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //     `
-    // }
 
     generateHTMLAssignedTo() {
         return /*html*/`
             <div class="board-task-input">
                 <p>Assigned to</p>
                 ${this.generateHTMLSelectContactsToogleFunction()}
-                <div id="closeContacts" class="open-assign-container assign-container assign-container-style d-none">
-                    <div>
-                        <input type="text">
+                <div id="closeContacts" class="open-assign-container  d-none">
+                    <div class="assign-container assign-container-style">
+                        <input type="search">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
                     <div id="assignedToContacts" class="checkbox-container">
                         ${this.generateHTMLCheckbox()} 
                     </div>
+                    <div class="checkbox-container-button">
+                        ${this.generateHTMLAddToContactButton()}
+                    </div>
                 </div>
             </div>
         `
     }
-   
+
     generateHTMLSelectContactsToogleFunction() {
         return /*html*/ `
                     <div id="selectContacts" class="assign-container">
@@ -687,7 +667,7 @@ class Page {
     }
     generateHTMLAddToContactButton() {
         return /*html*/ `
-          <button class="add-new-contact" >Add new contact
+          <button onclick="addNewContact()" class="add-new-contact">Add new contact
               <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                   <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                     <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
@@ -1019,18 +999,45 @@ class Contact {
     }
     tinyCardCheck(x) {
         return /*html*/ `
-        <div class="tinyAccountCard">
-            <div class="board-addtask-addcontact-contact">
-                <div class="accountTag">${this.shortname}</div>
-                <div>${this.name}</div>
-            </div>
-            <!-- <input type="checkbox" name="" id="ac${x}"> -->
-            <div class="board-addtask-addcontact-checkbox">
-                <img src="IMG/checkboxEmpty.png" alt="">
-            </div>
-        </div>
+        ${this.generateHTMLCheckedNone(x)}
+        ${this.generateHTMLChecked(x)}
         `
     }
+
+    generateHTMLCheckedNone(x) {
+        return /*html*/`
+            <div id="tinyAccountCardCheckedNone${x}">
+                <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
+                    <div class="board-addtask-addcontact-contact">
+                        <div class="accountTag">${this.shortname}</div>
+                        <div>${this.name}</div>
+                    </div>
+                    <!-- <input type="checkbox" name="" id="ac${x}"> -->
+                    <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
+                        <img src="IMG/check_empty.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
+    generateHTMLChecked(x) {
+        return /*html*/`
+            <div id="tinyAccountCardChecked${x}" class="d-none">
+                <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked">
+                    <div class="board-addtask-addcontact-contact">
+                        <div class="accountTag">${this.shortname}</div>
+                        <div>${this.name}</div>
+                    </div>
+                    <!-- <input type="checkbox" name="" id="ac${x}"> -->
+                    <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
+                        <img src="IMG/check_check.svg" alt="">
+                    </div>        
+                </div>
+            </div>
+        `
+    }
+
     accountTag() {
         return /*html*/ `
             <div class="accountTag">${this.shortname}</div>

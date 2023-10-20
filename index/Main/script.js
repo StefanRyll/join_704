@@ -435,3 +435,21 @@ function addTaskPage() {
     content.innerHTML = Join.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
 }
+
+function assignedCheck(x) {
+    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
+    document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
+    
+}
+
+function assignedCheckNone(x) {
+    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
+    document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
+}
+
+// function addNewContact() {
+//     for (let index = 0; index < array.length; index++) {
+//         const element = array[index];
+        
+//     }
+// }
