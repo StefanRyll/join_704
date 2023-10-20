@@ -459,7 +459,7 @@ function addNewContact() {
     document.getElementById('selectContacts').classList.remove('d-none');
 }
 
-function addShortNames(tinyCard, x, name) {
+function addShortNames(name, x) {
     renderShortNames(name, x);
 }
 

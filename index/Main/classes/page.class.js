@@ -689,9 +689,9 @@ class Page {
         `
     }
 
-    generateHTMLRenderShortNames(shortNames, o) {
+    generateHTMLRenderShortNames(shortNames, x) {
         return /*html*/`
-            <div class="accountTag">${shortNames}</div>
+            <div id="editShortNames${x}" class="accountTag">${shortNames}</div>
         `
     }
     // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
