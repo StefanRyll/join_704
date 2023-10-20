@@ -22,18 +22,6 @@
     display: flex;
     gap: 10px;   
 }
-.accountTagUnderAssigned {
-    width: 42px;
-    height: 42px;
-    background-color: red;
-    border: 2px solid grey;
-    border-radius: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    color: white
-}
 
 .tinyAccountCard{
     flex-wrap: nowrap;

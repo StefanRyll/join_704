@@ -467,13 +467,13 @@ function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');
     console.log(name);
     container.innerHTML += Join.generateHTMLRenderShortNames(name, x);
-
 }
 
-// function removeShortNames(name) {
-//     container.innerHTML = '';
-//     renderShortNames();
-// }
+function removeShortNames(name, x) {
+    let removeName = document.getElementById(`editShortNames${x}`);
+    removeName.classList.remove('accountTag');
+    removeName.innerHTML = '';
+}
 
 
 
