@@ -154,13 +154,14 @@ function openAddTask(x = 0) {
 
 function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
-    const assignedUsers = readAssignment()
+    // const assignedUsers = readAssignment('')
+    const assignedUsers = readAssignment('ac');
     const desc = document.getElementById("boardTaskDescription").value;
     const date = document.getElementById("datum").value;
     const prio = taskOutput;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, assignedUsers , desc, date, prio, category, subtasks);
-    if (x == "1"){
+    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subtasks, shortNames);
+    if (x == "1") {
         newTask.progress = true;
     } else if (x == "2") {
         newTask.feedback = true;
@@ -172,7 +173,6 @@ function createTaskFromBoard(x = 0) {
     subtasks = []
     // saveAll()()
     closeAddTask()
-        // // saveAll()()
 }
 function readAssignment() {
     let assignedUsers = [];
@@ -213,7 +213,7 @@ function btnTaskPrio(prioBtn) {
     let urgentRed = document.getElementById('btnUrgentRed');
     let mediumYellow = document.getElementById('btnMediumYellow');
     let lowGreen = document.getElementById('btnLowGreen');
-    
+
     if (prioBtn == 'btnUrgentWhite') {
         urgent.classList.add('d-none');
         urgentRed.classList.remove('d-none');
@@ -328,7 +328,7 @@ function fixSubtasks(m) {
     let fixTodoSubtask = `fixTodoSubtask${m}`;
     document.getElementById(containerTodoSubtask).classList.remove('d-none');
     document.getElementById(fixTodoSubtask).classList.add('d-none');
-    
+
     let editFixSubtask = document.getElementById('editFixSubtask');
     let todoSubtask = document.getElementById(`todoSubtask${m}`);
     todoSubtask.textContent = editFixSubtask.value;
@@ -435,4 +435,41 @@ function addTaskPage() {
     showSideAndHead()
     content.innerHTML = Join.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
+}
+
+function assignedCheck(x) {
+    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
+    document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
+
+}
+
+function assignedCheckNone(x) {
+    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
+    document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
+}
+
+function addNewContact(x) {
+    let ContainerShortName = document.getElementById('ContainerShortName');
+    // let shortname = document.getElementById(`shortname${x}`);
+    ContainerShortName.innerHTML = '';
+  
+    document.getElementById('closeContacts').classList.add('d-none');
+    document.getElementById('selectContacts').classList.remove('d-none');
+    // addShortName.innerHTML = Join.generateHTMLAddContactShortName();
+    // let checkedNone = document.getElementById(`tinyAccountCardCheckedNone${x}`);
+    // let checked = document.getElementById(`tinyAccountCardChecked${x}`);
+    // checkedNone.classList.remove('d-none');
+    // checked.length.classList.add('d-none')
+    // let checked = document.querySelectorAll('.checked');
+    // checked.forEach((displayNone) => {
+    //     displayNone.classList.add('d-none');
+    //     displayN.classList.remove('d-none');
+    // });
+    
+    // let checkedNone = document.querySelectorAll('.checkedNone');
+    // checkedNone.forEach((displayN) => {
+    //     displayN.classList.remove('d-none');
+    //     displayNone.classList.add('d-none');
+    // }) 
+    
 }

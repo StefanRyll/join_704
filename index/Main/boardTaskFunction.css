@@ -13,19 +13,24 @@
     --version-2-main-color: #2A3647;
 }
 
-.open-assign-container2 {
+/* .open-assign-container2 {
     width: 31em;
+} */
+
+
+.open-assign-container {
+    position: absolute; 
 }
 
-.assign-container1 {
+/* .assign-container1 {
     display: flex;
-    /* width: 100%; */
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     padding-right: 5px;
-}
+} */
 
 .assign-container1 input {
     border: none;
@@ -38,17 +43,15 @@
 .checkbox-container {
     display: flex;
     flex-direction: column;
-    padding: 0.5em;
-    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 0.3em;
     background-color: white;
     transition: 100ms ease-in-out;
     overflow-x: hidden;
     overflow-y: scroll;
-    position: absolute;
+    /* position: absolute; */
     width: 27.5em;
-    max-height: 12em;
+    max-height: 9em;
+    z-index: 10;
 }
 
 .checkbox-container td {
@@ -137,23 +140,8 @@
     align-items: center;
     gap: 8px;
     position: absolute;
-    top: 25%;
-    right: 10px;
-}
-
-.checkbox-container-style {
-    position: relative;
-    /* padding: 0.5em;
-    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: white;
-    transition: 100ms ease-in-out;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: absolute;
-    width: 27.5em;
-    max-height: 9em; */
+    /* top: 25%; */
+    right: 25px;
 }
 
 .checkbox-container-button {
@@ -162,9 +150,19 @@
     position: sticky;
     bottom: 3px;
     background-color: white;
-    width: 432px;
-    /* position: absolute;
-    bottom: 20px;
-    width: 50%;
-    left: 35px; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 450px;
+    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
 }
+
+.checkbox-container-button button:hover {
+    cursor: pointer;
+    border-color: var(--general-button-hover);
+    background-color: var(--general-button-hover);
+    box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.10);
+    transition: 100ms ease-in-out;
+}
+
