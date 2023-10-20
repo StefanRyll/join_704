@@ -579,7 +579,7 @@ class Page {
         return /*html*/ `
               <div id="slideAddTask" class="bg-task">
                 <div class="add-task">
-                    ${this.generateHTMLLeftSide()}
+                    ${this.generateHTMLLeftSide(x)}
                     ${this.generateHTMLSeperator()}
                     ${this.generateHTMLRightSide(x)}
                     ${this.generateHTMLCloseButtonInSVG()}
@@ -597,7 +597,7 @@ class Page {
                 </div>
           `
     }
-    generateHTMLLeftSide() {
+    generateHTMLLeftSide(x) {
         return /*html*/ `
               <div class="headline-add-task">
                 <h3>Add Task</h3>
@@ -605,7 +605,8 @@ class Page {
               <div class="left-side">
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
-                ${this.generateHTMLAssignedTo()}
+                ${this.generateHTMLAssignedTo(x)}
+                ${this.generateHTMLAddContactShortName(x)}
                 <div class="field-required-text">
                   <sub>*</sub><span>This field is required</span>
                 </div>
@@ -629,7 +630,7 @@ class Page {
         `
     }
 
-    generateHTMLAssignedTo() {
+    generateHTMLAssignedTo(x) {
         return /*html*/`
             <div class="board-task-input">
                 <p>Assigned to</p>
@@ -643,7 +644,7 @@ class Page {
                         ${this.generateHTMLCheckbox()} 
                     </div>
                     <div class="checkbox-container-button">
-                        ${this.generateHTMLAddToContactButton()}
+                        ${this.generateHTMLAddToContactButton(x)}
                     </div>
                 </div>
             </div>
@@ -667,9 +668,9 @@ class Page {
             
             `
     }
-    generateHTMLAddToContactButton() {
+    generateHTMLAddToContactButton(x) {
         return /*html*/ `
-          <button onclick="addNewContact()" class="add-new-contact">Add new contact
+          <button onclick="addNewContact(${x})" class="add-new-contact">Add new contact
               <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                   <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                     <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
@@ -679,6 +680,14 @@ class Page {
                   </g>
               </svg>
           </button>
+        `
+    }
+
+    generateHTMLAddContactShortName() {
+        return /*html*/`
+            <div id="ContainerShortName">
+                <div id="addShortName" class="accountTag">HI</div>
+            </div>
         `
     }
     // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
@@ -1008,10 +1017,10 @@ class Contact {
 
     generateHTMLCheckedNone(x) {
         return /*html*/`
-            <div id="tinyAccountCardCheckedNone${x}">
+            <div id="tinyAccountCardCheckedNone${x}" class="checked-none">
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
-                        <div class="accountTag">${this.shortname}</div>
+                        <div id="shortname${x}" class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>
                     </div>
                     <!-- <input type="checkbox" name="" id="ac${x}"> -->
@@ -1025,7 +1034,7 @@ class Contact {
 
     generateHTMLChecked(x) {
         return /*html*/`
-            <div id="tinyAccountCardChecked${x}" class="d-none">
+            <div id="tinyAccountCardChecked${x}" class="checked d-none">
                 <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked">
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>
