@@ -606,7 +606,7 @@ class Page {
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
-                ${this.generateHTMLAddContactShortName(x)}
+                ${this.generateHTMLAddContactShortName()}
                 <div class="field-required-text">
                   <sub>*</sub><span>This field is required</span>
                 </div>
@@ -685,8 +685,13 @@ class Page {
 
     generateHTMLAddContactShortName() {
         return /*html*/`
-            <div id="ContainerShortName" class="accountTag">
-            </div>
+            <div id="containerShortName" onload="renderShortNames()"></div>
+        `
+    }
+
+    generateHTMLRenderShortNames(shortNames, o) {
+        return /*html*/`
+            <div class="accountTag">${shortNames}</div>
         `
     }
     // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion

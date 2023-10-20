@@ -158,7 +158,7 @@ function createTaskFromBoard(x = 0) {
     const date = document.getElementById("datum").value;
     const prio = taskOutput;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subtasks, shortNames);
+    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subtasks);
     if (x == "1") {
         newTask.progress = true;
     } else if (x == "2") {
@@ -449,27 +449,44 @@ function assignedCheckNone(x) {
 }
 
 function addNewContact(x) {
-    let ContainerShortName = document.getElementById('ContainerShortName');
-    // let shortname = document.getElementById(`shortname${x}`);
-    ContainerShortName.innerHTML = '';
-  
-    document.getElementById('closeContacts').classList.add('d-none');
-    document.getElementById('selectContacts').classList.remove('d-none');
-    // addShortName.innerHTML = Join.generateHTMLAddContactShortName();
-    // let checkedNone = document.getElementById(`tinyAccountCardCheckedNone${x}`);
-    // let checked = document.getElementById(`tinyAccountCardChecked${x}`);
-    // checkedNone.classList.remove('d-none');
-    // checked.length.classList.add('d-none')
-    // let checked = document.querySelectorAll('.checked');
-    // checked.forEach((displayNone) => {
-    //     displayNone.classList.add('d-none');
-    //     displayN.classList.remove('d-none');
-    // });
-    
-    // let checkedNone = document.querySelectorAll('.checkedNone');
-    // checkedNone.forEach((displayN) => {
-    //     displayN.classList.remove('d-none');
-    //     displayNone.classList.add('d-none');
-    // }) 
-    
+    let containerShortName = document.getElementById('containerShortName');
+    containerShortName.innerHTML = '';
+    renderShortNames(containerShortName, x);
 }
+
+function renderShortNames(container, x) {
+    for (let o = 0; o < Join.accounts.length; o++) {
+        let shortNames = Join.accounts[o]['shortname'];
+        let checked = `tinyAccountCardChecked${x}`
+        if (checked.id) {
+            container.innerHTML = Join.generateHTMLRenderShortNames(shortNames, o);
+        } else {
+            console.log('Fehler')
+        }
+        document.getElementById('closeContacts').classList.add('d-none');
+        document.getElementById('selectContacts').classList.remove('d-none');
+    }
+}
+
+
+    
+
+
+
+// function addNewContact(x) {
+//     let checkedContact = document.getElementById(`tinyAccountCardChecked${x}`);
+//     let containerShortName = document.getElementById('containerShortName');
+//     containerShortName.innerHTML = '';
+//     renderShortNames(containerShortName, checkedContact, x);
+// }
+
+// function renderShortNames(container, checked, x) {
+//     if (checked.id.startsWith('tinyAccountCardChecked') && checked.id.endsWith(x)) {
+//         for (let o = 0; o < Join.accounts.length; o++) {
+//             let shortNames = Join.accounts[o]['shortname'];
+//             container.innerHTML += Join.generateHTMLRenderShortNames(shortNames, o);
+//         }
+//         document.getElementById('closeContacts').classList.add('d-none');
+//         document.getElementById('selectContacts').classList.remove('d-none');
+//     }
+// }
