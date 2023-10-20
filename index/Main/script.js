@@ -1,18 +1,18 @@
 // Save and Load
 
-function saveAll() {
-    let joinAsJSON = JSON.stringify(Join);
-    localStorage.setItem("Join", joinAsJSON)
-}
+// function // saveAll()() {
+//     let joinAsJSON = JSON.stringify(Join);
+//     localStorage.setItem("Join", joinAsJSON)
+// }
 
-function loadAll() {
-    let loadJoin = localStorage.getItem("Join");
-    let joinParsed = JSON.parse(loadJoin)
-    let Join = new Page()
-    Join.accounts = joinParsed.accounts;
-    Join.signedAccount = joinParsed.signedAccount;
-    Join.tasks = joinParsed.tasks;
-}
+// function // loadAll() {
+//     let loadJoin = localStorage.getItem("Join");
+//     let joinParsed = JSON.parse(loadJoin)
+//     let Join = new Page()
+//     Join.accounts = joinParsed.accounts;
+//     Join.signedAccount = joinParsed.signedAccount;
+//     Join.tasks = joinParsed.tasks;
+// }
 
 // Login
 function guestLogin() {
@@ -38,7 +38,7 @@ function logInUser() {
 }
 
 // Sign Up
-function createAccount() {
+async function createAccount() {
     let pw = passwordCheck();
     let policy = ppCheck();
     if (pw === true && policy === true) {
@@ -53,7 +53,7 @@ function createAccount() {
     } else {
         alert('You musst accept the Privacy Policy!')
     }
-
+    // saveAll()()
 }
 
 function passwordCheck() {
@@ -101,12 +101,14 @@ function viewPassword() {
 }
 
 function startPage() {
-    // loadAll()
-    // body.innerHTML = Join.loginLayout()
-    // let logoArea = document.getElementById('logoArea')
-    // let windowArea = document.getElementById('windowArea')
+    // saveAll()
+    //try {// loadAll()}
+    //catch(e){
+    //    console.log("Fehler", e)
+    //}finally{
     body.innerHTML = Join.startAnimation();
     body.innerHTML += Join.logInContent();
+    //}
 }
 
 function startPage2() {
@@ -169,10 +171,9 @@ function createTaskFromBoard(x = 0) {
     Join.tasks.push(newTask)
     clearInputs(title, desc, assignedUsers, date, category);
     subtasks = []
+    // saveAll()()
     closeAddTask()
-    // saveAll()
 }
-
 function readAssignment() {
     let assignedUsers = [];
     for (let i = 0; i < Join.accounts.length; i++) {
@@ -205,7 +206,6 @@ function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
 }
-
 function btnTaskPrio(prioBtn) {
     let urgent = document.getElementById('btnUrgentWhite');
     let medium = document.getElementById('btnMediumWhite');
