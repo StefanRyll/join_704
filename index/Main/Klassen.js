@@ -993,3 +993,244 @@ class Page {
      * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
      */
 }
+/**
+ * Contacts sind die Grundlage: 
+ * Accounts sind eine Erweiterung "Vererbung" von Contacts, da diese ein Passwort haben sich anmelden können usw. 
+ * allerding wäre alles rund, wenn jeder, der als Contakt hinzugefügt wird Eine Email erhält, "Mach dir doch einen Account".
+ * Zt Usability, kann halt keiner hinterher sagen, er hat von dem Projekt "nix gewusst". 
+ */
+class Contact {
+    constructor(name, email, tel) {
+        this.name = name;
+        this.email = email;
+        this.tel = tel;
+        this.shortname = this.name.charAt(0)
+    }
+    tinyCard(x) {
+        return /*html*/ `
+        <div class="tinyAccountCard" onclick="showContact(${x})">
+            <div class="accountTag">${this.shortname}</div>
+            <div>
+                <div class="contactName">${this.name}</div>
+                <div class="contactEmail">${this.email}</div>
+            </div>
+        </div>
+        `
+    }
+    nameTag(){
+        return /*html*/`
+            <div class="accountTag">${this.shortname}</div>
+
+        `
+    }
+    tinyCardCheck(x) {
+        return /*html*/ `
+        ${this.generateHTMLCheckedNone(x)}
+        ${this.generateHTMLChecked(x)}
+        `
+    }
+
+    generateHTMLCheckedNone(x) {
+        return /*html*/`
+            <div id="tinyAccountCardCheckedNone${x}" class="checked-none">
+                <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
+                    <div class="board-addtask-addcontact-contact">
+                        <div id="shortname${x}" class="accountTag">${this.shortname}</div>
+                        <div>${this.name}</div>
+                    </div>
+                    <!-- <input type="checkbox" name="" id="ac${x}"> -->
+                    <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
+                        <img src="IMG/check_empty.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
+    generateHTMLChecked(x) {
+        return /*html*/`
+            <div id="tinyAccountCardChecked${x}" class="checked d-none">
+                <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
+                    <div class="board-addtask-addcontact-contact">
+                        <div class="accountTag">${this.shortname}</div>
+                        <div>${this.name}</div>
+                    </div>
+                    <!-- <input type="checkbox" name="" id="ac${x}"> -->
+                    <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
+                        <img src="IMG/check_check.svg" alt="">
+                    </div>        
+                </div>
+            </div>
+        `
+    }
+
+    accountTag() {
+        return /*html*/ `
+            <div class="accountTag">${this.shortname}</div>
+
+        `
+    }
+
+}
+class Account extends Contact {
+    constructor(name, email, password, tel) {
+        super(name, email, tel)
+        this.password = password;
+
+    }
+}
+class Task {
+    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, subTasks) {
+        this.title = title;
+        this.worker = worker;
+        this.desc = desc;
+        this.date = new Date(date);
+        this.prio = prio;
+        this.Categroy = Categroy;
+        this.todo = false;
+        this.progress = false;
+        this.feedback = false;
+        this.done = false;
+        this.subTasks = subTasks;
+    }
+    taskCardNormal() {
+        let html = /*html*/ `
+            </div>
+            <h1>${this.title}</h1>
+            <p>${this.desc}</p>
+            <div class="taskCardAttribute">
+                <p>Date Due: </p>
+                <p>${this.date}</p>
+            </div>
+            <div class="taskCardAttribute">
+                <p>Priority: </p>
+                <p>${this.prio}</p>
+            </div>
+            <div class="taskCardAssignment">
+                <p>Assigned to: </p>`
+
+        for (let i = 0; i < this.worker.length; i++) {
+            const worker = this.worker[i];
+            html += worker.tinyCard()
+        }
+        html += /*html*/ `
+        <div id="taskCardAssinedList"></div>
+            </div >
+            <div class="taskCardSubtasks">
+                <p>Subtasks</p>
+                <div id="subtasksList">
+                    `
+        for (let j = 0; j < this.subTasks.length; j++) {
+            const subTask = this.subTasks[j];
+            html += subTask;
+        }
+        html = /*html*/ `        
+                </div>
+            </div>
+            <div class="taskCardFooter">
+                <div class="deleteBtn"></div>
+                <div class="editBtn"></div>
+            </div>
+        `
+        return html;
+    }
+    taskCardEdit() {
+        return /*html*/ `
+            < div class="taskCardHeader" >
+                <div></div>
+                <div class="taskCardHeaderClose">X</div>
+            </div >
+            <form class="editTask" onsubmit="taskSaveChanges()">
+                <label for="taskCardETitle">Titel:</label>
+                <input type="text" id="taskCardETitle">
+                    <label for="taskCardEDesc">Description:</label>
+                    <textarea cols="30" rows="10" id="taskCardEDesc"></textarea>
+                    <label for="taskCardEDate">Date Due:</label>
+                    <input type="date" id="taskCardEDate">
+                        <label for="">Assign to: </label>
+                        <select name="" id="">
+                            <div>
+                                <div class="accountTag">AV</div>
+                            </div>
+                        </select>
+                        <div>
+                            <div class="accountTag">AV</div>
+                        </div>
+                        <div>
+                            <button>Urgent</button>
+                            <button>Medium</button>
+                            <button>Low</button>
+                        </div>
+                        <label for="">Subtasks</label>
+                        <input id="subtasks" type="text">
+                            <button type="submit">Ok &checkmark;</button>
+                        </form>
+
+
+                        `
+    }
+    tinyTaskCard() {
+        let html = /*html*/ `
+            <div class="tinyTaskCard" draggable>
+                <div>${this.Categroy}</div>
+                <h1>${this.title}</h1>
+                <p class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</p>
+                <div class="subtasks">
+                    <div>Ladebalken</div>
+                    <p>1/2 Subtasks</p>
+                </div>
+                <div>
+                    <div>`
+        for (let i = 0; i < this.worker.length; i++) {
+            const worker = this.worker[i];
+            html += worker.accountTag();
+
+        }
+        html += /*html*/ `
+            </div>
+                    <div>Prio Symbol</div>
+                </div>
+            </div>
+
+        `
+        return html;
+    }
+    editTask() {
+        let taskCard = document.getElementById('taskCard')
+        taskCard.innerHTML = this.taskCardEdit()
+    }
+    switchStatus(x = 0) {
+        if (x == "1") {
+            this.todo = false;
+            this.progress = true;
+            this.feedback = false;
+            this.done = false;
+        } else if (x == "2") {
+            this.todo = false;
+            this.progress = false;
+            this.feedback = true;
+            this.done = false;
+        } else if (x == "3") {
+            this.todo = false;
+            this.progress = false;
+            this.feedback = false;
+            this.done = true;
+        } else {
+            this.todo = true;
+            this.progress = false;
+            this.feedback = false;
+            this.done = false;
+        }
+
+    }
+
+}
+class Subtask {
+    constructor(name) {
+        this.name = name;
+        this.done = false;
+    }
+    subTaskDone() {
+        this.done = true;
+    }
+}
