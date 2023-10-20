@@ -685,8 +685,7 @@ class Page {
 
     generateHTMLAddContactShortName() {
         return /*html*/`
-            <div id="ContainerShortName">
-                <div id="addShortName" class="accountTag">HI</div>
+            <div id="ContainerShortName" class="accountTag">
             </div>
         `
     }
@@ -1035,7 +1034,7 @@ class Contact {
     generateHTMLChecked(x) {
         return /*html*/`
             <div id="tinyAccountCardChecked${x}" class="checked d-none">
-                <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked">
+                <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>

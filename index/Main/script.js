@@ -152,12 +152,13 @@ function openAddTask(x = 0) {
 
 function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
-    const assignedUsers = readAssignment()
+    // const assignedUsers = readAssignment('')
+    const assignedUsers = readAssignment('ac');
     const desc = document.getElementById("boardTaskDescription").value;
     const date = document.getElementById("datum").value;
     const prio = taskOutput;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subtasks);
+    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subtasks, shortNames);
     if (x == "1") {
         newTask.progress = true;
     } else if (x == "2") {
@@ -449,7 +450,9 @@ function assignedCheckNone(x) {
 
 function addNewContact(x) {
     let ContainerShortName = document.getElementById('ContainerShortName');
+    // let shortname = document.getElementById(`shortname${x}`);
     ContainerShortName.innerHTML = '';
+  
     document.getElementById('closeContacts').classList.add('d-none');
     document.getElementById('selectContacts').classList.remove('d-none');
     // addShortName.innerHTML = Join.generateHTMLAddContactShortName();
