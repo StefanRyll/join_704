@@ -735,10 +735,10 @@ class Page {
     generateHTMLDateForm() {
         return /*html*/`
                 <form class="input-date board-task-input">
-                    <label for="pflichtfeld">Fälligkeitsdatum<sup>*</sup></label>
+                    <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="dateOfTask" name="datum" required>
-                        <input type="text" id="formatted-date">
+                        <input type="date" id="dateOfTask" name="datum" required placeholder="dd/mm/yyyy">
+                        <!-- <input type="text" id="formatted-date"> -->
                     </div>
                 </form>
             `
@@ -929,14 +929,17 @@ class Page {
                 <input onclick="openSubtask()" type="button" value="Add new subtask">
                 <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
             </div>
-            <div id="showSubtask" class="assign-container open-subtask d-none">
-                <input id="inputSubtask" type="text" placeholder="Add new subtask">
-                <img onclick="closeSubtask()" src="/assets/img/subtask-close.png" alt="">
-                <img class="subtask-line" src="/assets/img/subtask-line.png" alt="">
-                <img onclick="createSubtask()" src="/assets/img/subtask-accept.png" alt="">
+            <div>
+                <div id="showSubtask" class="assign-container open-subtask d-none">
+                    <input id="inputSubtask" type="text" placeholder="Add new subtask">
+                    <div class="subtask-style-position">
+                        <img onclick="closeSubtask()" src="/assets/img/subtask-close.png" alt="">
+                        <img class="subtask-line" src="/assets/img/subtask-line.png" alt="">
+                        <img onclick="createSubtask()" src="/assets/img/subtask-accept.png" alt="">
+                    </div>
+                </div>
+                <div id="createNewSubtask" class="create-subtask" onload="renderSubtasks()"></div>
             </div>
-        </div>
-        <div id="createNewSubtask" class="create-subtask" onload="renderSubtasks()">
         </div>
         `
     }

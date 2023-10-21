@@ -166,3 +166,7 @@
     transition: 100ms ease-in-out;
 }
 
+.subtask-style-position {
+    position: relative;
+}
+

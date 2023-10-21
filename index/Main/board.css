@@ -9,9 +9,9 @@
     --version-2-main-color: #2A3647;
 }
 
-/* body {
-    font-family: inter, sans-serif;
-} */
+/* * { 
+    font-family: inter, sans-serif !important;
+}  */
 
 .cursor-pointer:hover {
     cursor: pointer;
