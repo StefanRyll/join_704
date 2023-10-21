@@ -1,5 +1,5 @@
 class Task {
-    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, subTasks) {
+    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, status, subTasks) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -10,6 +10,7 @@ class Task {
         this.progress = false;
         this.feedback = false;
         this.done = false;
+        this.status = status;
         this.subTasks = subTasks;
     }
     taskCardNormal() {
@@ -90,7 +91,7 @@ class Task {
     }
     tinyTaskCard() {
         let html = /*html*/ `
-            <div class="tinyTaskCard" draggable>
+            <div class="tinyTaskCard" draggable="true"  ondragstart="startDragging(event)">
                 <div class="tiny-task-category">${this.Categroy}</div>
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
@@ -103,7 +104,7 @@ class Task {
                     </div>
                 </div>
                 <div>
-                    <div>`
+            <div>`
         for (let i = 0; i < this.worker.length; i++) {
             const worker = this.worker[i];
             html += worker.accountTag();
