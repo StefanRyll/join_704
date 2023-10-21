@@ -221,10 +221,16 @@ function openAddNewContact() {
 function generateHtmlAddContact() {
     return /*html*/ `
     <div class="overlay-container slide-in">
-        <img src="../IMG/LogoWhite.png" alt="join-logo">
-        <h1>Add contact</h1>
-        <span>Tasks are better with a team</span>
-        <img src="../IMG/vector-5.png">
+        <div class="overlay-left-container">
+            <img src="../IMG/LogoWhite.png" alt="join-logo">
+            <h1 class="add-contact-headline">Add contact</h1>
+            <span>Tasks are better with a team</span>
+            <img src="../IMG/vector-5.png">
+        </div>
+        <div class ="overlay-right-container-addContact">
+
+        </div>
     </div>
+ 
     `
 }
