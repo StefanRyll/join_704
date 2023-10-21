@@ -18,6 +18,11 @@
     font-weight: 700;
     color: white
 }
+#containerShortName {
+    display: flex;
+    gap: 10px;   
+}
+
 .tinyAccountCard{
     flex-wrap: nowrap;
     position: relative;

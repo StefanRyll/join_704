@@ -685,10 +685,6 @@ class Page {
 
     generateHTMLAddContactShortName() {
         return /*html*/`
-<<<<<<< HEAD:index/Main/oldStuff/Klassen.js
-            <div id="accountTags">
-            </div>
-=======
             <div id="containerShortName" onload="renderShortNames()"></div>
         `
     }
@@ -696,7 +692,6 @@ class Page {
     generateHTMLRenderShortNames(shortNames, o) {
         return /*html*/`
             <div class="accountTag">${shortNames}</div>
->>>>>>> b58a08ab072c401954abd908e8eeba6cbcc97547:index/Main/Klassen.js
         `
     }
     // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
@@ -1015,12 +1010,6 @@ class Contact {
                 <div class="contactEmail">${this.email}</div>
             </div>
         </div>
-        `
-    }
-    nameTag(){
-        return /*html*/`
-            <div class="accountTag">${this.shortname}</div>
-
         `
     }
     tinyCardCheck(x) {

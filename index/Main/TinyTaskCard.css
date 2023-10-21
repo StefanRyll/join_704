@@ -1,6 +1,8 @@
 .tinyTaskCard{
-    width: 252px;
-    height: 225px;
+    display: flex;
+    flex-direction: column;
+    max-width: 252px;
+    /* height: 225px; */
     padding: 16px;
     border-radius: 24px;
     gap: 10px;
@@ -8,10 +10,28 @@
     cursor: move;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.107);
     z-index: 2;
-    
+    margin-bottom: 20px;
 }
+
+.tiny-task-category {
+    color: #FFFF;
+    display: flex;
+    justify-content: center;
+    background-color: #0038FF;
+    width: 90px;
+    padding: 4px 16px;
+    border-radius: 10px;
+}
+
+.tiny-title {
+    display: flex;
+    flex-direction: column;
+}
+
 .tinyTaskCard h1{
     font-size: 16px;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 .tinyTaskCardDescription{
     color: #A8A8A8;
@@ -23,4 +43,10 @@
     align-items: center;
     gap: 15px;
 }
+
+.tiny-task-label {
+    display: flex;
+    gap: 11px;
+}
+
 

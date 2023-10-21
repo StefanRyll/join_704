@@ -637,7 +637,7 @@ class Page {
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
                     <div class="assign-container assign-container-style">
-                        <input type="search">
+                        <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
                     <div id="assignedToContacts" class="checkbox-container">
@@ -689,9 +689,9 @@ class Page {
         `
     }
 
-    generateHTMLRenderShortNames(shortNames, o) {
+    generateHTMLRenderShortNames(shortNames, x) {
         return /*html*/`
-            <div class="accountTag">${shortNames}</div>
+            <div id="editShortNames${x}" class="accountTag">${shortNames}</div>
         `
     }
     // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion

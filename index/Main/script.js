@@ -453,45 +453,49 @@ function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
 }
 
-function addNewContact(x) {
-    let containerShortName = document.getElementById('containerShortName');
-    containerShortName.innerHTML = '';
-    renderShortNames(containerShortName, x);
+
+function addNewContact() {
+    document.getElementById('closeContacts').classList.add('d-none');
+    document.getElementById('selectContacts').classList.remove('d-none');
 }
 
-function renderShortNames(container, x) {
-    for (let o = 0; o < Join.accounts.length; o++) {
-        let shortNames = Join.accounts[o]['shortname'];
-        let checked = `tinyAccountCardChecked${x}`
-        if (checked.id) {
-            container.innerHTML = Join.generateHTMLRenderShortNames(shortNames, o);
-        } else {
-            console.log('Fehler')
-        }
-        document.getElementById('closeContacts').classList.add('d-none');
-        document.getElementById('selectContacts').classList.remove('d-none');
-    }
+function addShortNames(name, x) {
+    renderShortNames(name, x);
 }
 
+function renderShortNames(name, x) {
+    let container = document.getElementById('containerShortName');
+    console.log(name);
+    container.innerHTML += Join.generateHTMLRenderShortNames(name, x);
+}
 
-    
+function removeShortNames(x) {
+    let removeName = document.getElementById(`editShortNames${x}`);
+    removeName.classList.remove('accountTag');
+    removeName.innerHTML = '';
+}
 
+// function filterContactNames() {
+//     let search = document.getElementById('searchContacts').value;
+//     search = search.toLowerCase();
 
+//     let list = document.getElementById('taskContactList');
+//     list.innerHTML = '';
 
-// function addNewContact(x) {
-//     let checkedContact = document.getElementById(`tinyAccountCardChecked${x}`);
-//     let containerShortName = document.getElementById('containerShortName');
-//     containerShortName.innerHTML = '';
-//     renderShortNames(containerShortName, checkedContact, x);
-// }
-
-// function renderShortNames(container, checked, x) {
-//     if (checked.id.startsWith('tinyAccountCardChecked') && checked.id.endsWith(x)) {
-//         for (let o = 0; o < Join.accounts.length; o++) {
-//             let shortNames = Join.accounts[o]['shortname'];
-//             container.innerHTML += Join.generateHTMLRenderShortNames(shortNames, o);
+//     for (let p = 0; p < Join.accounts.length; p++) {
+//         let name = Join.accounts[p]['name'];
+        
+//         if (name.toLowerCase().includes(search)) {
+//             list.innerHTML = 
 //         }
-//         document.getElementById('closeContacts').classList.add('d-none');
-//         document.getElementById('selectContacts').classList.remove('d-none');
 //     }
+   
 // }
+
+
+
+
+
+
+
+

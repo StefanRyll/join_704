@@ -91,12 +91,16 @@ class Task {
     tinyTaskCard() {
         let html = /*html*/ `
             <div class="tinyTaskCard" draggable>
-                <div>${this.Categroy}</div>
-                <h1>${this.title}</h1>
-                <p class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</p>
+                <div class="tiny-task-category">${this.Categroy}</div>
+                <div class="tiny-title">
+                    <h1>${this.title}</h1>
+                    <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
+                </div>
                 <div class="subtasks">
-                    <div>Ladebalken</div>
-                    <p>1/2 Subtasks</p>
+                    <div class="tiny-task-label">
+                        <img id="progressBar" src="./IMG/Progress_bar.svg" alt="">
+                        <p id="openTasksFromTiny">${this.subTasks}</p>
+                    </div>
                 </div>
                 <div>
                     <div>`
@@ -107,7 +111,7 @@ class Task {
         }
         html += /*html*/ `
             </div>
-                    <div>Prio Symbol</div>
+                    <div>${this.prio}</div> 
                 </div>
             </div>
 
