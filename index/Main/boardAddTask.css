@@ -417,6 +417,8 @@
     color: #D1D1D1;
 }
 
+  
+
 /* .board-task-input {
     display: flex;
     flex-direction: column;
@@ -458,6 +460,10 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+}
+
+.open-subtask {  
+    border: 1px solid rgba(41, 171, 226, 1);
 }
 
 .open-subtask img {

@@ -23,10 +23,9 @@
     align-items: center;
     height: 10px;
     margin-bottom: 4em;
-    /* margin-left: 232px; */
-    /* padding-top: 90px;
-    padding-left: 92px;
-    padding-right: 92px; */
+    padding-top: 90px;
+    /* padding-left: 92px; */
+    padding-right: 92px;
 }
 
 .frame-192 h2 {
@@ -127,23 +126,12 @@
 
 .frame-136 {
     display: flex;
-    padding: 0px 64px;
+    gap: 26px;
+    display: flex;
+    max-width: 1208px;
+    /* padding: 0px 64px; */
     justify-content: space-between;
     align-items: flex-start;
-    padding-left: 92px;
-    padding-right: 92px;
-    /* margin-left: 232px; */
-    /* gap: 16px;   */
-}
-
-.board-actionbar {
-    display: flex;
-    width: 244px;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-    /* padding-right: 8px; */
-    /* gap: 16px; */
 }
 
 .board-actionbar p {
@@ -200,4 +188,22 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+}
+
+#addTask {
+    display: flex;
+    gap: 20px;
+}
+
+.canban-style {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.lanes {
+    width: 242px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

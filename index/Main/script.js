@@ -1,3 +1,4 @@
+let currentDraggedElement; 
 // Save and Load
 
 // function // saveAll()() {
@@ -35,6 +36,7 @@ function logInUser() {
 
     }
 }
+
 // Sign Up
 async function createAccount() {
     let pw = passwordCheck();
@@ -139,6 +141,7 @@ function logout() {
     Join.signedAccount = "";
     startPage()
 }
+
 // Board und Tasks
 /**
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
@@ -182,7 +185,7 @@ function readAssignment() {
     }
     return assignedUsers;
 }
-function renderAssignedUsers(){
+function renderAssignedUsers() {
     let assignedUsers = readAssignment();
     const accountTags = document.getElementById('accountTags');
     accountTags.innerHTML = "";
@@ -465,7 +468,6 @@ function addShortNames(name, x) {
 
 function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');
-    console.log(name);
     container.innerHTML += Join.generateHTMLRenderShortNames(name, x);
 }
 
@@ -475,27 +477,54 @@ function removeShortNames(x) {
     removeName.innerHTML = '';
 }
 
-// function filterContactNames() {
-//     let search = document.getElementById('searchContacts').value;
-//     search = search.toLowerCase();
+function filterContactNames() {
+    let search = document.getElementById('searchContacts').value;
+    search = search.toLowerCase();
 
-//     let list = document.getElementById('taskContactList');
-//     list.innerHTML = '';
+    let list = document.getElementById('taskContactList');
+    list.innerHTML = '';
 
-//     for (let p = 0; p < Join.accounts.length; p++) {
-//         let name = Join.accounts[p]['name'];
-        
-//         if (name.toLowerCase().includes(search)) {
-//             list.innerHTML = 
-//         }
-//     }
-   
-// }
+    for (let p = 0; p < Join.accounts.length; p++) {
+        let name = Join.accounts[p]['name'];
+
+        if (name.toLowerCase().includes(search)) {
+            renderAssignedUsers();
+        }
+    }
+}
+
+function updateHTML() {
+    let open = Join.subtasks.filter(s => s['status'] == 'open');
+    
+    document.getElementById('open').innerHTML = '';
+
+    for (let q = 0; q < open.length; q++) {
+        let element = open[q];
+        document.getElementById('open').innerHTML += renderTask(element);
+    }
+
+    let close = Join.subtasks.filter(s => s['status'] == 'close');
+
+    document.getElementById('close').innerHTML = '';
+
+    for (let q = 0; q < close.length; q++) {
+        let element = close[q];
+        document.getElementById('close').innerHTML += renderTask(element);
+    }
+}
 
 
+function startDragging(id) {
+    currentDraggedElement = id;
+}
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
 
-
-
+function moveTo(category) {
+    Join.subtasks[currentDraggedElement]['status'] = category;
+    updateHTML();
+}
 
 

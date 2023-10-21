@@ -9,7 +9,7 @@
     background-color: white;
     cursor: move;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.107);
-    z-index: 2;
+    /* z-index: 2; */
     margin-bottom: 20px;
 }
 

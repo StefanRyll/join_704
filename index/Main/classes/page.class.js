@@ -357,35 +357,51 @@ class Page {
 
     <div class="frame-136">
         <div onclick="openAddTask(0)" class="board-actionbar">
-            <p>To do</p>
-            <div class="border-plus">
-                <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <div class="lanes">
+                <p>To do</p>
+                <div class="border-plus">
+                    <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path  d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
+                    </svg>
+                </div>
+            </div>
+            <div id="open">
+                <div ondrop="moveTo('open')" class="canban-style" ondragover="allowDrop(event)" id="kambanTodo"></div>
             </div>
         </div>
         <div onclick="openAddTask(1)" class="board-actionbar">
-            <p>In progress</p>
-            <div class="border-plus">
-                <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg"  width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <div class="lanes">
+                <p>In progress</p>
+                <div class="border-plus">
+                    <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg"  width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
+                    </svg>
+                </div>
+            </div>
+            <div id="close">
+                <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" id="kambanInprogress"></div>
             </div>
         </div>
         <div onclick="openAddTask(2)" class="board-actionbar">
+            <div class="lanes">
             <p>Await feedback</p>
-            <div class="border-plus">
-                <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <div class="border-plus">
+                    <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
+                    </svg>
+                </div>
             </div>
+            <div class="canban-style" id="kambanFeedback"></div>
         </div>
         <div class="board-actionbar">
-            <p>Done</p>
+            <div class="lanes">
+                <p>Done</p>
+            </div>
         </div>
+        <div class="canban-style" id="kambanDone"></div>
     </div>
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
@@ -395,10 +411,7 @@ class Page {
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
     <div id="addTask">
-        <div id="kambanTodo"></div>
-        <div id="kambanInprogress"></div>
-        <div id="kambanFeedback"></div>
-        <div id="kambanDone"></div>
+       
     </div>
 
             `
@@ -640,7 +653,7 @@ class Page {
                         <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
-                    <div id="assignedToContacts" class="checkbox-container">
+                    <div onload="renderContactList()" id="assignedToContacts" class="checkbox-container">
                         ${this.generateHTMLCheckbox()} 
                     </div>
                     <div class="checkbox-container-button">
@@ -661,7 +674,7 @@ class Page {
     }
     generateHTMLCheckbox() {
         return /*html*/ `
-            <div  id="taskContactList">
+            <div id="taskContactList">
 
             </div>
             
@@ -718,18 +731,29 @@ class Page {
             </div>
           `
     }
+
     generateHTMLDateForm() {
-        return /*html*/ `
-        <form class="input-date board-task-input">
-            <label for="pflichtfeld">Due date<sup>*</sup></label>
-            <div class="board-input-date">
-                <input type="date" id="datum" name="datum" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy" required>
-                <!-- <input required type="text" name="" id="boardTaskAddDate" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy-"> -->
-                <!-- <img src="/assets/img/calender.png" alt=""> -->
-            </div>
-        </form>
-      `
+        return /*html*/`
+                <form class="input-date board-task-input">
+                    <label for="pflichtfeld">Fälligkeitsdatum<sup>*</sup></label>
+                    <div class="board-input-date">
+                        <input type="date" id="dateOfTask" name="datum" required>
+                        <input type="text" id="formatted-date">
+                    </div>
+                </form>
+            `
     }
+    // generateHTMLDateForm() {
+    //     return /*html*/ `
+    //     <form class="input-date board-task-input">
+    //         <label for="pflichtfeld">Due date<sup>*</sup></label>
+    //         <div class="board-input-date">
+    //             <input type="date" id="datum" name="datum" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy" name="selected_date" required>
+    //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
+    //         </div>
+    //     </form>
+    //   `
+    // }
     generateHTMLPrioCategory() {
         return /*html*/ `
                   <div class="prio-category">
