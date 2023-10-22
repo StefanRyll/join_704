@@ -266,3 +266,21 @@ body {
 .add-contact-headline {
     margin: 0;
 }
+
+.overlay-mid-container-addContact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-Contact-logo {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100%;
+    background: var(--placeholder);
+    font-size: 200;
+}

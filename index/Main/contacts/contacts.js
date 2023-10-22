@@ -212,8 +212,15 @@ function generateHtmlAddContact() {
             <span>Tasks are better with a team</span>
             <img src="../IMG/vector-5.png">
         </div>
-        <div class ="overlay-right-container-addContact">
-
+        <div class ="overlay-mid-container-addContact">
+            <div class="add-Contact-logo">
+                <img src="../IMG/person-white.png">
+            </div>
+        </div>
+        <div class="overlay-right-container-addContact">
+            <div class="style-closebutton">
+                
+            </div>
         </div>
     </div>
  
