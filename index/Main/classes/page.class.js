@@ -646,8 +646,8 @@ class Page {
 
     generateHTMLAssignedTo(x) {
         return /*html*/`
+            <p class="assigned-style">Assigned to</p>
             <div class="board-task-input">
-                <p>Assigned to</p>
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
                     <div class="assign-container assign-container-style">
