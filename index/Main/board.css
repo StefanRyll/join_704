@@ -190,10 +190,10 @@
     line-height: 120%;
 }
 
-#addTask {
+/* #addTask {
     display: flex;
     gap: 20px;
-}
+} */
 
 .canban-style {
     display: flex;

@@ -51,12 +51,12 @@
 }
 
 .add-task {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     background-color: #fff;
     height: 870px;
     border-radius: 30px;
-    position: relative;
+    /* position: relative; */
 }
 
 .header-add-task {
@@ -64,15 +64,24 @@
     justify-content: space-between;
 }
 
+.headline-add-task {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 64px;
+    margin-left: 74px;
+}
+
 .headline-add-task h3 {
     font-size: 61px;
     font-weight: 700;
     margin-block-start: 0;
     margin-block-end: 0;
-    padding-bottom: 32px;
-    position: absolute;
-    top: 64px;
-    left: 74px;
+}
+
+.board-task-middle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
 }
 
 /*********************************   LEFT SIDE  ********************************************/
@@ -84,7 +93,8 @@
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    padding: 20px;
+    margin-left: 75px;
+    margin-right: 48px;
 }
 
 
@@ -246,11 +256,8 @@
     color: #D1D1D1;
 }
 
-
 .field-required-text {
-    position: absolute;
-    display: flex;
-    bottom: 25px;
+    margin-left: 74px;
 }
 
 .field-required-text sub {
@@ -273,7 +280,7 @@
 /*********************************   SEPORATOR  ********************************************/
 
 .seperator-add-task {
-    padding-top: 26%;
+    margin-top: 32px;
 }
 
 
@@ -285,8 +292,9 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding: 24px;
     gap: 24px;
+    margin-right: 65px;
+    margin-left: 48px;
 }
 
 .close-button-add-task:hover {
@@ -297,9 +305,7 @@
 }
 
 .close-button-add-task {
-    position: absolute;
-    right: 40px;
-    top: 64px;
+   margin-right: 44px;
 }
 
 .input-date {
@@ -504,10 +510,8 @@
 
 .bottom-button {
     display: flex;
-    position: absolute;
-    bottom: 30px;
-    right: 25px;
     gap: 25px;
+    margin-right: 65px;
 }
 
 .cancel-button {
@@ -567,4 +571,11 @@
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+}
+
+.board-task-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 140px;
+    align-items: end;
 }

@@ -592,10 +592,21 @@ class Page {
         return /*html*/ `
               <div id="slideAddTask" class="bg-task">
                 <div class="add-task">
-                    ${this.generateHTMLLeftSide(x)}
-                    ${this.generateHTMLSeperator()}
-                    ${this.generateHTMLRightSide(x)}
-                    ${this.generateHTMLCloseButtonInSVG()}
+                    <div class="headline-add-task">
+                        <h3>Add Task</h3>
+                        ${this.generateHTMLCloseButtonInSVG()}
+                    </div>
+                    <div class="board-task-middle">
+                        ${this.generateHTMLLeftSide(x)}
+                        ${this.generateHTMLSeperator()}
+                        ${this.generateHTMLRightSide(x)}
+                    </div>
+                    <div class="board-task-footer">
+                        <div class="field-required-text">
+                            <sub>*</sub><span>This field is required</span>
+                        </div>
+                        ${this.generateHTMLButtons(x)}
+                    </div>
                 </div>
               </div>
           `
@@ -612,25 +623,19 @@ class Page {
     }
     generateHTMLLeftSide(x) {
         return /*html*/ `
-              <div class="headline-add-task">
-                <h3>Add Task</h3>
-              </div>
               <div class="left-side">
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
                 ${this.generateHTMLAddContactShortName()}
-                <div class="field-required-text">
-                  <sub>*</sub><span>This field is required</span>
-                </div>
               </div>
           `
     }
     generateHTMLTitle() {
         return /*html*/ `
-                <form class="input-title board-task-input">
+                <form  class="input-title board-task-input">
                     <label for="pflichtfeld">Title<sup>*</sup></label>
-                    <input type="text" id="boardTaskTitle" name="" required  placeholder="Enter a title">
+                    <input class="blue" type="text" id="boardTaskTitle" name="" required  placeholder="Enter a title">
                 </form>
         `
     }
@@ -638,7 +643,7 @@ class Page {
         return /*html*/ `
                 <form class="input-description">
                     <p>Description</p>
-                    <textarea name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                    <textarea class="blue" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </form>
                 
         `
@@ -728,7 +733,6 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  ${this.generateHTMLButtons(x)}
             </div>
           `
     }
@@ -989,7 +993,7 @@ class Page {
     generateHTMLCloseButtonInSVG() {
         return /*html*/ `
                 <div class="style-closebutton">
-                  <svg onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <svg  onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                         <rect width="24" height="24" fill="#D9D9D9"/>
                       </mask>

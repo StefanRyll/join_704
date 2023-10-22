@@ -49,6 +49,10 @@
     color: black !important;
 }
 
+.blue:focus {
+    border: 1px solid rgba(41, 171, 226, 1) !important;
+}
+
 .assign-container1 input {
     border: none;
 }
@@ -69,6 +73,7 @@
     width: 27.5em;
     max-height: 9em;
     z-index: 10;
+    box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
 .checkbox-container td {
