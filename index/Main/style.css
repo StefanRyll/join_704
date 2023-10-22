@@ -2,7 +2,6 @@
     font-family: inter, sans-serif !important;
 }
 
-
 :root {
     --white: rgba(255, 255, 255, 1);
     --general-button-inactive: rgba(42, 54, 71, 1);
@@ -25,12 +24,101 @@ body {
     /* display: flex; */
     background-color: var(--lightgrey);
     margin: 0;
-    
     /* height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center; */
     overflow: hidden;
+}
+
+.btn-underlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(209, 209, 209, 1);
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;
+}
+
+.btn-underlay:focus-within {
+    border: 1px solid var(--lightblue);
+}
+
+.frame-157 {
+    border: none;
+    width: 422px;
+    height: 32px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.frame-157:hover {
+    cursor: pointer;
+}
+
+.frame-157:focus {
+    outline: none;
+}
+
+.btn-dark-blue {
+    border: none;
+    width: 91px;
+    height: 49px;
+    padding: 15px, 16px, 15px, 16px;
+    border-radius: 8px;
+    gap: 10px;
+    background: var(--general-button-inactive);
+    color: #ffffff;
+    letter-spacing: 0em;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.btn-dark-blue:hover {
+    cursor: pointer;
+    background-color: var(--general-button-hover);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: 0.1s ease-in-out;
+}
+
+.btn-dark-blue:active {
+    background-color: var(--general-button-active);
+}
+
+.btn-white {
+    background-color: var(--white);
+    color: black;
+    width: 177px;
+    height: 48px;
+    padding: 15px 24px 15px 24px;
+    border-radius: 8px;
+    border: 1px solid black;
+    gap: 10px;
+    letter-spacing: 0em;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.btn-white:hover {
+    cursor: pointer;
+    background-color: var(--white);
+    border: 1px solid var(--lightblue);
+    color: var(--lightblue);
+    transition: 0.1s ease-in-out;
+}
+
+.btn-white:active {
+    border: 1px solid var(--white-btn-active);
+    color: var(--white-btn-active);
 }
 
 
@@ -92,6 +180,14 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.font-size-normal {
+    font-weight: 400;
+}
+
+.mg-none {
+    margin: 0;
 }
 
 .text-button {

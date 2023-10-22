@@ -21,23 +21,23 @@
     <div w3-include-html="./sidebarAndHeader.html"></div>
 
     <!----------------------------- HEADER - BOARD ----------------------------------->
-    <section>
-        <div class="add-contact-overlay d-none" id="addContactOverlay"></div>
-    </section>
-    <section class="contacts-list-section">
+    <div>
+        <div class="overlay-style d-none" id="overlay"></div>
+    </div>
+    <div class="contacts-list-section">
         <div class="add-new-button" id="addNewButton">
-            <button onclick="openAddNewContact()" class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
+            <button onclick="openOverlay()" class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
         </div>
         <nav class="contacts-list" id="contactsList"></nav>
-    </section>
-    <section class="contacts-view">
+    </div>
+    <div class="contacts-view">
         <div class="contacts-headline">
             <h1 class="contacts-h1">Contacts</h1>
             <img class="vector-blue" src="../IMG/Vector-5blue (1).png">
             <p class="subtitle-contacts">Better with a team</p>
         </div>
         <div class="contact-container slide-in" id="detailsContainer"></div>
-    </section>
+    </div>
 
 
 </body>
