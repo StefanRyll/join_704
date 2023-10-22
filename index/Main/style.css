@@ -63,6 +63,11 @@ body {
     outline: none;
 }
 
+.frame-157::placeholder {
+    padding: 4px;
+    color: var(--placeholder);
+}
+
 .btn-dark-blue {
     border: none;
     width: 91px;

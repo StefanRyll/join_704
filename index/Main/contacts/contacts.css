@@ -262,12 +262,12 @@ body {
 
 .overlay-left-container {
     display: flex;
-    padding: 66px 48px;
+    padding: 66px 48px 100px 48px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 12px;
-    border-radius: 30px 0 0 30px;
+    border-radius: 27px 0 0 27px;
     flex-shrink: 0;
     color: white;
     background: var(--version-2-main-color, #2A3647);
@@ -296,13 +296,45 @@ body {
 }
 
 .overlay-right-container-addContact {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 48px 115px 48px 115px;
     border-radius: 30px;
     gap: 32px;
     background-color: var(--white);
+}
+
+.style-closebutton {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 32px;
+    right: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.style-closebutton:hover {
+    cursor: pointer;
+    background: var(--placeholder);
+    transition: 0.1s ease-in-out;
+}
+
+.addContact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .frame-14 {
@@ -316,4 +348,12 @@ body {
 
 .frame-14:focus-within {
     border: 1px solid var(--lightblue);
+}
+
+.btn-cancel {
+    width: 100px !important;
+}
+
+.btn-create {
+    width: 200px !important;
 }
