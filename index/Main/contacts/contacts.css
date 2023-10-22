@@ -14,6 +14,16 @@ body {
     transform: translateX(0);
 }
 
+.slide-out {
+    height: 100%;
+    transform: translateX(0%);
+    transition: transform 0.3s ease;
+}
+
+.slide-out.active {
+    transform: translateX(200%);
+}
+
 
 /* ====================================================== <contactslist> =============================================================== */
 
