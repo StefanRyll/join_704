@@ -169,10 +169,10 @@ function showDetails(i) {
         <div class="name">
             <h2 class="name-headline">${contact.name}</h2>
             <a class="contactsIcons">
-                <div onclick="editContact()" class="editIcon">
+                <div onclick="openOverlay()" class="editIcon">
                     <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
                 </div>
-                <div onclick="deleteContact()" class="deleteIcon">
+                <div onclick="openOverlay()" class="deleteIcon">
                     <img class="deleteSymbol" src="../IMG/delete.png"> <span>Delete</span>
                 </div>
             </a>
@@ -191,9 +191,9 @@ function showDetails(i) {
 }
 
 /**
- *  function for open and render the overlay to add new contact
+ *  function for open and render the overlay to add new contact, edit Contact and delete Contact
  */
-function openAddNewContact() {
+function openOverlay() {
     let addContactForm = document.getElementById('overlay');
     addContactForm.classList.remove('d-none');
     addContactForm.innerHTML = '';
@@ -220,16 +220,6 @@ function generateHtmlAddContact() {
     `
 }
 
-function editContact() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
-    setTimeout(() => {
-        slideStart();
-    }, 100);
-}
-
 function generateHtmlEditContact() {
     return /*html*/ `
     <div class="overlay-container slide-in">
@@ -239,22 +229,12 @@ function generateHtmlEditContact() {
             <span>Tasks are better with a team</span>
             <img src="../IMG/vector-5.png">
         </div>
-        <div class ="overlay-right-container-addContact">
+        <div class ="">
 
         </div>
     </div>
  
     `
-}
-
-function deleteContact() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
-    setTimeout(() => {
-        slideStart();
-    }, 100);
 }
 
 function generateHtmlDeleteContact() {
@@ -266,7 +246,7 @@ function generateHtmlDeleteContact() {
             <span>Tasks are better with a team</span>
             <img src="../IMG/vector-5.png">
         </div>
-        <div class ="overlay-right-container-addContact">
+        <div class ="">
 
         </div>
     </div>
