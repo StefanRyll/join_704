@@ -169,21 +169,21 @@ function showDetails(i) {
         <div class="name">
             <h2 class="name-headline">${contact.name}</h2>
             <a class="contactsIcons">
-                <div class="editIcon">
+                <div onclick="editContact()" class="editIcon">
                     <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
                 </div>
-                <div class="deleteIcon">
+                <div onclick="deleteContact()" class="deleteIcon">
                     <img class="deleteSymbol" src="../IMG/delete.png"> <span>Delete</span>
                 </div>
             </a>
         </div>
     </div>
     <div class="contactInformation">
-        <h3>Contact Information</h3>
-        <h3>Email</h3><br>
-        <p class="email-blue">${contact.email}</p>
+        <h3 class="font-size-normal mg-none">Contact Information</h3>
+        <h3 class="mail-headline">Email</h3><br>
+        <p class="mail mg-none"><a href="mailTo:${contact.email}">${contact.email}</a></p>
         <h3>Phone</h3>
-        <p>Phone: ${contact.phone}</p>
+        <p><a class="phone-link" href="tel:${contact.phone}">${contact.phone}</a></p>
     </div>
 `;
     document.getElementById("detailsContainer").innerHTML = detailsContent;
@@ -191,23 +191,8 @@ function showDetails(i) {
 }
 
 /**
- *  this function is required to render the header and sidebar
+ *  function for open and render the overlay to add new contact
  */
-async function includeHTML() {
-    let includeElements = document.querySelectorAll("[w3-include-html]"); //  Wir rufen unseren DIV im Index auf
-    for (let i = 0; i < includeElements.length; i++) {
-        // hier iterieren wir alles Obejekte in diesem DIV container sprich alles was in dem Fall im Header Bereich ist
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // hier liest er den Wert im Index.Html "includes/header.html" aus. Und wir deieser Varibale file zugeordnet
-        let resp = await fetch(file); // hier laden wir die datei mit fetch
-        if (resp.ok) {
-            element.innerHTML = await resp.text(); // hier haben wir jetzt alles in der Variable contetn als Text gespeichert^
-        } else {
-            element.innerHTML = "Page not found";
-        }
-    }
-}
-
 function openAddNewContact() {
     let addContactForm = document.getElementById('addContactOverlay');
     addContactForm.classList.remove('d-none');
@@ -233,4 +218,22 @@ function generateHtmlAddContact() {
     </div>
  
     `
+}
+
+/**
+ *  this function is required to render the header and sidebar
+ */
+async function includeHTML() {
+    let includeElements = document.querySelectorAll("[w3-include-html]"); //  Wir rufen unseren DIV im Index auf
+    for (let i = 0; i < includeElements.length; i++) {
+        // hier iterieren wir alles Obejekte in diesem DIV container sprich alles was in dem Fall im Header Bereich ist
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html"); // hier liest er den Wert im Index.Html "includes/header.html" aus. Und wir deieser Varibale file zugeordnet
+        let resp = await fetch(file); // hier laden wir die datei mit fetch
+        if (resp.ok) {
+            element.innerHTML = await resp.text(); // hier haben wir jetzt alles in der Variable contetn als Text gespeichert^
+        } else {
+            element.innerHTML = "Page not found";
+        }
+    }
 }

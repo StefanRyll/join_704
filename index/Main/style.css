@@ -2,7 +2,6 @@
     font-family: inter, sans-serif !important;
 }
 
-
 :root {
     --white: rgba(255, 255, 255, 1);
     --general-button-inactive: rgba(42, 54, 71, 1);
@@ -25,7 +24,6 @@ body {
     /* display: flex; */
     background-color: var(--lightgrey);
     margin: 0;
-    
     /* height: 100vh;
     display: flex;
     justify-content: center;
@@ -92,6 +90,14 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.font-size-normal {
+    font-weight: 400;
+}
+
+.mg-none {
+    margin: 0;
 }
 
 .text-button {
