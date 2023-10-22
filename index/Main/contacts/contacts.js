@@ -220,9 +220,26 @@ function generateHtmlAddContact() {
         </div>
         <div class="overlay-right-container-addContact">
             ${closeButton ()}
+            <div class="btn-underlay">
+                <input required type="text" class="frame-157" placeholder="Name" id="loginEmail">
+                <img class="input-icon" src="../IMG/person.png"> 
+            </div>
+            <div class="btn-underlay">
+                <input required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                <img class="input-icon" src="../IMG/mail.png"> 
+            </div>
+            <div class="btn-underlay">
+                <input required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
+                <img class="input-icon" src="../IMG/call.png"> 
+            </div>
+            <div class="frame-176">
+                <div class="loginButtons">
+                    <button class="btn-white" type="submit">Cancel</button>
+                    <button class="btn-dark-blue">Create&nbsp;contact</button>
+                </div>
+            </div>
         </div>
     </div>
- 
     `
 }
 

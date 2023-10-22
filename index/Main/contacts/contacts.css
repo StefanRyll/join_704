@@ -294,3 +294,26 @@ body {
     background: var(--placeholder);
     font-size: 200;
 }
+
+.overlay-right-container-addContact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 115px 48px 115px;
+    border-radius: 30px;
+    gap: 32px;
+    background-color: var(--white);
+}
+
+.frame-14 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(209, 209, 209, 1);
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;
+}
+
+.frame-14:focus-within {
+    border: 1px solid var(--lightblue);
+}
