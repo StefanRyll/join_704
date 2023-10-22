@@ -227,7 +227,7 @@ body {
 
 /* ====================================================== <add new contact overlay> =============================================================== */
 
-.add-contact-overlay {
+.overlay-style {
     position: absolute;
     top: 0;
     left: 0;

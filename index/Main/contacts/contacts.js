@@ -194,7 +194,7 @@ function showDetails(i) {
  *  function for open and render the overlay to add new contact
  */
 function openAddNewContact() {
-    let addContactForm = document.getElementById('addContactOverlay');
+    let addContactForm = document.getElementById('overlay');
     addContactForm.classList.remove('d-none');
     addContactForm.innerHTML = '';
     addContactForm.innerHTML = generateHtmlAddContact();
@@ -219,6 +219,62 @@ function generateHtmlAddContact() {
  
     `
 }
+
+function editContact() {
+    let addContactForm = document.getElementById('overlay');
+    addContactForm.classList.remove('d-none');
+    addContactForm.innerHTML = '';
+    addContactForm.innerHTML = generateHtmlAddContact();
+    setTimeout(() => {
+        slideStart();
+    }, 100);
+}
+
+function generateHtmlEditContact() {
+    return /*html*/ `
+    <div class="overlay-container slide-in">
+        <div class="overlay-left-container">
+            <img src="../IMG/LogoWhite.png" alt="join-logo">
+            <h1 class="add-contact-headline">Add contact</h1>
+            <span>Tasks are better with a team</span>
+            <img src="../IMG/vector-5.png">
+        </div>
+        <div class ="overlay-right-container-addContact">
+
+        </div>
+    </div>
+ 
+    `
+}
+
+function deleteContact() {
+    let addContactForm = document.getElementById('overlay');
+    addContactForm.classList.remove('d-none');
+    addContactForm.innerHTML = '';
+    addContactForm.innerHTML = generateHtmlAddContact();
+    setTimeout(() => {
+        slideStart();
+    }, 100);
+}
+
+function generateHtmlDeleteContact() {
+    return /*html*/ `
+    <div class="overlay-container slide-in">
+        <div class="overlay-left-container">
+            <img src="../IMG/LogoWhite.png" alt="join-logo">
+            <h1 class="add-contact-headline">Add contact</h1>
+            <span>Tasks are better with a team</span>
+            <img src="../IMG/vector-5.png">
+        </div>
+        <div class ="overlay-right-container-addContact">
+
+        </div>
+    </div>
+ 
+    `
+}
+
+
 
 /**
  *  this function is required to render the header and sidebar
