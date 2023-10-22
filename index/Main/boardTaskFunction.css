@@ -32,6 +32,15 @@
     padding-right: 5px;
 } */
 
+.input-title {
+    width: 28em;
+}
+
+.container-active-blue {
+    border: 1px solid rgba(41, 171, 226, 1) !important;
+    color: black !important;
+}
+
 .assign-container1 input {
     border: none;
 }

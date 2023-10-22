@@ -640,6 +640,7 @@ class Page {
                     <p>Description</p>
                     <textarea name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </form>
+                
         `
     }
 
@@ -861,7 +862,7 @@ class Page {
     generateHTMLHiddenCategory() {
         return /*html*/ `
             <div id="hiddenSelectCategory" class="assign-container">
-              <input id="taskCategoryInput" onclick="toggleCategory()" type="button" value="Select task category">
+              <input id="taskCategoryInput" onclick="toggleCategory()" type="text" value="Select task category" >
               <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
             </div>
         `
@@ -926,7 +927,7 @@ class Page {
         <div class="board-task-input button-hover">
             <p>Subtasks</p>
             <div id="hiddenSubtask" class="assign-container">
-                <input onclick="openSubtask()" type="button" value="Add new subtask">
+                <input onclick="openSubtask()" type="text" placeholder="Add new subtask">
                 <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
             </div>
             <div>
@@ -958,7 +959,7 @@ class Page {
             <div id="fixTodoSubtask${m}" class="fix-todo-subtask d-none">
                 <form class="fix-container">
                         <input id="editFixSubtask" type="text" placeholder="" value="${x}">
-                    <div>
+                    <div class="fix-subtask-icons">
                         <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img class="subtask-line" src="/assets/img/subtask_seperator.png" alt="">
                         <img src="/assets/img/subtask-accept.png" alt="" onclick="fixSubtasks(${m})">
