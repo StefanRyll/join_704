@@ -49,23 +49,23 @@ function generateHtmlAddContact() {
         </div>
         <div class="overlay-right-container-addContact">
             ${closeButton ()}
-            <form class="addContact-form" action="">
+            <form class="addContact-form" action="#" onsubmit="addContact()">
                 <div class="btn-underlay">
-                    <input required type="text" class="frame-157" placeholder="Name" id="loginEmail">
+                    <input id="name" required type="text" class="frame-157" placeholder="Name" id="loginEmail">
                     <img class="input-icon" src="../IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                    <input id="mail" required type="email" class="frame-157" placeholder="Email" id="loginEmail">
                     <img class="input-icon" src="../IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
+                    <input id="phone" required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
                     <img class="input-icon" src="../IMG/call.png"> 
                 </div>
                 <div class="frame-176">
                     <div class="loginButtons">
                         <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Cancel <img src="../IMG/cancel.png"></button>
-                        <button class="btn-create btn-dark-blue">Create&nbsp;contact <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
+                        <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
                     </div>
                 </div>
             </form>

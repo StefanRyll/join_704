@@ -207,9 +207,6 @@ function openDeleteContact() {
     }, 100);
 }
 
-
-
-
 /**
  *  function for close the overlays
  */
@@ -239,4 +236,21 @@ async function includeHTML() {
             element.innerHTML = "Page not found";
         }
     }
+}
+
+function addContact() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('mail').value;
+    const phone = document.getElementById('phone').value;
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const newUser = {
+        name,
+        email,
+        phone,
+        randomColor
+    };
+    user.push(newUser);
+    user.sort((a, b) => a.name.localeCompare(b.name));
+    closeOverlay();
+    renderContacts();
 }
