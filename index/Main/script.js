@@ -154,12 +154,13 @@ function openAddTask(x = 0) {
 function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
     // const assignedUsers = readAssignment('')
-    const assignedUsers = readAssignment('ac');
-    const desc = document.getElementById("boardTaskDescription").value;
-    const date = document.getElementById("datum").value;
+    const assignedUsers = document.getElementById(`contactName${x}`).textContent;
+    const desc = document.getElementById('boardTaskDescription').value;
+    const date = document.getElementById('date').value;
     const prio = taskOutput;
     const category = document.getElementById('taskCategoryInput').value;
-    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subtasks);
+    const subTask = document.getElementById(`todoSubtask${x}`).textContent;
+    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subTask);
     if (x == "1") {
         newTask.progress = true;
     } else if (x == "2") {
@@ -168,7 +169,7 @@ function createTaskFromBoard(x = 0) {
         newTask.todo = true;
     }
     Join.tasks.push(newTask)
-    clearInputs(title, desc, assignedUsers, date, category);
+    clearInputs(title, desc, assignedUsers, date, category, subTask);
     subtasks = []
     // saveAll()()
     closeAddTask()
@@ -194,12 +195,13 @@ function renderAssignedUsers() {
         accountTags.innerHTML += user.accountTags()
     }
 }
-function clearInputs(title, description, contact, date, newCategory) {
+function clearInputs(title, description, contact, date, newCategory, subtask) {
     title.value = '';
     description.value = '';
     contact.value = '';
     date.value = '';
     newCategory.value = "Select task category";
+    subtask.value = '';
 }
 
 function toggleContactsAssign() {

@@ -41,7 +41,7 @@ class Contact {
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
                         <div id="shortname${x}" class="accountTag">${this.shortname}</div>
-                        <div>${this.name}</div>
+                        <div id="contactName${x}">${this.name}</div>
                     </div>
                     <!-- <input type="checkbox" name="" id="ac${x}"> -->
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">

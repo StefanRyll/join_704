@@ -742,7 +742,7 @@ class Page {
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="dateOfTask" name="datum" required placeholder="dd/mm/yyyy">
+                        <input type="date" id="date" name="datum" required placeholder="dd/mm/yyyy" value="2023-10-23">
                         <!-- <input type="text" id="formatted-date"> -->
                     </div>
                 </form>
