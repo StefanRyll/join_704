@@ -381,6 +381,20 @@ input::-webkit-inner-spin-button {
     margin-bottom: 68px;
     justify-content: center;
     z-index: 0;
+    transform: translateX(100%);
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.show-overlay {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.remove-overlay {
+    transform: translateX(100%);
+    transition: 0.3s ease-in-out;
+    opacity: 0;
 }
 
 .successInfoContainer {

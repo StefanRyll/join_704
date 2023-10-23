@@ -245,8 +245,17 @@ function addContact() {
 
 function successOverlay() {
     const overlaySuccess = document.getElementById('overlaySuccess');
-    overlaySuccess.classList.remove('d-none');
+    // overlaySuccess.classList.remove('d-none');
+    overlaySuccess.classList.add('show-overlay');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
+    closeOverlay();
+    // Nach 3 Sekunden die Animation zurücksetzen
+    setTimeout(() => {
+        overlaySuccess.classList.remove('show-overlay');
+        setTimeout(() => {
+            overlaySuccess.classList.add('remove-overlay');
+        }, 100);
+    }, 3000); // 3 Sekunden Verzögerung
     console.log(overlaySuccess, 'erfolgreich');
 }
 
