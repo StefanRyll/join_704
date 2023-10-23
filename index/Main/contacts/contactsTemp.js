@@ -74,6 +74,14 @@ function generateHtmlAddContact() {
     `
 }
 
+function generateHtmlSuccessInfo() {
+    return /*html*/ `
+        <div class="successInfoContainer">
+            <h3 class="font-size-normal mg-none">Contact succesfully created</h3>
+        </div>
+    `
+}
+
 function generateHtmlEditContact() {
     return /*html*/ `
     <div class="overlay-container slide-in">

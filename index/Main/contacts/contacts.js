@@ -237,7 +237,17 @@ function addContact() {
     user.push(newUser);
     user.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
+    setTimeout(() => {
+        successOverlay();
+    }, 300);
     renderContacts();
+}
+
+function successOverlay() {
+    const overlaySuccess = document.getElementById('overlaySuccess');
+    overlaySuccess.classList.remove('d-none');
+    overlaySuccess.innerHTML = generateHtmlSuccessInfo();
+    console.log(overlaySuccess, 'erfolgreich');
 }
 
 /**
