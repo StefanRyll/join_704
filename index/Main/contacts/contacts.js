@@ -238,6 +238,9 @@ async function includeHTML() {
     }
 }
 
+/**
+ * function at new Contact to the user-array
+ */
 function addContact() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('mail').value;
