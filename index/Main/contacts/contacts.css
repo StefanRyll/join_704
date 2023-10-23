@@ -352,8 +352,19 @@ input::-webkit-inner-spin-button {
 
 .btn-cancel {
     width: 100px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-create {
     width: 200px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-img-contacts {
+    width: 24px;
+    height: 24px;
 }

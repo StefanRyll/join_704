@@ -235,8 +235,8 @@ function generateHtmlAddContact() {
                 </div>
                 <div class="frame-176">
                     <div class="loginButtons">
-                        <button class="btn-cancel btn-white" type="submit">Cancel</button>
-                        <button class="btn-create btn-dark-blue">Create&nbsp;contact</button>
+                        <button class="btn-cancel btn-white" type="submit">Cancel <img src="../IMG/cancel.png"></button>
+                        <button class="btn-create btn-dark-blue">Create&nbsp;contact <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
                     </div>
                 </div>
             </form>
