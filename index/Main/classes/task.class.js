@@ -1,5 +1,5 @@
 class Task {
-    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, status, subTasks) {
+    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, subTasks) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -10,7 +10,6 @@ class Task {
         this.progress = false;
         this.feedback = false;
         this.done = false;
-        this.status = status;
         this.subTasks = subTasks;
     }
     taskCardNormal() {
