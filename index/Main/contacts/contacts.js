@@ -221,6 +221,36 @@ function closeOverlay() {
 }
 
 /**
+ * Function for a new contact to the user array
+ */
+function addContact() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('mail').value;
+    const phone = document.getElementById('phone').value;
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
+        name,
+        email,
+        phone,
+        randomColor
+    };
+    user.push(newUser);
+    user.sort((a, b) => a.name.localeCompare(b.name));
+    closeOverlay();
+    setTimeout(() => {
+        successOverlay();
+    }, 300);
+    renderContacts();
+}
+
+function successOverlay() {
+    const overlaySuccess = document.getElementById('overlaySuccess');
+    overlaySuccess.classList.remove('d-none');
+    overlaySuccess.innerHTML = generateHtmlSuccessInfo();
+    console.log(overlaySuccess, 'erfolgreich');
+}
+
+/**
  *  this function is required to render the header and sidebar
  */
 async function includeHTML() {
@@ -236,21 +266,4 @@ async function includeHTML() {
             element.innerHTML = "Page not found";
         }
     }
-}
-
-function addContact() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('mail').value;
-    const phone = document.getElementById('phone').value;
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    const newUser = {
-        name,
-        email,
-        phone,
-        randomColor
-    };
-    user.push(newUser);
-    user.sort((a, b) => a.name.localeCompare(b.name));
-    closeOverlay();
-    renderContacts();
 }
