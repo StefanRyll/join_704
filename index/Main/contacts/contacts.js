@@ -93,6 +93,8 @@ function renderContacts() {
 
     for (let i = 0; i < user.length; i++) {
         const contact = user[i];
+        const name = contact.name;
+        const mail = contact.email;
         const userInitials = getInitials(contact.name);
         contact.color = getColor(contact.name); // .color ist eine CSS eigenschaft die später die farben ausdem array colors verwertet.
         if (!contact.color) {
@@ -110,18 +112,8 @@ function renderContacts() {
                 contactsList += '<div class="contacts-container">';
             }
         }
-
-        contactsList += /*html*/ `
-            <div class="contactfield-wrapper">
-                <div class="contactfield" onclick="showDetails(${i})">
-                    <div class="initials-logo" style="background-color: ${contact.color}">${userInitials}</div>
-                    <div class="contact">
-                        <span class="name">${contact.name}</span>
-                        <span class="mail">${contact.email}</span>
-                    </div>
-                </div>
-            </div>
-        `;
+        const color = contact.color;
+        contactsList += generateHtmlContactList(i, color, userInitials, name, mail);
     }
 
     if (contactsList !== "") {
