@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/fonts/fonts.css">
     <link rel="stylesheet" href="../SideAndHeadStyle.css">
     <script src="contacts.js"></script>
+    <script src="contactsTemp.js"></script>
 </head>
 
 <body onload="initContacts()">
@@ -26,7 +27,7 @@
     </div>
     <div class="contacts-list-section">
         <div class="add-new-button" id="addNewButton">
-            <button onclick="openOverlay()" class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
+            <button onclick="openAddContact()" class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
         </div>
         <nav class="contacts-list" id="contactsList"></nav>
     </div>

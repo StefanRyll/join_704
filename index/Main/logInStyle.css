@@ -12,13 +12,6 @@ a {
     color: black;
 }
 
-.loginButtons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
-}
-
 .log-in-side-button {
     border: none;
     width: 91px;

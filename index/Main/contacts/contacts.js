@@ -174,10 +174,10 @@ function showDetails(i) {
         <div class="name">
             <h2 class="name-headline">${contact.name}</h2>
             <a class="contactsIcons">
-                <div onclick="openOverlay()" class="editIcon">
+                <div onclick="openEditContact()" class="editIcon">
                     <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
                 </div>
-                <div onclick="openOverlay()" class="deleteIcon">
+                <div onclick="openDeleteContact()" class="deleteIcon">
                     <img class="deleteSymbol" src="../IMG/delete.png"> <span>Delete</span>
                 </div>
             </a>
@@ -198,7 +198,29 @@ function showDetails(i) {
 /**
  *  function for open and render the overlay to add new contact, edit Contact and delete Contact
  */
-function openOverlay() {
+function openAddContact() {
+    let addContactForm = document.getElementById('overlay');
+    addContactForm.classList.remove('d-none');
+    addContactForm.classList.remove('slide-out');
+    addContactForm.innerHTML = '';
+    addContactForm.innerHTML = generateHtmlAddContact();
+    setTimeout(() => {
+        slideStart();
+    }, 100);
+}
+
+function openEditContact() {
+    let addContactForm = document.getElementById('overlay');
+    addContactForm.classList.remove('d-none');
+    addContactForm.classList.remove('slide-out');
+    addContactForm.innerHTML = '';
+    addContactForm.innerHTML = generateHtmlAddContact();
+    setTimeout(() => {
+        slideStart();
+    }, 100);
+}
+
+function openDeleteContact() {
     let addContactForm = document.getElementById('overlay');
     addContactForm.classList.remove('d-none');
     addContactForm.classList.remove('slide-out');
@@ -309,6 +331,7 @@ function closeOverlay() {
         slideEnd();
         addContactForm.classList.add('d-none')
     }, 300);
+    initContacts();
 }
 
 /**

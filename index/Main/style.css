@@ -126,6 +126,13 @@ body {
     color: var(--white-btn-active);
 }
 
+.loginButtons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
 
 /* button {                   ICH MUSSTE DIE BUTTONS AUSSCHALTEN DA IM ADD TASK AUCH ANDERE BUTTONS GIBT DIE ABER EINE KOMPLETT ANDERE CSS EIGENSCHAFTEN HABEN = PRIO _> BUTTONS
     border: none;
