@@ -17,9 +17,10 @@ async function saveAccounts(){
 
 }
 async function loadAccounts(){
-  let response = await fetch('./saves/saveAccounts.json')
+  let response = await fetch('./saves/Accounts.json')
   let responseAsJson = await response.json();
-  return responseAsJson;
+  Join.accounts = responseAsJson;
+
 }
 async function saveTasks(){
   const tasks = Join.tasks;
@@ -40,9 +41,9 @@ async function saveTasks(){
 
 }
 async function loadTasks(){
-  let response = await fetch('./saves/saveAccounts.json')
+  let response = await fetch('./saves/Tasks.json')
   let responseAsJson = await response.json();
-  return responseAsJson;
+  Join.tasks = responseAsJson;
 }
 function saveAll(){
   saveAccounts();
