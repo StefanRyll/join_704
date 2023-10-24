@@ -22,7 +22,7 @@ function generateHtmlContactDetails(i, color, userInitials, name, mail, phone) {
                     <div onclick="openEditContact(${i})" class="editIcon">
                         <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
                     </div>
-                    <div onclick="#" class="deleteIcon">
+                    <div onclick="deleteContact(${i})" class="deleteIcon">
                         <img class="deleteSymbol" src="../IMG/delete.png"> <span>Delete</span>
                     </div>
                 </a>
@@ -51,15 +51,15 @@ function generateHtmlAddContact() {
             ${closeButton ()}
             <form class="addContact-form" action="#" onsubmit="addContact()">
                 <div class="btn-underlay">
-                    <input id="name" required type="text" class="frame-157" placeholder="Name" id="loginEmail">
+                    <input id="name" required type="text" class="frame-157" placeholder="Name">
                     <img class="input-icon" src="../IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="mail" required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                    <input id="mail" required type="email" class="frame-157" placeholder="Email">
                     <img class="input-icon" src="../IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="phone" required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
+                    <input id="phone" required type="number" class="frame-157" placeholder="Phone">
                     <img class="input-icon" src="../IMG/call.png"> 
                 </div>
                 <div class="frame-176">
@@ -74,47 +74,35 @@ function generateHtmlAddContact() {
     `
 }
 
-function generateHtmlEditContact(color, userInitials) {
+function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
     return /*html*/ `
     <div class="overlay-container slide-in">
         ${generateLeftSide()}
         <div class ="overlay-mid-container">
-        <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
+            <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
         </div>
         <div class="overlay-right-container-addContact">
-            ${closeButton ()}
-            <form class="addContact-form" action="#" onsubmit="addContact()">
+            ${closeButton()}
+            <form class="addContact-form" action="#" onsubmit="editContact(${i})">
                 <div class="btn-underlay">
-                    <input id="name" required type="text" class="frame-157" placeholder="Name" id="loginEmail">
+                    <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${name}">
                     <img class="input-icon" src="../IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="mail" required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                    <input id="editMail" required type="email" class="frame-157" placeholder="Email" value="${mail}">
                     <img class="input-icon" src="../IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="phone" required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
+                    <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${phone}" oninput="validatePhoneNumber(this)">
                     <img class="input-icon" src="../IMG/call.png"> 
                 </div>
                 <div class="frame-176">
                     <div class="loginButtons">
-                        <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Delete</button>
-                        <button class="btn-create btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
+                        <button class="btn-byEdit-delete btn-white" type="reset" onclick="deleteContact(${i})">Delete</button>
+                        <button class="btn-byEdit-save btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
- 
-    `
-}
-
-function generateHtmlDeleteContact() {
-    return /*html*/ `
-    <div class="overlay-container slide-in">
-        ${generateLeftSide()}
-        <div class ="">
-
         </div>
     </div>
  
@@ -155,6 +143,22 @@ function generateHtmlSuccessInfo() {
     return /*html*/ `
         <div class="successInfoContainer">
             <h3 class="font-size-normal mg-none">Contact succesfully created</h3>
+        </div>
+    `
+}
+
+function generateHtmlDeleteInfo() {
+    return /*html*/ `
+        <div class="successInfoContainer">
+            <h3 class="font-size-normal mg-none">Contact succesfully deleted</h3>
+        </div>
+    `
+}
+
+function generateHtmlEditInfo() {
+    return /*html*/ `
+        <div class="successInfoContainer">
+            <h3 class="font-size-normal mg-none">Contact succesfully edited</h3>
         </div>
     `
 }

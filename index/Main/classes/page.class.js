@@ -394,14 +394,14 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div class="canban-style" id="kambanFeedback"></div>
+            <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" class="canban-style" id="kambanFeedback"></div>
         </div>
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
             </div>
         </div>
-        <div class="canban-style" id="kambanDone"></div>
+        <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" class="canban-style" id="kambanDone"></div>
     </div>
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
@@ -742,7 +742,7 @@ class Page {
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="date" name="datum" required placeholder="dd/mm/yyyy" value="2023-10-23">
+                        <input type="date" id="date" name="datum" required placeholder="dd/mm/yyyy" value="">
                         <!-- <input type="text" id="formatted-date"> -->
                     </div>
                 </form>

@@ -82,6 +82,10 @@ function openContactDetails() {
     slideContact = document.getElementById('detailsContainer').classList.add('show-details');
 }
 
+function closeContactDetails() {
+    slideContact = document.getElementById('detailsContainer').classList.remove('show-details');
+}
+
 function openSuccessOverlay() {
     slideOverlay = document.getElementById('overlaySuccess').classList.add('show-success-overlay');
 }
@@ -182,7 +186,6 @@ function showDetails(i) {
  * function for open and render the overlay to add new contact, edit Contact and delete Contact
  * contactsTemp.js = function generateHtmlAddContact, line 41
  * contactsTemp.js = function generateHtmlEditContact, line 77
- * contactsTemp.js = function generateHtmlDeleteContact, line ???
  */
 function openAddContact() {
     let addContactForm = document.getElementById('overlay');
@@ -194,21 +197,17 @@ function openAddContact() {
 }
 
 function openEditContact(i) {
-    let editContactForm = document.getElementById('overlay');
-    editContactForm.innerHTML = '';
+    let contact = user[i];
+    let color = contact.color;
+    let userInitials = getInitials(contact.name);
+    let name = contact.name;
+    let mail = contact.email;
+    let phone = contact.phone;
     setTimeout(() => {
         openBigOverlay()
     }, 100);
-    editContact(i);
-}
-
-function openDeleteContact() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.innerHTML = '';
-    setTimeout(() => {
-        openBigOverlay()
-    }, 100);
-    addContactForm.innerHTML = generateHtmlAddContact();
+    let editContactsContent = generateHtmlEditContact(i, color, userInitials, name, mail, phone);
+    document.getElementById("overlay").innerHTML = editContactsContent;
 }
 
 /**
@@ -245,32 +244,44 @@ function addContact() {
     renderContacts();
 }
 
+/**
+ * Function for a edit contact to the user array
+ * @param {string} i variable for the data in the user array
+ */
 function editContact(i) {
-    let editContactForm = document.getElementById('overlay');
     let contact = user[i];
-    let color = contact.color;
-    let userInitials = getInitials(contact.name);
-    document.getElementById('name').value = contact.name;
-    document.getElementById('mail').value = contact.email;
-    document.getElementById('phone').value = contact.phone;
+    contact.name = document.getElementById('editName').value;
+    contact.email = document.getElementById('editMail').value;
+    contact.phone = document.getElementById('editPhone').value;
 
-    editContactForm.innerHTML = generateHtmlEditContact(color, userInitials);
-    // const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    // const newUser = {
-    //     name,
-    //     email,
-    //     phone,
-    //     randomColor
-    // };
-    // user.push(newUser);
-    // user.sort((a, b) => a.name.localeCompare(b.name));
+    user.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
+    closeContactDetails();
     setTimeout(() => {
-        successOverlay();
+        editOverlay();
     }, 100);
     renderContacts();
 }
 
+/**
+ * Function for a delete contact to the user array
+ * @param {string} i variable for the data in the user array
+ */
+function deleteContact(i) {
+    user.splice(i, 1);
+
+    closeOverlay();
+    closeContactDetails();
+    setTimeout(() => {
+        deleteOverlay();
+    }, 100);
+    renderContacts();
+}
+
+/**
+ *  function for render a little information overlay to addContact, editContact and deleteContact
+ * contactsTemp.js = generateHtml-functions, line 142.
+ */
 function successOverlay() {
     let overlaySuccess = document.getElementById('overlaySuccess');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
@@ -278,6 +289,33 @@ function successOverlay() {
     setTimeout(() => {
         closeSuccessOverlay();
     }, 2000);
+}
+
+function deleteOverlay() {
+    let overlayDelete = document.getElementById('overlaySuccess');
+    overlayDelete.innerHTML = generateHtmlDeleteInfo();
+    openSuccessOverlay();
+    setTimeout(() => {
+        closeSuccessOverlay();
+    }, 2000);
+}
+
+function editOverlay() {
+    let overlayEdit = document.getElementById('overlaySuccess');
+    overlayEdit.innerHTML = generateHtmlEditInfo();
+    openSuccessOverlay();
+    setTimeout(() => {
+        closeSuccessOverlay();
+    }, 2000);
+}
+
+/**
+ * Function for defining which characters are allowed in the input.
+ * @param {string} phoneInput 
+ */
+function validatePhoneNumber(phoneInput) {
+    // Entferne alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
+    phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
 }
 
 /**
