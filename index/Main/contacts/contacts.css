@@ -394,3 +394,15 @@ input::-webkit-inner-spin-button {
 
 
 /* ====================================================== </add new contact overlay> =============================================================== */
+
+
+/* ====================================================== <edit contact overlay> =============================================================== */
+
+.btn-byEdit-delete,
+.btn-byEdit-save {
+    width: 111px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px !important;
+}

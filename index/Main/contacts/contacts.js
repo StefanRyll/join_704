@@ -82,6 +82,10 @@ function openContactDetails() {
     slideContact = document.getElementById('detailsContainer').classList.add('show-details');
 }
 
+function closeContactDetails() {
+    slideContact = document.getElementById('detailsContainer').classList.remove('show-details');
+}
+
 function openSuccessOverlay() {
     slideOverlay = document.getElementById('overlaySuccess').classList.add('show-success-overlay');
 }
@@ -207,15 +211,6 @@ function openEditContact(i) {
     document.getElementById("overlay").innerHTML = editContactsContent;
 }
 
-function openDeleteContact() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.innerHTML = '';
-    setTimeout(() => {
-        openBigOverlay()
-    }, 100);
-    addContactForm.innerHTML = generateHtmlAddContact();
-}
-
 /**
  *  function for close the overlays
  */
@@ -250,6 +245,32 @@ function addContact() {
     renderContacts();
 }
 
+function editContact(i) {
+    let contact = user[i];
+    contact.name = document.getElementById('editName').value;
+    contact.email = document.getElementById('editMail').value;
+    contact.phone = document.getElementById('editPhone').value;
+
+    user.sort((a, b) => a.name.localeCompare(b.name));
+    closeOverlay();
+    closeContactDetails();
+    setTimeout(() => {
+        editOverlay();
+    }, 100);
+    renderContacts();
+}
+
+function deleteContact(i) {
+    user.splice(i, 1);
+
+    closeOverlay();
+    closeContactDetails();
+    setTimeout(() => {
+        deleteOverlay();
+    }, 100);
+    renderContacts();
+}
+
 function successOverlay() {
     let overlaySuccess = document.getElementById('overlaySuccess');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
@@ -259,9 +280,31 @@ function successOverlay() {
     }, 2000);
 }
 
-function validatePhoneNumber(inputElement) {
-    // Entfernen Sie alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
-    inputElement.value = inputElement.value.replace(/[^0-9+ ]/g, '');
+function deleteOverlay() {
+    let overlayDelete = document.getElementById('overlaySuccess');
+    overlayDelete.innerHTML = generateHtmlDeleteInfo();
+    openSuccessOverlay();
+    setTimeout(() => {
+        closeSuccessOverlay();
+    }, 2000);
+}
+
+function editOverlay() {
+    let overlayEdit = document.getElementById('overlaySuccess');
+    overlayEdit.innerHTML = generateHtmlEditInfo();
+    openSuccessOverlay();
+    setTimeout(() => {
+        closeSuccessOverlay();
+    }, 2000);
+}
+
+/**
+ * Function for defining which characters are allowed in the input.
+ * @param {string} phoneInput 
+ */
+function validatePhoneNumber(phoneInput) {
+    // Entferne alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
+    phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
 }
 
 /**
