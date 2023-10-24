@@ -241,7 +241,7 @@ function addContact() {
     closeOverlay();
     setTimeout(() => {
         successOverlay();
-    }, 300);
+    }, 100);
     renderContacts();
 }
 

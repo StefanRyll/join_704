@@ -155,7 +155,7 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 21px;
-    transform: translateX(200%);
+    transform: translateX(400%);
     transition: all 225ms ease-in-out;
 }
 
@@ -391,3 +391,6 @@ input::-webkit-inner-spin-button {
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
 }
+
+
+/* ====================================================== </add new contact overlay> =============================================================== */
