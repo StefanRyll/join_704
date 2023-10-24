@@ -1,6 +1,11 @@
+const STORAGE_TOKEN = "SSLOEY6VSHKBCAMT1R3MQGZLOIZ7TTBF66BZZQUS";
+const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
+const MY_BACKEND_ACC = 'http://roman-schroeder.developerakademie.net/Join/saveAccounts.php'
+const MY_BACKEND_TAS = 'http://roman-schroeder.developerakademie.net/Join/saveTasks.php'
+
 async function saveAccounts(){
   const accounts = Join.accounts;
-  await fetch('saveAccounts.php', {
+  await fetch(MY_BACKEND_ACC, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +29,7 @@ async function loadAccounts(){
 }
 async function saveTasks(){
   const tasks = Join.tasks;
-  await fetch('saveTaks.php', {
+  await fetch(MY_BACKEND_TAS, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -51,7 +56,19 @@ function saveAll(){
   console.log("Data saved");
 }
 function loadAll(){
-  Join.accounts = loadAccounts();
-  Join.tasks = loadTasks();
+  loadAccounts();
+  loadTasks();
   console.log("Data load");
+}
+
+// Junus Variante
+async function setItem(key, value) {
+  const payload = { key, value, token: STORAGE_TOKEN };
+  return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload)})
+  .then(res => res.json());
+}
+
+async function getItem(key) {
+  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+  return fetch(url).then(res => res.json());
 }
