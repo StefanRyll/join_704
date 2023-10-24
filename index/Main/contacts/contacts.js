@@ -1,4 +1,4 @@
-let user = [{
+const user = [{
         name: "Anton Mayer",
         email: "antom@gmail.com",
         phone: "+49 1111 111 11 1",
@@ -67,17 +67,27 @@ async function initContacts() {
 }
 
 /**
- * This function is for a container to start a slide from the right side 
+ * This function is for a container to start and close a slide from the right side 
  * 
  */
-function slideStart() {
-    let slideInElement = document.querySelector('.slide-in');
-    slideInElement.classList.add('active');
+function openBigOverlay() {
+    slideOverlay = document.getElementById('overlay').classList.add('show-overlay');
 }
 
-function slideEnd() {
-    let slideInElement = document.querySelector('.slide-out');
-    slideInElement.classList.add('active');
+function closeBigOverlay() {
+    slideOverlay = document.getElementById('overlay').classList.remove('show-overlay');
+}
+
+function openContactDetails() {
+    slideContact = document.getElementById('detailsContainer').classList.add('show-details');
+}
+
+function openSuccessOverlay() {
+    slideOverlay = document.getElementById('overlaySuccess').classList.add('show-success-overlay');
+}
+
+function closeSuccessOverlay() {
+    slideOverlay = document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
 }
 
 /**
@@ -129,7 +139,7 @@ function renderContacts() {
  * @returns 
  */
 function getInitials(name) {
-    const parts = name.split(" ");
+    let parts = name.split(" ");
     let initials = parts[0][0];
     if (parts.length > 1) {
         initials += parts[parts.length - 1][0];
@@ -144,8 +154,8 @@ function getInitials(name) {
  * @returns 
  */
 function getColor(name) {
-    const sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
-    const colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
+    let sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
+    let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
     return colors[colorIndex];
 }
 
@@ -156,15 +166,15 @@ function getColor(name) {
  * @returns 
  */
 function showDetails(i) {
-    slideStart();
-    const contact = user[i];
-    const color = contact.color;
-    const userInitials = getInitials(contact.name);
-    const name = contact.name;
-    const mail = contact.email;
-    const phone = contact.phone;
+    openContactDetails();
+    let contact = user[i];
+    let color = contact.color;
+    let userInitials = getInitials(contact.name);
+    let name = contact.name;
+    let mail = contact.email;
+    let phone = contact.phone;
 
-    const detailsContent = generateHtmlContactDetails(color, userInitials, name, mail, phone);
+    let detailsContent = generateHtmlContactDetails(i, color, userInitials, name, mail, phone);
     document.getElementById("detailsContainer").innerHTML = detailsContent;
 }
 
@@ -176,47 +186,39 @@ function showDetails(i) {
  */
 function openAddContact() {
     let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.classList.remove('slide-out');
     addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
     setTimeout(() => {
-        slideStart();
+        openBigOverlay()
     }, 100);
+    addContactForm.innerHTML = generateHtmlAddContact();
 }
 
-function openEditContact() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.classList.remove('slide-out');
-    addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
+function openEditContact(i) {
+    let editContactForm = document.getElementById('overlay');
+    editContactForm.innerHTML = '';
     setTimeout(() => {
-        slideStart();
+        openBigOverlay()
     }, 100);
+    editContact(i);
 }
 
 function openDeleteContact() {
     let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.classList.remove('slide-out');
     addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
     setTimeout(() => {
-        slideStart();
+        openBigOverlay()
     }, 100);
+    addContactForm.innerHTML = generateHtmlAddContact();
 }
 
 /**
  *  function for close the overlays
  */
 function closeOverlay() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.add('slide-out')
+    document.getElementById('overlay');
     setTimeout(() => {
-        slideEnd();
-        addContactForm.classList.add('d-none')
-    }, 300);
+        closeBigOverlay()
+    }, 100);
     initContacts();
 }
 
@@ -224,11 +226,11 @@ function closeOverlay() {
  * Function for a new contact to the user array
  */
 function addContact() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('mail').value;
-    const phone = document.getElementById('phone').value;
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    const newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('mail').value;
+    let phone = document.getElementById('phone').value;
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
         name,
         email,
         phone,
@@ -239,24 +241,43 @@ function addContact() {
     closeOverlay();
     setTimeout(() => {
         successOverlay();
-    }, 300);
+    }, 100);
+    renderContacts();
+}
+
+function editContact(i) {
+    let editContactForm = document.getElementById('overlay');
+    let contact = user[i];
+    let color = contact.color;
+    let userInitials = getInitials(contact.name);
+    document.getElementById('name').value = contact.name;
+    document.getElementById('mail').value = contact.email;
+    document.getElementById('phone').value = contact.phone;
+
+    editContactForm.innerHTML = generateHtmlEditContact(color, userInitials);
+    // const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    // const newUser = {
+    //     name,
+    //     email,
+    //     phone,
+    //     randomColor
+    // };
+    // user.push(newUser);
+    // user.sort((a, b) => a.name.localeCompare(b.name));
+    closeOverlay();
+    setTimeout(() => {
+        successOverlay();
+    }, 100);
     renderContacts();
 }
 
 function successOverlay() {
-    const overlaySuccess = document.getElementById('overlaySuccess');
-    // overlaySuccess.classList.remove('d-none');
-    overlaySuccess.classList.add('show-overlay');
+    let overlaySuccess = document.getElementById('overlaySuccess');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
-    closeOverlay();
-    // Nach 3 Sekunden die Animation zurücksetzen
+    openSuccessOverlay();
     setTimeout(() => {
-        overlaySuccess.classList.remove('show-overlay');
-        setTimeout(() => {
-            overlaySuccess.classList.add('remove-overlay');
-        }, 100);
-    }, 3000); // 3 Sekunden Verzögerung
-    console.log(overlaySuccess, 'erfolgreich');
+        closeSuccessOverlay();
+    }, 2000);
 }
 
 /**
