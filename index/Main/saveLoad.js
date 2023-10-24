@@ -61,7 +61,6 @@ async function setItem(key, value) {
   return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload)})
   .then(res => res.json());
 }
-
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url).then(res => res.json());
@@ -81,15 +80,15 @@ function decodeTasks(responseAsJson){
     let prio = taskData['prio'];
     let progress = taskData['progress'];
     let subTasks = ()=>{
-      let subtask = [];
+      let subTask = [];
       for (let i = 0; i < taskData['subTasks'].length; i++) {
         const subtaskDecodet = taskData['subTasks'][i];
         let name = subtaskDecodet['name'];
         let done = subtaskDecodet['done'];
         let newSubtask = new Subtask(name, done);
-        subtask.push(newSubtask);
+        subTask.push(newSubtask);
       }
-      return subtask;
+      return subTask;
     }
 
     let todo = taskData['todo'];
