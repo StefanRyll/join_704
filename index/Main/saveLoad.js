@@ -25,7 +25,7 @@ async function loadAccounts(){
   let response = await fetch('./saves/Accounts.json')
   let responseAsJson = await response.json();
   Join.accounts = responseAsJson;
-
+  console.log("Daten geladen");
 }
 async function saveTasks(){
   const tasks = Join.tasks;
@@ -48,7 +48,11 @@ async function saveTasks(){
 async function loadTasks(){
   let response = await fetch('./saves/Tasks.json')
   let responseAsJson = await response.json();
-  Join.tasks = responseAsJson;
+  let loadedTasks = decodeTasks(responseAsJson)
+
+  Join.tasks = loadedTasks;
+  console.log("Daten geladen");
+
 }
 function saveAll(){
   saveAccounts();
@@ -71,4 +75,26 @@ async function setItem(key, value) {
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url).then(res => res.json());
+}
+// Decodieren
+
+function decodeTasks(responseAsJson){
+  let decTasks = [];
+  for (let i = 0; i < responseAsJson.length; i++) {
+    const taskData = responseAsJson[i];
+    let title = taskData['title'];
+    let category = taskData['Categroy'];
+    let date = new Date(taskData['Categroy']);
+    let desc = taskData['desc'];
+    let done = taskData['done'];
+    let feedback = taskData['feedback'];
+    let prio = taskData['prio'];
+    let progress = taskData['progress'];
+    let subTasks = taskData['subTasks'];
+    let todo = taskData['todo'];
+    let worker = taskData['Categroy'];
+    let newTask = new Task()
+
+  }
+  return decTasks;
 }

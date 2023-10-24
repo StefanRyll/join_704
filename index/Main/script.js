@@ -53,7 +53,6 @@ async function createAccount() {
     } else {
         alert('You musst accept the Privacy Policy!')
     }
-    // saveAll()()
 }
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
@@ -99,17 +98,19 @@ function viewPassword() {
 }
 
 function startPage() {
-    // saveAll()
-    //try {// loadAll()}
-    //catch(e){
-    //    console.log("Fehler", e)
-    //}finally{
+    saveTasks()
+    // try { loadAccounts()}
+    // catch(e){
+    //     console.log("Fehler", e)
+    // }
+    // finally{
     body.innerHTML = Join.startAnimation();
     body.innerHTML += Join.logInContent();
-    //}
+    // }
 }
 
 function startPage2() {
+
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
@@ -152,6 +153,8 @@ function openAddTask(x = 0) {
 }
 
 function createTaskFromBoard(x = 0) {
+    // try {loadTasks()}
+    // catch(e){console.log("Fehler:", e)}
     const title = document.getElementById("boardTaskTitle").value;
     // const assignedUsers = readAssignment('')
     const assignedUsers = document.getElementById(`contactName${x}`).textContent;
@@ -171,8 +174,15 @@ function createTaskFromBoard(x = 0) {
     Join.tasks.push(newTask)
     clearInputs(title, desc, assignedUsers, date, category, subTask);
     subtasks = []
-    // saveAll()()
-    closeAddTask()
+    
+    try { saveTasks()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
+        closeAddTask()
+    }
+
 }
 function readAssignment() {
     let assignedUsers = [];
@@ -385,7 +395,7 @@ function showContact(x) {
 }
 // Final Pages
 function summeryPage() {
-    // loadAll()
+    loadTasks()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -394,7 +404,7 @@ function summeryPage() {
 }
 
 function boardPage() {
-    // loadAll()
+    loadTasks()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')

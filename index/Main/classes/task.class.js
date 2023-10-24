@@ -146,5 +146,30 @@ class Task {
         }
 
     }
-
+    static fromJSON(data) {
+        const {
+          title,
+          worker,
+          desc,
+          date,
+          prio,
+          Categroy,
+          todo,
+          progress,
+          feedback,
+          done,
+          subTasks
+        } = data;
+    
+        return new Task(
+          title,
+          worker,
+          desc,
+          date,
+          prio,
+          Categroy,
+          subTasks
+        );
+    }
 }
+    
