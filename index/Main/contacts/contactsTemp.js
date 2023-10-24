@@ -82,7 +82,7 @@ function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
             <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
         </div>
         <div class="overlay-right-container-addContact">
-            ${closeButton ()}
+            ${closeButton()}
             <form class="addContact-form" action="#" onsubmit="editContact(${i})">
                 <div class="btn-underlay">
                     <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${name}">
