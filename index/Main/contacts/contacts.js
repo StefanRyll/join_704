@@ -194,12 +194,17 @@ function openAddContact() {
 }
 
 function openEditContact(i) {
-    let editContactForm = document.getElementById('overlay');
-    editContactForm.innerHTML = '';
+    let contact = user[i];
+    let color = contact.color;
+    let userInitials = getInitials(contact.name);
+    let name = contact.name;
+    let mail = contact.email;
+    let phone = contact.phone;
     setTimeout(() => {
         openBigOverlay()
     }, 100);
-    editContact(i);
+    let editContactsContent = generateHtmlEditContact(i, color, userInitials, name, mail, phone);
+    document.getElementById("overlay").innerHTML = editContactsContent;
 }
 
 function openDeleteContact() {
@@ -245,32 +250,6 @@ function addContact() {
     renderContacts();
 }
 
-function editContact(i) {
-    let editContactForm = document.getElementById('overlay');
-    let contact = user[i];
-    let color = contact.color;
-    let userInitials = getInitials(contact.name);
-    document.getElementById('name').value = contact.name;
-    document.getElementById('mail').value = contact.email;
-    document.getElementById('phone').value = contact.phone;
-
-    editContactForm.innerHTML = generateHtmlEditContact(color, userInitials);
-    // const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    // const newUser = {
-    //     name,
-    //     email,
-    //     phone,
-    //     randomColor
-    // };
-    // user.push(newUser);
-    // user.sort((a, b) => a.name.localeCompare(b.name));
-    closeOverlay();
-    setTimeout(() => {
-        successOverlay();
-    }, 100);
-    renderContacts();
-}
-
 function successOverlay() {
     let overlaySuccess = document.getElementById('overlaySuccess');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
@@ -278,6 +257,11 @@ function successOverlay() {
     setTimeout(() => {
         closeSuccessOverlay();
     }, 2000);
+}
+
+function validatePhoneNumber(inputElement) {
+    // Entfernen Sie alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
+    inputElement.value = inputElement.value.replace(/[^0-9+ ]/g, '');
 }
 
 /**

@@ -51,15 +51,15 @@ function generateHtmlAddContact() {
             ${closeButton ()}
             <form class="addContact-form" action="#" onsubmit="addContact()">
                 <div class="btn-underlay">
-                    <input id="name" required type="text" class="frame-157" placeholder="Name" id="loginEmail">
+                    <input id="name" required type="text" class="frame-157" placeholder="Name">
                     <img class="input-icon" src="../IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="mail" required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                    <input id="mail" required type="email" class="frame-157" placeholder="Email">
                     <img class="input-icon" src="../IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="phone" required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
+                    <input id="phone" required type="number" class="frame-157" placeholder="Phone">
                     <img class="input-icon" src="../IMG/call.png"> 
                 </div>
                 <div class="frame-176">
@@ -74,26 +74,26 @@ function generateHtmlAddContact() {
     `
 }
 
-function generateHtmlEditContact(color, userInitials) {
+function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
     return /*html*/ `
     <div class="overlay-container slide-in">
         ${generateLeftSide()}
         <div class ="overlay-mid-container">
-        <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
+            <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
         </div>
         <div class="overlay-right-container-addContact">
             ${closeButton ()}
             <form class="addContact-form" action="#" onsubmit="addContact()">
                 <div class="btn-underlay">
-                    <input id="name" required type="text" class="frame-157" placeholder="Name" id="loginEmail">
+                    <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${name}">
                     <img class="input-icon" src="../IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="mail" required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                    <input id="editMail" required type="email" class="frame-157" placeholder="Email" value="${mail}">
                     <img class="input-icon" src="../IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
-                    <input id="phone" required type="number" class="frame-157" placeholder="Phone" id="loginEmail">
+                    <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${phone}" oninput="validatePhoneNumber(this)">
                     <img class="input-icon" src="../IMG/call.png"> 
                 </div>
                 <div class="frame-176">
