@@ -186,7 +186,6 @@ function showDetails(i) {
  * function for open and render the overlay to add new contact, edit Contact and delete Contact
  * contactsTemp.js = function generateHtmlAddContact, line 41
  * contactsTemp.js = function generateHtmlEditContact, line 77
- * contactsTemp.js = function generateHtmlDeleteContact, line ???
  */
 function openAddContact() {
     let addContactForm = document.getElementById('overlay');
@@ -245,6 +244,10 @@ function addContact() {
     renderContacts();
 }
 
+/**
+ * Function for a edit contact to the user array
+ * @param {string} i variable for the data in the user array
+ */
 function editContact(i) {
     let contact = user[i];
     contact.name = document.getElementById('editName').value;
@@ -260,6 +263,10 @@ function editContact(i) {
     renderContacts();
 }
 
+/**
+ * Function for a delete contact to the user array
+ * @param {string} i variable for the data in the user array
+ */
 function deleteContact(i) {
     user.splice(i, 1);
 
@@ -271,6 +278,10 @@ function deleteContact(i) {
     renderContacts();
 }
 
+/**
+ *  function for render a little information overlay to addContact, editContact and deleteContact
+ * contactsTemp.js = generateHtml-functions, line 142.
+ */
 function successOverlay() {
     let overlaySuccess = document.getElementById('overlaySuccess');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
