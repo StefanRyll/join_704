@@ -490,7 +490,7 @@ function filterContactNames() {
         let name = Join.accounts[p]['name'];
 
         if (name.toLowerCase().includes(search)) {
-            renderAssignedUsers();
+            renderTaskContacts();
         }
     }
 }
