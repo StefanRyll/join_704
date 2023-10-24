@@ -269,7 +269,7 @@ body {
     margin: 0;
 }
 
-.overlay-mid-container-addContact {
+.overlay-mid-container {
     display: flex;
     align-items: center;
     justify-content: center;

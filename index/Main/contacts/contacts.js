@@ -1,4 +1,4 @@
-let user = [{
+const user = [{
         name: "Anton Mayer",
         email: "antom@gmail.com",
         phone: "+49 1111 111 11 1",
@@ -139,7 +139,7 @@ function renderContacts() {
  * @returns 
  */
 function getInitials(name) {
-    const parts = name.split(" ");
+    let parts = name.split(" ");
     let initials = parts[0][0];
     if (parts.length > 1) {
         initials += parts[parts.length - 1][0];
@@ -154,8 +154,8 @@ function getInitials(name) {
  * @returns 
  */
 function getColor(name) {
-    const sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
-    const colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
+    let sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
+    let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
     return colors[colorIndex];
 }
 
@@ -167,14 +167,14 @@ function getColor(name) {
  */
 function showDetails(i) {
     openContactDetails();
-    const contact = user[i];
-    const color = contact.color;
-    const userInitials = getInitials(contact.name);
-    const name = contact.name;
-    const mail = contact.email;
-    const phone = contact.phone;
+    let contact = user[i];
+    let color = contact.color;
+    let userInitials = getInitials(contact.name);
+    let name = contact.name;
+    let mail = contact.email;
+    let phone = contact.phone;
 
-    const detailsContent = generateHtmlContactDetails(color, userInitials, name, mail, phone);
+    let detailsContent = generateHtmlContactDetails(i, color, userInitials, name, mail, phone);
     document.getElementById("detailsContainer").innerHTML = detailsContent;
 }
 
@@ -193,13 +193,13 @@ function openAddContact() {
     addContactForm.innerHTML = generateHtmlAddContact();
 }
 
-function openEditContact() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.innerHTML = '';
+function openEditContact(i) {
+    let editContactForm = document.getElementById('overlay');
+    editContactForm.innerHTML = '';
     setTimeout(() => {
         openBigOverlay()
     }, 100);
-    addContactForm.innerHTML = generateHtmlAddContact();
+    editContact(i);
 }
 
 function openDeleteContact() {
@@ -226,11 +226,11 @@ function closeOverlay() {
  * Function for a new contact to the user array
  */
 function addContact() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('mail').value;
-    const phone = document.getElementById('phone').value;
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    const newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('mail').value;
+    let phone = document.getElementById('phone').value;
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
         name,
         email,
         phone,
@@ -245,14 +245,39 @@ function addContact() {
     renderContacts();
 }
 
+function editContact(i) {
+    let editContactForm = document.getElementById('overlay');
+    let contact = user[i];
+    let color = contact.color;
+    let userInitials = getInitials(contact.name);
+    document.getElementById('name').value = contact.name;
+    document.getElementById('mail').value = contact.email;
+    document.getElementById('phone').value = contact.phone;
+
+    editContactForm.innerHTML = generateHtmlEditContact(color, userInitials);
+    // const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    // const newUser = {
+    //     name,
+    //     email,
+    //     phone,
+    //     randomColor
+    // };
+    // user.push(newUser);
+    // user.sort((a, b) => a.name.localeCompare(b.name));
+    closeOverlay();
+    setTimeout(() => {
+        successOverlay();
+    }, 100);
+    renderContacts();
+}
+
 function successOverlay() {
-    const overlaySuccess = document.getElementById('overlaySuccess');
+    let overlaySuccess = document.getElementById('overlaySuccess');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
     }, 2000);
-    console.log(overlaySuccess, 'erfolgreich');
 }
 
 /**
