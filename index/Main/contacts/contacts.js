@@ -67,17 +67,27 @@ async function initContacts() {
 }
 
 /**
- * This function is for a container to start a slide from the right side 
+ * This function is for a container to start and close a slide from the right side 
  * 
  */
-function slideStart() {
-    let slideInElement = document.querySelector('.slide-in');
-    slideInElement.classList.add('active');
+function openBigOverlay() {
+    slideOverlay = document.getElementById('overlay').classList.add('show-overlay');
 }
 
-function slideEnd() {
-    let slideInElement = document.querySelector('.slide-out');
-    slideInElement.classList.add('active');
+function closeBigOverlay() {
+    slideOverlay = document.getElementById('overlay').classList.remove('show-overlay');
+}
+
+function openContactDetails() {
+    slideContact = document.getElementById('detailsContainer').classList.add('show-details');
+}
+
+function openSuccessOverlay() {
+    slideOverlay = document.getElementById('overlaySuccess').classList.add('show-success-overlay');
+}
+
+function closeSuccessOverlay() {
+    slideOverlay = document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
 }
 
 /**
@@ -156,7 +166,7 @@ function getColor(name) {
  * @returns 
  */
 function showDetails(i) {
-    slideStart();
+    openContactDetails();
     const contact = user[i];
     const color = contact.color;
     const userInitials = getInitials(contact.name);
@@ -176,47 +186,39 @@ function showDetails(i) {
  */
 function openAddContact() {
     let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.classList.remove('slide-out');
     addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
     setTimeout(() => {
-        slideStart();
+        openBigOverlay()
     }, 100);
+    addContactForm.innerHTML = generateHtmlAddContact();
 }
 
 function openEditContact() {
     let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.classList.remove('slide-out');
     addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
     setTimeout(() => {
-        slideStart();
+        openBigOverlay()
     }, 100);
+    addContactForm.innerHTML = generateHtmlAddContact();
 }
 
 function openDeleteContact() {
     let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.remove('d-none');
-    addContactForm.classList.remove('slide-out');
     addContactForm.innerHTML = '';
-    addContactForm.innerHTML = generateHtmlAddContact();
     setTimeout(() => {
-        slideStart();
+        openBigOverlay()
     }, 100);
+    addContactForm.innerHTML = generateHtmlAddContact();
 }
 
 /**
  *  function for close the overlays
  */
 function closeOverlay() {
-    let addContactForm = document.getElementById('overlay');
-    addContactForm.classList.add('slide-out')
+    document.getElementById('overlay');
     setTimeout(() => {
-        slideEnd();
-        addContactForm.classList.add('d-none')
-    }, 300);
+        closeBigOverlay()
+    }, 100);
     initContacts();
 }
 
@@ -245,17 +247,11 @@ function addContact() {
 
 function successOverlay() {
     const overlaySuccess = document.getElementById('overlaySuccess');
-    // overlaySuccess.classList.remove('d-none');
-    overlaySuccess.classList.add('show-overlay');
     overlaySuccess.innerHTML = generateHtmlSuccessInfo();
-    closeOverlay();
-    // Nach 3 Sekunden die Animation zurücksetzen
+    openSuccessOverlay();
     setTimeout(() => {
-        overlaySuccess.classList.remove('show-overlay');
-        setTimeout(() => {
-            overlaySuccess.classList.add('remove-overlay');
-        }, 100);
-    }, 3000); // 3 Sekunden Verzögerung
+        closeSuccessOverlay();
+    }, 2000);
     console.log(overlaySuccess, 'erfolgreich');
 }
 
