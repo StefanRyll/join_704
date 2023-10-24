@@ -116,15 +116,15 @@ function decodeAccounts(responseAsJson){
     const accountData = responseAsJson[i];
     if (accountData['password']){
       let name = accountData['name']
-      let email = accountData['name']
-      let tel = accountData['name']
-      let password = accountData['name']
+      let email = accountData['email']
+      let tel = accountData['tel']
+      let password = accountData['password']
       let newAccount = new Account(name, email,tel,password)
       decAccounts.push(newAccount)
     }else{
       let name = accountData['name']
-      let email = accountData['name']
-      let tel = accountData['name']
+      let email = accountData['email']
+      let tel = accountData['tel']
       let newContact = new Contact(name, email,tel)
       decAccounts.push(newContact)
     }
