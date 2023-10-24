@@ -21,12 +21,6 @@ async function saveAccounts(){
     });
 
 }
-async function loadAccounts(){
-  let response = await fetch('./saves/Accounts.json')
-  let responseAsJson = await response.json();
-  Join.accounts = responseAsJson;
-  console.log("Daten geladen");
-}
 async function saveTasks(){
   const tasks = Join.tasks;
   await fetch(MY_BACKEND_TAS, {
@@ -45,24 +39,20 @@ async function saveTasks(){
     });
 
 }
+async function loadAccounts(){
+  let response = await fetch('./saves/Accounts.json')
+  let responseAsJson = await response.json();
+  let loadedAccounts = decodeAccounts(responseAsJson)
+  Join.accounts = loadedAccounts;
+  console.log("Accounts geladen");
+}
 async function loadTasks(){
   let response = await fetch('./saves/Tasks.json')
   let responseAsJson = await response.json();
   let loadedTasks = decodeTasks(responseAsJson)
-
   Join.tasks = loadedTasks;
-  console.log("Daten geladen");
+  console.log("Tasks geladen");
 
-}
-function saveAll(){
-  saveAccounts();
-  saveTasks();
-  console.log("Data saved");
-}
-function loadAll(){
-  loadAccounts();
-  loadTasks();
-  console.log("Data load");
 }
 
 // Junus Variante
@@ -90,11 +80,55 @@ function decodeTasks(responseAsJson){
     let feedback = taskData['feedback'];
     let prio = taskData['prio'];
     let progress = taskData['progress'];
-    let subTasks = taskData['subTasks'];
-    let todo = taskData['todo'];
-    let worker = taskData['Categroy'];
-    let newTask = new Task()
+    let subTasks = ()=>{
+      let subtask = [];
+      for (let i = 0; i < taskData['subTasks'].length; i++) {
+        const subtaskDecodet = taskData['subTasks'][i];
+        let name = subtaskDecodet['name'];
+        let done = subtaskDecodet['done'];
+        let newSubtask = new Subtask(name, done);
+        subtask.push(newSubtask);
+      }
+      return subtask;
+    }
 
+    let todo = taskData['todo'];
+    let worker = ()=>{
+      let workers = []
+      for (let y = 0; y < taskData['worker'].length; y++) {
+        const workerContact = taskData['worker'][y];
+        let name = workerContact['name']
+        let email = workerContact['email']
+        let tel = workerContact['tel']
+        let newContact = new Contact(name, email, tel)
+        workers.push(newContact)
+      }
+      return workers;
+    };
+    let newTask = new Task(title, worker, desc, date, prio, category, subTasks, todo, progress,feedback,done)
+    decTasks.push(newTask)
   }
   return decTasks;
+}
+function decodeAccounts(responseAsJson){
+  let decAccounts = []
+  for (let i = 0; i < responseAsJson.length; i++) {
+    const accountData = responseAsJson[i];
+    if (accountData['password']){
+      let name = accountData['name']
+      let email = accountData['name']
+      let tel = accountData['name']
+      let password = accountData['name']
+      let newAccount = new Account(name, email,tel,password)
+      decAccounts.push(newAccount)
+    }else{
+      let name = accountData['name']
+      let email = accountData['name']
+      let tel = accountData['name']
+      let newContact = new Contact(name, email,tel)
+      decAccounts.push(newContact)
+    }
+
+  }
+  return decAccounts
 }

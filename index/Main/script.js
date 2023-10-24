@@ -1,20 +1,4 @@
 let currentDraggedElement; 
-// Save and Load
-
-// function // saveAll()() {
-//     let joinAsJSON = JSON.stringify(Join);
-//     localStorage.setItem("Join", joinAsJSON)
-// }
-
-// function // loadAll() {
-//     let loadJoin = localStorage.getItem("Join");
-//     let joinParsed = JSON.parse(loadJoin)
-//     let Join = new Page()
-//     Join.accounts = joinParsed.accounts;
-//     Join.signedAccount = joinParsed.signedAccount;
-//     Join.tasks = joinParsed.tasks;
-// }
-
 // Login
 function guestLogin() {
     Join.signedAccount = guest;
@@ -39,19 +23,25 @@ function logInUser() {
 
 // Sign Up
 async function createAccount() {
-    let pw = passwordCheck();
-    let policy = ppCheck();
-    if (pw === true && policy === true) {
-        let name = document.getElementById('signUpInputName').value;
-        let Email = document.getElementById('signUpInputEmail').value;
-        let password = document.getElementById('signUpInputPassword').value;
-        let account = new Account(name, Email, password);
-        Join.accounts.push(account);
-        startPage2()
-    } else if (pw != true) {
-        alert('Passwort nicht valide')
-    } else {
-        alert('You musst accept the Privacy Policy!')
+    try { loadAccounts()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
+        let pw = passwordCheck();
+        let policy = ppCheck();
+        if (pw === true && policy === true) {
+            let name = document.getElementById('signUpInputName').value;
+            let Email = document.getElementById('signUpInputEmail').value;
+            let password = document.getElementById('signUpInputPassword').value;
+            let account = new Account(name, Email, password);
+            Join.accounts.push(account);
+            startPage2()
+        } else if (pw != true) {
+            alert('Passwort nicht valide')
+        } else {
+            alert('You musst accept the Privacy Policy!')
+        }
     }
 }
 function passwordCheck() {
@@ -98,26 +88,26 @@ function viewPassword() {
 }
 
 function startPage() {
-    saveTasks()
-    // try { loadAccounts()}
-    // catch(e){
-    //     console.log("Fehler", e)
-    // }
-    // finally{
+    try { loadAccounts()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     body.innerHTML = Join.startAnimation();
     body.innerHTML += Join.logInContent();
-    // }
+    }
 }
 
 function startPage2() {
-
-    // body.innerHTML = Join.loginLayout()
-    // let logoArea = document.getElementById('logoArea')
-    // let windowArea = document.getElementById('windowArea')
+    try { loadAccounts()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     body.innerHTML = Join.logoLogin();
     body.innerHTML += Join.logInContent();
 }
-
+}
 function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -153,35 +143,38 @@ function openAddTask(x = 0) {
 }
 
 function createTaskFromBoard(x = 0) {
-    // try {loadTasks()}
-    // catch(e){console.log("Fehler:", e)}
-    const title = document.getElementById("boardTaskTitle").value;
-    const assignedUsers = document.getElementById(`shortname${x}`).textContent;
-    const desc = document.getElementById('boardTaskDescription').value;
-    const date = document.getElementById('date').value;
-    const prio = taskOutput;
-    const category = document.getElementById('taskCategoryInput').value;
-    const subTask = document.getElementById(`todoSubtask${x}`).textContent;
-    let newTask = new Task(title, assignedUsers, desc, date, prio, category, subTask);
-    if (x == "1") {
-        newTask.progress = true;
-    } else if (x == "2") {
-        newTask.feedback = true;
-    } else {
-        newTask.todo = true;
-    }
-    Join.tasks.push(newTask)
-    clearInputs(title, desc, assignedUsers, date, category, subTask);
-    subtasks = []
-    
-    try { saveTasks()}
+    try { loadAccounts()}
     catch(e){
         console.log("Fehler", e)
     }
     finally{
-        closeAddTask()
+        const title = document.getElementById("boardTaskTitle").value;
+        const assignedUsers = document.getElementById(`shortname${x}`).textContent;
+        const desc = document.getElementById('boardTaskDescription').value;
+        const date = document.getElementById('date').value;
+        const prio = taskOutput;
+        const category = document.getElementById('taskCategoryInput').value;
+        const subTask = document.getElementById(`todoSubtask${x}`).textContent;
+        let newTask = new Task(title, assignedUsers, desc, date, prio, category, subTask);
+        if (x == "1") {
+            newTask.progress = true;
+        } else if (x == "2") {
+            newTask.feedback = true;
+        } else {
+            newTask.todo = true;
+        }
+        Join.tasks.push(newTask)
+        clearInputs(title, desc, assignedUsers, date, category, subTask);
+        subtasks = []
+    
+        try { saveTasks()}
+        catch(e){
+            console.log("Fehler", e)
+        }
+        finally{
+            closeAddTask()
+        }
     }
-
 }
 function readAssignment() {
     let assignedUsers = [];
@@ -394,34 +387,49 @@ function showContact(x) {
 }
 // Final Pages
 function summeryPage() {
-    loadTasks()
+    try { loadTasks()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.summeryContent();
+
+    }
 }
 
 function boardPage() {
-    loadTasks()
+    try { loadTasks()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.boardContent();
     Join.renderTask();
+    }
 }
 
 function contactsPage() {
-    // loadAll()
+    try { loadAccounts()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.contactsContent();
     renderContacts()
+    }
 }
-
 function helpPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -447,15 +455,19 @@ function legalPage() {
 }
 
 function addTaskPage() {
-    // loadAll()
+    try { loadTasks()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
+    }
 }
-
 function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');

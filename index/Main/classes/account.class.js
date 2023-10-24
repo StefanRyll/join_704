@@ -1,5 +1,5 @@
 class Account extends Contact {
-    constructor(name, email, password, tel) {
+    constructor(name, email, tel, password) {
         super(name, email, tel)
         this.password = password;
 

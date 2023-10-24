@@ -1,16 +1,17 @@
 class Task {
-    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, subTasks) {
+    constructor(title, worker, desc, date, prio = "Wichtig", 
+    Categroy, subTasks, todo = false, progress = false, feedback = false, done = false) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
         this.date = new Date(date);
         this.prio = prio;
         this.Categroy = Categroy;
-        this.todo = false;
-        this.progress = false;
-        this.feedback = false;
-        this.done = false;
         this.subTasks = subTasks;
+        this.todo = todo;
+        this.progress = progress;
+        this.feedback = feedback;
+        this.done = done;
     }
     taskCardNormal() {
         let html = /*html*/ `

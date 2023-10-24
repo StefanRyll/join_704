@@ -1,7 +1,7 @@
 class Subtask {
-    constructor(name) {
+    constructor(name, done = false) {
         this.name = name;
-        this.done = false;
+        this.done = done;
     }
     subTaskDone() {
         this.done = true;
