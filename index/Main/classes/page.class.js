@@ -394,14 +394,14 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div class="canban-style" id="kambanFeedback"></div>
+            <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" class="canban-style" id="kambanFeedback"></div>
         </div>
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
             </div>
         </div>
-        <div class="canban-style" id="kambanDone"></div>
+        <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" class="canban-style" id="kambanDone"></div>
     </div>
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->

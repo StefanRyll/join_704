@@ -153,8 +153,7 @@ function openAddTask(x = 0) {
 
 function createTaskFromBoard(x = 0) {
     const title = document.getElementById("boardTaskTitle").value;
-    // const assignedUsers = readAssignment('')
-    const assignedUsers = document.getElementById(`contactName${x}`).textContent;
+    const assignedUsers = document.getElementById(`shortname${x}`).textContent;
     const desc = document.getElementById('boardTaskDescription').value;
     const date = document.getElementById('date').value;
     const prio = taskOutput;
@@ -475,8 +474,7 @@ function renderShortNames(name, x) {
 
 function removeShortNames(x) {
     let removeName = document.getElementById(`editShortNames${x}`);
-    removeName.classList.remove('accountTag');
-    removeName.innerHTML = '';
+    removeName.remove();
 }
 
 function filterContactNames() {
@@ -490,7 +488,7 @@ function filterContactNames() {
         let name = Join.accounts[p]['name'];
 
         if (name.toLowerCase().includes(search)) {
-            renderTaskContacts();
+            list.innerHTML += Join.accounts[p].tinyCardCheck(p);
         }
     }
 }
