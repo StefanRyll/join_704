@@ -516,22 +516,40 @@ function filterContactNames() {
 }
 
 function updateHTML() {
-    let open = Join.subtasks.filter(s => s['status'] == 'open');
+    let todos = Join.tasks.filter(s => s['filterTodo'] == 'To do');
     
-    document.getElementById('open').innerHTML = '';
+    document.getElementById('kambanTodo').innerHTML = '';
 
-    for (let q = 0; q < open.length; q++) {
-        let element = open[q];
-        document.getElementById('open').innerHTML += renderTask(element);
+    for (let q = 0; q < todos.length; q++) {
+        let todo = todos[q];
+        document.getElementById('kambanTodo').innerHTML += renderTask(todo);
     }
 
-    let close = Join.subtasks.filter(s => s['status'] == 'close');
+    let inProgress = Join.tasks.filter(s => s['filterInprogress'] == 'In progress');
 
-    document.getElementById('close').innerHTML = '';
+    document.getElementById('kambanInprogress').innerHTML = '';
 
-    for (let q = 0; q < close.length; q++) {
-        let element = close[q];
-        document.getElementById('close').innerHTML += renderTask(element);
+    for (let q = 0; q < inProgress.length; q++) {
+        let progress = inProgress[q];
+        document.getElementById('kambanInprogress').innerHTML += renderTask(progress);
+    }
+
+    let awaitFeedback = Join.tasks.filter(s => s['filterFeedback'] == 'Await feedback');
+
+    document.getElementById('kambanFeedback').innerHTML = '';
+
+    for (let q = 0; q < awaitFeedback.length; q++) {
+        let feedback = awaitFeedback[q];
+        document.getElementById('kambanFeedback').innerHTML += renderTask(feedback);
+    }
+
+    let done = Join.tasks.filter(s => s['filterDone'] == 'Done');
+
+    document.getElementById('kambanDone').innerHTML = '';
+
+    for (let q = 0; q < done.length; q++) {
+        let elementDone = done[q];
+        document.getElementById('kambanDone').innerHTML += renderTask(elementDone);
     }
 }
 
