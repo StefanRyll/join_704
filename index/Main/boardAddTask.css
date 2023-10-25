@@ -193,7 +193,7 @@
     align-self: stretch;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    background: #FFF;
+    background-color: #FFF;
     font-size: 20px;
     font-weight: 400;
     width: 20em;
@@ -305,6 +305,7 @@
 .input-date {
     display: flex;
     flex-direction: column;
+    margin-bottom: 12px;
 }
 
 .prio-category {

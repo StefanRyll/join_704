@@ -664,7 +664,7 @@ class Page {
         return /*html*/ `
                 <form class="input-description">
                     <p>Description</p>
-                    <textarea class="blue" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                    <textarea class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </form>
                 
         `
@@ -673,7 +673,7 @@ class Page {
     generateHTMLAssignedTo(x) {
         return /*html*/ `
             <p class="assigned-style">Assigned to</p>
-            <div class="board-task-input">
+            <div class="board-task-input bg-color-white">
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
                     <div class="assign-container assign-container-style">
@@ -886,7 +886,7 @@ class Page {
     }
     generateHTMLHiddenCategory() {
         return /*html*/ `
-            <div id="hiddenSelectCategory" class="assign-container">
+            <div id="hiddenSelectCategory" class="assign-container bg-color-white">
               <input id="taskCategoryInput" onclick="toggleCategory()" type="text" value="Select task category" >
               <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
             </div>
@@ -951,7 +951,7 @@ class Page {
         return /*html*/ `
         <div class="board-task-input button-hover">
             <p>Subtasks</p>
-            <div id="hiddenSubtask" class="assign-container">
+            <div id="hiddenSubtask" class="assign-container bg-color-white">
                 <input onclick="openSubtask()" type="text" placeholder="Add new subtask">
                 <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
             </div>
