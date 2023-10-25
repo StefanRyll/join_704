@@ -1,6 +1,8 @@
 class Task {
+    static nextId = 1;
     constructor(title, worker, desc, date, prio = "Wichtig", 
     Categroy, subTasks, todo = false, progress = false, feedback = false, done = false, filterTodo = 'To do', filterProgress = 'In progress ', filterFeedback = 'Await feedback', filterDone = 'Done') {
+        this.id = Task.nextId ++;
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -18,13 +20,7 @@ class Task {
         this.filterDone = filterDone;
     }
 
-    renderInformation() {
-        for (let r = 0; r < Join.tasks.length; r++) {
-            let element = Join.task[r];
-            tinyTaskCard(element);
-        }
-        return element;
-    }
+
 
     taskCardNormal() {
         let html = /*html*/ `
@@ -102,9 +98,9 @@ class Task {
 
                         `
     }
-    tinyTaskCard(element) {
+    tinyTaskCard() {
         let html = /*html*/ `
-            <div class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${element})">
+            <div class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${this.id})">
                 <div class="tiny-task-category">${this.Categroy}</div>
                 <div class="tiny-title">
                     <h1>${this.title}</h1>

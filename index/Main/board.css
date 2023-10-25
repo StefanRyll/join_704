@@ -210,6 +210,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+    height: 100vh;
 }
 
 .lanes {
@@ -217,4 +218,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.drag-area {
+    height: 100vh;
 }

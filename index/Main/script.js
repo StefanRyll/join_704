@@ -522,7 +522,7 @@ function updateHTML() {
 
     for (let q = 0; q < todos.length; q++) {
         let todo = todos[q];
-        document.getElementById('kambanTodo').innerHTML += renderTask(todo);
+        document.getElementById('kambanTodo').innerHTML += tinyTaskCard(todo);
     }
 
     let inProgress = Join.tasks.filter(s => s['filterInprogress'] == 'In progress');
@@ -531,7 +531,7 @@ function updateHTML() {
 
     for (let q = 0; q < inProgress.length; q++) {
         let progress = inProgress[q];
-        document.getElementById('kambanInprogress').innerHTML += renderTask(progress);
+        document.getElementById('kambanInprogress').innerHTML += tinyTaskCard(progress);
     }
 
     let awaitFeedback = Join.tasks.filter(s => s['filterFeedback'] == 'Await feedback');
@@ -540,7 +540,7 @@ function updateHTML() {
 
     for (let q = 0; q < awaitFeedback.length; q++) {
         let feedback = awaitFeedback[q];
-        document.getElementById('kambanFeedback').innerHTML += renderTask(feedback);
+        document.getElementById('kambanFeedback').innerHTML += tinyTaskCard(feedback);
     }
 
     let done = Join.tasks.filter(s => s['filterDone'] == 'Done');
@@ -549,7 +549,7 @@ function updateHTML() {
 
     for (let q = 0; q < done.length; q++) {
         let elementDone = done[q];
-        document.getElementById('kambanDone').innerHTML += renderTask(elementDone);
+        document.getElementById('kambanDone').innerHTML += tinyTaskCard(elementDone);
     }
 }
 
@@ -562,10 +562,28 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
+// function moveTo(category) {
+//     console.log('show', category);
+//     Join.tasks[currentDraggedElement]['filterTodo'] = category;
+//     Join.tasks[currentDraggedElement]['filterInprogress'] = category;
+//     Join.tasks[currentDraggedElement]['filterFeedback'] = category;
+//     Join.tasks[currentDraggedElement]['filterDone'] = category;
+//     updateHTML();
+// }
+
 function moveTo(category) {
-    Join.subtasks[currentDraggedElement]['status'] = category;
+    // Finden Sie den Index des aktuellen gezogenen Elements in Join.tasks
+    const index = Join.tasks.findIndex(task => task.id === currentDraggedElement);
+
+    // Überprüfen Sie, ob das Element gefunden wurde, bevor Sie seine Eigenschaften ändern
+    if (index !== -1) {
+        Join.tasks[index]['filterTodo'] = category;
+        Join.tasks[index]['filterInprogress'] = category;
+        Join.tasks[index]['filterFeedback'] = category;
+        Join.tasks[index]['filterDone'] = category;
+    }
+    renrenderTask
     updateHTML();
 }
-
 
 

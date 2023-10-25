@@ -377,8 +377,8 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div id="open">
-                <div ondrop="moveTo('To do')" class="canban-style" ondragover="allowDrop(event)" id="kambanTodo"></div>
+            <div ondrop="moveTo('To do')" ondragover="allowDrop(event)" class="drag-area">
+                <div  class="canban-style" id="kambanTodo"></div>
             </div>
         </div>
         <div onclick="openAddTask(1)" class="board-actionbar">
@@ -391,8 +391,8 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div id="close">
-                <div ondrop="moveTo('In progress')" class="canban-style" ondragover="allowDrop(event)" id="kambanInprogress"></div>
+            <div ondrop="moveTo('In progress')" ondragover="allowDrop(event)" class="drag-area">
+                <div class="canban-style" id="kambanInprogress"></div>
             </div>
         </div>
         <div onclick="openAddTask(2)" class="board-actionbar">
@@ -405,14 +405,18 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div ondrop="moveTo('Await feedback')" ondragover="allowDrop(event)" class="canban-style" id="kambanFeedback"></div>
+            <div ondrop="moveTo('Await feedback')" ondragover="allowDrop(event)" class="drag-area">
+                <div  class="canban-style" id="kambanFeedback"></div>
+            </div>
         </div>
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
             </div>
         </div>
-        <div ondrop="moveTo('close')" ondragover="allowDrop(event)" class="canban-style" id="kambanDone"></div>
+        <div ondrop="moveTo('Done')" ondragover="allowDrop(event)" class="drag-area">
+            <div  class="canban-style" id="kambanDone" ></div>
+        </div>
     </div>
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
