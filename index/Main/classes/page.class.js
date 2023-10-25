@@ -624,6 +624,7 @@ class Page {
     }
     generateHTMLaddTaskWindow() {
         return /*html*/ `
+            <div class="content-add-task">
                 ${this.generateHTMLAddTaskHeadline()}
                 <div class="add-taskWindow">
                     ${this.generateHTMLLeftSide()}
@@ -631,6 +632,7 @@ class Page {
                     ${this.generateHTMLRightSide()}
                     ${this.generateHTMLCloseButtonInSVG()}
                 </div>
+            </div>
           `
     }
     generateHTMLLeftSide(x) {
@@ -647,7 +649,7 @@ class Page {
 
     generateHTMLAddTaskHeadline() {
         return /*html*/ `
-            <h1>Add Task</h1>`
+            <h1 class="add-task-headline">Add Task</h1>`
     }
 
     generateHTMLTitle() {
