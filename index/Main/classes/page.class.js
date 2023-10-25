@@ -287,7 +287,7 @@ class Page {
         let deadlines = Join.tasks.sort((taskA, taskB) => {
             return taskA.date - taskB.date;
         })
-        console.log(deadlines);
+        console.log("nextDeadline",deadlines);
         return deadlines[0]
             // let today = new Date()
             // let dif = 31536000000;
