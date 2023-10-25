@@ -14,9 +14,7 @@
 }
 
 
-
 /*********************************RENDER ADD TASK ********************************************/
-
 
 .bg-task {
     z-index: 10;
@@ -84,8 +82,8 @@
     margin-top: 32px;
 }
 
-/*********************************   LEFT SIDE  ********************************************/
 
+/*********************************   LEFT SIDE  ********************************************/
 
 .left-side {
     display: flex;
@@ -96,13 +94,11 @@
     margin-right: 48px;
 }
 
-
 .board-task-input label {
     color: #2A3647;
     font-size: 20px;
     font-weight: 400;
 }
-
 
 .board-task-input {
     gap: 8px;
@@ -276,12 +272,12 @@
     line-height: 120%;
 }
 
+
 /*********************************   SEPORATOR  ********************************************/
 
 .seperator-add-task {
     margin-top: 32px;
 }
-
 
 
 /*********************************   RIGHT SIDE  ********************************************/
@@ -303,7 +299,7 @@
 }
 
 .close-button-add-task {
-   margin-right: 44px;
+    margin-right: 44px;
 }
 
 .input-date {
@@ -385,6 +381,7 @@
     gap: 8px;
 }
 
+
 /* .category input {
     color: var(--Style, #D1D1D1);
 } */
@@ -402,7 +399,6 @@
     display: flex;
     gap: 2px;
 }
-
 
 .board-input-date {
     display: flex;
@@ -423,7 +419,6 @@
     width: 90%;
 }
 
-
 .board-input-date input[type="date"] {
     font-family: Inter;
     font-size: 20px;
@@ -431,7 +426,6 @@
     font-weight: 400;
     color: #2A3647;
 }
-
 
 .create-subtask {
     position: absolute;
@@ -442,7 +436,7 @@
     align-items: center;
     justify-content: space-between;
     width: 26em;
-    background-color:#D1D1D1;
+    background-color: #D1D1D1;
     border-radius: 10px;
     padding-left: 1.5em;
     padding-right: .5em;
@@ -460,7 +454,7 @@
     gap: 8px;
 }
 
-.open-subtask {  
+.open-subtask {
     border: 1px solid rgba(41, 171, 226, 1);
 }
 

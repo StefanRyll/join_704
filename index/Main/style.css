@@ -239,19 +239,6 @@ footer {
     gap: 16px;
 }
 
-#content {
-    position: absolute;
-    height: 71%;
-    text-align: justify;
-    text-overflow: clip;
-    padding: 90px;
-    left: 232px;
-    top: 98px;
-    right: -15px;
-    overflow: hidden;
-    overflow-y: scroll;
-}
-
 
 /* ====================================================== <scrollbalken> =============================================================== */
 
