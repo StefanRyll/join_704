@@ -1,5 +1,5 @@
 class Task {
-    static nextId = 1;
+    static nextId = 0;
     constructor(title, worker, desc, date, prio = "Wichtig", 
     Categroy, subTasks, todo = false, progress = false, feedback = false, done = false, filterTodo = 'To do', filterProgress = 'In progress ', filterFeedback = 'Await feedback', filterDone = 'Done') {
         this.id = Task.nextId ++;
