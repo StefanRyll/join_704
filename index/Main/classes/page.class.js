@@ -1,30 +1,30 @@
 class Page {
     constructor() {
-        this.accounts = [];
-        this.signedAccount = null;
-        this.tasks = [];
-    }
-    // Methoden
-    sayDaytime() {
-        let datum = new Date();
-        let daytime = datum.getHours()
-        if (daytime <= 23 && daytime >= 18) {
-            return "Good&nbsp;Evening";
-        } else if (daytime >= 6 && daytime <= 12) {
-            return "Good&nbsp;Morning";
-        } else if (daytime >= 0 && daytime <= 5) {
-            return "Good&nbsp;Night"
-        } else {
-            return "Good&nbsp;Afternoon";
+            this.accounts = [];
+            this.signedAccount = null;
+            this.tasks = [];
         }
-    }
-    // Components
-    /**
-     *  Diese Methode stellt das Log In Fenster da
-     * @returns {string} -- 
-     * */
+        // Methoden
+    sayDaytime() {
+            let datum = new Date();
+            let daytime = datum.getHours()
+            if (daytime <= 23 && daytime >= 18) {
+                return "Good&nbsp;Evening";
+            } else if (daytime >= 6 && daytime <= 12) {
+                return "Good&nbsp;Morning";
+            } else if (daytime >= 0 && daytime <= 5) {
+                return "Good&nbsp;Night"
+            } else {
+                return "Good&nbsp;Afternoon";
+            }
+        }
+        // Components
+        /**
+         *  Diese Methode stellt das Log In Fenster da
+         * @returns {string} -- 
+         * */
     logInContent() {
-        return /*html*/ `
+            return /*html*/ `
             <header class="login-header">
                 <div class="frame-156">
                     <p>Not a Join user?</p>
@@ -75,11 +75,11 @@ class Page {
                 </footer>
             </section>
         `
-    }
-    /**
-     * Die Methode stellt die Logo Animation am anfang dar
-     * @returns {string}
-     */
+        }
+        /**
+         * Die Methode stellt die Logo Animation am anfang dar
+         * @returns {string}
+         */
     startAnimation() {
         body.innerHTML = "";
         return /*html*/ `
@@ -289,17 +289,17 @@ class Page {
         })
         console.log("nextDeadline",deadlines);
         return deadlines[0]
-        // let today = new Date()
-        // let dif = 31536000000;
-        // for (let i = 0; i < this.tasks.length; i++) {
-        //     const task = this.tasks[i].date;
-        //     let difTask = Math.abs(task - today);
-        //     console.log(this.tasks[i].title);
-        //     if (difTask <= dif) {
-        //         dif = difTask;
-        //         return this.tasks[i];
-        //     }
-        // }
+            // let today = new Date()
+            // let dif = 31536000000;
+            // for (let i = 0; i < this.tasks.length; i++) {
+            //     const task = this.tasks[i].date;
+            //     let difTask = Math.abs(task - today);
+            //     console.log(this.tasks[i].title);
+            //     if (difTask <= dif) {
+            //         dif = difTask;
+            //         return this.tasks[i];
+            //     }
+            // }
     }
     checkTasksDone() {
         let count = 0
@@ -378,7 +378,7 @@ class Page {
                 </div>
             </div>
             <div id="open">
-                <div ondrop="moveTo('open')" class="canban-style" ondragover="allowDrop(event)" id="kambanTodo"></div>
+                <div ondrop="moveTo('To do')" class="canban-style" ondragover="allowDrop(event)" id="kambanTodo"></div>
             </div>
         </div>
         <div onclick="openAddTask(1)" class="board-actionbar">
@@ -392,7 +392,7 @@ class Page {
                 </div>
             </div>
             <div id="close">
-                <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" id="kambanInprogress"></div>
+                <div ondrop="moveTo('In progress')" class="canban-style" ondragover="allowDrop(event)" id="kambanInprogress"></div>
             </div>
         </div>
         <div onclick="openAddTask(2)" class="board-actionbar">
@@ -405,14 +405,14 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" class="canban-style" id="kambanFeedback"></div>
+            <div ondrop="moveTo('Await feedback')" ondragover="allowDrop(event)" class="canban-style" id="kambanFeedback"></div>
         </div>
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
             </div>
         </div>
-        <div ondrop="moveTo('close')" class="canban-style" ondragover="allowDrop(event)" class="canban-style" id="kambanDone"></div>
+        <div ondrop="moveTo('close')" ondragover="allowDrop(event)" class="canban-style" id="kambanDone"></div>
     </div>
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
@@ -624,17 +624,21 @@ class Page {
     }
     generateHTMLaddTaskWindow() {
         return /*html*/ `
+            <div class="content-add-task">
+                ${this.generateHTMLAddTaskHeadline()}
                 <div class="add-taskWindow">
                     ${this.generateHTMLLeftSide()}
                     ${this.generateHTMLSeperator()}
                     ${this.generateHTMLRightSide()}
                     ${this.generateHTMLCloseButtonInSVG()}
                 </div>
+            </div>
           `
     }
     generateHTMLLeftSide(x) {
         return /*html*/ `
               <div class="left-side">
+                
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
@@ -642,6 +646,12 @@ class Page {
               </div>
           `
     }
+
+    generateHTMLAddTaskHeadline() {
+        return /*html*/ `
+            <h1 class="add-task-headline">Add Task</h1>`
+    }
+
     generateHTMLTitle() {
         return /*html*/ `
                 <form  class="input-title board-task-input">
@@ -654,19 +664,19 @@ class Page {
         return /*html*/ `
                 <form class="input-description">
                     <p>Description</p>
-                    <textarea class="blue" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                    <textarea class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </form>
                 
         `
     }
 
     generateHTMLAssignedTo(x) {
-        return /*html*/`
+        return /*html*/ `
             <p class="assigned-style">Assigned to</p>
-            <div class="board-task-input">
+            <div class="board-task-input bg-color-white">
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
-                    <div class="assign-container assign-container-style">
+                    <div class="assign-container assign-container-style bg-color-white">
                         <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
@@ -714,20 +724,20 @@ class Page {
     }
 
     generateHTMLAddContactShortName() {
-        return /*html*/`
+        return /*html*/ `
             <div id="containerShortName" onload="renderShortNames()"></div>
         `
     }
 
     generateHTMLRenderShortNames(shortNames, x) {
-        return /*html*/`
+            return /*html*/ `
             <div id="editShortNames${x}" class="accountTag">${shortNames}</div>
         `
-    }
-    // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
-    //     document.getElementById('selectContacts').classList.toggle('d-none');
-    //     document.getElementById('closeContacts').classList.toggle('d-none');
-    // }
+        }
+        // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
+        //     document.getElementById('selectContacts').classList.toggle('d-none');
+        //     document.getElementById('closeContacts').classList.toggle('d-none');
+        // }
     generateHTMLSeperator() {
         return /*html*/ `
               <div class="seperator-add-task">
@@ -749,7 +759,7 @@ class Page {
     }
 
     generateHTMLDateForm() {
-        return /*html*/`
+            return /*html*/ `
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
@@ -758,18 +768,18 @@ class Page {
                     </div>
                 </form>
             `
-    }
-    // generateHTMLDateForm() {
-    //     return /*html*/ `
-    //     <form class="input-date board-task-input">
-    //         <label for="pflichtfeld">Due date<sup>*</sup></label>
-    //         <div class="board-input-date">
-    //             <input type="date" id="datum" name="datum" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy" name="selected_date" required>
-    //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
-    //         </div>
-    //     </form>
-    //   `
-    // }
+        }
+        // generateHTMLDateForm() {
+        //     return /*html*/ `
+        //     <form class="input-date board-task-input">
+        //         <label for="pflichtfeld">Due date<sup>*</sup></label>
+        //         <div class="board-input-date">
+        //             <input type="date" id="datum" name="datum" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy" name="selected_date" required>
+        //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
+        //         </div>
+        //     </form>
+        //   `
+        // }
     generateHTMLPrioCategory() {
         return /*html*/ `
                   <div class="prio-category">
@@ -846,7 +856,7 @@ class Page {
         </button>`
     }
     generateHTMLPrio() {
-        return /*html*/`
+        return /*html*/ `
         <button id="btnLowWhite" onclick="btnTaskPrio('btnLowWhite')" class="category-button category-button-standard">
           <p>Low</p>
           <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
@@ -876,7 +886,7 @@ class Page {
     }
     generateHTMLHiddenCategory() {
         return /*html*/ `
-            <div id="hiddenSelectCategory" class="assign-container">
+            <div id="hiddenSelectCategory" class="assign-container bg-color-white">
               <input id="taskCategoryInput" onclick="toggleCategory()" type="text" value="Select task category" >
               <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
             </div>
@@ -892,14 +902,14 @@ class Page {
     }
     generateHTMLToggleCategory() {
         return /*html*/ `
-              <div class="assign-container">
+              <div class="assign-container bg-color-white">
                 <input onclick="toggleCategory()" type="button" value="Select task category">
                 <img onclick="toggleCategory()" src="/assets/img/arrow_dropdown.png" alt="">
               </div>
         `
     }
     generateHTMLSelectCategory() {
-        return /*html*/ `
+            return /*html*/ `
               <div class="select-category">
                 <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
                   <span id="technicalTask">Techincal Task</span>
@@ -909,44 +919,44 @@ class Page {
                 </div>
               </div>
         `
-    }
-    /**This Function close and open the Categories
-     * @param {string}  showSelectCategory show and hidden div
-     */
-    // toggleCategory() { // Onclick in script.js
-    //     document.getElementById('showSelectCategory').classList.toggle('d-none');
-    //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
-    // }
-    /**This is a select function for Input - > Value
-     * @param {string} technicalTask  select the category Technical Task
-     */
-    // selectCategoryTechnical() { // onclick in script.js
-    //     let technicalTask = document.getElementById('technicalTask').textContent;
-    //     let changeInputField = document.getElementById('taskCategoryInput');
-    //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-    //     document.getElementById('showSelectCategory').classList.add('d-none');
-    //     changeInputField.value = technicalTask;
-    // }
-    /**This is a select function for Input - > Value
-     * @param {string} userStory  select the category User Story
-     */
-    // selectCategoryStory() { // onclick in script.js
-    //     let userStory = document.getElementById('userStory').textContent;
-    //     let changeInputField = document.getElementById('taskCategoryInput');
-    //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-    //     document.getElementById('showSelectCategory').classList.add('d-none');
-    //     changeInputField.value = userStory;
-    // }
+        }
+        /**This Function close and open the Categories
+         * @param {string}  showSelectCategory show and hidden div
+         */
+        // toggleCategory() { // Onclick in script.js
+        //     document.getElementById('showSelectCategory').classList.toggle('d-none');
+        //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
+        // }
+        /**This is a select function for Input - > Value
+         * @param {string} technicalTask  select the category Technical Task
+         */
+        // selectCategoryTechnical() { // onclick in script.js
+        //     let technicalTask = document.getElementById('technicalTask').textContent;
+        //     let changeInputField = document.getElementById('taskCategoryInput');
+        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+        //     document.getElementById('showSelectCategory').classList.add('d-none');
+        //     changeInputField.value = technicalTask;
+        // }
+        /**This is a select function for Input - > Value
+         * @param {string} userStory  select the category User Story
+         */
+        // selectCategoryStory() { // onclick in script.js
+        //     let userStory = document.getElementById('userStory').textContent;
+        //     let changeInputField = document.getElementById('taskCategoryInput');
+        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+        //     document.getElementById('showSelectCategory').classList.add('d-none');
+        //     changeInputField.value = userStory;
+        // }
     generateHTMLSubtask() {
         return /*html*/ `
         <div class="board-task-input button-hover">
             <p>Subtasks</p>
-            <div id="hiddenSubtask" class="assign-container">
+            <div id="hiddenSubtask" class="assign-container bg-color-white">
                 <input onclick="openSubtask()" type="text" placeholder="Add new subtask">
                 <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
             </div>
             <div>
-                <div id="showSubtask" class="assign-container open-subtask d-none">
+                <div id="showSubtask" class="assign-container open-subtask d-none bg-color-white">
                     <input id="inputSubtask" type="text" placeholder="Add new subtask">
                     <div class="subtask-style-position">
                         <img onclick="closeSubtask()" src="/assets/img/subtask-close.png" alt="">
@@ -1002,7 +1012,7 @@ class Page {
         `
     }
     generateHTMLCloseButtonInSVG() {
-        return /*html*/ `
+            return /*html*/ `
                 <div class="style-closebutton">
                   <svg  onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -1014,20 +1024,20 @@ class Page {
                   </svg>
                 </div>
           `
-    }
-    /**
-     * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
-     */
-    // openAddTask() { // onclick in script.js
-    //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
-    // }
-    /** 
-     * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
-     */
+        }
+        /**
+         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
+         */
+        // openAddTask() { // onclick in script.js
+        //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
+        // }
+        /** 
+         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+         */
     closeAddTask() {
-        slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
-    }
-    /** 
-     * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
-     */
+            slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
+        }
+        /** 
+         * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
+         */
 }
