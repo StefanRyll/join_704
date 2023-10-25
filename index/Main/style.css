@@ -203,7 +203,7 @@ h1 {
 }
 
 .bg-color-white {
-    background-color: white;
+    background-color: white !important;
 }
 
 .text-button {

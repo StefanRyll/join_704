@@ -13,14 +13,15 @@
     --version-2-main-color: #2A3647;
 }
 
+
 /* .open-assign-container2 {
     width: 31em;
 } */
 
-
 .open-assign-container {
-    position: absolute; 
+    position: absolute;
 }
+
 
 /* .assign-container1 {
     display: flex;
@@ -71,7 +72,8 @@
     overflow-y: scroll;
     /* position: absolute; */
     width: 27.5em;
-    max-height: 9em;
+    max-height: 11em;
+    /* max-height: 9em; */
     z-index: 10;
     box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.10);
 }
@@ -83,7 +85,6 @@
     width: 24em;
     border-radius: 10px;
 }
-
 
 .checkbox-container td:hover {
     cursor: pointer;
@@ -108,6 +109,7 @@
     z-index: 11;
     position: absolute;
     width: 27.5em;
+    padding-right: 5px;
 }
 
 .select-category span {
@@ -122,9 +124,9 @@
 }
 
 .select-task-category-container {
-    padding: 12px 16px;
+    padding: 0.75em 1.7em;
     border-radius: 10px;
-    width: 25.5em;
+    width: 24.4em;
 }
 
 .select-task-category-container:hover {
@@ -169,8 +171,10 @@
 .checkbox-container-button {
     display: flex;
     justify-content: center;
-    position: sticky;
-    bottom: 3px;
+    /* position: sticky;
+    bottom: 3px; */
+    position: fixed;
+    bottom: 15px;
     background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -191,4 +195,3 @@
 .subtask-style-position {
     position: relative;
 }
-

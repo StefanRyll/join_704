@@ -676,7 +676,7 @@ class Page {
             <div class="board-task-input bg-color-white">
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
-                    <div class="assign-container assign-container-style">
+                    <div class="assign-container assign-container-style bg-color-white">
                         <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
@@ -902,7 +902,7 @@ class Page {
     }
     generateHTMLToggleCategory() {
         return /*html*/ `
-              <div class="assign-container">
+              <div class="assign-container bg-color-white">
                 <input onclick="toggleCategory()" type="button" value="Select task category">
                 <img onclick="toggleCategory()" src="/assets/img/arrow_dropdown.png" alt="">
               </div>
@@ -956,7 +956,7 @@ class Page {
                 <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
             </div>
             <div>
-                <div id="showSubtask" class="assign-container open-subtask d-none">
+                <div id="showSubtask" class="assign-container open-subtask d-none bg-color-white">
                     <input id="inputSubtask" type="text" placeholder="Add new subtask">
                     <div class="subtask-style-position">
                         <img onclick="closeSubtask()" src="/assets/img/subtask-close.png" alt="">
