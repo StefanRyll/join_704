@@ -100,7 +100,7 @@ class Task {
                 <div class="subtasks">
                     <div class="tiny-task-label">
                         <img id="progressBar" src="./IMG/Progress_bar.svg" alt="">
-                        <p id="openTasksFromTiny">${this.subTasks}</p>
+                        <p id="openTasksFromTiny">${this.subTasks.length}</p>
                     </div>
                 </div>
                 <div>
