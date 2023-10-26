@@ -149,12 +149,12 @@ function createTaskFromBoard(x = 0) {
     }
     finally{
         const title = document.getElementById("boardTaskTitle").value;
-        const assignedUsers = document.getElementById(`shortname${x}`).textContent;
+        const worker = document.getElementById(`shortname${x}`).textContent;
         const desc = document.getElementById('boardTaskDescription').value;
         const date = document.getElementById('date').value;
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
-        const subTask = document.getElementById(`todoSubtask${x}`).textContent;
+        const subTask = subtasks;
         let newTask = new Task(title, assignedUsers, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
@@ -163,8 +163,9 @@ function createTaskFromBoard(x = 0) {
         } else {
             newTask.todo = true;
         }
+        console.log(newTask)
         Join.tasks.push(newTask)
-        clearInputs(title, desc, assignedUsers, date, category, subTask);
+        clearInputs(title, desc, worker, date, category, subTask);
         subtasks = []
     
         try { saveTasks()}
