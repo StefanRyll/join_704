@@ -344,7 +344,7 @@ class Page {
         </h2>
         <div class="frame-123">
             <div class="input-search">
-                <input type="search" name="find task" id="" placeholder="Find Task">
+                <input type="search" name="find task" id="searchTask" placeholder="Find Task" onkeyup="filterTaskNames()">
                 <img class="separator-find-task" src="/assets/img/Vector 3.png" alt="separator searchfield">
                 <div class="search-icon">
                     <img src="/assets/img/search.png" alt="search Image">
@@ -377,7 +377,7 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div ondrop="moveTo('To do')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropTodo" ondrop="moveTo('To do')" ondragover="allowDrop(event)" class="drag-area">
                 <div  class="canban-style" id="kambanTodo"></div>
             </div>
         </div>
@@ -391,7 +391,7 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div ondrop="moveTo('In progress')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropProgress" ondrop="moveTo('In progress')" ondragover="allowDrop(event)" class="drag-area">
                 <div class="canban-style" id="kambanInprogress"></div>
             </div>
         </div>
@@ -405,7 +405,7 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div ondrop="moveTo('Await feedback')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropFeedback" ondrop="moveTo('Await feedback')" ondragover="allowDrop(event)" class="drag-area">
                 <div  class="canban-style" id="kambanFeedback"></div>
             </div>
         </div>
@@ -414,7 +414,7 @@ class Page {
                 <p>Done</p>
             </div>
         </div>
-        <div ondrop="moveTo('Done')" ondragover="allowDrop(event)" class="drag-area">
+        <div id="ondropDone" ondrop="moveTo('Done')" ondragover="allowDrop(event)" class="drag-area">
             <div  class="canban-style" id="kambanDone" ></div>
         </div>
     </div>

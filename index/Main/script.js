@@ -536,43 +536,145 @@ function filterContactNames() {
     }
 }
 
+
+function filterTaskNames() {
+    let search = document.getElementById('searchTask').value;
+    search = search.toLowerCase();
+
+    let taskTodo = document.getElementById('ondropTodo');
+    taskTodo.innerHTML = '';
+
+    let taskProgress = document.getElementById('ondropProgress');
+    taskProgress.innerHTML = '';
+
+    let taskFeedback = document.getElementById('ondropFeedback');
+    taskFeedback.innerHTML = '';
+
+    let taskDone = document.getElementById('ondropDone');
+    taskDone.innerHTML = '';
+    
+
+    for (let r = 0; r < Join.tasks.length; r++) {
+        let title = Join.tasks[r]['title'];
+        let desc = Join.tasks[r]['desc'];
+        
+        if (title.toLowerCase().includes(search) && desc.toLowerCase().includes(search)) {
+            taskTodo.innerHTML += Join.tasks[r].tinyTaskCard(r);
+            taskProgress.innerHTML += Join.tasks[r].tinyTaskCard(r);
+            taskFeedback.innerHTML += Join.tasks[r].tinyTaskCard(r);
+            taskDone.innerHTML += Join.tasks[r].tinyTaskCard(r);
+        }
+    }
+}
+
+// function updateHTML() {
+//     let todos = Join.tasks.filter(s => s['filterTodo'] == 'To do');
+    
+//     document.getElementById('ondropTodo').innerHTML = '';
+
+//     for (let q = 0; q < todos.length; q++) {
+//         let todo = todos[q];
+//         let task = new Task(todo.title, todo.worker, todo.desc, todo.date, todo.prio, todo.Categroy, todo.subTasks, todo.todo, todo.progress, todo.feedback, todo.done, todo.filterTodo, todo.filterProgress, todo.filterFeedback, todo.filterDone);
+//         document.getElementById('ondropTodo').innerHTML += task.tinyTaskCard(q);
+//     }
+
+//     let inProgress = Join.tasks.filter(s => s['filterInprogress'] == 'In progress');
+
+//     document.getElementById('ondropProgress').innerHTML = '';
+
+//     for (let q = 0; q < inProgress.length; q++) {
+//         let progress = inProgress[q];
+//         let task = new Task(progress.title, progress.worker, progress.desc, progress.date, progress.prio, progress.Categroy, progress.subTasks, progress.todo, progress.progress, progress.feedback, progress.done, progress.filterTodo, progress.filterProgress, progress.filterFeedback, progress.filterDone);
+//         document.getElementById('ondropProgress').innerHTML += task.tinyTaskCard(q);
+//     }
+
+//     let awaitFeedback = Join.tasks.filter(s => s['filterFeedback'] == 'Await feedback');
+
+//     document.getElementById('ondropFeedback').innerHTML = '';
+
+//     for (let q = 0; q < awaitFeedback.length; q++) {
+//         let feedback = awaitFeedback[q];
+//         let task = new Task(feedback.title, feedback.worker, feedback.desc, feedback.date, feedback.prio, feedback.Categroy, feedback.subTasks, feedback.todo, feedback.progress, feedback.feedback, feedback.done, feedback.filterTodo, feedback.filterProgress, feedback.filterFeedback, feedback.filterDone);
+//         document.getElementById('ondropFeedback').innerHTML += task.tinyTaskCard(q);
+//     }
+
+//     let done = Join.tasks.filter(s => s['filterDone'] == 'Done');
+
+//     document.getElementById('ondropDone').innerHTML = '';
+
+//     for (let q = 0; q < done.length; q++) {
+//         let elementDone = done[q];
+//         let task = new Task(elementDone.title, elementDone.worker, elementDone.desc, elementDone.date, elementDone.prio, elementDone.Categroy, elementDone.subTasks, elementDone.todo, elementDone.progress, elementDone.feedback, elementDone.done, elementDone.filterTodo, elementDone.filterProgress, elementDone.filterFeedback, elementDone.filterDone);
+//         document.getElementById('ondropDone').innerHTML += task.tinyTaskCard(q);
+//     }
+// }
+
 function updateHTML() {
     let todos = Join.tasks.filter(s => s['filterTodo'] == 'To do');
-    
-    document.getElementById('kambanTodo').innerHTML = '';
+    let inProgress = Join.tasks.filter(s => s['filterInprogress'] == 'In progress');
+    let awaitFeedback = Join.tasks.filter(s => s['filterFeedback'] == 'Await feedback');
+    let done = Join.tasks.filter(s => s['filterDone'] == 'Done');
+
+
+    // document.getElementById('kambanTodo').innerHTML = '';
+    // document.getElementById('kambanInprogress').innerHTML = '';
+    // document.getElementById('kambanFeedback').innerHTML = '';
+    // document.getElementById('kambanDone').innerHTML = '';
+
+    // for (let q = 0; q < todos.length; q++) {
+    //     let todo = todos[q];
+    //     let task = new Task(todo.title, todo.worker, todo.desc, todo.date, todo.prio, todo.Categroy, todo.subTasks, todo.todo, todo.progress, todo.feedback, todo.done, todo.filterTodo, todo.filterProgress, todo.filterFeedback, todo.filterDone);
+    //     document.getElementById('kambanTodo').innerHTML += task.tinyTaskCard(q);
+    // }
+
+    // for (let q = 0; q < inProgress.length; q++) {
+    //     let progress = inProgress[q];
+    //     let task = new Task(progress.title, progress.worker, progress.desc, progress.date, progress.prio, progress.Categroy, progress.subTasks, progress.todo, progress.progress, progress.feedback, progress.done, progress.filterTodo, progress.filterProgress, progress.filterFeedback, progress.filterDone);
+    //     document.getElementById('kambanInprogress').innerHTML += task.tinyTaskCard(q);
+    // }
+
+    // for (let q = 0; q < awaitFeedback.length; q++) {
+    //     let feedback = awaitFeedback[q];
+    //     let task = new Task(feedback.title, feedback.worker, feedback.desc, feedback.date, feedback.prio, feedback.Categroy, feedback.subTasks, feedback.todo, feedback.progress, feedback.feedback, feedback.done, feedback.filterTodo, feedback.filterProgress, feedback.filterFeedback, feedback.filterDone);
+    //     document.getElementById('kambanFeedback').innerHTML += task.tinyTaskCard(q);
+    // }
+
+    // for (let q = 0; q < done.length; q++) {
+    //     let elementDone = done[q];
+    //     let task = new Task(elementDone.title, elementDone.worker, elementDone.desc, elementDone.date, elementDone.prio, elementDone.Categroy, elementDone.subTasks, elementDone.todo, elementDone.progress, elementDone.feedback, elementDone.done, elementDone.filterTodo, elementDone.filterProgress, elementDone.filterFeedback, elementDone.filterDone);
+    //     document.getElementById('kambanDone').innerHTML += task.tinyTaskCard(q);
+    // }
+
+    document.getElementById('ondropTodo').innerHTML = '';
+    document.getElementById('ondropProgress').innerHTML = '';
+    document.getElementById('ondropFeedback').innerHTML = '';
+    document.getElementById('ondropDone').innerHTML = '';
 
     for (let q = 0; q < todos.length; q++) {
         let todo = todos[q];
-        document.getElementById('kambanTodo').innerHTML += renderTask(todo);
+        let task = new Task(todo.title, todo.worker, todo.desc, todo.date, todo.prio, todo.Categroy, todo.subTasks, todo.todo, todo.progress, todo.feedback, todo.done, todo.filterTodo, todo.filterProgress, todo.filterFeedback, todo.filterDone);
+        document.getElementById('ondropTodo').innerHTML += task.tinyTaskCard(q);
     }
-
-    let inProgress = Join.tasks.filter(s => s['filterInprogress'] == 'In progress');
-
-    document.getElementById('kambanInprogress').innerHTML = '';
 
     for (let q = 0; q < inProgress.length; q++) {
         let progress = inProgress[q];
-        document.getElementById('kambanInprogress').innerHTML += renderTask(progress);
+        let task = new Task(progress.title, progress.worker, progress.desc, progress.date, progress.prio, progress.Categroy, progress.subTasks, progress.todo, progress.progress, progress.feedback, progress.done, progress.filterTodo, progress.filterProgress, progress.filterFeedback, progress.filterDone);
+        document.getElementById('ondropProgress').innerHTML += task.tinyTaskCard(q);
     }
-
-    let awaitFeedback = Join.tasks.filter(s => s['filterFeedback'] == 'Await feedback');
-
-    document.getElementById('kambanFeedback').innerHTML = '';
 
     for (let q = 0; q < awaitFeedback.length; q++) {
         let feedback = awaitFeedback[q];
-        document.getElementById('kambanFeedback').innerHTML += renderTask(feedback);
+        let task = new Task(feedback.title, feedback.worker, feedback.desc, feedback.date, feedback.prio, feedback.Categroy, feedback.subTasks, feedback.todo, feedback.progress, feedback.feedback, feedback.done, feedback.filterTodo, feedback.filterProgress, feedback.filterFeedback, feedback.filterDone);
+        document.getElementById('ondropFeedback').innerHTML += task.tinyTaskCard(q);
     }
-
-    let done = Join.tasks.filter(s => s['filterDone'] == 'Done');
-
-    document.getElementById('kambanDone').innerHTML = '';
 
     for (let q = 0; q < done.length; q++) {
         let elementDone = done[q];
-        document.getElementById('kambanDone').innerHTML += renderTask(elementDone);
+        let task = new Task(elementDone.title, elementDone.worker, elementDone.desc, elementDone.date, elementDone.prio, elementDone.Categroy, elementDone.subTasks, elementDone.todo, elementDone.progress, elementDone.feedback, elementDone.done, elementDone.filterTodo, elementDone.filterProgress, elementDone.filterFeedback, elementDone.filterDone);
+        document.getElementById('ondropDone').innerHTML += task.tinyTaskCard(q);
     }
 }
+
 
 
 function startDragging(id) {
@@ -584,25 +686,14 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    Join.tasks[currentDraggedElement]['filterTodo'] = category;
-    Join.tasks[currentDraggedElement]['filterInprogress'] = category;
-    Join.tasks[currentDraggedElement]['filterFeedback'] = category;
-    Join.tasks[currentDraggedElement]['filterDone'] = category;
-    updateHTML();
+    if (currentDraggedElement !== undefined) {
+        Join.tasks[currentDraggedElement]['filterTodo'] = category;
+        Join.tasks[currentDraggedElement]['filterInprogress'] = category;
+        Join.tasks[currentDraggedElement]['filterFeedback'] = category;
+        Join.tasks[currentDraggedElement]['filterDone'] = category;
+        updateHTML();
+    }
 }
 
-// function moveTo(category) {
-//     // Finden Sie den Index des aktuellen gezogenen Elements in Join.tasks
-//     const index = Join.tasks.findIndex(task => task.id === currentDraggedElement);
-
-//     // Überprüfen Sie, ob das Element gefunden wurde, bevor Sie seine Eigenschaften ändern
-//     if (index !== -1) {
-//         Join.tasks[index]['filterTodo'] = category;
-//         Join.tasks[index]['filterInprogress'] = category;
-//         Join.tasks[index]['filterFeedback'] = category;
-//         Join.tasks[index]['filterDone'] = category;
-//     }
-//     updateHTML();
-// }
 
 

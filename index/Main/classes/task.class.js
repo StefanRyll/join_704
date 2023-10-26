@@ -1,8 +1,6 @@
 class Task {
-    static nextId = 0;
     constructor(title, worker, desc, date, prio = "Wichtig", 
     Categroy, subTasks, todo = false, progress = false, feedback = false, done = false, filterTodo = 'To do', filterProgress = 'In progress ', filterFeedback = 'Await feedback', filterDone = 'Done') {
-        this.id = Task.nextId ++;
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -98,9 +96,9 @@ class Task {
 
                         `
     }
-    tinyTaskCard() {
+    tinyTaskCard(x = 0) {
         let html = /*html*/ `
-            <div class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${this.id})">
+            <div class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
                 <div class="tiny-task-category">${this.Categroy}</div>
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
