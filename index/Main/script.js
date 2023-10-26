@@ -149,13 +149,13 @@ function createTaskFromBoard(x = 0) {
     }
     finally{
         const title = document.getElementById("boardTaskTitle").value;
-        const worker = document.getElementById(`shortname${x}`).textContent;
+        const worker = readAssignedUsers()
         const desc = document.getElementById('boardTaskDescription').value;
         const date = document.getElementById('date').value;
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
         const subTask = subtasks;
-        let newTask = new Task(title, assignedUsers, desc, date, prio, category, subTask);
+        let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
         } else if (x == "2") {
@@ -166,7 +166,6 @@ function createTaskFromBoard(x = 0) {
         console.log(newTask)
         Join.tasks.push(newTask)
         clearInputs(title, desc, worker, date, category, subTask);
-        subtasks = []
     
         try { saveTasks()}
         catch(e){
@@ -177,27 +176,39 @@ function createTaskFromBoard(x = 0) {
         }
     }
 }
-function readAssignment() {
-    let assignedUsers = [];
-    for (let i = 0; i < Join.accounts.length; i++) {
-        const account = document.getElementById(`ac${i}`)
-        if (account.checked) {
-            let user = Join.accounts[i];
-            assignedUsers.push(user)
+// function readAssignment() {
+    // let assignedUsers = [];
+    // for (let i = 0; i < Join.accounts.length; i++) {
+        // const account = document.getElementById(`ac${i}`)
+        // if (account.checked) {
+            // let user = Join.accounts[i];
+            // assignedUsers.push(user)
+        // }
+// 
+    // }
+    // return assignedUsers;
+// }
+// function renderAssignedUsers() {
+    // let assignedUsers = readAssignment();
+    // const accountTags = document.getElementById('accountTags');
+    // accountTags.innerHTML = "";
+    // for (let i = 0; i < assignedUsers.length; i++) {
+        // const user = assignedUsers[i];
+        // accountTags.innerHTML += user.accountTags()
+    // }
+// }
+function readAssignedUsers(){
+    let workers = [];
+    for(let i = 0; i < Join.accounts.length;i++){
+        const account = Join.accounts[i]
+        console.log(account)
+        if (account.checked = true){
+            workers.push(account);
         }
+    }
+    return workers;
+}
 
-    }
-    return assignedUsers;
-}
-function renderAssignedUsers() {
-    let assignedUsers = readAssignment();
-    const accountTags = document.getElementById('accountTags');
-    accountTags.innerHTML = "";
-    for (let i = 0; i < assignedUsers.length; i++) {
-        const user = assignedUsers[i];
-        accountTags.innerHTML += user.accountTags()
-    }
-}
 function clearInputs(title, description, contact, date, newCategory, subtask) {
     title.value = '';
     description.value = '';
@@ -205,6 +216,10 @@ function clearInputs(title, description, contact, date, newCategory, subtask) {
     date.value = '';
     newCategory.value = "Select task category";
     subtask.value = '';
+    for (let account in Join.accounts){
+        account.checked = false;
+    }
+    subtasks = [];
 }
 
 function toggleContactsAssign() {
@@ -472,12 +487,13 @@ function addTaskPage() {
 function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
-
+    Join.accounts[x].checked = true;
 }
 
 function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
+    Join.accounts[x].checked = false;
 }
 
 

@@ -10,6 +10,7 @@ class Contact {
         this.email = email;
         this.tel = tel;
         this.shortname = this.name.charAt(0)
+        this.checked = false
     }
     tinyCard(x) {
         return /*html*/ `
