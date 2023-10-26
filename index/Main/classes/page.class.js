@@ -287,7 +287,7 @@ class Page {
         let deadlines = Join.tasks.sort((taskA, taskB) => {
             return taskA.date - taskB.date;
         })
-        console.log("nextDeadline",deadlines);
+        console.log("nextDeadline", deadlines);
         return deadlines[0]
             // let today = new Date()
             // let dif = 31536000000;
@@ -636,6 +636,7 @@ class Page {
                     ${this.generateHTMLRightSide()}
                     ${this.generateHTMLCloseButtonInSVG()}
                 </div>
+                ${this.generateHTMLBottom()}
             </div>
           `
     }
@@ -760,6 +761,20 @@ class Page {
                   ${this.generateHTMLSubtask()}
             </div>
           `
+    }
+
+    generateHTMLBottom() {
+        return /*html*/ `
+            <div class="addTask-bottom">
+                <div>
+                <sup class="info-required">*</sup><span>This field is required</span>
+                </div>
+                <div class="addTask-button">
+                <button class="btn-cancel btn-white" type="reset" onclick="#">Clear <img src="./IMG/cancel.png"></button>
+                <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+                </div>
+            </div>
+        `
     }
 
     generateHTMLDateForm() {

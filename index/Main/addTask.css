@@ -22,3 +22,20 @@
 .textarea-resize::-webkit-resizer {
     display: none;
 }
+
+.info-required {
+    color: #FF8190;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.addTask-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTask-button {
+    display: flex;
+    justify-content: center;
+}

@@ -121,6 +121,11 @@ body {
     transition: 0.1s ease-in-out;
 }
 
+.btn-white:hover img {
+    filter: brightness(3.5);
+    transition: 0.1s ease-in-out;
+}
+
 .btn-white:active {
     border: 1px solid var(--white-btn-active);
     color: var(--white-btn-active);
