@@ -164,6 +164,11 @@ function createTaskFromBoard(x = 0) {
             newTask.todo = true;
         }
         console.log(newTask)
+
+        for (let i = 0; i < newTask.worker.length; i++){
+            let taskWorker = newTask.worker[i];
+            taskWorker.checked = false;
+        }
         Join.tasks.push(newTask)
         clearInputs(title, desc, worker, date, category, subTask);
     
@@ -201,7 +206,6 @@ function readAssignedUsers(){
     let workers = [];
     for(let i = 0; i < Join.accounts.length;i++){
         const account = Join.accounts[i]
-        console.log(account)
         if (account.checked = true){
             workers.push(account);
         }
