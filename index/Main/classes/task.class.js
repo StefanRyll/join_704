@@ -18,8 +18,6 @@ class Task {
         this.filterDone = filterDone;
     }
 
-
-
     taskCardNormal() {
         let html = /*html*/ `
             </div>
