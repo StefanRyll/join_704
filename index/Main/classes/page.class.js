@@ -636,7 +636,6 @@ class Page {
                     ${this.generateHTMLRightSide()}
                     ${this.generateHTMLCloseButtonInSVG()}
                 </div>
-                ${this.generateHTMLBottom()}
             </div>
           `
     }
@@ -647,7 +646,8 @@ class Page {
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
-                ${this.generateHTMLAddContactShortName()}
+                ${this.generateHTMLAddContactShortName()}   
+                ${this.generateHTMLInfoRequired()}                               
               </div>
           `
     }
@@ -759,21 +759,17 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
+                  ${this.generateHTMLAddTaskButtons()}
             </div>
           `
     }
 
-    generateHTMLBottom() {
+    generateHTMLInfoRequired() {
         return /*html*/ `
-            <div class="addTask-bottom">
-                <div>
+            <div class="addTask-info-required">   
                 <sup class="info-required">*</sup><span>This field is required</span>
-                </div>
-                <div class="addTask-button">
-                <button class="btn-cancel btn-white" type="reset" onclick="#">Clear <img src="./IMG/cancel.png"></button>
-                <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
-                </div>
             </div>
+            
         `
     }
 
@@ -986,6 +982,15 @@ class Page {
                 <div id="createNewSubtask" class="create-subtask" onload="renderSubtasks()"></div>
             </div>
         </div>
+        `
+    }
+
+    generateHTMLAddTaskButtons() {
+        return /*html*/ `
+            <div class="addTask-button">
+                <button class="btn-cancel btn-white" type="reset" onclick="#">Clear <img src="./IMG/cancel.png"></button>
+                <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+            </div>
         `
     }
     generateHTMLAddSubtask(x = "test", m) {

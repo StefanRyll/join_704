@@ -29,13 +29,14 @@
     font-weight: 400;
 }
 
-.addTask-bottom {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.addTask-info-required {
+    margin-top: 120px;
 }
 
 .addTask-button {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 18px;
 }
