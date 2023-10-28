@@ -178,6 +178,7 @@ function createTaskFromBoard(x = 0) {
         }
         finally{
             closeAddTask()
+            Join.renderTask()
         }
     }
 }
@@ -206,10 +207,11 @@ function readAssignedUsers(){
     let workers = [];
     for(let i = 0; i < Join.accounts.length;i++){
         const account = Join.accounts[i]
-        if (account.checked = true){
+        if (account.checked){
             workers.push(account);
         }
     }
+    
     return workers;
 }
 
@@ -293,6 +295,7 @@ function selectCategoryStory() {
  */
 function closeAddTask() {
     slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
+    document.getElementById('addTask').classList.add("d-none")
 }
 
 function getPrio() {
@@ -405,35 +408,57 @@ function renderContacts() {
 function showContact(x) {
     console.log(x);
 }
+function openTask(x){
+    let task = Join.tasks[x];
+    let addTask = document.getElementById("addTask");
+    addTask.classList.remove("d-none")
+    console.log("Task: ", task);
+    console.log("Geöffnet: ", task.taskCardNormal(x))
+    addTask.innerHTML = task.taskCardNormal(x);
+}
+function editTask(x){
+    console.log("diggaaa");
+    let task = Join.tasks[x];
+    let taskCard = document.getElementById("taskCard");
+    taskCard.innerHTML = task.taskCardEdit(x);
+
+}
+function taskSaveChanges(x){
+    console.log("Änderung", x);
+}
+function closeTaskCard(){
+    boardPage()
+}
 // Final Pages
 function summeryPage() {
-    try { loadTasks()}
-    catch(e){
-        console.log("Fehler", e)
-    }
-    finally{
+    // try { loadTasks()}
+    // catch(e){
+    //     console.log("Fehler", e)
+    // }
+    // finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.summeryContent();
 
-    }
+    // }
 }
 
 function boardPage() {
-    try { loadTasks()}
-    catch(e){
-        console.log("Fehler", e)
-    }
-    finally{
+    // try { loadTasks()}
+    // catch(e){
+    //     console.log("Fehler", e)
+    // }
+    // finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
     content.innerHTML = Join.boardContent();
-    Join.renderTask();
-    }
+    Join.renderTask()
+    // updateHTML();
+    // }
 }
 
 function contactsPage() {
@@ -475,11 +500,11 @@ function legalPage() {
 }
 
 function addTaskPage() {
-    try { loadTasks()}
-    catch(e){
-        console.log("Fehler", e)
-    }
-    finally{
+    // try { loadTasks()}
+    // catch(e){
+    //     console.log("Fehler", e)
+    // }
+    // finally{
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -487,17 +512,17 @@ function addTaskPage() {
     content.innerHTML = Join.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
     }
-}
+// }
 function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
-    Join.accounts[x].checked = true;
+    Join.accounts[x].checked = false;
 }
 
 function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
-    Join.accounts[x].checked = false;
+    Join.accounts[x].checked = true;
 }
 
 
@@ -610,12 +635,19 @@ function filterTaskNames() {
 // }
 
 function updateHTML() {
-    let todos = Join.tasks.filter(s => s['filterTodo'] == 'To do');
-    let inProgress = Join.tasks.filter(s => s['filterInprogress'] == 'In progress');
-    let awaitFeedback = Join.tasks.filter(s => s['filterFeedback'] == 'Await feedback');
-    let done = Join.tasks.filter(s => s['filterDone'] == 'Done');
-
-
+    // DropZones
+    let ondropTodo = document.getElementById('ondropTodo')
+    let ondropProgress = document.getElementById('ondropProgress')
+    let ondropFeedback= document.getElementById('ondropFeedback')
+    let ondropDone= document.getElementById('ondropDone')
+    
+    // Filter Tasks
+    console.log("updateHTML()");
+    let todos = Join.tasks.filter(s => s.todo === true);
+    let inProgress = Join.tasks.filter(s => s.progress === true);
+    let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
+    let done = Join.tasks.filter(s => s.done = true);
+    let nothing = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false)
     // document.getElementById('kambanTodo').innerHTML = '';
     // document.getElementById('kambanInprogress').innerHTML = '';
     // document.getElementById('kambanFeedback').innerHTML = '';
@@ -644,34 +676,39 @@ function updateHTML() {
     //     let task = new Task(elementDone.title, elementDone.worker, elementDone.desc, elementDone.date, elementDone.prio, elementDone.Categroy, elementDone.subTasks, elementDone.todo, elementDone.progress, elementDone.feedback, elementDone.done, elementDone.filterTodo, elementDone.filterProgress, elementDone.filterFeedback, elementDone.filterDone);
     //     document.getElementById('kambanDone').innerHTML += task.tinyTaskCard(q);
     // }
-
-    document.getElementById('ondropTodo').innerHTML = '';
-    document.getElementById('ondropProgress').innerHTML = '';
-    document.getElementById('ondropFeedback').innerHTML = '';
-    document.getElementById('ondropDone').innerHTML = '';
+    console.log("Nothing: ",nothing.length);
+    for (let i = 0; i < nothing.length; i++) {
+        let garnix = nothing[i];
+        garnix.todo = true;
+        garnix.progress = false;
+        garnix.feedback = false;
+        garnix.done = false;
+        console.log("Aktualisiert : ", garnix);
+        
+    }
+    ondropTodo.innerHTML = '';
+    ondropProgress.innerHTML = '';
+    ondropFeedback.innerHTML = '';
+    ondropDone.innerHTML = '';
 
     for (let q = 0; q < todos.length; q++) {
         let todo = todos[q];
-        let task = new Task(todo.title, todo.worker, todo.desc, todo.date, todo.prio, todo.Categroy, todo.subTasks, todo.todo, todo.progress, todo.feedback, todo.done, todo.filterTodo, todo.filterProgress, todo.filterFeedback, todo.filterDone);
-        document.getElementById('ondropTodo').innerHTML += task.tinyTaskCard(q);
+        ondropTodo.innerHTML .innerHTML += todo.tinyTaskCard(q);
     }
 
     for (let q = 0; q < inProgress.length; q++) {
         let progress = inProgress[q];
-        let task = new Task(progress.title, progress.worker, progress.desc, progress.date, progress.prio, progress.Categroy, progress.subTasks, progress.todo, progress.progress, progress.feedback, progress.done, progress.filterTodo, progress.filterProgress, progress.filterFeedback, progress.filterDone);
-        document.getElementById('ondropProgress').innerHTML += task.tinyTaskCard(q);
+        ondropProgress.innerHTML += progress.tinyTaskCard(q);
     }
 
     for (let q = 0; q < awaitFeedback.length; q++) {
         let feedback = awaitFeedback[q];
-        let task = new Task(feedback.title, feedback.worker, feedback.desc, feedback.date, feedback.prio, feedback.Categroy, feedback.subTasks, feedback.todo, feedback.progress, feedback.feedback, feedback.done, feedback.filterTodo, feedback.filterProgress, feedback.filterFeedback, feedback.filterDone);
-        document.getElementById('ondropFeedback').innerHTML += task.tinyTaskCard(q);
+        ondropFeedback.innerHTML += feedback.tinyTaskCard(q);
     }
 
     for (let q = 0; q < done.length; q++) {
         let elementDone = done[q];
-        let task = new Task(elementDone.title, elementDone.worker, elementDone.desc, elementDone.date, elementDone.prio, elementDone.Categroy, elementDone.subTasks, elementDone.todo, elementDone.progress, elementDone.feedback, elementDone.done, elementDone.filterTodo, elementDone.filterProgress, elementDone.filterFeedback, elementDone.filterDone);
-        document.getElementById('ondropDone').innerHTML += task.tinyTaskCard(q);
+        ondropDone.innerHTML += elementDone.tinyTaskCard(q);
     }
 }
 
@@ -686,12 +723,33 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    if (currentDraggedElement !== undefined) {
-        Join.tasks[currentDraggedElement]['filterTodo'] = category;
-        Join.tasks[currentDraggedElement]['filterInprogress'] = category;
-        Join.tasks[currentDraggedElement]['filterFeedback'] = category;
-        Join.tasks[currentDraggedElement]['filterDone'] = category;
-        updateHTML();
+    if (currentDraggedElement !== undefined ) {
+        if (category === "Todo"){
+            Join.tasks[currentDraggedElement].todo = true;
+            Join.tasks[currentDraggedElement].progress = false;
+            Join.tasks[currentDraggedElement].feedback = false;
+            Join.tasks[currentDraggedElement].done = false;
+        }
+        else if (category === "Inprogress"){
+            Join.tasks[currentDraggedElement].todo = false;
+            Join.tasks[currentDraggedElement].progress = true;
+            Join.tasks[currentDraggedElement].feedback = false;
+            Join.tasks[currentDraggedElement].done = false;
+        }
+        else if (category === "Awaitfeedback"){
+            Join.tasks[currentDraggedElement].todo = false;
+            Join.tasks[currentDraggedElement].progress = false;
+            Join.tasks[currentDraggedElement].feedback = true;
+            Join.tasks[currentDraggedElement].done = false;
+        }
+        else if (category === "Done"){
+            Join.tasks[currentDraggedElement].todo = false;
+            Join.tasks[currentDraggedElement].progress = false;
+            Join.tasks[currentDraggedElement].feedback = false;
+            Join.tasks[currentDraggedElement].done = true;
+        }
+        Join.renderTask()
+        // updateHTML();
     }
 }
 

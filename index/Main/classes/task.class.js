@@ -1,6 +1,6 @@
 class Task {
     constructor(title, worker, desc, date, prio = "Wichtig", 
-    Categroy, subTasks, todo = false, progress = false, feedback = false, done = false, filterTodo = 'To do', filterProgress = 'In progress ', filterFeedback = 'Await feedback', filterDone = 'Done') {
+    Categroy, subTasks, todo = true, progress = false, feedback = false, done = false) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -12,60 +12,65 @@ class Task {
         this.progress = progress;
         this.feedback = feedback;
         this.done = done;
-        this.filterTodo = filterTodo;
-        this.filterProgress = filterProgress;
-        this.filterFeedback = filterFeedback;
-        this.filterDone = filterDone;
     }
 
-    taskCardNormal() {
+    taskCardNormal(x) {
         let html = /*html*/ `
-            </div>
-            <h1>${this.title}</h1>
-            <p>${this.desc}</p>
-            <div class="taskCardAttribute">
-                <p>Date Due: </p>
-                <p>${this.date}</p>
-            </div>
-            <div class="taskCardAttribute">
-                <p>Priority: </p>
-                <p>${this.prio}</p>
-            </div>
-            <div class="taskCardAssignment">
-                <p>Assigned to: </p>`
+            <div id="taskCard" class="taskCard">
+                <h1>${this.title}</h1>
+                <p>${this.desc}</p>
 
-        for (let i = 0; i < this.worker.length; i++) {
-            const worker = this.worker[i];
-            html += worker.tinyCard()
-        }
-        html += /*html*/ `
-        <div id="taskCardAssinedList"></div>
-            </div >
-            <div class="taskCardSubtasks">
-                <p>Subtasks</p>
-                <div id="subtasksList">
-                    `
-        for (let j = 0; j < this.subTasks.length; j++) {
-            const subTask = this.subTasks[j];
-            html += subTask;
-        }
-        html = /*html*/ `        
+                <div class="taskCardAttribute">
+                    <p>Date Due: </p>
+                    <p>${this.date}</p>
                 </div>
-            </div>
-            <div class="taskCardFooter">
-                <div class="deleteBtn"></div>
-                <div class="editBtn"></div>
+
+                <div class="taskCardAttribute">
+                    <p>Priority: </p>
+                    <p>${this.prio}</p>
+                </div>
+
+                <div class="taskCardAssignment">
+                    <p>Assigned to: </p>
+                    <div id="taskCardAssinedList">`
+
+                        for (let i = 0; i < this.worker.length; i++) {
+                            const worker = this.worker[i];
+                            html += worker.tinyCard()
+                        }
+        
+        html += /*html*/ `
+                    </div>
+                </div >
+
+                <div class="taskCardSubtasks">
+                    <p>Subtasks</p>
+                    <div id="subtasksList">
+                        `
+                    for (let j = 0; j < this.subTasks.length; j++) {
+                        const subTask = this.subTasks[j];
+                        html += subTask;
+                    }
+        html += /*html*/ `        
+                    </div>
+                </div>
+
+                <div class="taskCardFooter">
+                    <div class="deleteBtn"></div>
+                    <div class="editBtn" onclick="editTask(${x})"></div>
+                    <div class="closeBtn" onclick="closeTaskCard()">x CloseBtn</div>
+                </div>
             </div>
         `
         return html;
     }
-    taskCardEdit() {
+    taskCardEdit(x) {
         return /*html*/ `
-            < div class="taskCardHeader" >
+            <div class="taskCardHeader" >
                 <div></div>
                 <div class="taskCardHeaderClose">X</div>
             </div >
-            <form class="editTask" onsubmit="taskSaveChanges()">
+            <form class="editTask" onsubmit="taskSaveChanges(${x})">
                 <label for="taskCardETitle">Titel:</label>
                 <input type="text" id="taskCardETitle">
                     <label for="taskCardEDesc">Description:</label>
@@ -96,7 +101,7 @@ class Task {
     }
     tinyTaskCard(x = 0) {
         let html = /*html*/ `
-            <div class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
+            <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
                 <div class="tiny-task-category">${this.Categroy}</div>
                 <div class="tiny-title">
                     <h1>${this.title}</h1>

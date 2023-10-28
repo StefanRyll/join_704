@@ -367,55 +367,59 @@ class Page {
     <!----------------------------- ACTION BAR - BOARD ----------------------------------->
 
     <div class="frame-136">
-        <div onclick="openAddTask(0)" class="board-actionbar">
+
+        <div  class="board-actionbar"> 
             <div class="lanes">
                 <p>To do</p>
-                <div class="border-plus">
+                <div class="border-plus" onclick="openAddTask(0)">
                     <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path  d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
             </div>
-            <div id="ondropTodo" ondrop="moveTo('To do')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropTodo" ondrop="moveTo('Todo')" ondragover="allowDrop(event)" class="drag-area">
                 <div  class="canban-style" id="kambanTodo"></div>
             </div>
         </div>
-        <div onclick="openAddTask(1)" class="board-actionbar">
+
+        <div  class="board-actionbar">
             <div class="lanes">
                 <p>In progress</p>
-                <div class="border-plus">
+                <div class="border-plus" onclick="openAddTask(1)">
                     <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg"  width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
             </div>
-            <div id="ondropProgress" ondrop="moveTo('In progress')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropProgress" ondrop="moveTo('Inprogress')" ondragover="allowDrop(event)" class="drag-area">
                 <div class="canban-style" id="kambanInprogress"></div>
             </div>
         </div>
-        <div onclick="openAddTask(2)" class="board-actionbar">
+
+        <div  class="board-actionbar">
             <div class="lanes">
-            <p>Await feedback</p>
-                <div class="border-plus">
+                <p>Await feedback</p>
+                <div class="border-plus" onclick="openAddTask(2)">
                     <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                     <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
             </div>
-            <div id="ondropFeedback" ondrop="moveTo('Await feedback')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback')" ondragover="allowDrop(event)" class="drag-area">
                 <div  class="canban-style" id="kambanFeedback"></div>
             </div>
         </div>
+
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
             </div>
-        </div>
-        <div id="ondropDone" ondrop="moveTo('Done')" ondragover="allowDrop(event)" class="drag-area">
-            <div  class="canban-style" id="kambanDone" ></div>
+            <div id="ondropDone" ondrop="moveTo('Done')" ondragover="allowDrop(event)" class="drag-area">
+                <div  class="canban-style" id="kambanDone" ></div>
+            </div>
         </div>
     </div>
 
@@ -425,7 +429,7 @@ class Page {
 
     <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-    <div id="addTask">
+    <div id="addTask" class="popUpTaskCard d-none">
        
     </div>
 
@@ -436,18 +440,27 @@ class Page {
         let kambanInprogress = document.getElementById('kambanInprogress');
         let kambanFeedback = document.getElementById('kambanFeedback');
         let kambanDone = document.getElementById('kambanDone');
+        kambanTodo.innerHTML = "";
+        kambanInprogress.innerHTML = "";
+        kambanFeedback.innerHTML = "";
+        kambanDone.innerHTML = "";
+
+
+
+
         for (let i = 0; i < this.tasks.length; i++) {
             const task = this.tasks[i];
             if (task.todo) {
-                kambanTodo.innerHTML += task.tinyTaskCard()
+                kambanTodo.innerHTML += task.tinyTaskCard(i)
             } else if (task.progress) {
-                kambanInprogress.innerHTML += task.tinyTaskCard()
+                kambanInprogress.innerHTML += task.tinyTaskCard(i)
             } else if (task.feedback) {
-                kambanFeedback.innerHTML += task.tinyTaskCard()
+                kambanFeedback.innerHTML += task.tinyTaskCard(i)
             } else if (task.done) {
-                kambanDone.innerHTML += task.tinyTaskCard()
-            } else {
-                kambanTodo.innerHTML += task.tinyTaskCard()
+                kambanDone.innerHTML += task.tinyTaskCard(i)
+            } 
+            else {
+                kambanTodo.innerHTML += task.tinyTaskCard(i)
             }
         }
     }
@@ -585,6 +598,7 @@ class Page {
     renderAddTask(x) {
         let addTask = document.getElementById('addTask');
         addTask.innerHTML = '';
+        addTask.classList.remove("d-none")
         addTask.innerHTML += this.generateHTMLaddTask(x);
 
         // Prio Funktion

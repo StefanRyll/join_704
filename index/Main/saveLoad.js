@@ -49,6 +49,7 @@ async function loadAccounts(){
 async function loadTasks(){
   let response = await fetch('./saves/Tasks.json')
   let responseAsJson = await response.json();
+  console.log("Load Tasks : ", responseAsJson);
   let loadedTasks = decodeTasks(responseAsJson)
   Join.tasks = loadedTasks;
   console.log("Tasks geladen");
