@@ -1,12 +1,23 @@
 /* clears the 'X' from Internet Explorer */
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input[type=search]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
 
 /* clears the 'X' from Chrome */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
 
 
 :root {
@@ -211,19 +222,41 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     flex-direction: column;
     margin-top: 30px;
     height: 100vh;
+    width: 260px;
 }
 
 .lanes {
-    width: 242px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.empty-tasks {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px dashed var(--icon, #A8A8A8);
+    background: #E7E7E7;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    width: 252px;
+    margin-top: 30px
+}
 
-.popUpTaskCard{
+.empty-tasks p {
+    color: var(--icon, #A8A8A8);
+    /* Version 2/body */
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.popUpTaskCard {
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -237,4 +270,3 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
 }
-

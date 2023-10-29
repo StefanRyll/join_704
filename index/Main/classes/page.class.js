@@ -378,6 +378,9 @@ class Page {
                     </svg>
                 </div>
             </div>
+            <div class="empty-tasks d-none" id="emptyTaskTodo">
+                <p>No tasks To do</p>
+            </div>
             <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo')" ondragleave="removeHighlight('ondropTodo')" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
                 <div  class="canban-style" id="kambanTodo"></div>
             </div>
@@ -392,6 +395,9 @@ class Page {
                     <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
+            </div>
+            <div class="empty-tasks d-none" id="emptyTaskInprogress">
+                <p>No tasks In progress</p>
             </div>
             <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress')" ondragleave="removeHighlight('ondropProgress')" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
                 <div class="canban-style" id="kambanInprogress"></div>
@@ -408,6 +414,9 @@ class Page {
                     </svg>
                 </div>
             </div>
+            <div class="empty-tasks" id="emptyTaskFeedback">
+                <p>No tasks Await feedback</p>
+            </div>
             <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback')" ondragleave="removeHighlight('ondropFeedback')" ondragover="allowDrop(event); highlight('ondropFeedback')" class="drag-area">
                 <div  class="canban-style" id="kambanFeedback"></div>
             </div>
@@ -416,6 +425,9 @@ class Page {
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
+            </div>
+            <div class="empty-tasks" id="emptyTaskDone">
+                <p>No tasks Done</p>
             </div>
             <div id="ondropDone" ondrop="moveTo('Done'); removeHighlight('ondropDone')" ondragleave="removeHighlight('ondropDone')" ondragover="allowDrop(event); highlight('ondropDone')" class="drag-area">
                 <div  class="canban-style" id="kambanDone" ></div>
