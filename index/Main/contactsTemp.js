@@ -20,10 +20,10 @@ function generateHtmlContactDetails(i, color, userInitials, name, mail, phone) {
                 <h2 class="name-headline">${name}</h2>
                 <a class="contactsIcons">
                     <div onclick="openEditContact(${i})" class="editIcon">
-                        <img class="editSymbol" src="../IMG/edit.png"> <span>Edit</span>
+                        <img class="editSymbol" src="./IMG/edit.png"> <span>Edit</span>
                     </div>
                     <div onclick="deleteContact(${i})" class="deleteIcon">
-                        <img class="deleteSymbol" src="../IMG/delete.png"> <span>Delete</span>
+                        <img class="deleteSymbol" src="./IMG/delete.png"> <span>Delete</span>
                     </div>
                 </a>
             </div>
@@ -44,7 +44,7 @@ function generateHtmlAddContact() {
         ${generateLeftSide()}
         <div class ="overlay-mid-container">
             <div class="add-Contact-logo">
-                <img src="../IMG/person-white.png">
+                <img src="./IMG/person-white.png">
             </div>
         </div>
         <div class="overlay-right-container-addContact">
@@ -52,20 +52,20 @@ function generateHtmlAddContact() {
             <form class="addContact-form" action="#" onsubmit="addContact()">
                 <div class="btn-underlay">
                     <input id="name" required type="text" class="frame-157" placeholder="Name">
-                    <img class="input-icon" src="../IMG/person.png"> 
+                    <img class="input-icon" src="./IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
                     <input id="mail" required type="email" class="frame-157" placeholder="Email">
-                    <img class="input-icon" src="../IMG/mail.png"> 
+                    <img class="input-icon" src="./IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
                     <input id="phone" required type="number" class="frame-157" placeholder="Phone">
-                    <img class="input-icon" src="../IMG/call.png"> 
+                    <img class="input-icon" src="./IMG/call.png"> 
                 </div>
                 <div class="frame-176">
                     <div class="loginButtons">
-                        <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Cancel <img src="../IMG/cancel.png"></button>
-                        <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
+                        <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Cancel <img src="./IMG/cancel.png"></button>
+                        <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
                     </div>
                 </div>
             </form>
@@ -86,20 +86,20 @@ function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
             <form class="addContact-form" action="#" onsubmit="editContact(${i})">
                 <div class="btn-underlay">
                     <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${name}">
-                    <img class="input-icon" src="../IMG/person.png"> 
+                    <img class="input-icon" src="./IMG/person.png"> 
                 </div>
                 <div class="btn-underlay">
                     <input id="editMail" required type="email" class="frame-157" placeholder="Email" value="${mail}">
-                    <img class="input-icon" src="../IMG/mail.png"> 
+                    <img class="input-icon" src="./IMG/mail.png"> 
                 </div>
                 <div class="btn-underlay">
                     <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${phone}" oninput="validatePhoneNumber(this)">
-                    <img class="input-icon" src="../IMG/call.png"> 
+                    <img class="input-icon" src="./IMG/call.png"> 
                 </div>
                 <div class="frame-176">
                     <div class="loginButtons">
                         <button class="btn-byEdit-delete btn-white" type="reset" onclick="deleteContact(${i})">Delete</button>
-                        <button class="btn-byEdit-save btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="../IMG/check-for-button.png"></button>
+                        <button class="btn-byEdit-save btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
                     </div>
                 </div>
             </form>
@@ -116,10 +116,10 @@ function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
 function generateLeftSide() {
     return /*html*/ `
         <div class="overlay-left-container">
-            <img src="../IMG/LogoWhite.png" alt="join-logo">
+            <img src="./IMG/LogoWhite.png" alt="join-logo">
             <h1 class="add-contact-headline">Add contact</h1>
             <span>Tasks are better with a team</span>
-            <img src="../IMG/vector-5.png">
+            <img src="./IMG/vector-5.png">
         </div>
     `
 }
