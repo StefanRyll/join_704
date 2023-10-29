@@ -703,3 +703,41 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
+
+
+function checkDragArea() {
+    let todo = document.getElementById('emptyTaskTodo');
+    let inprogress = document.getElementById('emptyTaskInprogress');
+    let feedback = document.getElementById('emptyTaskFeedback');
+    let done = document.getElementById('emptyTaskDone');
+
+    
+    if (Join.tasks.some(task => task.todo)) {
+        todo.classList.add('d-none');
+    } else {
+        todo.classList.remove('d-none');
+    }
+
+   
+    if (Join.tasks.some(task => task.progress)) {
+        inprogress.classList.add('d-none');
+    } else {
+        inprogress.classList.remove('d-none');
+    }
+
+    
+    if (Join.tasks.some(task => task.feedback)) {
+        feedback.classList.add('d-none');
+    } else {
+        feedback.classList.remove('d-none');
+    }
+
+    
+    if (Join.tasks.some(task => task.done)) {
+        done.classList.add('d-none');
+    } else {
+        done.classList.remove('d-none');
+    }
+}
+
+

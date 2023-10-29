@@ -381,7 +381,7 @@ class Page {
             <div class="empty-tasks d-none" id="emptyTaskTodo">
                 <p>No tasks To do</p>
             </div>
-            <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo')" ondragleave="removeHighlight('ondropTodo')" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
+            <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo'); checkDragArea()" ondragleave="removeHighlight('ondropTodo'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
                 <div  class="canban-style" id="kambanTodo"></div>
             </div>
         </div>
@@ -399,7 +399,7 @@ class Page {
             <div class="empty-tasks d-none" id="emptyTaskInprogress">
                 <p>No tasks In progress</p>
             </div>
-            <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress')" ondragleave="removeHighlight('ondropProgress')" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
+            <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress'); checkDragArea()" ondragleave="removeHighlight('ondropProgress'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
                 <div class="canban-style" id="kambanInprogress"></div>
             </div>
         </div>
@@ -417,7 +417,7 @@ class Page {
             <div class="empty-tasks" id="emptyTaskFeedback">
                 <p>No tasks Await feedback</p>
             </div>
-            <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback')" ondragleave="removeHighlight('ondropFeedback')" ondragover="allowDrop(event); highlight('ondropFeedback')" class="drag-area">
+            <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback'); checkDragArea()" ondragleave="removeHighlight('ondropFeedback'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropFeedback')" class="drag-area">
                 <div  class="canban-style" id="kambanFeedback"></div>
             </div>
         </div>
@@ -429,7 +429,7 @@ class Page {
             <div class="empty-tasks" id="emptyTaskDone">
                 <p>No tasks Done</p>
             </div>
-            <div id="ondropDone" ondrop="moveTo('Done'); removeHighlight('ondropDone')" ondragleave="removeHighlight('ondropDone')" ondragover="allowDrop(event); highlight('ondropDone')" class="drag-area">
+            <div id="ondropDone" ondrop="moveTo('Done'); removeHighlight('ondropDone'); checkDragArea()" ondragleave="removeHighlight('ondropDone'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropDone')" class="drag-area">
                 <div  class="canban-style" id="kambanDone" ></div>
             </div>
         </div>
