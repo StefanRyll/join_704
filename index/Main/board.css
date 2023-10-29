@@ -139,7 +139,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     display: flex;
     gap: 26px;
     display: flex;
-    max-width: 1208px;
+    max-width: 100%;
     /* padding: 0px 64px; */
     justify-content: space-between;
     align-items: flex-start;
@@ -220,9 +220,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     align-items: center;
 }
 
-.drag-area {
-    height: 100vh;
-}
+
 .popUpTaskCard{
     position: absolute;
     top:0;
@@ -234,3 +232,9 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     justify-content: center;
     align-items: center;
 }
+
+.drag-area-highlight {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+

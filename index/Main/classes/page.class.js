@@ -378,7 +378,7 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div id="ondropTodo" ondrop="moveTo('Todo')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo')" ondragleave="removeHighlight('ondropTodo')" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
                 <div  class="canban-style" id="kambanTodo"></div>
             </div>
         </div>
@@ -393,7 +393,7 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div id="ondropProgress" ondrop="moveTo('Inprogress')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress')" ondragleave="removeHighlight('ondropProgress')" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
                 <div class="canban-style" id="kambanInprogress"></div>
             </div>
         </div>
@@ -408,7 +408,7 @@ class Page {
                     </svg>
                 </div>
             </div>
-            <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback')" ondragleave="removeHighlight('ondropFeedback')" ondragover="allowDrop(event); highlight('ondropFeedback')" class="drag-area">
                 <div  class="canban-style" id="kambanFeedback"></div>
             </div>
         </div>
@@ -417,7 +417,7 @@ class Page {
             <div class="lanes">
                 <p>Done</p>
             </div>
-            <div id="ondropDone" ondrop="moveTo('Done')" ondragover="allowDrop(event)" class="drag-area">
+            <div id="ondropDone" ondrop="moveTo('Done'); removeHighlight('ondropDone')" ondragleave="removeHighlight('ondropDone')" ondragover="allowDrop(event); highlight('ondropDone')" class="drag-area">
                 <div  class="canban-style" id="kambanDone" ></div>
             </div>
         </div>
