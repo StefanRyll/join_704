@@ -646,7 +646,8 @@ class Page {
                         <div class="field-required-text">
                             <sub>*</sub><span>This field is required</span>
                         </div>
-                        ${this.generateHTMLButtons(x)}
+                        ${this.generateHTMLAddTaskButtons(x)}
+                        <!-- ${this.generateHTMLButtons(x)} -->
                     </div>
                 </div>
               </div>
@@ -673,7 +674,7 @@ class Page {
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
                 ${this.generateHTMLAddContactShortName()}   
-                ${this.generateHTMLInfoRequired()}                               
+                <!-- ${this.generateHTMLInfoRequired()}                                -->
               </div>
           `
     }
@@ -785,7 +786,7 @@ class Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  ${this.generateHTMLAddTaskButtons()}
+                  <!-- ${this.generateHTMLAddTaskButtons()} -->
             </div>
           `
     }
@@ -1011,11 +1012,11 @@ class Page {
         `
     }
 
-    generateHTMLAddTaskButtons() {
+    generateHTMLAddTaskButtons(x) {
         return /*html*/ `
             <div class="addTask-button">
-                <button class="btn-cancel btn-white" type="reset" onclick="#">Clear <img src="./IMG/cancel.png"></button>
-                <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+                <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
+                <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
         `
     }
