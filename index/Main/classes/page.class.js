@@ -115,7 +115,7 @@ class Page {
                     <div class="navs bgDark" onclick="summeryPage()"><div class="summary"></div><h3>Summery</h3></div>
                     <div class="navs" onclick="boardPage()" ><div class="board"></div><h3>Board</h3></div>
                     <div class="navs" onclick="addTaskPage()"><div class="addTask"></div><h3>Add Task</h3></div>
-                    <div class="navs" onclick="contactsPage()"><div class="contacts"></div><h3>Contacts</h3></div>
+                    <a href="./contacts.html"><div class="navs" onclick="#"><div class="contacts"></div><h3>Contacts</h3></div></a>
                 </nav>
                 <div>
                     <p onclick="privacyPage()">Privacy Policy</p>
@@ -470,8 +470,7 @@ class Page {
                 kambanFeedback.innerHTML += task.tinyTaskCard(i)
             } else if (task.done) {
                 kambanDone.innerHTML += task.tinyTaskCard(i)
-            } 
-            else {
+            } else {
                 kambanTodo.innerHTML += task.tinyTaskCard(i)
             }
         }
