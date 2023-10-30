@@ -1,7 +1,5 @@
 .content-add-task {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-right: 350px;
 }
 
 .add-taskWindow {
@@ -34,9 +32,37 @@
 }
 
 .addTask-button {
-    width: 100%;
+    margin-right: 65px;
+    /* width: 100%; */
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     gap: 16px;
     margin-top: 18px;
+}
+
+.content-headline-add-task {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 74px;
+}
+
+
+.content-headline-add-task h3 {
+    font-size: 61px;
+    font-weight: 700;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.content-addTask-button {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: end;
+}
+
+.content-board-task-footer { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

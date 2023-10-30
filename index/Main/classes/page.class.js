@@ -646,25 +646,45 @@ class Page {
                             <sub>*</sub><span>This field is required</span>
                         </div>
                         ${this.generateHTMLAddTaskButtons(x)}
-                        <!-- ${this.generateHTMLButtons(x)} -->
                     </div>
                 </div>
               </div>
           `
     }
-    generateHTMLaddTaskWindow() {
+
+    generateHTMLaddTaskWindow(x) {
         return /*html*/ `
-            <div class="content-add-task">
-                ${this.generateHTMLAddTaskHeadline()}
-                <div class="add-taskWindow">
-                    ${this.generateHTMLLeftSide()}
-                    ${this.generateHTMLSeperator()}
-                    ${this.generateHTMLRightSide()}
-                    ${this.generateHTMLCloseButtonInSVG()}
+           <div class="content-add-task">
+                    <div class="content-headline-add-task">
+                        <h3>Add Task</h3>
+                        <!-- ${this.generateHTMLCloseButtonInSVG()} -->
+                    </div>
+                    <div class="board-task-middle">
+                        ${this.generateHTMLLeftSide(x)}
+                        ${this.generateHTMLSeperator()}
+                        ${this.generateHTMLRightSide(x)}
+                    </div>
+                    <div class="content-board-task-footer">
+                        <div class="field-required-text">
+                            <sub>*</sub><span>This field is required</span>
+                        </div>
+                        ${this.generateHTMLAddTaskButtons(x)}
+                    </div>
                 </div>
-            </div>
           `
     }
+    // generateHTMLaddTaskWindow() {
+    //     return /*html*/ `
+    //         <div class="content-add-task">
+    //             ${this.generateHTMLAddTaskHeadline()}
+    //             <div class="add-taskWindow">
+    //                 ${this.generateHTMLLeftSide()}
+    //                 ${this.generateHTMLSeperator()}
+    //                 ${this.generateHTMLRightSide()}
+    //             </div>
+    //         </div>
+    //       `
+    // }
     generateHTMLLeftSide(x) {
         return /*html*/ `
               <div class="left-side">
@@ -1010,7 +1030,7 @@ class Page {
         </div>
         `
     }
-
+    
     generateHTMLAddTaskButtons(x) {
         return /*html*/ `
             <div class="addTask-button">
@@ -1044,23 +1064,23 @@ class Page {
         `
     }
 
-    generateHTMLButtons(x) {
-        return /*html*/ `
-            <div class="bottom-button" >
-              <button onclick="closeAddTask()" class="cancel-button" >
-                <span>Cancel</span>
-                  <svg class="cancel-button-stroke" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                  <line x1="0" y1="0" x2="24" y2="24" stroke="black" stroke-width="2" class="change-color" />
-                  <line x1="24" y1="0" x2="0" y2="24" stroke="black" stroke-width="2"  class="change-color" />
-                </svg>
-              </button>
-              <button onclick="createTaskFromBoard(${x})" class="create-task-button">
-                <span>Create Task</span>
-                <img src="/assets/img/check.png" alt="check Button in add Task">
-              </button>
-            </div>
-        `
-    }
+    // generateHTMLButtons(x) {
+    //     return /*html*/ `
+    //         <div class="bottom-button" >
+    //           <button onclick="closeAddTask()" class="cancel-button" >
+    //             <span>Cancel</span>
+    //               <svg class="cancel-button-stroke" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+    //               <line x1="0" y1="0" x2="24" y2="24" stroke="black" stroke-width="2" class="change-color" />
+    //               <line x1="24" y1="0" x2="0" y2="24" stroke="black" stroke-width="2"  class="change-color" />
+    //             </svg>
+    //           </button>
+    //           <button onclick="createTaskFromBoard(${x})" class="create-task-button">
+    //             <span>Create Task</span>
+    //             <img src="/assets/img/check.png" alt="check Button in add Task">
+    //           </button>
+    //         </div>
+    //     `
+    // }
     generateHTMLCloseButtonInSVG() {
             return /*html*/ `
                 <div class="style-closebutton">

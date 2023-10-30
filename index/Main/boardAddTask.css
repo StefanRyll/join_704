@@ -253,6 +253,9 @@
 
 .field-required-text {
     margin-left: 74px;
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
 }
 
 .field-required-text sub {

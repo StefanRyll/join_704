@@ -69,8 +69,11 @@ body {
 }
 
 .btn-dark-blue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
-    width: 91px;
+    width: 180px;
     height: 49px;
     padding: 15px, 16px, 15px, 16px;
     border-radius: 8px;
@@ -97,9 +100,12 @@ body {
 }
 
 .btn-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--white);
     color: black;
-    width: 177px;
+    max-width: 177px;
     height: 48px;
     padding: 15px 24px 15px 24px;
     border-radius: 8px;

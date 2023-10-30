@@ -1,7 +1,7 @@
 .taskCard{
     background-color: white;
     width: 525px;
-    height: 931px;
+
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
     gap: 24px;
@@ -13,7 +13,7 @@
 .taskCardHeader{
     display: flex;
     width: 100%;
-    height: 36px;
+    /* height: 36px; */
     justify-content: space-between;
     align-items: center;
 }
