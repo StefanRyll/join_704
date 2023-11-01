@@ -745,4 +745,12 @@ function toggleCheckboxCard() {
     document.getElementById('cardCheckboxTrue').classList.toggle('d-none');
 }
 
+function openSelectContactsFromCard() {
+    document.getElementById('showContactsFromCard').classList.add('d-none');
+    document.getElementById('closeContactsFromCard').classList.remove('d-none');
+}
 
+function closeSelectContactsFromCard() {
+    document.getElementById('showContactsFromCard').classList.remove('d-none');
+    document.getElementById('closeContactsFromCard').classList.add('d-none');
+}

@@ -32,7 +32,7 @@
 .taskCard {
     background-color: white;
     width: 525px;
-
+    height: 80%;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
     gap: 24px;
@@ -109,9 +109,12 @@
 }
 
 .style-task {
+    height: 80%;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow-y: scroll;
+    padding: 20px;
 }
 
 .styleEditTask {
@@ -210,4 +213,35 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+}
+
+
+.assignContactsCard {
+    display: flex;
+    padding: 8px 14px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: #FFF;
+    color: #000;
+}
+
+.assignContactsCard input {
+    background-color: white;
+    border: none;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+
+.assignContactsCard img:hover {
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 100%;
 }

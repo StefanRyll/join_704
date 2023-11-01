@@ -106,14 +106,21 @@ class Task {
                     <label for="taskCardEDate">Date Due:</label>
                     <input type="date" id="taskCardEDate">
                         <label for="">Assign to: </label>
-                        <select name="" id="">
+                        <div id="showContactsFromCard">
+                        <div class="assignContactsCard">
+                            <input onclick="openSelectContactsFromCard()" type="button" value="Select contacts to assign">
+                            <img onclick="openSelectContactsFromCard()" src="./IMG/drop_down.svg" alt="">
+                        </div>
+                       </div>
+                       <div id="closeContactsFromCard"  class="d-none">
+                        <div class="assignContactsCard">
+                            <input onclick="closeSelectContactsFromCard()" type="search">
+                            <img onclick="closeSelectContactsFromCard()" src="./IMG/arrow_drop_up.svg" alt="">
+                        </div>
+                       </div>
                             <div>
                                 <div class="accountTag">AV</div>
                             </div>
-                        </select>
-                        <div>
-                            <div class="accountTag">AV</div>
-                        </div>
                         <div>
                             <button>Urgent</button>
                             <button>Medium</button>
