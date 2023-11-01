@@ -740,4 +740,9 @@ function checkDragArea() {
     }
 }
 
+function toggleCheckboxCard() {
+    document.getElementById('cardCheckboxFalse').classList.toggle('d-none');
+    document.getElementById('cardCheckboxTrue').classList.toggle('d-none');
+}
+
 

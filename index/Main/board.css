@@ -149,9 +149,8 @@ input[type="search"]::-webkit-search-results-decoration {
 .frame-136 {
     display: flex;
     gap: 26px;
-    display: flex;
     max-width: 100%;
-    /* padding: 0px 64px; */
+    padding-right: 92px;
     justify-content: space-between;
     align-items: flex-start;
 }

@@ -255,14 +255,15 @@ footer {
 }
 
 #content {
-    position: absolute;
-    height: 71%;
+    height: 100vh;
+    /* position: absolute; */
+    /* height: 71%; */
     text-align: justify;
     text-overflow: clip;
     padding: 90px;
-    left: 232px;
-    top: 98px;
-    right: -15px;
+    margin-left: 232px;
+    margin-top: 98px;
+    margin-right: -15px;
     overflow: hidden;
     overflow-y: scroll;
 }

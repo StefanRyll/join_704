@@ -1,4 +1,35 @@
-.taskCard{
+.color-user,
+.category-color {
+    background-color: #0038FF;
+}
+
+.color-technical {
+    background-color: #1FD7C1;
+}
+
+.taskCardHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-button-card:hover {
+    cursor: pointer;
+    background-color: #D9D9D9;
+    border-radius: 100%;
+    transition: 100ms ease-in-out;
+}
+
+
+.category-color {
+    display: flex;
+    padding: 4px 24px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+.taskCard {
     background-color: white;
     width: 525px;
 
@@ -10,64 +41,90 @@
     justify-content: space-between;
     /* align-items: center; */
 }
-.taskCardHeader{
+
+.taskCardHeader {
     display: flex;
     width: 100%;
     /* height: 36px; */
     justify-content: space-between;
     align-items: center;
 }
-.taskCard h1{
+
+.taskCard h1 {
     font-size: 61px;
     width: 100%;
 }
+
 .taskCard p {
     font-size: 20px;
     width: 100%;
+    text-align: start;
 
 }
-.taskCardAttribute{
+
+.taskCardAttribute {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
-.deleteBtn{
+
+.taskCardAssignment {
+    display: flex;
+    flex-direction: column;
+}
+
+#taskCardAssinedList {
+    padding-left: 50px;
+}
+
+.deleteBtn {
     background-image: url("./IMG/deleteBtn.png");
     /* background-size: cover; */
     width: 83px;
-    height:24px;
+    height: 24px;
     margin: 1px;
 }
-.deleteBtn:hover{
+
+.deleteBtn:hover {
     background-image: url("./IMG/deleteBtnHover.png");
+    cursor: pointer;
 }
-.taskCardFooter{
+
+.taskCardFooter {
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
 }
-.editBtn{
+
+.editBtn {
     background-image: url("./IMG/editBtn.png");
     width: 63px;
-    height:24px;
+    height: 24px;
     margin: 1px;
 }
-.editBtn:hover{
+
+.editBtn:hover {
     background-image: url("./IMG/editBtnHover.png");
+    cursor: pointer;
 }
-.editTask{
+
+.editTask {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     height: 100%;
     gap: 24px;
 }
-.editTask label{
+
+.editTask label {
     font-size: 20px;
 }
-.editTask input{
+
+.editTask input {
     height: 48px;
 }
-.accountTag{
+
+.accountTag {
     width: 42px;
     height: 42px;
     background-color: red;
@@ -79,7 +136,8 @@
     font-weight: 700;
     color: white
 }
-.tinyAccountCard{
+
+.tinyAccountCard {
     width: 100%;
     height: 56px;
     display: flex;
@@ -87,4 +145,15 @@
     align-items: center;
     gap: 16px;
     font-size: 19px;
+}
+
+.subtask-list {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-left: 50px;
+}
+
+.subtask-list img {
+    cursor: pointer;
 }

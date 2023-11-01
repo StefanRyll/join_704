@@ -657,7 +657,6 @@ class Page {
            <div class="content-add-task">
                     <div class="content-headline-add-task">
                         <h3>Add Task</h3>
-                        <!-- ${this.generateHTMLCloseButtonInSVG()} -->
                     </div>
                     <div class="board-task-middle">
                         ${this.generateHTMLLeftSide(x)}
@@ -824,8 +823,7 @@ class Page {
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="date" name="datum" required placeholder="dd/mm/yyyy" value="">
-                        <!-- <input type="text" id="formatted-date"> -->
+                        <input type="date" id="date" name="datum" required placeholder="dd/mm/yyyy" value="dd/mm/yyyy">
                     </div>
                 </form>
             `
