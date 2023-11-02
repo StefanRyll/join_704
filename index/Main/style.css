@@ -13,6 +13,7 @@
     --white-btn-active: rgba(9, 25, 49, 1);
     --text-button: rgba(168, 168, 168, 1);
     --link-color: #29abe2;
+    --dark-blue: rgba(42, 54, 71, 1);
 }
 
 html {
@@ -295,3 +296,7 @@ footer {
 
 
 /* ====================================================== </scrollbalken> =============================================================== */
+
+.respon-footer {
+    display: none;
+}

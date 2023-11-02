@@ -1,0 +1,29 @@
+@media (max-width: 1140px) {
+    .vector-blue,
+    .subtitle-contacts {
+        display: none;
+    }
+}
+
+@media (max-width: 1010px) {
+    .sidebar,
+    .header {
+        display: none;
+    }
+    .respon-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--dark-blue);
+        color: white;
+    }
+    .nav-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
