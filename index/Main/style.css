@@ -214,6 +214,10 @@ h1 {
     margin: 0;
 }
 
+.mg-none {
+    margin: 0 !important;
+}
+
 .bg-color-white {
     background-color: white !important;
 }
