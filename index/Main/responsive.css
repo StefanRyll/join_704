@@ -10,6 +10,19 @@
     .header {
         display: none;
     }
+    .respon-header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 96px;
+        padding-left: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #FFF;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    }
     .respon-footer {
         display: flex;
         justify-content: space-around;
@@ -20,6 +33,11 @@
         bottom: 0;
         background-color: var(--dark-blue);
         color: white;
+    }
+    .respon-logo {
+        width: 46px;
+        height: 56px;
+        object-fit: cover;
     }
     .nav-footer {
         display: flex;
