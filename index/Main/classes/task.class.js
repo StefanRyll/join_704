@@ -15,6 +15,27 @@ class Task {
     }
 
     taskCardNormal(x) {
+        let formatedDate = ()=>{
+            // console.log("Date : ", date);
+            let date = this.date;
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+            const year = date.getFullYear();
+            let formatedDate = `${day}/${month}/${year}`;
+            return formatedDate;
+        };
+        let formatedPrio = () =>{
+            let iconSrc;
+            if (this.prio === "Urgent"){
+                iconSrc = "./IMG/prioUrgent.png"
+            }else if(this.prio === "Medium"){
+                iconSrc = "./IMG/prioMedium.png"
+            }else{
+                iconSrc = "./IMG/prioLow.png"
+            }
+            return iconSrc;
+        }
+        console.log(formatedPrio());
         let html = /*html*/ `
             
             <div id="taskCard" class="taskCard">
@@ -37,12 +58,12 @@ class Task {
 
                 <div class="taskCardAttribute">
                     <p>Date Due: </p>
-                    <p>${this.date}</p>
+                    <p>${formatedDate()}</p>
                 </div>
 
                 <div class="taskCardAttribute">
                     <p>Priority: </p>
-                    <p>${this.prio}</p>
+                    <img src="${formatedPrio()}">
                 </div>
 
                 <div class="taskCardAssignment">

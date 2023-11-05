@@ -412,8 +412,8 @@ function openTask(x){
     let task = Join.tasks[x];
     let addTask = document.getElementById("addTask");
     addTask.classList.remove("d-none")
-    console.log("Task: ", task);
-    console.log("Geöffnet: ", task.taskCardNormal(x))
+    // console.log("Task: ", task);
+    // console.log("Geöffnet: ", task.taskCardNormal(x))
     addTask.innerHTML = task.taskCardNormal(x);
 }
 function editTask(x){
