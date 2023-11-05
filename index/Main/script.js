@@ -93,6 +93,11 @@ function startPage() {
         console.log("Fehler", e)
     }
     finally{
+    const state = {page: 'login'};
+    const title = 'Login';
+    const url = 'login.html';
+    history.pushState(state, title,url)
+
     body.innerHTML = JoinLogin.startAnimation();
     body.innerHTML += JoinLogin.logInContent();
     }
@@ -104,14 +109,19 @@ function startPage2() {
         console.log("Fehler", e)
     }
     finally{
-    body.innerHTML = Join.logoLogin();
-    body.innerHTML += Join.logInContent();
+    body.innerHTML = JoinLogin.logoLogin();
+    body.innerHTML += JoinLogin.logInContent();
 }
 }
 function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
+    const state = {page: 'signup'};
+    const title = 'SignUp';
+    const url = 'signUp.html';
+    history.pushState(state, title,url)
+
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
 }
@@ -138,7 +148,7 @@ function logout() {
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
  */
 function openAddTask(x = 0) {
-    Join.renderAddTask(x)
+    JoinBoard.renderAddTask(x)
     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
 
@@ -178,7 +188,7 @@ function createTaskFromBoard(x = 0) {
         }
         finally{
             closeAddTask()
-            Join.renderTask()
+            JoinBoard.renderTask()
         }
     }
 }
@@ -346,7 +356,7 @@ function renderSubtasks() {
 
     for (let m = 0; m < subtasks.length; m++) {
         let newSubtasks = subtasks[m];
-        createNewSubtaskContainer.innerHTML += Join.generateHTMLAddSubtask(newSubtasks, m);
+        createNewSubtaskContainer.innerHTML += JoinBoard.generateHTMLAddSubtask(newSubtasks, m);
     }
 }
 
@@ -417,13 +427,18 @@ function openTask(x){
     addTask.innerHTML = task.taskCardNormal(x);
 }
 function editTask(x){
-    console.log("diggaaa");
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
 
 }
 function taskSaveChanges(x){
+    let title;
+    let description;
+    let date;
+    let assignedContacts;
+    let prio;
+    let subtasks;
     console.log("Änderung", x);
 }
 function closeTaskCard(){
@@ -436,6 +451,10 @@ function summeryPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
+    const state = {page: 'summary'};
+    const title = 'Summary';
+    const url = 'summary.html';
+    history.pushState(state, title,url)
     body.innerHTML = "";
     body.innerHTML = JoinLogin.pageLayoutMain()
     let content = document.getElementById('content')
@@ -451,12 +470,17 @@ function boardPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
+    const state = {page: 'Board'};
+    const title = 'Board';
+    const url = 'Board.html';
+    history.pushState(state, title,url)
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.boardContent();
-    Join.renderTask()
+    content.innerHTML = JoinBoard.boardContent();
+    JoinBoard.renderTask()
     // updateHTML();
     // }
 }
@@ -476,6 +500,11 @@ function contactsPage() {
     }
 }
 function helpPage() {
+    const state = {page: 'help'};
+    const title = 'FAQ';
+    const url = 'FAQ.html';
+    history.pushState(state, title,url)
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -484,6 +513,11 @@ function helpPage() {
 }
 
 function privacyPage() {
+    const state = {page: 'privacy'};
+    const title = 'Privacy Policy';
+    const url = 'Privacy Policy.html';
+    history.pushState(state, title,url)
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -492,6 +526,11 @@ function privacyPage() {
 }
 
 function legalPage() {
+    const state = {page: 'legal'};
+    const title = 'Legal';
+    const url = 'Legal.html';
+    history.pushState(state, title,url)
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -505,11 +544,17 @@ function addTaskPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
+    const state = {page: 'addTask'};
+    const title = 'addTask';
+    const url = 'addTask.html';
+    history.pushState(state, title,url)
+
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.generateHTMLaddTaskWindow();
+    content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
     }
 // }
@@ -537,7 +582,7 @@ function addShortNames(name, x) {
 
 function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');
-    container.innerHTML += Join.generateHTMLRenderShortNames(name, x);
+    container.innerHTML += JoinBoard.generateHTMLRenderShortNames(name, x);
 }
 
 function removeShortNames(x) {
@@ -689,7 +734,7 @@ function moveTo(category) {
             Join.tasks[currentDraggedElement].feedback = false;
             Join.tasks[currentDraggedElement].done = true;
         }
-        Join.renderTask()
+        JoinBoard.renderTask()
         // updateHTML();
     }
 }
