@@ -93,8 +93,8 @@ function startPage() {
         console.log("Fehler", e)
     }
     finally{
-    body.innerHTML = Join.startAnimation();
-    body.innerHTML += Join.logInContent();
+    body.innerHTML = JoinLogin.startAnimation();
+    body.innerHTML += JoinLogin.logInContent();
     }
 }
 
@@ -112,8 +112,8 @@ function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
-    body.innerHTML = Join.logoLogin();
-    body.innerHTML = Join.signUpWindow();
+    body.innerHTML = JoinLogin.logoLogin();
+    body.innerHTML = JoinLogin.signUpWindow();
 }
 
 // Sidebar and Header
@@ -437,10 +437,10 @@ function summeryPage() {
     // }
     // finally{
     body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
+    body.innerHTML = JoinLogin.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.summeryContent();
+    content.innerHTML = JoinSummary.summeryContent();
 
     // }
 }
@@ -480,7 +480,7 @@ function helpPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.helpContent();
+    content.innerHTML = JoinAbout.helpContent();
 }
 
 function privacyPage() {
@@ -488,7 +488,7 @@ function privacyPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.privacyContent();
+    content.innerHTML = JoinAbout.privacyContent();
 }
 
 function legalPage() {
@@ -496,7 +496,7 @@ function legalPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.legalNoticeContent();
+    content.innerHTML = JoinAbout.legalNoticeContent();
 }
 
 function addTaskPage() {
