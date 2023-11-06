@@ -27,11 +27,11 @@ class Task {
         let formatedPrio = () =>{
             let iconSrc;
             if (this.prio === "Urgent"){
-                iconSrc = "./IMG/prioUrgent.png"
+                iconSrc = "./IMG/Property 1=urgent.svg"
             }else if(this.prio === "Medium"){
-                iconSrc = "./IMG/prioMedium.png"
+                iconSrc = "./IMG/Property 1=medium.svg"
             }else{
-                iconSrc = "./IMG/prioLow.png"
+                iconSrc = "./IMG/Property 1=low.svg"
             }
             return iconSrc;
         }
@@ -156,6 +156,9 @@ class Task {
 
                         `
     }
+
+
+    
     tinyTaskCard(x = 0) {
         let html = /*html*/ `
             <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
