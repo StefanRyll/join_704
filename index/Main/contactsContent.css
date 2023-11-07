@@ -379,7 +379,7 @@ input::-webkit-inner-spin-button {
     align-items: flex-end;
     margin-bottom: 68px;
     justify-content: center;
-    z-index: 0;
+    z-index: 2;
     transform: translateX(200%);
     transition: all 225ms ease-in-out;
 }
