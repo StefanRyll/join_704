@@ -93,10 +93,7 @@ function startPage() {
         console.log("Fehler", e)
     }
     finally{
-    const state = {page: 'login'};
-    const title = 'Login';
-    const url = 'login.html';
-    history.pushState(state, title,url)
+    setState("login")
 
     body.innerHTML = JoinLogin.startAnimation();
     body.innerHTML += JoinLogin.logInContent();
@@ -117,10 +114,7 @@ function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
-    const state = {page: 'signup'};
-    const title = 'SignUp';
-    const url = 'signUp.html';
-    history.pushState(state, title,url)
+    setState("signup");
 
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
@@ -434,10 +428,19 @@ function editTask(x){
 
 }
 function taskSaveChanges(x){
-    let title;
-    let description;
-    let date;
-    let assignedContacts;
+    let eTask = Join.tasks[x]
+    let titleInput = document.getElementById('taskCardETitle').value;
+    let descInput = document.getElementById('taskCardEDesc').value;
+    let dateInput = document.getElementById('taskCardEDate').value;
+    let assignInput = document.getElementById('taskCardEDate').value;
+    let prioInput = document.getElementById('taskCardEDate').value;
+    let subtaskInput = document.getElementById('taskCardEDate').value;
+    let title = (titleInput) ? titleInput : eTask.title;
+    let description = (descInput) ? descInput : eTask.desc;
+    let date = (descInput) ? descInput : eTask.desc;
+    let assignedContacts = ()=>{
+        eAssignedContacts = []
+    };
     let prio;
     let subtasks;
     console.log("Änderung", x);
@@ -452,10 +455,8 @@ function summeryPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    const state = {page: 'summary'};
-    const title = 'Summary';
-    const url = 'summary.html';
-    history.pushState(state, title,url)
+    setState("summary");
+
     body.innerHTML = "";
     body.innerHTML = JoinLogin.pageLayoutMain()
     let content = document.getElementById('content')
@@ -471,12 +472,9 @@ function boardPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    const state = {page: 'Board'};
-    const title = 'Board';
-    const url = 'Board.html';
-    history.pushState(state, title,url)
+    setState("Board");
 
-    body.innerHTML = "";
+;    body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
@@ -492,19 +490,20 @@ function contactsPage() {
         console.log("Fehler", e)
     }
     finally{
+    setState("Contacts")
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.contactsContent();
+    content.innerHTML = JoinContacts.contactsContent();
     renderContacts()
     }
 }
 function helpPage() {
-    const state = {page: 'help'};
-    const title = 'FAQ';
-    const url = 'FAQ.html';
-    history.pushState(state, title,url)
+
+
+    setState("help")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -514,10 +513,7 @@ function helpPage() {
 }
 
 function privacyPage() {
-    const state = {page: 'privacy'};
-    const title = 'Privacy Policy';
-    const url = 'Privacy Policy.html';
-    history.pushState(state, title,url)
+    setState("Privacy Policy")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -527,10 +523,7 @@ function privacyPage() {
 }
 
 function legalPage() {
-    const state = {page: 'legal'};
-    const title = 'Legal';
-    const url = 'Legal.html';
-    history.pushState(state, title,url)
+    setState("Legal")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -545,10 +538,7 @@ function addTaskPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    const state = {page: 'addTask'};
-    const title = 'addTask';
-    const url = 'addTask.html';
-    history.pushState(state, title,url)
+    setState("addTask");
 
 
     body.innerHTML = "";

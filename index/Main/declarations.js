@@ -2,11 +2,12 @@ let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
 let taskOutput = "";
 
 // const fs = require('fs');
-let Join = new Page()
+let Join = new Page();
 let JoinLogin = new Login();
 let JoinSummary = new Summary();
 let JoinBoard = new Board();
 let JoinAbout = new About();
+let JoinContacts = new Contacts();
     // Accounts
 const guest = new Account("Guest", "email@join.de", "");
 const user01 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")

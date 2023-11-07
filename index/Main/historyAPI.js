@@ -10,10 +10,10 @@ window.onpopstate = function(event) {
         else if (event.state.page === 'help') {
             helpPage()
         }
-        else if (event.state.page === 'privacy') {
+        else if (event.state.page === 'Privacy Policy') {
             privacyPage()
         }
-        else if (event.state.page === 'legal') {
+        else if (event.state.page === 'Legal') {
             legalPage()
         }
         else if (event.state.page === 'login') {
@@ -25,6 +25,19 @@ window.onpopstate = function(event) {
         else if (event.state.page === 'addTask') {
             addTaskPage()
         }
+        else if (event.state.page === 'Contacts') {
+            addTaskPage()
+        }
 
     }
 };
+window.onbeforeunload = ()=>{
+    return;
+}
+function setState(x){
+    const state = {page: `${x}`};
+    const title = `${x}`;
+    const url = `${x}.html`;
+    history.pushState(state, title,url)
+    
+}

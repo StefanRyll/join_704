@@ -35,7 +35,7 @@ class Page {
                     <div class="navs bgDark" onclick="summeryPage()"><div class="summary"></div><h3>Summery</h3></div>
                     <div class="navs" onclick="boardPage()" ><div class="board"></div><h3>Board</h3></div>
                     <div class="navs" onclick="addTaskPage()"><div class="addTask"></div><h3>Add Task</h3></div>
-                    <a href="./contacts.html"><div class="navs" onclick="#"><div class="contacts"></div><h3>Contacts</h3></div></a>
+                    <div class="navs" onclick="contactsPage()"><div class="contacts"></div><h3>Contacts</h3></div>
                 </nav>
                 <div>
                     <p onclick="privacyPage()">Privacy Policy</p>
@@ -63,30 +63,32 @@ class Page {
         `
     }
 
-    contactsContent() {
-        return /*html*/ `
-            <div>
-                <div class="overlay-style" id="overlay"></div>
-            </div>
-            <div>
-                <div class="overlay-success" id="overlaySuccess"></div>
-            </div>
-            <div class="contacts-list-section">
-                <div class="add-new-button" id="addNewButton">
-                    <button onclick="openAddContact()" class="button-add-task button-width"><p>Add new contact</p><img src="../IMG/person_add.png"></button>
-                </div>
-                <nav class="contacts-list" id="contactsList"></nav>
-            </div>
-            <div class="contacts-view">
-                <div class="contacts-headline">
-                    <h1 class="contacts-h1">Contacts</h1>
-                    <img class="vector-blue" src="../IMG/Vector-5blue (1).png">
-                    <p class="subtitle-contacts">Better with a team</p>
-                </div>
-                <div class="contact-container" id="detailsContainer"></div>
-            </div>
-        `
-    }
+    // contactsContent() {
+    //     return /*html*/ `
+    //         <div>
+    //             <div class="overlay-style" id="overlay"></div>
+    //         </div>
+    //         <div>
+    //             <div class="overlay-success" id="overlaySuccess"></div>
+    //         </div>
+    //         <div class="contacts-content">
+    //             <div class="contacts-list-section">
+    //                 <div class="add-new-button" id="addNewButton">
+    //                     <button onclick="openAddContact()" class="button-add-task button-width"><p>Add new contact</p><img src="./IMG/person_add.png"></button>
+    //                 </div>
+    //                 <nav class="contacts-list" id="contactsList"></nav>
+    //             </div>
+    //             <div class="contacts-view">
+    //                 <div class="contacts-headline">
+    //                     <h1 class="contacts-h1">Contacts</h1>
+    //                     <img class="vector-blue" src="./IMG/Vector-5blue (1).png">
+    //                     <p class="subtitle-contacts">Better with a team</p>
+    //                 </div>
+    //                 <div class="contact-container" id="detailsContainer"></div>
+    //             </div>
+    //         </div>
+    //     `
+    // }
 //     boardContent() {
 //         return /*html*/ `
 //     <div class="frame-192">
