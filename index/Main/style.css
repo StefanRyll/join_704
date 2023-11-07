@@ -25,10 +25,10 @@ body {
     /* display: flex; */
     background-color: var(--lightgrey);
     margin: 0;
-    /* height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     overflow: hidden;
 }
 
@@ -261,16 +261,17 @@ footer {
 
 #content {
     height: 100vh;
-    /* position: absolute; */
-    /* height: 71%; */
+    width: 80%;
+    position: absolute;
+    height: 71%;
     text-align: justify;
     text-overflow: clip;
-    padding: 90px;
+    /* padding: 90px; */
     margin-left: 232px;
     margin-top: 98px;
-    margin-right: -15px;
     overflow: hidden;
     overflow-y: scroll;
+
 }
 
 

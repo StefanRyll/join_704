@@ -35,9 +35,9 @@ window.onbeforeunload = ()=>{
     return;
 }
 function setState(x){
-    const state = {page: `${x}`};
-    const title = `${x}`;
-    const url = `${x}.html`;
-    history.pushState(state, title,url)
-    
+    // const state = {page: `${x}`};
+    // const title = `${x}`;
+    // const url = `${x}.html`;
+    // history.pushState(state, title,url)
+    return x;
 }

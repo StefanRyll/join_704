@@ -1,13 +1,16 @@
-body {
+/* body {
     display: flex;
     justify-content: space-between;
     height: 100vh;
-}
+} */
 
 .contacts-content {
     display: flex;
     justify-content: center;
-    position: fixed;
+    width: 100%;
+    margin: 0
+    ;
+    /* position: fixed; */
 }
 
 
@@ -18,7 +21,7 @@ body {
     height: 95vh;
     flex-direction: column;
     align-items: flex-start;
-    margin: 96px 3vw 0 232px;
+    /* margin: 96px 3vw 0 232px; */
     max-width: calc(57% - 232px);
     background-color: white;
 }

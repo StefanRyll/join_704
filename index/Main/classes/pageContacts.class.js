@@ -1,12 +1,6 @@
 class Contacts extends Page{
     contactsContent() {
         return /*html*/ `
-            <div>
-                <div class="overlay-style" id="overlay"></div>
-            </div>
-            <div>
-                <div class="overlay-success" id="overlaySuccess"></div>
-            </div>
             <div class="contacts-content">
                 <div class="contacts-list-section">
                     <div class="add-new-button" id="addNewButton">
@@ -23,7 +17,13 @@ class Contacts extends Page{
                     <div class="contact-container" id="detailsContainer"></div>
                 </div>
             </div>
+            <div>
+                <div class="overlay-style" id="overlay"></div>
+            </div>
+            <div>
+                <div class="overlay-success" id="overlaySuccess"></div>
+            </div>
         `
     }
 
-}
+}adfasdf

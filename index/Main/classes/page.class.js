@@ -23,7 +23,7 @@ class Page {
         body.innerHTML = "";
         return /*html*/ `
             <div id="SideAndHead"></div>
-            <div id="content"></div>
+            <div id="content" class="content"></div>
 
         `
     }
