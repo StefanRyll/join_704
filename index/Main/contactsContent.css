@@ -7,6 +7,7 @@ body {
 .contacts-content {
     display: flex;
     justify-content: center;
+    position: fixed;
 }
 
 
@@ -14,6 +15,7 @@ body {
 
 .contacts-list-section {
     display: flex;
+    height: 95vh;
     flex-direction: column;
     align-items: flex-start;
     margin: 96px 3vw 0 232px;
@@ -29,6 +31,7 @@ body {
     padding-bottom: 0;
     padding: 32px 24px;
     overflow-y: scroll;
+    height: 75%;
 }
 
 .add-new-button {
@@ -376,7 +379,7 @@ input::-webkit-inner-spin-button {
     align-items: flex-end;
     margin-bottom: 68px;
     justify-content: center;
-    z-index: 0;
+    z-index: 2;
     transform: translateX(200%);
     transition: all 225ms ease-in-out;
 }
