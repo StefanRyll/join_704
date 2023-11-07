@@ -433,10 +433,19 @@ function editTask(x){
 
 }
 function taskSaveChanges(x){
-    let title;
-    let description;
-    let date;
-    let assignedContacts;
+    let eTask = Join.tasks[x]
+    let titleInput = document.getElementById('taskCardETitle').value;
+    let descInput = document.getElementById('taskCardEDesc').value;
+    let dateInput = document.getElementById('taskCardEDate').value;
+    let assignInput = document.getElementById('taskCardEDate').value;
+    let prioInput = document.getElementById('taskCardEDate').value;
+    let subtaskInput = document.getElementById('taskCardEDate').value;
+    let title = (titleInput) ? titleInput : eTask.title;
+    let description = (descInput) ? descInput : eTask.desc;
+    let date = (descInput) ? descInput : eTask.desc;
+    let assignedContacts = ()=>{
+        eAssignedContacts = []
+    };
     let prio;
     let subtasks;
     console.log("Änderung", x);
