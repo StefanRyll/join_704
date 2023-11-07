@@ -93,10 +93,7 @@ function startPage() {
         console.log("Fehler", e)
     }
     finally{
-    const state = {page: 'login'};
-    const title = 'Login';
-    const url = 'login.html';
-    history.pushState(state, title,url)
+    setState("login")
 
     body.innerHTML = JoinLogin.startAnimation();
     body.innerHTML += JoinLogin.logInContent();
@@ -117,10 +114,7 @@ function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
     // let windowArea = document.getElementById('windowArea')
-    const state = {page: 'signup'};
-    const title = 'SignUp';
-    const url = 'signUp.html';
-    history.pushState(state, title,url)
+    setState("signup");
 
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
@@ -477,13 +471,9 @@ function boardPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    // const state = {page: 'Board'};
-    // const title = 'Board';
-    // const url = 'Board.html';
-    // history.pushState(state, title,url)
-    setState("Board")
+    setState("Board");
 
-    body.innerHTML = "";
+;    body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
@@ -511,10 +501,6 @@ function contactsPage() {
 }
 function helpPage() {
 
-    // const state = {page: 'help'};
-    // const title = 'FAQ';
-    // const url = 'FAQ.html';
-    // history.pushState(state, title,url)
 
     setState("help")
 
@@ -526,10 +512,7 @@ function helpPage() {
 }
 
 function privacyPage() {
-    const state = {page: 'privacy'};
-    const title = 'Privacy Policy';
-    const url = 'Privacy Policy.html';
-    history.pushState(state, title,url)
+    setState("Privacy Policy")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -539,10 +522,7 @@ function privacyPage() {
 }
 
 function legalPage() {
-    const state = {page: 'legal'};
-    const title = 'Legal';
-    const url = 'Legal.html';
-    history.pushState(state, title,url)
+    setState("Legal")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -557,10 +537,7 @@ function addTaskPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    const state = {page: 'addTask'};
-    const title = 'addTask';
-    const url = 'addTask.html';
-    history.pushState(state, title,url)
+    setState("addTask");
 
 
     body.innerHTML = "";
