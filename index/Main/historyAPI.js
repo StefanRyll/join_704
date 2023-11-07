@@ -25,6 +25,16 @@ window.onpopstate = function(event) {
         else if (event.state.page === 'addTask') {
             addTaskPage()
         }
+        else if (event.state.page === 'Contacts') {
+            addTaskPage()
+        }
 
     }
 };
+function setState(x){
+    const state = {page: `${x}`};
+    const title = `${x}`;
+    const url = `${x}.html`;
+    history.pushState(state, title,url)
+    
+}

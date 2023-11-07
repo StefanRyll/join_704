@@ -46,7 +46,7 @@ class Contact {
                     </div>
                     <!-- <input type="checkbox" name="" id="ac${x}"> -->
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
-                        <img src="IMG/check_empty.svg" alt="">
+                        <img src="./IMG/check_empty.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ class Contact {
                     </div>
                     <!-- <input type="checkbox" name="" id="ac${x}"> -->
                     <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
-                        <img src="IMG/check_check.svg" alt="">
+                        <img src="./IMG/check_check.svg" alt="Checked">
                     </div>        
                 </div>
             </div>

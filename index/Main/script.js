@@ -460,10 +460,8 @@ function summeryPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    const state = {page: 'summary'};
-    const title = 'Summary';
-    const url = 'summary.html';
-    history.pushState(state, title,url)
+    setState("summary");
+
     body.innerHTML = "";
     body.innerHTML = JoinLogin.pageLayoutMain()
     let content = document.getElementById('content')
@@ -479,10 +477,11 @@ function boardPage() {
     //     console.log("Fehler", e)
     // }
     // finally{
-    const state = {page: 'Board'};
-    const title = 'Board';
-    const url = 'Board.html';
-    history.pushState(state, title,url)
+    // const state = {page: 'Board'};
+    // const title = 'Board';
+    // const url = 'Board.html';
+    // history.pushState(state, title,url)
+    setState("Board")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -500,6 +499,8 @@ function contactsPage() {
         console.log("Fehler", e)
     }
     finally{
+    setState("Contacts")
+
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -509,10 +510,13 @@ function contactsPage() {
     }
 }
 function helpPage() {
-    const state = {page: 'help'};
-    const title = 'FAQ';
-    const url = 'FAQ.html';
-    history.pushState(state, title,url)
+
+    // const state = {page: 'help'};
+    // const title = 'FAQ';
+    // const url = 'FAQ.html';
+    // history.pushState(state, title,url)
+
+    setState("help")
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
