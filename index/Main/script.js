@@ -495,7 +495,7 @@ function contactsPage() {
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
     showSideAndHead()
-    content.innerHTML = Join.contactsContent();
+    content.innerHTML = JoinContacts.contactsContent();
     renderContacts()
     }
 }
