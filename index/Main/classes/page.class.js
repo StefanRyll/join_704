@@ -47,7 +47,7 @@ class Page {
                 <h2>Kanban Projekt Management Tool</h2>
                 <div id="accountIssues" class="accountIssues">
                     <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
-                    <img src="./IMG/defaultUser.png" alt="" class="userImg">
+                    <div class="accountTag">${Join.signedAccount.shortname}</div>
                 </div>
             </header>
             ${this.logoutWindow()}

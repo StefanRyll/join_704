@@ -13,22 +13,20 @@ function logInUser() {
             localStorage.setItem("remember", userAsJson)
         }
     }
-
     for (let i = 0; i < Join.accounts.length; i++) {
         const userAccount = Join.accounts[i];
-        if (user === userAccount.email) {
+        if (userAccount.email === user) {
             if (pw === userAccount.password) {
                 Join.signedAccount = userAccount;
                 remember()
                 summeryPage()
+            
+            } else {
+                alert("Entweder Passwort oder Email stimmen nicht überein")
             }
-        } else {
-            alert("Entweder Passwort oder Email stimmen nicht überein")
         }
-
     }
 }
-    
 // Sign Up
 async function createAccount() {
     try { loadAccounts()}
@@ -65,7 +63,6 @@ function passwordCheck() {
 
         return false;
     }
-
 }
 function ppCheck() {
     let checkbox = document.getElementById('ppCheck');
@@ -75,13 +72,11 @@ function ppCheck() {
         return false;
     }
 }
-
 // Onload Funktion
 function visibility() {
     document.getElementById('pass-status').classList.add('d-none');
     document.getElementById('pass-status-eye').classList.remove('d-none');
 }
-
 function viewPassword() {
     let passwordInput = document.getElementById('loginPassword');
     let passStatus = document.getElementById('pass-status-eye');
@@ -94,7 +89,6 @@ function viewPassword() {
         passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
     }
 }
-
 function startPage() {
     try { loadAccounts()}
     catch(e){
@@ -115,7 +109,6 @@ function startPage() {
 
     }
 }
-
 function startPage2() {
     try { loadAccounts()}
     catch(e){
@@ -135,7 +128,6 @@ function signUp() {
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
 }
-
 // Sidebar and Header
 function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
@@ -147,12 +139,10 @@ function showSideAndHead() {
     })
 
 }
-
 function logout() {
     Join.signedAccount = "";
     startPage()
 }
-
 // Board und Tasks
 /**
  * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
@@ -161,7 +151,6 @@ function openAddTask(x = 0) {
     JoinBoard.renderAddTask(x)
     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
 }
-
 function createTaskFromBoard(x = 0) {
     try { loadAccounts()}
     catch(e){
@@ -202,27 +191,6 @@ function createTaskFromBoard(x = 0) {
         }
     }
 }
-// function readAssignment() {
-    // let assignedUsers = [];
-    // for (let i = 0; i < Join.accounts.length; i++) {
-        // const account = document.getElementById(`ac${i}`)
-        // if (account.checked) {
-            // let user = Join.accounts[i];
-            // assignedUsers.push(user)
-        // }
-// 
-    // }
-    // return assignedUsers;
-// }
-// function renderAssignedUsers() {
-    // let assignedUsers = readAssignment();
-    // const accountTags = document.getElementById('accountTags');
-    // accountTags.innerHTML = "";
-    // for (let i = 0; i < assignedUsers.length; i++) {
-        // const user = assignedUsers[i];
-        // accountTags.innerHTML += user.accountTags()
-    // }
-// }
 function readAssignedUsers(){
     let workers = [];
     for(let i = 0; i < Join.accounts.length;i++){
@@ -234,7 +202,6 @@ function readAssignedUsers(){
     
     return workers;
 }
-
 function clearInputs(title, description, contact, date, newCategory, subtask) {
     title.value = '';
     description.value = '';
@@ -247,7 +214,6 @@ function clearInputs(title, description, contact, date, newCategory, subtask) {
     }
     subtasks = [];
 }
-
 function toggleContactsAssign() {
     renderTaskContacts()
     document.getElementById('selectContacts').classList.toggle('d-none');
@@ -317,7 +283,6 @@ function closeAddTask() {
     slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
     document.getElementById('addTask').classList.add("d-none")
 }
-
 function getPrio() {
     let prio01 = document.getElementById('prio01')
     let prio02 = document.getElementById('prio02')
@@ -329,29 +294,24 @@ function getPrio() {
         return "Low";
     }
 }
-
 function checkboxActivate() {
     document.getElementById('checkbox').classList.add('d-none');
     document.getElementById('checkbox-active').classList.remove('d-none');
     Join.rememberMe = true;
 }
-
 function checkboxDeactivate() {
     document.getElementById('checkbox-active').classList.add('d-none');
     document.getElementById('checkbox').classList.remove('d-none');
     Join.rememberMe = false;
 }
-
 function openSubtask() {
     document.getElementById('showSubtask').classList.remove('d-none');
     document.getElementById('hiddenSubtask').classList.add('d-none');
 }
-
 function closeSubtask() {
     document.getElementById('showSubtask').classList.add('d-none');
     document.getElementById('hiddenSubtask').classList.remove('d-none');
 }
-
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
     let subtaskText = inputSubtask.value.trim();
@@ -362,7 +322,6 @@ function createSubtask() {
         renderSubtasks()
     }
 }
-
 function renderSubtasks() {
     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
     createNewSubtaskContainer.innerHTML = '';
@@ -372,15 +331,12 @@ function renderSubtasks() {
         createNewSubtaskContainer.innerHTML += JoinBoard.generateHTMLAddSubtask(newSubtasks, m);
     }
 }
-
-
 function changeSubtask(m) {
     let containerTodoSubtask = `containerTodoSubtask${m}`;
     let fixTodoSubtask = `fixTodoSubtask${m}`;
     document.getElementById(containerTodoSubtask).classList.add('d-none');
     document.getElementById(fixTodoSubtask).classList.remove('d-none');
 }
-
 function fixSubtasks(m) {
     let containerTodoSubtask = `containerTodoSubtask${m}`;
     let fixTodoSubtask = `fixTodoSubtask${m}`;
@@ -392,8 +348,6 @@ function fixSubtasks(m) {
     todoSubtask.textContent = editFixSubtask.value;
     editFixSubtask.innerHTML = '';
 }
-
-
 function renderTaskContacts() {
     let taskContactList = document.getElementById('taskContactList');
     for (let i = 0; i < Join.accounts.length; i++) {
@@ -401,12 +355,10 @@ function renderTaskContacts() {
         taskContactList.innerHTML += account.tinyCardCheck(i);
     }
 }
-
 function deleteSubtask(m) {
     subtasks.splice(m, 1)
     renderSubtasks();
 }
-
 function editSubtask(m) {
     let editableTask = document.getElementById(`todoSubtask${m}`)
     editableTask.setAttribute('contenteditable', true)
@@ -419,7 +371,6 @@ function editSubtask(m) {
         }
     })
 }
-
 function renderContacts() {
     let contactsList = document.getElementById('contactsList')
     for (let i = 0; i < Join.accounts.length; i++) {
@@ -427,7 +378,6 @@ function renderContacts() {
         contactsList.innerHTML += account.tinyCard(i)
     }
 }
-
 function showContact(x) {
     console.log(x);
 }
@@ -483,7 +433,6 @@ function summeryPage() {
 
     // }
 }
-
 function boardPage() {
     // try { loadTasks()}
     // catch(e){
@@ -501,7 +450,6 @@ function boardPage() {
     // updateHTML();
     // }
 }
-
 function contactsPage() {
     try { loadAccounts()}
     catch(e){
@@ -529,7 +477,6 @@ function helpPage() {
     showSideAndHead()
     content.innerHTML = JoinAbout.helpContent();
 }
-
 function privacyPage() {
     setState("Privacy Policy")
 
@@ -539,7 +486,6 @@ function privacyPage() {
     showSideAndHead()
     content.innerHTML = JoinAbout.privacyContent();
 }
-
 function legalPage() {
     setState("Legal")
 
@@ -549,7 +495,6 @@ function legalPage() {
     showSideAndHead()
     content.innerHTML = JoinAbout.legalNoticeContent();
 }
-
 function addTaskPage() {
     // try { loadTasks()}
     // catch(e){
@@ -565,40 +510,32 @@ function addTaskPage() {
     showSideAndHead()
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     // content.innerHTML = Join.generateHTMLaddTask();
-    }
-// }
+}
 function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
     Join.accounts[x].checked = false;
 }
-
 function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
     Join.accounts[x].checked = true;
 }
-
-
 function addNewContact() {
     document.getElementById('closeContacts').classList.add('d-none');
     document.getElementById('selectContacts').classList.remove('d-none');
 }
-
 function addShortNames(name, x) {
     renderShortNames(name, x);
 }
-
 function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');
     container.innerHTML += JoinBoard.generateHTMLRenderShortNames(name, x);
 }
-
 function removeShortNames(x) {
     let removeName = document.getElementById(`editShortNames${x}`);
     removeName.remove();
 }
-
 function filterContactNames() {
     let search = document.getElementById('searchContacts').value;
     search = search.toLowerCase();
@@ -614,7 +551,6 @@ function filterContactNames() {
         }
     }
 }
-
 function filterTaskNames() {
     let search = document.getElementById('searchTask').value.toLowerCase();
 
@@ -651,11 +587,6 @@ function filterTaskNames() {
         }
     }
 }
-
-
-
-
-
 function updateHTML() {
     // DropZones
     let ondropTodo = document.getElementById('ondropTodo')
@@ -706,17 +637,12 @@ function updateHTML() {
         ondropDone.innerHTML += elementDone.tinyTaskCard(q);
     }
 }
-
-
-
 function startDragging(id) {
     currentDraggedElement = id;
 }
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
-
 function moveTo(category) {
     if (currentDraggedElement !== undefined ) {
         if (category === "Todo"){
@@ -747,18 +673,12 @@ function moveTo(category) {
         // updateHTML();
     }
 }
-
-
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
-
-
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
-
-
 function checkDragArea() {
     let todo = document.getElementById('emptyTaskTodo');
     let inprogress = document.getElementById('emptyTaskInprogress');
@@ -793,23 +713,18 @@ function checkDragArea() {
         done.classList.remove('d-none');
     }
 }
-
 function toggleCheckboxCard() {
     document.getElementById('cardCheckboxFalse').classList.toggle('d-none');
     document.getElementById('cardCheckboxTrue').classList.toggle('d-none');
 }
-
 function openSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.add('d-none');
     document.getElementById('closeContactsFromCard').classList.remove('d-none');
 }
-
 function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
-
-
 function updateProgressbar() {
 
 }
