@@ -8,9 +8,9 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 0
-    ;
-    /* position: fixed; */
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 
@@ -135,9 +135,9 @@
 
 .contacts-headline {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 180px;
+    /* justify-content: center;
+    align-items: center; */
+    margin-top: 5em;
     gap: 18px;
 }
 
@@ -158,6 +158,7 @@
 
 .contacts-view {
     width: 100%;
+    padding-left:5em;
 }
 
 .contact-container {

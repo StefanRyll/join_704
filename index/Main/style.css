@@ -26,9 +26,9 @@ body {
     background-color: var(--lightgrey);
     margin: 0;
     height: 100vh;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     overflow: hidden;
 }
 
@@ -260,17 +260,19 @@ footer {
 }
 
 #content {
-    height: 100vh;
+    /* background-color: #29ABE2; */
     width: 80%;
     position: absolute;
     height: 71%;
     text-align: justify;
     text-overflow: clip;
-    /* padding: 90px; */
-    margin-left: 232px;
-    margin-top: 98px;
+    padding: 90px;
+    /* margin-left: 232px;
+    margin-top: 98px; */
+    left: 232px;
+    top: 98px;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
 
 }
 
