@@ -1,16 +1,16 @@
-@media (max-width: 1140px) {
+@media (max-width: 1254px) {
     .vector-blue,
     .subtitle-contacts {
         display: none;
     }
 }
 
-@media (max-width: 1010px) {
-    .sidebar,
+@media (max-width: 1188px) {
+    /* .sidebar,
     .header {
         display: none;
-    }
-    .respon-header {
+    } */
+    /* .respon-header {
         position: absolute;
         top: 0;
         right: 0;
@@ -57,5 +57,22 @@
     .respon-footer-buttons:hover {
         cursor: pointer;
         background-color: var(--general-button-active);
+    } */
+    /* #content {
+        position: absolute;
+        left: 0;
+    }
+    .contacts-headline {
+        justify-content: center;
+    }
+    .contacts-content {
+        flex-direction: column-reverse;
+        align-items: center;
+    } */
+    .contacts-h1 {
+        display: none;
+    }
+    .contacts-list-section {
+        max-width: 100%;
     }
 }

@@ -301,9 +301,10 @@
     transition: 100ms ease-in-out;
 }
 
-.close-button-add-task {
+
+/* .close-button-add-task {
     margin-right: 44px;
-}
+} */
 
 .input-date {
     display: flex;
