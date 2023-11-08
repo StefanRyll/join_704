@@ -18,7 +18,7 @@
 
 .contacts-list-section {
     display: flex;
-    height: 100vh;
+    height: 95vh;
     flex-direction: column;
     align-items: flex-start;
     margin: 96px 3vw 0 232px;
