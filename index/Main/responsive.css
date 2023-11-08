@@ -69,10 +69,31 @@
         flex-direction: column-reverse;
         align-items: center;
     } */
+    #content {
+        top: 6px;
+        height: 100vh;
+        padding: 0;
+        padding-top: 90px;
+    }
     .contacts-h1 {
         display: none;
     }
     .contacts-list-section {
         max-width: 100%;
+        margin: 0;
+        margin-top: 3px;
+        align-items: center;
+    }
+    .contacts-content {
+        position: relative;
+        display: block;
+    }
+    .alphabet-section {
+        align-self: auto;
+        width: 500px;
+        align-items: center;
+    }
+    .contacts-button-respon {
+        margin: 0 !important;
     }
 }
