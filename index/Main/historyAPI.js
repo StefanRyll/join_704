@@ -31,9 +31,6 @@ window.onpopstate = function(event) {
 
     }
 };
-window.onbeforeunload = ()=>{
-    return;
-}
 function setState(x){
     // const state = {page: `${x}`};
     // const title = `${x}`;

@@ -7,11 +7,19 @@ function guestLogin() {
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
+    let remember = () => {
+        if (Join.rememberMe){
+            let userAsJson = JSON.stringify(user)
+            localStorage.setItem("remember", userAsJson)
+        }
+    }
+
     for (let i = 0; i < Join.accounts.length; i++) {
         const userAccount = Join.accounts[i];
         if (user === userAccount.email) {
             if (pw === userAccount.password) {
                 Join.signedAccount = userAccount;
+                remember()
                 summeryPage()
             }
         } else {
@@ -20,7 +28,7 @@ function logInUser() {
 
     }
 }
-
+    
 // Sign Up
 async function createAccount() {
     try { loadAccounts()}
@@ -97,6 +105,14 @@ function startPage() {
 
     body.innerHTML = JoinLogin.startAnimation();
     body.innerHTML += JoinLogin.logInContent();
+
+    try{
+        let response = localStorage.getItem("remember");
+        let loginEmail = document.getElementById('loginEmail')
+        let responseParsed =JSON.parse(response);
+        loginEmail.value = responseParsed;
+    }catch(e){"Nothing to remember :" + e}
+
     }
 }
 
@@ -317,11 +333,13 @@ function getPrio() {
 function checkboxActivate() {
     document.getElementById('checkbox').classList.add('d-none');
     document.getElementById('checkbox-active').classList.remove('d-none');
+    Join.rememberMe = true;
 }
 
 function checkboxDeactivate() {
     document.getElementById('checkbox-active').classList.add('d-none');
     document.getElementById('checkbox').classList.remove('d-none');
+    Join.rememberMe = false;
 }
 
 function openSubtask() {

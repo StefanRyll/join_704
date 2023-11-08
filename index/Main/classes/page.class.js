@@ -1,7 +1,8 @@
 class Page {
+    rememberMe = false;
+    signedAccount = null;
     constructor() {
         this.accounts = [];
-        this.signedAccount = null;
         this.tasks = [];
     }
     // Methoden

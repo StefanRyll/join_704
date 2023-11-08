@@ -26,4 +26,4 @@ class Contacts extends Page{
         `
     }
 
-}adfasdf
+}
