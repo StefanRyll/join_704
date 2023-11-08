@@ -23,6 +23,7 @@ const user10 = new Contact("Emmanuel Mauer", "emmanuelma@gmail.com", "+49 1111 1
 const user11 = new Contact("Marcel Bauer", "bauer@gmail.com", "+49 1111 111 11 1")
 const user12 = new Contact("Tatiana Wolf", "wolf@gmail.com", "+49 1111 111 11 1")
 
+
 Join.accounts.push(guest)
 Join.accounts.push(user01)
 Join.accounts.push(user02)
