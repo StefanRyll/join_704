@@ -158,7 +158,7 @@ function createTaskFromBoard(x = 0) {
         const date = document.getElementById('date').value;
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
-        const subTask = subtasks;
+        const subTask = document.getElementById('inputSubtask').value;
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
@@ -295,7 +295,7 @@ function selectCategoryStory() {
     changeInputField.value = userStory;
 }
 /** 
- * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+ * @param {string}  slideAddTask  addTask Button slide show 
  */
 function closeAddTask() {
     slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
@@ -337,6 +337,7 @@ function closeSubtask() {
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
     let subtaskText = inputSubtask.value.trim();
+    Join.tasks.push(inputSubtask);
     if (subtaskText !== '') {
         subtasks.push(subtaskText);
         inputSubtask.value = '';
@@ -788,4 +789,9 @@ function openSelectContactsFromCard() {
 function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
+}
+
+
+function updateProgressbar() {
+
 }
