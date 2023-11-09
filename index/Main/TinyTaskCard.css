@@ -52,6 +52,9 @@
 .tiny-task-label {
     display: flex;
     gap: 11px;
-}
 
+}
+.tiny-task-label p{
+    font-size: 18px !important;
+}
 

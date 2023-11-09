@@ -35,7 +35,6 @@ class Task {
             }
             return iconSrc;
         }
-        console.log(formatedPrio());
         let html = /*html*/ `
             
             <div id="taskCard" class="taskCard">
@@ -170,7 +169,7 @@ class Task {
                 <div class="subtasks">
                     <div class="tiny-task-label">
                         <img id="progressBar" src="./IMG/Progress_bar.svg" alt="">
-                        <p id="openTasksFromTiny">${this.subTasks}</p>
+                        <p id="openTasksFromTiny">${this.subTasks.length}&nbsp;Subtasks</p>
                     </div>
                 </div>
                 <div>

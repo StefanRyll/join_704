@@ -126,7 +126,7 @@ function createTaskFromBoard(x = 0) {
         const date = document.getElementById('date').value;
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
-        const subTask = document.getElementById('inputSubtask').value;
+        const subTask = subtasks;
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
