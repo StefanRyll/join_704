@@ -85,10 +85,10 @@ function viewPassword() {
 
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
+        passStatus.src = '../IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
     } else {
         passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
+        passStatus.src = '../IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
     }
 }
 // Sidebar and Header

@@ -17,7 +17,7 @@
     font-weight: 300;
 }
 .logo{
-    background-image: url("./IMG/LogoWhite.png");
+    background-image: url("../IMG/LogoWhite.png");
     background-size: cover;
     width: 101px;
     height: 124px;
@@ -48,14 +48,14 @@ nav{
     background-color: #091931;
 } */
 .summary{
-    background-image: url("./IMG/Summary.png");
+    background-image: url("../IMG/Summary.png");
     background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 20px;
 }
 .board{
-    background-image: url("./IMG/Board.png");
+    background-image: url("../IMG/Board.png");
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -66,14 +66,14 @@ nav{
     text-align: left;
 }
 .addTask{
-    background-image: url("./IMG/addTask.png");
+    background-image: url("../IMG/addTask.png");
     background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 20px;
 }
 .contacts{
-    background-image: url("./IMG/Contacts.png");
+    background-image: url("../IMG/Contacts.png");
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -98,7 +98,7 @@ nav{
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .infoButton{
-    background-image: url("./IMG/help.png");
+    background-image: url("../IMG/help.png");
     background-size: cover;
     width: 20px;
     height: 20px;

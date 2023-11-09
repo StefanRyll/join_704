@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data = json_decode($postData, true);
 
   if ($data) {
-    $jsonFileName = './saves/Accounts.json';
+    $jsonFileName = '../saves/Tasks.json';
     file_put_contents($jsonFileName, json_encode($data));
 
     echo json_encode(['message' => 'Daten erfolgreich gespeichert']);
