@@ -8,7 +8,6 @@ class Summary extends Page{
                 if (task.done) {
                     count++
                 }
-    
             }
             return count;    
         };
@@ -19,7 +18,6 @@ class Summary extends Page{
                 if (!taskElement.done) {
                     count++;
                 }
-
             }
             return count;
         }
@@ -27,30 +25,25 @@ class Summary extends Page{
             let deadlines = Join.tasks.sort((taskA, taskB) => {
                 return taskA.date - taskB.date;
             })
-            console.log("nextDeadline", deadlines);
             return deadlines[0]
     
         }
         let nextDeadlineDate = nextDeadline().date; // Datum
-        console.log(nextDeadlineDate)
         let nDDay = nextDeadlineDate.getDate()
         let nDMonth = nextDeadlineDate.getMonth() + 1
         let nDYear = nextDeadlineDate.getFullYear()
         let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
         let progressCount = () => {
-
             let count = 0;
             for (let i = 0; i < Join.tasks.length; i++) {
                 const taskElement = Join.tasks[i];
                 if (taskElement.progress) {
                     count++;
                 }
-
             }
             return count;
         }
         let feedbackCount = () => {
-
             let count = 0;
             for (let i = 0; i < Join.tasks.length; i++) {
                 const taskElement = Join.tasks[i];

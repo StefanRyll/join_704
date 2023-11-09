@@ -40,19 +40,17 @@ async function saveTasks(){
 
 }
 async function loadAccounts(){
-  let response = await fetch('../saves/Accounts.json')
+  let response = await fetch('./saves/Accounts.json')
   let responseAsJson = await response.json();
   let loadedAccounts = decodeAccounts(responseAsJson)
   Join.accounts = loadedAccounts;
-  console.log("Accounts geladen");
 }
 async function loadTasks(){
-  let response = await fetch('../saves/Tasks.json')
+  let response = await fetch('./saves/Tasks.json')
   let responseAsJson = await response.json();
   console.log("Load Tasks : ", responseAsJson);
   let loadedTasks = decodeTasks(responseAsJson)
   Join.tasks = loadedTasks;
-  console.log("Tasks geladen");
 
 }
 

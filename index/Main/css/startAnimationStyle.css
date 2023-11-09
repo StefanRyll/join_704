@@ -7,7 +7,7 @@
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 .logoAnimationImg {
-    background-image: url(".../IMG/Capa 1.png");
+    background-image: url("../IMG/Capa 1.png");
     /* width: 274px;
     height: 334.07px; */
     width: 101px;
@@ -21,7 +21,7 @@
 
 }
 .logoAnimationImg2 {
-    background-image: url(".../IMG/Capa 1.png");
+    background-image: url("../IMG/Capa 1.png");
     /* width: 274px;
     height: 334.07px; */
     width: 101px;
