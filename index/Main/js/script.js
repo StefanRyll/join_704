@@ -356,47 +356,39 @@ function editTask(x){
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
+    // Eventlistener
+    const urgent = document.getElementById('btnUrgentWhite');
+    const medium = document.getElementById('btnMediumWhite');
+    const low = document.getElementById('btnLowWhite');
+    urgent.addEventListener('click', () => {
+        taskOutput = "Urgent";
+    })
+    medium.addEventListener('click', () => {
+        taskOutput = "Medium";
+    })
+    low.addEventListener('click', () => {
+        taskOutput = "Low";
+    })
+
 
 }
 function taskSaveChanges(x){
-    // Old Task
     let eTask = Join.tasks[x]
-    let eTaskTitle = eTask.title;
-    let eTaskWorker = eTask.Workere;
-    let eTaskDesc = eTask.desc;
-    let eTaskDate = eTask.date;
-    let eTaskPrio = eTask.prio;
-    let eTaskCatergory = eTask.Category;
-    let eTaskSubTask = eTask.subTask;
-    let eTaskTodo = eTask.todo;  //Wird behalten
-    let eTaskProgress = eTask.progress; //Wird behalten
-    let eTaskFeedback = eTask.feedback; //Wird behalten
-    let eTaskDone = eTask.done; //Wird behalten
-    // Edited Task
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
-    let assignInput = document.getElementById('taskCardEDate').value;
-    let prioInput = document.getElementById('taskCardEDate').value;
+    let assignInput = readAssignedUsers();
+    let prioInput = taskOutput;
     let subtaskInput = document.getElementById('taskCardEDate').value;
+    let title = (titleInput) ? titleInput : eTask.title;
+    let description = (descInput) ? descInput : eTask.desc;
+    let date = (descInput) ? descInput : eTask.desc;
+    let assignedContacts = ()=>{
+        eAssignedContacts = []
+    };
     let prio;
     let subtasks;
-    // Merched Task
-    let title = (titleInput) ? titleInput : eTask.title;
-    let description = (descInput) ? descInput : eTaskDesc;
-    let date = (descInput) ? dateInput : eTaskDate;
-    console.log(title);
-
-
-    Join.tasks[x] = new Task(title, worker, desc, date, prio = "Wichtig", Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
-}
-function mergeTaskNormal(oldTask, editTask){
-    if (editTask){
-        return editTask;
-    }
-    else{
-        return oldTask;
-    }
+    console.log("Änderung", x);
 }
 function closeTaskCard(){
     boardPage()
@@ -417,6 +409,7 @@ function addNewContact() {
 }
 function addShortNames(name, x) {
     renderShortNames(name, x);
+    
 }
 function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');

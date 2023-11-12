@@ -59,10 +59,10 @@ class Contact {
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>
-                        <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
-                            <img src="./IMG/check_check.svg" alt="Checked">
-                        </div>        
                     </div>
+                    <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
+                        <img src="./IMG/check_check.svg" alt="Checked">
+                    </div>        
                 </div>
             </div>
         `

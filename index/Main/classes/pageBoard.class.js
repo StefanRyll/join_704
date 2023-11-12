@@ -133,8 +133,6 @@ class Board extends Page {
                 kambanFeedback.innerHTML += task.tinyTaskCard(i)
             } else if (task.done) {
                 kambanDone.innerHTML += task.tinyTaskCard(i)
-            } else {
-                kambanTodo.innerHTML += task.tinyTaskCard(i)
             }
         }
     }
