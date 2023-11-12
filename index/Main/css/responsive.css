@@ -116,8 +116,19 @@
     .respon-add-contact {
         display: block;
         position: absolute;
-        right: 100px;
-        bottom: 280px;
+        right: 20px;
+        bottom: 210px;
         z-index: 1;
+    }
+    .respon-add-contact-button {
+        border-radius: 50%;
+        border: none;
+        padding: 12px;
+        background-color: var(--dark-blue);
+    }
+    .respon-add-contact-button:hover {
+        cursor: pointer;
+        background-color: var(--lightblue);
+        transition: 0.1s ease-in-out;
     }
 }
