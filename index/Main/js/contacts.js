@@ -78,6 +78,14 @@ function closeBigOverlay() {
     slideOverlay = document.getElementById('overlay').classList.remove('show-overlay');
 }
 
+function openResOverlay() {
+    slideOverlay = document.getElementById('responOverlay').classList.add('show-respon-overlay');
+}
+
+function closeResOverlay() {
+    slideOverlay = document.getElementById('responOverlay').classList.remove('show-respon-overlay');
+}
+
 function openContactDetails() {
     slideContact = document.getElementById('detailsContainer').classList.add('show-details');
 }
@@ -185,10 +193,10 @@ function showDetails(i) {
         document.getElementById("detailsContainer").innerHTML = detailsContent;
     } else {
         setTimeout(() => {
-            openBigOverlay()
+            openResOverlay()
         }, 100);
         let detailsContent = generateMobileContactDetails(i, color, userInitials, name, mail, phone);
-        document.getElementById("overlay").innerHTML = detailsContent;
+        document.getElementById("responOverlay").innerHTML = detailsContent;
     }
 }
 

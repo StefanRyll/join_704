@@ -5,6 +5,9 @@ class Contacts extends Page {
                 <button class="respon-add-contact-button"><img src="./IMG/person_add.png"></button>
             </div>
             <div>
+                <div class="respon-overlay" id="responOverlay"></div>
+            </div>
+            <div>
                 <div class="overlay-style" id="overlay"></div>
             </div>
             <div class="contacts-content">
