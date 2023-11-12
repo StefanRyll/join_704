@@ -126,7 +126,6 @@ class Task {
                     <label for="taskCardEDate">Date Due:</label>
                     <input type="date" id="taskCardEDate">
                     ${JoinBoard.generateHTMLAssignedTo(x)}
-                    ${JoinBoard.generateHTMLAddContactShortName()}
                         <!-- <label for="">Assign to: </label>
                         <div id="showContactsFromCard">
                         <div class="assignContactsCard">
@@ -149,7 +148,8 @@ class Task {
                             <button>Medium</button>
                             <button>Low</button> -->
                         </div>
-                        ${JoinBoard.generateHTMLSubtask()}
+                        <label for="">Subtasks</label>
+                        <input id="subtasks" type="text">
                         </div>
                             <button type="submit">Ok &checkmark;</button>
                         </form>
@@ -171,7 +171,9 @@ class Task {
                 <div class="subtasks">
                     <div class="tiny-task-label">
                         <img id="progressBar" src="./IMG/Progress_bar.svg" alt="">
-                        <p id="openTasksFromTiny">${this.subTasks.length}&nbsp;Subtasks</p>
+                        <p>1</p>
+                        <p>/</p>
+                        <p id="openTasksFromTiny">${this.subTasks.length}&nbsp;</p>
                     </div>
                 </div>
                 <div>
