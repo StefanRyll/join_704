@@ -170,7 +170,9 @@ function getColor(name) {
  * @returns 
  */
 function showDetails(i) {
-    openContactDetails();
+    setTimeout(() => {
+        openContactDetails()
+    }, 100);
     let contact = user[i];
     let color = contact.color;
     let userInitials = getInitials(contact.name);
@@ -178,8 +180,16 @@ function showDetails(i) {
     let mail = contact.email;
     let phone = contact.phone;
 
-    let detailsContent = generateHtmlContactDetails(i, color, userInitials, name, mail, phone);
-    document.getElementById("detailsContainer").innerHTML = detailsContent;
+    if (window.innerWidth >= 1188) {
+        let detailsContent = generateHtmlContactDetails(i, color, userInitials, name, mail, phone);
+        document.getElementById("detailsContainer").innerHTML = detailsContent;
+    } else {
+        setTimeout(() => {
+            openBigOverlay()
+        }, 100);
+        let detailsContent = generateMobileContactDetails(i, color, userInitials, name, mail, phone);
+        document.getElementById("overlay").innerHTML = detailsContent;
+    }
 }
 
 /**

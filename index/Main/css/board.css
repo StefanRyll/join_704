@@ -153,6 +153,7 @@ input[type="search"]::-webkit-search-results-decoration {
     padding-right: 92px;
     justify-content: space-between;
     align-items: flex-start;
+    overflow-y: scroll;
 }
 
 .board-actionbar p {
