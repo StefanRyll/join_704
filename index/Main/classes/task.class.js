@@ -142,9 +142,10 @@ class Task {
                                 <div class="accountTag">AV</div>
                             </div>
                         <div>
-                            <button>Urgent</button>
+                            ${JoinBoard.generateHTMLPrioCategory()}
+                            <!-- <button>Urgent</button>
                             <button>Medium</button>
-                            <button>Low</button>
+                            <button>Low</button> -->
                         </div>
                         <label for="">Subtasks</label>
                         <input id="subtasks" type="text">
