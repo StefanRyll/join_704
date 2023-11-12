@@ -80,15 +80,15 @@ class Task {
 
                 <div class="taskCardSubtasks">
                     <p>Subtasks</p>
-                    <div class="subtask-list">
-                        <div onclick="toggleCheckboxCard()" id="cardCheckboxFalse" class="checkBox"> <img src="./IMG/check_empty.svg" alt=""> </div>
-                        <div onclick="toggleCheckboxCard()" id="cardCheckboxTrue" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt=""> </div>
-                        <div id="subtasksList">
-                    </div>
                         `
         for (let j = 0; j < this.subTasks.length; j++) {
             const subTask = this.subTasks[j];
-            html += subTask;
+            html += /*html*/`
+                    <div class="subtask-list">
+                        <div onclick="toggleCheckboxCard()" id="cardCheckboxFalse" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask}</div>
+                        <div onclick="toggleCheckboxCard()" id="cardCheckboxTrue" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask}</div>
+                    </div><br>
+            `;
         }
         html += /*html*/ `        
                     </div>
