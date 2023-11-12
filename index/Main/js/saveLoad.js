@@ -19,39 +19,40 @@ async function saveAccounts(){
     .catch(error => {
       console.error('Fehler beim Senden der Daten:', error);
     });
-
+   y
 }
 async function saveTasks(){
-  const tasks = Join.tasks;
-  await fetch(MY_BACKEND_TAS, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(tasks)
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data); // Optional: Verarbeite die Antwort vom Server
-    })
-    .catch(error => {
-      console.error('Fehler beim Senden der Daten:', error);
-    });
-
+  //  const tasks = Join.tasks;
+  //  await fetch(MY_BACKEND_TAS, {
+      // method: 'POST',
+      // headers: {
+        // 'Content-Type': 'application/json'
+      // },
+      // body: JSON.stringify(tasks)
+  //  })
+      // .then(response => response.json())
+      // .then(data => {
+        // console.log(data); // Optional: Verarbeite die Antwort vom Server
+      // })
+      // .catch(error => {
+        // console.error('Fehler beim Senden der Daten:', error);
+      // });
+  return null
 }
 async function loadAccounts(){
   let response = await fetch('./saves/Accounts.json')
   let responseAsJson = await response.json();
   let loadedAccounts = decodeAccounts(responseAsJson)
   Join.accounts = loadedAccounts;
+  
 }
 async function loadTasks(){
-  let response = await fetch('./saves/Tasks.json')
-  let responseAsJson = await response.json();
-  console.log("Load Tasks : ", responseAsJson);
-  let loadedTasks = decodeTasks(responseAsJson)
-  Join.tasks = loadedTasks;
-
+  // let response = await fetch('./saves/Tasks.json')
+  // let responseAsJson = await response.json();
+  // console.log("Load Tasks : ", responseAsJson);
+  // let loadedTasks = decodeTasks(responseAsJson)
+  // Join.tasks = loadedTasks;
+  return null
 }
 
 // Junus Variante

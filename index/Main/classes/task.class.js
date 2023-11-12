@@ -1,6 +1,6 @@
 class Task {
-    constructor(title, worker, desc, date, prio = "Wichtig", 
-    Category, subTasks, todo = true, progress = false, feedback = false, done = false) {
+    constructor(title, worker, desc, date, prio = "Wichtig",
+        Category, subTasks, todo = true, progress = false, feedback = false, done = false) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -15,22 +15,22 @@ class Task {
     }
 
     taskCardNormal(x) {
-        let formatedDate = ()=>{
+        let formatedDate = () => {
             // console.log("Date : ", date);
             let date = this.date;
             const day = date.getDate().toString().padStart(2, '0');
-            const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
             const year = date.getFullYear();
             let formatedDate = `${day}/${month}/${year}`;
             return formatedDate;
         };
-        let formatedPrio = () =>{
+        let formatedPrio = () => {
             let iconSrc;
-            if (this.prio === "Urgent"){
+            if (this.prio === "Urgent") {
                 iconSrc = "./IMG/Property 1=urgent.svg"
-            }else if(this.prio === "Medium"){
+            } else if (this.prio === "Medium") {
                 iconSrc = "./IMG/Property 1=medium.svg"
-            }else{
+            } else {
                 iconSrc = "./IMG/Property 1=low.svg"
             }
             return iconSrc;
@@ -69,11 +69,11 @@ class Task {
                     <p>Assigned to: </p>
                     <div id="taskCardAssinedList">`
 
-                        for (let i = 0; i < this.worker.length; i++) {
-                            const worker = this.worker[i];
-                            html += worker.tinyCard()
-                        }
-        
+        for (let i = 0; i < this.worker.length; i++) {
+            const worker = this.worker[i];
+            html += worker.tinyCard()
+        }
+
         html += /*html*/ `
                     </div>
                 </div >
@@ -86,10 +86,10 @@ class Task {
                         <div id="subtasksList">
                     </div>
                         `
-                    for (let j = 0; j < this.subTasks.length; j++) {
-                        const subTask = this.subTasks[j];
-                        html += subTask;
-                    }
+        for (let j = 0; j < this.subTasks.length; j++) {
+            const subTask = this.subTasks[j];
+            html += subTask;
+        }
         html += /*html*/ `        
                     </div>
                 </div>
@@ -125,7 +125,8 @@ class Task {
                     <textarea cols="30" rows="10" id="taskCardEDesc"></textarea>
                     <label for="taskCardEDate">Date Due:</label>
                     <input type="date" id="taskCardEDate">
-                        <label for="">Assign to: </label>
+                    ${JoinBoard.generateHTMLAssignedTo(x)}
+                        <!-- <label for="">Assign to: </label>
                         <div id="showContactsFromCard">
                         <div class="assignContactsCard">
                             <input onclick="openSelectContactsFromCard()" type="button" value="Select contacts to assign">
@@ -140,7 +141,7 @@ class Task {
                        </div>
                             <div>
                                 <div class="accountTag">AV</div>
-                            </div>
+                            </div> -->
                         <div>
                             ${JoinBoard.generateHTMLPrioCategory()}
                             <!-- <button>Urgent</button>
@@ -158,7 +159,7 @@ class Task {
     }
 
 
-    
+
     tinyTaskCard(x = 0) {
         let html = /*html*/ `
             <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
@@ -219,28 +220,28 @@ class Task {
     }
     static fromJSON(data) {
         const {
-          title,
-          worker,
-          desc,
-          date,
-          prio,
-          Category,
-          todo,
-          progress,
-          feedback,
-          done,
-          subTasks
+            title,
+            worker,
+            desc,
+            date,
+            prio,
+            Category,
+            todo,
+            progress,
+            feedback,
+            done,
+            subTasks
         } = data;
-    
+
         return new Task(
-          title,
-          worker,
-          desc,
-          date,
-          prio,
-          Category,
-          subTasks
+            title,
+            worker,
+            desc,
+            date,
+            prio,
+            Category,
+            subTasks
         );
     }
 }
-    
+
