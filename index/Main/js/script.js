@@ -128,7 +128,7 @@ function createTaskFromBoard(x = 0) {
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
         const subTask = subtasks;
-        
+        console.log("Subtask",subTask);
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
@@ -281,7 +281,7 @@ function closeSubtask() {
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
     let subtaskText = inputSubtask.value.trim();
-    Join.tasks.push(inputSubtask);
+    // Join.tasks.push(inputSubtask);
     if (subtaskText !== '') {
         subtasks.push(subtaskText);
         inputSubtask.value = '';
