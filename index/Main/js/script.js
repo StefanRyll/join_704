@@ -374,28 +374,12 @@ function editTask(x){
 }
 function taskSaveChanges(x){
     let eTask = Join.tasks[x]
-<<<<<<< Updated upstream
-=======
-    let eTaskTitle = eTask.title;
-    let eTaskWorker = eTask.worker;
-    let eTaskDesc = eTask.desc;
-    let eTaskDate = eTask.date;
-    let eTaskPrio = eTask.prio;
-    let eTaskCatergory = eTask.Category;
-    let eTaskSubTask = eTask.subTask;
-    let eTaskTodo = eTask.todo;  //Wird behalten
-    let eTaskProgress = eTask.progress; //Wird behalten
-    let eTaskFeedback = eTask.feedback; //Wird behalten
-    let eTaskDone = eTask.done; //Wird behalten
-    // Edited Task
->>>>>>> Stashed changes
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
     let assignInput = readAssignedUsers();
     let prioInput = taskOutput;
     let subtaskInput = document.getElementById('taskCardEDate').value;
-<<<<<<< Updated upstream
     let title = (titleInput) ? titleInput : eTask.title;
     let description = (descInput) ? descInput : eTask.desc;
     let date = (descInput) ? descInput : eTask.desc;
@@ -405,25 +389,6 @@ function taskSaveChanges(x){
     let prio;
     let subtasks;
     console.log("Änderung", x);
-=======
-    let subtasks;
-    // Merched Task
-    let title = (titleInput) ? titleInput : eTask.title;
-    let description = (descInput) ? descInput : eTaskDesc;
-    let date = (descInput) ? dateInput : eTaskDate;
-    let prio = (prioInput) ? prioInput : eTaskPrio;
-    let workers = [...new Set([...eTaskWorker, ...assignInput])]
-    console.log("Edited Worker", workers);
-
-
-    // Join.tasks[x] = new Task(title, worker, desc, date, prio = "Wichtig", Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
-    for (let i = 0; i < newTask.worker.length; i++){
-        let taskWorker = newTask.worker[i];
-        taskWorker.checked = false;
-    }
-
-
->>>>>>> Stashed changes
 }
 function closeTaskCard(){
     boardPage()
