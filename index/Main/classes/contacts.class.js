@@ -54,8 +54,8 @@ class Contact {
 
     generateHTMLChecked(x) {
         return /*html*/`
-            <div onclick="removeShortNames(${x})" id="tinyAccountCardChecked${x}" class="checked d-none">
-                <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
+            <div  id="tinyAccountCardChecked${x}" class="checked d-none">
+                <div onclick="assignedCheck(${x})" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>
@@ -74,5 +74,4 @@ class Contact {
 
         `
     }
-
 }

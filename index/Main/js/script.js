@@ -401,14 +401,14 @@ function mergeTaskNormal(oldTask, editTask){
 function closeTaskCard(){
     boardPage()
 }
-function assignedCheck(x) {
-    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
-    document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
-    Join.accounts[x].checked = false;
-}
 function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
+    Join.accounts[x].checked = false;
+}
+function assignedCheck(x) {
+    document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
+    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     Join.accounts[x].checked = true;
 }
 function addNewContact() {
