@@ -1,12 +1,12 @@
 class Task {
     constructor(title, worker, desc, date, prio = "Wichtig", 
-    Categroy, subTasks, todo = true, progress = false, feedback = false, done = false) {
+    Category, subTasks, todo = true, progress = false, feedback = false, done = false) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
         this.date = new Date(date);
         this.prio = prio;
-        this.Categroy = Categroy;
+        this.Category = Category;
         this.subTasks = subTasks;
         this.todo = todo;
         this.progress = progress;
@@ -39,7 +39,7 @@ class Task {
             
             <div id="taskCard" class="taskCard">
                 <div class="taskCardHeader">
-                    <div class="category-color">${this.Categroy}</div>
+                    <div class="category-color">${this.Category}</div>
                     <div onclick="closeTaskCard()">
                     <svg class="close-button-card cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -161,7 +161,7 @@ class Task {
     tinyTaskCard(x = 0) {
         let html = /*html*/ `
             <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
-                <div class="tiny-task-category">${this.Categroy}</div>
+                <div class="tiny-task-category">${this.Category}</div>
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
@@ -223,7 +223,7 @@ class Task {
           desc,
           date,
           prio,
-          Categroy,
+          Category,
           todo,
           progress,
           feedback,
@@ -237,7 +237,7 @@ class Task {
           desc,
           date,
           prio,
-          Categroy,
+          Category,
           subTasks
         );
     }

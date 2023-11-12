@@ -1069,13 +1069,13 @@ class Account extends Contact {
     }
 }
 class Task {
-    constructor(title, worker, desc, date, prio = "Wichtig", Categroy, subTasks) {
+    constructor(title, worker, desc, date, prio = "Wichtig", Category, subTasks) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
         this.date = new Date(date);
         this.prio = prio;
-        this.Categroy = Categroy;
+        this.Category = Category;
         this.todo = false;
         this.progress = false;
         this.feedback = false;
@@ -1161,7 +1161,7 @@ class Task {
     tinyTaskCard() {
         let html = /*html*/ `
             <div class="tinyTaskCard" draggable>
-                <div>${this.Categroy}</div>
+                <div>${this.Category}</div>
                 <h1>${this.title}</h1>
                 <p class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</p>
                 <div class="subtasks">

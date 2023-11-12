@@ -32,9 +32,13 @@ window.onpopstate = function(event) {
     }
 };
 function setState(x){
-    // const state = {page: `${x}`};
-    // const title = `${x}`;
-    // const url = `${x}.html`;
-    // history.pushState(state, title,url)
+    //const state = {page: `${x}`};
+    const title = `${x}`;
+    //const url = `${x}.html`;
+    //history.pushState(state, title,url)
+    document.title = "Join - " + capitalizeFirstLetter(title)
     return x;
+}
+function capitalizeFirstLetter(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }
