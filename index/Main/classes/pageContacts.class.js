@@ -1,6 +1,9 @@
 class Contacts extends Page {
     contactsContent() {
         return /*html*/ `
+                <div class="respon-add-contact">
+                    <button><img src="./IMG/person_add.png"></button>
+                </div>
             <div>
                 <div class="overlay-style" id="overlay"></div>
             </div>
@@ -20,6 +23,7 @@ class Contacts extends Page {
                     <div class="contact-container" id="detailsContainer"></div>
                 </div>
             </div>
+
 
             <div>
                 <div class="overlay-success" id="overlaySuccess"></div>

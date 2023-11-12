@@ -104,6 +104,20 @@
         align-items: center;
     }
     .contacts-list {
-        height: 60%;
+        height: 68%;
+        align-items: flex-start;
+    }
+    .alphabet-section {
+        align-items: flex-start;
+    }
+    .add-new-button {
+        display: none;
+    }
+    .respon-add-contact {
+        display: block;
+        position: absolute;
+        right: 100px;
+        bottom: 280px;
+        z-index: 1;
     }
 }
