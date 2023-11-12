@@ -89,9 +89,9 @@
         background-color: var(--general-button-active);
     }
     #content {
-        position: absolute;
+        /* position: absolute;
         left: 0;
-        margin-left: 0;
+        margin-left: 0; */
         width: 100%;
         background-color: white;
     }
