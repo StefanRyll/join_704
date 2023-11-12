@@ -126,6 +126,7 @@ class Task {
                     <label for="taskCardEDate">Date Due:</label>
                     <input type="date" id="taskCardEDate">
                     ${JoinBoard.generateHTMLAssignedTo(x)}
+                    ${JoinBoard.generateHTMLAddContactShortName()}
                         <!-- <label for="">Assign to: </label>
                         <div id="showContactsFromCard">
                         <div class="assignContactsCard">
@@ -148,8 +149,7 @@ class Task {
                             <button>Medium</button>
                             <button>Low</button> -->
                         </div>
-                        <label for="">Subtasks</label>
-                        <input id="subtasks" type="text">
+                        ${JoinBoard.generateHTMLSubtask()}
                         </div>
                             <button type="submit">Ok &checkmark;</button>
                         </form>

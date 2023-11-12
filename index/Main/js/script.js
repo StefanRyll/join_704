@@ -112,7 +112,8 @@ function logout() {
  */
 function openAddTask(x = 0) {
     JoinBoard.renderAddTask(x)
-    slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
+    let slideAddTask = document.getElementById('slideAddTask')
+    slideAddTask.classList.add('show-bg-task');
 }
 function createTaskFromBoard(x = 0) {
     try { loadAccounts()}
@@ -127,6 +128,7 @@ function createTaskFromBoard(x = 0) {
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
         const subTask = subtasks;
+        
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
@@ -243,7 +245,8 @@ function selectCategoryStory() {
  * @param {string}  slideAddTask  addTask Button slide show 
  */
 function closeAddTask() {
-    slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
+    let slideAddTask = document.getElementById('slideAddTask')
+    slideAddTask.classList.remove('show-bg-task');
     document.getElementById('addTask').classList.add("d-none")
 }
 function getPrio() {
@@ -374,8 +377,6 @@ function editTask(x){
 }
 function taskSaveChanges(x){
     let eTask = Join.tasks[x]
-<<<<<<< Updated upstream
-=======
     let eTaskTitle = eTask.title;
     let eTaskWorker = eTask.worker;
     let eTaskDesc = eTask.desc;
@@ -388,24 +389,12 @@ function taskSaveChanges(x){
     let eTaskFeedback = eTask.feedback; //Wird behalten
     let eTaskDone = eTask.done; //Wird behalten
     // Edited Task
->>>>>>> Stashed changes
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
     let assignInput = readAssignedUsers();
     let prioInput = taskOutput;
     let subtaskInput = document.getElementById('taskCardEDate').value;
-<<<<<<< Updated upstream
-    let title = (titleInput) ? titleInput : eTask.title;
-    let description = (descInput) ? descInput : eTask.desc;
-    let date = (descInput) ? descInput : eTask.desc;
-    let assignedContacts = ()=>{
-        eAssignedContacts = []
-    };
-    let prio;
-    let subtasks;
-    console.log("Änderung", x);
-=======
     let subtasks;
     // Merched Task
     let title = (titleInput) ? titleInput : eTask.title;
@@ -423,7 +412,6 @@ function taskSaveChanges(x){
     }
 
 
->>>>>>> Stashed changes
 }
 function closeTaskCard(){
     boardPage()
