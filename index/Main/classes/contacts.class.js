@@ -44,6 +44,7 @@ class Contact {
                         <div id="shortname${x}" class="accountTag">${this.shortname}</div>
                         <div id="contactName${x}">${this.name}</div>
                     </div>
+                    <!-- <input type="checkbox" name="" id="ac${x}"> -->
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
                         <img src="./IMG/check_empty.svg" alt="">
                     </div>
@@ -54,15 +55,16 @@ class Contact {
 
     generateHTMLChecked(x) {
         return /*html*/`
-            <div  id="tinyAccountCardChecked${x}" class="checked d-none">
-                <div onclick="assignedCheck(${x})" id="ac${x}">
+            <div onclick="removeShortNames(${x})" id="tinyAccountCardChecked${x}" class="checked d-none">
+                <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>
-                        <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
-                            <img src="./IMG/check_check.svg" alt="Checked">
-                        </div>        
                     </div>
+                    <!-- <input type="checkbox" name="" id="ac${x}"> -->
+                    <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
+                        <img src="./IMG/check_check.svg" alt="Checked">
+                    </div>        
                 </div>
             </div>
         `
@@ -74,4 +76,5 @@ class Contact {
 
         `
     }
+
 }

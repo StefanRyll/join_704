@@ -23,7 +23,7 @@
     gap: 10px;   
 }
 
-/* .tinyAccountCard{
+.tinyAccountCard{
     flex-wrap: nowrap;
     position: relative;
     width: 100%;
@@ -34,22 +34,16 @@
     gap: 16px;
     font-size: 19px;
     margin: .2em;
-} */
+}
 
-/* .tinyAccountCard:hover{
+.tinyAccountCard:hover{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border-radius: 10px;
-} */
+}
 
-/* .tinyAccountCardChecked {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    font-size: 19px;
-    flex-direction: column;
+.tinyAccountCardChecked {
     flex-wrap: nowrap;
     position: relative;
     width: 100%;
@@ -63,13 +57,13 @@
     color: #FFF;
     border-radius: 10px;
     margin: .2em;
-} */
+}
 
-/* .tinyAccountCardChecked:hover {
+.tinyAccountCardChecked:hover {
     cursor: pointer;
     background-color: #091931;
     border-radius: 10px; 
-} */
+}
 
 /* Von Stefan */
 .contacts-list-section {
