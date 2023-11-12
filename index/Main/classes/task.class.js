@@ -85,8 +85,8 @@ class Task {
             const subTask = this.subTasks[j];
             html += /*html*/`
                     <div class="subtask-list">
-                        <div onclick="toggleCheckboxCard()" id="cardCheckboxFalse" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask}</div>
-                        <div onclick="toggleCheckboxCard()" id="cardCheckboxTrue" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask}</div>
+                        <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
+                        <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
                     </div><br>
             `;
         }

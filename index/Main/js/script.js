@@ -283,7 +283,8 @@ function createSubtask() {
     let subtaskText = inputSubtask.value.trim();
     // Join.tasks.push(inputSubtask);
     if (subtaskText !== '') {
-        subtasks.push(subtaskText);
+        let newSubtask = new Subtask(subtaskText)
+        subtasks.push(newSubtask);
         inputSubtask.value = '';
         renderSubtasks()
     }
@@ -294,7 +295,7 @@ function renderSubtasks() {
 
     for (let m = 0; m < subtasks.length; m++) {
         let newSubtasks = subtasks[m];
-        createNewSubtaskContainer.innerHTML += JoinBoard.generateHTMLAddSubtask(newSubtasks, m);
+        createNewSubtaskContainer.innerHTML += JoinBoard.generateHTMLAddSubtask(newSubtasks.text, m);
     }
 }
 function changeSubtask(m) {
@@ -619,9 +620,15 @@ function checkDragArea() {
         done.classList.remove('d-none');
     }
 }
-function toggleCheckboxCard() {
-    document.getElementById('cardCheckboxFalse').classList.toggle('d-none');
-    document.getElementById('cardCheckboxTrue').classList.toggle('d-none');
+function toggleCheckboxCard(task, subtask) {
+    let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
+    if (checkableSubtask.done){
+        checkableSubtask.subTaskUndone();
+    }else{
+        checkableSubtask.subTaskDone();
+    }
+    document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');
+    document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');
 }
 function openSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.add('d-none');
