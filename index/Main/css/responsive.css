@@ -104,7 +104,7 @@
         align-items: center;
     }
     .contacts-list {
-        height: 68%;
+        height: 75%;
         align-items: flex-start;
     }
     .alphabet-section {
@@ -116,7 +116,7 @@
     .respon-add-contact {
         display: block;
         position: absolute;
-        right: 20px;
+        right: 28px;
         bottom: 210px;
         z-index: 1;
     }
@@ -130,5 +130,8 @@
         cursor: pointer;
         background-color: var(--lightblue);
         transition: 0.1s ease-in-out;
+    }
+    .respon-footer {
+        gap: 0;
     }
 }
