@@ -71,8 +71,8 @@ function decodeTasks(responseAsJson){
   for (let i = 0; i < responseAsJson.length; i++) {
     const taskData = responseAsJson[i];
     let title = taskData['title'];
-    let category = taskData['Categroy'];
-    let date = new Date(taskData['Categroy']);
+    let category = taskData['Category'];
+    let date = new Date(taskData['Category']);
     let desc = taskData['desc'];
     let done = taskData['done'];
     let feedback = taskData['feedback'];

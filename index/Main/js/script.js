@@ -359,22 +359,44 @@ function editTask(x){
 
 }
 function taskSaveChanges(x){
+    // Old Task
     let eTask = Join.tasks[x]
+    let eTaskTitle = eTask.title;
+    let eTaskWorker = eTask.Workere;
+    let eTaskDesc = eTask.desc;
+    let eTaskDate = eTask.date;
+    let eTaskPrio = eTask.prio;
+    let eTaskCatergory = eTask.Category;
+    let eTaskSubTask = eTask.subTask;
+    let eTaskTodo = eTask.todo;  //Wird behalten
+    let eTaskProgress = eTask.progress; //Wird behalten
+    let eTaskFeedback = eTask.feedback; //Wird behalten
+    let eTaskDone = eTask.done; //Wird behalten
+    // Edited Task
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
     let assignInput = document.getElementById('taskCardEDate').value;
     let prioInput = document.getElementById('taskCardEDate').value;
     let subtaskInput = document.getElementById('taskCardEDate').value;
-    let title = (titleInput) ? titleInput : eTask.title;
-    let description = (descInput) ? descInput : eTask.desc;
-    let date = (descInput) ? descInput : eTask.desc;
-    let assignedContacts = ()=>{
-        eAssignedContacts = []
-    };
     let prio;
     let subtasks;
-    console.log("Änderung", x);
+    // Merched Task
+    let title = (titleInput) ? titleInput : eTask.title;
+    let description = (descInput) ? descInput : eTaskDesc;
+    let date = (descInput) ? dateInput : eTaskDate;
+    console.log(title);
+
+
+    Join.tasks[x] = new Task(title, worker, desc, date, prio = "Wichtig", Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+}
+function mergeTaskNormal(oldTask, editTask){
+    if (editTask){
+        return editTask;
+    }
+    else{
+        return oldTask;
+    }
 }
 function closeTaskCard(){
     boardPage()

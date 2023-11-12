@@ -305,14 +305,14 @@ class Account {
     }
 }
 class Task{
-    constructor(creator, title, worker, desc, date = "No need", prio, Categroy ) {
+    constructor(creator, title, worker, desc, date = "No need", prio, Category ) {
         this.creator = creator;
         this.title = title;
         this.worker = worker;
         this.desc = desc;
         this.date = date;
         this.prio = prio;
-        this.Categroy = Categroy;
+        this.Category = Category;
         this.subTasks = [];
     }
 }
