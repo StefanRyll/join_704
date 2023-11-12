@@ -45,7 +45,7 @@ class Contact {
                         <div id="contactName${x}">${this.name}</div>
                     </div>
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
-                        <img src="./IMG/check_empty.svg" alt="">
+                        <img src="../IMG/check_empty.svg" alt="">
                     </div>
                 </div>
             </div>

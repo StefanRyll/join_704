@@ -127,6 +127,10 @@
     font-size: 200;
 }
 
+.respon-add-contact {
+    display: none;
+}
+
 
 /* ====================================================== </contactslist> =============================================================== */
 
@@ -256,12 +260,11 @@
 }
 
 .overlay-container {
-    width: 60%;
     height: 70%;
     border-radius: 30px;
     background: #FFF;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .overlay-left-container {

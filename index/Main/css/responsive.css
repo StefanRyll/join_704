@@ -6,11 +6,40 @@
 }
 
 @media (max-width: 1188px) {
-    /* .sidebar,
+    #content {
+        top: 6px;
+        height: 100vh;
+        padding: 0;
+    }
+    .contacts-h1 {
+        display: none;
+    }
+    .contacts-list-section {
+        max-width: 100%;
+        margin: 0;
+        margin-top: 3px;
+        align-items: center;
+    }
+    .contacts-content {
+        position: relative;
+        display: block;
+    }
+    .alphabet-section {
+        align-self: auto;
+        width: 500px;
+        align-items: center;
+    }
+    .contacts-button-respon {
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 740px) {
+    .sidebar,
     .header {
         display: none;
-    } */
-    /* .respon-header {
+    }
+    .respon-header {
         position: absolute;
         top: 0;
         right: 0;
@@ -33,6 +62,7 @@
         bottom: 0;
         background-color: var(--dark-blue);
         color: white;
+        z-index: 1;
     }
     .respon-logo {
         width: 46px;
@@ -57,43 +87,37 @@
     .respon-footer-buttons:hover {
         cursor: pointer;
         background-color: var(--general-button-active);
-    } */
-    /* #content {
+    }
+    #content {
         position: absolute;
         left: 0;
+        margin-left: 0;
+        width: 100%;
+        background-color: white;
     }
     .contacts-headline {
         justify-content: center;
     }
     .contacts-content {
-        flex-direction: column-reverse;
-        align-items: center;
-    } */
-    #content {
-        top: 6px;
-        height: 100vh;
-        padding: 0;
-        padding-top: 90px;
-    }
-    .contacts-h1 {
-        display: none;
-    }
-    .contacts-list-section {
-        max-width: 100%;
-        margin: 0;
-        margin-top: 3px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
     }
-    .contacts-content {
-        position: relative;
-        display: block;
+    .contacts-list {
+        height: 68%;
+        align-items: flex-start;
     }
     .alphabet-section {
-        align-self: auto;
-        width: 500px;
-        align-items: center;
+        align-items: flex-start;
     }
-    .contacts-button-respon {
-        margin: 0 !important;
+    .add-new-button {
+        display: none;
+    }
+    .respon-add-contact {
+        display: block;
+        position: absolute;
+        right: 100px;
+        bottom: 280px;
+        z-index: 1;
     }
 }
