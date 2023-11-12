@@ -45,7 +45,7 @@ class Contact {
                         <div id="contactName${x}">${this.name}</div>
                     </div>
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
-                        <img src="../IMG/check_empty.svg" alt="">
+                        <img src="./IMG/check_empty.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -60,8 +60,8 @@ class Contact {
                         <div class="accountTag">${this.shortname}</div>
                         <div>${this.name}</div>
                         <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
-                        <img src="./IMG/check_check.svg" alt="Checked">
-                    </div>        
+                            <img src="./IMG/check_check.svg" alt="Checked">
+                        </div>        
                     </div>
                 </div>
             </div>
