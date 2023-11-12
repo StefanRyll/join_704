@@ -116,7 +116,7 @@
     .respon-add-contact {
         display: block;
         position: absolute;
-        right: 28px;
+        right: 90px;
         bottom: 210px;
         z-index: 1;
     }
@@ -133,5 +133,11 @@
     }
     .respon-footer {
         gap: 0;
+    }
+}
+
+@media (max-width: 630px) {
+    .respon-add-contact {
+        right: 32px;
     }
 }

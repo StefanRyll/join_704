@@ -162,3 +162,29 @@ function generateHtmlEditInfo() {
         </div>
     `
 }
+
+function generateMobileContactDetails(i, color, userInitials, name, mail, phone) {
+    return /*html*/ `
+        <div class="contactView">
+            <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
+            <div class="name">
+                <h2 class="name-headline">${name}</h2>
+                <a class="contactsIcons">
+                    <div onclick="openEditContact(${i})" class="editIcon">
+                        <img class="editSymbol" src="./IMG/edit.png"> <span>Edit</span>
+                    </div>
+                    <div onclick="deleteContact(${i})" class="deleteIcon">
+                        <img class="deleteSymbol" src="./IMG/delete.png"> <span>Delete</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="contactInformation">
+            <h3 class="font-size-normal mg-none">Contact Information</h3>
+            <h3 class="mail-headline">Email</h3><br>
+            <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
+            <h3>Phone</h3>
+            <p><a class="phone-link" href="tel:${phone}">${phone}</a></p>
+        </div>
+    `
+}
