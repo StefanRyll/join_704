@@ -78,7 +78,7 @@
 }
 
 .deleteBtn {
-    background-image: url(".../IMG/deleteBtn.png");
+    background-image: url("../IMG/deleteBtn.png");
     /* background-size: cover; */
     width: 83px;
     height: 24px;
@@ -86,7 +86,7 @@
 }
 
 .deleteBtn:hover {
-    background-image: url(".../IMG/deleteBtnHover.png");
+    background-image: url("../IMG/deleteBtnHover.png");
     cursor: pointer;
 }
 
@@ -97,14 +97,14 @@
 }
 
 .editBtn {
-    background-image: url(".../IMG/editBtn.png");
+    background-image: url("../IMG/editBtn.png");
     width: 63px;
     height: 24px;
     margin: 1px;
 }
 
 .editBtn:hover {
-    background-image: url(".../IMG/editBtnHover.png");
+    background-image: url("../IMG/editBtnHover.png");
     cursor: pointer;
 }
 
