@@ -59,7 +59,6 @@ function readAssignedUsers(){
             workers.push(account);
         }
     }
-    
     return workers;
 }
 
