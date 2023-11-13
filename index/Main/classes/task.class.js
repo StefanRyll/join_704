@@ -117,7 +117,7 @@ class Task {
                         </svg>
                     </div>
             </div>
-            <form class="editTask" onsubmit="taskSaveChanges(${x})">
+            <div class="editTask" >
                 <div class="style-task">
                 <label for="taskCardETitle">Titel:</label>
                 <input type="text" id="taskCardETitle">
@@ -151,8 +151,8 @@ class Task {
                         <label for="">Subtasks</label>
                         <input id="subtasks" type="text">
                         </div>
-                            <button type="submit">Ok &checkmark;</button>
-                        </form>
+                            <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
+            </div>
 
 
                         `

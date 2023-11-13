@@ -380,6 +380,7 @@ function taskSaveChanges(x){
     let eTask = Join.tasks[x]
     let eTaskTitle = eTask.title;
     let eTaskWorker = eTask.worker;
+    console.log(eTaskWorker);
     let eTaskDesc = eTask.desc;
     let eTaskDate = eTask.date;
     let eTaskPrio = eTask.prio;
@@ -402,7 +403,7 @@ function taskSaveChanges(x){
     let description = (descInput) ? descInput : eTaskDesc;
     let date = (descInput) ? dateInput : eTaskDate;
     let prio = (prioInput) ? prioInput : eTaskPrio;
-    let workers = [...new Set([...eTaskWorker, ...assignInput])]
+    let workers = eTaskWorker.concat(assignInput)
     console.log("Edited Worker", workers);
 
 
