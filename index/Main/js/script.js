@@ -315,10 +315,21 @@ function fixSubtasks(m) {
     todoSubtask.textContent = editFixSubtask.value;
     editFixSubtask.innerHTML = '';
 }
+// function renderTaskContacts() {
+    // let taskContactList = document.getElementById('taskContactList');
+    // for (let i = 0; i < Join.accounts.length; i++) {
+        // const account = Join.accounts[i];
+        // taskContactList.innerHTML += account.tinyCardCheck(i);
+    // }
+// }
 function renderTaskContacts() {
     let taskContactList = document.getElementById('taskContactList');
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];
+        if (account.checked === true){
+            taskContactList.innerHTML += account.tinyCardCheck(i);
+            showAssignedCheckNone(i)
+        }
         taskContactList.innerHTML += account.tinyCardCheck(i);
     }
 }
@@ -379,7 +390,16 @@ function editTask(x){
 function taskSaveChanges(x){
     let eTask = Join.tasks[x]
     let eTaskTitle = eTask.title;
-    let eTaskWorker = eTask.worker;
+    let eTaskWorker = ()=>{
+        let checkedUsers = [];
+        for (let i = 0; i < Join.accounts.length; i++) {
+            const User = Join.accounts[i];
+            if (User.checked){
+                checkedUsers.push(User)
+            }
+        }
+        return checkedUsers;
+    };
     console.log(eTaskWorker);
     let eTaskDesc = eTask.desc;
     let eTaskDate = eTask.date;
@@ -394,7 +414,6 @@ function taskSaveChanges(x){
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
-    let assignInput = readAssignedUsers();
     let prioInput = taskOutput;
     let subtaskInput = document.getElementById('taskCardEDate').value;
     let subtasks;
@@ -403,20 +422,20 @@ function taskSaveChanges(x){
     let description = (descInput) ? descInput : eTaskDesc;
     let date = (descInput) ? dateInput : eTaskDate;
     let prio = (prioInput) ? prioInput : eTaskPrio;
-    let workers = eTaskWorker.concat(assignInput)
-    console.log("Edited Worker", workers);
 
 
-    // Join.tasks[x] = new Task(title, worker, desc, date, prio = "Wichtig", Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
-    for (let i = 0; i < newTask.worker.length; i++){
-        let taskWorker = newTask.worker[i];
-        taskWorker.checked = false;
-    }
-
-
+    // Join.tasks[x] = new Task(title, eTaskWorker(), desc, date, prio = "Wichtig", Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    closeTaskCard()
 }
 function closeTaskCard(){
+    cleanUpAccountsCheck()
     boardPage()
+}
+function cleanUpAccountsCheck(){
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const User = Join.accounts[i];
+        User.checked = false;
+    }
 }
 function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
@@ -427,6 +446,10 @@ function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
     Join.accounts[x].checked = true;
+}
+function showAssignedCheckNone(x) {
+    document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
+    document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
 }
 function addNewContact() {
     document.getElementById('closeContacts').classList.add('d-none');

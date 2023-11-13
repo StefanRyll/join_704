@@ -103,6 +103,18 @@ class Task {
         return html;
     }
     taskCardEdit(x) {
+        const AssignedUsers = this.worker;
+        const JoinUsers = Join.accounts;
+
+        for(const Worker of AssignedUsers){
+            const gefundenerUser = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
+            if (gefundenerUser) {
+                gefundenerUser.checked = true;
+            }
+        }
+        
+        console.log("Join Accounts nach dem Check", Join.accounts);
+
         return /*html*/ `
             <div class="taskCardHeader" >
                 <div></div>
