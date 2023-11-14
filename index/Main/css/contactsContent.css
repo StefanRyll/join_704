@@ -139,9 +139,12 @@
 
 .contacts-headline {
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
     margin-top: 9em;
+    gap: 18px;
+}
+
+.res-contacts-h1 {
+    display: flex;
     gap: 18px;
 }
 
@@ -150,8 +153,15 @@
     height: 59px;
 }
 
-.subtitle-contacts {
+.subtitle-contacts,
+.res-subtitle-contacts {
     font-size: 27px;
+}
+
+.res-vector-blue {
+    width: 90px;
+    height: 3px;
+    background-color: var(--general-button-hover);
 }
 
 

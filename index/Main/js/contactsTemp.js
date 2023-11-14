@@ -165,6 +165,11 @@ function generateHtmlEditInfo() {
 
 function generateMobileContactDetails(i, color, userInitials, name, mail, phone) {
     return /*html*/ `
+        <div class="res-contacts-headline">
+            <h1 class="res-contacts-h1">Contacts</h1>
+            <p class="res-subtitle-contacts">Better with a team</p>
+            <div class="res-vector-blue"></div>
+        </div>
         <div class="contactView">
             <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
             <div class="name">
