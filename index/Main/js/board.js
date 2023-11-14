@@ -245,3 +245,8 @@ function checkAreaDone(done) {
         done.classList.remove('d-none');
     }
 }
+
+
+function updateProgressBar() {
+    
+}

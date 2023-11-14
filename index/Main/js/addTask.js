@@ -9,7 +9,7 @@ function openAddTask(x = 0) {
 
 
 function createTaskFromBoard(x = 0) {
-    try { loadAccounts()}
+    try {loadAccounts()}
     catch(e){
         console.log("Fehler", e)
     }
