@@ -164,14 +164,14 @@ function taskSaveChanges(x){
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
-    let prioInput = taskOutput;
+    let prioInput = prioTemp;
     let subtaskInput = document.getElementById('taskCardEDate').value;
     // Merched Task
     let title = (titleInput) ? titleInput : eTask.title;
     let description = (descInput) ? descInput : eTaskDesc;
     let date = (descInput) ? dateInput : eTaskDate;
     let prio = (prioInput) ? prioInput : eTaskPrio;
-    // Join.tasks[x] = new Task(title, eTaskWorker(), desc, date, prio = "Wichtig", Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    // Join.tasks[x] = new Task(title, eTaskWorker(), desc, date, prio, Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
     closeTaskCard()
 }
 

@@ -18,10 +18,9 @@ function createTaskFromBoard(x = 0) {
         const worker = readAssignedUsers()
         const desc = document.getElementById('boardTaskDescription').value;
         const date = document.getElementById('date').value;
-        const prio = taskOutput;
+        const prio = prioTemp;
         const category = document.getElementById('taskCategoryInput').value;
         const subTask = subtaskTemp;
-        console.log("Subtask",subTask);
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
             newTask.progress = true;
@@ -282,18 +281,35 @@ function editTask(x){
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
+
+    for (let i = 0; i < task.subTasks.length; i++) {
+        const oldSubtask = task.subTasks[i];
+        subtaskTemp.push(oldSubtask);
+    }
+
+    if (task.prio === "Urgent"){
+        document.getElementById("btnUrgentWhite").click();
+    }
+    else if (task.prio === "Medium"){
+        document.getElementById("btnMediumWhite").click();
+    }
+    else if (task.prio === "Low"){
+        document.getElementById("btnLowWhite").click();
+    }
+    prioTemp = task.prio;
+
     // Eventlistener
     const urgent = document.getElementById('btnUrgentWhite');
     const medium = document.getElementById('btnMediumWhite');
     const low = document.getElementById('btnLowWhite');
     urgent.addEventListener('click', () => {
-        taskOutput = "Urgent";
+        prioTemp = "Urgent";
     })
     medium.addEventListener('click', () => {
-        taskOutput = "Medium";
+        prioTemp = "Medium";
     })
     low.addEventListener('click', () => {
-        taskOutput = "Low";
+        prioTemp = "Low";
     })
 }
 

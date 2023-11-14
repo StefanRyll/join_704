@@ -143,7 +143,7 @@ function logout() {
 //         const worker = readAssignedUsers()
 //         const desc = document.getElementById('boardTaskDescription').value;
 //         const date = document.getElementById('date').value;
-//         const prio = taskOutput;
+//         const prio = prioTemp;
 //         const category = document.getElementById('taskCategoryInput').value;
 //         const subTask = subtasks;
 //         console.log("Subtask",subTask);
@@ -432,13 +432,13 @@ function checkboxDeactivate() {
 //     const medium = document.getElementById('btnMediumWhite');
 //     const low = document.getElementById('btnLowWhite');
 //     urgent.addEventListener('click', () => {
-//         taskOutput = "Urgent";
+//         prioTemp = "Urgent";
 //     })
 //     medium.addEventListener('click', () => {
-//         taskOutput = "Medium";
+//         prioTemp = "Medium";
 //     })
 //     low.addEventListener('click', () => {
-//         taskOutput = "Low";
+//         prioTemp = "Low";
 //     })
 
 
@@ -472,7 +472,7 @@ function taskSaveChanges(x){
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
-    let prioInput = taskOutput;
+    let prioInput = prioTemp;
     let subtaskInput = document.getElementById('taskCardEDate').value;
     let subtasks;
     // Merched Task

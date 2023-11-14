@@ -272,13 +272,13 @@ class Page {
     //         const medium = document.getElementById('btnMediumWhite');
     //         const low = document.getElementById('btnLowWhite');
     //         urgent.addEventListener('click', () => {
-    //             taskOutput = "Urgent";
+    //             prioTemp = "Urgent";
     //         })
     //         medium.addEventListener('click', () => {
-    //             taskOutput = "Medium";
+    //             prioTemp = "Medium";
     //         })
     //         low.addEventListener('click', () => {
-    //             taskOutput = "Low";
+    //             prioTemp = "Low";
     //         })
 
 
