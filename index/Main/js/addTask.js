@@ -20,7 +20,7 @@ function createTaskFromBoard(x = 0) {
         const date = document.getElementById('date').value;
         const prio = taskOutput;
         const category = document.getElementById('taskCategoryInput').value;
-        const subTask = subtasks;
+        const subTask = subtaskTemp;
         console.log("Subtask",subTask);
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
@@ -73,7 +73,7 @@ function clearInputs(title, description, contact, date, newCategory, subtask) {
     for (let account in Join.accounts){
         account.checked = false;
     }
-    subtasks = [];
+    subtaskTemp = [];
 }
 
 
@@ -182,7 +182,7 @@ function createSubtask() {
     // Join.tasks.push(inputSubtask);
     if (subtaskText !== '') {
         let newSubtask = new Subtask(subtaskText)
-        subtasks.push(newSubtask);
+        subtaskTemp.push(newSubtask);
         inputSubtask.value = '';
         renderSubtasks()
     }
@@ -193,8 +193,8 @@ function renderSubtasks() {
     let createNewSubtaskContainer = document.getElementById('createNewSubtask');
     createNewSubtaskContainer.innerHTML = '';
 
-    for (let m = 0; m < subtasks.length; m++) {
-        let newSubtasks = subtasks[m];
+    for (let m = 0; m < subtaskTemp.length; m++) {
+        let newSubtasks = subtaskTemp[m];
         createNewSubtaskContainer.innerHTML += JoinBoard.generateHTMLAddSubtask(newSubtasks.text, m);
     }
 }
@@ -235,7 +235,7 @@ function renderTaskContacts() {
 
 
 function deleteSubtask(m) {
-    subtasks.splice(m, 1)
+    subtaskTemp.splice(m, 1)
     renderSubtasks();
 }
 
@@ -246,7 +246,7 @@ function editSubtask(m) {
     editableTask.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.keyCode === 13) {
             if (editableTask.value != "")
-                subtasks[m] = editableTask.textContent;
+                subtaskTemp[m] = editableTask.textContent;
             editableTask.setAttribute('contenteditable', false)
             renderSubtasks()
         }

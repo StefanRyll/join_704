@@ -1,4 +1,4 @@
-let subtasks = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
+let subtaskTemp = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
 let taskOutput = "";
 
 // const fs = require('fs');

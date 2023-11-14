@@ -166,7 +166,6 @@ function taskSaveChanges(x){
     let dateInput = document.getElementById('taskCardEDate').value;
     let prioInput = taskOutput;
     let subtaskInput = document.getElementById('taskCardEDate').value;
-    let subtasks;
     // Merched Task
     let title = (titleInput) ? titleInput : eTask.title;
     let description = (descInput) ? descInput : eTaskDesc;
