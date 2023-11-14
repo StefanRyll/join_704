@@ -183,9 +183,9 @@ class Task {
                 <div class="subtasks">
                     <div class="tiny-task-label">
                         <img id="progressBar" src="./IMG/Progress_bar.svg" alt="">
-                        <p>1</p>
+                        <p id="checkSubtaskTrue">0</p>
                         <p>/</p>
-                        <p id="openTasksFromTiny">${this.subTasks.length}&nbsp;</p>
+                        <p id="openTasksFromTiny">${this.subTasks.length}&nbsp; subtasks</p>
                     </div>
                 </div>
                 <div>
