@@ -47,6 +47,9 @@
         transform: translateX(200%);
         transition: all 225ms ease-in-out;
     }
+    .show-respon-overlay {
+        transform: translateX(0);
+    }
 }
 
 @media (max-width: 740px) {

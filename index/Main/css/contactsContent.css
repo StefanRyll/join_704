@@ -255,8 +255,7 @@
     transition: all 225ms ease-in-out;
 }
 
-.show-overlay,
-.show-respon-overlay {
+.show-overlay {
     transform: translateX(0);
 }
 
