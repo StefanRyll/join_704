@@ -71,35 +71,35 @@ async function initContacts() {
  * 
  */
 function openBigOverlay() {
-    slideOverlay = document.getElementById('overlay').classList.add('show-overlay');
+    document.getElementById('overlay').classList.add('show-overlay');
 }
 
 function closeBigOverlay() {
-    slideOverlay = document.getElementById('overlay').classList.remove('show-overlay');
+    document.getElementById('overlay').classList.remove('show-overlay');
 }
 
 function openResOverlay() {
-    slideOverlay = document.getElementById('responOverlay').classList.add('show-respon-overlay');
+    document.getElementById('responOverlay').classList.add('show-respon-overlay');
 }
 
 function closeResOverlay() {
-    slideOverlay = document.getElementById('responOverlay').classList.remove('show-respon-overlay');
+    document.getElementById('responOverlay').classList.remove('show-respon-overlay');
 }
 
 function openContactDetails() {
-    slideContact = document.getElementById('detailsContainer').classList.add('show-details');
+    document.getElementById('detailsContainer').classList.add('show-details');
 }
 
 function closeContactDetails() {
-    slideContact = document.getElementById('detailsContainer').classList.remove('show-details');
+    document.getElementById('detailsContainer').classList.remove('show-details');
 }
 
 function openSuccessOverlay() {
-    slideOverlay = document.getElementById('overlaySuccess').classList.add('show-success-overlay');
+    document.getElementById('overlaySuccess').classList.add('show-success-overlay');
 }
 
 function closeSuccessOverlay() {
-    slideOverlay = document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
+    document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
 }
 
 /**
