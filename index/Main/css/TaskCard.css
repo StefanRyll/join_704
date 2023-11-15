@@ -114,7 +114,9 @@
 .styleEditTask {
     overflow-y: scroll;
 }
-
+.editTask{
+    overflow-y: scroll;
+}
 .editTask label {
     font-size: 20px;
 }

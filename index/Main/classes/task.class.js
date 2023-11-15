@@ -103,6 +103,7 @@ class Task {
         return html;
     }
     taskCardEdit(x) {
+
         const AssignedUsers = this.worker;
         const JoinUsers = Join.accounts;
 
@@ -113,6 +114,15 @@ class Task {
             }
         }
         
+        let renderWorker = ()=>{
+            let workerAccountTags;
+            for (let i = 0; i < this.worker.length; i++) {
+                const worker = this.worker[i];
+                workerAccountTags += worker.accountTag()
+            }
+            return workerAccountTags;
+        }
+
         console.log("Join Accounts nach dem Check", Join.accounts);
 
         return /*html*/ `
@@ -131,29 +141,17 @@ class Task {
             </div>
             <div class="editTask" >
                 <div class="style-task">
-                <label for="taskCardETitle">Titel:</label>
-                <input type="text" id="taskCardETitle">
+                    <label for="taskCardETitle">Titel:</label>
+                    <input type="text" id="taskCardETitle" value="${this.title}">
+
                     <label for="taskCardEDesc">Description:</label>
-                    <textarea cols="30" rows="10" id="taskCardEDesc"></textarea>
+                    <textarea cols="30" rows="10" id="taskCardEDesc">${this.desc}</textarea>
+
                     <label for="taskCardEDate">Date Due:</label>
-                    <input type="date" id="taskCardEDate">
+                    <input type="date" id="taskCardEDate" value="${this.date}">
+
                     ${JoinBoard.generateHTMLAssignedTo(x)}
-                        <!-- <label for="">Assign to: </label>
-                        <div id="showContactsFromCard">
-                        <div class="assignContactsCard">
-                            <input onclick="openSelectContactsFromCard()" type="button" value="Select contacts to assign">
-                            <img onclick="openSelectContactsFromCard()" src="./IMG/drop_down.svg" alt="">
-                        </div>
-                       </div>
-                       <div id="closeContactsFromCard"  class="d-none">
-                        <div class="assignContactsCard">
-                            <input onclick="closeSelectContactsFromCard()" type="search">
-                            <img onclick="closeSelectContactsFromCard()" src="./IMG/arrow_drop_up.svg" alt="">
-                        </div>
-                       </div>
-                            <div>
-                                <div class="accountTag">AV</div>
-                            </div> -->
+                    ${renderWorker()}
                         <div>
                             ${JoinBoard.generateHTMLPrioCategory()}
                             <!-- <button>Urgent</button>
@@ -161,9 +159,9 @@ class Task {
                             <button>Low</button> -->
                         </div>
                         <label for="">Subtasks</label>
-                        <input id="subtasks" type="text">
-                        </div>
-                            <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
+                        <input id="subtasks" type="text" placeholder="Subtask hinzufügen">
+                </div>
+                        <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
             </div>
 
 
