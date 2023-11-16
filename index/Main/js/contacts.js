@@ -343,6 +343,11 @@ function openContactMenu() {
     optionsMenu.classList.add("show-options-menu");
 }
 
+function closeContactMenu() {
+    let optionsMenu = document.getElementById("optionsMenu");
+    optionsMenu.classList.remove("show-options-menu");
+}
+
 /**
  *  this function is required to render the header and sidebar
  */

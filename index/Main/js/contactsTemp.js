@@ -201,7 +201,7 @@ function generateMobileContactDetails(i, color, userInitials, name, mail, phone)
             <button onclick="openContactMenu()" class="respon-button"><img src="./IMG/more_vert.png"></button>
         </div>
         <div class="options-menu" id="optionsMenu">
-            <div class="iconWrapper" onclick="renderEditContact(${i})">
+            <div class="iconWrapper" onclick="openEditContact(${i})">
                 <img class="icon" src="./IMG/edit.png">
                 <span class="iconText">Edit</span>
             </div>
