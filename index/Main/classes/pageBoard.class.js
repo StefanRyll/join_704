@@ -348,7 +348,7 @@ class Board extends Page {
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="date" name="datum" required placeholder="dd/mm/yyyy" value="dd/mm/yyyy">
+                        <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-mm-yyyy">
                     </div>
                 </form>
             `
@@ -358,7 +358,7 @@ class Board extends Page {
     //     <form class="input-date board-task-input">
     //         <label for="pflichtfeld">Due date<sup>*</sup></label>
     //         <div class="board-input-date">
-    //             <input type="date" id="datum" name="datum" pattern="\d{2}/\d{2}/\d{4}" placeholder="dd/mm/yyyy" name="selected_date" required>
+    //             <input type="date" id="datum" name="datum" placeholder="dd/mm/yyyy" name="selected_date" required>
     //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
     //         </div>
     //     </form>
