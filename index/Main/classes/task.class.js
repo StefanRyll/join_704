@@ -13,7 +13,6 @@ class Task {
         this.feedback = feedback;
         this.done = done;
     }
-
     taskCardNormal(x) {
         let formatedDate = () => {
             // console.log("Date : ", date);
@@ -152,16 +151,13 @@ class Task {
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
                     ${renderWorker()}
-                        <div>
-                            ${JoinBoard.generateHTMLPrioCategory()}
-                            <!-- <button>Urgent</button>
-                            <button>Medium</button>
-                            <button>Low</button> -->
-                        </div>
-                        <label for="">Subtasks</label>
-                        <input id="subtasks" type="text" placeholder="Subtask hinzufügen">
+                    <div>
+                        ${JoinBoard.generateHTMLPrioCategory()}
+                    </div>
+                    <label for="">Subtasks</label>
+                    <input id="subtasks" type="text" placeholder="Subtask hinzufügen">
                 </div>
-                        <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
+                <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
             </div>
 
 

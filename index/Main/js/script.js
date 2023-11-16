@@ -166,14 +166,19 @@ function taskSaveChanges(x){
     let dateInput = document.getElementById('taskCardEDate').value;
     let prioInput = prioTemp;
     let subtaskInput = document.getElementById('taskCardEDate').value;
-    // Merched Task
-    let title = (titleInput) ? titleInput : eTask.title;
-    let description = (descInput) ? descInput : eTaskDesc;
-    let date = (descInput) ? dateInput : eTaskDate;
-    let prio = (prioInput) ? prioInput : eTaskPrio;
+    // // Merched Task
+    // let title = (titleInput) ? titleInput : eTask.title;
+    // let description = (descInput) ? descInput : eTaskDesc;
+    // let date = (descInput) ? dateInput : eTaskDate;
+    // let prio = (prioInput) ? prioInput : eTaskPrio;
     // Join.tasks[x] = new Task(title, eTaskWorker(), desc, date, prio, Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
     closeTaskCard()
 }
+
+function tempTheSubtasks(){
+    
+}
+
 
 
 function closeTaskCard(){
