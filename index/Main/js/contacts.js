@@ -233,8 +233,10 @@ function openEditContact(i) {
  */
 function closeOverlay() {
     document.getElementById('overlay');
+    document.getElementById('responOverlay');
     setTimeout(() => {
         closeBigOverlay()
+        closeResOverlay()
     }, 100);
     initContacts();
 }

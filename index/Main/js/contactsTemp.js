@@ -173,7 +173,7 @@ function generateMobileContactDetails(i, color, userInitials, name, mail, phone)
                 <div class="res-vector-blue"></div>
             </div>
             <div class="res-left-arrow">
-                <button class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
+                <button onclick="closeOverlay()" class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
             </div>
         </div>
         <div class="contactView">
@@ -196,6 +196,9 @@ function generateMobileContactDetails(i, color, userInitials, name, mail, phone)
             <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
             <h3>Phone</h3>
             <p><a class="phone-link" href="tel:${phone}">${phone}</a></p>
+        </div>
+        <div class="options-btn-div">
+            <button class="respon-button"><img src="./IMG/more_vert.png"></button>
         </div>
     </div>
     `
