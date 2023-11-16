@@ -1,3 +1,31 @@
+@media (max-width: 1420px) {
+    #content {
+        margin-left: 170px;
+    }
+}
+
+@media (max-width: 1330px) {
+
+    #content {
+        padding: 0;
+        padding-left: 90px;
+        padding-top: 90px;
+    }
+
+    .content-add-task {
+        margin-right: 0;
+        overflow-y: scroll;
+    }
+    .board-task-middle {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .seperator-add-task {
+        display: none;
+    }
+}
+
 @media (max-width: 1254px) {
     .vector-blue,
     .subtitle-contacts {
@@ -74,6 +102,12 @@
     }
     .show-respon-overlay {
         transform: translateX(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-board-task-footer {
+        gap: 80%;
     }
 }
 

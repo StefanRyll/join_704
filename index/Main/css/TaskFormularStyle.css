@@ -60,3 +60,17 @@
     display: flex;
     align-items: center;
 }
+
+.addTask-button-window {
+    display: flex;
+    justify-content: end;
+}
+
+#hiddenSubtask {
+    margin-bottom: 90px;
+}
+
+#styleAddTask {
+    margin-bottom: 160px;
+}
+   

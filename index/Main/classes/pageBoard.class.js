@@ -196,15 +196,21 @@ class Board extends Page {
                         <h3>Add Task</h3>
                     </div>
                     <div class="board-task-middle">
-                        ${this.generateHTMLLeftSide(x)}
+                        <div>
+                            ${this.generateHTMLLeftSide(x)}
+                            <div class="field-required-text field-required-text-window">
+                                <sub>*</sub><span>This field is required</span>
+                            </div>
+                        </div>
                         ${this.generateHTMLSeperator()}
-                        ${this.generateHTMLRightSide(x)}
+                        <div>
+                            ${this.generateHTMLRightSide(x)}
+                            ${this.generateHTMLAddTaskButtons(x)}
+                        </div>
                     </div>
                     <div class="content-board-task-footer">
-                        <div class="field-required-text">
-                            <sub>*</sub><span>This field is required</span>
-                        </div>
-                        ${this.generateHTMLAddTaskButtons(x)}
+                       
+                        
                     </div>
                 </div>
           `
@@ -212,7 +218,6 @@ class Board extends Page {
     generateHTMLLeftSide(x) {
         return /*html*/ `
               <div class="left-side">
-                
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
@@ -248,7 +253,7 @@ class Board extends Page {
     generateHTMLAssignedTo(x) {
         return /*html*/ `
             <p class="assigned-style">Assigned to</p>
-            <div class="board-task-input bg-color-white">
+            <div id="styleAddTask" class="board-task-input bg-color-white">
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
                     <div class="assign-container assign-container-style bg-color-white">
@@ -556,7 +561,7 @@ class Board extends Page {
 
     generateHTMLAddTaskButtons(x) {
         return /*html*/ `
-            <div class="addTask-button">
+            <div class="addTask-button addTask-button-window ">
                 <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
@@ -606,7 +611,7 @@ class Board extends Page {
     // }
     generateHTMLCloseButtonInSVG() {
         return /*html*/ `
-                <div class="style-closebutton">
+                <div class="style-closebutton-intask">
                   <svg  onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                         <rect width="24" height="24" fill="#D9D9D9"/>
