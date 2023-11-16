@@ -338,6 +338,11 @@ function validatePhoneNumber(phoneInput) {
     phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
 }
 
+function openContactMenu() {
+    let optionsMenu = document.getElementById("optionsMenu");
+    optionsMenu.classList.add("show-options-menu");
+}
+
 /**
  *  this function is required to render the header and sidebar
  */
