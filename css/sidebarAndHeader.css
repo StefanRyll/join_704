@@ -9,7 +9,8 @@ body {
     align-items: center; */
     overflow: hidden;
 }
-.sidebar{
+
+.sidebar {
     background-color: #2A3647;
     position: absolute;
     left: 0;
@@ -26,20 +27,23 @@ body {
     font-family: sans-serif;
     font-weight: 300;
 }
-.logo{
+
+.logo {
     background-image: url("/assets/img/LogoWhite.png");
     background-size: cover;
     width: 101px;
     height: 124px;
 }
-nav{
+
+nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
-.navs{
+
+.navs {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -47,51 +51,57 @@ nav{
     width: 232px;
     padding-left: 30%;
     padding-right: -30%;
-    
 }
-.navs:hover{
+
+.navs:hover {
     cursor: pointer;
     background-color: #091931;
-
 }
+
+
 /* .bgDark{
     background-color: #091931;
 } */
-.summary{
+
+.summary {
     background-image: url("/assets/img/Summary.png");
     background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 20px;
 }
-.board{
+
+.board {
     background-image: url("/assets/img/Board.png");
     background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 20px;
-    
 }
-.board h3{
+
+.board h3 {
     text-align: left;
 }
-.addTask{
+
+.addTask {
     background-image: url("/assets/img/addTask.png");
     background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 20px;
 }
-.contacts{
+
+.contacts {
     background-image: url("/assets/img/Contacts.png");
     background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 20px;
 }
-.header{
+
+.header {
     background-color: #FFF;
-    height:  96px;
+    height: 96px;
     /* padding: 0px 1140px 0px 700px; */
     padding-left: 300px;
     padding-right: 40px;
@@ -105,22 +115,25 @@ nav{
     left: 0;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
-.infoButton{
+
+.infoButton {
     background-image: url("/assets/img/help.png");
     background-size: cover;
     width: 20px;
     height: 20px;
 }
-.userImg{
+
+.userImg {
     width: 56px;
     height: 56px;
     /* border-radius: 30px;
     border: 3px solid #2A3647 ; */
 }
-.accountIssues{
+
+.accountIssues {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width : 104px
+    width: 104px
 }
