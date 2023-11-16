@@ -2,10 +2,10 @@ class Contacts extends Page {
     contactsContent() {
         return /*html*/ `
             <div class="respon-add-contact" onclick="openAddContact()">
-                <button class="respon-add-contact-button"><img src="./IMG/person_add.png"></button>
+                <button class="respon-button"><img src="./IMG/person_add.png"></button>
             </div>
             <div>
-                <div class="respon-overlay" id="responOverlay"></div>
+                <div onclick="closeContactMenu()" class="respon-overlay" id="responOverlay"></div>
             </div>
             <div>
                 <div class="overlay-style" id="overlay"></div>

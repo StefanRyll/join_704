@@ -247,6 +247,15 @@
     display: none;
 }
 
+.options-btn-div {
+    display: none;
+}
+
+.options-menu,
+.show-options-menu {
+    display: none;
+}
+
 
 /* ====================================================== </contacts-details> =============================================================== */
 

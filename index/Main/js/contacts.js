@@ -233,8 +233,10 @@ function openEditContact(i) {
  */
 function closeOverlay() {
     document.getElementById('overlay');
+    document.getElementById('responOverlay');
     setTimeout(() => {
         closeBigOverlay()
+        closeResOverlay()
     }, 100);
     initContacts();
 }
@@ -334,6 +336,16 @@ function editOverlay() {
 function validatePhoneNumber(phoneInput) {
     // Entferne alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
     phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
+}
+
+function openContactMenu() {
+    let optionsMenu = document.getElementById("optionsMenu");
+    optionsMenu.classList.add("show-options-menu");
+}
+
+function closeContactMenu() {
+    let optionsMenu = document.getElementById("optionsMenu");
+    optionsMenu.classList.remove("show-options-menu");
 }
 
 /**

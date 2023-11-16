@@ -61,8 +61,16 @@
     }
     .res-left-arrow-btn {
         border: none;
-        border-radius: 100%;
+        border-radius: 50%;
         background-color: var(--lightgrey);
+        width: 50px;
+        height: 50px;
+    }
+    .res-left-arrow-btn:hover {
+        cursor: pointer;
+    }
+    .res-left-arrow-btn:active {
+        background-color: var(--grey);
     }
     .contacts-h1 {
         display: none;
@@ -201,19 +209,48 @@
         bottom: 110px;
         z-index: 1;
     }
-    .respon-add-contact-button {
+    .respon-button {
         border-radius: 50%;
         border: none;
         padding: 12px;
         background-color: var(--dark-blue);
     }
-    .respon-add-contact-button:hover {
+    .respon-button:hover {
         cursor: pointer;
         background-color: var(--lightblue);
         transition: 0.1s ease-in-out;
     }
     .respon-footer {
         gap: 0;
+    }
+    .options-btn-div {
+        display: block;
+        position: absolute;
+        right: 32px;
+        bottom: 110px;
+    }
+    .options-menu {
+        display: block;
+        right: -17px;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        transform: translateX(200%);
+    }
+    .show-options-menu {
+        display: block;
+        background-color: white;
+        border-radius: 20px 20px 0px 20px;
+        box-shadow: 0px 5px 5px 0px #00000040;
+        padding: 10px;
+        bottom: 44px;
+        right: 0px;
+        transform: translateX(0%);
+        width: 110px;
+        height: 80px;
+        position: absolute;
+        z-index: 3;
     }
 }
 
