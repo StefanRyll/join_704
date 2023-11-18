@@ -3,8 +3,6 @@ function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
-
-
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -30,8 +28,6 @@ function logInUser() {
         }
     }
 }
-
-
 // Sign Up
 async function createAccount() {
     try { loadAccounts()}
@@ -55,8 +51,6 @@ async function createAccount() {
         }
     }
 }
-
-
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;

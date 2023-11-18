@@ -222,13 +222,16 @@ function fixSubtasks(m) {
 
 function renderTaskContacts() {
     let taskContactList = document.getElementById('taskContactList');
+    taskContactList.innerHTML = "";
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];
         if (account.checked === true){
             taskContactList.innerHTML += account.tinyCardCheck(i);
             showAssignedCheckNone(i)
         }
-        taskContactList.innerHTML += account.tinyCardCheck(i);
+        else{taskContactList.innerHTML += account.tinyCardCheck(i);
+    
+        }
     }
 }
 
@@ -281,12 +284,15 @@ function editTask(x){
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
-
+    
+    
+    
+    // Subtask
     for (let i = 0; i < task.subTasks.length; i++) {
         const oldSubtask = task.subTasks[i];
         subtaskTemp.push(oldSubtask);
     }
-
+    // Prio
     if (task.prio === "Urgent"){
         document.getElementById("btnUrgentWhite").click();
     }
@@ -318,6 +324,7 @@ function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
     Join.accounts[x].checked = false;
+    renderTaskContacts()
 }
 
 
@@ -325,6 +332,8 @@ function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
     Join.accounts[x].checked = true;
+    renderTaskContacts()
+
 }
 
 
