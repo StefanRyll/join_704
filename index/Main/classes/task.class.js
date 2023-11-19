@@ -66,7 +66,10 @@ class Task {
 
                 <div class="taskCardAssignment">
                     <p>Assigned to: </p>
-                    <div id="taskCardAssinedList">`
+                    <div id="taskCardAssinedList">
+
+                    
+`
 
         for (let i = 0; i < this.worker.length; i++) {
             const worker = this.worker[i];
@@ -75,6 +78,7 @@ class Task {
 
         html += /*html*/ `
                     </div>
+                
                 </div >
 
                 <div class="taskCardSubtasks">
@@ -114,12 +118,12 @@ class Task {
         }
         
         let renderWorker = ()=>{
-            let workerAccountTags;
+            let containerShortName = document.getElementById('containerShortName')
             for (let i = 0; i < this.worker.length; i++) {
                 const worker = this.worker[i];
-                workerAccountTags += worker.accountTag()
+                containerShortName.innerHTML += worker.accountTag()
             }
-            return workerAccountTags;
+            return null
         }
 
         console.log("Join Accounts nach dem Check", Join.accounts);
@@ -150,6 +154,7 @@ class Task {
                     <input type="date" id="taskCardEDate" value="${this.date}">
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
+                    ${JoinBoard.generateHTMLAddContactShortName()}
                     ${renderWorker()}
                     <div>
                         ${JoinBoard.generateHTMLPrioCategory()}
