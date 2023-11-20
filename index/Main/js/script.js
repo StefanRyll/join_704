@@ -144,6 +144,7 @@ function taskSaveChanges(x){
         }
         return checkedUsers;
     };
+    
     console.log(eTaskWorker);
     let eTaskDesc = eTask.desc;
     let eTaskDate = eTask.date;
@@ -159,13 +160,19 @@ function taskSaveChanges(x){
     let descInput = document.getElementById('taskCardEDesc').value;
     let dateInput = document.getElementById('taskCardEDate').value;
     let prioInput = prioTemp;
-    let subtaskInput = document.getElementById('taskCardEDate').value;
+    let subtaskInput = subtaskTemp;
+    let Category = "Muss noch angeschlossen werden"
     // // Merched Task
     // let title = (titleInput) ? titleInput : eTask.title;
     // let description = (descInput) ? descInput : eTaskDesc;
     // let date = (descInput) ? dateInput : eTaskDate;
     // let prio = (prioInput) ? prioInput : eTaskPrio;
-    // Join.tasks[x] = new Task(title, eTaskWorker(), desc, date, prio, Category, subTasks, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    
+    console.log("Task vorher", Join.tasks[x])
+    Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    
+    console.log("Task nachher", Join.tasks[x])
+    
     closeTaskCard()
 }
 

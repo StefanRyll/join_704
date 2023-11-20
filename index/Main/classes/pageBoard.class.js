@@ -251,6 +251,7 @@ class Board extends Page {
     }
 
     generateHTMLAssignedTo(x) {
+        console.log("render Contact list");
         return /*html*/ `
             <p class="assigned-style">Assigned to</p>
             <div id="styleAddTask" class="board-task-input bg-color-white">
@@ -260,7 +261,7 @@ class Board extends Page {
                         <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
-                    <div onload="renderContactList()" id="assignedToContacts" class="checkbox-container">
+                    <div id="assignedToContacts" class="checkbox-container">
                         ${this.generateHTMLCheckbox()} 
                     </div>
                     <div class="checkbox-container-button">
@@ -334,7 +335,7 @@ class Board extends Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  <!-- ${this.generateHTMLAddTaskButtons()} -->
+                  ${this.generateHTMLAddTaskButtons()}
             </div>
           `
     }

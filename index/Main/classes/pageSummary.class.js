@@ -65,14 +65,14 @@ class Summary extends Page{
             <div class="contentArea">
                 <div class="chipsArea">
                     <div class="chipsAreaRow">
-                        <div class="chip2x">
+                        <div class="chip2x" onclick="boardPage()">
                             <img class="chipIcon" src="./IMG/pen.png" alt="Nix">
                             <div class="chipData2x">
                                 <h1>${todoTasks()}</h1>
                                 <p>to do</p>
                             </div>
                         </div>
-                        <div class="chip2x">
+                        <div class="chip2x" onclick="boardPage()">
                             <img src="./IMG/check.png" alt="Nix">
                             <div class="chipData2x">
                                 <h1>${doneTasks()}</h1>
@@ -82,7 +82,7 @@ class Summary extends Page{
                         </div>
                     </div>
                     <div class="chipsAreaRow">
-                        <div class="chip1x">
+                        <div class="chip1x" onclick="boardPage()">
                             <img class="chipIcon" src="./IMG/urgent.png" alt="Nix">
                             <p>${nextDeadline().prio}</p>
                             <img src="./IMG/Vector 5.png" alt="">
@@ -94,20 +94,20 @@ class Summary extends Page{
                         <!-- <div class="greetingArea"><h3>{daytime}</h3><h4>{this.signedAccount.name}</h4></div> -->
                     </div>
                     <div class="chipsAreaRow">
-                        <div class="chip3x">
+                        <div class="chip3x" onclick="boardPage()">
                             <div class="chipData3x">
                                 <h2>${Join.tasks.length}</h2>
                                 <p>Tasks in<br>Board</p>
                             </div>
                         </div>
                         <div class="chip3x">
-                            <div class="chipData3x">
+                            <div class="chipData3x" onclick="boardPage()">
                                 <h2>${progressCount()}</h2>
                                 <p>Tasks in<br>Progress</p>
                             </div>
                         </div>
                         <div class="chip3x">
-                            <div class="chipData3x">
+                            <div class="chipData3x" onclick="boardPage()">
                                 <h2>${feedbackCount()}</h2>
                                 <p>Awaiting<br>Feedback</p>
                             </div>

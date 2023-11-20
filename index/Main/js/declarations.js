@@ -41,12 +41,32 @@ Join.accounts.push(user12)
 
 // Tasks
 let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", "2023-9-30", "Medium", "User Story", "Open")
-let task02 = new Task("Abwaschen goes Big", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", "2023-9-31", "Medium", "User Story", "Open")
-// let task03 = new Task("Aufbau", Join.accounts[1], "Jemand muss alle Party Möbel aufstellen", "2023-9-29", "Medium", "User Story", "Open")
+let task02 = new Task("Abwaschen", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", "2023-9-31", "Medium", "User Story", "Open")
+let task03 = new Task("Aufbau", undefined, "Jemand muss alle Party Möbel aufstellen", "2023-9-29", "Medium", "User Story", undefined, false, false , true, false)
+
+
+let subtask01 = new Subtask ("Tische", undefined)
+let subtask02 = new Subtask ("Stühle", undefined)
+let subtask03 = new Subtask ("Getränke kalt stellen", true)
+let subtask04 = new Subtask ("Aschenbecher für Raucher (draußen)", undefined)
+
+task03.worker = [
+    Join.accounts[1],
+    Join.accounts[2],
+    Join.accounts[3],
+    ]
+
+task03.subTasks = [
+    subtask01,
+    subtask02,
+    subtask03,
+    subtask04,
+]
 // let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", "2024-01-10", "Medium", "User Story", "Open")
 task01.switchStatus("1");
 Join.tasks.push(task01);
 Join.tasks.push(task02);
+Join.tasks.push(task03);
 // Join.tasks.push(task03);
 // Join.tasks.push(task04);
 let body = document.getElementById('body')

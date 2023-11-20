@@ -121,7 +121,7 @@ class Task {
             let containerShortName = document.getElementById('containerShortName')
             for (let i = 0; i < this.worker.length; i++) {
                 const worker = this.worker[i];
-                containerShortName.innerHTML += worker.accountTag()
+                // containerShortName.innerHTML += worker.accountTag()
             }
             return null
         }
@@ -144,7 +144,10 @@ class Task {
             </div>
             <div class="editTask" >
                 <div class="style-task">
-                    <label for="taskCardETitle">Titel:</label>
+                ${JoinBoard.generateHTMLLeftSide(x)}
+                ${JoinBoard.generateHTMLRightSide(x)}
+
+                    <!-- <label for="taskCardETitle">Titel:</label>
                     <input type="text" id="taskCardETitle" value="${this.title}">
 
                     <label for="taskCardEDesc">Description:</label>
@@ -159,8 +162,8 @@ class Task {
                     <div>
                         ${JoinBoard.generateHTMLPrioCategory()}
                     </div>
-                    <label for="">Subtasks</label>
-                    <input id="subtasks" type="text" placeholder="Subtask hinzufügen">
+                    ${JoinBoard.generateHTMLSubtask()}
+                     -->
                 </div>
                 <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
             </div>
