@@ -106,28 +106,6 @@ class Task {
         return html;
     }
     taskCardEdit(x) {
-
-        const AssignedUsers = this.worker;
-        const JoinUsers = Join.accounts;
-
-        for(const Worker of AssignedUsers){
-            const gefundenerUser = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
-            if (gefundenerUser) {
-                gefundenerUser.checked = true;
-            }
-        }
-        
-        let renderWorker = ()=>{
-            let containerShortName = document.getElementById('containerShortName')
-            for (let i = 0; i < this.worker.length; i++) {
-                const worker = this.worker[i];
-                // containerShortName.innerHTML += worker.accountTag()
-            }
-            return null
-        }
-
-        console.log("Join Accounts nach dem Check", Join.accounts);
-
         return /*html*/ `
             <div class="taskCardHeader" >
                 <div></div>
@@ -144,10 +122,7 @@ class Task {
             </div>
             <div class="editTask" >
                 <div class="style-task">
-                ${JoinBoard.generateHTMLLeftSide(x)}
-                ${JoinBoard.generateHTMLRightSide(x)}
-
-                    <!-- <label for="taskCardETitle">Titel:</label>
+                    <label for="taskCardETitle">Titel:</label>
                     <input type="text" id="taskCardETitle" value="${this.title}">
 
                     <label for="taskCardEDesc">Description:</label>
@@ -158,12 +133,11 @@ class Task {
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
                     ${JoinBoard.generateHTMLAddContactShortName()}
-                    ${renderWorker()}
                     <div>
                         ${JoinBoard.generateHTMLPrioCategory()}
                     </div>
                     ${JoinBoard.generateHTMLSubtask()}
-                     -->
+                    
                 </div>
                 <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
             </div>

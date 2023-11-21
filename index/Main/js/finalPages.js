@@ -44,7 +44,7 @@ function summeryPage() {
     // }
     // finally{
     setState("summary");
-
+    cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = JoinLogin.pageLayoutMain()
     let content = document.getElementById('content')
@@ -60,7 +60,7 @@ function boardPage() {
     // }
     // finally{
     setState("Board");
-
+    cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -77,7 +77,7 @@ function contactsPage() {
     }
     finally{
     setState("Contacts")
-
+        cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -90,7 +90,7 @@ function helpPage() {
 
 
     setState("help")
-
+    cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
@@ -123,7 +123,7 @@ function addTaskPage() {
     // finally{
     setState("addTask");
 
-
+    cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')

@@ -21,10 +21,10 @@ class Login extends Page{
                             <img src="./IMG/vector-5.png">
                         </div>
                         <form class="login-container" onsubmit="logInUser()">
-                            <div class="frame-14"><input required type="email" class="frame-157" placeholder="Email" id="loginEmail">
+                            <div class="frame-14"><input required type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
-                            <div class="frame-14" onclick="visibility()"><input required type="password" class="frame-158" placeholder="Password" id="loginPassword">
+                            <div class="frame-14" onclick="visibility()"><input required type="password" autocomplete="current-password" class="frame-158" placeholder="Password" id="loginPassword">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>

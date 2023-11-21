@@ -133,7 +133,6 @@ function checkboxDeactivate() {
 
 function taskSaveChanges(x){
     let eTask = Join.tasks[x]
-    let eTaskTitle = eTask.title;
     let eTaskWorker = ()=>{
         let checkedUsers = [];
         for (let i = 0; i < Join.accounts.length; i++) {
@@ -145,12 +144,6 @@ function taskSaveChanges(x){
         return checkedUsers;
     };
     
-    console.log(eTaskWorker);
-    let eTaskDesc = eTask.desc;
-    let eTaskDate = eTask.date;
-    let eTaskPrio = eTask.prio;
-    let eTaskCatergory = eTask.Category;
-    let eTaskSubTask = eTask.subTask;
     let eTaskTodo = eTask.todo;  //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
@@ -161,19 +154,14 @@ function taskSaveChanges(x){
     let dateInput = document.getElementById('taskCardEDate').value;
     let prioInput = prioTemp;
     let subtaskInput = subtaskTemp;
-    let Category = "Muss noch angeschlossen werden"
+    let Category = eTask.Category;
     // // Merched Task
-    // let title = (titleInput) ? titleInput : eTask.title;
-    // let description = (descInput) ? descInput : eTaskDesc;
-    // let date = (descInput) ? dateInput : eTaskDate;
-    // let prio = (prioInput) ? prioInput : eTaskPrio;
     
-    console.log("Task vorher", Join.tasks[x])
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
     
-    console.log("Task nachher", Join.tasks[x])
     
     closeTaskCard()
+    cleanUpAll()
 }
 
 function tempTheSubtasks(){
@@ -186,7 +174,11 @@ function closeTaskCard(){
     cleanUpAccountsCheck()
     boardPage()
 }
-
+function cleanUpAll(){
+    cleanUpAccountsCheck()
+    subtaskTemp = []
+    prioTemp = ""
+}
 
 function cleanUpAccountsCheck(){
     for (let i = 0; i < Join.accounts.length; i++) {

@@ -285,13 +285,31 @@ function editTask(x){
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
     
+    // Catgory wird beibehalten (laut MocUp)
+
+    // Workern
+    const AssignedUsers = task.worker;
+    const JoinUsers = Join.accounts;
     
-    
+    for(const Worker of AssignedUsers){
+        const gefundenerUser = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
+        if (gefundenerUser) {
+            gefundenerUser.checked = true;
+        }
+    }
+
+
+    let containerShortName = document.getElementById('containerShortName')
+    for (let i = 0; i < task.worker.length; i++) {
+        const assignedWorker = task.worker[i];
+        containerShortName.innerHTML += assignedWorker.accountTag()
+    }
     // Subtask
     for (let i = 0; i < task.subTasks.length; i++) {
         const oldSubtask = task.subTasks[i];
         subtaskTemp.push(oldSubtask);
     }
+    renderSubtasks()    
     // Prio
     if (task.prio === "Urgent"){
         document.getElementById("btnUrgentWhite").click();
@@ -317,6 +335,8 @@ function editTask(x){
     low.addEventListener('click', () => {
         prioTemp = "Low";
     })
+
+
 }
 
 
