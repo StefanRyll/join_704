@@ -338,15 +338,29 @@ function validatePhoneNumber(phoneInput) {
     phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
 }
 
-function openContactMenu() {
+function openContactMenu(event) {
+    event.stopPropagation(); // Verhindert, dass das Klick-Ereignis bis zum Dokument weitergeleitet wird
     let optionsMenu = document.getElementById("optionsMenu");
     optionsMenu.classList.add("show-options-menu");
 }
 
+
 function closeContactMenu() {
     let optionsMenu = document.getElementById("optionsMenu");
-    optionsMenu.classList.remove("show-options-menu");
+
+    // Event-Listener für Klick-Ereignisse auf das gesamte Dokument hinzufügen
+    document.addEventListener("click", function(event) {
+        // Überprüfen, ob das geklickte Element nicht das Optionsmenü ist
+        if (event.target !== optionsMenu) {
+            // Schließen Sie das Menü, wenn es geöffnet ist
+            if (optionsMenu.classList.contains("show-options-menu")) {
+                optionsMenu.classList.remove("show-options-menu");
+            }
+        }
+    });
 }
+
+
 
 /**
  *  this function is required to render the header and sidebar
