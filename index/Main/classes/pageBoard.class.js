@@ -335,7 +335,6 @@ class Board extends Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  ${this.generateHTMLAddTaskButtons()}
             </div>
           `
     }
