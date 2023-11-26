@@ -107,7 +107,7 @@ class Summary extends Page{
             }
             return count;
         }
-
+        let greetedUser = (Join.signedAccount.name === "Guest") ? "" : Join.signedAccount.name;
         return /*html*/ `
         <div id="summery" class="summery">
             <div class="summeryHeadline">
@@ -119,14 +119,14 @@ class Summary extends Page{
                 <div class="chipsArea">
                     <div class="chipsAreaRow">
                         <div class="chip2x" onclick="boardPage()">
-                            <img class="chipIcon" src="./IMG/pen.png" alt="Nix">
+                            <div class="chipIcon" ></div>
                             <div class="chipData2x">
                                 <h1>${todoTasks()}</h1>
                                 <p>to do</p>
                             </div>
                         </div>
                         <div class="chip2x" onclick="boardPage()">
-                            <img src="./IMG/check.png" alt="Nix">
+                            <div class="chipIcon2" ></div>
                             <div class="chipData2x">
                                 <h1>${doneTasks()}</h1>
                                 <p>Done</p>
@@ -171,7 +171,7 @@ class Summary extends Page{
                     </div>
                     <div></div>
                 </div>
-                <div class="greetingArea"><h3>${daytime}</h3><h4>${Join.signedAccount.name}</h4></div>
+                <div class="greetingArea"><h3>${daytime}</h3><h4 id="greetedUser">${greetedUser}</h4></div>
             </div>
         </div>
 

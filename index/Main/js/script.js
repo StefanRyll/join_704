@@ -7,7 +7,7 @@ function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
     let remember = () => {
-        if (Join.rememberMe){
+        if (Join.rememberMe) {
             let userAsJson = JSON.stringify(user)
             localStorage.setItem("remember", userAsJson)
         }
@@ -15,26 +15,25 @@ function logInUser() {
     for (let i = 0; i < Join.accounts.length; i++) {
         const userAccount = Join.accounts[i];
         if (userAccount.email === user) {
-            if (userAccount.verified == true){
-                if (pw === userAccount.password) {
-                    Join.signedAccount = userAccount;
-                    remember()
-                    summeryPage()
-                
-                } else {
-                    alert("Entweder Passwort oder Email stimmen nicht überein")
-                }
+            if (pw === userAccount.password) {
+                Join.signedAccount = userAccount;
+                remember()
+                summeryPage()
+
+            } else {
+                alert("Entweder Passwort oder Email stimmen nicht überein")
             }
         }
     }
 }
+
 // Sign Up
 async function createAccount() {
-    try { loadAccounts()}
-    catch(e){
+    try { loadAccounts() }
+    catch (e) {
         console.log("Fehler", e)
     }
-    finally{
+    finally {
         let pw = passwordCheck();
         let policy = ppCheck();
         if (pw === true && policy === true) {
@@ -131,19 +130,19 @@ function checkboxDeactivate() {
 }
 
 
-function taskSaveChanges(x){
+function taskSaveChanges(x) {
     let eTask = Join.tasks[x]
-    let eTaskWorker = ()=>{
+    let eTaskWorker = () => {
         let checkedUsers = [];
         for (let i = 0; i < Join.accounts.length; i++) {
             const User = Join.accounts[i];
-            if (User.checked){
+            if (User.checked) {
                 checkedUsers.push(User)
             }
         }
         return checkedUsers;
     };
-    
+
     let eTaskTodo = eTask.todo;  //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
@@ -156,31 +155,31 @@ function taskSaveChanges(x){
     let subtaskInput = subtaskTemp;
     let Category = eTask.Category;
     // // Merched Task
-    
+
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
-    
-    
+
+
     closeTaskCard()
     cleanUpAll()
 }
 
-function tempTheSubtasks(){
-    
+function tempTheSubtasks() {
+
 }
 
 
 
-function closeTaskCard(){
+function closeTaskCard() {
     cleanUpAccountsCheck()
     boardPage()
 }
-function cleanUpAll(){
+function cleanUpAll() {
     cleanUpAccountsCheck()
     subtaskTemp = []
     prioTemp = ""
 }
 
-function cleanUpAccountsCheck(){
+function cleanUpAccountsCheck() {
     for (let i = 0; i < Join.accounts.length; i++) {
         const User = Join.accounts[i];
         User.checked = false;
@@ -190,9 +189,9 @@ function cleanUpAccountsCheck(){
 
 function toggleCheckboxCard(task, subtask) {
     let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
-    if (checkableSubtask.done){
+    if (checkableSubtask.done) {
         checkableSubtask.subTaskUndone();
-    }else{
+    } else {
         checkableSubtask.subTaskDone();
     }
     document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');

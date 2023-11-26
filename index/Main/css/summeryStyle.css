@@ -63,10 +63,42 @@
     /* gap: 18px; */
     box-shadow: 0px 0px 4px 0px #0000009a;
 }
+.chip1x:hover{
+    background-color: #2A3647;
+    color: white;
+    scale: 105%;
+    transition: scale 0.1s ease-in-out;
 
+}
+.chip2x:hover{
+    background-color: #2A3647;
+    color: white;
+    scale: 105%;
+    transition: scale 0.1s ease-in-out;
+    
+}
+.chip3x:hover{
+    background-color: #2A3647;
+    color: white;
+    scale: 105%;
+    transition: scale 0.1s ease-in-out;
+    
+}
 .chipIcon {
+    background-image: url("../IMG/pen.png");
     width: 69px;
     height: 69px;
+}
+.chipIcon2 {
+    background-image: url("../IMG/check.png");
+    width: 69px;
+    height: 69px;
+}
+.chip2x:hover .chipIcon {
+    background-image: url("../IMG/penInv.png");
+}
+.chip2x:hover .chipIcon2 {
+    background-image: url("../IMG/checkInv.png");
 }
 
 .chipData2x {
