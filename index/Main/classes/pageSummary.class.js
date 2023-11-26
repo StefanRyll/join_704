@@ -28,11 +28,64 @@ class Summary extends Page{
             return deadlines[0]
     
         }
+        let urlPrio = () =>{
+            let url;
+            if (nextDeadline().prio === "Medium"){
+                url = "./IMG/medium.png";
+            }
+            else if (nextDeadline().prio === "Low"){
+                url = "./IMG/low.png";
+            }
+            else{
+                url = "./IMG/urgent.png"
+            }
+            return url;
+        }
         let nextDeadlineDate = nextDeadline().date; // Datum
         let nDDay = nextDeadlineDate.getDate()
         let nDMonth = nextDeadlineDate.getMonth() + 1
         let nDYear = nextDeadlineDate.getFullYear()
-        let fullDate = `${nDDay}.${nDMonth}.${nDYear}`
+        let fullDate = () =>{
+            let monat;
+            if(nDMonth == 1){
+                monat = "January";
+            }
+            else if(nDMonth == 2){
+                monat = "February"
+            }
+            else if(nDMonth == 3){
+                monat = "March"
+            }
+            else if(nDMonth == 4){
+                monat = "April"
+            }
+            else if(nDMonth == 5){
+                monat = "May"
+            }
+            else if(nDMonth == 6){
+                monat = "June"
+            }
+            else if(nDMonth == 7){
+                monat = "July"
+            }
+            else if(nDMonth == 8){
+                monat = "August"
+            }
+            else if(nDMonth == 9){
+                monat = "September"
+            }
+            else if(nDMonth == 10){
+                monat = "October"
+            }
+            else if(nDMonth == 11){
+                monat = "November"
+            }
+            else if(nDMonth == 12){
+                monat = "December"
+            }
+
+            return `${monat} ${nDDay}, ${nDYear}`
+        }
         let progressCount = () => {
             let count = 0;
             for (let i = 0; i < Join.tasks.length; i++) {
@@ -83,12 +136,12 @@ class Summary extends Page{
                     </div>
                     <div class="chipsAreaRow">
                         <div class="chip1x" onclick="boardPage()">
-                            <img class="chipIcon" src="./IMG/urgent.png" alt="Nix">
+                            <img class="chipIcon" src=${urlPrio()} alt="Nix">
                             <p>${nextDeadline().prio}</p>
                             <img src="./IMG/Vector 5.png" alt="">
                             <div class="chipData1x">
-                                <h2>${fullDate}</h2>
-                                <p>${nextDeadline().title}</p>
+                                <h2>${fullDate()}</h2>
+                                <p>Upcoming Deadline</p>
                             </div>
                         </div>
                         <!-- <div class="greetingArea"><h3>{daytime}</h3><h4>{this.signedAccount.name}</h4></div> -->
