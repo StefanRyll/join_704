@@ -120,9 +120,6 @@ class Board extends Page {
         kambanFeedback.innerHTML = "";
         kambanDone.innerHTML = "";
 
-
-
-
         for (let i = 0; i < Join.tasks.length; i++) {
             const task = Join.tasks[i];
             if (task.todo) {
@@ -134,6 +131,7 @@ class Board extends Page {
             } else if (task.done) {
                 kambanDone.innerHTML += task.tinyTaskCard(i)
             }
+            task.updateProgressBar()
         }
     }
     renderAddSubtask() {

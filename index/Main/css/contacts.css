@@ -6,18 +6,6 @@
     justify-content: flex-start;
     align-items:flex-start;
 }
-.accountTag{
-    width: 42px;
-    height: 42px;
-    background-color: red;
-    border: 2px solid grey;
-    border-radius: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    color: white
-}
 #containerShortName {
     display: flex;
     gap: 10px;   

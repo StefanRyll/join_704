@@ -84,15 +84,15 @@ class Task {
                 <div class="taskCardSubtasks">
                     <p>Subtasks</p>
                         `
-        for (let j = 0; j < this.subTasks.length; j++) {
-            const subTask = this.subTasks[j];
-            html += /*html*/`
-                    <div class="subtask-list">
-                        <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
-                        <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
-                    </div><br>
-            `;
-        }
+            for (let j = 0; j < this.subTasks.length; j++) {
+                const subTask = this.subTasks[j];
+                html += /*html*/`
+                        <div class="subtask-list">
+                            <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
+                            <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
+                        </div><br>
+                `;
+            }
         html += /*html*/ `        
                     </div>
                 </div>
@@ -149,37 +149,87 @@ class Task {
 
 
     tinyTaskCard(x = 0) {
-        let html = /*html*/ `
+
+        let contactTags = () => {
+            let rendertContacts = "";
+
+            for (let i = 0; i < this.worker.length; i++) {
+                const worker = this.worker[i];
+                rendertContacts += worker.accountTag();
+
+            }
+            return rendertContacts;
+        }
+        let prioTag = () => {
+            let prioUrl;
+            if (this.prio == "Urgent"){
+                prioUrl = "./IMG/prioUrgentIcon.png"
+            }
+            else if (this.prio == "Medium"){
+                prioUrl = "./IMG/prioMediumIcon.png"
+            }
+            else{
+                prioUrl = "./IMG/prioLowIcon.png"
+            }
+
+
+
+            return prioUrl;       
+            
+        }
+        return /*html*/ `
             <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
+
                 <div class="tiny-task-category">${this.Category}</div>
+
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
                 </div>
-                <div class="subtasks">
+
+                <div class="subtasks" id="tinyTaskCardSubtaskSection">
                     <div class="tiny-task-label">
-                        <img id="progressBar" src="./IMG/Progress_bar.svg" alt="">
-                        <p id="checkSubtaskTrue">0</p>
-                        <p>/</p>
-                        <p id="openTasksFromTiny">${this.subTasks.length}&nbsp; subtasks</p>
+                        <div class="progressContainer" id="progressContainer">
+                            <div class="progressBar" id="progressBar"></div>
+                        </div>
+                        <p>0/${this.subTasks.length}&nbsp;Subtasks</p>
                     </div>
                 </div>
-                <div>
-            <div>`
-        for (let i = 0; i < this.worker.length; i++) {
-            const worker = this.worker[i];
-            html += worker.accountTag();
 
-        }
-        html += /*html*/ `
-            </div>
-                    <div>${this.prio}</div> 
+                <div class="contactsAndPrio">
+                    <div class="tinyTaskCardContacts">${contactTags()}</div>
+                    <img src="${prioTag()}" class="prioIcon" alt="">
                 </div>
             </div>
 
         `
-        return html;
+
     }
+    updateProgressBar(){
+        let progressContainer = document.getElementById('tinyTaskCardSubtaskSection')
+        let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
+        let variable2 = () =>{
+            let countDone = 0;
+            for (let i = 0; i < this.subTasks.length; i++) {
+                const toCheck = this.subTasks[i];
+                if (toCheck.done){
+                    countDone++;
+                }
+            }
+            return countDone;
+        } 
+        if (variable1 == 0) {
+            progressContainer.classList.add('d-none')
+        }
+
+        let gesamtFortschritt = (variable2() / variable1) *100;
+
+        let progressbar = document.getElementById('progressBar');
+
+        progressbar.style.width = `${gesamtFortschritt}%`;
+        console.log("Progressbar Updated", gesamtFortschritt, this.title );
+    }
+
     editTask() {
         let taskCard = document.getElementById('taskCard')
         taskCard.innerHTML = this.taskCardEdit()
