@@ -341,7 +341,9 @@ function validatePhoneNumber(phoneInput) {
 function openContactMenu(event) {
     event.stopPropagation(); // Verhindert, dass das Klick-Ereignis bis zum Dokument weitergeleitet wird
     let optionsMenu = document.getElementById("optionsMenu");
-    optionsMenu.classList.add("show-options-menu");
+    setTimeout(() => {
+        optionsMenu.classList.add("show-options-menu");
+    }, 100);
 }
 
 
@@ -354,7 +356,9 @@ function closeContactMenu() {
         if (event.target !== optionsMenu) {
             // Schließen Sie das Menü, wenn es geöffnet ist
             if (optionsMenu.classList.contains("show-options-menu")) {
-                optionsMenu.classList.remove("show-options-menu");
+                setTimeout(() => {
+                    optionsMenu.classList.remove("show-options-menu");
+                }, 200);
             }
         }
     });
