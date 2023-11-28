@@ -89,7 +89,7 @@ class Task {
                 <p>${this.desc}</p>
 
                 <div class="taskCardAttribute">
-                    <p>Date Due: </p>
+                    <p>Due date: </p>
                     <p>${formatedDate()}</p>
                 </div>
 

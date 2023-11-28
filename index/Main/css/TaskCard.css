@@ -27,7 +27,7 @@
 .taskCard {
     background-color: white;
     width: 525px;
-    height: 80%;
+    height: 931px;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
     gap: 0px;
@@ -44,16 +44,23 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .taskCard h1 {
     font-size: 61px;
-    width: 100%;
     text-align: left;
+    margin: 0;
+    width: 445px;
+    height: 219px;
+
+
 }
 
 .taskCard p {
     font-size: 20px;
     width: 100%;
     text-align: start;
+    margin: 0;
+
 
 }
 
@@ -63,6 +70,14 @@
     justify-content: flex-start;
 }
 
+.taskCardAttribute p {
+    width: 6em;
+    height: 24px;
+
+}
+.taskCardAttribute img{
+    margin-left: -1.2em;
+}
 .taskCardAssignment {
     display: flex;
     flex-direction: column;
@@ -115,9 +130,11 @@
 .styleEditTask {
     overflow-y: scroll;
 }
-.editTask{
+
+.editTask {
     overflow-y: scroll;
 }
+
 .editTask label {
     font-size: 20px;
 }
