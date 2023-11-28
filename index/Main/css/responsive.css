@@ -21,6 +21,7 @@
     .seperator-add-task {
         display: none;
     }
+    .overlay-container {}
 }
 
 @media (max-width: 1254px) {

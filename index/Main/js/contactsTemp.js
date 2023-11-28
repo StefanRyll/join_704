@@ -40,7 +40,7 @@ function generateHtmlContactDetails(i, color, userInitials, name, mail, phone) {
 
 function generateHtmlAddContact() {
     return /*html*/ `
-    <div class="overlay-container slide-in">
+    <div class="overlay-container">
         ${generateLeftSide()}
         <div class ="overlay-mid-container">
             <div class="add-Contact-logo">
