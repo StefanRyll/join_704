@@ -30,7 +30,7 @@
     height: 80%;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
-    gap: 24px;
+    gap: 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -47,6 +47,7 @@
 .taskCard h1 {
     font-size: 61px;
     width: 100%;
+    text-align: left;
 }
 
 .taskCard p {

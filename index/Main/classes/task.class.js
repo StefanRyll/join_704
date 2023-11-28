@@ -34,7 +34,41 @@ class Task {
             }
             return iconSrc;
         }
-        let html = /*html*/ `
+        let renderWorker = () =>{
+            let htmlSnippet ="";
+            for (let i = 0; i < this.worker.length; i++) {
+                const worker = this.worker[i];
+                htmlSnippet += worker.tinyCard()
+            }
+            return htmlSnippet;
+        }
+        let renderSubtasks = ()=>{
+            let htmlSnippet ="";
+            for (let j = 0; j < this.subTasks.length; j++) {
+                const subTask = this.subTasks[j];
+                if (subTask.done){
+                    htmlSnippet += /*html*/`
+                            <div class="subtask-list">
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox d-none"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox "> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
+                            </div><br>
+                    `;
+                }
+                else{
+                    htmlSnippet += /*html*/`
+                            <div class="subtask-list">
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
+                            </div><br>
+                    `;
+                }
+            }
+            return htmlSnippet;
+        }
+
+
+
+        return /*html*/ `
             
             <div id="taskCard" class="taskCard">
                 <div class="taskCardHeader">
@@ -67,34 +101,14 @@ class Task {
                 <div class="taskCardAssignment">
                     <p>Assigned to: </p>
                     <div id="taskCardAssinedList">
-
-                    
-`
-
-        for (let i = 0; i < this.worker.length; i++) {
-            const worker = this.worker[i];
-            html += worker.tinyCard()
-        }
-
-        html += /*html*/ `
+                        ${renderWorker()}
                     </div>
                 
                 </div >
 
                 <div class="taskCardSubtasks">
                     <p>Subtasks</p>
-                        `
-            for (let j = 0; j < this.subTasks.length; j++) {
-                const subTask = this.subTasks[j];
-                html += /*html*/`
-                        <div class="subtask-list">
-                            <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
-                            <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
-                        </div><br>
-                `;
-            }
-        html += /*html*/ `        
-                    </div>
+                    ${renderSubtasks()}
                 </div>
 
                 <div class="taskCardFooter">
@@ -103,7 +117,6 @@ class Task {
                 </div>
             </div>
         `
-        return html;
     }
     taskCardEdit(x) {
         return /*html*/ `
@@ -171,12 +184,19 @@ class Task {
             else{
                 prioUrl = "./IMG/prioLowIcon.png"
             }
-
-
-
             return prioUrl;       
-            
         }
+        let SubtasksDone = () =>{
+            let countDone = 0;
+            for (let i = 0; i < this.subTasks.length; i++) {
+                const toCheck = this.subTasks[i];
+                if (toCheck.done){
+                    countDone++;
+                }
+            }
+            return countDone;
+        } 
+
         return /*html*/ `
             <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
 
@@ -192,7 +212,7 @@ class Task {
                         <div class="progressContainer" id="progressContainer">
                             <div class="progressBar" id="progressBar"></div>
                         </div>
-                        <p>0/${this.subTasks.length}&nbsp;Subtasks</p>
+                        <p>${SubtasksDone()}/${this.subTasks.length}&nbsp;Subtasks</p>
                     </div>
                 </div>
 
