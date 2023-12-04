@@ -139,7 +139,7 @@ class Task {
                     <input type="text" id="taskCardETitle" value="${this.title}">
 
                     <label for="taskCardEDesc">Description:</label>
-                    <textarea cols="30" rows="10" id="taskCardEDesc">${this.desc}</textarea>
+                    <textarea class="blue textarea-resize" cols="30" rows="10" id="taskCardEDesc">${this.desc}</textarea>
 
                     <label for="taskCardEDate">Date Due:</label>
                     <input type="date" id="taskCardEDate" value="${this.date}">
