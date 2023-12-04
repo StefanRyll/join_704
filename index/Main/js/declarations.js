@@ -1,7 +1,6 @@
 let subtaskTemp = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
 let prioTemp = "";
 
-// const fs = require('fs');
 let Join = new Page();
 let JoinLogin = new Login();
 let JoinSummary = new Summary();

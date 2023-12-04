@@ -19,13 +19,13 @@
     },
     {
         "name": "Stefan",
-        "email": "florian.rehm@developerakademie.com",
+        "email": "Stefan@developerakademie.com",
         "shortname": "S",
         "password": "Password123"
     },
     {
         "name": "Dominik",
-        "email": "florian.rehm@developerakademie.com",
+        "email": "Dominik@developerakademie.com",
         "shortname": "D",
         "password": "Password123"
     },
