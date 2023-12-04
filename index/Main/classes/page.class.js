@@ -29,14 +29,35 @@ class Page {
         `
     }
     SideAndHead() {
-        return /*html*/ `
-            <div id="sidebar" class="sidebar">
-                <div id="logo" onclick="summeryPage()" class="logo"></div>
-                <nav>
+        let nav = ()=>{
+            if (Join.signedAccount){
+                return /*html*/`
                     <div class="navs bgDark" onclick="summeryPage()"><div class="summary"></div><h3>Summery</h3></div>
                     <div class="navs" onclick="addTaskPage()"><div class="addTask"></div><h3>Add Task</h3></div>
                     <div class="navs" onclick="boardPage()" ><div class="board"></div><h3>Board</h3></div>
                     <div class="navs" onclick="contactsPage()"><div class="contacts"></div><h3>Contacts</h3></div>
+                `
+            }else{
+                return "";
+            }
+        }
+        let accountArea = ()=>{
+            if (Join.signedAccount){
+                return /*html*/`
+                    <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
+                    <div class="accountTag">${Join.signedAccount.shortname}</div>
+
+                `
+            }else{
+                return "";
+            }
+        }
+
+        return /*html*/ `
+            <div id="sidebar" class="sidebar">
+                <div id="logo" onclick="summeryPage()" class="logo"></div>
+                <nav>
+                    ${nav()}
                 </nav>
                 <div>
                     <p onclick="privacyPage()">Privacy Policy</p>
@@ -46,8 +67,7 @@ class Page {
             <header class="header">
                 <h2>Kanban Projekt Management Tool</h2>
                 <div id="accountIssues" class="accountIssues">
-                    <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
-                    <div class="accountTag">${Join.signedAccount.shortname}</div>
+                    ${accountArea()}
                 </div>
             </header>
 

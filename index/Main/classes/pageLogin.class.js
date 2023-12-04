@@ -1,13 +1,13 @@
-class Login extends Page{
-    constructor(){
+class Login extends Page {
+    constructor() {
         super()
     }
-        /**
-     *  Diese Methode stellt das Log In Fenster da
-     * @returns {string} -- 
-     * */
-        logInContent() {
-            return /*html*/ `
+    /**
+ *  Diese Methode stellt das Log In Fenster da
+ * @returns {string} -- 
+ * */
+    logInContent() {
+        return /*html*/ `
                 <header class="login-header">
                     <div class="frame-156">
                         <p>Not a Join user?</p>
@@ -53,37 +53,38 @@ class Login extends Page{
                         </form>
                     </div>
                     <footer>
-                        <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>
+                        <a href="_blank" class="log-in-side-button text-button" onclick="privacyPage()">Privacy Policy</a>
+                        <button href="privacyPage(), '_blank'" class="log-in-side-button text-button">Privacy Policy</button>
                         <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
                     </footer>
                 </section>
             `
-        }
-        /**
-         * Die Methode stellt die Logo Animation am anfang dar
-         * @returns {string}
-         */
-        startAnimation() {
-            body.innerHTML = "";
-            return /*html*/ `
+    }
+    /**
+     * Die Methode stellt die Logo Animation am anfang dar
+     * @returns {string}
+     */
+    startAnimation() {
+        body.innerHTML = "";
+        return /*html*/ `
                 <div id="logoMain" class="logoAnimationImg"></div>
     
             `
-        }
-        logoLogin() {
-            return /*html*/ `
+    }
+    logoLogin() {
+        return /*html*/ `
                 <div id="logoMain" class="logoAnimationImg2"></div>
     
             `
-        }
-        loginLayout() {
-            return /*html*/ `
+    }
+    loginLayout() {
+        return /*html*/ `
                 <div id="logoArea"></div>
                 <div id="windowArea"></div>        
             `
-        }
-        signUpWindow() {
-            return /*html*/ `
+    }
+    signUpWindow() {
+        return /*html*/ `
                 <div id="signUpWindow" class="signUpWindow">
       
                         <a class="backBtn" onclick="startPage2()">
@@ -138,9 +139,9 @@ class Login extends Page{
                         </form>
                 </div>
             `
-        }
-        forceSignIn(x) {
-            this.signedAccount = x;
-        }
-    
+    }
+    forceSignIn(x) {
+        this.signedAccount = x;
+    }
+
 }

@@ -102,7 +102,7 @@ function privacyPage() {
 
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
+    let content = document.getElementById('content');
     showSideAndHead()
     content.innerHTML = JoinAbout.privacyContent();
 }
