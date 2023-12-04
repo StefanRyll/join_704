@@ -364,6 +364,14 @@ function closeContactMenu() {
     });
 }
 
+// function createButtonRespon() {
+//     let closeBtnRes = document.getElementById("closeButtonRespon");
+//     let closeBtn = document.getElementById("closeButton");
+//     if (window.innerWidth >= 1330) {
+//         closeBtnRes.classList.remove('d-none');
+//         closeBtn.classList.add('d-none');
+//     }
+// }
 
 
 /**
