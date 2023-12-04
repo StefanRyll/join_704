@@ -1,13 +1,13 @@
 class Login extends Page {
     constructor() {
-        super()
-    }
-    /**
- *  Diese Methode stellt das Log In Fenster da
- * @returns {string} -- 
- * */
+            super()
+        }
+        /**
+         *  Diese Methode stellt das Log In Fenster da
+         * @returns {string} -- 
+         * */
     logInContent() {
-        return /*html*/ `
+            return /*html*/ `
                 <header class="login-header">
                     <div class="frame-156">
                         <p>Not a Join user?</p>
@@ -59,11 +59,11 @@ class Login extends Page {
                     </footer>
                 </section>
             `
-    }
-    /**
-     * Die Methode stellt die Logo Animation am anfang dar
-     * @returns {string}
-     */
+        }
+        /**
+         * Die Methode stellt die Logo Animation am anfang dar
+         * @returns {string}
+         */
     startAnimation() {
         body.innerHTML = "";
         return /*html*/ `

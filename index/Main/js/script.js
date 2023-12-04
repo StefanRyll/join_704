@@ -3,6 +3,7 @@ function guestLogin() {
     Join.signedAccount = guest;
     summeryPage();
 }
+
 function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -29,11 +30,9 @@ function logInUser() {
 
 // Sign Up
 async function createAccount() {
-    try { loadAccounts() }
-    catch (e) {
+    try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
-    }
-    finally {
+    } finally {
         let pw = passwordCheck();
         let policy = ppCheck();
         if (pw === true && policy === true) {
@@ -50,6 +49,7 @@ async function createAccount() {
         }
     }
 }
+
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
@@ -89,10 +89,10 @@ function viewPassword() {
 
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = '../IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
+        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
     } else {
         passwordInput.type = 'password';
-        passStatus.src = '../IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
+        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
     }
 }
 
@@ -143,7 +143,7 @@ function taskSaveChanges(x) {
         return checkedUsers;
     };
 
-    let eTaskTodo = eTask.todo;  //Wird behalten
+    let eTaskTodo = eTask.todo; //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
     let eTaskDone = eTask.done; //Wird behalten
@@ -173,6 +173,7 @@ function closeTaskCard() {
     cleanUpAccountsCheck()
     boardPage()
 }
+
 function cleanUpAll() {
     cleanUpAccountsCheck()
     subtaskTemp = []
@@ -209,7 +210,3 @@ function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
-
-
-
-
