@@ -431,6 +431,10 @@ input::-webkit-inner-spin-button {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
+.close-btn-respon {
+    display: none;
+}
+
 
 /* ====================================================== </add new contact overlay> =============================================================== */
 

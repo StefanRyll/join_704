@@ -10,6 +10,27 @@
         padding-left: 90px;
         padding-top: 90px;
     }
+    .close-button {
+        display: none;
+    }
+    .close-btn-respon {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .close-btn-respon-style {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+    }
+    .close-btn-respon-style:active {
+        background-color: var(--lightblue);
+        transition: 0.1s ease-in-out;
+    }
     .content-add-task {
         margin-right: 0;
         overflow-y: scroll;
@@ -23,22 +44,41 @@
     }
     .overlay-container {
         flex-direction: column;
-        height: 70vh;
+        height: 60vh;
     }
     .logo-overlay {
         display: none;
     }
     .overlay-left-container {
+        gap: 0;
         margin-top: 160px;
         margin-bottom: -62px;
         border-radius: 27px 27px 0 0;
+        padding: 20px 20px 100px 48px;
+    }
+    .add-contact-headline {
+        font-size: 40px;
+    }
+    .subtitle-overlay-header {
+        margin-bottom: 12px;
     }
     .overlay-mid-container {
         margin: 0;
     }
     .overlay-right-container-addContact {
         margin-bottom: 160px;
-        padding-left: 68px;
+        padding: 24px;
+    }
+    .addContact-form {
+        gap: 15px;
+    }
+    .frame-157 {
+        width: 300px;
+        height: 24px;
+        font-size: 16px;
+    }
+    .btn-cancel {
+        display: none;
     }
 }
 
