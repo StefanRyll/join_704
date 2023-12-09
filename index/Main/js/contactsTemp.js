@@ -207,7 +207,7 @@ function generateMobileContactDetails(i, color, userInitials, name, mail, phone)
             </div>
         </div>
         <div class="contactInformation">
-            <h3 class="font-size-normal mg-none">Contact Information</h3>
+            <!-- <h3 class="font-size-normal mg-none">Contact Information</h3> -->
             <h3 class="mail-headline">Email</h3><br>
             <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
             <h3>Phone</h3>
