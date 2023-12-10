@@ -484,20 +484,43 @@
                 .name-headline {
                     font-weight: bold;
                 }
-                @media (max-height: 730px) {
-                    .res-left-arrow {
-                        margin: 0;
-                        right: 16px;
-                        top: 8px;
-                    }
-                    .res-contacts-headline {
-                        margin: 8px 0 32px 0;
-                    }
-                    .mail-headline {
-                        margin-top: 24px;
-                    }
-                    .options-btn-div {
-                        bottom: 32px;
-                    }
+                .overlay-left-container {
+                    margin-bottom: -54px;
+                }
+                .overlay-container {
+                    width: 95%;
+                }
+                .frame-157 {
+                    width: 220px;
+                    font-size: 14px;
+                }
+                .add-contact-headline {
+                    font-size: 32px;
+                    height: 60px;
+                }
+                .subtitle-overlay-header {
+                    font-size: 14px;
+                }
+                .add-Contact-logo,
+                .logo-by-details {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+            
+            @media (max-height: 730px) {
+                .res-left-arrow {
+                    margin: 0;
+                    right: 16px;
+                    top: 8px;
+                }
+                .res-contacts-headline {
+                    margin: 8px 0 32px 0;
+                }
+                .mail-headline {
+                    margin-top: 24px;
+                }
+                .options-btn-div {
+                    bottom: 32px;
                 }
             }
