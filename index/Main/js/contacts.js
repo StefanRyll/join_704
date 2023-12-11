@@ -1,44 +1,44 @@
-const user = [{
-        name: "Anton Mayer",
-        email: "antom@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "Anja Schulz",
-        email: "schulz@hotmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "Benedikt Ziegler",
-        email: "benedikt@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "David Eisenberg",
-        email: "davidberg@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "Eva Fischer",
-        email: "eva@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "Emmanuel Mauer",
-        email: "emmanuelma@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "Marcel Bauer",
-        email: "bauer@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-    {
-        name: "Tatiana Wolf",
-        email: "wolf@gmail.com",
-        phone: "+49 1111 111 11 1",
-    },
-];
+// const user = [{
+//         name: "Anton Mayer",
+//         email: "antom@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "Anja Schulz",
+//         email: "schulz@hotmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "Benedikt Ziegler",
+//         email: "benedikt@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "David Eisenberg",
+//         email: "davidberg@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "Eva Fischer",
+//         email: "eva@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "Emmanuel Mauer",
+//         email: "emmanuelma@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "Marcel Bauer",
+//         email: "bauer@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+//     {
+//         name: "Tatiana Wolf",
+//         email: "wolf@gmail.com",
+//         phone: "+49 1111 111 11 1",
+//     },
+// ];
 // let user01 = new Account("Anton Mayer", "antom@gmail.com", null, "+49 1111 111 11 1")
 // Join.accounts.push(user01);
 
@@ -111,10 +111,10 @@ function renderContacts() {
     let contactsList = "";
     let currentInitials = "";
 
-    user.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
+    Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
 
-    for (let i = 0; i < user.length; i++) {
-        const contact = user[i];
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const contact = Join.accounts[i];
         const name = contact.name;
         const mail = contact.email;
         const userInitials = getInitials(contact.name);
@@ -181,7 +181,7 @@ function showDetails(i) {
     setTimeout(() => {
         openContactDetails()
     }, 100);
-    let contact = user[i];
+    let contact = Join.accounts[i];
     let color = contact.color;
     let userInitials = getInitials(contact.name);
     let name = contact.name;
@@ -215,7 +215,7 @@ function openAddContact() {
 }
 
 function openEditContact(i) {
-    let contact = user[i];
+    let contact = Join.accounts[i];
     let color = contact.color;
     let userInitials = getInitials(contact.name);
     let name = contact.name;
@@ -255,8 +255,8 @@ function addContact() {
         phone,
         randomColor
     };
-    user.push(newUser);
-    user.sort((a, b) => a.name.localeCompare(b.name));
+    Join.accounts.push(newUser);
+    Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
     setTimeout(() => {
         successOverlay();
@@ -288,7 +288,7 @@ function editContact(i) {
  * @param {string} i variable for the data in the user array
  */
 function deleteContact(i) {
-    user.splice(i, 1);
+    Join.accounts.splice(i, 1);
 
     closeOverlay();
     closeContactDetails();
