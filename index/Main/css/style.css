@@ -277,6 +277,28 @@ footer {
     /* overflow-y: hidden; */
 }
 
+.close-button {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.style-closebutton {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.style-closebutton:hover {
+    cursor: pointer;
+    background: var(--placeholder);
+    transition: 0.1s ease-in-out;
+}
+
 
 /* ====================================================== <scrollbalken> =============================================================== */
 

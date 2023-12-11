@@ -34,28 +34,27 @@ class Task {
             }
             return iconSrc;
         }
-        let renderWorker = () =>{
-            let htmlSnippet ="";
+        let renderWorker = () => {
+            let htmlSnippet = "";
             for (let i = 0; i < this.worker.length; i++) {
                 const worker = this.worker[i];
                 htmlSnippet += worker.tinyCard()
             }
             return htmlSnippet;
         }
-        let renderSubtasks = ()=>{
-            let htmlSnippet ="";
+        let renderSubtasks = () => {
+            let htmlSnippet = "";
             for (let j = 0; j < this.subTasks.length; j++) {
                 const subTask = this.subTasks[j];
-                if (subTask.done){
-                    htmlSnippet += /*html*/`
+                if (subTask.done) {
+                    htmlSnippet += /*html*/ `
                             <div class="subtask-list">
                                 <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox d-none"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
                                 <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox "> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
                             </div><br>
                     `;
-                }
-                else{
-                    htmlSnippet += /*html*/`
+                } else {
+                    htmlSnippet += /*html*/ `
                             <div class="subtask-list">
                                 <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
                                 <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
@@ -74,7 +73,7 @@ class Task {
                 <div class="taskCardHeader">
                     <div class="category-color">${this.Category}</div>
                     <div onclick="closeTaskCard()">
-                    <svg class="close-button-card cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <svg class="style-closebutton" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                             <rect width="24" height="24" fill="#D9D9D9"/>
                             </mask>
@@ -175,27 +174,25 @@ class Task {
         }
         let prioTag = () => {
             let prioUrl;
-            if (this.prio == "Urgent"){
+            if (this.prio == "Urgent") {
                 prioUrl = "./IMG/prioUrgentIcon.png"
-            }
-            else if (this.prio == "Medium"){
+            } else if (this.prio == "Medium") {
                 prioUrl = "./IMG/prioMediumIcon.png"
-            }
-            else{
+            } else {
                 prioUrl = "./IMG/prioLowIcon.png"
             }
-            return prioUrl;       
+            return prioUrl;
         }
-        let SubtasksDone = () =>{
+        let SubtasksDone = () => {
             let countDone = 0;
             for (let i = 0; i < this.subTasks.length; i++) {
                 const toCheck = this.subTasks[i];
-                if (toCheck.done){
+                if (toCheck.done) {
                     countDone++;
                 }
             }
             return countDone;
-        } 
+        }
 
         return /*html*/ `
             <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
@@ -225,29 +222,29 @@ class Task {
         `
 
     }
-    updateProgressBar(){
+    updateProgressBar() {
         let progressContainer = document.getElementById('tinyTaskCardSubtaskSection')
         let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
-        let variable2 = () =>{
+        let variable2 = () => {
             let countDone = 0;
             for (let i = 0; i < this.subTasks.length; i++) {
                 const toCheck = this.subTasks[i];
-                if (toCheck.done){
+                if (toCheck.done) {
                     countDone++;
                 }
             }
             return countDone;
-        } 
+        }
         if (variable1 == 0) {
             progressContainer.classList.add('d-none')
         }
 
-        let gesamtFortschritt = (variable2() / variable1) *100;
+        let gesamtFortschritt = (variable2() / variable1) * 100;
 
         let progressbar = document.getElementById('progressBar');
 
         progressbar.style.width = `${gesamtFortschritt}%`;
-        console.log("Progressbar Updated", gesamtFortschritt, this.title );
+        console.log("Progressbar Updated", gesamtFortschritt, this.title);
     }
 
     editTask() {
@@ -304,4 +301,3 @@ class Task {
         );
     }
 }
-
