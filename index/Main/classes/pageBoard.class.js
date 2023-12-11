@@ -308,14 +308,14 @@ class Board extends Page {
     }
 
     generateHTMLRenderShortNames(shortNames, x) {
-        return /*html*/ `
+            return /*html*/ `
             <div id="editShortNames${x}" class="accountTag">${shortNames}</div>
         `
-    }
-    // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
-    //     document.getElementById('selectContacts').classList.toggle('d-none');
-    //     document.getElementById('closeContacts').classList.toggle('d-none');
-    // }
+        }
+        // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
+        //     document.getElementById('selectContacts').classList.toggle('d-none');
+        //     document.getElementById('closeContacts').classList.toggle('d-none');
+        // }
     generateHTMLSeperator() {
         return /*html*/ `
               <div class="seperator-add-task">
@@ -346,7 +346,7 @@ class Board extends Page {
     }
 
     generateHTMLDateForm() {
-        return /*html*/ `
+            return /*html*/ `
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
@@ -354,18 +354,18 @@ class Board extends Page {
                     </div>
                 </form>
             `
-    }
-    // generateHTMLDateForm() {
-    //     return /*html*/ `
-    //     <form class="input-date board-task-input">
-    //         <label for="pflichtfeld">Due date<sup>*</sup></label>
-    //         <div class="board-input-date">
-    //             <input type="date" id="datum" name="datum" placeholder="dd/mm/yyyy" name="selected_date" required>
-    //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
-    //         </div>
-    //     </form>
-    //   `
-    // }
+        }
+        // generateHTMLDateForm() {
+        //     return /*html*/ `
+        //     <form class="input-date board-task-input">
+        //         <label for="pflichtfeld">Due date<sup>*</sup></label>
+        //         <div class="board-input-date">
+        //             <input type="date" id="datum" name="datum" placeholder="dd/mm/yyyy" name="selected_date" required>
+        //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
+        //         </div>
+        //     </form>
+        //   `
+        // }
     generateHTMLPrioCategory() {
         return /*html*/ `
                   <div class="prio-category">
@@ -495,7 +495,7 @@ class Board extends Page {
         `
     }
     generateHTMLSelectCategory() {
-        return /*html*/ `
+            return /*html*/ `
               <div class="select-category">
                 <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
                   <span id="technicalTask">Techincal Task</span>
@@ -505,34 +505,34 @@ class Board extends Page {
                 </div>
               </div>
         `
-    }
-    /**This Function close and open the Categories
-     * @param {string}  showSelectCategory show and hidden div
-     */
-    // toggleCategory() { // Onclick in script.js
-    //     document.getElementById('showSelectCategory').classList.toggle('d-none');
-    //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
-    // }
-    /**This is a select function for Input - > Value
-     * @param {string} technicalTask  select the category Technical Task
-     */
-    // selectCategoryTechnical() { // onclick in script.js
-    //     let technicalTask = document.getElementById('technicalTask').textContent;
-    //     let changeInputField = document.getElementById('taskCategoryInput');
-    //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-    //     document.getElementById('showSelectCategory').classList.add('d-none');
-    //     changeInputField.value = technicalTask;
-    // }
-    /**This is a select function for Input - > Value
-     * @param {string} userStory  select the category User Story
-     */
-    // selectCategoryStory() { // onclick in script.js
-    //     let userStory = document.getElementById('userStory').textContent;
-    //     let changeInputField = document.getElementById('taskCategoryInput');
-    //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-    //     document.getElementById('showSelectCategory').classList.add('d-none');
-    //     changeInputField.value = userStory;
-    // }
+        }
+        /**This Function close and open the Categories
+         * @param {string}  showSelectCategory show and hidden div
+         */
+        // toggleCategory() { // Onclick in script.js
+        //     document.getElementById('showSelectCategory').classList.toggle('d-none');
+        //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
+        // }
+        /**This is a select function for Input - > Value
+         * @param {string} technicalTask  select the category Technical Task
+         */
+        // selectCategoryTechnical() { // onclick in script.js
+        //     let technicalTask = document.getElementById('technicalTask').textContent;
+        //     let changeInputField = document.getElementById('taskCategoryInput');
+        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+        //     document.getElementById('showSelectCategory').classList.add('d-none');
+        //     changeInputField.value = technicalTask;
+        // }
+        /**This is a select function for Input - > Value
+         * @param {string} userStory  select the category User Story
+         */
+        // selectCategoryStory() { // onclick in script.js
+        //     let userStory = document.getElementById('userStory').textContent;
+        //     let changeInputField = document.getElementById('taskCategoryInput');
+        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
+        //     document.getElementById('showSelectCategory').classList.add('d-none');
+        //     changeInputField.value = userStory;
+        // }
     generateHTMLSubtask() {
         return /*html*/ `
         <div class="board-task-input button-hover">
@@ -607,7 +607,7 @@ class Board extends Page {
     //     `
     // }
     generateHTMLCloseButtonInSVG() {
-        return /*html*/ `
+            return /*html*/ `
                 <div class="style-closebutton-intask">
                   <svg  onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -619,21 +619,21 @@ class Board extends Page {
                   </svg>
                 </div>
           `
-    }
-    /**
-     * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
-     */
-    // openAddTask() { // onclick in script.js
-    //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
-    // }
-    /** 
-     * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
-     */
+        }
+        /**
+         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
+         */
+        // openAddTask() { // onclick in script.js
+        //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
+        // }
+        /** 
+         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
+         */
     closeAddTask() {
-        slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
-    }
-    /** 
-     * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
-     */
+            slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
+        }
+        /** 
+         * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
+         */
 
 }

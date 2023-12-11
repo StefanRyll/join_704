@@ -7,13 +7,13 @@
     background-color: #1FD7C1;
 }
 
-.close-button-card:hover {
+
+/* .close-button-card:hover {
     cursor: pointer;
     background-color: #D9D9D9;
     border-radius: 100%;
     transition: 100ms ease-in-out;
-}
-
+} */
 
 .category-color {
     display: flex;
@@ -26,8 +26,8 @@
 
 .taskCard {
     background-color: white;
-    width: 525px;
-    height: 931px;
+    width: 40%;
+    height: 85%;
     padding: 48px 40px 48px 40px;
     border-radius: 30px;
     gap: 0px;
@@ -43,6 +43,7 @@
     /* height: 36px; */
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 16px;
 }
 
 .taskCard h1 {
@@ -51,8 +52,6 @@
     margin: 0;
     width: 445px;
     height: 219px;
-
-
 }
 
 .taskCard p {
@@ -60,8 +59,6 @@
     width: 100%;
     text-align: start;
     margin: 0;
-
-
 }
 
 .taskCardAttribute {
@@ -73,11 +70,12 @@
 .taskCardAttribute p {
     width: 6em;
     height: 24px;
-
 }
-.taskCardAttribute img{
+
+.taskCardAttribute img {
     margin-left: -1.2em;
 }
+
 .taskCardAssignment {
     display: flex;
     flex-direction: column;
@@ -98,6 +96,7 @@
 .deleteBtn:hover {
     background-image: url("../IMG/deleteBtnHover.png");
     cursor: pointer;
+    transition: 0.1s ease-in-out;
 }
 
 .taskCardFooter {
@@ -116,6 +115,7 @@
 .editBtn:hover {
     background-image: url("../IMG/editBtnHover.png");
     cursor: pointer;
+    transition: 0.1s ease-in-out;
 }
 
 .style-task {
@@ -229,7 +229,6 @@
     line-height: 120%;
 }
 
-
 .assignContactsCard {
     display: flex;
     padding: 8px 14px;
@@ -252,7 +251,6 @@
     font-weight: 400;
     line-height: 120%;
 }
-
 
 .assignContactsCard img:hover {
     cursor: pointer;

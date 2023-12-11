@@ -3,7 +3,7 @@
                     margin-left: 170px;
                 }
             }
-                    
+            
             @media (max-width: 1254px) {
                 .vector-blue,
                 .subtitle-contacts {
@@ -373,6 +373,12 @@
             @media (max-width: 630px) {
                 .respon-add-contact {
                     right: 32px;
+                }
+            }
+            
+            @media (max-width: 530px) {
+                .frame-157 {
+                    width: 280px !important;
                 }
             }
             

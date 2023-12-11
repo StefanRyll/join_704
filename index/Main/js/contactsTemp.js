@@ -19,11 +19,11 @@ function generateHtmlContactDetails(i, color, userInitials, name, mail, phone) {
             <div class="name">
                 <h2 class="name-headline">${name}</h2>
                 <a class="contactsIcons">
-                    <div onclick="openEditContact(${i})" class="editIcon">
-                        <img class="editSymbol" src="./IMG/edit.png"> <span>Edit</span>
+                    <div onclick="openEditContact(${i})" class="editBtn">
+                       
                     </div>
-                    <div onclick="deleteContact(${i})" class="deleteIcon">
-                        <img class="deleteSymbol" src="./IMG/delete.png"> <span>Delete</span>
+                    <div onclick="deleteContact(${i})" class="deleteBtn">
+                       
                     </div>
                 </a>
             </div>
