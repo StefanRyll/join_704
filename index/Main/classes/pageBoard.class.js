@@ -196,19 +196,27 @@ class Board extends Page {
                     <div class="board-task-middle">
                         <div>
                             ${this.generateHTMLLeftSide(x)}
-                            <div class="field-required-text field-required-text-window responsiveNone">
+                            <div class="field-required-text field-required-text-window responsive">
                                 <sub>*</sub><span>This field is required</span>
                             </div>
                         </div>
                         ${this.generateHTMLSeperator()}
                         <div>
                             ${this.generateHTMLRightSide(x)}
-                            ${this.generateHTMLAddTaskButtons(x)}
+                            <div class="responsive">
+                                ${this.generateHTMLAddTaskButtons(x)}
+                            </div>
                         </div>
                     </div>
-                    <div class="content-board-task-footer">
-                        ${this.generateHTMLAddTaskButtons(x)}  
+                    <div class="board-task-footer responsiveMin">
+                        <div class="field-required-text">
+                            <sub>*</sub><span>This field is required</span>
+                        </div>
+                        ${this.generateHTMLAddTaskButtons(x)}
                     </div>
+                    <!-- <div class="content-board-task-footer">
+                         
+                    </div> -->
                 </div>
           `
     }
@@ -332,6 +340,7 @@ class Board extends Page {
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
+                  <!-- ${this.generateHTMLAddTaskButtonsResponsive(x)} -->
             </div>
           `
     }
@@ -555,10 +564,18 @@ class Board extends Page {
         </div>
         `
     }
+    generateHTMLAddTaskButtonsResponsive(x) {
+        return /*html*/ `
+            <div class="addTask-button addTask-button-window responsiveNone">
+                <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
+                <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+            </div>
+        `
+    }
 
     generateHTMLAddTaskButtons(x) {
         return /*html*/ `
-            <div class="addTask-button addTask-button-window responsiveNone">
+            <div class="addTask-button addTask-button-window">
                 <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
@@ -620,20 +637,8 @@ class Board extends Page {
                 </div>
           `
         }
-        /**
-         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show  
-         */
-        // openAddTask() { // onclick in script.js
-        //     slideAddTask = document.getElementById('slideAddTask').classList.add('show-bg-task');
-        // }
-        /** 
-         * @param {string}  slideAddTask animtaion, when you click on addTask Button slide show 
-         */
+       
     closeAddTask() {
             slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
         }
-        /** 
-         * @param {function} createTaskFromBoard this function create a JSON and Push in a ARRAY (createTasks) 
-         */
-
 }
