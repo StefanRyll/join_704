@@ -14,17 +14,17 @@ class Contact {
     }
     tinyCard(x) {
         return /*html*/ `
-        <div class="tinyAccountCard" onclick="showContact(${x})">
+        <div class="tinyAccountTaskCard" onclick="showContact(${x})">
             <div class="accountTag">${this.shortname}</div>
             <div>
                 <div class="contactName">${this.name}</div>
-                <div class="contactEmail">${this.email}</div>
+                <!-- <div class="contactEmail">${this.email}</div> -->
             </div>
         </div>
         `
     }
-    nameTag(){
-        return /*html*/`
+    nameTag() {
+        return /*html*/ `
             <div class="accountTag">${this.shortname}</div>
 
         `
@@ -37,7 +37,7 @@ class Contact {
     }
 
     generateHTMLCheckedNone(x) {
-        return /*html*/`
+        return /*html*/ `
             <div onclick="addShortNames('${this.shortname}', ${x})" id="tinyAccountCardCheckedNone${x}" class="checked-none">
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
@@ -53,7 +53,7 @@ class Contact {
     }
 
     generateHTMLChecked(x) {
-        return /*html*/`
+        return /*html*/ `
             <div onclick="removeShortNames(${x})" id="tinyAccountCardChecked${x}" class="checked d-none">
                 <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">

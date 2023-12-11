@@ -86,17 +86,17 @@ class Task {
                 
                 <h1>${this.title}</h1>
                 <p>${this.desc}</p>
+                <div class="taskCard-date-prio">
+                    <div class="taskCardAttribute">
+                        <p>Due date: </p>
+                        <p>${formatedDate()}</p>
+                    </div>
 
-                <div class="taskCardAttribute">
-                    <p>Due date: </p>
-                    <p>${formatedDate()}</p>
+                    <div class="taskCardAttribute">
+                        <p>Priority: </p>
+                        <img src="${formatedPrio()}">
+                    </div>
                 </div>
-
-                <div class="taskCardAttribute">
-                    <p>Priority: </p>
-                    <img src="${formatedPrio()}">
-                </div>
-
                 <div class="taskCardAssignment">
                     <p>Assigned to: </p>
                     <div id="taskCardAssinedList">
