@@ -50,6 +50,7 @@
     .board-task-middle {
         height: 60vh;
         overflow-y: scroll;
+        padding-bottom: 50px;
     }
 
     .assign-container {
@@ -57,7 +58,7 @@
     }
 
     .open-assign-container {
-        position: relative; 
+        position: relative;
     }
 
     .checkbox-container-button {
@@ -65,9 +66,50 @@
     }
 
     .checkbox-container {
+        width: 39.8em;
+    }
+
+    .right-side {
+        margin-left: 75px;
+        margin-right: 48px;
+    }
+
+    #styleAddTask {
+        margin-bottom: 0;
+    }
+
+    .board-input-date {
+        width: 40.2em;
+    }
+
+    .board-input-date input {
         width: 100%;
     }
-    
+
+    .prio-category-container {
+        width: 40.2em;
+    }
+
+    /* .addTask-button {
+        display: none;
+    } */
+
+    .select-category {
+        position: relative;
+        width: 99%;
+    }
+
+    .select-task-category-container {
+        width: 92%;
+    }
+
+    .create-subtask {
+        position: relative;
+    }
+
+    #hiddenSubtask {
+        margin-bottom: 0;
+    }
 }
 
 

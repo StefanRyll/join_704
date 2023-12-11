@@ -207,8 +207,7 @@ class Board extends Page {
                         </div>
                     </div>
                     <div class="content-board-task-footer">
-                       
-                        
+                        ${this.generateHTMLAddTaskButtons(x)}  
                     </div>
                 </div>
           `
@@ -559,7 +558,7 @@ class Board extends Page {
 
     generateHTMLAddTaskButtons(x) {
         return /*html*/ `
-            <div class="addTask-button addTask-button-window ">
+            <div class="addTask-button addTask-button-window responsiveNone">
                 <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
