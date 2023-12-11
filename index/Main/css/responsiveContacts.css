@@ -368,6 +368,18 @@
                     filter: brightness(3.5);
                     transition: 0.1s ease-in-out;
                 }
+                .overlay-style {
+                    transform: translateY(200%);
+                }
+                .show-overlay {
+                    transform: translateY(0);
+                }
+                .overlay-success {
+                    transform: translateY(200%);
+                }
+                .show-success-overlay {
+                    transform: translateY(0);
+                }
             }
             
             @media (max-width: 630px) {
@@ -472,7 +484,7 @@
                     width: 95%;
                 }
                 .frame-157 {
-                    width: 220px;
+                    width: 220px !important;
                     font-size: 14px;
                 }
                 .add-contact-headline {
@@ -484,8 +496,8 @@
                 }
                 .add-Contact-logo,
                 .logo-by-details {
-                    width: 100px;
-                    height: 100px;
+                    width: 80px;
+                    height: 80px;
                 }
             }
             
@@ -503,5 +515,8 @@
                 }
                 .options-btn-div {
                     bottom: 32px;
+                }
+                .loginButtons {
+                    margin-top: 16px;
                 }
             }

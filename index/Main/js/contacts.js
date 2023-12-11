@@ -180,7 +180,7 @@ function getColor(name) {
 function showDetails(i) {
     setTimeout(() => {
         openContactDetails()
-    }, 100);
+    }, 200);
     let contact = Join.accounts[i];
     let color = contact.color;
     let userInitials = getInitials(contact.name);

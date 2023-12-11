@@ -146,36 +146,6 @@ body {
     margin-top: 40px;
 }
 
-
-/* button {                   ICH MUSSTE DIE BUTTONS AUSSCHALTEN DA IM ADD TASK AUCH ANDERE BUTTONS GIBT DIE ABER EINE KOMPLETT ANDERE CSS EIGENSCHAFTEN HABEN = PRIO _> BUTTONS
-    border: none;
-    width: 91px;
-    height: 49px;
-    padding: 15px, 16px, 15px, 16px;
-    border-radius: 8px;
-    gap: 10px;
-    background: var(--general-button-inactive);
-    color: #ffffff;
-    letter-spacing: 0em;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: var(--general-button-hover);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    transition: 0.1s ease-in-out;
-} */
-
-
-/* button:active {
-    background-color: var(--general-button-active);
-} */
-
 h1 {
     margin: 0;
     font-size: 61px;
@@ -297,6 +267,44 @@ footer {
     cursor: pointer;
     background: var(--placeholder);
     transition: 0.1s ease-in-out;
+}
+
+.overlay-style {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    transform: translateX(200%);
+    transition: all 225ms ease-in-out;
+}
+
+.show-overlay {
+    transform: translateX(0);
+}
+
+.overlay-success {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 68px;
+    justify-content: center;
+    z-index: 2;
+    transform: translateX(200%);
+    transition: all 225ms ease-in-out;
+}
+
+.show-success-overlay {
+    transform: translateX(0);
 }
 
 

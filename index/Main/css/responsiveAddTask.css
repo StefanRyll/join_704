@@ -4,170 +4,131 @@
     }
 }
 
-
 @media (max-width: 1330px) {
     #content {
         padding: 0;
     }
-
     .content-add-task {
         padding-left: 15%;
         padding-top: 90px;
     }
-
     /* .overlay-container {
         height: 60%;
     } */
-
     .content-add-task {
         margin-right: 0;
         /* overflow-y: scroll; */
     }
-
     .board-task-middle {
         display: flex;
         flex-direction: column;
     }
-
     .seperator-add-task {
         display: none;
     }
-
     .frame-157 {
         width: 370px;
     }
-
-
     .input-title {
         width: 40em;
     }
-
     .responsive {
         display: none;
     }
-
     /* .input-description {
         width: 40em;
     } */
-
     .input-description textarea {
         height: 150px;
         width: 30em;
     }
-
     .board-task-middle {
         height: 50vh;
         overflow-y: scroll;
         padding-bottom: 50px;
     }
-
     .assign-container {
         width: 40em;
     }
-
     .open-assign-container {
         position: relative;
     }
-
     .checkbox-container-button {
         width: 100%;
     }
-
     .checkbox-container {
         width: 39.8em;
     }
-
     .right-side {
         margin-left: 75px;
         margin-right: 48px;
     }
-
     #styleAddTask {
         margin-bottom: 0;
     }
-
     .board-input-date {
         width: 40.2em;
     }
-
     /* .board-input-date input {
         width: 100%;
     } */
-
     .prio-category-container {
         width: 40.2em;
     }
-
     /* .addTask-button {
         display: none;
     } */
-
     .select-category {
         position: relative;
         width: 99%;
     }
-
     .select-task-category-container {
         width: 92%;
     }
-
     .create-subtask {
         position: relative;
     }
-
     #hiddenSubtask {
         margin-bottom: 0;
     }
 }
-
 
 @media (max-width: 1188px) {
     .content-add-task {
         padding-top: 90px;
         padding-left: 90px;
     }
-
     .input-title {
         width: 100%;
     }
-
     .input-description {
         width: 95%;
     }
-
     .input-description textarea {
         height: 150px;
         width: 95%;
     }
-
     .board-task-input {
         width: 100%;
     }
-
     .assign-container {
         width: 100%;
     }
-
     .board-input-date {
         width: 100%;
     }
-
     #hiddenSelectCategory {
         width: 100%;
     }
-
     #taskCategoryInput {
         width: 100%;
     }
-
     .category {
         width: 100%;
     }
-
     .prio-category {
         width: 100%;
     }
-
     .prio-category-container {
         width: 100%;
     }
