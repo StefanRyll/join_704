@@ -49,16 +49,16 @@ class Task {
                 if (subTask.done) {
                     htmlSnippet += /*html*/ `
                             <div class="subtask-list">
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox d-none"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox "> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
-                            </div><br>
+                                <div class="checkbox-div"><div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="check-box-task d-none"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div></div>
+                                <div class="checkbox-div"><div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div></div>
+                            </div>
                     `;
                 } else {
                     htmlSnippet += /*html*/ `
                             <div class="subtask-list">
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="checkBox"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="checkBox d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
-                            </div><br>
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="check-box-task"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="check-box-task d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
+                            </div>
                     `;
                 }
             }

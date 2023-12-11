@@ -46,6 +46,7 @@ nav {
 .navs:hover {
     cursor: pointer;
     background-color: #091931;
+    transition: 0.1s ease-in-out;
 }
 
 
@@ -146,6 +147,13 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 104px
+}
+
+.legal-policy:hover {
+    cursor: pointer;
+    color: var(--lightblue);
+    transition: 0.1s ease-in-out;
+    transform: scale(1.1, 1.1);
 }
 
 .popupAccount {
