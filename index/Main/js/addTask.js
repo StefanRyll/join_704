@@ -377,13 +377,13 @@ function addShortNames(name, x) {
 
 function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');
-    // container.innerHTML += JoinBoard.generateHTMLRenderShortNames(name, x);
+    container.innerHTML += JoinBoard.generateHTMLRenderShortNames(name, x);
 }
 
 
 function removeShortNames(x) {
     let removeName = document.getElementById(`editShortNames${x}`);
-    // removeName.remove();
+    removeName.remove();
 }
 
 

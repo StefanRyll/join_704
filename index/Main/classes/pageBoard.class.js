@@ -196,7 +196,7 @@ class Board extends Page {
                     <div class="board-task-middle">
                         <div>
                             ${this.generateHTMLLeftSide(x)}
-                            <div class="field-required-text field-required-text-window">
+                            <div class="field-required-text field-required-text-window responsiveNone">
                                 <sub>*</sub><span>This field is required</span>
                             </div>
                         </div>
