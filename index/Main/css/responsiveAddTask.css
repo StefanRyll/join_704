@@ -132,4 +132,12 @@
     .prio-category-container {
         width: 100%;
     }
+
+    .checkbox-container {
+        width: 98%;
+    }
+
+    .select-task-category-container {
+        width: 88%;
+    }
 }
