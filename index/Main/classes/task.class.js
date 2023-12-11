@@ -49,8 +49,8 @@ class Task {
                 if (subTask.done) {
                     htmlSnippet += /*html*/ `
                             <div class="subtask-list">
-                                <div class="checkbox-div"><div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="check-box-task d-none"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div></div>
-                                <div class="checkbox-div"><div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div></div>
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="d-none check-box-task"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
+                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
                             </div>
                     `;
                 } else {
