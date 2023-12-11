@@ -122,8 +122,8 @@
 
 @media (max-width: 1188px) {
     .content-add-task {
-        padding-top: 90px;
-        padding-left: 90px;
+        padding-top: 50px;
+        padding-left: 50px;
     }
 
     .input-title {
@@ -183,6 +183,11 @@
 }
 
 @media (max-width: 850px) {
+    .content-add-task {
+        padding-top: 120px;
+        height: 80vh;
+    }
+
     .btn-create {
         width: 150px !important;
     }
@@ -193,10 +198,7 @@
 }
 
 @media (max-width: 850px) {
-    .content-add-task {
-        padding-top: 80px;
-        height: 80vh;
-    }
+  
 }
 
 @media (max-width: 740px) {
@@ -205,4 +207,65 @@
         height: 80vh;
         padding-left: 10px;
     }
+}
+
+@media (max-width: 650px) {
+    .content-add-task {
+        padding: 5px;
+    }
+
+    ::-webkit-scrollbar {
+        background: transparent;
+    }
+    /* Track */
+     ::-webkit-scrollbar-track {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+    /* Handle */
+     ::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+}
+
+@media (max-width: 520px) {
+    .content-add-task {
+        padding-top: 20px;
+    }
+
+    .content-headline-add-task {
+        margin-left: 5px;
+    }
+
+    .content-headline-add-task h3 {
+        font-size: 40px;
+    }
+
+    .field-required-text {
+        font-size: 12px;
+    }
+
+    .btn-create {
+        width: 100px !important;
+    }
+
+    .btn-dark-blue {
+        font-size: 12px;
+        padding: 2px;
+    }
+}
+
+@media (max-width: 414px) {
+    .content-add-task {
+        padding-top: 50px;
+    }
+
+    /* .btn-create {
+        width: 120px;
+    } */
+
+    /* .field-required-text {
+        font-size: 15px;
+    } */
 }
