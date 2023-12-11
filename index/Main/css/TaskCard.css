@@ -50,8 +50,6 @@
     font-size: 53px;
     text-align: left;
     margin: 0;
-    width: 445px;
-    height: 219px;
 }
 
 .taskCard p {
@@ -179,11 +177,25 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    padding-left: 50px;
+    padding-left: 18px;
 }
 
 .subtask-list img {
     cursor: pointer;
+}
+
+.checkbox-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.check-box-task {
+    width: 100%;
+}
+
+.subtask-text {
+    text-align: center;
 }
 
 #taskCardETitle {
