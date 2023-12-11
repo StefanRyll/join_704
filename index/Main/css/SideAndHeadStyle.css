@@ -112,7 +112,13 @@ nav {
     background-image: url("../IMG/help.png");
     background-size: cover;
     width: 20px;
-    height: 20px;
+    height: 21px;
+}
+
+.infoButton:hover {
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    transform: scale(1.1, 1.1);
 }
 
 .userImg {
@@ -130,6 +136,8 @@ nav {
 
 .userImg:hover {
     cursor: pointer;
+    background-color: var(--grey);
+    transition: 0.1s ease-in-out;
 }
 
 .accountIssues {
