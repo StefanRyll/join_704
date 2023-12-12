@@ -62,7 +62,8 @@
         bottom: 0;
         background-color: var(--dark-blue);
         color: white;
-        z-index: 1;
+        z-index: 1;  
+        transform: translateY(100px);
     }
 
     .respon-logo {
@@ -87,28 +88,32 @@
         border-radius: 8px;
         text-align: center;
     }
-    
+
     .respon-footer-buttons:hover {
         cursor: pointer;
         background-color: var(--general-button-active);
     }
 
     .board-task-middle {
-        height: 30vh;
+        height: 25vh;
+    }
+
+    .accountIssues {
+        padding-right: 10px;
     }
 
     .content-headline-add-task h3 {
-        font-size: 40px;
+        font-size: 20px !important;
     }
 
     .content-add-task {
         padding-top: 20px;
+        padding-left: 5px;
     }
 
     .content-headline-add-task h3 {
         font-size: 40px;
     }
-
 
     .checkbox-container {
         width: 97%;
