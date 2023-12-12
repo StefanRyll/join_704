@@ -1,10 +1,12 @@
 class Board extends Page {
     boardContent() {
         return /*html*/ `
+         <div class="res-content-board">
     <div class="frame-192">
         <h2>
             Board
         </h2>
+       
         <div class="frame-123">
             <div class="input-search">
                 <input type="search" name="find task" id="searchTask" placeholder="Find Task" onkeyup="filterTaskNames()">
@@ -28,9 +30,8 @@ class Board extends Page {
     </div>
 
     <!----------------------------- ACTION BAR - BOARD ----------------------------------->
-
+    
     <div class="frame-136">
-
         <div  class="board-actionbar"> 
             <div class="lanes">
                 <p>To do</p>
@@ -41,14 +42,15 @@ class Board extends Page {
                     </svg>
                 </div>
             </div>
-            <div class="empty-tasks d-none" id="emptyTaskTodo">
-                <p>No tasks To do</p>
-            </div>
+            
+           
             <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo'); checkDragArea()" ondragleave="removeHighlight('ondropTodo'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
+                <div class="empty-tasks d-none" id="emptyTaskTodo">
+                    <p>No tasks To do</p>
+                </div>
                 <div  class="canban-style" id="kambanTodo"></div>
             </div>
         </div>
-
         <div  class="board-actionbar">
             <div class="lanes">
                 <p>In progress</p>
@@ -59,14 +61,15 @@ class Board extends Page {
                     </svg>
                 </div>
             </div>
-            <div class="empty-tasks d-none" id="emptyTaskInprogress">
-                <p>No tasks In progress</p>
-            </div>
+
+            
             <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress'); checkDragArea()" ondragleave="removeHighlight('ondropProgress'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
+                <div class="empty-tasks d-none" id="emptyTaskInprogress">
+                    <p>No tasks In progress</p>
+                </div>
                 <div class="canban-style" id="kambanInprogress"></div>
             </div>
         </div>
-
         <div  class="board-actionbar">
             <div class="lanes">
                 <p>Await feedback</p>
@@ -77,25 +80,28 @@ class Board extends Page {
                     </svg>
                 </div>
             </div>
-            <div class="empty-tasks" id="emptyTaskFeedback">
-                <p>No tasks Await feedback</p>
-            </div>
+
+            
             <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback'); checkDragArea()" ondragleave="removeHighlight('ondropFeedback'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropFeedback')" class="drag-area">
+                <div class="empty-tasks" id="emptyTaskFeedback">
+                    <p>No tasks Await feedback</p>
+                </div>
                 <div  class="canban-style" id="kambanFeedback"></div>
             </div>
         </div>
-
         <div class="board-actionbar">
             <div class="lanes">
                 <p>Done</p>
             </div>
-            <div class="empty-tasks" id="emptyTaskDone">
-                <p>No tasks Done</p>
-            </div>
+            
             <div id="ondropDone" ondrop="moveTo('Done'); removeHighlight('ondropDone'); checkDragArea()" ondragleave="removeHighlight('ondropDone'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropDone')" class="drag-area">
+            <div class="empty-tasks" id="emptyTaskDone">
+                    <p>No tasks Done</p>
+                </div>
                 <div  class="canban-style" id="kambanDone" ></div>
             </div>
         </div>
+    </div>
     </div>
 
     <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
