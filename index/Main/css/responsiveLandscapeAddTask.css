@@ -63,7 +63,7 @@
         background-color: var(--dark-blue);
         color: white;
         z-index: 1;  
-        transform: translateY(100px);
+        /* transform: translateY(100px); */
     }
 
     .respon-logo {

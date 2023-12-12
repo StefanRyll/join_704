@@ -14,13 +14,8 @@
         padding-top: 90px;
     }
 
-    /* .overlay-container {
-        height: 60%;
-    } */
-
     .content-add-task {
         margin-right: 0;
-        /* overflow-y: scroll; */
     }
 
     .board-task-middle {
@@ -43,10 +38,6 @@
     .responsive {
         display: none;
     }
-
-    /* .input-description {
-        width: 40em;
-    } */
 
     .input-description textarea {
         height: 150px;
@@ -90,17 +81,9 @@
         background-color: white;
     }
 
-    /* .board-input-date input {
-        width: 100%;
-    } */
-
     .prio-category-container {
         width: 40.2em;
     }
-
-    /* .addTask-button {
-        display: none;
-    } */
 
     .select-category {
         position: relative;
@@ -197,10 +180,6 @@
     }
 }
 
-@media (max-width: 850px) {
-  
-}
-
 @media (max-width: 740px) {
     .content-add-task {
         padding-top: 40px;
@@ -243,13 +222,11 @@
     ::-webkit-scrollbar {
         background: transparent;
     }
-    /* Track */
      ::-webkit-scrollbar-track {
         background: transparent;
         box-shadow: none;
         border: none;
     }
-    /* Handle */
      ::-webkit-scrollbar-thumb {
         background: transparent;
     }
