@@ -42,7 +42,7 @@ class Contact {
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
                         <div id="shortname${x}" class="accountTag">${this.shortname}</div>
-                        <div id="contactName${x}">${this.name}</div>
+                        <div id="contactName${x}" class="accountName">${this.name}</div>
                     </div>
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
                         <img src="./IMG/check_empty.svg" alt="">
@@ -58,7 +58,7 @@ class Contact {
                 <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
                         <div class="accountTag">${this.shortname}</div>
-                        <div>${this.name}</div>
+                        <div class="accountName">${this.name}</div>
                     </div>
                     <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">
                         <img src="./IMG/check_check.svg" alt="Checked">
