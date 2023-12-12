@@ -54,7 +54,7 @@
     }
 
     .board-task-middle {
-        height: 50vh;
+        height: 55vh;
         overflow-y: scroll;
         padding-bottom: 50px;
     }
@@ -214,10 +214,12 @@
 
     .left-side {
         margin-left: 10px;
+        margin-right: 20px;
     }
 
     .right-side {
         margin-left: 10px;
+        margin-right: 20px;
     }
 
     .field-required-text {
@@ -350,10 +352,58 @@
         font-size: 12px;
         padding: 2px;
     }
+
+    .create-subtask ul {
+        width: 92%;
+    }
+
+    .fix-container {
+        width: 98%;
+    }
+
+    .fix-container input {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 414px) {
+    .board-task-middle {
+        height: 50vh;
+    }
+
     .content-add-task {
         padding-top: 50px;
+    }
+
+    .input-description textarea {
+        padding: 0.5em;
+    }
+
+    .select-task-category-container {
+        width: 82%;
+    }
+
+    .board-task-input input {
+        padding: 0.75em 0.2em;
+    }
+
+    .open-subtask {
+        position: relative;
+    }
+
+    .subtask-style-position {
+        display: flex;
+        position: absolute;
+        right: 2px;
+    }
+
+    .board-task-input-button-style input {
+        padding: 0.75em 0.2em;
+    }
+}
+
+@media (max-width: 350px) {
+    .board-task-middle {
+        height: 23vh;
     }
 }
