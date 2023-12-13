@@ -9,10 +9,10 @@ let JoinAbout = new About();
 let JoinContacts = new Contacts();
     // Accounts
 const guest = new Account("Guest", "email@join.de", "");
-const user01 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com", "Gregor2023")
-const user02 = new Account("Florian", "florian.rehm@developerakademie.com", "Password123")
-const user03 = new Account("Stefan", "Stefan@developerakademie.com", "Password123")
-const user04 = new Account("Dominik", "Dominik@developerakademie.com", "Password123")
+const user01 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com",null, "Gregor2023")
+const user02 = new Account("Florian", "florian.rehm@developerakademie.com", null,"Password123")
+const user03 = new Account("Stefan", "Stefan@developerakademie.com", null,"Password123")
+const user04 = new Account("Dominik", "Dominik@developerakademie.com", null,"Password123")
 const user05 = new Contact("Anton Mayer", "antom@gmail.com", "+49 1111 111 11 1")
 const user06 = new Contact("Anja Schulz", "schulz@hotmail.com", "+49 1111 111 11 1")
 const user07 = new Contact("Benedikt Ziegler", "benedikt@gmail.com", "+49 1111 111 11 1")
@@ -41,31 +41,31 @@ Join.accounts.push(user12)
 // Tasks
 // let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", "2023-9-30", "Medium", "User Story", "Open")
 // let task02 = new Task("Abwaschen", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", "2023-9-31", "Medium", "User Story", "Open")
-let task03 = new Task("Aufbau", undefined, "Jemand muss alle Party Möbel aufstellen", "2023-9-29", "Medium", "User Story", undefined, false, false , true, false)
+// let task03 = new Task("Aufbau", undefined, "Jemand muss alle Party Möbel aufstellen", "2023-9-29", "Medium", "User Story", undefined, false, false , true, false)
 
 
-let subtask01 = new Subtask ("Tische", undefined)
-let subtask02 = new Subtask ("Stühle", undefined)
-let subtask03 = new Subtask ("Getränke kalt stellen", true)
-let subtask04 = new Subtask ("Aschenbecher für Raucher (draußen)", undefined)
+// let subtask01 = new Subtask ("Tische", undefined)
+// let subtask02 = new Subtask ("Stühle", undefined)
+// let subtask03 = new Subtask ("Getränke kalt stellen", true)
+// let subtask04 = new Subtask ("Aschenbecher für Raucher (draußen)", undefined)
 
-task03.worker = [
-    Join.accounts[1],
-    Join.accounts[2],
-    Join.accounts[3],
-    ]
+// task03.worker = [
+//     Join.accounts[1],
+//     Join.accounts[2],
+//     Join.accounts[3],
+//     ]
 
-task03.subTasks = [
-    subtask01,
-    subtask02,
-    subtask03,
-    subtask04,
-]
+// task03.subTasks = [
+//     subtask01,
+//     subtask02,
+//     subtask03,
+//     subtask04,
+// ]
+// Join.tasks.push(task03);
 // let task04 = new Task("Meeting für Join", Join.accounts[1], "Wir besprechen wie wir das KambanBoard bauen", "2024-01-10", "Medium", "User Story", "Open")
 // task01.switchStatus("1");
 // Join.tasks.push(task01);
 // Join.tasks.push(task02);
-Join.tasks.push(task03);
 // Join.tasks.push(task03);
 // Join.tasks.push(task04);
 let body = document.getElementById('body')
