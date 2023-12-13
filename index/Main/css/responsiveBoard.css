@@ -2,7 +2,6 @@
     /* .res-content-board {
         width: 100%
     } */
-
     .frame-136 {
         display: flex;
         justify-content: flex-start;
@@ -10,19 +9,16 @@
         width: 100%;
         padding-right: 20px;
     }
-
     .frame-192 {
         width: 830px;
         padding-right: 20px;
     }
-
 }
 
 @media (max-width: 1420px) {
     .frame-136 {
         margin-left: 62px;
     }
-
     .frame-192 {
         margin-left: 62px;
     }
@@ -39,11 +35,4 @@
         display: inline-table;
         padding-top: 0;
     }
-}
-
-
-.style-checkbox-displayflex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

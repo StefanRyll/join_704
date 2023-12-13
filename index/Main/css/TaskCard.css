@@ -178,19 +178,50 @@
     align-items: center;
     gap: 5px;
     padding-left: 18px;
+    width: 300px;
+    height: 32px;
 }
 
 .subtask-list img {
     cursor: pointer;
 }
 
-
-/* .check-box-task {
+.style-subtask-checkbox {
     width: 100%;
-} */
+    height: 100%;
+}
 
 .subtask-text {
     text-align: center;
+}
+
+.style-checkbox-displayflex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    height: 100%;
+}
+
+.check-box-task {
+    padding-top: 5px;
+    width: 24px;
+    height: 30px;
+}
+
+.checkbox-img-taskCard {
+    object-fit: cover;
+}
+
+.checkbox-img-taskCard-check {
+    margin-top: 4px;
+    margin-left: 3px;
+    object-fit: cover;
+}
+
+.subtask-text {
+    margin-left: 3px;
 }
 
 #taskCardETitle {

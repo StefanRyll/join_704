@@ -51,14 +51,14 @@ class Task {
                             <div class="subtask-list">
                                 <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox d-none " >
                                 <div class="style-checkbox-displayflex">
-                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/check_empty.svg" alt=""></div>
-                                    <div>${subTask.text}</div>
+                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt=""></div>
+                                    <div class="subtask-text">${subTask.text}</div>
                                 </div>
                                 
                                 <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox">
-                                <div  class="style-checkbox-displayflex">
-                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt=""></div>
-                                    <div>${subTask.text}</div>
+                                <div class="style-checkbox-displayflex">
+                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt=""></div>
+                                    <div class="subtask-text">${subTask.text}</div>
                                 </div>
                                 </div>
                             </div>
@@ -68,14 +68,14 @@ class Task {
                             <div class="subtask-list">
                                 <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox">
                                 <div class="style-checkbox-displayflex">
-                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/check_empty.svg" alt=""></div>
-                                    <div>${subTask.text}</div>
+                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt=""></div>
+                                    <div class="subtask-text">${subTask.text}</div>
                                 </div>
                                 </div>
                                 <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox d-none" >
                                 <div class="style-checkbox-displayflex">
-                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt=""></div>
-                                        <div>${subTask.text}</div>
+                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt=""></div>
+                                        <div class="subtask-text">${subTask.text}</div>
                                 </div>
                                 </div>
                             </div>
