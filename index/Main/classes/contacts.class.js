@@ -5,7 +5,7 @@
  * Zt Usability, kann halt keiner hinterher sagen, er hat von dem Projekt "nix gewusst". 
  */
 class Contact {
-    constructor(name, email, tel) {
+    constructor(name, email, tel = "+49 1111 111 11 1") {
         this.name = name;
         this.email = email;
         this.tel = tel;

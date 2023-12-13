@@ -2,32 +2,32 @@ class Board extends Page {
     boardContent() {
         return /*html*/ `
          <div class="res-content-board">
-    <div class="frame-192">
-        <h2>
-            Board
-        </h2>
+            <div class="frame-192">
+                <h2>
+                    Board
+                </h2>
        
-        <div class="frame-123">
-            <div class="input-search">
-                <input type="search" name="find task" id="searchTask" placeholder="Find Task" onkeyup="filterTaskNames()">
-                <img class="separator-find-task" src="/assets/img/Vector 3.png" alt="separator searchfield">
-                <div class="search-icon">
-                    <img src="/assets/img/search.png" alt="search Image">
+                <div class="frame-123">
+                    <div class="input-search">
+                        <input type="search" name="find task" id="searchTask" placeholder="Find Task" onkeyup="filterTaskNames()">
+                        <img class="separator-find-task" src="/assets/img/Vector 3.png" alt="separator searchfield">
+                        <div class="search-icon">
+                            <img src="/assets/img/search.png" alt="search Image">
+                        </div>
+                    </div>
+                    <button onclick="openAddTask(0)" class="button-add-task">
+                        <p>Add task</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <mask id="mask0_87727_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+                              <rect width="32" height="32" fill="#D9D9D9"/>
+                            </mask>
+                            <g mask="url(#mask0_87727_3931)">
+                              <path d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z" fill="white"/>
+                            </g>
+                          </svg>
+                    </button>
                 </div>
             </div>
-            <button onclick="openAddTask(0)" class="button-add-task">
-                <p>Add task</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <mask id="mask0_87727_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
-                      <rect width="32" height="32" fill="#D9D9D9"/>
-                    </mask>
-                    <g mask="url(#mask0_87727_3931)">
-                      <path d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z" fill="white"/>
-                    </g>
-                  </svg>
-            </button>
-        </div>
-    </div>
 
     <!----------------------------- ACTION BAR - BOARD ----------------------------------->
     
@@ -104,40 +104,52 @@ class Board extends Page {
     </div>
     </div>
 
-    <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
+            <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
 
-    <div id="renderActionBar"></div>
+            <div id="renderActionBar"></div>
 
-    <!----------------------------- RENDER ADD TASK ----------------------------------->
+            <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-    <div id="addTask" class="popUpTaskCard d-none">
-       
-    </div>
+            <div id="addTask" class="popUpTaskCard d-none">
 
-            `
-    }
+            </div>
+
+                    `
+            }
+
     renderTask() {
         let kambanTodo = document.getElementById('kambanTodo');
         let kambanInprogress = document.getElementById('kambanInprogress');
         let kambanFeedback = document.getElementById('kambanFeedback');
         let kambanDone = document.getElementById('kambanDone');
+
         kambanTodo.innerHTML = "";
         kambanInprogress.innerHTML = "";
         kambanFeedback.innerHTML = "";
         kambanDone.innerHTML = "";
-
-        for (let i = 0; i < Join.tasks.length; i++) {
-            const task = Join.tasks[i];
-            if (task.todo) {
-                kambanTodo.innerHTML += task.tinyTaskCard(i)
-            } else if (task.progress) {
-                kambanInprogress.innerHTML += task.tinyTaskCard(i)
-            } else if (task.feedback) {
-                kambanFeedback.innerHTML += task.tinyTaskCard(i)
-            } else if (task.done) {
-                kambanDone.innerHTML += task.tinyTaskCard(i)
+        
+        if (Join.tasks.length > 0){
+            for (let i = 0; i < Join.tasks.length; i++) {
+                const task = Join.tasks[i];
+                if (task.todo) {
+                    kambanTodo.innerHTML += task.tinyTaskCard(i)
+                } else if (task.progress) {
+                    kambanInprogress.innerHTML += task.tinyTaskCard(i)
+                } else if (task.feedback) {
+                    kambanFeedback.innerHTML += task.tinyTaskCard(i)
+                } else if (task.done) {
+                    kambanDone.innerHTML += task.tinyTaskCard(i)
+                } else{
+                    task.todo = true;
+                    task.feedback = false;
+                    task.progress = false;
+                    task.done = false;
+                    this.renderTask()
+                }
+                if(task.subTasks){
+                    task.updateProgressBar(i);
+                }
             }
-            task.updateProgressBar()
         }
     }
     renderAddSubtask() {

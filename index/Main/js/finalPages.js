@@ -1,9 +1,15 @@
 function startPage() {
-    try { loadAccounts()}
+    // if (Join.accounts ){
+    //     saveAccounts()
+    //     saveTasks()
+    // }
+
+    try { loadAccounts().then(loadTasks())}
     catch(e){
         console.log("Fehler", e)
     }
     finally{
+    
     setState("login")
 
     body.innerHTML = JoinLogin.startAnimation();
@@ -38,11 +44,11 @@ function signUp() {
     body.innerHTML = JoinLogin.signUpWindow();
 }
 function summeryPage() {
-    // try { loadTasks()}
-    // catch(e){
-    //     console.log("Fehler", e)
-    // }
-    // finally{
+    try { loadTasks()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     setState("summary");
     cleanUpAll()
     body.innerHTML = "";
@@ -51,24 +57,24 @@ function summeryPage() {
     showSideAndHead()
     content.innerHTML = JoinSummary.summeryContent();
 
-    // }
+    }
 }
 function boardPage() {
-    // try { loadTasks()}
-    // catch(e){
-    //     console.log("Fehler", e)
-    // }
-    // finally{
+    try { loadTasks()}
+    catch(e){
+        console.log("Fehler", e)
+    }
+    finally{
     setState("Board");
     cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
-    showSideAndHead()
     content.innerHTML = JoinBoard.boardContent();
+    showSideAndHead()
     JoinBoard.renderTask()
-    // updateHTML();
-    // }
+    updateHTML();
+    }
 }
 function contactsPage() {
     try { loadAccounts()}
@@ -127,7 +133,7 @@ function addTaskPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
-    showSideAndHead()
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
+    showSideAndHead()
     // content.innerHTML = Join.generateHTMLaddTask();
 }

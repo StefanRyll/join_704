@@ -158,7 +158,7 @@ function taskSaveChanges(x) {
 
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
 
-
+    saveTasks()
     closeTaskCard()
     cleanUpAll()
 }

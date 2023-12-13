@@ -23,11 +23,21 @@ function createTaskFromBoard(x = 0) {
         const subTask = subtaskTemp;
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
         if (x == "1") {
+            newTask.todo = false;
             newTask.progress = true;
+            newTask.feedback = false;
+            newTask.done = false;
+
         } else if (x == "2") {
+            newTask.todo = false;
+            newTask.progress = false;
             newTask.feedback = true;
+            newTask.done = false;
         } else {
             newTask.todo = true;
+            newTask.progress = false;
+            newTask.feedback = false;
+            newTask.done = false;
         }
         console.log(newTask)
 
