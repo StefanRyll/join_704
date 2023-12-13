@@ -1,9 +1,7 @@
 @media (max-width: 1520px) {
-    .res-content-board {
-        /* max-width: calc(1080px + 32px); */
-        width: 100%;
-        /* padding: 90px  */
-    }
+    /* .res-content-board {
+        width: 100%
+    } */
 
     .frame-136 {
         display: flex;
@@ -33,6 +31,13 @@
 @media (max-width: 1330px) {
     .res-content-board {
         padding: 90px;
+    }
+}
+
+@media (max-width: 1180px) {
+    .frame-192 {
+        display: inline-table;
+        padding-top: 0;
     }
 }
 
