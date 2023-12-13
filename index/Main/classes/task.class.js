@@ -1,6 +1,6 @@
 class Task {
     constructor(title, worker, desc, date, prio = "Wichtig",
-        Category, subTasks, todo = false, progress = false, feedback = false, done = false) {
+        Category, subTasks, todo = true, progress = false, feedback = false, done = false) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -49,15 +49,35 @@ class Task {
                 if (subTask.done) {
                     htmlSnippet += /*html*/ `
                             <div class="subtask-list">
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="d-none check-box-task"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
+                                <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox d-none " >
+                                <div class="style-checkbox-displayflex">
+                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/check_empty.svg" alt=""></div>
+                                    <div>${subTask.text}</div>
+                                </div>
+                                
+                                <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox">
+                                <div  class="style-checkbox-displayflex">
+                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt=""></div>
+                                    <div>${subTask.text}</div>
+                                </div>
+                                </div>
                             </div>
                     `;
                 } else {
                     htmlSnippet += /*html*/ `
                             <div class="subtask-list">
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxFalse${j}" class="check-box-task"> <img src="./IMG/check_empty.svg" alt="">${subTask.text}</div>
-                                <div onclick="toggleCheckboxCard(${x},${j})" id="cardCheckboxTrue${j}" class="check-box-task d-none"> <img src="./IMG/checkbox_check.svg" alt="">${subTask.text}</div>
+                                <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox">
+                                <div class="style-checkbox-displayflex">
+                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/check_empty.svg" alt=""></div>
+                                    <div>${subTask.text}</div>
+                                </div>
+                                </div>
+                                <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox d-none" >
+                                <div class="style-checkbox-displayflex">
+                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img src="./IMG/checkbox_check.svg" alt=""></div>
+                                        <div>${subTask.text}</div>
+                                </div>
+                                </div>
                             </div>
                     `;
                 }
@@ -157,6 +177,9 @@ class Task {
 
                         `
     }
+
+
+
     tinyTaskCard(x = 0) {
 
         let contactTags = () => {
@@ -201,10 +224,10 @@ class Task {
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
                 </div>
 
-                <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
+                <div class="subtasks" id="tinyTaskCardSubtaskSection">
                     <div class="tiny-task-label">
                         <div class="progressContainer" id="progressContainer">
-                            <div class="progressBar" id="progressBar${x}"></div>
+                            <div class="progressBar" id="progressBar"></div>
                         </div>
                         <p>${SubtasksDone()}/${this.subTasks.length}&nbsp;Subtasks</p>
                     </div>
@@ -219,13 +242,10 @@ class Task {
         `
 
     }
-    updateProgressBar(x){
+    updateProgressBar() {
         let progressContainer = document.getElementById('tinyTaskCardSubtaskSection')
-        let progressBar = document.getElementById(`progressBar${x}`)
-        let gesamtFortschritt;
-        
         let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
-        let variable2 = () =>{
+        let variable2 = () => {
             let countDone = 0;
             for (let i = 0; i < this.subTasks.length; i++) {
                 const toCheck = this.subTasks[i];
@@ -237,14 +257,16 @@ class Task {
         }
         if (variable1 == 0) {
             progressContainer.classList.add('d-none')
-        }else{
-            gesamtFortschritt = (variable2() / variable1) *100;
-            progressBar.style.width = `${gesamtFortschritt}%`;
         }
 
+        let gesamtFortschritt = (variable2() / variable1) * 100;
 
+        let progressbar = document.getElementById('progressBar');
 
+        progressbar.style.width = `${gesamtFortschritt}%`;
+        console.log("Progressbar Updated", gesamtFortschritt, this.title);
     }
+
     editTask() {
         let taskCard = document.getElementById('taskCard')
         taskCard.innerHTML = this.taskCardEdit()
@@ -273,5 +295,29 @@ class Task {
         }
 
     }
-}
+    static fromJSON(data) {
+        const {
+            title,
+            worker,
+            desc,
+            date,
+            prio,
+            Category,
+            todo,
+            progress,
+            feedback,
+            done,
+            subTasks
+        } = data;
 
+        return new Task(
+            title,
+            worker,
+            desc,
+            date,
+            prio,
+            Category,
+            subTasks
+        );
+    }
+}

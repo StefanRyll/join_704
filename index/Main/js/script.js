@@ -192,8 +192,12 @@ function toggleCheckboxCard(task, subtask) {
     let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
     if (checkableSubtask.done) {
         checkableSubtask.subTaskUndone();
+        // document.getElementById(`cardCheckboxFalse${subtask}`).classList.remove('d-none');
+        // document.getElementById(`cardCheckboxTrue${subtask}`).classList.add('d-none');
     } else {
         checkableSubtask.subTaskDone();
+        // document.getElementById(`cardCheckboxFalse${subtask}`).classList.add('d-none');
+        // document.getElementById(`cardCheckboxTrue${subtask}`).classList.remove('d-none');
     }
     document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');
     document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');
