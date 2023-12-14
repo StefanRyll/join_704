@@ -253,6 +253,7 @@
 
 .field-required-text {
     margin-left: 74px;
+    /* margin-top: 145px; */
     display: flex;
     gap: 5px;
     align-items: baseline;

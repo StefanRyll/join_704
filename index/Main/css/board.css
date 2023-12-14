@@ -284,6 +284,8 @@ input[type="search"]::-webkit-search-results-decoration {
     transform: translateX(0);
 }
 
+
+
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;

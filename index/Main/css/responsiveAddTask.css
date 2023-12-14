@@ -45,7 +45,7 @@
     }
 
     .board-task-middle {
-        height: 55vh;
+        height: 52vh;
         overflow-y: scroll;
         padding-bottom: 50px;
     }
@@ -179,6 +179,7 @@
         font-size: 1.1em;
     }
 }
+
 
 @media (max-width: 740px) {
     .content-add-task {
@@ -343,9 +344,15 @@
     }
 }
 
+@media (max-width: 422px) {
+    .board-task-middle {
+        height: 48vh;
+    }
+}
+
 @media (max-width: 414px) {
     .board-task-middle {
-        height: 50vh;
+        height: 52vh;
     }
 
     .content-add-task {
@@ -394,11 +401,8 @@
 }
 
 @media (max-width: 330px) {
-    .board-task-middle {
-        height: 32vh;
-    }
-
     .btn-create {
         width: 120px !important;
     }
 }
+
