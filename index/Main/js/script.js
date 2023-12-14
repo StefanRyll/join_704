@@ -170,6 +170,9 @@ function tempTheSubtasks() {
 
 
 function closeTaskCard() {
+    setTimeout(() => {
+        closePopUpTaskCard();
+    }, 100);
     cleanUpAccountsCheck()
     boardPage()
 }

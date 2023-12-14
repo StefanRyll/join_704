@@ -41,65 +41,29 @@
 // ];
 // let user01 = new Account("Anton Mayer", "antom@gmail.com", null, "+49 1111 111 11 1")
 // Join.accounts.push(user01);
-let sortAccounts = Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
+// let Join.accounts = Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
-const colors = [
-    "#FF7A00",
-    "#FF5EB3",
-    "#6E52FF",
-    "#9327FF",
-    "#00BEE8",
-    "#1FD7C1",
-    "#FF745E",
-    "#FFA35E",
-    "#FC71FF",
-    "#FFC701",
-    "#0038FF",
-    "#C3FF2B",
-    "#FFE62B",
-    "#FF4646",
-    "#FFBB2B",
-];
+// const colors = [
+//     "#FF7A00",
+//     "#FF5EB3",
+//     "#6E52FF",
+//     "#9327FF",
+//     "#00BEE8",
+//     "#1FD7C1",
+//     "#FF745E",
+//     "#FFA35E",
+//     "#FC71FF",
+//     "#FFC701",
+//     "#0038FF",
+//     "#C3FF2B",
+//     "#FFE62B",
+//     "#FF4646",
+//     "#FFBB2B",
+// ];
 
 async function initContacts() {
     await includeHTML();
     renderContacts();
-}
-
-/**
- * This function is for a container to start and close a slide from the right side 
- * 
- */
-function openBigOverlay() {
-    document.getElementById('overlay').classList.add('show-overlay');
-}
-
-function closeBigOverlay() {
-    document.getElementById('overlay').classList.remove('show-overlay');
-}
-
-function openResOverlay() {
-    document.getElementById('responOverlay').classList.add('show-respon-overlay');
-}
-
-function closeResOverlay() {
-    document.getElementById('responOverlay').classList.remove('show-respon-overlay');
-}
-
-function openContactDetails() {
-    document.getElementById('detailsContainer').classList.add('show-details');
-}
-
-function closeContactDetails() {
-    document.getElementById('detailsContainer').classList.remove('show-details');
-}
-
-function openSuccessOverlay() {
-    document.getElementById('overlaySuccess').classList.add('show-success-overlay');
-}
-
-function closeSuccessOverlay() {
-    document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
 }
 
 /**
@@ -108,13 +72,13 @@ function closeSuccessOverlay() {
  */
 function renderContacts() {
 
-    console.log("Stefans Funktion");
+    console.log("Stefans Funktion", Join.accounts);
     let contactsList = "";
     let currentInitials = "";
 
 
-    for (let i = 0; i < sortAccounts.length; i++) {
-        const contact = sortAccounts[i];
+    for (let i = 0; i < Join.accounts.length; i++) {
+        const contact = Join.accounts[i];
         const name = contact.name;
         const mail = contact.email;
         const userInitials = contact.shortname;
@@ -181,7 +145,7 @@ function showDetails(i) {
     setTimeout(() => {
         openContactDetails()
     }, 200);
-    let contact = sortAccounts[i];
+    let contact = Join.accounts[i];
     // let color = contact.color;
     // let userInitials = contact.shortname;
     // let name = contact.name;
@@ -211,11 +175,11 @@ function openAddContact() {
     setTimeout(() => {
         openBigOverlay()
     }, 100);
-    addContactForm.innerHTML = generateHtmlAddContact();
+    addContactForm.innerHTML = JoinContacts.generateHtmlAddContact();
 }
 
 function openEditContact(i) {
-    let contact = sortAccounts[i];
+    let contact = Join.accounts[i];
     // let color = contact.color;
     // let userInitials = contact.shortname;
     // let name = contact.name;
@@ -248,22 +212,25 @@ function addContact() {
     let name = document.getElementById('name').value;
     let email = document.getElementById('mail').value;
     let phone = document.getElementById('phone').value;
-    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    // let randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     let newUser = new Contact(name, email, phone)
-    // let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
-    //     name,
-    //     email,
-    //     phone,
-    //     randomColor
-    // };
+        // let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
+        //     name,
+        //     email,
+        //     phone,
+        //     randomColor
+        // };
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
     setTimeout(() => {
         successOverlay();
     }, 100);
-    renderContacts();
+    try{saveAccounts()}catch(e){"Die Änderungen an join.accounts konnte nicht gespeichert werden: "+ e}
+    finally{
+        renderContacts();
+    }
 }
 
 /**
@@ -282,7 +249,10 @@ function editContact(i) {
     setTimeout(() => {
         editOverlay();
     }, 100);
-    renderContacts();
+    try{saveAccounts()}catch(e){"Die Änderungen an join.accounts konnte nicht gespeichert werden: "+ e}
+    finally{
+        renderContacts();
+    }
 }
 
 /**
@@ -297,7 +267,10 @@ function deleteContact(i) {
     setTimeout(() => {
         deleteOverlay();
     }, 100);
-    renderContacts();
+    try{saveAccounts()}catch(e){"Die Änderungen an join.accounts konnte nicht gespeichert werden: "+ e}
+    finally{
+        renderContacts();
+    }
 }
 
 /**

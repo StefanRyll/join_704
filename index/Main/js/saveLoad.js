@@ -58,7 +58,7 @@ async function loadAccounts(){
   let responseAsJson = await getItem(accountsKey)
   let parsedResponse = JSON.parse(responseAsJson['data']['value'])
   let loadedAccounts = decodeAccounts(parsedResponse)
-  Join.accounts = loadedAccounts;
+  Join.accounts = loadedAccounts.sort((a, b) => a.name.localeCompare(b.name));;
 }
 async function loadTasks(){
   // let response = await fetch('./saves/Tasks.json')
