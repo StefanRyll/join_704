@@ -15,7 +15,7 @@ class Board extends Page {
                             <img src="/assets/img/search.png" alt="search Image">
                         </div>
                     </div>
-                    <button onclick="openAddTask(0)" class="button-add-task">
+                    <button onclick="openAddTask(0)" class="button-add-task display-none">
                         <p>Add task</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                             <mask id="mask0_87727_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
@@ -25,6 +25,9 @@ class Board extends Page {
                               <path d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z" fill="white"/>
                             </g>
                           </svg>
+                    </button>
+                    <button onclick="openAddTask(0)" class="res-button-add-task">
+                        <img src="./IMG/plus_add_task_mobile.svg" alt="add task">
                     </button>
                 </div>
             </div>

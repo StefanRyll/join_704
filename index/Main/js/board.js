@@ -246,7 +246,3 @@ function checkAreaDone(done) {
     }
 }
 
-
-function updateProgressBar() {
-    
-}

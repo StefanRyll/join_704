@@ -39,14 +39,22 @@ input[type="search"]::-webkit-search-results-decoration {
     cursor: pointer;
 }
 
+.res-content-board {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+}
+
 .frame-192 {
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 10px;
     margin-bottom: 4em;
     padding-top: 90px;
-    /* padding-right: 92px; */
+    padding-right: 92px;
 }
 
 .frame-192 h2 {
@@ -149,7 +157,7 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex;
     gap: 26px;
     max-width: 100%;
-    /* padding-right: 92px; */
+    padding-right: 92px;
     justify-content: space-between;
     align-items: flex-start;
 }
@@ -227,6 +235,8 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* gap: 110px; */
+    width: 254px;
 }
 
 .empty-tasks {
@@ -267,4 +277,5 @@ input[type="search"]::-webkit-search-results-decoration {
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
+    height: 100%;
 }
