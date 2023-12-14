@@ -1,42 +1,42 @@
-function generateHtmlContactList(i, color, userInitials, name, mail) {
-    return /*html*/ `
-        <div class="contactfield-wrapper">
-            <div class="contactfield" onclick="showDetails(${i})">
-                <div class="initials-logo" style="background-color: ${color}">${userInitials}</div>
-                <div class="contact">
-                    <span class="name">${name}</span>
-                    <span class="mail">${mail}</span>
-                </div>
-            </div>
-        </div>
-    `
-}
+// function generateHtmlContactList(i, color, userInitials, name, mail) {
+//     return /*html*/ `
+//         <div class="contactfield-wrapper">
+//             <div class="contactfield" onclick="showDetails(${i})">
+//                 <div class="initials-logo" style="background-color: ${color}">${userInitials}</div>
+//                 <div class="contact">
+//                     <span class="name">${name}</span>
+//                     <span class="mail">${mail}</span>
+//                 </div>
+//             </div>
+//         </div>
+//     `
+// }
 
-function generateHtmlContactDetails(i, color, userInitials, name, mail, phone) {
-    return /*html*/ `
-        <div class="contactView">
-            <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
-            <div class="name">
-                <h2 class="name-headline">${name}</h2>
-                <a class="contactsIcons">
-                    <div onclick="openEditContact(${i})" class="editBtn">
+// function generateHtmlContactDetails(i, color, userInitials, name, mail, phone) {
+//     return /*html*/ `
+//         <div class="contactView">
+//             <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
+//             <div class="name">
+//                 <h2 class="name-headline">${name}</h2>
+//                 <a class="contactsIcons">
+//                     <div onclick="openEditContact(${i})" class="editBtn">
                        
-                    </div>
-                    <div onclick="deleteContact(${i})" class="deleteBtn">
+//                     </div>
+//                     <div onclick="deleteContact(${i})" class="deleteBtn">
                        
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="contactInformation">
-            <h3 class="font-size-normal mg-none">Contact Information</h3>
-            <h3 class="mail-headline">Email</h3><br>
-            <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
-            <h3>Phone</h3>
-            <p><a class="phone-link" href="tel:${phone}">${phone}</a></p>
-        </div>
-    `
-}
+//                     </div>
+//                 </a>
+//             </div>
+//         </div>
+//         <div class="contactInformation">
+//             <h3 class="font-size-normal mg-none">Contact Information</h3>
+//             <h3 class="mail-headline">Email</h3><br>
+//             <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
+//             <h3>Phone</h3>
+//             <p><a class="phone-link" href="tel:${phone}">${phone}</a></p>
+//         </div>
+//     `
+// }
 
 function generateHtmlAddContact() {
     return /*html*/ `
@@ -74,40 +74,40 @@ function generateHtmlAddContact() {
     `
 }
 
-function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
-    return /*html*/ `
-    <div class="overlay-container slide-in">
-        ${generateLeftSide()}
-        <div class ="overlay-mid-container">
-            <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
-        </div>
-        <div class="overlay-right-container-addContact">
-            <div class="close-button">${closeButton()}</div>
-            <form class="addContact-form" action="#" onsubmit="editContact(${i})">
-                <div class="btn-underlay">
-                    <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${name}">
-                    <img class="input-icon" src="./IMG/person.png"> 
-                </div>
-                <div class="btn-underlay">
-                    <input id="editMail" required type="email" class="frame-157" placeholder="Email" value="${mail}">
-                    <img class="input-icon" src="./IMG/mail.png"> 
-                </div>
-                <div class="btn-underlay">
-                    <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${phone}" oninput="validatePhoneNumber(this)">
-                    <img class="input-icon" src="./IMG/call.png"> 
-                </div>
-                <div class="frame-176">
-                    <div class="loginButtons">
-                        <button class="btn-byEdit-delete btn-white" type="reset" onclick="deleteContact(${i})">Delete</button>
-                        <button class="btn-byEdit-save btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+// function generateHtmlEditContact(i, color, userInitials, name, mail, phone) {
+//     return /*html*/ `
+//     <div class="overlay-container slide-in">
+//         ${generateLeftSide()}
+//         <div class ="overlay-mid-container">
+//             <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
+//         </div>
+//         <div class="overlay-right-container-addContact">
+//             <div class="close-button">${closeButton()}</div>
+//             <form class="addContact-form" action="#" onsubmit="editContact(${i})">
+//                 <div class="btn-underlay">
+//                     <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${name}">
+//                     <img class="input-icon" src="./IMG/person.png"> 
+//                 </div>
+//                 <div class="btn-underlay">
+//                     <input id="editMail" required type="email" class="frame-157" placeholder="Email" value="${mail}">
+//                     <img class="input-icon" src="./IMG/mail.png"> 
+//                 </div>
+//                 <div class="btn-underlay">
+//                     <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${phone}" oninput="validatePhoneNumber(this)">
+//                     <img class="input-icon" src="./IMG/call.png"> 
+//                 </div>
+//                 <div class="frame-176">
+//                     <div class="loginButtons">
+//                         <button class="btn-byEdit-delete btn-white" type="reset" onclick="deleteContact(${i})">Delete</button>
+//                         <button class="btn-byEdit-save btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+//                     </div>
+//                 </div>
+//             </form>
+//         </div>
+//     </div>
  
-    `
-}
+//     `
+// }
 
 /**
  * templates for the overlay
@@ -179,53 +179,53 @@ function generateHtmlEditInfo() {
     `
 }
 
-function generateMobileContactDetails(i, color, userInitials, name, mail, phone) {
-    return /*html*/ `
-    <div class="res-contacts-detail">
-        <div class="res-contacts-headline">
-            <div>
-                <h1 class="res-contacts-h1">Contacts</h1>
-                <p class="res-subtitle-contacts">Better with a team</p>
-                <div class="res-vector-blue"></div>
-            </div>
-            <div class="res-left-arrow">
-                <button onclick="closeOverlay()" class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
-            </div>
-        </div>
-        <div class="contactView">
-            <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
-            <div class="name">
-                <h2 class="name-headline">${name}</h2>
-                <a class="contactsIcons">
-                    <div onclick="openEditContact(${i})" class="editIcon">
-                        <img class="editSymbol" src="./IMG/edit.png"> <span>Edit</span>
-                    </div>
-                    <div onclick="deleteContact(${i})" class="deleteIcon">
-                        <img class="deleteSymbol" src="./IMG/delete.png"> <span>Delete</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="contactInformation">
-            <h3 class="mail-headline">Email</h3><br>
-            <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
-            <h3>Phone</h3>
-            <p><a class="phone-link" href="tel:${phone}">${phone}</a></p>
-        </div>
-        <div class="options-btn-div">
-            <button onclick="openContactMenu(event)" class="respon-button"><img src="./IMG/more_vert.png"></button>
-        </div>
-        <div class="options-menu" id="optionsMenu">
-            <div class="iconWrapper" onclick="openEditContact(${i})">
-                <img class="icon" src="./IMG/edit.png">
-                <span class="iconText">Edit</span>
-            </div>
-            <div class="iconWrapper" onclick="deleteContact(${i})">
-                <img class="icon" src="./IMG/delete.png">
-                <span class="iconText">Delete</span>
-            </div>
-        </div>
-    </div>
+// function generateMobileContactDetails(i, color, userInitials, name, mail, phone) {
+//     return /*html*/ `
+//     <div class="res-contacts-detail">
+//         <div class="res-contacts-headline">
+//             <div>
+//                 <h1 class="res-contacts-h1">Contacts</h1>
+//                 <p class="res-subtitle-contacts">Better with a team</p>
+//                 <div class="res-vector-blue"></div>
+//             </div>
+//             <div class="res-left-arrow">
+//                 <button onclick="closeOverlay()" class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
+//             </div>
+//         </div>
+//         <div class="contactView">
+//             <div class="initials-logo logo-by-details" style="background-color: ${color}; margin: 0 auto;">${userInitials}</div>
+//             <div class="name">
+//                 <h2 class="name-headline">${name}</h2>
+//                 <a class="contactsIcons">
+//                     <div onclick="openEditContact(${i})" class="editIcon">
+//                         <img class="editSymbol" src="./IMG/edit.png"> <span>Edit</span>
+//                     </div>
+//                     <div onclick="deleteContact(${i})" class="deleteIcon">
+//                         <img class="deleteSymbol" src="./IMG/delete.png"> <span>Delete</span>
+//                     </div>
+//                 </a>
+//             </div>
+//         </div>
+//         <div class="contactInformation">
+//             <h3 class="mail-headline">Email</h3><br>
+//             <p class="mail mg-none"><a href="mailTo:${mail}">${mail}</a></p>
+//             <h3>Phone</h3>
+//             <p><a class="phone-link" href="tel:${phone}">${phone}</a></p>
+//         </div>
+//         <div class="options-btn-div">
+//             <button onclick="openContactMenu(event)" class="respon-button"><img src="./IMG/more_vert.png"></button>
+//         </div>
+//         <div class="options-menu" id="optionsMenu">
+//             <div class="iconWrapper" onclick="openEditContact(${i})">
+//                 <img class="icon" src="./IMG/edit.png">
+//                 <span class="iconText">Edit</span>
+//             </div>
+//             <div class="iconWrapper" onclick="deleteContact(${i})">
+//                 <img class="icon" src="./IMG/delete.png">
+//                 <span class="iconText">Delete</span>
+//             </div>
+//         </div>
+//     </div>
 
-    `
-}
+//     `
+// }

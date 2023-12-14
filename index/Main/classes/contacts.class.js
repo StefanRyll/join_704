@@ -9,8 +9,115 @@ class Contact {
         this.name = name;
         this.email = email;
         this.tel = tel;
-        this.shortname = this.name.charAt(0)
+        this.shortname = this.getInitials()
         this.checked = false;
+        this.color = this.getColor()
+    }
+    getColor() {
+        const colors = [
+            "#FF7A00",
+            "#FF5EB3",
+            "#6E52FF",
+            "#9327FF",
+            "#00BEE8",
+            "#1FD7C1",
+            "#FF745E",
+            "#FFA35E",
+            "#FC71FF",
+            "#FFC701",
+            "#0038FF",
+            "#C3FF2B",
+            "#FFE62B",
+            "#FF4646",
+            "#FFBB2B",
+        ];
+        
+        let sum = this.name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
+        let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
+        return colors[colorIndex];
+    }
+    generateHtmlContactDetails(i) {
+        return /*html*/ `
+            <div class="contactView">
+                <div class="initials-logo logo-by-details" style="background-color: ${this.color}; margin: 0 auto;">${this.shortname}</div>
+                <div class="name">
+                    <h2 class="name-headline">${this.name}</h2>
+                    <a class="contactsIcons">
+                        <div onclick="openEditContact(${i})" class="editBtn">
+                           
+                        </div>
+                        <div onclick="deleteContact(${i})" class="deleteBtn">
+                           
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contactInformation">
+                <h3 class="font-size-normal mg-none">Contact Information</h3>
+                <h3 class="mail-headline">Email</h3><br>
+                <p class="mail mg-none"><a href="mailTo:${this.email}">${this.email}</a></p>
+                <h3>Phone</h3>
+                <p><a class="phone-link" href="tel:${this.tel}">${this.tel}</a></p>
+            </div>
+        `
+    }
+    generateMobileContactDetails(i) {
+        return /*html*/ `
+        <div class="res-contacts-detail">
+            <div class="res-contacts-headline">
+                <div>
+                    <h1 class="res-contacts-h1">Contacts</h1>
+                    <p class="res-subtitle-contacts">Better with a team</p>
+                    <div class="res-vector-blue"></div>
+                </div>
+                <div class="res-left-arrow">
+                    <button onclick="closeOverlay()" class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
+                </div>
+            </div>
+            <div class="contactView">
+                <div class="initials-logo logo-by-details" style="background-color: ${this.color}; margin: 0 auto;">${this.shortname}</div>
+                <div class="name">
+                    <h2 class="name-headline">${this.name}</h2>
+                    <a class="contactsIcons">
+                        <div onclick="openEditContact(${i})" class="editIcon">
+                            <img class="editSymbol" src="./IMG/edit.png"> <span>Edit</span>
+                        </div>
+                        <div onclick="deleteContact(${i})" class="deleteIcon">
+                            <img class="deleteSymbol" src="./IMG/delete.png"> <span>Delete</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contactInformation">
+                <h3 class="mail-headline">Email</h3><br>
+                <p class="mail mg-none"><a href="mailTo:${this.email}">${this.email}</a></p>
+                <h3>Phone</h3>
+                <p><a class="phone-link" href="tel:${this.tel}">${this.tel}</a></p>
+            </div>
+            <div class="options-btn-div">
+                <button onclick="openContactMenu(event)" class="respon-button"><img src="./IMG/more_vert.png"></button>
+            </div>
+            <div class="options-menu" id="optionsMenu">
+                <div class="iconWrapper" onclick="openEditContact(${i})">
+                    <img class="icon" src="./IMG/edit.png">
+                    <span class="iconText">Edit</span>
+                </div>
+                <div class="iconWrapper" onclick="deleteContact(${i})">
+                    <img class="icon" src="./IMG/delete.png">
+                    <span class="iconText">Delete</span>
+                </div>
+            </div>
+        </div>
+    
+        `
+    }
+    getInitials() {
+        let parts = this.name.split(" ");
+        let initials = parts[0][0];
+        if (parts.length > 1) {
+            initials += parts[parts.length - 1][0];
+        }
+        return initials.toUpperCase();
     }
     tinyCard(x) {
         return /*html*/ `
@@ -23,7 +130,19 @@ class Contact {
         </div>
         `
     }
-    
+    generateHtmlContactList(i) {
+        return /*html*/ `
+            <div class="contactfield-wrapper">
+                <div class="contactfield" onclick="showDetails(${i})">
+                    <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
+                    <div class="contact">
+                        <span class="name">${this.name}</span>
+                        <span class="mail">${this.email}</span>
+                    </div>
+                </div>
+            </div>
+        `
+    }
     nameTag() {
         return /*html*/ `
             <div class="accountTag">${this.shortname}</div>
@@ -36,7 +155,6 @@ class Contact {
         ${this.generateHTMLChecked(x)}
         `
     }
-
     generateHTMLCheckedNone(x) {
         return /*html*/ `
             <div onclick="addShortNames('${this.shortname}', ${x})" id="tinyAccountCardCheckedNone${x}" class="checked-none">
@@ -52,7 +170,6 @@ class Contact {
             </div>
         `
     }
-
     generateHTMLChecked(x) {
         return /*html*/ `
             <div onclick="removeShortNames(${x})" id="tinyAccountCardChecked${x}" class="checked d-none">
@@ -68,12 +185,45 @@ class Contact {
             </div>
         `
     }
-
     accountTag() {
         return /*html*/ `
             <div class="accountTag">${this.shortname}</div>
 
         `
     }
-
+    generateHtmlEditContact(i) {
+        return /*html*/ `
+        <div class="overlay-container slide-in">
+            ${generateLeftSide()}
+            <div class ="overlay-mid-container">
+                <div class="initials-logo logo-by-details" style="background-color: ${this.color}; margin: 0 auto;">${this.shortname}</div>
+            </div>
+            <div class="overlay-right-container-addContact">
+                <div class="close-button">${closeButton()}</div>
+                <form class="addContact-form" action="#" onsubmit="editContact(${i})">
+                    <div class="btn-underlay">
+                        <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${this.name}">
+                        <img class="input-icon" src="./IMG/person.png"> 
+                    </div>
+                    <div class="btn-underlay">
+                        <input id="editMail" required type="email" class="frame-157" placeholder="Email" value="${this.email}">
+                        <img class="input-icon" src="./IMG/mail.png"> 
+                    </div>
+                    <div class="btn-underlay">
+                        <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${this.tel}" oninput="validatePhoneNumber(this)">
+                        <img class="input-icon" src="./IMG/call.png"> 
+                    </div>
+                    <div class="frame-176">
+                        <div class="loginButtons">
+                            <button class="btn-byEdit-delete btn-white" type="reset" onclick="deleteContact(${i})">Delete</button>
+                            <button class="btn-byEdit-save btn-dark-blue" type="submit">Save <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+     
+        `
+    }
+    
 }

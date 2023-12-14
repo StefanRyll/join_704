@@ -41,7 +41,7 @@
 // ];
 // let user01 = new Account("Anton Mayer", "antom@gmail.com", null, "+49 1111 111 11 1")
 // Join.accounts.push(user01);
-
+let sortAccounts = Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
 const colors = [
     "#FF7A00",
@@ -106,25 +106,23 @@ function closeSuccessOverlay() {
  * This function generates the user array through a loop and renders it into html
  * contactsTemp.js = function generateHtmlContactList, line 1
  */
-
 function renderContacts() {
 
     console.log("Stefans Funktion");
     let contactsList = "";
     let currentInitials = "";
 
-    let sortAccounts = Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
 
     for (let i = 0; i < sortAccounts.length; i++) {
         const contact = sortAccounts[i];
         const name = contact.name;
         const mail = contact.email;
-        const userInitials = getInitials(contact.name);
-        contact.color = getColor(contact.name); // .color ist eine CSS eigenschaft die später die farben ausdem array colors verwertet.
-        if (!contact.color) {
-            // bedingung: hat der contact noch keine farbe (!).
-            contact.color = colors[Math.floor(Math.random() * colors.length)]; //es wird eine zufällige farbe aus dem array colors ausgewählt.
-        }
+        const userInitials = contact.shortname;
+        // contact.color = getColor(contact.name); // .color ist eine CSS eigenschaft die später die farben ausdem array colors verwertet.
+        // if (!contact.color) {
+        //     // bedingung: hat der contact noch keine farbe (!).
+        //     contact.color = colors[Math.floor(Math.random() * colors.length)]; //es wird eine zufällige farbe aus dem array colors ausgewählt.
+        // }
 
         if (userInitials[0] !== currentInitials) {
             if (alphabet.includes(userInitials[0])) {
@@ -137,8 +135,8 @@ function renderContacts() {
                 contactsList += '<div class="contacts-container">';
             }
         }
-        const color = contact.color;
-        contactsList += generateHtmlContactList(i, color, userInitials, name, mail);
+        // const color = contact.color;
+        contactsList += contact.generateHtmlContactList(i);
     }
     if (contactsList !== "") {
         contactsList += "</div>";
@@ -152,14 +150,14 @@ function renderContacts() {
  * @param {string} name - Is needed to recognize the initials from the user names. It is passed in renderContacts().
  * @returns 
  */
-function getInitials(name) {
-    let parts = name.split(" ");
-    let initials = parts[0][0];
-    if (parts.length > 1) {
-        initials += parts[parts.length - 1][0];
-    }
-    return initials.toUpperCase();
-}
+// function getInitials(name) {
+//     let parts = name.split(" ");
+//     let initials = parts[0][0];
+//     if (parts.length > 1) {
+//         initials += parts[parts.length - 1][0];
+//     }
+//     return initials.toUpperCase();
+// }
 
 /**
  * This function creates and random the bg-color of the initials container
@@ -167,11 +165,11 @@ function getInitials(name) {
  * @param {string} name - is needed to add up the first letters and assign them to the colors array.
  * @returns 
  */
-function getColor(name) {
-    let sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
-    let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
-    return colors[colorIndex];
-}
+// function getColor(name) {
+//     let sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
+//     let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
+//     return colors[colorIndex];
+// }
 
 /**
  * This function renders the user's detailed data
@@ -183,21 +181,21 @@ function showDetails(i) {
     setTimeout(() => {
         openContactDetails()
     }, 200);
-    let contact = Join.accounts[i];
-    let color = contact.color;
-    let userInitials = getInitials(contact.name);
-    let name = contact.name;
-    let mail = contact.email;
-    let phone = contact.phone;
+    let contact = sortAccounts[i];
+    // let color = contact.color;
+    // let userInitials = contact.shortname;
+    // let name = contact.name;
+    // let mail = contact.email;
+    // let phone = contact.phone;
 
     if (window.innerWidth >= 1188) {
-        let detailsContent = generateHtmlContactDetails(i, color, userInitials, name, mail, phone);
+        let detailsContent = contact.generateHtmlContactDetails(i);
         document.getElementById("detailsContainer").innerHTML = detailsContent;
     } else {
         setTimeout(() => {
             openResOverlay()
         }, 100);
-        let detailsContent = generateMobileContactDetails(i, color, userInitials, name, mail, phone);
+        let detailsContent = contact.generateMobileContactDetails(i);
         document.getElementById("responOverlay").innerHTML = detailsContent;
     }
 }
@@ -217,16 +215,16 @@ function openAddContact() {
 }
 
 function openEditContact(i) {
-    let contact = Join.accounts[i];
-    let color = contact.color;
-    let userInitials = getInitials(contact.name);
-    let name = contact.name;
-    let mail = contact.email;
-    let phone = contact.phone;
+    let contact = sortAccounts[i];
+    // let color = contact.color;
+    // let userInitials = contact.shortname;
+    // let name = contact.name;
+    // let mail = contact.email;
+    // let phone = contact.tel;
     setTimeout(() => {
         openBigOverlay()
     }, 100);
-    let editContactsContent = generateHtmlEditContact(i, color, userInitials, name, mail, phone);
+    let editContactsContent = contact.generateHtmlEditContact(i);
     document.getElementById("overlay").innerHTML = editContactsContent;
 }
 
@@ -251,12 +249,14 @@ function addContact() {
     let email = document.getElementById('mail').value;
     let phone = document.getElementById('phone').value;
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
-    let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
-        name,
-        email,
-        phone,
-        randomColor
-    };
+
+    let newUser = new Contact(name, email, phone)
+    // let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
+    //     name,
+    //     email,
+    //     phone,
+    //     randomColor
+    // };
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
