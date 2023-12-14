@@ -64,8 +64,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 652px;
-    height: 493px;
+    width: 50%;
+    height: 50%;
     padding: 48px 115px 48px 115px;
     border-radius: 30px;
     gap: 32px;
