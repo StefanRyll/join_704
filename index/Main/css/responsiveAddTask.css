@@ -379,8 +379,26 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 375px) {
     .board-task-middle {
-        height: 23vh;
+        height: 40vh;
+    }
+
+    .content-add-task {
+        padding-top: 10px; 
+    }
+
+    .content-headline-add-task h3 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 330px) {
+    .board-task-middle {
+        height: 32vh;
+    }
+
+    .btn-create {
+        width: 120px !important;
     }
 }
