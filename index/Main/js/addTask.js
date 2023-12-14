@@ -9,11 +9,9 @@ function openAddTask(x = 0) {
 
 
 function createTaskFromBoard(x = 0) {
-    try {loadAccounts()}
-    catch(e){
+    try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
-    }
-    finally{
+    } finally {
         const title = document.getElementById("boardTaskTitle").value;
         const worker = readAssignedUsers()
         const desc = document.getElementById('boardTaskDescription').value;
@@ -41,18 +39,16 @@ function createTaskFromBoard(x = 0) {
         }
         console.log(newTask)
 
-        for (let i = 0; i < newTask.worker.length; i++){
+        for (let i = 0; i < newTask.worker.length; i++) {
             let taskWorker = newTask.worker[i];
             taskWorker.checked = false;
         }
         Join.tasks.push(newTask)
         clearInputs(title, desc, worker, date, category, subTask);
-    
-        try { saveTasks()}
-        catch(e){
+
+        try { saveTasks() } catch (e) {
             console.log("Fehler", e)
-        }
-        finally{
+        } finally {
             closeAddTask()
             JoinBoard.renderTask()
         }
@@ -60,11 +56,11 @@ function createTaskFromBoard(x = 0) {
 }
 
 
-function readAssignedUsers(){
+function readAssignedUsers() {
     let workers = [];
-    for(let i = 0; i < Join.accounts.length;i++){
+    for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i]
-        if (account.checked){
+        if (account.checked) {
             workers.push(account);
         }
     }
@@ -79,7 +75,7 @@ function clearInputs(title, description, contact, date, newCategory, subtask) {
     date.value = '';
     newCategory.value = "Select task category";
     subtask.value = '';
-    for (let account in Join.accounts){
+    for (let account in Join.accounts) {
         account.checked = false;
     }
     subtaskTemp = [];
@@ -235,12 +231,12 @@ function renderTaskContacts() {
     taskContactList.innerHTML = "";
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];
-        if (account.checked === true){
+        if (account.checked === true) {
             taskContactList.innerHTML += account.tinyCardCheck(i);
             showAssignedCheckNone(i)
-        }
-        else{taskContactList.innerHTML += account.tinyCardCheck(i);
-    
+        } else {
+            taskContactList.innerHTML += account.tinyCardCheck(i);
+
         }
     }
 }
@@ -280,28 +276,29 @@ function showContact(x) {
 }
 
 
-function openTask(x){
+function openTask(x) {
+    setTimeout(() => {
+        openPopUpTaskCard();
+    }, 100);
     let task = Join.tasks[x];
     let addTask = document.getElementById("addTask");
     addTask.classList.remove("d-none")
-    // console.log("Task: ", task);
-    // console.log("Geöffnet: ", task.taskCardNormal(x))
     addTask.innerHTML = task.taskCardNormal(x);
 }
 
 
-function editTask(x){
+function editTask(x) {
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
-    
+
     // Catgory wird beibehalten (laut MocUp)
 
     // Workern
     const AssignedUsers = task.worker;
     const JoinUsers = Join.accounts;
-    
-    for(const Worker of AssignedUsers){
+
+    for (const Worker of AssignedUsers) {
         const gefundenerUser = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
         if (gefundenerUser) {
             gefundenerUser.checked = true;
@@ -319,15 +316,13 @@ function editTask(x){
         const oldSubtask = task.subTasks[i];
         subtaskTemp.push(oldSubtask);
     }
-    renderSubtasks()    
-    // Prio
-    if (task.prio === "Urgent"){
+    renderSubtasks()
+        // Prio
+    if (task.prio === "Urgent") {
         document.getElementById("btnUrgentWhite").click();
-    }
-    else if (task.prio === "Medium"){
+    } else if (task.prio === "Medium") {
         document.getElementById("btnMediumWhite").click();
-    }
-    else if (task.prio === "Low"){
+    } else if (task.prio === "Low") {
         document.getElementById("btnLowWhite").click();
     }
     prioTemp = task.prio;
@@ -381,7 +376,7 @@ function addNewContact() {
 
 function addShortNames(name, x) {
     renderShortNames(name, x);
-    
+
 }
 
 
@@ -412,5 +407,3 @@ function filterContactNames() {
         }
     }
 }
-
-

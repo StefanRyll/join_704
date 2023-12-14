@@ -67,42 +67,6 @@ async function initContacts() {
 }
 
 /**
- * This function is for a container to start and close a slide from the right side 
- * 
- */
-function openBigOverlay() {
-    document.getElementById('overlay').classList.add('show-overlay');
-}
-
-function closeBigOverlay() {
-    document.getElementById('overlay').classList.remove('show-overlay');
-}
-
-function openResOverlay() {
-    document.getElementById('responOverlay').classList.add('show-respon-overlay');
-}
-
-function closeResOverlay() {
-    document.getElementById('responOverlay').classList.remove('show-respon-overlay');
-}
-
-function openContactDetails() {
-    document.getElementById('detailsContainer').classList.add('show-details');
-}
-
-function closeContactDetails() {
-    document.getElementById('detailsContainer').classList.remove('show-details');
-}
-
-function openSuccessOverlay() {
-    document.getElementById('overlaySuccess').classList.add('show-success-overlay');
-}
-
-function closeSuccessOverlay() {
-    document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
-}
-
-/**
  * This function generates the user array through a loop and renders it into html
  * contactsTemp.js = function generateHtmlContactList, line 1
  */
@@ -251,12 +215,12 @@ function addContact() {
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     let newUser = new Contact(name, email, phone)
-    // let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
-    //     name,
-    //     email,
-    //     phone,
-    //     randomColor
-    // };
+        // let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
+        //     name,
+        //     email,
+        //     phone,
+        //     randomColor
+        // };
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
