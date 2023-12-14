@@ -4,36 +4,34 @@ function startPage() {
     //     saveTasks()
     // }
 
-    try { loadAccounts().then(loadTasks())}
-    catch(e){
+    try { loadAccounts().then(loadTasks()) } catch (e) {
         console.log("Fehler", e)
-    }
-    finally{
-    
-    setState("login")
+    } finally {
 
-    body.innerHTML = JoinLogin.startAnimation();
-    body.innerHTML += JoinLogin.logInContent();
+        setState("login")
 
-    try{
-        let response = localStorage.getItem("remember");
-        let loginEmail = document.getElementById('loginEmail')
-        let responseParsed =JSON.parse(response);
-        loginEmail.value = responseParsed;
-    }catch(e){"Nothing to remember :" + e}
+        body.innerHTML = JoinLogin.startAnimation();
+        body.innerHTML += JoinLogin.logInContent();
+
+        try {
+            let response = localStorage.getItem("remember");
+            let loginEmail = document.getElementById('loginEmail')
+            let responseParsed = JSON.parse(response);
+            loginEmail.value = responseParsed;
+        } catch (e) { "Nothing to remember :" + e }
 
     }
 }
+
 function startPage2() {
-    try { loadAccounts()}
-    catch(e){
+    try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
+    } finally {
+        body.innerHTML = JoinLogin.logoLogin();
+        body.innerHTML += JoinLogin.logInContent();
     }
-    finally{
-    body.innerHTML = JoinLogin.logoLogin();
-    body.innerHTML += JoinLogin.logInContent();
 }
-}
+
 function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -43,55 +41,53 @@ function signUp() {
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
 }
+
 function summeryPage() {
-    try { loadTasks()}
-    catch(e){
+    try { loadTasks() } catch (e) {
         console.log("Fehler", e)
-    }
-    finally{
-    setState("summary");
-    cleanUpAll()
-    body.innerHTML = "";
-    body.innerHTML = JoinLogin.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
-    content.innerHTML = JoinSummary.summeryContent();
+    } finally {
+        setState("summary");
+        cleanUpAll()
+        body.innerHTML = "";
+        body.innerHTML = JoinLogin.pageLayoutMain()
+        let content = document.getElementById('content')
+        showSideAndHead()
+        content.innerHTML = JoinSummary.summeryContent();
 
     }
 }
+
 function boardPage() {
-    try { loadTasks()}
-    catch(e){
+    try { loadTasks() } catch (e) {
         console.log("Fehler", e)
-    }
-    finally{
-    setState("Board");
-    cleanUpAll()
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    content.innerHTML = JoinBoard.boardContent();
-    showSideAndHead()
-    JoinBoard.renderTask()
-    updateHTML();
-    }
-}
-function contactsPage() {
-    try { loadAccounts()}
-    catch(e){
-        console.log("Fehler", e)
-    }
-    finally{
-    setState("Contacts")
+    } finally {
+        setState("Board");
         cleanUpAll()
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
-    content.innerHTML = JoinContacts.contactsContent();
-    renderContacts()
+        body.innerHTML = "";
+        body.innerHTML = Join.pageLayoutMain()
+        let content = document.getElementById('content')
+        content.innerHTML = JoinBoard.boardContent();
+        showSideAndHead()
+        JoinBoard.renderTask()
+        updateHTML();
     }
 }
+
+function contactsPage() {
+    try { loadAccounts() } catch (e) {
+        console.log("Fehler", e)
+    } finally {
+        setState("Contacts")
+        cleanUpAll()
+        body.innerHTML = "";
+        body.innerHTML = Join.pageLayoutMain()
+        let content = document.getElementById('content')
+        showSideAndHead()
+        content.innerHTML = JoinContacts.contactsContent();
+        renderContacts()
+    }
+}
+
 function helpPage() {
 
 
@@ -103,6 +99,7 @@ function helpPage() {
     showSideAndHead()
     content.innerHTML = JoinAbout.helpContent();
 }
+
 function privacyPage() {
     setState("Privacy Policy")
 
@@ -112,6 +109,7 @@ function privacyPage() {
     showSideAndHead()
     content.innerHTML = JoinAbout.privacyContent();
 }
+
 function legalPage() {
     setState("Legal")
 
@@ -121,6 +119,7 @@ function legalPage() {
     showSideAndHead()
     content.innerHTML = JoinAbout.legalNoticeContent();
 }
+
 function addTaskPage() {
     // try { loadTasks()}
     // catch(e){
@@ -135,5 +134,5 @@ function addTaskPage() {
     let content = document.getElementById('content')
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     showSideAndHead()
-    // content.innerHTML = Join.generateHTMLaddTask();
+        // content.innerHTML = Join.generateHTMLaddTask();
 }

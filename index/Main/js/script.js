@@ -158,9 +158,10 @@ function taskSaveChanges(x) {
 
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
 
-    saveTasks()
-    closeTaskCard()
-    cleanUpAll()
+    saveTasks();
+    closeTaskCard();
+    cleanUpAll();
+
 }
 
 function tempTheSubtasks() {
@@ -170,17 +171,14 @@ function tempTheSubtasks() {
 
 
 function closeTaskCard() {
-    setTimeout(() => {
-        closePopUpTaskCard();
-    }, 100);
-    cleanUpAccountsCheck()
-    boardPage()
+    cleanUpAccountsCheck();
+    boardPage();
 }
 
 function cleanUpAll() {
-    cleanUpAccountsCheck()
-    subtaskTemp = []
-    prioTemp = ""
+    cleanUpAccountsCheck();
+    subtaskTemp = [];
+    prioTemp = "";
 }
 
 function cleanUpAccountsCheck() {

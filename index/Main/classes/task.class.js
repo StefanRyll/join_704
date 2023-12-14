@@ -138,7 +138,7 @@ class Task {
         `
     }
     taskCardEdit(x) {
-        return /*html*/ `
+        return /*html*/ `     
             <div class="taskCardHeader" >
                 <div></div>
                 <div onclick="closeTaskCard()">
@@ -173,9 +173,7 @@ class Task {
                 </div>
                 <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
             </div>
-
-
-                        `
+            `
     }
 
 
@@ -269,7 +267,8 @@ class Task {
 
     editTask() {
         let taskCard = document.getElementById('taskCard')
-        taskCard.innerHTML = this.taskCardEdit()
+            // taskCard.innerHTML = this.taskCardEdit()
+        taskCard.classList.add('d-none');
     }
     switchStatus(x = 0) {
         if (x == "1") {
