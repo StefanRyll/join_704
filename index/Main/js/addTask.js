@@ -266,7 +266,7 @@ function editSubtask(m) {
 }
 
 
-function renderContacts() {
+function renderContactsTasks() {
     let contactsList = document.getElementById('contactsList')
     for (let i = 0; i < Join.accounts.length; i++) {
         const account = Join.accounts[i];

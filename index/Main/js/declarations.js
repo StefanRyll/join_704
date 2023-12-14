@@ -37,7 +37,6 @@ Join.accounts.push(user10)
 Join.accounts.push(user11)
 Join.accounts.push(user12)
 
-
 // Tasks
 // let task01 = new Task("Einkaufen gehen", Join.accounts[3], "Jemand muss zu Aldi fahren und Chips, Getränke und ggf noch ein paar Häppchen einkaufen", "2023-9-30", "Medium", "User Story", "Open")
 // let task02 = new Task("Abwaschen", Join.accounts[4], "Jemand muss dafür sorgen, dass das Geschirr und besteck sauber ist", "2023-9-31", "Medium", "User Story", "Open")

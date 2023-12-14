@@ -23,6 +23,7 @@ class Contact {
         </div>
         `
     }
+    
     nameTag() {
         return /*html*/ `
             <div class="accountTag">${this.shortname}</div>

@@ -108,13 +108,15 @@ function closeSuccessOverlay() {
  */
 
 function renderContacts() {
+
+    console.log("Stefans Funktion");
     let contactsList = "";
     let currentInitials = "";
 
-    Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
+    let sortAccounts = Join.accounts.sort((a, b) => a.name.localeCompare(b.name)); //user wird nach dem a und b prinzip sortiert. localeCompare ist eine Methode, die verwendet wird, um Zeichenfolgen miteinander zu vergleichen, um die richtige Reihenfolge für die Sortierung festzustellen.
 
-    for (let i = 0; i < Join.accounts.length; i++) {
-        const contact = Join.accounts[i];
+    for (let i = 0; i < sortAccounts.length; i++) {
+        const contact = sortAccounts[i];
         const name = contact.name;
         const mail = contact.email;
         const userInitials = getInitials(contact.name);
