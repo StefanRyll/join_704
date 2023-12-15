@@ -194,12 +194,12 @@ class Contact {
     generateHtmlEditContact(i) {
         return /*html*/ `
         <div class="overlay-container slide-in">
-            ${generateLeftSide()}
+            ${JoinContacts.generateLeftSide()}
             <div class ="overlay-mid-container">
                 <div class="initials-logo logo-by-details" style="background-color: ${this.color}; margin: 0 auto;">${this.shortname}</div>
             </div>
             <div class="overlay-right-container-addContact">
-                <div class="close-button">${closeButton()}</div>
+                <div class="close-button">${JoinContacts.closeButton()}</div>
                 <form class="addContact-form" action="#" onsubmit="editContact(${i})">
                     <div class="btn-underlay">
                         <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${this.name}">

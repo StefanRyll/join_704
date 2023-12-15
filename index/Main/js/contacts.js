@@ -238,12 +238,12 @@ function addContact() {
  * @param {string} i variable for the data in the user array
  */
 function editContact(i) {
-    let contact = user[i];
+    let contact = Join.accounts[i];
     contact.name = document.getElementById('editName').value;
     contact.email = document.getElementById('editMail').value;
-    contact.phone = document.getElementById('editPhone').value;
+    contact.tel = document.getElementById('editPhone').value;
 
-    user.sort((a, b) => a.name.localeCompare(b.name));
+    Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
     closeContactDetails();
     setTimeout(() => {
@@ -279,7 +279,7 @@ function deleteContact(i) {
  */
 function successOverlay() {
     let overlaySuccess = document.getElementById('overlaySuccess');
-    overlaySuccess.innerHTML = generateHtmlSuccessInfo();
+    overlaySuccess.innerHTML = JoinContacts.generateHtmlSuccessInfo();
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
@@ -288,7 +288,7 @@ function successOverlay() {
 
 function deleteOverlay() {
     let overlayDelete = document.getElementById('overlaySuccess');
-    overlayDelete.innerHTML = generateHtmlDeleteInfo();
+    overlayDelete.innerHTML = JoinContacts.generateHtmlDeleteInfo();
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
@@ -297,7 +297,7 @@ function deleteOverlay() {
 
 function editOverlay() {
     let overlayEdit = document.getElementById('overlaySuccess');
-    overlayEdit.innerHTML = generateHtmlEditInfo();
+    overlayEdit.innerHTML = JoinContacts.generateHtmlEditInfo();
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
