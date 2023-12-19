@@ -17,14 +17,14 @@ class Login extends Page {
                 <section>
                     <div id="endAnimation" class="frame-153">
                         <div class="frame-159">
-                            <h1>Log In</h1>
+                            <h1 class="mg-none">Log In</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
                         <form class="login-container" onsubmit="logInUser()">
                             <div class="frame-14"><input required type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
-                            <div class="frame-14" onclick="visibility()"><input required type="password" autocomplete="current-password" class="frame-158" placeholder="Password" id="loginPassword">
+                            <div class="frame-14" onclick="visibility()"><input required type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
@@ -46,16 +46,23 @@ class Login extends Page {
                                 Remember me
                             </label>
                             <div class="frame-176">
-                                <div class="loginButtons">
+                                <div class="loginButtons mg-none">
                                 <button class="login-btn log-in-side-button" type="submit">Log&nbsp;In</button><button class="guest-login-style" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <footer>
+             
+                    <footer class="login-footer">
                         <!-- <a href="_blank" class="log-in-side-button text-button" onclick="privacyPage()">Privacy Policy</a> -->
-                        <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>
-                        <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
+                        <div class="frame-156-footer">
+                            <p>Not a Join user?</p>
+                            <button class="log-in-side-button" onclick="signUp()">Sign up</button>
+                        </div>
+                        <div class="legalBtn-container">
+                            <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>
+                            <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
+                        </div>
                     </footer>
                 </section>
             `

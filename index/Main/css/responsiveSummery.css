@@ -16,35 +16,28 @@
     .chip1x {
         padding: 1.5em 0.5em 1.5em 0.5em;
     }
-
     .chip2x {
         padding: 1em 0.5em 1em 0.5em;
     }
-
     .chip3x {
         padding: 1.5em 0.5em 1.5em 0.5em;
     }
-
     .chipIcon {
         background-size: 49px 49px;
         width: 49px;
         height: 49px;
     }
-
     .chipIcon2 {
         background-size: 49px 49px;
         width: 49px;
         height: 49px;
     }
-
     .chipData2x h1 {
         font-size: 50px;
     }
-
     .chipData3x h2 {
         font-size: 50px;
     }
-
     .chipData3x p {
         font-size: 16px;
     }
@@ -60,7 +53,6 @@
     .greetingArea {
         display: none;
     }
-
     .greetingAreaRes h3 {
         font-size: 35px;
         margin-block-start: 0;
@@ -72,7 +64,6 @@
     .summeryHeadline h1 {
         font-size: 50px;
     }
-
     .summeryHeadline p {
         font-size: 21px;
     }
@@ -82,21 +73,17 @@
     .summery {
         padding-top: 50px;
     }
-
     .summeryHeadline {
         flex-direction: column;
         align-items: center;
     }
-
     .summeryHeadline h1 {
         font-size: 40px;
     }
-
     .summeryHeadline img {
         height: 3px;
         width: 100%;
     }
-
     .chipsArea {
         row-gap: 20px;
     }
@@ -106,25 +93,40 @@
     .summery {
         padding-top: 15px;
     }
-
+    .summeryHeadline {
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: flex-start;
+        gap: 0;
+        padding-left: 2em;
+        padding-top: 2em;
+    }
+    .summeryHeadline img {
+        display: none;
+    }
+    .summeryHeadline h1 {
+        font-size: 47px;
+        margin: 0;
+        text-align: left;
+    }
+    .summeryHeadline p {
+        font-size: 24px;
+        margin: 0;
+    }
     .chipData1x h2 {
         margin-block-start: 0;
         margin-block-end: 0;
         font-size: 16px;
     }
-
     .chipData1x p {
         font-size: 14px;
     }
-
     .chipData2x h1 {
         font-size: 40px;
     }
-
     .chipData3x h2 {
         font-size: 40px;
     }
-
     .chipData3x p {
         font-size: 12px;
     }

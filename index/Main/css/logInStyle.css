@@ -64,9 +64,9 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 40%;
-    padding: 48px 115px 48px 115px;
+    width: 55%;
+    height: 45%;
+    padding: 36px 115px 48px 115px;
     border-radius: 30px;
     gap: 32px;
     background-color: var(--white);
@@ -80,7 +80,6 @@ section {
     width: 315px;
     height: 89px;
     gap: 16px;
-    margin-bottom: 32px;
 }
 
 .login-container {
@@ -224,9 +223,19 @@ section {
     color: var(--white-btn-active);
 }
 
+.login-footer {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
 
-/* .checkbox {
-    width: 24px;
-    height: 24px;
-    border-radius: 3px;
-} */
+.frame-156-footer {
+    display: none;
+}
+
+.legalBtn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
