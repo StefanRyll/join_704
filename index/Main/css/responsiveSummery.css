@@ -13,7 +13,7 @@
 }
 
 @media (max-width: 1300px) {
-    .chip2x {
+    .chip1x {
         padding: 1.5em 0.5em 1.5em 0.5em;
     }
 
@@ -137,6 +137,34 @@
     }
 }
 
-@media (max-height: 422px) {
-    .
+@media (min-width: 423px) {
+    .seperating-line-res {
+        display: none;
+    }
+}
+
+@media (max-width: 422px) {
+    .summery {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 10px;
+        margin-right: 20px;
+    }
+
+    .summeryHeadline {
+        align-items: start;
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    .greetingAreaRes {
+        display: none;
+    }
+
+    .chip2x {
+        margin-left: 0;
+        margin-right: 0;
+        width: 44%;
+    }
+
 }

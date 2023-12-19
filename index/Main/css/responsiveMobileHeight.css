@@ -1,15 +1,34 @@
-/* **************************BOARD ***********************************/
-
-
 @media (max-height: 667px) {
     .board-task-middle {
         height: 45vh;
+    }
+
+    .chip1x {
+        padding: .6em 0.1em .6em 0.1em;
+    }
+
+    .chip2x {
+        padding: .3em .1em .3em .1em;
+    }
+
+    .chipsArea {
+        row-gap: 8px;
     }
 }
 
 @media (max-height: 786px) {
     .board-task-middle {
         height: 45vh;
+    }
+}
+
+@media (max-height: 896px) {
+    .summery {
+        padding-top: 50px;
+    }
+
+    .contentArea {
+        margin-top: 30px;
     }
 }
 
@@ -23,11 +42,55 @@
     .board-task-middle {
         height: 50vh;
     }
+
+    .summery {
+        padding-top: 0;
+    }
+
+    .contentArea {
+        margin-top: 0;
+    }
 }
 
 @media (max-height: 736px) {
     .board-task-middle {
         height: 42vh;
+    }
+
+    .chip1x {
+        padding: .8em 0.2em .8em 0.2em;
+    }
+
+    .chip2x {
+        padding: .5em .2em .5em .2em;
+    }
+
+    .chip3x {
+        padding: 1em 0.2em 1em 0.2em;
+    }
+
+    .chipIcon {
+        background-size: 39px 39px;
+        width: 39px;
+        height: 39px;
+    }
+
+    .chipIcon2 {
+        background-size: 39px 39px;
+        width: 39px;
+        height: 39px;
+    }
+
+    .chipData2x h1 {
+        font-size: 45px;
+    }
+
+    .chipData3x h2 {
+        font-size: 45px;
+    }
+
+    .chipData3x p {
+        font-size: 12px;
     }
 }
 

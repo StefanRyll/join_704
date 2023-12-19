@@ -1,6 +1,3 @@
-/**
- * @param {string}  slideAddTask animtaion,  slide show  addTask
- */
 function openAddTask(x = 0) {
     console.log("Click +");
     JoinBoard.renderAddTask(x)
@@ -88,9 +85,8 @@ function toggleContactsAssign() {
     document.getElementById('selectContacts').classList.toggle('d-none');
     document.getElementById('closeContacts').classList.toggle('d-none');
 }
-/**This Function close and open the Categories
- * @param {string}  showSelectCategory show and hidden div
- */
+
+
 function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
@@ -127,9 +123,8 @@ function btnTaskPrio(prioBtn) {
         lowGreen.classList.add('d-none');
     }
 }
-/**This is a select function for Input - > Value
- * @param {string} technicalTask  select the category Technical Task
- */
+
+
 function selectCategoryTechnical() {
     let technicalTask = document.getElementById('technicalTask').textContent;
     let changeInputField = document.getElementById('taskCategoryInput');
@@ -137,9 +132,8 @@ function selectCategoryTechnical() {
     document.getElementById('showSelectCategory').classList.add('d-none');
     changeInputField.value = technicalTask;
 }
-/**This is a select function for Input - > Value
- * @param {string} userStory  select the category User Story
- */
+
+
 function selectCategoryStory() {
     let userStory = document.getElementById('userStory').textContent;
     let changeInputField = document.getElementById('taskCategoryInput');
@@ -147,9 +141,8 @@ function selectCategoryStory() {
     document.getElementById('showSelectCategory').classList.add('d-none');
     changeInputField.value = userStory;
 }
-/** 
- * @param {string}  slideAddTask  addTask Button slide show 
- */
+
+
 function closeAddTask() {
     let slideAddTask = document.getElementById('slideAddTask')
     slideAddTask.classList.remove('show-bg-task');
