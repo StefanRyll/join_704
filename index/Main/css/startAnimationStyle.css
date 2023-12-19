@@ -69,3 +69,17 @@
         opacity: 0;
     }
 }
+
+@media (max-width: 600px) {
+    @keyframes logoAnimation {
+        from {
+            top: calc(100vh - 50%);
+            left: calc(100vw - 50%);
+            scale: 200%;
+        }
+        to {
+            top: 25px;
+            left: 25px;
+        }
+    }
+}
