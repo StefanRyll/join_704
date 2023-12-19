@@ -68,19 +68,24 @@
     background-image: url("../IMG/pen.png");
     width: 69px;
     height: 69px;
-    /* width: 100%; */
-    /* height: 100%; */
-    /* background-repeat: no-repeat; */
 }
 
 .chipIcon2 {
     background-image: url("../IMG/check.png");
-    /* width: 69px;
-    height: 69px; */
+    width: 69px;
+    height: 69px;
+}
+
+/* .chipIcon2 img {
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
 }
+
+.chipIcon2 img:hover {
+    background-image: url("/IMG/checkInv.png");
+    width: 100%;
+    height: 100%;
+} */
 
 .chip2x:hover .chipIcon {
     background-image: url("../IMG/penInv.png");
