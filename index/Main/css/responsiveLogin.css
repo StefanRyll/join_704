@@ -16,3 +16,9 @@
         height: 49px;
     }
 }
+
+@media (max-width: 600px) {
+    .frame-153 {
+        width: 40%;
+    }
+}
