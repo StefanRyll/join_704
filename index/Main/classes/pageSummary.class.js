@@ -260,6 +260,9 @@ class Summary extends Page {
                 <img src="./IMG/Vector 3.png" alt="">
                 <p>Key Metrics at a Glance</p>
             </div>
+            <div class="seperating-line-res">
+                <img src="./IMG/vector-5.png" alt="">
+            </div>
             <div class="contentArea">
                 <div class="chipsArea">
                     <div class="greetingAreaRes"><h3>${daytime}</h3><h4 id="greetedUser">${greetedUser}</h4></div>
