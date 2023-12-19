@@ -1,6 +1,6 @@
 function startPage() {
     //  if (Join.accounts ){
-         
+
     //      saveTasks()
     //  }
 
@@ -10,6 +10,7 @@ function startPage() {
 
         setState("login")
 
+        body.innerHTML = JoinLogin.startAnimationOverlay();
         body.innerHTML = JoinLogin.startAnimation();
         body.innerHTML += JoinLogin.logInContent();
 
