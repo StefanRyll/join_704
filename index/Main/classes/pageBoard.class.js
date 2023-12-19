@@ -149,9 +149,9 @@ class Board extends Page {
                     task.done = false;
                     this.renderTask()
                 }
-                if(task.subTasks){
-                    task.updateProgressBar(i);
-                }
+                // if(task.subTasks){
+                //     task.updateProgressBar(i);
+                // }
             }
         }
     }
@@ -380,7 +380,7 @@ class Board extends Page {
                 <form class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-mm-yyyy">
+                        <!-- <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-MM-yyyy"> -->
                     </div>
                 </form>
             `
@@ -595,6 +595,7 @@ class Board extends Page {
     }
 
     generateHTMLAddTaskButtons(x) {
+        console.log("Vollständig geladen");
         return /*html*/ `
             <div class="addTask-button addTask-button-window">
                 <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>

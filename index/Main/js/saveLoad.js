@@ -66,7 +66,6 @@ async function loadTasks(){
   let parsedResponse = JSON.parse(responseAsJson['data']['value'])
   let loadedTasks = decodeTasks(parsedResponse)
   Join.tasks = loadedTasks;
-  console.log(parsedResponse);
   return null
 }
 
@@ -120,6 +119,7 @@ function decodeTasks(responseAsJson){
     console.log("Decode", newTask);
     decTasks.push(newTask)
   }
+  console.log("Loaded Task", decTasks);
   return decTasks;
 }
 function decodeAccounts(responseAsJson){

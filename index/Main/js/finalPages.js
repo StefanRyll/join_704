@@ -1,8 +1,8 @@
 function startPage() {
-    // if (Join.accounts ){
-    //     saveAccounts()
-    //     saveTasks()
-    // }
+    //  if (Join.accounts ){
+         
+    //      saveTasks()
+    //  }
 
     try { loadAccounts().then(loadTasks()) } catch (e) {
         console.log("Fehler", e)

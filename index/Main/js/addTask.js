@@ -2,9 +2,10 @@
  * @param {string}  slideAddTask animtaion,  slide show  addTask
  */
 function openAddTask(x = 0) {
+    console.log("Click +");
     JoinBoard.renderAddTask(x)
-    let slideAddTask = document.getElementById('slideAddTask')
-    slideAddTask.classList.add('show-bg-task');
+    // let slideAddTask = document.getElementById('slideAddTask')
+    // slideAddTask.classList.add('show-bg-task');
 }
 
 
