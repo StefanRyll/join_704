@@ -45,7 +45,7 @@
     color: white;
     scale: 105%;
     transition: scale 0.2s ease-in-out;
-
+    cursor: pointer;
 }
 
 .chip2x:hover{
@@ -53,7 +53,7 @@
     color: white;
     scale: 105%;
     transition: scale 0.2s ease-in-out;
-    
+    cursor: pointer;
 }
 
 .chip3x:hover{
@@ -61,20 +61,23 @@
     color: white;
     scale: 105%;
     transition: scale 0.2s ease-in-out;
-    
+    cursor: pointer;
 }
 
 .chipIcon {
     background-image: url("../IMG/pen.png");
+    background-size: 69px 69px;
     width: 69px;
     height: 69px;
 }
 
 .chipIcon2 {
     background-image: url("../IMG/check.png");
+    background-size: 69px 69px;
     width: 69px;
     height: 69px;
 }
+
 
 /* .chipIcon2 img {
     width: 100%;

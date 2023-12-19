@@ -262,6 +262,7 @@ class Summary extends Page {
             </div>
             <div class="contentArea">
                 <div class="chipsArea">
+                    <div class="greetingAreaRes"><h3>${daytime}</h3><h4 id="greetedUser">${greetedUser}</h4></div>
                     <div class="chipsAreaRow">
                         <div class="chip2x" onclick="boardPage()">
                             <div class="chipIcon" ></div>
@@ -271,9 +272,7 @@ class Summary extends Page {
                             </div>
                         </div>
                         <div class="chip2x" onclick="boardPage()">
-                            <div class="chipIcon2" >
-                                <!-- <img src="./IMG/check.png" alt=""> -->
-                            </div>
+                            <div class="chipIcon2" ></div>
                             <div class="chipData2x">
                                 <h1>${doneTasks()}</h1>
                                 <p>Done</p>
