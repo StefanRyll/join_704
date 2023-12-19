@@ -4,8 +4,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
-    /* background-color: rgba(0, 0, 0, 0.8); */
+    /* background-color: white; */
+    background-color: var(--dark-blue);
     animation: fadeIn 1s ease-in-out;
     z-index: 10;
 }
@@ -60,16 +60,6 @@
         left: 45px;
     }
 }
-
-
-/* @keyframes fadeBackgroundColor {
-    0% {
-        background-color: #2A3647;
-    }
-    100% {
-        background-color: #F6F7F8;
-    }
-} */
 
 @keyframes fadeIn {
     from {
