@@ -17,8 +17,8 @@ class Login extends Page {
                 <section>
                     <div id="endAnimation" class="frame-153">
                         <div class="frame-159">
-                            <h1 class="mg-none">Log In</h1>
-                            <img src="./IMG/vector-5.png">
+                            <h1 class="login-headline mg-none">Log In</h1>
+                            <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
                         <form class="login-container" onsubmit="logInUser()">
                             <div class="frame-14"><input required type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
@@ -42,8 +42,7 @@ class Login extends Page {
                                     </g>
                                 </svg>
                             </div>
-    
-                                Remember me
+                                <span class="login-remember-me">Remember me</span>
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">

@@ -61,14 +61,12 @@ section {
 }
 
 .frame-153 {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
-    width: 55%;
-    height: 45%;
-    padding: 36px 115px 48px 115px;
+    padding: 3rem 7.1875rem;
     border-radius: 30px;
-    gap: 32px;
+    gap: 2rem;
     background-color: var(--white);
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
