@@ -15,7 +15,7 @@ class Login extends Page {
                     </div>
                 </header>
                 <section>
-                    <div class="frame-153">
+                    <div id="endAnimation" class="frame-153">
                         <div class="frame-159">
                             <h1>Log In</h1>
                             <img src="./IMG/vector-5.png">
@@ -53,8 +53,8 @@ class Login extends Page {
                         </form>
                     </div>
                     <footer>
-                        <a href="_blank" class="log-in-side-button text-button" onclick="privacyPage()">Privacy Policy</a>
-                        <button href="privacyPage(), '_blank'" class="log-in-side-button text-button">Privacy Policy</button>
+                        <!-- <a href="_blank" class="log-in-side-button text-button" onclick="privacyPage()">Privacy Policy</a> -->
+                        <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>
                         <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
                     </footer>
                 </section>
@@ -67,9 +67,14 @@ class Login extends Page {
     startAnimation() {
         body.innerHTML = "";
         return /*html*/ `
-                <div id="logoMain" class="logoAnimationImg"></div>
-    
+                    <div id="logoOverlay" class="logo-animation-overlay"></div>
+                    <div id="logoMain" class="logoAnimationImg"></div>
             `
+    }
+    startAnimationOverlay() {
+        setTimeout(() => {
+            document.getElementById('logoOverlay').classList.add('d-none');
+        }, 1000);
     }
     logoLogin() {
         return /*html*/ `
