@@ -1,0 +1,21 @@
+@media (max-width: 1420px) {
+    .summery {
+        margin-left: 62px;
+    }
+}
+
+@media (max-width: 1330px) {
+    .summery {
+        padding-top: 90px;
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .chip2x {
+        width: 30%;
+    }
+}
+
+
