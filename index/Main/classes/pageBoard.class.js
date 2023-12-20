@@ -442,7 +442,7 @@ class Board extends Page {
     }
     generateHTMLMedium() {
         return /*html*/ `
-        <button id="btnMediumWhite" onclick="btnTaskPrio('btnMediumWhite')" class="category-button category-button-standard">
+        <button id="btnMediumWhite" onclick="btnTaskPrio('btnMediumWhite')" class="category-button category-button-standard d-none">
           <p>Medium</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8" fill="none">
               <g clip-path="url(#clip0_88061_5034)">
@@ -456,7 +456,7 @@ class Board extends Page {
               </defs>
           </svg>
         </button>
-        <button id="btnMediumYellow" onclick="btnTaskPrio('btnMediumYellow')" class="category-button category-button-yellow d-none" value="medium">
+        <button id="btnMediumYellow" onclick="btnTaskPrio('btnMediumYellow')" class="category-button category-button-yellow" value="medium">
           <p>Medium</p>
           <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8" fill="none">
               <g clip-path="url(#clip0_88061_5034)">

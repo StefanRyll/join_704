@@ -5,6 +5,7 @@ function openAddTask(x = 0) {
     // slideAddTask.classList.add('show-bg-task');
 }
 
+
 // function toggleVisibility(elementId) {
 //     let element = document.getElementById(elementId);
 //     if (element.classList.contains('d-none')) {
@@ -13,6 +14,7 @@ function openAddTask(x = 0) {
 //         element.classList.add('d-none');
 //     }
 // }
+
 
 // function toggleVisibility(elementId) {
 //     let element = document.getElementById(elementId); 
@@ -115,6 +117,7 @@ function btnTaskPrio(prioBtn) {
     let urgentRed = document.getElementById('btnUrgentRed');
     let mediumYellow = document.getElementById('btnMediumYellow');
     let lowGreen = document.getElementById('btnLowGreen');
+
 
     if (prioBtn == 'btnUrgentWhite') {
         urgent.classList.add('d-none');
