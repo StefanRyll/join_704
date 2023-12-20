@@ -12,6 +12,11 @@ a {
     color: black;
 }
 
+a:hover {
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+}
+
 .log-in-side-button {
     border: none;
     width: 91px;

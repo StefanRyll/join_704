@@ -22,8 +22,6 @@
 .logoAnimationImg {
     background-image: url("../IMG/Capa 1.png");
     background-repeat: no-repeat;
-    /* width: 274px;
-    height: 334.07px; */
     width: 90px;
     height: 110px;
     background-size: 90px, 100px;
@@ -36,8 +34,7 @@
 
 .logoAnimationImg2 {
     background-image: url("../IMG/Capa 1.png");
-    /* width: 274px;
-    height: 334.07px; */
+    background-repeat: no-repeat;
     width: 101px;
     height: 124px;
     background-size: cover;

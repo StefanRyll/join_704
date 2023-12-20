@@ -29,7 +29,6 @@ body {
     overflow: hidden;
 }
 
-
 .btn-underlay {
     display: flex;
     justify-content: space-between;
@@ -178,14 +177,6 @@ h1 {
     font-weight: 400;
 }
 
-.mg-none {
-    margin: 0;
-}
-
-.mg-none {
-    margin: 0 !important;
-}
-
 .bg-color-white {
     background-color: white !important;
 }
@@ -205,12 +196,20 @@ h1 {
     background-color: var(--lightgrey);
     border: none;
     box-shadow: none;
-    color: var(--Ligth-blue, #29ABE2);
+    color: var(--lightblue, #29ABE2);
     font-size: 16px;
     font-style: normal;
     line-height: 120%;
     transition: 0.1s ease-in-out;
     transform: scale(1.05, 1.05);
+}
+
+.mg-none {
+    margin: 0 !important;
+}
+
+.mb-32 {
+    margin-bottom: 32px !important;
 }
 
 .mb-72 {

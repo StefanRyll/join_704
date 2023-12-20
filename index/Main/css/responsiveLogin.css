@@ -10,12 +10,14 @@
         width: 279px;
         height: 49px;
     }
-    .logoAnimationImg {
+    .logoAnimationImg,
+    .logoAnimationImg2 {
         width: 50px;
         height: 70px;
         background-size: 50px, 70px;
     }
-    .logoAnimationImg {
+    .logoAnimationImg,
+    .logoAnimationImg2 {
         top: 25px;
         left: 25px;
     }
@@ -45,7 +47,7 @@
         padding: 0;
         gap: 0;
     }
-    .login-remember-me {
+    .checkbox-text {
         font-size: 12px;
     }
     .loginButtons {
