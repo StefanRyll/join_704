@@ -187,6 +187,14 @@
 }
 
 @media (max-width: 422px) {
+    .summeryHeadline p {
+        font-size: 16px;
+    }
+
+    .summeryHeadline h1 {
+        font-size: 35px;
+    }
+
     .summery {
         padding-left: 0;
         padding-right: 0;
@@ -209,42 +217,25 @@
         margin-right: 0;
         width: 44%;
     }
-}
-
-@media (max-width: 325px) {
-    .summery {
-        overflow-y: scroll;
-        height: 75vh;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-
-    .summeryHeadline h1 {
-        font-size: 35px;
-    }
-
-    .summeryHeadline p {
-        font-size: 16px;
-    }
 
     .chip1x {
-        padding: .2em .1em .2em .1em !important;
+        padding: .8em 0.2em .8em 0.2em;
     }
 
     .chip2x {
-        padding: .2em .1em .2em .1em !important;
+        padding: .5em .2em .5em .2em;
     }
 
-    .chipsArea {
-        row-gap: 12px;
+    .chip3x {
+        padding: .7em 0.1em .7em 0.1em;
     }
 
     .chipData2x h1 {
-        font-size: 35px;
+        font-size: 26px;
     }
 
     .chipData3x h2 {
-        font-size: 35px;
+        font-size: 26px;
     }
 
     .chipIcon {
@@ -259,8 +250,24 @@
         height: 30px;
     }
 
+
     .chipData2x p {
         font-size: 16px;
+    }
+
+
+}
+
+@media (max-width: 325px) {
+    .summery {
+        overflow-y: scroll;
+        height: 75vh;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .chipsArea {
+        row-gap: 12px;
     }
 
     .chip2x:hover {
@@ -273,5 +280,9 @@
 
     .chip3x:hover {
         transition: scale 0s ease-in-out;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
     }
 }
