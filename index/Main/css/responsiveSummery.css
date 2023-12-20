@@ -250,12 +250,9 @@
         height: 30px;
     }
 
-
     .chipData2x p {
         font-size: 16px;
     }
-
-
 }
 
 @media (max-width: 325px) {

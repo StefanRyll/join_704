@@ -5,6 +5,20 @@ function openAddTask(x = 0) {
     // slideAddTask.classList.add('show-bg-task');
 }
 
+// function toggleVisibility(elementId) {
+//     let element = document.getElementById(elementId);
+//     if (element.classList.contains('d-none')) {
+//         element.classList.remove('d-none');
+//     } else {
+//         element.classList.add('d-none');
+//     }
+// }
+
+// function toggleVisibility(elementId) {
+//     let element = document.getElementById(elementId); 
+//     element.classList.toggle('d-none');
+// }
+
 
 function createTaskFromBoard(x = 0) {
     try { loadAccounts() } catch (e) {
@@ -90,6 +104,7 @@ function toggleContactsAssign() {
 function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
+    
 }
 
 
@@ -164,6 +179,7 @@ function getPrio() {
 
 
 function openSubtask() {
+    // toggleVisibility('showSubtask', 'hiddenSubtask');
     document.getElementById('showSubtask').classList.remove('d-none');
     document.getElementById('hiddenSubtask').classList.add('d-none');
 }
@@ -310,8 +326,8 @@ function editTask(x) {
         const oldSubtask = task.subTasks[i];
         subtaskTemp.push(oldSubtask);
     }
-    renderSubtasks()
-        // Prio
+    renderSubtasks() 
+        prioTemp = task.prio;
     if (task.prio === "Urgent") {
         document.getElementById("btnUrgentWhite").click();
     } else if (task.prio === "Medium") {
