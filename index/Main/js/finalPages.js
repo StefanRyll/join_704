@@ -90,8 +90,6 @@ function contactsPage() {
 }
 
 function helpPage() {
-
-
     setState("help")
     cleanUpAll()
     body.innerHTML = "";
@@ -103,7 +101,6 @@ function helpPage() {
 
 function privacyPage() {
     setState("Privacy Policy")
-
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content');

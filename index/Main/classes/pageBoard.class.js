@@ -118,7 +118,7 @@ class Board extends Page {
             </div>
 
                     `
-            }
+    }
 
     renderTask() {
         let kambanTodo = document.getElementById('kambanTodo');
@@ -130,8 +130,8 @@ class Board extends Page {
         kambanInprogress.innerHTML = "";
         kambanFeedback.innerHTML = "";
         kambanDone.innerHTML = "";
-        
-        if (Join.tasks.length > 0){
+
+        if (Join.tasks.length > 0) {
             for (let i = 0; i < Join.tasks.length; i++) {
                 const task = Join.tasks[i];
                 if (task.todo) {
@@ -142,7 +142,7 @@ class Board extends Page {
                     kambanFeedback.innerHTML += task.tinyTaskCard(i)
                 } else if (task.done) {
                     kambanDone.innerHTML += task.tinyTaskCard(i)
-                } else{
+                } else {
                     task.todo = true;
                     task.feedback = false;
                     task.progress = false;
@@ -186,7 +186,7 @@ class Board extends Page {
     }
     generateHTMLaddTask(x) {
         return /*html*/ `
-              <div id="slideAddTask" class="bg-task">
+              <form id="slideAddTask" class="bg-task">
                 <div class="add-task">
                     <div class="headline-add-task">
                         <h3>Add Task</h3>
@@ -204,13 +204,13 @@ class Board extends Page {
                         ${this.generateHTMLAddTaskButtons(x)}
                     </div>
                 </div>
-              </div>
+                </form>
           `
     }
 
     generateHTMLaddTaskWindow(x) {
         return /*html*/ `
-           <div class="content-add-task">
+           <form class="content-add-task">
                     <div class="content-headline-add-task">
                         <h3>Add Task</h3>
                     </div>
@@ -238,7 +238,7 @@ class Board extends Page {
                     <!-- <div class="content-board-task-footer">
                          
                     </div> -->
-                </div>
+            </form>
           `
     }
     generateHTMLLeftSide(x) {
@@ -260,18 +260,18 @@ class Board extends Page {
 
     generateHTMLTitle() {
         return /*html*/ `
-                <form  class="input-title board-task-input">
+                <div  class="input-title board-task-input">
                     <label for="pflichtfeld">Title<sup>*</sup></label>
                     <input class="blue" type="text" id="boardTaskTitle" name="" required  placeholder="Enter a title">
-                </form>
+                </div>
         `
     }
     generateHTMLDescription() {
         return /*html*/ `
-                <form class="input-description">
+                <div class="input-description">
                     <p>Description</p>
                     <textarea class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
-                </form>
+                </div>
                 
         `
     }
@@ -337,14 +337,11 @@ class Board extends Page {
     }
 
     generateHTMLRenderShortNames(shortNames, x) {
-            return /*html*/ `
+        return /*html*/ `
             <div id="editShortNames${x}" class="accountTag">${shortNames}</div>
         `
-        }
-        // toggleContactsAssign() { // Keine Methode ist jetzt in script.js also onclick funktion
-        //     document.getElementById('selectContacts').classList.toggle('d-none');
-        //     document.getElementById('closeContacts').classList.toggle('d-none');
-        // }
+    }
+
     generateHTMLSeperator() {
         return /*html*/ `
               <div class="seperator-add-task">
@@ -376,26 +373,16 @@ class Board extends Page {
     }
 
     generateHTMLDateForm() {
-            return /*html*/ `
-                <form class="input-date board-task-input">
+        return /*html*/ `
+                <div class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
                         <!-- <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-MM-yyyy"> -->
                     </div>
-                </form>
+                </div>
             `
-        }
-        // generateHTMLDateForm() {
-        //     return /*html*/ `
-        //     <form class="input-date board-task-input">
-        //         <label for="pflichtfeld">Due date<sup>*</sup></label>
-        //         <div class="board-input-date">
-        //             <input type="date" id="datum" name="datum" placeholder="dd/mm/yyyy" name="selected_date" required>
-        //             <button type="button"><img src="/assets/img/calender.png" alt=""></button>
-        //         </div>
-        //     </form>
-        //   `
-        // }
+    }
+
     generateHTMLPrioCategory() {
         return /*html*/ `
                   <div class="prio-category">
@@ -525,7 +512,7 @@ class Board extends Page {
         `
     }
     generateHTMLSelectCategory() {
-            return /*html*/ `
+        return /*html*/ `
               <div class="select-category">
                 <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
                   <span id="technicalTask">Techincal Task</span>
@@ -535,34 +522,8 @@ class Board extends Page {
                 </div>
               </div>
         `
-        }
-        /**This Function close and open the Categories
-         * @param {string}  showSelectCategory show and hidden div
-         */
-        // toggleCategory() { // Onclick in script.js
-        //     document.getElementById('showSelectCategory').classList.toggle('d-none');
-        //     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
-        // }
-        /**This is a select function for Input - > Value
-         * @param {string} technicalTask  select the category Technical Task
-         */
-        // selectCategoryTechnical() { // onclick in script.js
-        //     let technicalTask = document.getElementById('technicalTask').textContent;
-        //     let changeInputField = document.getElementById('taskCategoryInput');
-        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-        //     document.getElementById('showSelectCategory').classList.add('d-none');
-        //     changeInputField.value = technicalTask;
-        // }
-        /**This is a select function for Input - > Value
-         * @param {string} userStory  select the category User Story
-         */
-        // selectCategoryStory() { // onclick in script.js
-        //     let userStory = document.getElementById('userStory').textContent;
-        //     let changeInputField = document.getElementById('taskCategoryInput');
-        //     document.getElementById('hiddenSelectCategory').classList.remove('d-none');
-        //     document.getElementById('showSelectCategory').classList.add('d-none');
-        //     changeInputField.value = userStory;
-        // }
+    }
+
     generateHTMLSubtask() {
         return /*html*/ `
         <div class="board-task-input button-hover">
@@ -598,7 +559,7 @@ class Board extends Page {
         console.log("Vollständig geladen");
         return /*html*/ `
             <div class="addTask-button addTask-button-window">
-                <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
+                <button class="btn-cancel btn-white" type="reset" onsubmit="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
         `
@@ -628,25 +589,8 @@ class Board extends Page {
         `
     }
 
-    // generateHTMLButtons(x) {
-    //     return /*html*/ `
-    //         <div class="bottom-button" >
-    //           <button onclick="closeAddTask()" class="cancel-button" >
-    //             <span>Cancel</span>
-    //               <svg class="cancel-button-stroke" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-    //               <line x1="0" y1="0" x2="24" y2="24" stroke="black" stroke-width="2" class="change-color" />
-    //               <line x1="24" y1="0" x2="0" y2="24" stroke="black" stroke-width="2"  class="change-color" />
-    //             </svg>
-    //           </button>
-    //           <button onclick="createTaskFromBoard(${x})" class="create-task-button">
-    //             <span>Create Task</span>
-    //             <img src="/assets/img/check.png" alt="check Button in add Task">
-    //           </button>
-    //         </div>
-    //     `
-    // }
     generateHTMLCloseButtonInSVG() {
-            return /*html*/ `
+        return /*html*/ `
                 <div class="style-closebutton-intask">
                   <svg  onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -658,9 +602,9 @@ class Board extends Page {
                   </svg>
                 </div>
           `
-        }
-       
+    }
+
     closeAddTask() {
-            slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
-        }
+        slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
+    }
 }

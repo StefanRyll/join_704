@@ -2,8 +2,6 @@ window.onpopstate = function(event) {
     if (event.state){
         if (event.state.page === 'summary') {
             summeryPage()
-            
-            // document.getElementById('summaryPage').style.backgroundColor = 'rgba(9, 25, 49, 1)';
           // Hier kannst du den Code ausführen, um zum vorherigen Schritt zu wechseln
         } 
         else if (event.state.page === 'Board') {
@@ -30,7 +28,6 @@ window.onpopstate = function(event) {
         else if (event.state.page === 'Contacts') {
             addTaskPage()
         }
-
     }
 };
 function setState(x){

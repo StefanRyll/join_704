@@ -32,10 +32,10 @@ class Page {
         let nav = () => {
             if (Join.signedAccount) {
                 return /*html*/ `
-                    <div class="navs bgDark" onclick="summeryPage()"><div class="summary"></div><h3>Summery</h3></div>
-                    <div class="navs" onclick="addTaskPage()"><div class="addTask"></div><h3>Add Task</h3></div>
-                    <div class="navs" onclick="boardPage()" ><div class="board"></div><h3>Board</h3></div>
-                    <div class="navs" onclick="contactsPage()"><div class="contacts"></div><h3>Contacts</h3></div>
+                    <div id="summeryActive" class="navs bgDark" onclick="summeryPage('summeryActive')"><div class="summary"></div><h3>Summery</h3></div>
+                    <div id="addTaskActive" class="navs" onclick="addTaskPage('addTaskActive')"><div class="addTask"></div><h3>Add Task</h3></div>
+                    <div id="boardActive" class="navs" onclick="boardPage('boardActive')" ><div class="board"></div><h3>Board</h3></div>
+                    <div id="contactsActive" class="navs" onclick="contactsPage('contactsActive')"><div class="contacts"></div><h3>Contacts</h3></div>
                 `
             } else {
                 return "";
