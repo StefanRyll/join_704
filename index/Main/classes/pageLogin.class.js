@@ -94,6 +94,7 @@ class Login extends Page {
     }
     signUpWindow() {
         return /*html*/ `
+            <div class="signUp-body">
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow">
                         <a class="backBtn" onclick="startPage2()">
@@ -152,6 +153,7 @@ class Login extends Page {
                         <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
                     </div>
                 </footer>
+            </div>
             `
     }
     forceSignIn(x) {
