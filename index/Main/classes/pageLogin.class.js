@@ -114,11 +114,11 @@ class Login extends Page {
                             <div class="frame-14"><input required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>
-                            <div class="frame-14" onclick="visibility()"><input type="password" class="frame-158" placeholder="Password" id="signUpInputPassword">
+                            <div class="frame-14" onclick="visibility()"><input type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
-                            <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input type="password" class="frame-158" placeholder="Confirm Password" id="signUpInputPassword2">
+                            <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
