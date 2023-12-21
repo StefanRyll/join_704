@@ -57,7 +57,7 @@
         gap: 20px;
     }
     .login-btn {
-        width: 177px;
+        width: 177px !important;
     }
     .backBtn {
         top: 1rem;

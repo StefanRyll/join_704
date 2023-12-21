@@ -19,7 +19,7 @@ a:hover {
 
 .log-in-side-button {
     border: none;
-    width: 91px;
+    width: 91px !important;
     height: 49px;
     padding: 15px, 16px, 15px, 16px;
     border-radius: 8px;
