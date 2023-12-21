@@ -1,9 +1,27 @@
 let active = true;
 
 
-function activeBackgroundColor(id) {
+// function activeBackgroundColor(id, backgroundColor) {
+//     if (active) {
+//         let element = document.getElementById(id);
+//         element.style.backgroundColor = backgroundColor;
+//     }
+// }
+
+// function activeColor(id, color) {
+//     if (active) {
+//         let element = document.getElementById(id);
+//         element.style.color = color;
+//     }
+// }
+
+function setActiveStyles(id, backgroundColor, textColor) {
     if (active) {
-        document.getElementById(id).style.backgroundColor = 'rgba(9, 25, 49, 1)';
+        let element = document.getElementById(id);
+        if (element) {
+            element.style.backgroundColor = backgroundColor;
+            element.style.color = textColor;
+        }
     }
 }
 
@@ -31,7 +49,7 @@ function startPage() {
             loginEmail.value = responseParsed;
            
         } catch (e) { "Nothing to remember :" + e }
-        activeBackgroundColor('summeryActive');
+        setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
     }
 }
 
@@ -65,7 +83,7 @@ function summeryPage(summeryActive) {
         let content = document.getElementById('content');
         showSideAndHead();
         content.innerHTML = JoinSummary.summeryContent();
-        activeBackgroundColor(summeryActive);
+        setActiveStyles(summeryActive, 'rgba(9, 25, 49, 1)');
     }
 }
 
@@ -82,7 +100,7 @@ function boardPage(boardActive) {
         showSideAndHead();
         JoinBoard.renderTask();
         updateHTML();
-        activeBackgroundColor(boardActive);
+        setActiveStyles(boardActive, 'rgba(9, 25, 49, 1)');
     }
 }
 
@@ -98,7 +116,7 @@ function contactsPage(contactsActive) {
         showSideAndHead();
         content.innerHTML = JoinContacts.contactsContent();
         renderContacts();
-        activeBackgroundColor(contactsActive);
+        setActiveStyles(contactsActive, '#29ABE2');
     }
 }
 
@@ -112,16 +130,17 @@ function helpPage() {
     content.innerHTML = JoinAbout.helpContent();
 }
 
-function privacyPage() {
+function privacyPage(activePage) {
     setState("Privacy Policy")
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain();
     let content = document.getElementById('content');
     showSideAndHead();
     content.innerHTML = JoinAbout.privacyContent();
+    setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
 }
 
-function legalPage() {
+function legalPage(activePage) {
     setState("Legal")
 
     body.innerHTML = "";
@@ -129,6 +148,7 @@ function legalPage() {
     let content = document.getElementById('content');
     showSideAndHead();
     content.innerHTML = JoinAbout.legalNoticeContent();
+    setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
 }
 
 function addTaskPage(addTaskActive) {
@@ -146,5 +166,5 @@ function addTaskPage(addTaskActive) {
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     showSideAndHead()
     // content.innerHTML = Join.generateHTMLaddTask();
-    activeBackgroundColor(addTaskActive);
+    setActiveStyles(addTaskActive, 'rgba(9, 25, 49, 1)');
 }

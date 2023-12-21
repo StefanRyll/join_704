@@ -59,8 +59,8 @@ class Page {
                     ${nav()}
                 </nav>
                 <div>
-                    <p class="legal-policy" onclick="privacyPage()">Privacy Policy</p>
-                    <p class="legal-policy" onclick="legalPage()">Legal notice</p>
+                    <p id="privacyPage" class="legal-policy" onclick="privacyPage('privacyPage')">Privacy Policy</p>
+                    <p id="legalPage" class="legal-policy" onclick="legalPage('legalPage')">Legal notice</p>
                 </div>
             </div>
             <header class="header">
