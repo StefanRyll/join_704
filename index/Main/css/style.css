@@ -339,3 +339,11 @@ footer {
 .respon-header {
     display: none;
 }
+
+@media (max-width: 520px) {
+    .btn-dark-blue,
+    .btn-white {
+        font-size: 12px;
+        padding: 2px;
+    }
+}
