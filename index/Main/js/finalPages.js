@@ -48,6 +48,7 @@ function startPage2() {
     }
 }
 
+
 function signUp() {
     // body.innerHTML = Join.loginLayout()
     // let logoArea = document.getElementById('logoArea')
@@ -57,6 +58,7 @@ function signUp() {
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
 }
+
 
 function summeryPage(summeryActive) {
     try { loadTasks() } catch (e) {
@@ -90,6 +92,7 @@ function boardPage(boardActive) {
     }
 }
 
+
 function contactsPage(contactsActive) {
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
@@ -102,9 +105,10 @@ function contactsPage(contactsActive) {
         showSideAndHead();
         content.innerHTML = JoinContacts.contactsContent();
         renderContacts();
-        setActiveStyles(contactsActive, '#29ABE2');
+        setActiveStyles(contactsActive, 'rgba(9, 25, 49, 1)');
     }
 }
+
 
 function helpPage() {
     setState("help");
@@ -116,6 +120,7 @@ function helpPage() {
     content.innerHTML = JoinAbout.helpContent();
 }
 
+
 function privacyPage(activePage) {
     setState("Privacy Policy")
     body.innerHTML = "";
@@ -125,6 +130,7 @@ function privacyPage(activePage) {
     content.innerHTML = JoinAbout.privacyContent();
     setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
 }
+
 
 function legalPage(activePage) {
     setState("Legal")
@@ -136,6 +142,7 @@ function legalPage(activePage) {
     content.innerHTML = JoinAbout.legalNoticeContent();
     setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
 }
+
 
 function addTaskPage(addTaskActive) {
     // try { loadTasks()}
