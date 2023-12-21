@@ -1,20 +1,6 @@
 let active = true;
 
 
-// function activeBackgroundColor(id, backgroundColor) {
-//     if (active) {
-//         let element = document.getElementById(id);
-//         element.style.backgroundColor = backgroundColor;
-//     }
-// }
-
-// function activeColor(id, color) {
-//     if (active) {
-//         let element = document.getElementById(id);
-//         element.style.color = color;
-//     }
-// }
-
 function setActiveStyles(id, backgroundColor, textColor) {
     if (active) {
         let element = document.getElementById(id);
