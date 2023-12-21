@@ -46,7 +46,6 @@ class Page {
                 return /*html*/ `
                     <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
                     <div class="userImg">${Join.signedAccount.shortname}</div>
-
                 `
             } else {
                 return "";
