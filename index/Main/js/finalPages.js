@@ -1,3 +1,13 @@
+let active = true;
+
+
+function activeBackgroundColor(id) {
+    if (active) {
+        document.getElementById(id).style.backgroundColor = 'rgba(9, 25, 49, 1)';
+    }
+}
+
+
 function startPage() {
     //  if (Join.accounts ){
 
@@ -19,8 +29,9 @@ function startPage() {
             let loginEmail = document.getElementById('loginEmail')
             let responseParsed = JSON.parse(response);
             loginEmail.value = responseParsed;
+           
         } catch (e) { "Nothing to remember :" + e }
-
+        activeBackgroundColor('summeryActive');
     }
 }
 
@@ -43,22 +54,22 @@ function signUp() {
     body.innerHTML = JoinLogin.signUpWindow();
 }
 
-function summeryPage() {
+function summeryPage(summeryActive) {
     try { loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
         setState("summary");
         cleanUpAll()
         body.innerHTML = "";
-        body.innerHTML = JoinLogin.pageLayoutMain()
-        let content = document.getElementById('content')
-        showSideAndHead()
+        body.innerHTML = JoinLogin.pageLayoutMain();
+        let content = document.getElementById('content');
+        showSideAndHead();
         content.innerHTML = JoinSummary.summeryContent();
-
+        activeBackgroundColor(summeryActive);
     }
 }
 
-function boardPage() {
+function boardPage(boardActive) {
     try { loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -68,43 +79,45 @@ function boardPage() {
         body.innerHTML = Join.pageLayoutMain()
         let content = document.getElementById('content')
         content.innerHTML = JoinBoard.boardContent();
-        showSideAndHead()
-        JoinBoard.renderTask()
+        showSideAndHead();
+        JoinBoard.renderTask();
         updateHTML();
+        activeBackgroundColor(boardActive);
     }
 }
 
-function contactsPage() {
+function contactsPage(contactsActive) {
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
-        setState("Contacts")
-        cleanUpAll()
+        setState("Contacts");
+        cleanUpAll();
         body.innerHTML = "";
         body.innerHTML = Join.pageLayoutMain()
         let content = document.getElementById('content')
-        showSideAndHead()
+        showSideAndHead();
         content.innerHTML = JoinContacts.contactsContent();
-        renderContacts()
+        renderContacts();
+        activeBackgroundColor(contactsActive);
     }
 }
 
 function helpPage() {
-    setState("help")
-    cleanUpAll()
+    setState("help");
+    cleanUpAll();
     body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
+    body.innerHTML = Join.pageLayoutMain();
+    let content = document.getElementById('content');
+    showSideAndHead();
     content.innerHTML = JoinAbout.helpContent();
 }
 
 function privacyPage() {
     setState("Privacy Policy")
     body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
+    body.innerHTML = Join.pageLayoutMain();
     let content = document.getElementById('content');
-    showSideAndHead()
+    showSideAndHead();
     content.innerHTML = JoinAbout.privacyContent();
 }
 
@@ -112,13 +125,13 @@ function legalPage() {
     setState("Legal")
 
     body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead()
+    body.innerHTML = Join.pageLayoutMain();
+    let content = document.getElementById('content');
+    showSideAndHead();
     content.innerHTML = JoinAbout.legalNoticeContent();
 }
 
-function addTaskPage() {
+function addTaskPage(addTaskActive) {
     // try { loadTasks()}
     // catch(e){
     //     console.log("Fehler", e)
@@ -132,5 +145,6 @@ function addTaskPage() {
     let content = document.getElementById('content')
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     showSideAndHead()
-        // content.innerHTML = Join.generateHTMLaddTask();
+    // content.innerHTML = Join.generateHTMLaddTask();
+    activeBackgroundColor(addTaskActive);
 }
