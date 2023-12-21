@@ -155,12 +155,16 @@ h1 {
 .check-box {
     cursor: pointer;
     display: flex;
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     padding: 4px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+}
+
+.checkbox-hook {
+    padding-bottom: 1px;
 }
 
 .d-none {
