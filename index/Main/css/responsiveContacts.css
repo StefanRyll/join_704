@@ -252,7 +252,7 @@
                 }
                 .respon-footer-buttons:hover {
                     cursor: pointer;
-                    background-color: var(--general-button-active);
+                    background-color: #2A3D59;
                 }
                 #content {
                     /* position: absolute; */

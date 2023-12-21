@@ -252,7 +252,7 @@ class Summary extends Page {
             }
             return count;
         }
-        let greetedUser = (Join.signedAccount.name === "Guest") ? "" : Join.signedAccount.name;
+        let greetedUser = (Join.signedAccount.name === "Guest") ? "" : Join.signedAccount.name; 
         return /*html*/ `
         <div id="summery" class="summery">
             <div class="summeryHeadline">

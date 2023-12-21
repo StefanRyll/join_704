@@ -1,7 +1,7 @@
 window.onpopstate = function(event) {
     if (event.state){
         if (event.state.page === 'summary') {
-            summeryPage()
+            summeryPage();
           // Hier kannst du den Code ausführen, um zum vorherigen Schritt zu wechseln
         } 
         else if (event.state.page === 'Board') {
@@ -29,7 +29,9 @@ window.onpopstate = function(event) {
             addTaskPage()
         }
     }
-};
+}
+
+
 function setState(x){
     //const state = {page: `${x}`};
     const title = `${x}`;
@@ -38,6 +40,8 @@ function setState(x){
     document.title = "Join - " + capitalizeFirstLetter(title)
     return x;
 }
+
+
 function capitalizeFirstLetter(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
