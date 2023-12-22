@@ -17,7 +17,7 @@ function startPage() {
 
     //      saveTasks()
     //  }
-    
+
     try { loadAccounts().then(loadTasks()) } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -27,7 +27,7 @@ function startPage() {
         body.innerHTML = JoinLogin.startAnimationOverlay();
         body.innerHTML = JoinLogin.startAnimation();
         body.innerHTML += JoinLogin.logInContent();
-        
+
         try {
             let response = localStorage.getItem("remember");
             let loginEmail = document.getElementById('loginEmail')
@@ -37,7 +37,7 @@ function startPage() {
         setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
         // summeryPage('summeryActive'); // Sobald Aktiv, gibt es Probleme mit dem übertragen des namen in pageSummery.class.js ln => 255;
     }
-       
+
 }
 
 
@@ -161,6 +161,6 @@ function addTaskPage(addTaskActive) {
     let content = document.getElementById('content')
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     showSideAndHead()
-    // content.innerHTML = Join.generateHTMLaddTask();
+        // content.innerHTML = Join.generateHTMLaddTask();
     setActiveStyles(addTaskActive, 'rgba(9, 25, 49, 1)');
 }

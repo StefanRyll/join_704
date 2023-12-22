@@ -163,6 +163,24 @@ h1 {
     flex-shrink: 0;
 }
 
+.checkbox {
+    left: unset;
+    content: url('../IMG/check_empty.svg');
+    appearance: none;
+}
+
+.checkbox:hover {
+    content: url('../IMG/checkbox_hover.svg');
+}
+
+.checkbox:checked {
+    content: url('../IMG/checkbox_check.svg');
+}
+
+.checkbox:checked:hover {
+    content: url('../IMG/checkbox_check_hover.svg');
+}
+
 .checkbox-hook {
     padding-bottom: 1px;
 }

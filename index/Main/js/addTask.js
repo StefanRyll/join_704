@@ -1,8 +1,8 @@
 function openAddTask(x = 0) {
     console.log("Click +");
     JoinBoard.renderAddTask(x)
-    // let slideAddTask = document.getElementById('slideAddTask')
-    // slideAddTask.classList.add('show-bg-task');
+        // let slideAddTask = document.getElementById('slideAddTask')
+        // slideAddTask.classList.add('show-bg-task');
 }
 
 
@@ -106,7 +106,7 @@ function toggleContactsAssign() {
 function toggleCategory() {
     document.getElementById('showSelectCategory').classList.toggle('d-none');
     document.getElementById('hiddenSelectCategory').classList.toggle('d-none');
-    
+
 }
 
 
@@ -329,8 +329,8 @@ function editTask(x) {
         const oldSubtask = task.subTasks[i];
         subtaskTemp.push(oldSubtask);
     }
-    renderSubtasks() 
-        prioTemp = task.prio;
+    renderSubtasks()
+    prioTemp = task.prio;
     if (task.prio === "Urgent") {
         document.getElementById("btnUrgentWhite").click();
     } else if (task.prio === "Medium") {

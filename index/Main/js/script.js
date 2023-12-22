@@ -117,15 +117,15 @@ function logout() {
 
 
 function checkboxActivate() {
-    document.getElementById('checkbox').classList.add('d-none');
-    document.getElementById('checkbox-active').classList.remove('d-none');
+    // document.getElementById('checkbox').classList.add('d-none');
+    // document.getElementById('checkbox-active').classList.remove('d-none');
     Join.rememberMe = true;
 }
 
 
 function checkboxDeactivate() {
-    document.getElementById('checkbox-active').classList.add('d-none');
-    document.getElementById('checkbox').classList.remove('d-none');
+    // document.getElementById('checkbox-active').classList.add('d-none');
+    // document.getElementById('checkbox').classList.remove('d-none');
     Join.rememberMe = false;
 }
 
