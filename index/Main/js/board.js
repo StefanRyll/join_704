@@ -195,27 +195,27 @@ function removeHighlight(id) {
 
 
 function checkDragArea() {
-    let todo = document.getElementById('emptyTaskTodo');
+    let todoArea = document.getElementById('emptyTaskTodo');
     let inprogress = document.getElementById('emptyTaskInprogress');
-    let feedback = document.getElementById('emptyTaskFeedback');
+    let feedbackArea = document.getElementById('emptyTaskFeedback');
     let done = document.getElementById('emptyTaskDone');
-    checkSomeAreaBoard(todo, inprogress, feedback, done);
+    checkSomeAreaBoard(todoArea, inprogress, feedbackArea, done);
 }
 
 
-function checkSomeAreaBoard(todo, inprogress, feedback, done) {
-    checkAreaTodo(todo);
+function checkSomeAreaBoard(todoArea, inprogress, feedbackArea, done) {
+    checkAreaTodo(todoArea);
     checkAreaProgress(inprogress);
-    checkAreaFeedback(feedback);
+    checkAreaFeedback(feedbackArea);
     checkAreaDone(done);    
 }
 
 
-function checkAreaTodo(todo) {
+function checkAreaTodo(todoArea) {
     if (Join.tasks.some(task => task.todo)) {
-        todo.classList.add('d-none');
+        todoArea.classList.add('d-none');
     } else {
-        todo.classList.remove('d-none');
+        todoArea.classList.remove('d-none');
     }
 }
 
@@ -229,11 +229,11 @@ function checkAreaProgress(inprogress) {
 }
 
 
-function checkAreaFeedback(feedback) {
+function checkAreaFeedback(feedbackArea) {
     if (Join.tasks.some(task => task.feedback)) {
-        feedback.classList.add('d-none');
+        feedbackArea.classList.add('d-none');
     } else {
-        feedback.classList.remove('d-none');
+        feedbackArea.classList.remove('d-none');
     }
 }
 

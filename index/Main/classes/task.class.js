@@ -1,6 +1,6 @@
 class Task {
     constructor(title, worker, desc, date, prio = "Wichtig",
-        Category, subTasks, todo = true, progress = false, feedback = false, done = false) {
+        Category, subTasks, todo = false, progress = false, feedback = false, done = false) {
         this.title = title;
         this.worker = worker;
         this.desc = desc;
@@ -222,10 +222,10 @@ class Task {
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
                 </div>
 
-                <div class="subtasks" id="tinyTaskCardSubtaskSection">
+                <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
                     <div class="tiny-task-label">
                         <div class="progressContainer" id="progressContainer">
-                            <div class="progressBar" id="progressBar"></div>
+                            <div class="progressBar${x}" id="progressBar"></div>
                         </div>
                         <p>${SubtasksDone()}/${this.subTasks.length}&nbsp;Subtasks</p>
                     </div>
@@ -241,7 +241,8 @@ class Task {
 
     }
     updateProgressBar() {
-        let progressContainer = document.getElementById('tinyTaskCardSubtaskSection')
+        let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
+        let gesamtFortschritt;
         let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
         let variable2 = () => {
             let countDone = 0;
@@ -256,8 +257,9 @@ class Task {
         if (variable1 == 0) {
             progressContainer.classList.add('d-none')
         }
-
-        let gesamtFortschritt = (variable2() / variable1) * 100;
+        if (variable1 > 0){
+            gesamtFortschritt = (variable2() / variable1) * 100;
+        }
 
         let progressbar = document.getElementById('progressBar');
 

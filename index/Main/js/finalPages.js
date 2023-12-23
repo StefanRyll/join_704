@@ -17,11 +17,13 @@ function startPage() {
 
     //      saveTasks()
     //  }
-
-    try { loadAccounts().then(loadTasks()) } catch (e) {
+    try { 
+        loadAccounts()
+        loadTasks() 
+    } catch (e) {
         console.log("Fehler", e)
     } finally {
-
+        
         setState("login")
 
         body.innerHTML = JoinLogin.startAnimationOverlay();

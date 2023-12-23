@@ -65,6 +65,7 @@ async function loadTasks(){
   let responseAsJson = await getItem(tasksKey)
   let parsedResponse = JSON.parse(responseAsJson['data']['value'])
   let loadedTasks = decodeTasks(parsedResponse)
+  console.log("loadTasks()", loadedTasks);
   Join.tasks = loadedTasks;
   return null
 }
@@ -91,6 +92,8 @@ function decodeTasks(responseAsJson){
     let done = taskData['done'];
     let feedback = taskData['feedback'];
     let prio = taskData['prio'];
+    console.log("Decode feedback", feedback);
+    console.log("Decode Done", done);
     let progress = taskData['progress'];
     let subTasks = ()=>{
       let subTask = [];
@@ -115,6 +118,10 @@ function decodeTasks(responseAsJson){
       }
       return workers;
     };
+    console.log("Todo", todo);
+    console.log("progress", progress);
+    console.log("feedback", feedback);
+    console.log("done", done);
     let newTask = new Task(title, worker(), desc, date, prio, category, subTasks(), todo, progress,feedback,done)
     console.log("Decode", newTask);
     decTasks.push(newTask)
