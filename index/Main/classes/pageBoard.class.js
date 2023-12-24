@@ -145,14 +145,12 @@ class Board extends Page {
                     console.log("Nach feedback gerendert", task);
                 } else if (task.done) {
                     kambanDone.innerHTML += task.tinyTaskCard(i)
-<<<<<<< Updated upstream
                 } else {
                     task.todo = true;
                     task.feedback = false;
                     task.progress = false;
                     task.done = false;
                     this.renderTask()
-=======
                     console.log("Nach done gerendert", task);
                 // } else{
                 //     task.todo = true;
@@ -162,7 +160,6 @@ class Board extends Page {
                 //     this.renderTask()
                 //     console.log("Nicht zutreffend", task);
 
->>>>>>> Stashed changes
                 }
                 // if(task.subTasks){
                 //     task.updateProgressBar(i);
