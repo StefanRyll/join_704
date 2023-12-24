@@ -29,9 +29,31 @@
     bottom: 0;
     left: 0;
     right: 0;
-    transform: translateX(5000px);
-    transition: all 225ms ease-in-out;
+    animation: slideTest 225ms ease-in-out;
+    /* transform: translateX(5000px); */
+    /* transition: all 225ms ease-in-out; */
 }
+@keyframes slideTest{
+    0%{
+        transform: translateX(200%);
+    }
+    90%{
+        transform: translateX(-1%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+/* @keyframes fadeBG {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+} */
 
 .board-task-input {
     display: flex;
@@ -580,4 +602,3 @@
 .style-closebutton-intask {
     margin-right: 64px;
 }
-

@@ -276,9 +276,10 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateX(200%);
+    /* transform: translateX(200%); */
     transition: all 225ms ease-in-out;
 }
+
 
 .showPopUpTaskCard {
     transform: translateX(0);
