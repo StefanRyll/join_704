@@ -25,7 +25,6 @@ class Page {
         return /*html*/ `
             <div id="SideAndHead"></div>
             <div id="content" class="content"></div>
-
         `
     }
     SideAndHead() {
@@ -77,19 +76,19 @@ class Page {
                 </div>
             </header>
             <footer class="respon-footer">
-                <div class="respon-footer-buttons" onclick="summeryPage()">
+                <div id="responActivSummery" class="respon-footer-buttons" onclick="summeryPage('responActivSummery')">
                     <img src="./IMG/Summary.png">
                     <p class="mg-none">Summery</p>
                 </div>
-                <div class="respon-footer-buttons" onclick="boardPage()">
+                <div id="responActivBoard" class="respon-footer-buttons" onclick="boardPage('responActivBoard')">
                     <img src="./IMG/Board.png">
                     <p class="mg-none">Board</p>
                 </div>
-                <div class="respon-footer-buttons" onclick="addTaskPage()">
+                <div id="responActivAddTask" class="respon-footer-buttons" onclick="addTaskPage('responActivAddTask')">
                     <img src="./IMG/addTask.png">
                     <p class="mg-none">Add Task</p>
                 </div>
-                <div class="respon-footer-buttons" onclick="contactsPage()">
+                <div id="responContactsPage" class="respon-footer-buttons" onclick="contactsPage('responContactsPage')">
                     <img src="./IMG/Contacts.png">
                     <p class="mg-none">Contacts</p>
                 </div>
@@ -107,6 +106,8 @@ class Page {
 
         `
     }
+
+
 
     // contactsContent() {
     //     return /*html*/ `

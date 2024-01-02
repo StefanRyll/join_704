@@ -1,5 +1,3 @@
-
-
 const STORAGE_TOKEN = "SSLOEY6VSHKBCAMT1R3MQGZLOIZ7TTBF66BZZQUS";
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 const MY_BACKEND_ACC = 'http://roman-schroeder.developerakademie.net/Join/php/saveAccounts.php'

@@ -160,7 +160,7 @@ class Contact {
             <div onclick="addShortNames('${this.shortname}', ${x})" id="tinyAccountCardCheckedNone${x}" class="checked-none">
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
-                        <div id="shortname${x}" class="accountTag">${this.shortname}</div>
+                        <div id="shortname${x}" class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
                         <div id="contactName${x}" class="accountName">${this.name}</div>
                     </div>
                     <div id="assignedContactCheckEmpty" class="board-addtask-addcontact-checkbox">
@@ -175,7 +175,7 @@ class Contact {
             <div onclick="removeShortNames(${x})" id="tinyAccountCardChecked${x}" class="checked d-none">
                 <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
-                        <div class="accountTag">${this.shortname}</div>
+                        <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
                         <div class="accountName">${this.name}</div>
                     </div>
                     <div id="assignedContactCheckIsCheck" class="board-addtask-addcontact-checkbox board-addtask-addcontact-checkbox-check">

@@ -2,7 +2,6 @@ window.onpopstate = function(event) {
     if (event.state){
         if (event.state.page === 'summary') {
             summeryPage();
-          // Hier kannst du den Code ausführen, um zum vorherigen Schritt zu wechseln
         } 
         else if (event.state.page === 'Board') {
             boardPage()

@@ -1,5 +1,4 @@
 function openAddTask(x = 0) {
-    console.log("Click +");
     JoinBoard.renderAddTask(x)
         // let slideAddTask = document.getElementById('slideAddTask')
         // slideAddTask.classList.add('show-bg-task');
@@ -389,7 +388,6 @@ function addNewContact() {
 
 function addShortNames(name, x) {
     renderShortNames(name, x);
-
 }
 
 

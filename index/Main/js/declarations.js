@@ -1,4 +1,4 @@
-let subtaskTemp = []; //@Roman kannst gerne ändern! Muss ich nicht ;D
+let subtaskTemp = []; 
 let prioTemp = "";
 
 let Join = new Page();

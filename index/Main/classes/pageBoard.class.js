@@ -289,7 +289,6 @@ class Board extends Page {
     }
 
     generateHTMLAssignedTo(x) {
-        console.log("render Contact list");
         return /*html*/ `
             <p class="assigned-style">Assigned to</p>
             <div id="styleAddTask" class="board-task-input bg-color-white">
@@ -327,9 +326,9 @@ class Board extends Page {
             
             `
     }
-    generateHTMLAddToContactButton(x) {
+    generateHTMLAddToContactButton() {
         return /*html*/ `
-          <button onclick="addNewContact(${x})" class="add-new-contact">Add new contact
+          <button onclick="addNewContact()" class="add-new-contact">Add new contact
               <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                   <mask id="mask0_71338_5843" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
                     <rect x="0.0683594" width="32" height="32" fill="#D9D9D9"/>
@@ -350,7 +349,7 @@ class Board extends Page {
 
     generateHTMLRenderShortNames(shortNames, x) {
         return /*html*/ `
-            <div id="editShortNames${x}" class="accountTag">${shortNames}</div>
+            <div id="editShortNames${x}" class="initials-logo" style="background-color: ${Join.accounts[x].color}; margin: 0 auto;">${shortNames}</div>
         `
     }
 
@@ -389,7 +388,7 @@ class Board extends Page {
                 <div class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <!-- <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-MM-yyyy"> -->
+                        <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-MM-yyyy">
                     </div>
                 </div>
             `
