@@ -257,7 +257,7 @@ class Task {
         if (variable1 == 0) {
             progressContainer.classList.add('d-none')
         }
-        if (variable1 > 0){
+        if (variable1 > 0) {
             gesamtFortschritt = (variable2() / variable1) * 100;
         }
 
@@ -269,7 +269,7 @@ class Task {
 
     editTask() {
         let taskCard = document.getElementById('taskCard')
-            // taskCard.innerHTML = this.taskCardEdit()
+        taskCard.innerHTML = this.taskCardEdit()
         taskCard.classList.add('d-none');
     }
     switchStatus(x = 0) {

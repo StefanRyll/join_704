@@ -122,7 +122,7 @@ class Contact {
     tinyCard(x) {
         return /*html*/ `
         <div class="tinyAccountTaskCard" onclick="showContact(${x})">
-            <div class="accountTag">${this.shortname}</div>
+            <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
             <div>
                 <div class="contactName">${this.name}</div>
                 <!-- <div class="contactEmail">${this.email}</div> -->
@@ -187,7 +187,7 @@ class Contact {
     }
     accountTag() {
         return /*html*/ `
-            <div class="accountTag">${this.shortname}</div>
+            <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
 
         `
     }

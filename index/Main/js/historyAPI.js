@@ -31,11 +31,18 @@ window.onpopstate = function(event) {
 }
 
 
+function getCurrentState() {
+    let pathname = window.location.pathname;
+    let parts = pathname.split('/');
+    return parts[parts.length - 1].replace('.html', '');
+}
+
+
 function setState(x){
-    //const state = {page: `${x}`};
+    // const state = {page: `${x}`};
     const title = `${x}`;
-    //const url = `${x}.html`;
-    //history.pushState(state, title,url)
+    // const url = `${x.toLowerCase()}.html`;
+    // history.pushState(state, title, url)
     document.title = "Join - " + capitalizeFirstLetter(title)
     return x;
 }
