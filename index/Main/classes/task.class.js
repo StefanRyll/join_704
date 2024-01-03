@@ -131,7 +131,7 @@ class Task {
                 </div>
 
                 <div class="taskCardFooter">
-                    <div class="deleteBtn"></div>
+                    <div class="deleteBtn" onclick="deleteTask(${x})"></div>
                     <div class="editBtn" onclick="editTask(${x})"></div>
                 </div>
             </div>

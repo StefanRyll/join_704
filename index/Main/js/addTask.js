@@ -68,7 +68,12 @@ function createTaskFromBoard(x = 0) {
     }
 }
 
-
+function deleteTask(x){
+    Join.tasks.splice(x , 1)
+    console.log("Task " + x + " wird gelöscht");
+    saveTasks()
+    boardPage()
+}
 function readAssignedUsers() {
     let workers = [];
     for (let i = 0; i < Join.accounts.length; i++) {
