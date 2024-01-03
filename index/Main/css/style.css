@@ -249,20 +249,9 @@ footer {
 }
 
 #content {
-    /* background-color: #29ABE2; */
-    /* width: 80%; */
-    /* position: absolute; */
-    /* height: 71%; */
-    /* text-align: justify; */
-    /* text-overflow: clip; */
     height: 100vh;
-    padding: 90px;
     margin-left: 232px;
     margin-top: 98px;
-    /* left: 232px; */
-    /* top: 98px; */
-    /* overflow: hidden; */
-    /* overflow-y: hidden; */
 }
 
 .close-button {

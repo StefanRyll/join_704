@@ -39,7 +39,6 @@ function startPage() {
         setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
         // summeryPage('summeryActive'); // Sobald Aktiv, gibt es Probleme mit dem übertragen des namen in pageSummery.class.js ln => 255;
     }
-
 }
 
 

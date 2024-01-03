@@ -11,9 +11,10 @@
     .content-add-task {
         padding-left: 15%;
         padding-top: 90px;
-    }
-    .content-add-task {
         margin-right: 0;
+        padding: 0;
+        padding-left: 90px;
+        padding-top: 90px;
     }
     .board-task-middle {
         display: flex;

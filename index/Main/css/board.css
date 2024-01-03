@@ -43,6 +43,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .res-content-board {
+    padding: 90px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -57,7 +58,6 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 10px;
     margin-bottom: 4em;
     padding-top: 90px;
-    padding-right: 92px;
 }
 
 .frame-192 h2 {
@@ -153,22 +153,20 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 32px;
 }
 
-
 /********************************* ACTION BAR *************************************/
 
+.content-add-task {
+    padding: 90px;
+}
+
 .frame-136 {
+    width: 90%;
+    gap: 26px;
     display: flex;
     gap: 26px;
-    max-width: 100%;
-    padding-right: 92px;
     justify-content: space-between;
     align-items: flex-start;
 }
-
-.board-actionbar {
-    max-height: 100vh;
-}
-
 
 .board-actionbar p {
     font-size: 20px;
@@ -207,7 +205,6 @@ input[type="search"]::-webkit-search-results-decoration {
     border: 1px dashed #A8A8A8;
     background: #E7E7E7;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
-    /* margin-left: 294px; */
     width: 246px;
 }
 
@@ -282,8 +279,13 @@ input[type="search"]::-webkit-search-results-decoration {
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
+    /* height: 100vh; */
+}
+
+.board-actionbar {
+    height: 100vh;
 }
 
 .drag-area {
-    max-height: 100vh;
+    height: 100vh;
 }

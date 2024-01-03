@@ -1,14 +1,16 @@
 @media (max-width: 1520px) {
+    .res-content-board {
+        padding: 0;
+        padding-top: 90px;
+        padding-left: 90px;
+    }
+
     .frame-136 {
         display: flex;
         justify-content: start;
         flex-wrap: wrap;
         overflow-y: scroll;
         height: 55%;
-    }
-
-    .frame-192 {
-        width: 830px;
     }
 }
 
@@ -23,10 +25,10 @@
 }
 
 @media (max-width: 1330px) {
-    .res-content-board {
+    /* .res-content-board {
         padding-top: 90px;
         padding-left: 90px;
-    }
+    } */
 }
 
 @media (max-width: 1180px) {
