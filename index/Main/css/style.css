@@ -164,6 +164,7 @@ h1 {
 }
 
 .checkbox {
+    cursor: pointer;
     left: unset;
     content: url('../IMG/check_empty.svg');
     appearance: none;

@@ -166,9 +166,8 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .board-actionbar {
-    max-height: 100vh;
+    height: 100vh;
 }
-
 
 .board-actionbar p {
     font-size: 20px;
@@ -285,5 +284,5 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .drag-area {
-    max-height: 100vh;
+    height: 100vh;
 }
