@@ -67,7 +67,7 @@ class Board extends Page {
 
             
             <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress'); checkDragArea()" ondragleave="removeHighlight('ondropProgress'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
-                <div class="empty-tasks d-none" id="emptyTaskInprogress">
+                <div class="empty-tasks" id="emptyTaskInprogress">
                     <p>No tasks In progress</p>
                 </div>
                 <div class="canban-style" id="kambanInprogress"></div>

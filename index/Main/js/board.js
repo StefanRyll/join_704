@@ -57,11 +57,18 @@ function updateHTML() {
     let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
     let done = Join.tasks.filter(s => s.done = true);
     let none = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false);
-
+    clearDropeZoneInnerHTML(ondropTodo, ondropProgress, ondropFeedback, ondropDone);
     checkBooleanNone(none);
-    clearDopZoneInnerHTML(ondropTodo, ondropProgress, ondropFeedback, ondropDone);
     iterateAllTaskCard(ondropTodo, ondropProgress, ondropFeedback, ondropDone, todos, inProgress, awaitFeedback, done);
 }
+
+
+// function clearDropeZoneInnerHTML(todo, progress, feedback, done) {
+//     todo.innerHTML = '';
+//     progress.innerHTML = '';
+//     feedback.innerHTML = '';
+//     done.innerHTML = '';
+// }
 
 
 function checkBooleanNone(none) {
@@ -72,14 +79,6 @@ function checkBooleanNone(none) {
         nothing.feedback = false;
         nothing.done = false;
     }
-}
-
-
-function clearDopZoneInnerHTML(todo, progress, feedback, done) {
-    todo.innerHTML = '';
-    progress.innerHTML = '';
-    feedback.innerHTML = '';
-    done.innerHTML = '';
 }
 
 
@@ -134,6 +133,7 @@ function allowDrop(ev) {
 
 
 function moveTo(category) {
+
     if (currentDraggedElement !== undefined) {
         if (category === "Todo") {
             moveToTodo(currentDraggedElement);
