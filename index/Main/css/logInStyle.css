@@ -56,7 +56,7 @@ a:hover {
     margin-right: 122px;
 }
 
-section {
+.login-signUp-interface {
     text-align: center;
     display: flex;
     align-items: center;

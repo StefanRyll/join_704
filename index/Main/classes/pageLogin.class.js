@@ -14,7 +14,7 @@ class Login extends Page {
                         <button class="log-in-side-button" onclick="signUp()">Sign up</button>
                     </div>
                 </header>
-                <section>
+                <section class="login-signUp-interface">
                     <div id="endAnimation" class="frame-153 respon-frame-153">
                         <div class="frame-159">
                             <h1 class="login-headline mg-none">Log In</h1>
@@ -90,7 +90,7 @@ class Login extends Page {
     }
     signUpWindow() {
         return /*html*/ `
-            <div class="signUp-body">
+            <div class="login-signUp-interface">
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow respon-frame-153">
                         <a class="backBtn" onclick="startPage2()">
