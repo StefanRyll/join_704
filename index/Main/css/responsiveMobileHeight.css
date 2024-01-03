@@ -2,7 +2,6 @@
     .board-task-middle {
         height: 45vh;
     }
-
     .chipsArea {
         row-gap: 12px;
     }
@@ -18,7 +17,6 @@
     .summery {
         padding-top: 50px;
     }
-
     .contentArea {
         margin-top: 30px;
     }
@@ -28,17 +26,19 @@
     .board-task-middle {
         height: 50vh;
     }
+    .login-signUp-interface {
+        align-items: flex-start;
+        margin-top: 30%;
+    }
 }
 
 @media (max-height: 812px) {
     .board-task-middle {
         height: 50vh;
     }
-
     .summery {
         padding-top: 0;
     }
-
     .contentArea {
         margin-top: 0;
     }
@@ -47,6 +47,24 @@
 @media (max-height: 736px) {
     .board-task-middle {
         height: 42vh;
+    }
+    .btn-white,
+    .btn-dark-blue,
+    .login-btn {
+        height: 36px;
+    }
+    .frame-159 {
+        height: 68px;
+    }
+    .login-headline {
+        font-size: 32px;
+        line-height: 20px;
+    }
+    .login-container {
+        gap: 15px;
+    }
+    .loginButtons {
+        gap: 12px;
     }
 }
 
@@ -62,8 +80,8 @@
     }
 }
 
-/* **************************CONTACTS ***********************************/
 
+/* **************************CONTACTS ***********************************/
 
 @media (max-height: 730px) {
     .res-left-arrow {

@@ -14,7 +14,7 @@ class Login extends Page {
                         <button class="log-in-side-button" onclick="signUp()">Sign up</button>
                     </div>
                 </header>
-                <section>
+                <section class="login-signUp-interface">
                     <div id="endAnimation" class="frame-153 respon-frame-153">
                         <div class="frame-159">
                             <h1 class="login-headline mg-none">Log In</h1>
@@ -36,7 +36,7 @@ class Login extends Page {
                                 <input class="checkbox" type="checkbox">
                             </div>
                             <div class="check-box d-none" id="checkbox-active" onclick="checkboxDeactivate()">
-<input class="checkbox" type="checkbox">
+                                <input class="checkbox" type="checkbox">
                             </div>
                                 <span class="checkbox-text">Remember me</span>
                             </label>
@@ -90,7 +90,7 @@ class Login extends Page {
     }
     signUpWindow() {
         return /*html*/ `
-            <div class="signUp-body">
+            <div class="login-signUp-interface">
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow respon-frame-153">
                         <a class="backBtn" onclick="startPage2()">
@@ -119,7 +119,7 @@ class Login extends Page {
                             </div>
                             <div class="d-flex-mid">
                                 <label id="ppCheck" class="sign-up-privacy-policy">
-                                    <div class="check-box" id="checkbox" onclick="checkboxActivate()">
+                                    <!-- <div class="check-box" id="checkbox" onclick="checkboxActivate()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                                             <rect x="4" y="4.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                                         </svg>
@@ -131,6 +131,12 @@ class Login extends Page {
                                                 <path id="Vector 17" d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </g>
                                         </svg>
+                                    </div> -->
+                                    <div class="check-box" id="checkbox" onclick="checkboxActivate()">
+                                        <input class="checkbox" type="checkbox">
+                                    </div>
+                                    <div class="check-box d-none" id="checkbox-active" onclick="checkboxDeactivate()">
+                                        <input class="checkbox" type="checkbox">
                                     </div>
                                     <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
                                 </label>
