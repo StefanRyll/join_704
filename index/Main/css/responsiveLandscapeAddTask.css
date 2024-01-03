@@ -1,4 +1,4 @@
-@media (orientation: landscape) {
+/* @media (orientation: landscape) {
     .login-body {
         overflow-y: scroll;
     }
@@ -11,7 +11,7 @@
     #content {
         margin-top: 0;
     }
-}
+} */
 
 
 /* Für Large Screen im Querformat */

@@ -71,7 +71,7 @@ class Page {
 
             <header class="respon-header">
                 <img class="respon-logo" src="./IMG/Capa 1.png" alt="Joinlogo">
-                <div id="accountIssues" class="accountIssues">
+                <div id="accountIssuesRespon" class="accountIssues">
                     ${accountArea()}
                 </div>
             </header>
@@ -98,7 +98,7 @@ class Page {
     }
     logoutWindow() {
         return /*html*/ `
-            <div id="logoutWindow" class="popupAccount d-none">
+            <div id="logoutWindow" class="popupAccount">
                 <div class="popupAccountBtn" onclick="legalPage()"><p>Legal Notice</p></div>
                 <div class="popupAccountBtn" onclick="privacyPage()"><p>Privacy Policy</p></div>
                 <div class="popupAccountBtn" onclick="logout()"><p>Log out</p></div>

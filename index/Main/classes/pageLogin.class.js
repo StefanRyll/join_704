@@ -8,7 +8,6 @@ class Login extends Page {
          * */
     logInContent() {
             return /*html*/ `
-            <div class="login-body">
                 <header class="login-header">
                     <div class="frame-156">
                         <p>Not a Join user?</p>
@@ -59,7 +58,6 @@ class Login extends Page {
                         </div>
                     </footer>
                 </section>
-            </div>
             `
         }
         /**
