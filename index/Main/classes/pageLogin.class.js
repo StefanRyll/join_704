@@ -143,7 +143,7 @@ class Login extends Page {
                             </div>
                             <div class="frame-176">
                                 <div class="sign-up-btn loginButtons">
-                                <button class="login-btn log-in-side-button btn-dark-blue" type="submit">Sign Up</button>
+                                <button class="login-btn btn-dark-blue" type="submit">Sign Up</button>
                                 </div>
                             </div>
                         </form>

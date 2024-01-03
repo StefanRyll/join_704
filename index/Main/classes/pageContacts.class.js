@@ -1,6 +1,6 @@
 class Contacts extends Page {
     contactsContent() {
-        return /*html*/ `
+            return /*html*/ `
             <div class="respon-add-contact" onclick="openAddContact()">
                 <button class="respon-button"><img src="./IMG/person_add.png"></button>
             </div>
@@ -32,11 +32,11 @@ class Contacts extends Page {
                 <div class="overlay-success" id="overlaySuccess"></div>
             </div>
         `
-    }
-    /**
- * templates for the overlay
- * @returns to the generate functions
- */
+        }
+        /**
+         * templates for the overlay
+         * @returns to the generate functions
+         */
     generateLeftSide() {
         return /*html*/ `
                 <div class="overlay-left-container">
@@ -76,7 +76,7 @@ class Contacts extends Page {
                     <div class="frame-176">
                         <div class="loginButtons">
                             <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Cancel <img src="./IMG/cancel.png"></button>
-                            <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+                            <button class="btn-create-contacts btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
                         </div>
                     </div>
                 </form>

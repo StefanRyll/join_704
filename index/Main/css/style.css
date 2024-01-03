@@ -73,7 +73,7 @@ body {
     border: none;
     width: 180px;
     height: 49px;
-    padding: 15px, 16px, 15px, 16px;
+    padding: 15px 16px 15px 16px;
     border-radius: 8px;
     gap: 10px;
     background: var(--general-button-inactive);
@@ -210,6 +210,7 @@ h1 {
     display: flex;
     padding: 8px;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     color: var(--text-button);
     font-weight: 400;
@@ -237,6 +238,14 @@ h1 {
 
 .mb-72 {
     margin-bottom: 72px !important;
+}
+
+.btn-create,
+.btn-create-contacts {
+    width: 214px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 footer {
@@ -353,5 +362,8 @@ footer {
     .btn-white {
         font-size: 12px;
         padding: 2px;
+    }
+    .btn-create-contacts {
+        width: 180px !important;
     }
 }

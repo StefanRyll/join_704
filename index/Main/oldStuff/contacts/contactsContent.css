@@ -355,13 +355,6 @@ input::-webkit-inner-spin-button {
     transition: 0.1s ease-in-out;
 }
 
-.btn-create {
-    width: 214px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .check-img-contacts {
     width: 24px;
     height: 24px;
