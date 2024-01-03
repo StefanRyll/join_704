@@ -158,7 +158,7 @@ input[type="search"]::-webkit-search-results-decoration {
 /********************************* ACTION BAR *************************************/
 
 .content-add-task {
-    padding: 90px;
+    padding-top: 90px;
 }
 
 .frame-136 {
@@ -285,10 +285,10 @@ input[type="search"]::-webkit-search-results-decoration {
     /* height: 100vh; */
 }
 
-.board-actionbar {
+/* .board-actionbar {
     height: 100vh;
 }
 
 .drag-area {
     height: 100vh;
-}
+} */

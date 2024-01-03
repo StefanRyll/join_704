@@ -1,6 +1,6 @@
 @media (max-width: 1520px) {
     .res-content-board {
-        width: 100%;
+        /* width: 100%; */
         padding: 0;
         padding-top: 90px;
         padding-left: 90px;
@@ -10,8 +10,7 @@
         display: flex;
         justify-content: start;
         flex-wrap: wrap;
-        /* height: 55%; */
-        width: 100%;
+        /* width: 100%; */
     }
 }
 
@@ -20,9 +19,10 @@
         padding-right: 62px;
     }
 
-    /* .frame-192 {
-        padding-right: 62px;
-    } */
+    .frame-192 {
+        justify-content: stretch;
+        gap: 80px;
+    }
 }
 
 @media (max-width: 1420px) {
@@ -35,31 +35,14 @@
     }
 }
 
-@media (max-width: 1330px) {
-    /* .res-content-board {
-        padding-top: 90px;
-        padding-left: 90px;
-    } */
-}
-
 @media (max-width: 1180px) {
     .res-content-board {
-        padding-top: 0;
+        padding-top: 90px;
     }
 
     .frame-192 {
         display: inline-table;
         padding-top: 0;
-    }
-
-    .frame-123 {
-        justify-content: end;
-    }
-}
-
-@media (max-width: 1154px) {
-    .frame-192 {
-        display: inline-table;
     }
 
     .frame-123 {
@@ -68,7 +51,8 @@
 }
 
 
-@media (max-width: 868px) {
+
+@media (max-width: 900px) {
     .frame-123 {
         flex-direction: column;
         align-items: start;
@@ -84,6 +68,7 @@
 @media (max-width: 768px) {
     .res-content-board {
         padding-top: 0;
+        padding-left: 0;
     }
 
     .frame-192 h2 {
@@ -100,8 +85,8 @@
 
 @media (max-width: 740px) {
     .frame-192 {
-        width: 100%;
         padding-right: 0;
+        margin-left: 20px;
     }
 
     .res-content-board {
@@ -120,18 +105,59 @@
     }
 
     .frame-123 {
-        max-width: 80%;
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .board-actionbar {
-        width: 100%;
+    .frame-136 {
+        margin-left: 20px;
     }
 
+
     .lanes {
+        width: 100%;
+    }
+}
+
+@media (min-width: 431px) {
+    .mobile-res-button-add-task {
+        display: none;
+    }
+}
+
+@media (max-width: 430px) {
+    .mobile-res-board {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .frame-192 h2 {
+        margin-block-start: .2em;
+        margin-block-end: .2em;
+        font-size: 50px;
+    }
+
+    .res-button-add-task {
+        display: none;
+    }
+
+    .mobile-res-button-add-task {
+        background-color: white;
+        border-style: none;
+    }
+
+    .frame-136 {
+        justify-content: space-between;
+    }
+
+    .drag-area {
+        display: flex;
+    }
+
+    .frame-123 input {
+        padding-right: 0;
         width: 100%;
     }
 }

@@ -3,10 +3,14 @@ class Board extends Page {
         return /*html*/ `
          <div class="res-content-board">
             <div class="frame-192">
-                <h2>
-                    Board
-                </h2>
-       
+                    <div class="mobile-res-board">
+                        <h2>
+                            Board
+                        </h2>
+                        <button onclick="openAddTask(0)" class="mobile-res-button-add-task">
+                            <img src="./IMG/plus_add_task_mobile.svg" alt="add task">
+                        </button>
+                    </div>
                 <div class="frame-123">
                     <div class="input-search">
                         <input type="search" name="find task" id="searchTask" placeholder="Find Task" onkeyup="filterTaskNames()">
