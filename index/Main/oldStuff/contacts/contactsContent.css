@@ -173,6 +173,7 @@ body {
     display: flex;
     justify-content: flex-start;
     gap: 54px;
+    margin-top: 6em;
     margin-bottom: 40px;
 }
 
