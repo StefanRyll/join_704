@@ -1,5 +1,6 @@
 @media (max-width: 1520px) {
     .res-content-board {
+        width: 100%;
         padding: 0;
         padding-top: 90px;
         padding-left: 90px;
@@ -9,9 +10,19 @@
         display: flex;
         justify-content: start;
         flex-wrap: wrap;
-        overflow-y: scroll;
-        height: 55%;
+        /* height: 55%; */
+        width: 100%;
     }
+}
+
+@media (max-width: 1470px) {
+    .frame-136 {
+        padding-right: 62px;
+    }
+
+    /* .frame-192 {
+        padding-right: 62px;
+    } */
 }
 
 @media (max-width: 1420px) {
