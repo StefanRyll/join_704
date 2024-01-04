@@ -42,6 +42,8 @@ class About extends Page {
     }
     privacyContent() {
         return /*html*/ `
+        <div class="privacyContent">
+
             <h1>Privacy Policy</h1>
 
             <p>Diese Datenschutzerklärung klärt Nutzer über die Art, den Umfang und Zwecke der Erhebung und Verwendung
@@ -108,6 +110,7 @@ class About extends Page {
             <p>Diese Datenschutzerklärung kann sich ändern. Die jeweils aktuelle Fassung ist auf unserer Website verfügbar.</p>
 
             <p>Für Fragen zum Datenschutz kontaktieren Sie uns bitte unter [Deine Kontaktdaten].</p>
+        </div>
 
             <!-- <h2>Subtitle</h2>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
@@ -131,6 +134,7 @@ class About extends Page {
     }
     legalNoticeContent() {
         return /*html*/ `
+        <div class="privacyContent">
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
@@ -187,6 +191,8 @@ class About extends Page {
             <p>For any questions or notices, please contact us at [Contact Email].</p>
                 
             <p>Date: July 26, 2023</p>
+
+        </div>
         `
     }
 

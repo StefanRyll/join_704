@@ -1,0 +1,11 @@
+.privacyContent{
+    text-align: left;
+    padding-left: 10em;
+    padding-right: 10em;
+    padding-top: 10em;
+    height: 100em;
+}
+.privacyContent h1{
+    text-align: left;
+    margin-bottom: 2em;
+}

@@ -262,6 +262,7 @@ footer {
     height: 100vh;
     margin-left: 232px;
     margin-top: 98px;
+    overflow-y: scroll;
 }
 
 .close-button {
