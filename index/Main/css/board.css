@@ -271,4 +271,5 @@ input[type="search"]::-webkit-search-results-decoration {
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
+
 }

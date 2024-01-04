@@ -91,6 +91,7 @@ function boardPage() {
         showSideAndHead();
         JoinBoard.renderTask();
         updateHTML();
+        checkDragArea();
         setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
         setActiveStyles('responActivBoard', 'rgba(9, 25, 49, 1)');
     }
