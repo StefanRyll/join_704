@@ -36,8 +36,6 @@ function startPage() {
             let responseParsed = JSON.parse(response);
             loginEmail.value = responseParsed;
         } catch (e) { "Nothing to remember :" + e }
-        // setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
-        // summeryPage('summeryActive'); // Sobald Aktiv, gibt es Probleme mit dem übertragen des namen in pageSummery.class.js ln => 255;
     }
 }
 
@@ -135,7 +133,7 @@ function privacyPage() {
     let content = document.getElementById('content');
     showSideAndHead();
     content.innerHTML = JoinAbout.privacyContent();
-    // setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
+    setActiveStyles('privacy', 'rgba(9, 25, 49, 1)', '#A8A8A81');
 }
 
 
@@ -147,7 +145,7 @@ function legalPage() {
     let content = document.getElementById('content');
     showSideAndHead();
     content.innerHTML = JoinAbout.legalNoticeContent();
-    // setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
+    setActiveStyles('legal', 'rgba(9, 25, 49, 1)', '#A8A8A81');
 }
 
 
