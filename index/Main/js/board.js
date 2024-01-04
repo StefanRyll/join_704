@@ -147,6 +147,7 @@ function moveTo(category) {
         else if (category === "Done") {
             moveToDone(currentDraggedElement);
         }
+        saveTasks()
         JoinBoard.renderTask();
     }
 }

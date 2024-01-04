@@ -1,4 +1,4 @@
-class About extends Page{
+class About extends Page {
     helpContent() {
         return /*html*/ `
             <h1>Help</h1>
@@ -43,7 +43,73 @@ class About extends Page{
     privacyContent() {
         return /*html*/ `
             <h1>Privacy Policy</h1>
-            <h2>Subtitle</h2>
+
+            <p>Diese Datenschutzerklärung klärt Nutzer über die Art, den Umfang und Zwecke der Erhebung und Verwendung
+                personenbezogener Daten durch [Dein Unternehmensname] auf dieser Website ([Webseiten-URL]) auf. Die rechtlichen
+                Grundlagen des Datenschutzes finden sich im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG).</p>
+
+            <h2>1. Verantwortliche Stelle</h2>
+
+            <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:</p>
+
+            <address>
+                [Dein Name oder Unternehmensname]<br>
+                [Deine Anschrift]<br>
+                [Deine E-Mail-Adresse]<br>
+                [Deine Telefonnummer]
+            </address>
+
+            <h2>2. Arten der verarbeiteten Daten</h2>
+
+            <ul>
+                <li><strong>Kontaktinformationen:</strong> Name, E-Mail-Adresse, Telefonnummer.</li> 
+                <li><strong>Nutzungsdaten:</strong> IP-Adresse, Browser-Typ und Version, Betriebssystem.</li>
+            </ul>
+
+            <h2>3. Zwecke der Datenverarbeitung</h2>
+
+            <p>Wir verarbeiten personenbezogene Daten nur für bestimmte Zwecke, einschließlich:</p>
+
+            <ul>
+                <li>Bereitstellung und Verbesserung unserer Dienstleistungen.</li>
+                <li>Beantwortung von Anfragen und Kommunikation mit Nutzern.</li>
+                <li>Sicherheit und Schutz vor betrügerischen Aktivitäten.</li>
+            </ul>
+
+            <h2>4. Weitergabe von Daten an Dritte</h2>
+
+            <p>Wir geben personenbezogene Daten nicht ohne Zustimmung weiter, es sei denn, dies ist zur Erfüllung unserer
+                vertraglichen Pflichten erforderlich oder gesetzlich vorgeschrieben.</p>
+
+            <h2>5. Cookies</h2>
+
+            <p>Diese Website verwendet Cookies, um die Benutzererfahrung zu verbessern. Cookies sind kleine Textdateien, die
+                auf Ihrem Gerät gespeichert werden. Sie können die Verwendung von Cookies in den Einstellungen Ihres Browsers
+                deaktivieren.</p>
+
+            <h2>6. Analyse-Tools</h2>
+
+            <p>Diese Website verwendet [z.B. Google Analytics], einen Webanalysedienst der [Google LLC] („Google“). Die Nutzung
+                erfolgt auf Grundlage des Art. 6 Abs. 1 lit. f. DSGVO.</p>
+
+            <h2>7. Datensicherheit</h2>
+
+            <p>Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um personenbezogene Daten gegen
+                unbeabsichtigte oder unrechtmäßige Zerstörung, Verlust oder Veränderung und gegen unbefugte Offenlegung oder
+                unbefugten Zugriff zu schützen.</p>
+
+            <h2>8. Betroffenenrechte</h2>
+
+            <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer gespeicherten
+                personenbezogenen Daten.</p>
+
+            <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+
+            <p>Diese Datenschutzerklärung kann sich ändern. Die jeweils aktuelle Fassung ist auf unserer Website verfügbar.</p>
+
+            <p>Für Fragen zum Datenschutz kontaktieren Sie uns bitte unter [Deine Kontaktdaten].</p>
+
+            <!-- <h2>Subtitle</h2>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                 Repellat iste facere vel harum, voluptas rerum consequatur 
                 quas qui repudiandae amet nulla asperiores pariatur veniam 
@@ -60,7 +126,7 @@ class About extends Page{
                 ipsum dolor sit amet consectetur adipisicing elit. 
                 Assumenda expedita atque, debitis nobis unde distinctio enim 
                 consequuntur, ducimus quibusdam a doloribus eaque maiores esse 
-                eligendi, cupiditate nam reprehenderit asperiores sapiente.</p>
+                eligendi, cupiditate nam reprehenderit asperiores sapiente.</p> -->
         `
     }
     legalNoticeContent() {

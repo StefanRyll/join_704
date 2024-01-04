@@ -74,6 +74,7 @@ function deleteTask(x){
     saveTasks()
     boardPage()
 }
+
 function readAssignedUsers() {
     let workers = [];
     for (let i = 0; i < Join.accounts.length; i++) {

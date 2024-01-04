@@ -8,7 +8,6 @@ let JoinBoard = new Board();
 let JoinAbout = new About();
 let JoinContacts = new Contacts();
     // Accounts
-const guest = new Account("Guest", "email@join.de", "");
 // const user01 = new Account("Roman Schröder", "roman.schroeder@inclufilm.com",null, "Gregor2023")
 // const user02 = new Account("Florian", "florian.rehm@developerakademie.com", null,"Password123")
 // const user03 = new Account("Stefan", "Stefan@developerakademie.com", null,"Password123")
