@@ -90,6 +90,9 @@
 }
 
 @media (max-width: 1188px) {
+    .add-task {
+        width: 100%;
+    }
     .content-add-task {
         padding-top: 50px;
         padding-left: 50px;
@@ -154,6 +157,9 @@
 }
 
 @media (max-width: 768px) {
+    .headline-add-task {
+        margin-left: 10px;
+    }
     .content-add-task {
         height: 70vh;
         padding-left: 10px;
@@ -201,6 +207,9 @@
 }
 
 @media (max-width: 520px) {
+    .headline-add-task h3 {
+        font-size: 40px;
+    }
     .content-add-task {
         padding-top: 20px;
     }
