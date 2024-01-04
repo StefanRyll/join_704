@@ -230,7 +230,7 @@ function renderTaskContacts() {
     let taskContactList = document.getElementById('taskContactList');
     taskContactList.innerHTML = "";
     for (let i = 0; i < Join.accounts.length; i++) {
-        const account = Join.accounts[i];
+        let account = Join.accounts[i];
         if (account.checked === true) {
             taskContactList.innerHTML += account.tinyCardCheck(i);
             showAssignedCheckNone(i)
@@ -265,7 +265,7 @@ function editSubtask(m) {
 function renderContactsTasks() {
     let contactsList = document.getElementById('contactsList')
     for (let i = 0; i < Join.accounts.length; i++) {
-        const account = Join.accounts[i];
+        let account = Join.accounts[i];
         contactsList.innerHTML += account.tinyCard(i)
     }
 }
