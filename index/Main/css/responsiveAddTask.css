@@ -287,8 +287,24 @@
 }
 
 @media (max-width: 422px) {
+    .left-side {
+        margin-right: 5px;
+    }
+    .add-task {
+        height: 550px;
+        overflow-y: scroll;
+    }
+    .headline-add-task {
+        margin-top: 20px;
+    }
     .board-task-middle {
         height: 48vh;
+    }
+    .board-task-footer {
+        margin-bottom: 30px;
+    }
+    .style-closebutton-intask {
+        margin-right: 20px;
     }
 }
 
