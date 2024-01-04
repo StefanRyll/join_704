@@ -8,7 +8,7 @@ class Board extends Page {
                             Board
                         </h2>
                         <button onclick="openAddTask(0)" class="mobile-res-button-add-task">
-                            <img src="./IMG/plus_add_task_mobile.svg" alt="add task">
+                            <img src="IMG/plus_add_task_mobile.svg" alt="add task">
                         </button>
                     </div>
                 <div class="frame-123">
@@ -31,7 +31,7 @@ class Board extends Page {
                           </svg>
                     </button>
                     <button onclick="openAddTask(0)" class="res-button-add-task">
-                        <img src="./IMG/plus_add_task_mobile.svg" alt="add task">
+                        <img id="addTaskImageRes" src="IMG/plus_add_task_mobile.svg" alt="add task">
                     </button>
                 </div>
             </div>

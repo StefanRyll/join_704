@@ -101,6 +101,9 @@
         background-color: white;
         border-style: none;
         margin-right: 20px;
+    }
+
+    .res-button-add-task:hover {
         cursor: pointer;
     }
 
@@ -133,6 +136,10 @@
         justify-content: space-between;
     }
 
+    .frame-192 {
+        margin-bottom: 2em;
+    }
+
     .frame-192 h2 {
         margin-block-start: .2em;
         margin-block-end: .2em;
@@ -152,12 +159,23 @@
         justify-content: space-between;
     }
 
-    .drag-area {
-        display: flex;
+    .board-actionbar {
+        width: 100%;
     }
 
     .frame-123 input {
         padding-right: 0;
+        width: 100%;
+    }
+
+    .canban-style {
+        flex-direction: row;
+        overflow-x: scroll;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .empty-tasks {
         width: 100%;
     }
 }
