@@ -44,7 +44,7 @@ class Page {
             if (Join.signedAccount) {
                 return /*html*/ `
                     <div id="hInfo" class="infoButton" onclick="helpPage()"></div>
-                    <div class="userImg">${Join.signedAccount.shortname}</div>
+                    <div onclick="openSideAndHeadMenu(event)" class="userImg">${Join.signedAccount.shortname}</div>
                 `
             } else {
                 return "";
