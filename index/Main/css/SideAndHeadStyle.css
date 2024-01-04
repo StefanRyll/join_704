@@ -157,7 +157,7 @@ nav {
 
 .popupAccount {
     position: absolute;
-    background-color: #2A3647;
+    background-color: var(--dark-blue);
     width: 150px;
     height: 158px;
     top: 6em;
@@ -178,12 +178,9 @@ nav {
 }
 
 .popupAccountBtn {
-    width: 130px;
+    width: 144px;
     background-color: #2A3647;
-    /* height: 46px; */
-    /* padding: 8px 16px 8px 16px; */
-    /* border-radius: 8px; */
-    /* font-size: 16px; */
+    height: 46px;
     color: #CDCDCD;
     font-family: sans-serif;
     display: flex;
@@ -193,6 +190,6 @@ nav {
 }
 
 .popupAccountBtn:hover {
-    background-color: rgb(9, 25, 49, 0.1);
+    background-color: #2A3D59;
     cursor: pointer;
 }
