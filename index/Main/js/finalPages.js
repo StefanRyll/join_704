@@ -73,7 +73,7 @@ function summeryPage() {
         showSideAndHead();
         content.innerHTML = JoinSummary.summeryContent();
         setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
-        setActiveStyles('responActivSummery', 'rgba(9, 25, 49, 1)');
+        setActiveStyles('responActiveSummery', 'rgba(9, 25, 49, 1)');
     }
 }
 
@@ -91,9 +91,9 @@ function boardPage() {
         showSideAndHead();
         JoinBoard.renderTask();
         updateHTML();
-        // checkDragArea();
         setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
-        setActiveStyles('responActivBoard', 'rgba(9, 25, 49, 1)');
+        setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
+        checkDragArea();
     }
 }
 
