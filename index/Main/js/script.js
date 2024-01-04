@@ -102,15 +102,6 @@ function viewPassword() {
 function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
-    // let accountIssues = document.getElementById('accountIssues')
-    // let accountIssuesRespon = document.getElementById('accountIssuesRespon')
-    // let logoutWindow = document.getElementById('logoutWindow')
-    // accountIssues.addEventListener('click', () => {
-    //     logoutWindow.classList.toggle('d-none');
-    // });
-    // accountIssuesRespon.addEventListener('click', () => {
-    //     logoutWindow.classList.toggle('d-none');
-    // })
 }
 
 function openSideAndHeadMenu(event) {
@@ -143,15 +134,11 @@ function logout() {
 
 
 function checkboxActivate() {
-    // document.getElementById('checkbox').classList.add('d-none');
-    // document.getElementById('checkbox-active').classList.remove('d-none');
     Join.rememberMe = true;
 }
 
 
 function checkboxDeactivate() {
-    // document.getElementById('checkbox-active').classList.add('d-none');
-    // document.getElementById('checkbox').classList.remove('d-none');
     Join.rememberMe = false;
 }
 
@@ -219,12 +206,8 @@ function toggleCheckboxCard(task, subtask) {
     let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
     if (checkableSubtask.done) {
         checkableSubtask.subTaskUndone();
-        // document.getElementById(`cardCheckboxFalse${subtask}`).classList.remove('d-none');
-        // document.getElementById(`cardCheckboxTrue${subtask}`).classList.add('d-none');
     } else {
         checkableSubtask.subTaskDone();
-        // document.getElementById(`cardCheckboxFalse${subtask}`).classList.add('d-none');
-        // document.getElementById(`cardCheckboxTrue${subtask}`).classList.remove('d-none');
     }
     document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');
     document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');

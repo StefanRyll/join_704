@@ -145,6 +145,7 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 32px;
 }
 
+
 /********************************* ACTION BAR *************************************/
 
 .content-add-task {
@@ -262,6 +263,7 @@ input[type="search"]::-webkit-search-results-decoration {
     justify-content: center;
     align-items: center;
     transition: all 225ms ease-in-out;
+    z-index: 2;
 }
 
 .showPopUpTaskCard {
@@ -271,5 +273,4 @@ input[type="search"]::-webkit-search-results-decoration {
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
-
 }

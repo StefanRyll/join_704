@@ -171,6 +171,7 @@ nav {
     flex-direction: column;
     transform: translateX(200%);
     transition: all 225ms ease-in-out;
+    z-index: 999;
 }
 
 .show-popupAccount {
