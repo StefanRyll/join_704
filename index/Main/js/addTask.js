@@ -1,24 +1,6 @@
 function openAddTask(x = 0) {
     JoinBoard.renderAddTask(x)
-        // let slideAddTask = document.getElementById('slideAddTask')
-        // slideAddTask.classList.add('show-bg-task');
 }
-
-
-// function toggleVisibility(elementId) {
-//     let element = document.getElementById(elementId);
-//     if (element.classList.contains('d-none')) {
-//         element.classList.remove('d-none');
-//     } else {
-//         element.classList.add('d-none');
-//     }
-// }
-
-
-// function toggleVisibility(elementId) {
-//     let element = document.getElementById(elementId); 
-//     element.classList.toggle('d-none');
-// }
 
 
 function createTaskFromBoard(x = 0) {
