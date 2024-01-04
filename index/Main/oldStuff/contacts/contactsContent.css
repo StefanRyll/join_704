@@ -173,6 +173,7 @@ body {
     display: flex;
     justify-content: flex-start;
     gap: 54px;
+    margin-top: 6em;
     margin-bottom: 40px;
 }
 
@@ -353,13 +354,6 @@ input::-webkit-inner-spin-button {
 .btn-cancel:hover img {
     filter: brightness(3.5);
     transition: 0.1s ease-in-out;
-}
-
-.btn-create {
-    width: 214px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .check-img-contacts {

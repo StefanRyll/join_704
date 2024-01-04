@@ -73,7 +73,7 @@ body {
     border: none;
     width: 180px;
     height: 49px;
-    padding: 15px, 16px, 15px, 16px;
+    padding: 15px 16px 15px 16px;
     border-radius: 8px;
     gap: 10px;
     background: var(--general-button-inactive);
@@ -210,6 +210,7 @@ h1 {
     display: flex;
     padding: 8px;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     color: var(--text-button);
     font-weight: 400;
@@ -239,6 +240,14 @@ h1 {
     margin-bottom: 72px !important;
 }
 
+.btn-create,
+.btn-create-contacts {
+    width: 214px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 footer {
     min-width: 300px;
     position: absolute;
@@ -250,20 +259,9 @@ footer {
 }
 
 #content {
-    /* background-color: #29ABE2; */
-    /* width: 80%; */
-    /* position: absolute; */
-    /* height: 71%; */
-    /* text-align: justify; */
-    /* text-overflow: clip; */
     height: 100vh;
-    padding: 90px;
     margin-left: 232px;
     margin-top: 98px;
-    /* left: 232px; */
-    /* top: 98px; */
-    /* overflow: hidden; */
-    /* overflow-y: hidden; */
 }
 
 .close-button {
@@ -364,5 +362,8 @@ footer {
     .btn-white {
         font-size: 12px;
         padding: 2px;
+    }
+    .btn-create-contacts {
+        width: 180px !important;
     }
 }

@@ -26,10 +26,6 @@
     .board-task-middle {
         height: 50vh;
     }
-    .login-signUp-interface {
-        align-items: flex-start;
-        margin-top: 30%;
-    }
 }
 
 @media (max-height: 812px) {
@@ -41,12 +37,6 @@
     }
     .contentArea {
         margin-top: 0;
-    }
-}
-
-@media (max-height: 736px) {
-    .board-task-middle {
-        height: 42vh;
     }
     .btn-white,
     .btn-dark-blue,
@@ -68,9 +58,27 @@
     }
 }
 
+@media (max-height: 736px) {
+    .board-task-middle {
+        height: 42vh;
+    }
+}
+
 @media (max-height: 786px) and (min-height: 785px) {
     .board-task-middle {
         height: 45vh;
+    }
+}
+
+@media (max-height: 660px) {
+    .login-signUp-interface {
+        align-items: flex-start;
+        margin-top: 30%;
+    }
+    .login-footer {
+        gap: 0px;
+        position: absolute;
+        bottom: 10px;
     }
 }
 

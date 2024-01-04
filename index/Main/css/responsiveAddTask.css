@@ -1,3 +1,10 @@
+@media (max-width: 1420px) {
+    .content-add-task {
+        margin-left: 62px;
+    }
+}
+
+
 @media (min-width: 1331px) {
     .responsiveMin {
         display: none;
@@ -11,9 +18,10 @@
     .content-add-task {
         padding-left: 15%;
         padding-top: 90px;
-    }
-    .content-add-task {
         margin-right: 0;
+        padding: 0;
+        padding-left: 90px;
+        padding-top: 90px;
     }
     .board-task-middle {
         display: flex;
