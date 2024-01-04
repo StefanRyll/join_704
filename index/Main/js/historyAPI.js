@@ -1,8 +1,8 @@
-window.onpopstate = function(event) {
-    if (event.state){
+window.onpopstate = function (event) {
+    if (event.state) {
         if (event.state.page === 'summary') {
             summeryPage();
-        } 
+        }
         else if (event.state.page === 'Board') {
             boardPage()
         }
@@ -38,7 +38,7 @@ function getCurrentState() {
 }
 
 
-function setState(x){
+function setState(x) {
     // const state = {page: `${x}`};
     const title = `${x}`;
     // const url = `${x.toLowerCase()}.html`;
@@ -51,3 +51,5 @@ function setState(x){
 function capitalizeFirstLetter(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
+
+

@@ -36,7 +36,7 @@ function startPage() {
             let responseParsed = JSON.parse(response);
             loginEmail.value = responseParsed;
         } catch (e) { "Nothing to remember :" + e }
-        setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
+        // setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
         // summeryPage('summeryActive'); // Sobald Aktiv, gibt es Probleme mit dem übertragen des namen in pageSummery.class.js ln => 255;
     }
 }
@@ -63,7 +63,7 @@ function signUp() {
 }
 
 
-function summeryPage(summeryActive) {
+function summeryPage() {
     try { loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -74,12 +74,13 @@ function summeryPage(summeryActive) {
         let content = document.getElementById('content');
         showSideAndHead();
         content.innerHTML = JoinSummary.summeryContent();
-        setActiveStyles(summeryActive, 'rgba(9, 25, 49, 1)');
+        setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
+        setActiveStyles('responActivSummery', 'rgba(9, 25, 49, 1)');
     }
 }
 
 
-function boardPage(boardActive) {
+function boardPage() {
     try { loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -92,12 +93,13 @@ function boardPage(boardActive) {
         showSideAndHead();
         JoinBoard.renderTask();
         updateHTML();
-        setActiveStyles(boardActive, 'rgba(9, 25, 49, 1)');
+        setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
+        setActiveStyles('responActivBoard', 'rgba(9, 25, 49, 1)');
     }
 }
 
 
-function contactsPage(contactsActive) {
+function contactsPage() {
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -109,7 +111,8 @@ function contactsPage(contactsActive) {
         showSideAndHead();
         content.innerHTML = JoinContacts.contactsContent();
         renderContacts();
-        setActiveStyles(contactsActive, 'rgba(9, 25, 49, 1)');
+        setActiveStyles('contactsActive', 'rgba(9, 25, 49, 1)');
+        setActiveStyles('responActiveContats', 'rgba(9, 25, 49, 1)');
     }
 }
 
@@ -125,18 +128,18 @@ function helpPage() {
 }
 
 
-function privacyPage(activePage) {
+function privacyPage() {
     setState("Privacy Policy")
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain();
     let content = document.getElementById('content');
     showSideAndHead();
     content.innerHTML = JoinAbout.privacyContent();
-    setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
+    // setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
 }
 
 
-function legalPage(activePage) {
+function legalPage() {
     setState("Legal")
 
     body.innerHTML = "";
@@ -144,11 +147,11 @@ function legalPage(activePage) {
     let content = document.getElementById('content');
     showSideAndHead();
     content.innerHTML = JoinAbout.legalNoticeContent();
-    setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
+    // setActiveStyles(activePage, 'rgb(42, 54, 71)', 'rgba(41, 171, 226, 1');
 }
 
 
-function addTaskPage(addTaskActive) {
+function addTaskPage() {
     // try { loadTasks()}
     // catch(e){
     //     console.log("Fehler", e)
@@ -162,6 +165,7 @@ function addTaskPage(addTaskActive) {
     let content = document.getElementById('content')
     content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
     showSideAndHead()
-        // content.innerHTML = Join.generateHTMLaddTask();
-    setActiveStyles(addTaskActive, 'rgba(9, 25, 49, 1)');
+    // content.innerHTML = Join.generateHTMLaddTask();
+    setActiveStyles('addTaskActive', 'rgba(9, 25, 49, 1)');
+    setActiveStyles('responActiveAddTask', 'rgba(9, 25, 49, 1)');
 }
