@@ -52,7 +52,7 @@ class Board extends Page {
             
            
             <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo'); checkDragArea()" ondragleave="removeHighlight('ondropTodo'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
-                <div class="empty-tasks d-none" id="emptyTaskTodo">
+                <div class="empty-tasks" id="emptyTaskTodo">
                     <p>No tasks To do</p>
                 </div>
                 <div  class="canban-style" id="kambanTodo"></div>

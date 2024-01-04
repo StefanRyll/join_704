@@ -1,6 +1,22 @@
 let currentDraggedElement;
 
 
+function hide(id) {
+    let element = document.getElementById(id);
+    if (element) {
+        element.classList.add('d-none');
+    }
+}
+
+
+function show(id) {
+    let element = document.getElementById(id);
+    if (element) {
+        element.classList.remove('d-none');
+    }
+}
+
+
 function filterTaskNames() {
     let search = document.getElementById('searchTask').value.toLowerCase();
     let todoContainer = document.getElementById('ondropTodo');
@@ -47,28 +63,23 @@ function searchTitleAndDescription(title, desc, search, todoContainer, progressC
 
 
 function updateHTML() {
-    let ondropTodo = document.getElementById('ondropTodo')
-    let ondropProgress = document.getElementById('ondropProgress')
-    let ondropFeedback = document.getElementById('ondropFeedback')
-    let ondropDone = document.getElementById('ondropDone')
+    let ondropTodo = document.getElementById('ondropTodo');
+    let ondropProgress = document.getElementById('ondropProgress');
+    let ondropFeedback = document.getElementById('ondropFeedback');
+    let ondropDone = document.getElementById('ondropDone');
 
     let todos = Join.tasks.filter(s => s.todo === true);
+    todos.innerHTML = '';
     let inProgress = Join.tasks.filter(s => s.progress === true);
+    inProgress.innerHTML = '';
     let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
-    let done = Join.tasks.filter(s => s.done = true);
+    awaitFeedback.innerHTML = '';
+    let done = Join.tasks.filter(s => s.done === true);
+    done.innerHTML = '';
     let none = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false);
-    clearDropeZoneInnerHTML(ondropTodo, ondropProgress, ondropFeedback, ondropDone);
     checkBooleanNone(none);
     iterateAllTaskCard(ondropTodo, ondropProgress, ondropFeedback, ondropDone, todos, inProgress, awaitFeedback, done);
 }
-
-
-// function clearDropeZoneInnerHTML(todo, progress, feedback, done) {
-//     todo.innerHTML = '';
-//     progress.innerHTML = '';
-//     feedback.innerHTML = '';
-//     done.innerHTML = '';
-// }
 
 
 function checkBooleanNone(none) {
@@ -133,7 +144,6 @@ function allowDrop(ev) {
 
 
 function moveTo(category) {
-
     if (currentDraggedElement !== undefined) {
         if (category === "Todo") {
             moveToTodo(currentDraggedElement);
@@ -146,7 +156,7 @@ function moveTo(category) {
         }
         else if (category === "Done") {
             moveToDone(currentDraggedElement);
-        }
+        } 
         saveTasks()
         JoinBoard.renderTask();
     }
@@ -196,55 +206,48 @@ function removeHighlight(id) {
 
 
 function checkDragArea() {
-    let todoArea = document.getElementById('emptyTaskTodo');
-    let inprogress = document.getElementById('emptyTaskInprogress');
-    let feedbackArea = document.getElementById('emptyTaskFeedback');
-    let done = document.getElementById('emptyTaskDone');
-    checkSomeAreaBoard(todoArea, inprogress, feedbackArea, done);
+    checkAreaTodo();
+    checkAreaProgress();
+    checkAreaFeedback();
+    checkAreaDone();    
 }
 
 
-function checkSomeAreaBoard(todoArea, inprogress, feedbackArea, done) {
-    checkAreaTodo(todoArea);
-    checkAreaProgress(inprogress);
-    checkAreaFeedback(feedbackArea);
-    checkAreaDone(done);    
-}
-
-
-function checkAreaTodo(todoArea) {
-    if (Join.tasks.some(task => task.todo)) {
-        todoArea.classList.add('d-none');
+function checkAreaTodo() {
+    if (Join.tasks.some(s => s.todo)) {
+        hide('emptyTaskTodo');
     } else {
-        todoArea.classList.remove('d-none');
+        show('emptyTaskTodo');
     }
 }
 
 
-function checkAreaProgress(inprogress) {
-    if (Join.tasks.some(task => task.progress)) {
-        inprogress.classList.add('d-none');
+function checkAreaProgress() {
+    if (Join.tasks.some(s => s.progress)) {
+        hide('emptyTaskInprogress');
     } else {
-        inprogress.classList.remove('d-none');
+        show('emptyTaskInprogress');
     }
 }
 
 
-function checkAreaFeedback(feedbackArea) {
-    if (Join.tasks.some(task => task.feedback)) {
-        feedbackArea.classList.add('d-none');
+function checkAreaFeedback() {
+    if (Join.tasks.some(s => s.feedback)) {
+        hide('emptyTaskFeedback');
     } else {
-        feedbackArea.classList.remove('d-none');
+        show('emptyTaskFeedback');
     }
 }
 
 
-function checkAreaDone(done) {
-    if (Join.tasks.some(task => task.done)) {
-        done.classList.add('d-none');
+function checkAreaDone() {
+    if (Join.tasks.some(s => s.done)) {
+        hide('emptyTaskDone');
     } else {
-        done.classList.remove('d-none');
+        show('emptyTaskDone');
     }
 }
+
+
 
 
