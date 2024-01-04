@@ -14,24 +14,10 @@
 }
 
 
-/* .open-assign-container2 {
-    width: 31em;
-} */
-
 .open-assign-container {
     position: absolute;
 }
 
-
-/* .assign-container1 {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    padding-right: 5px;
-} */
 
 .assigned-style {
     color: #2A3647;
@@ -42,7 +28,7 @@
 }
 
 .input-title {
-    width: 28em;
+    width: 27.5em;
 }
 
 .container-active-blue {
@@ -168,15 +154,12 @@
     align-items: center;
     gap: 8px;
     position: absolute;
-    /* top: 25%; */
     right: 25px;
 }
 
 .checkbox-container-button {
     display: flex;
     justify-content: center;
-    /* position: sticky;
-    bottom: 3px; */
     background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;

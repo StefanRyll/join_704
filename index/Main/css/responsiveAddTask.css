@@ -15,6 +15,9 @@
     #content {
         padding: 0;
     }
+    .field-required-text {
+        position: relative;
+    }
     .content-add-task {
         padding-top: 90px;
         margin-right: 0;
