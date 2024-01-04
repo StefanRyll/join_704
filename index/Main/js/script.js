@@ -102,38 +102,38 @@ function viewPassword() {
 function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
-    let accountIssues = document.getElementById('accountIssues')
-    let accountIssuesRespon = document.getElementById('accountIssuesRespon')
-    let logoutWindow = document.getElementById('logoutWindow')
-    accountIssues.addEventListener('click', () => {
-        logoutWindow.classList.toggle('d-none');
-    });
-    accountIssuesRespon.addEventListener('click', () => {
-        logoutWindow.classList.toggle('d-none');
-    })
+    // let accountIssues = document.getElementById('accountIssues')
+    // let accountIssuesRespon = document.getElementById('accountIssuesRespon')
+    // let logoutWindow = document.getElementById('logoutWindow')
+    // accountIssues.addEventListener('click', () => {
+    //     logoutWindow.classList.toggle('d-none');
+    // });
+    // accountIssuesRespon.addEventListener('click', () => {
+    //     logoutWindow.classList.toggle('d-none');
+    // })
 }
 
-// function openSideAndHeadMenu(event) {
-//     event.stopPropagation();
-//     let accountIssues = document.getElementById("accountIssues");
-//     setTimeout(() => {
-//         accountIssues.classList.add("show-popupAccount");
-//     }, 100);
-// }
+function openSideAndHeadMenu(event) {
+    event.stopPropagation();
+    let logoutWindow = document.getElementById("logoutWindow");
+    setTimeout(() => {
+        logoutWindow.classList.add("show-popupAccount");
+    }, 100);
+}
 
-// function closeSideAndHeadMenu() {
-//     let accountIssues = document.getElementById("accountIssues");
+function closeSideAndHeadMenu() {
+    let logoutWindow = document.getElementById("logoutWindow");
 
-//     document.addEventListener("click", function(event) {
-//         if (event.target !== accountIssues) {
-//             if (accountIssues.classList.contains("show-popupAccount")) {
-//                 setTimeout(() => {
-//                     accountIssues.classList.remove("show-popupAccount");
-//                 }, 200);
-//             }
-//         }
-//     });
-// }
+    document.addEventListener("click", function(event) {
+        if (event.target !== logoutWindow) {
+            if (logoutWindow.classList.contains("show-popupAccount")) {
+                setTimeout(() => {
+                    logoutWindow.classList.remove("show-popupAccount");
+                }, 200);
+            }
+        }
+    });
+}
 
 
 function logout() {
