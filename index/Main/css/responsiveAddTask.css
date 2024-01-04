@@ -16,7 +16,6 @@
         padding: 0;
     }
     .content-add-task {
-        padding-left: 15%;
         padding-top: 90px;
         margin-right: 0;
         padding: 0;
@@ -41,7 +40,7 @@
     }
     .input-description textarea {
         height: 150px;
-        width: 30em;
+        width: 29.5em;
     }
     .board-task-middle {
         height: 52vh;
@@ -79,9 +78,6 @@
         position: relative;
         width: 100%;
     }
-    .select-task-category-container {
-        width: 92%;
-    }
     .create-subtask {
         position: relative;
     }
@@ -94,6 +90,7 @@
     .content-add-task {
         padding-top: 50px;
         padding-left: 50px;
+        margin-left: 0;
     }
     .input-title {
         width: 100%;
@@ -103,7 +100,11 @@
     }
     .input-description textarea {
         height: 150px;
-        width: 95%;
+        width: 100%;
+        padding: 0;
+    }
+    .input-description textarea::placeholder {
+        padding: 10px;
     }
     .board-task-input {
         width: 100%;
@@ -134,15 +135,12 @@
     .checkbox-container {
         width: 98%;
     }
-    .select-task-category-container {
-        width: 88%;
-    }
 }
 
 @media (max-width: 850px) {
     .content-add-task {
-        padding-top: 120px;
         height: 80vh;
+        padding-left: 0;
     }
     .btn-create {
         width: 150px !important;
@@ -152,10 +150,9 @@
     }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 768px) {
     .content-add-task {
-        padding-top: 40px;
-        height: 80vh;
+        height: 70vh;
         padding-left: 10px;
     }
     .content-headline-add-task {
@@ -174,6 +171,9 @@
     }
     .addTask-button {
         margin-right: 10px;
+    }
+    .board-task-middle {
+        height: 48vh;
     }
 }
 
@@ -254,9 +254,6 @@
     .category-sub label {
         font-size: 16px;
     }
-    .select-task-category-container {
-        width: 87%;
-    }
     .select-task-category-container span {
         font-size: 16px;
     }
@@ -289,12 +286,6 @@
     }
     .content-add-task {
         padding-top: 50px;
-    }
-    .input-description textarea {
-        padding: 0.5em;
-    }
-    .select-task-category-container {
-        width: 82%;
     }
     .board-task-input input {
         padding: 0.75em 0.2em;

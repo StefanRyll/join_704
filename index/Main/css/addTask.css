@@ -33,9 +33,7 @@
 
 .addTask-button {
     margin-right: 65px;
-    /* width: 100%; */
     display: flex;
-    /* justify-content: flex-end; */
     gap: 16px;
     margin-top: 18px;
 }
@@ -65,5 +63,4 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* gap: 560px; */
 }
