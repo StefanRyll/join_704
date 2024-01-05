@@ -1,6 +1,7 @@
-let testDiv = document.getElementById('testDiv')
-console.log(testDiv);
-testDiv.classList.remove('garnichts');
+let div = document.getElementById("testDiv").innerHTML;
 
+if (div.length == 0){
+    div = "Marina"    
+}
 
-console.log("Hallo");
+console.log(div,div.length);
