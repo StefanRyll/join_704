@@ -107,16 +107,15 @@ function showSideAndHead() {
 
 function openSideAndHeadMenu(event) {
     event.stopPropagation();
-    let logoutWindow = document.getElementById("logoutWindow");
     setTimeout(() => {
-        logoutWindow.classList.add("show-popupAccount");
+        openHeadMenu();
     }, 100);
 }
 
 function closeSideAndHeadMenu(event) {
     let logoutWindow = document.getElementById("logoutWindow");
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
-        logoutWindow.classList.remove("show-popupAccount");
+        closeHeadMenu(logoutWindow);
     }
 }
 

@@ -41,3 +41,11 @@ function openPopUpTaskCard() {
 function closePopUpTaskCard() {
     document.getElementById('addTask').classList.remove('showPopUpTaskCard');
 }
+
+function openHeadMenu() {
+    document.getElementById('logoutWindow').classList.add("show-popupAccount");
+}
+
+function closeHeadMenu(logoutWindow) {
+    logoutWindow.classList.remove("show-popupAccount");
+}

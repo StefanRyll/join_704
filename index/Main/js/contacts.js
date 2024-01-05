@@ -143,7 +143,7 @@ function renderContacts() {
  */
 function showDetails(i) {
     setTimeout(() => {
-        openContactDetails()
+        openContactDetails();
     }, 200);
     let contact = Join.accounts[i];
     // let color = contact.color;
