@@ -118,11 +118,11 @@ function closeSideAndHeadMenu() {
 
     document.addEventListener("click", function(event) {
         if (event.target !== logoutWindow) {
-            if (logoutWindow.classList.contains("show-popupAccount")) {
-                setTimeout(() => {
-                    logoutWindow.classList.remove("show-popupAccount");
-                }, 200);
-            }
+
+            setTimeout(() => {
+                logoutWindow.classList.remove("show-popupAccount");
+            }, 100);
+
         }
     });
 }
