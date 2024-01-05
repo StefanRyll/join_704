@@ -248,30 +248,33 @@ class Task {
     }
     updateProgressBar(x) {
         let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
-        let gesamtFortschritt;
-        let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
-        let variable2 = () => {
-            let countDone = 0;
-            for (let i = 0; i < this.subTasks.length; i++) {
-                const toCheck = this.subTasks[i];
-                if (toCheck.done) {
-                    countDone++;
+        if (progressContainer){
+            let gesamtFortschritt;
+            let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
+            let variable2 = () => {
+                let countDone = 0;
+                for (let i = 0; i < this.subTasks.length; i++) {
+                    const toCheck = this.subTasks[i];
+                    if (toCheck.done) {
+                        countDone++;
+                    }
                 }
+                return countDone;
             }
-            return countDone;
+            console.log("Taskbar update");
+            if (variable1 == 0) {
+                progressContainer.classList.add('d-none')
+                variable1 = null
+                variable2 = null;
+            }
+            else if (variable1 > 0) {
+                gesamtFortschritt = (variable2() / variable1) * 100;
+                let progressbar = document.getElementById(`progressBar${x}`);
+                progressbar.style.width = `${gesamtFortschritt}%`;
+            }
+    
+            console.log("Progressbar Updated", gesamtFortschritt, this.title);
         }
-        console.log("Taskbar update");
-        if (variable1 == 0) {
-            progressContainer.classList.add('d-none');
-        }
-        if (variable1 > 0) {
-            gesamtFortschritt = (variable2() / variable1) * 100;
-        }
-
-        let progressbar = document.getElementById(`progressBar${x}`);
-
-        progressbar.style.width = `${gesamtFortschritt}%`;
-        console.log("Progressbar Updated", gesamtFortschritt, this.title);
     }
 
     editTask() {

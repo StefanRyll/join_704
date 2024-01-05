@@ -90,7 +90,7 @@ function boardPage() {
         content.innerHTML = JoinBoard.boardContent();
         showSideAndHead();
         JoinBoard.renderTask();
-        updateHTML();
+        // updateHTML();
         setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
         setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
         checkDragArea();
