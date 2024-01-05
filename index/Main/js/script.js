@@ -23,7 +23,7 @@ function logInUser() {
                 summeryPage()
 
             } else {
-                alert("Entweder Passwort oder Email stimmen nicht überein")
+                console.log("Entweder Passwort oder Email stimmen nicht überein")
             }
         }
     }
@@ -44,9 +44,9 @@ async function createAccount() {
             Join.accounts.push(account);
             startPage2()
         } else if (pw != true) {
-            alert('Passwort nicht valide')
+            console.log('Passwort nicht valide')
         } else {
-            alert('You musst accept the Privacy Policy!')
+            console.log('You musst accept the Privacy Policy!')
         }
     }
 }
