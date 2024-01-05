@@ -5,7 +5,8 @@ class Login extends Page {
         /**
          *  Diese Methode stellt das Log In Fenster da
          * @returns {string} -- 
-         * */
+         *
+         */
     logInContent() {
             return /*html*/ `
                 <header class="login-header">
@@ -20,19 +21,16 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form required class="login-container" onsubmit="logInUser()">
-                            <div class="frame-14"><input type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
+                        <form class="login-container" onsubmit="logInUser()">
+                            <div class="frame-14"><input required type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
-                            <div class="frame-14" onclick="visibility()"><input type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword">
+                            <div class="frame-14" onclick="visibility()"><input required type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
                             <label class="remember-me">
                             <div class="check-box" id="checkbox" onclick="checkboxActivate()">
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                    <rect x="4" y="4.5" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                                </svg> -->
                                 <input class="checkbox" type="checkbox">
                             </div>
                             <div class="check-box d-none" id="checkbox-active" onclick="checkboxDeactivate()">
@@ -42,7 +40,7 @@ class Login extends Page {
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
-                                <button id="loginBtn" class="login-btn log-in-side-button btn-dark-blue" type="submit">Log&nbsp;In</button><button class="guest-login-style btn-white" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
+                                <input class="login-btn log-in-side-button btn-dark-blue" type="submit" value="Log In"><input class="guest-login-style btn-white" onclick="guestLogin()" value="Guest Log In">
                                 </div>
                             </div>
                         </form>
