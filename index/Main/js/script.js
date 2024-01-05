@@ -212,6 +212,7 @@ function toggleCheckboxCard(task, subtask) {
     }
     document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');
     document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');
+    saveTasks()
 }
 
 

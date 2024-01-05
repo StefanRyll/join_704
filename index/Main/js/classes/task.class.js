@@ -227,7 +227,7 @@ class Task {
         }
 
         return /*html*/ `
-            <div onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
+            <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
 
                 <div class="tiny-task-category">${this.Category}</div>
 

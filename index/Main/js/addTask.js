@@ -37,7 +37,7 @@ function createTaskFromBoard(x = 0) {
         updateTaskWorkers(newTask);
         Join.tasks.push(newTask)
         clearInputs(title, desc, worker, date, category, subTask);
-        checkError();
+        // checkError();
         try { saveTasks() } catch (e) {
             console.log("Fehler", e)
         } finally {
