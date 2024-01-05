@@ -74,7 +74,7 @@ function filterArrayFromBoard(search, todoContainer, progressContainer, feedback
 function searchTitleAndDescription(title, desc, search, todoContainer, progressContainer, feedbackContainer, doneContainer, r) {
     if (title.includes(search) || desc.includes(search)) {
         let taskCard = Join.tasks[r].tinyTaskCard(r);
-        
+        console.log("Search", taskCard);
         if (Join.tasks[r].todo) {
             todoContainer.innerHTML += taskCard;
         } else if (Join.tasks[r].progress) {
@@ -86,7 +86,12 @@ function searchTitleAndDescription(title, desc, search, todoContainer, progressC
         }
         checkDragArea();
     }
-   
+<<<<<<< Updated upstream
+    // checkDragArea();
+=======
+    checkDragArea();
+>>>>>>> Stashed changes
+    // updateHTML();
 }
 /**
  * Updates HTML content based on task categories and their status.
@@ -99,8 +104,10 @@ function updateHTML() {
 
     let todos = Join.tasks.filter(s => s.todo === true);
     todos.innerHTML = '';
+
     let inProgress = Join.tasks.filter(s => s.progress === true);
     inProgress.innerHTML = '';
+
     let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
     awaitFeedback.innerHTML = '';
     let done = Join.tasks.filter(s => s.done === true);
@@ -281,6 +288,7 @@ function checkDragArea() {
     checkAreaProgress();
     checkAreaFeedback();
     checkAreaDone();
+    console.log("checkDragArea");
 }
 /**
  * Checks and updates the visibility of 'todo' tasks and its empty indicator.
