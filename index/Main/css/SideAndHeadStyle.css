@@ -19,10 +19,11 @@
 }
 
 .logo {
-    background-image: url("../IMG/LogoWhite.png");
+    background-image: url(../IMG/LogoWhite.png);
     background-size: cover;
-    width: 101px;
-    height: 124px;
+    background-repeat: no-repeat;
+    width: 103px;
+    height: 125px;
 }
 
 nav {

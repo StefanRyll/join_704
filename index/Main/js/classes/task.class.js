@@ -138,7 +138,8 @@ class Task {
         `
     }
     taskCardEdit(x) {
-        return /*html*/ `     
+        return /*html*/ `  
+        <div class="editTaskCard">   
             <div class="taskCardHeader" >
                 <div></div>
                 <div onclick="closeTaskCard()">
@@ -173,6 +174,7 @@ class Task {
                 </div>
                 <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
             </div>
+        </div>
             `
     }
     tinyTaskCard(x = 0) {
@@ -198,9 +200,9 @@ class Task {
             }
             return prioUrl;
         }
-        let subtaskArea = () =>{
-            if (this.subTasks.length !== 0){
-                return /*html*/`
+        let subtaskArea = () => {
+            if (this.subTasks.length !== 0) {
+                return /*html*/ `
                 <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
                     <div class="tiny-task-label">
                         <div class="progressContainer" id="progressContainer">
@@ -211,7 +213,7 @@ class Task {
                 </div>
 
                 `
-            }else {
+            } else {
                 return "";
             }
         }
@@ -248,7 +250,7 @@ class Task {
     }
     updateProgressBar(x) {
         let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
-        if (progressContainer){
+        if (progressContainer) {
             let gesamtFortschritt;
             let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
             let variable2 = () => {
@@ -266,13 +268,12 @@ class Task {
                 progressContainer.classList.add('d-none')
                 variable1 = null
                 variable2 = null;
-            }
-            else if (variable1 > 0) {
+            } else if (variable1 > 0) {
                 gesamtFortschritt = (variable2() / variable1) * 100;
                 let progressbar = document.getElementById(`progressBar${x}`);
                 progressbar.style.width = `${gesamtFortschritt}%`;
             }
-    
+
             console.log("Progressbar Updated", gesamtFortschritt, this.title);
         }
     }
