@@ -25,7 +25,7 @@ function createTaskFromBoard(x = 0) {
         console.log("Fehler", e)
     } finally {
         const title = document.getElementById("boardTaskTitle").value;
-        const worker = readAssignedUsers()
+        const worker = readAssignedUsers();
         const desc = document.getElementById('boardTaskDescription').value;
         const date = document.getElementById('date').value;
         const prio = prioTemp;
@@ -41,8 +41,10 @@ function createTaskFromBoard(x = 0) {
         try { saveTasks() } catch (e) {
             console.log("Fehler", e)
         } finally {
+            clearInputs(title, desc, worker, date, category, subTask);
             closeAddTask()
             JoinBoard.renderTask()
+            alert("Neuer Task Erstellt")
         }
     }
 }
