@@ -246,7 +246,7 @@ class Task {
         `
 
     }
-    updateProgressBar() {
+    updateProgressBar(x) {
         let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
         let gesamtFortschritt;
         let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
@@ -260,6 +260,7 @@ class Task {
             }
             return countDone;
         }
+        console.log("Taskbar update");
         if (variable1 == 0) {
             progressContainer.classList.add('d-none')
         }
@@ -267,7 +268,7 @@ class Task {
             gesamtFortschritt = (variable2() / variable1) * 100;
         }
 
-        let progressbar = document.getElementById('progressBar');
+        let progressbar = document.getElementById(`progressBar${x}`);
 
         progressbar.style.width = `${gesamtFortschritt}%`;
         console.log("Progressbar Updated", gesamtFortschritt, this.title);

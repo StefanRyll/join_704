@@ -1,4 +1,5 @@
 // Login
+
 function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;
@@ -115,7 +116,7 @@ function openSideAndHeadMenu(event) {
 function closeSideAndHeadMenu() {
     let logoutWindow = document.getElementById("logoutWindow");
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener("click", function(event) {
         if (event.target !== logoutWindow) {
             if (logoutWindow.classList.contains("show-popupAccount")) {
                 setTimeout(() => {
