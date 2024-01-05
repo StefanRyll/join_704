@@ -202,7 +202,7 @@ class Board extends Page {
     }
     generateHTMLaddTask(x) {
         return /*html*/ `
-              <form id="slideAddTask" class="bg-task">
+            <div id="slideAddTask" class="bg-task">
                 <div class="add-task">
                     <div class="headline-add-task">
                         <h3>Add Task</h3>
@@ -220,13 +220,13 @@ class Board extends Page {
                         ${this.generateHTMLAddTaskButtons(x)}
                     </div>
                 </div>
-                </form>
+            </div>
           `
     }
 
     generateHTMLaddTaskWindow(x) {
         return /*html*/ `
-           <form class="content-add-task">
+           <div class="content-add-task">
                     <div class="content-headline-add-task">
                         <h3>Add Task</h3>
                     </div>
@@ -254,7 +254,7 @@ class Board extends Page {
                     <!-- <div class="content-board-task-footer">
                          
                     </div> -->
-            </form>
+            </div>
           `
     }
     generateHTMLLeftSide(x) {
