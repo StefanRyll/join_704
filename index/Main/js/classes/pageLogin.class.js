@@ -5,7 +5,8 @@ class Login extends Page {
         /**
          *  Diese Methode stellt das Log In Fenster da
          * @returns {string} -- 
-         * */
+         *
+         */
     logInContent() {
             return /*html*/ `
                 <header class="login-header">
