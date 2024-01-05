@@ -107,24 +107,21 @@ function showSideAndHead() {
 
 function openSideAndHeadMenu(event) {
     event.stopPropagation();
-    let logoutWindow = document.getElementById("logoutWindow");
     setTimeout(() => {
-        logoutWindow.classList.add("show-popupAccount");
+        openHeadMenu();
     }, 100);
 }
 
-function closeSideAndHeadMenu() {
+function closeSideAndHeadMenu(event) {
     let logoutWindow = document.getElementById("logoutWindow");
+    if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
+        closeHeadMenu(logoutWindow);
+    }
+}
 
-    document.addEventListener("click", function(event) {
-        if (event.target !== logoutWindow) {
-
-            setTimeout(() => {
-                logoutWindow.classList.remove("show-popupAccount");
-            }, 100);
-
-        }
-    });
+window.onmousedown = function(e) {
+    closeSideAndHeadMenu(e);
+    closeContactMenu(e)
 }
 
 

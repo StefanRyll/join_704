@@ -31,7 +31,7 @@ class Contact {
             "#FF4646",
             "#FFBB2B",
         ];
-        
+
         let sum = this.name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
         let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
         return colors[colorIndex];
@@ -200,7 +200,7 @@ class Contact {
             </div>
             <div class="overlay-right-container-addContact">
                 <div class="close-button">${JoinContacts.closeButton()}</div>
-                <form class="addContact-form" action="#" onsubmit="editContact(${i})">
+                <form class="addContact-form" onsubmit="editContact(${i})">
                     <div class="btn-underlay">
                         <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${this.name}">
                         <img class="input-icon" src="./IMG/person.png"> 
@@ -225,5 +225,5 @@ class Contact {
      
         `
     }
-    
+
 }
