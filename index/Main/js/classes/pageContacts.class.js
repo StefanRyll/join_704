@@ -58,7 +58,7 @@ class Contacts extends Page {
             </div>
             <div class="overlay-right-container-addContact">
                 <div class="close-button">${this.closeButton()}</div>
-                <form class="addContact-form" action="#" onsubmit="addContact()">
+                <form class="addContact-form"  onsubmit="addContact(); return false;">
                     <div class="btn-underlay">
                         <input id="name" required type="text" class="frame-157" placeholder="Name">
                         <img class="input-icon" src="./IMG/person.png"> 
