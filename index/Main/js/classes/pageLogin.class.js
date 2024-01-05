@@ -20,7 +20,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form id="form" class="login-container" onsubmit="logInUser()">
+                        <form class="login-container" onsubmit="logInUser()">
                             <div class="frame-14"><input required type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
@@ -47,7 +47,7 @@ class Login extends Page {
                     <footer class="login-footer">
                         <div class="frame-156-footer">
                             <p>Not a Join user?</p>
-                            <button class="log-in-side-button btn-dark-blue" onclick="signUp()">Sign up</button>
+                            <button class="log-in-side-button btn-dark-blue" onclick="signUp(); return false;">Sign up</button>
                         </div>
                         <div class="legalBtn-container">
                             <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>

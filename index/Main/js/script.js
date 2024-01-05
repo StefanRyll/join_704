@@ -6,21 +6,13 @@ function guestLogin() {
     summeryPage();
 }
 
-function logInUser() {
-    const form = document.getElementById('form');
-
-    form.addEventListener('submit', event => {
-        event.preventDefault();
-
-        console.log('form submitted');
-    });
-
+async function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
     let remember = () => {
         if (Join.rememberMe) {
-            let userAsJson = JSON.stringify(user)
-            localStorage.setItem("remember", userAsJson)
+            let userAsJson = JSON.stringify(user);
+            localStorage.setItem("remember", userAsJson);
         }
     }
     for (let i = 0; i < Join.accounts.length; i++) {
@@ -32,7 +24,7 @@ function logInUser() {
                 summeryPage()
 
             } else {
-                alert("Entweder Passwort oder Email stimmen nicht überein")
+                console.log("Entweder Passwort oder Email stimmen nicht überein")
             }
         }
     }
@@ -53,9 +45,9 @@ async function createAccount() {
             Join.accounts.push(account);
             startPage2()
         } else if (pw != true) {
-            alert('Passwort nicht valide')
+            console.log('Passwort nicht valide')
         } else {
-            alert('You musst accept the Privacy Policy!')
+            console.log('You musst accept the Privacy Policy!')
         }
     }
 }
