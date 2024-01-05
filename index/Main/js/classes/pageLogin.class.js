@@ -40,7 +40,7 @@ class Login extends Page {
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
-                                <input class="login-btn log-in-side-button btn-dark-blue" type="submit" value="Log In"><input class="guest-login-style btn-white" onclick="guestLogin()" value="Guest Log In">
+                                <input class="login-btn log-in-side-button btn-dark-blue" type="submit" value="Log In" readonly="readonly"><input class="guest-login-style btn-white" onclick="guestLogin()" value="Guest Log In" readonly="readonly">
                                 </div>
                             </div>
                         </form>
