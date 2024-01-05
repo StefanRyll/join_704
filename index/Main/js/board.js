@@ -85,30 +85,30 @@ function searchTitleAndDescription(title, desc, search, todoContainer, progressC
             doneContainer.innerHTML += taskCard;
         }
     }
-    checkDragArea();
-    updateHTML();
+    // checkDragArea();
+    // updateHTML();
 }
 /**
  * Updates HTML content based on task categories and their status.
  */
-function updateHTML() {
-    let ondropTodo = document.getElementById('ondropTodo');
-    let ondropProgress = document.getElementById('ondropProgress');
-    let ondropFeedback = document.getElementById('ondropFeedback');
-    let ondropDone = document.getElementById('ondropDone');
+// function updateHTML() {
+//     let ondropTodo = document.getElementById('ondropTodo');
+//     let ondropProgress = document.getElementById('ondropProgress');
+//     let ondropFeedback = document.getElementById('ondropFeedback');
+//     let ondropDone = document.getElementById('ondropDone');
 
-    let todos = Join.tasks.filter(s => s.todo === true);
-    todos.innerHTML = '';
-    let inProgress = Join.tasks.filter(s => s.progress === true);
-    inProgress.innerHTML = '';
-    let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
-    awaitFeedback.innerHTML = '';
-    let done = Join.tasks.filter(s => s.done === true);
-    done.innerHTML = '';
-    let none = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false);
-    checkBooleanNone(none);
-    iterateAllTaskCard(ondropTodo, ondropProgress, ondropFeedback, ondropDone, todos, inProgress, awaitFeedback, done);
-}
+//     let todos = Join.tasks.filter(s => s.todo === true);
+//     todos.innerHTML = '';
+//     let inProgress = Join.tasks.filter(s => s.progress === true);
+//     inProgress.innerHTML = '';
+//     let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
+//     awaitFeedback.innerHTML = '';
+//     let done = Join.tasks.filter(s => s.done === true);
+//     done.innerHTML = '';
+//     let none = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false);
+//     checkBooleanNone(none);
+//     iterateAllTaskCard(ondropTodo, ondropProgress, ondropFeedback, ondropDone, todos, inProgress, awaitFeedback, done);
+// }
 /**
  * Sets boolean properties of tasks in the 'none' category.
  * @param {Array} none - An array of tasks with no category.
