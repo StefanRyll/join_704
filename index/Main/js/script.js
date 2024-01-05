@@ -5,13 +5,13 @@ function guestLogin() {
     summeryPage();
 }
 
-function logInUser() {
+async function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
     let remember = () => {
         if (Join.rememberMe) {
-            let userAsJson = JSON.stringify(user)
-            localStorage.setItem("remember", userAsJson)
+            let userAsJson = JSON.stringify(user);
+            localStorage.setItem("remember", userAsJson);
         }
     }
     for (let i = 0; i < Join.accounts.length; i++) {
@@ -115,7 +115,7 @@ function openSideAndHeadMenu(event) {
 function closeSideAndHeadMenu() {
     let logoutWindow = document.getElementById("logoutWindow");
 
-    document.addEventListener("click", function(event) {
+    document.addEventListener("click", function (event) {
         if (event.target !== logoutWindow) {
             if (logoutWindow.classList.contains("show-popupAccount")) {
                 setTimeout(() => {

@@ -42,7 +42,7 @@ class Login extends Page {
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
-                                <button class="login-btn log-in-side-button btn-dark-blue" type="submit">Log&nbsp;In</button><button class="guest-login-style btn-white" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
+                                <button id="loginBtn" class="login-btn log-in-side-button btn-dark-blue" type="submit">Log&nbsp;In</button><button class="guest-login-style btn-white" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
                                 </div>
                             </div>
                         </form>
@@ -50,7 +50,7 @@ class Login extends Page {
                     <footer class="login-footer">
                         <div class="frame-156-footer">
                             <p>Not a Join user?</p>
-                            <button class="log-in-side-button btn-dark-blue" onclick="signUp()">Sign up</button>
+                            <button class="log-in-side-button btn-dark-blue" onclick="signUp(); return false;">Sign up</button>
                         </div>
                         <div class="legalBtn-container">
                             <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>
