@@ -175,9 +175,6 @@ class Task {
             </div>
             `
     }
-
-
-
     tinyTaskCard(x = 0) {
 
         let contactTags = () => {
@@ -201,6 +198,23 @@ class Task {
             }
             return prioUrl;
         }
+        let subtaskArea = () =>{
+            if (this.subTasks.length !== 0){
+                return /*html*/`
+                <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
+                    <div class="tiny-task-label">
+                        <div class="progressContainer" id="progressContainer">
+                            <div class="progressBar" id="progressBar${x}"></div>
+                        </div>
+                        <p>${SubtasksDone()}/${this.subTasks.length}&nbsp;Subtasks</p>
+                    </div>
+                </div>
+
+                `
+            }else {
+                return "";
+            }
+        }
         let SubtasksDone = () => {
             let countDone = 0;
             for (let i = 0; i < this.subTasks.length; i++) {
@@ -221,15 +235,7 @@ class Task {
                     <h1>${this.title}</h1>
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
                 </div>
-
-                <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
-                    <div class="tiny-task-label">
-                        <div class="progressContainer" id="progressContainer">
-                            <div class="progressBar${x}" id="progressBar"></div>
-                        </div>
-                        <p>${SubtasksDone()}/${this.subTasks.length}&nbsp;Subtasks</p>
-                    </div>
-                </div>
+                ${subtaskArea()}
 
                 <div class="contactsAndPrio">
                     <div class="tinyTaskCardContacts">${contactTags()}</div>
