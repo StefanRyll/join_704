@@ -1,4 +1,5 @@
 // Login
+
 function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;
@@ -6,6 +7,14 @@ function guestLogin() {
 }
 
 function logInUser() {
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        console.log('form submitted');
+    });
+
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
     let remember = () => {
