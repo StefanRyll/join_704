@@ -20,11 +20,11 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form class="login-container" onsubmit="logInUser()">
-                            <div class="frame-14"><input required type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
+                        <form required class="login-container" onsubmit="logInUser()">
+                            <div class="frame-14"><input type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
-                            <div class="frame-14" onclick="visibility()"><input required type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword">
+                            <div class="frame-14" onclick="visibility()"><input type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
@@ -42,7 +42,7 @@ class Login extends Page {
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
-                                <button class="login-btn log-in-side-button btn-dark-blue" type="submit">Log&nbsp;In</button><button class="guest-login-style btn-white" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
+                                <button id="loginBtn" class="login-btn log-in-side-button btn-dark-blue" type="submit">Log&nbsp;In</button><button class="guest-login-style btn-white" onclick="guestLogin()">Guest&nbsp;Log&nbsp;In</button>
                                 </div>
                             </div>
                         </form>
@@ -50,7 +50,7 @@ class Login extends Page {
                     <footer class="login-footer">
                         <div class="frame-156-footer">
                             <p>Not a Join user?</p>
-                            <button class="log-in-side-button btn-dark-blue" onclick="signUp()">Sign up</button>
+                            <button class="log-in-side-button btn-dark-blue" onclick="signUp(); return false;">Sign up</button>
                         </div>
                         <div class="legalBtn-container">
                             <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>

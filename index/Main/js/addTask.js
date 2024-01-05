@@ -1,9 +1,26 @@
+/**
+ * Opens the add task dialog and renders the form with an optional parameter.
+ * @param {number} x - Optional parameter for rendering purposes.
+ */
 function openAddTask(x = 0) {
     JoinBoard.renderAddTask(x)
 }
 
 
 function createTaskFromBoard(x = 0) {
+    // const title = document.getElementById("boardTaskTitle").value;
+    // const worker = readAssignedUsers()
+    // const desc = document.getElementById('boardTaskDescription').value;
+    // const date = document.getElementById('date').value;
+    // const prio = prioTemp;
+    // const category = document.getElementById('taskCategoryInput').value;
+    // const subTask = subtaskTemp;
+    // let newTask = new Task(title, worker, desc, date, prio, category, subTask);
+
+    // createNewTask(newTask, x);
+    // updateTaskWorkers(newTask);
+    // Join.tasks.push(newTask)
+    // clearInputs(title, desc, worker, date, category, subTask);
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -15,31 +32,12 @@ function createTaskFromBoard(x = 0) {
         const category = document.getElementById('taskCategoryInput').value;
         const subTask = subtaskTemp;
         let newTask = new Task(title, worker, desc, date, prio, category, subTask);
-        if (x == "1") {
-            newTask.todo = false;
-            newTask.progress = true;
-            newTask.feedback = false;
-            newTask.done = false;
 
-        } else if (x == "2") {
-            newTask.todo = false;
-            newTask.progress = false;
-            newTask.feedback = true;
-            newTask.done = false;
-        } else {
-            newTask.todo = true;
-            newTask.progress = false;
-            newTask.feedback = false;
-            newTask.done = false;
-        }
-        
-
-        for (let i = 0; i < newTask.worker.length; i++) {
-            let taskWorker = newTask.worker[i];
-            taskWorker.checked = false;
-        }
+        createNewTask(newTask, x);
+        updateTaskWorkers(newTask);
         Join.tasks.push(newTask)
-        
+        clearInputs(title, desc, worker, date, category, subTask);
+        checkError();
         try { saveTasks() } catch (e) {
             console.log("Fehler", e)
         } finally {
@@ -51,8 +49,38 @@ function createTaskFromBoard(x = 0) {
     }
 }
 
-function deleteTask(x){
-    Join.tasks.splice(x , 1)
+
+function createNewTask(newTask, x) {
+    if (x == "1") {
+        newTask.todo = false;
+        newTask.progress = true;
+        newTask.feedback = false;
+        newTask.done = false;
+
+    } else if (x == "2") {
+        newTask.todo = false;
+        newTask.progress = false;
+        newTask.feedback = true;
+        newTask.done = false;
+    } else {
+        newTask.todo = true;
+        newTask.progress = false;
+        newTask.feedback = false;
+        newTask.done = false;
+    }
+}
+
+
+function updateTaskWorkers(newTask) {
+    for (let i = 0; i < newTask.worker.length; i++) {
+        let taskWorker = newTask.worker[i];
+        taskWorker.checked = false;
+    }
+}
+
+
+function deleteTask(x) {
+    Join.tasks.splice(x, 1)
     console.log("Task " + x + " wird gelöscht");
     saveTasks()
     boardPage()
@@ -99,34 +127,41 @@ function toggleCategory() {
 
 
 function btnTaskPrio(prioBtn) {
-    let urgent = document.getElementById('btnUrgentWhite');
-    let medium = document.getElementById('btnMediumWhite');
-    let low = document.getElementById('btnLowWhite');
-    let urgentRed = document.getElementById('btnUrgentRed');
-    let mediumYellow = document.getElementById('btnMediumYellow');
-    let lowGreen = document.getElementById('btnLowGreen');
+    isButtonUrgentWhite(prioBtn);
+    isButtonMediumtWhite(prioBtn);
+    isButtonLowWhite(prioBtn);
+}
 
 
+function isButtonUrgentWhite(prioBtn) {
     if (prioBtn == 'btnUrgentWhite') {
-        urgent.classList.add('d-none');
-        urgentRed.classList.remove('d-none');
+        hide('btnUrgentWhite');
+        show('btnUrgentRed');
     } else {
-        urgent.classList.remove('d-none');
-        urgentRed.classList.add('d-none');
+        show('btnUrgentWhite');
+        hide('btnUrgentRed');
     }
+}
+
+
+function isButtonMediumtWhite(prioBtn) {
     if (prioBtn == 'btnMediumWhite') {
-        medium.classList.add('d-none');
-        mediumYellow.classList.remove('d-none');
+        hide('btnMediumWhite');
+        show('btnMediumYellow');
     } else {
-        medium.classList.remove('d-none');
-        mediumYellow.classList.add('d-none');
+        show('btnMediumWhite');
+        hide('btnMediumYellow');
     }
+}
+
+
+function isButtonLowWhite(prioBtn) {
     if (prioBtn == 'btnLowWhite') {
-        low.classList.add('d-none');
-        lowGreen.classList.remove('d-none');
+        hide('btnLowWhite');
+        show('btnLowGreen');
     } else {
-        low.classList.remove('d-none');
-        lowGreen.classList.add('d-none');
+        show('btnLowWhite');
+        hide('btnLowGreen');
     }
 }
 
@@ -170,15 +205,14 @@ function getPrio() {
 
 
 function openSubtask() {
-    // toggleVisibility('showSubtask', 'hiddenSubtask');
-    document.getElementById('showSubtask').classList.remove('d-none');
-    document.getElementById('hiddenSubtask').classList.add('d-none');
+    show('showSubtask');
+    hide('hiddenSubtask');
 }
 
 
 function closeSubtask() {
-    document.getElementById('showSubtask').classList.add('d-none');
-    document.getElementById('hiddenSubtask').classList.remove('d-none');
+    hide('showSubtask');
+    show('hiddenSubtask');
 }
 
 
@@ -237,7 +271,6 @@ function renderTaskContacts() {
             showAssignedCheckNone(i)
         } else {
             taskContactList.innerHTML += account.tinyCardCheck(i);
-
         }
     }
 }
@@ -293,9 +326,6 @@ function editTask(x) {
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
 
-    // Catgory wird beibehalten (laut MocUp)
-
-    // Workern
     const AssignedUsers = task.worker;
     const JoinUsers = Join.accounts;
 
@@ -305,7 +335,6 @@ function editTask(x) {
             gefundenerUser.checked = true;
         }
     }
-
 
     let containerShortName = document.getElementById('containerShortName')
     for (let i = 0; i < task.worker.length; i++) {
