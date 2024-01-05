@@ -84,14 +84,7 @@ function searchTitleAndDescription(title, desc, search, todoContainer, progressC
         } else if (Join.tasks[r].done) {
             doneContainer.innerHTML += taskCard;
         }
-        checkDragArea();
     }
-<<<<<<< Updated upstream
-    // checkDragArea();
-=======
-    checkDragArea();
->>>>>>> Stashed changes
-    // updateHTML();
 }
 /**
  * Updates HTML content based on task categories and their status.
@@ -104,10 +97,8 @@ function updateHTML() {
 
     let todos = Join.tasks.filter(s => s.todo === true);
     todos.innerHTML = '';
-
     let inProgress = Join.tasks.filter(s => s.progress === true);
     inProgress.innerHTML = '';
-
     let awaitFeedback = Join.tasks.filter(s => s.feedback === true);
     awaitFeedback.innerHTML = '';
     let done = Join.tasks.filter(s => s.done === true);
