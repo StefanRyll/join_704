@@ -40,8 +40,8 @@ function getCurrentState() {
 
 function setState(x) {
     // const state = {page: `${x}`};
-    // const title = `${x}`;
-    const url = `${x.toLowerCase()}.html`;
+    const title = `${x}`;
+    // const url = `${x.toLowerCase()}.html`;
     // history.pushState(state, title, url)
     document.title = "Join - " + capitalizeFirstLetter(title)
     return x;
