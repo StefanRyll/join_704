@@ -149,13 +149,13 @@ class Board extends Page {
                     console.log("Nach feedback gerendert", task);
                 } else if (task.done) {
                     kambanDone.innerHTML += task.tinyTaskCard(i)
+                    console.log("Nach done gerendert", task);
                 } else {
                     task.todo = true;
                     task.feedback = false;
                     task.progress = false;
                     task.done = false;
                     this.renderTask()
-                    console.log("Nach done gerendert", task);
                 // } else{
                 //     task.todo = true;
                 //     task.feedback = false;
@@ -165,9 +165,9 @@ class Board extends Page {
                 //     console.log("Nicht zutreffend", task);
 
                 }
-                // if(task.subTasks){
-                //     task.updateProgressBar(i);
-                // }
+                if(task.subTasks){
+                    task.updateProgressBar(i);
+                }
             }
         }
     }
