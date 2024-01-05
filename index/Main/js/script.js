@@ -113,18 +113,16 @@ function openSideAndHeadMenu(event) {
     }, 100);
 }
 
-function closeSideAndHeadMenu() {
+function closeSideAndHeadMenu(event) {
     let logoutWindow = document.getElementById("logoutWindow");
+    if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
+        logoutWindow.classList.remove("show-popupAccount");
+    }
+}
 
-    document.addEventListener("click", function(event) {
-        if (event.target !== logoutWindow) {
-
-            setTimeout(() => {
-                logoutWindow.classList.remove("show-popupAccount");
-            }, 100);
-
-        }
-    });
+window.onmousedown = function(e) {
+    closeSideAndHeadMenu(e);
+    closeContactMenu(e)
 }
 
 

@@ -227,8 +227,7 @@ function addContact() {
     setTimeout(() => {
         successOverlay();
     }, 100);
-    try{saveAccounts()}catch(e){"Die Änderungen an join.accounts konnte nicht gespeichert werden: "+ e}
-    finally{
+    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
 }
@@ -249,8 +248,7 @@ function editContact(i) {
     setTimeout(() => {
         editOverlay();
     }, 100);
-    try{saveAccounts()}catch(e){"Die Änderungen an join.accounts konnte nicht gespeichert werden: "+ e}
-    finally{
+    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
 }
@@ -267,8 +265,7 @@ function deleteContact(i) {
     setTimeout(() => {
         deleteOverlay();
     }, 100);
-    try{saveAccounts()}catch(e){"Die Änderungen an join.accounts konnte nicht gespeichert werden: "+ e}
-    finally{
+    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
 }
@@ -322,21 +319,11 @@ function openContactMenu(event) {
 }
 
 
-function closeContactMenu() {
+function closeContactMenu(event) {
     let optionsMenu = document.getElementById("optionsMenu");
-
-    // Event-Listener für Klick-Ereignisse auf das gesamte Dokument hinzufügen
-    document.addEventListener("click", function(event) {
-        // Überprüfen, ob das geklickte Element nicht das Optionsmenü ist
-        if (event.target !== optionsMenu) {
-            // Schließen Sie das Menü, wenn es geöffnet ist
-            if (optionsMenu.classList.contains("show-options-menu")) {
-                setTimeout(() => {
-                    optionsMenu.classList.remove("show-options-menu");
-                }, 200);
-            }
-        }
-    });
+    if (optionsMenu != undefined && !optionsMenu.contains(event.target)) {
+        optionsMenu.classList.remove("show-options-menu");
+    }
 }
 
 // function createButtonRespon() {
