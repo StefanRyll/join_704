@@ -44,7 +44,7 @@ function createTaskFromBoard(x = 0) {
             clearInputs(title, desc, worker, date, category, subTask);
             closeAddTask()
             JoinBoard.renderTask()
-            // alert("Neuer Task Erstellt")
+                // alert("Neuer Task Erstellt")
         }
     }
 }
