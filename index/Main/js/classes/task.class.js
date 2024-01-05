@@ -262,7 +262,7 @@ class Task {
         }
         console.log("Taskbar update");
         if (variable1 == 0) {
-            progressContainer.classList.add('d-none')
+            progressContainer.classList.add('d-none');
         }
         if (variable1 > 0) {
             gesamtFortschritt = (variable2() / variable1) * 100;

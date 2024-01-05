@@ -85,8 +85,8 @@ function searchTitleAndDescription(title, desc, search, todoContainer, progressC
             doneContainer.innerHTML += taskCard;
         }
     }
-    checkDragArea();
-    updateHTML();
+    // checkDragArea();
+    // updateHTML();
 }
 /**
  * Updates HTML content based on task categories and their status.
