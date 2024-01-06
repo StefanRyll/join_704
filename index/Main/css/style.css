@@ -356,6 +356,11 @@ footer {
     display: none;
 }
 
+.link-email:hover {
+    cursor: pointer;
+    color: var(--lightblue);
+}
+
 @media (max-width: 520px) {
     .btn-dark-blue,
     .btn-white {

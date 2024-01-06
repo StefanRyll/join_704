@@ -46,70 +46,71 @@ class About extends Page {
 
             <h1>Privacy Policy</h1>
 
-            <p>Diese Datenschutzerklärung klärt Nutzer über die Art, den Umfang und Zwecke der Erhebung und Verwendung
-                personenbezogener Daten durch [Dein Unternehmensname] auf dieser Website ([Webseiten-URL]) auf. Die rechtlichen
-                Grundlagen des Datenschutzes finden sich im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG).</p>
+            <p>This privacy policy informs users about the nature, scope, and purposes of the collection 
+                and use of personal data by Beispielfirma on this website (www.beispielfirma.de).
+                The legal basis for data protection can be found in the Federal Data Protection Act (BDSG) and the Telemedia Act (TMG).</p>
 
-            <h2>1. Verantwortliche Stelle</h2>
+            <h2>1. Data Controller</h2>
 
-            <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:</p>
+            <p>The data controller, as defined by data protection laws, is:</p>
 
             <address>
-                [Dein Name oder Unternehmensname]<br>
-                [Deine Anschrift]<br>
-                [Deine E-Mail-Adresse]<br>
-                [Deine Telefonnummer]
+                Beispielfirma<br>
+                Musterweg 10<br>
+                67548 Musterstadt<br><br>
+                Telefon: +49 (0) 123 44 55 66<br>
+                E-Mail: info@beispielfirma.de
             </address>
 
-            <h2>2. Arten der verarbeiteten Daten</h2>
+            <h2>2. Types of Processed Data</h2>
 
             <ul>
-                <li><strong>Kontaktinformationen:</strong> Name, E-Mail-Adresse, Telefonnummer.</li> 
-                <li><strong>Nutzungsdaten:</strong> IP-Adresse, Browser-Typ und Version, Betriebssystem.</li>
+                <li><strong>Contact information:</strong> Name, E-Mail-Address, Phone Number.</li> 
+                <li><strong>Usage Data:</strong> IP-Address, Browser-Type and Version, Operating System.</li>
             </ul>
 
-            <h2>3. Zwecke der Datenverarbeitung</h2>
+            <h2>3. Purposes of Data Processing</h2>
 
-            <p>Wir verarbeiten personenbezogene Daten nur für bestimmte Zwecke, einschließlich:</p>
+            <p>We process personal data only for specific purposes, including:</p>
 
             <ul>
-                <li>Bereitstellung und Verbesserung unserer Dienstleistungen.</li>
-                <li>Beantwortung von Anfragen und Kommunikation mit Nutzern.</li>
-                <li>Sicherheit und Schutz vor betrügerischen Aktivitäten.</li>
+                <li>Providing and improving our services.</li>
+                <li>Responding to inquiries and communicating with users.</li>
+                <li>Ensuring security and protection against fraudulent activities.</li>
             </ul>
 
-            <h2>4. Weitergabe von Daten an Dritte</h2>
+            <h2>4. Data Disclosure to Third Parties</h2>
 
-            <p>Wir geben personenbezogene Daten nicht ohne Zustimmung weiter, es sei denn, dies ist zur Erfüllung unserer
-                vertraglichen Pflichten erforderlich oder gesetzlich vorgeschrieben.</p>
+            <p>We do not disclose personal data without consent, unless it is necessary to fulfill our contractual obligations or required by law.</p>
 
             <h2>5. Cookies</h2>
 
-            <p>Diese Website verwendet Cookies, um die Benutzererfahrung zu verbessern. Cookies sind kleine Textdateien, die
-                auf Ihrem Gerät gespeichert werden. Sie können die Verwendung von Cookies in den Einstellungen Ihres Browsers
-                deaktivieren.</p>
+            <p>This website uses cookies to enhance user experience. Cookies are small text files stored on your device. You can disable the use of cookies in your browser settings.</p>
 
-            <h2>6. Analyse-Tools</h2>
+            <h2>6. Analytics Tools</h2>
 
-            <p>Diese Website verwendet [z.B. Google Analytics], einen Webanalysedienst der [Google LLC] („Google“). Die Nutzung
-                erfolgt auf Grundlage des Art. 6 Abs. 1 lit. f. DSGVO.</p>
+            <p>This website uses [e.g., Google Analytics], a web analytics service provided by [Google LLC]. The usage is based on Art. 6 para. 1 lit. f. GDPR.</p>
 
-            <h2>7. Datensicherheit</h2>
+            <h2>7. Data Security</h2>
 
-            <p>Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um personenbezogene Daten gegen
-                unbeabsichtigte oder unrechtmäßige Zerstörung, Verlust oder Veränderung und gegen unbefugte Offenlegung oder
-                unbefugten Zugriff zu schützen.</p>
+            <p>We implement technical and organizational security measures to protect personal data against accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access.</p>
 
-            <h2>8. Betroffenenrechte</h2>
+            <h2>8. Data Subject Rights</h2>
 
-            <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer gespeicherten
-                personenbezogenen Daten.</p>
+            <p>You have the right to access, rectify, delete, or restrict the processing of your stored personal data.</p>
 
-            <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+            <h2>9. Changes to this Privacy Policy</h2>
 
-            <p>Diese Datenschutzerklärung kann sich ändern. Die jeweils aktuelle Fassung ist auf unserer Website verfügbar.</p>
+            <p>This privacy policy may change. The current version is available on our website.</p>
 
-            <p>Für Fragen zum Datenschutz kontaktieren Sie uns bitte unter [Deine Kontaktdaten].</p>
+            <p>For privacy-related inquiries, please contact us at E-Mail: <a class="link-email" href="mailTo:info@beispielfirma.de">info@beispielfirma.de</a>.
+
+
+
+
+
+
+</p>
         </div>
 
             <!-- <h2>Subtitle</h2>
