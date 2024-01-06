@@ -69,9 +69,12 @@
 }
 
 .add-task {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     height: 870px;
     border-radius: 30px;
+    gap: 57px;
 }
 
 .header-add-task {

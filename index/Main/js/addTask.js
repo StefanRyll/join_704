@@ -381,6 +381,8 @@ function seperateChangeCSS () {
     document.getElementById('prioCategoryContainer').classList.add('w-29');
     document.getElementById('showContactsContainer').classList.add('w-29');
     document.getElementById('assignedToContacts').classList.add('w-29');
+    document.getElementById('styleAddTask').style.marginBottom = '0';
+    // document.getElementById('closeContacts').style.display = 'block';
 }
 
 
