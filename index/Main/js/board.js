@@ -86,6 +86,7 @@ function searchTitleAndDescription(title, desc, search, todoContainer, progressC
             doneContainer.innerHTML += taskCard;
         }
     }
+    checkDragArea();
 }
 /**
  * Updates HTML content based on task categories and their status.
@@ -281,25 +282,25 @@ function checkDragArea() {
     let feedbackContainer = document.getElementById('kambanFeedback');
     let doneContainer = document.getElementById('kambanDone');
     checkAreaTodo(todoContainer);
-    checkAreaProgress();
-    checkAreaFeedback();
-    checkAreaDone();
+    checkAreaProgress(progressContainer);
+    checkAreaFeedback(feedbackContainer);
+    checkAreaDone(doneContainer);
 }
 /**
  * Checks and updates the visibility of 'todo' tasks and its empty indicator.
  */
-function checkAreaTodo() {
-    if (Join.tasks.some(s => s.todo)) {
+function checkAreaTodo(container) {
+    if (container.innerHTML !== '') {
         hide('emptyTaskTodo');
     } else {
-        show('emptyTaskTodo');
+        show('emptyTaskTodo'); 
     }
 }
 /**
  * Checks and updates the visibility of 'progress' tasks and its empty indicator.
  */
-function checkAreaProgress() {
-    if (Join.tasks.some(s => s.progress)) {
+function checkAreaProgress(container) {
+    if (container.innerHTML !== '') {
         hide('emptyTaskInprogress');
     } else {
         show('emptyTaskInprogress');
@@ -308,8 +309,8 @@ function checkAreaProgress() {
 /**
  * Checks and updates the visibility of 'feedback' tasks and its empty indicator.
  */
-function checkAreaFeedback() {
-    if (Join.tasks.some(s => s.feedback)) {
+function checkAreaFeedback(container) {
+    if (container.innerHTML !== '') {
         hide('emptyTaskFeedback');
     } else {
         show('emptyTaskFeedback');
@@ -318,8 +319,8 @@ function checkAreaFeedback() {
 /**
  * Checks and updates the visibility of 'done' tasks and its empty indicator.
  */
-function checkAreaDone() {
-    if (Join.tasks.some(s => s.done)) {
+function checkAreaDone(container) {
+    if (container.innerHTML !== '') {
         hide('emptyTaskDone');
     } else {
         show('emptyTaskDone');
