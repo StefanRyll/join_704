@@ -297,7 +297,7 @@ class Board extends Page {
             <div id="styleAddTask" class="board-task-input bg-color-white">
                 ${this.generateHTMLSelectContactsToogleFunction()}
                 <div id="closeContacts" class="open-assign-container  d-none">
-                    <div class="assign-container assign-container-style bg-color-white">
+                    <div id="showContactsContainer" class="assign-container assign-container-style bg-color-white">
                         <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
                         <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
                     </div>
@@ -404,7 +404,7 @@ class Board extends Page {
         return /*html*/ `
                   <div class="prio-category">
                     <p>Prio</p>
-                    <div class="prio-category-container">
+                    <div id="prioCategoryContainer" class="prio-category-container">
                       ${this.generateHTMLUrgent()}
                       ${this.generateHTMLMedium()}
                       ${this.generateHTMLPrio()}

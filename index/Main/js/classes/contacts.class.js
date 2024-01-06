@@ -222,8 +222,6 @@ class Contact {
                 </form>
             </div>
         </div>
-     
         `
     }
-
 }

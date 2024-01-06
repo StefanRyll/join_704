@@ -323,14 +323,13 @@ function openTask(x) {
 }
 
 
-function editTask(x) {  
+function editTask(x) { 
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
-
     let AssignedUsers = task.worker;
     let JoinUsers = Join.accounts;
-
+    seperateChangeCSS(); 
     for (let Worker of AssignedUsers) {
         let usersFound = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
         if (usersFound) {
@@ -339,7 +338,6 @@ function editTask(x) {
     }
 
     let containerShortName = document.getElementById('containerShortName');
-    // let shortName = document.getElementById('editShortNames');
     containerShortName.innerHTML = '';
     for (let i = 0; i < task.worker.length; i++) {
         let assignedWorker = task.worker[i];
@@ -374,6 +372,15 @@ function editTask(x) {
     low.addEventListener('click', () => {
         prioTemp = "Low";
     })
+}
+
+
+function seperateChangeCSS () {
+    document.getElementById('selectContacts').classList.add('w-29');
+    document.getElementById('hiddenSubtask').classList.add('w-29');
+    document.getElementById('prioCategoryContainer').classList.add('w-29');
+    document.getElementById('showContactsContainer').classList.add('w-29');
+    document.getElementById('assignedToContacts').classList.add('w-29');
 }
 
 
