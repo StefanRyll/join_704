@@ -125,7 +125,6 @@ class Board extends Page {
     }
 
     renderTask() {
-        console.log("Start renderTask()",Join.tasks);
         let kambanTodo = document.getElementById('kambanTodo');
         let kambanInprogress = document.getElementById('kambanInprogress');
         let kambanFeedback = document.getElementById('kambanFeedback');
@@ -140,16 +139,16 @@ class Board extends Page {
                 const task = Join.tasks[i];
                 if (task.todo) {
                     kambanTodo.innerHTML += task.tinyTaskCard(i)
-                    console.log("Nach Todo gerendert", task);
+
                 } else if (task.progress) {
                     kambanInprogress.innerHTML += task.tinyTaskCard(i)
-                    console.log("Nach Progress gerendert", task);
+
                 } else if (task.feedback) {
                     kambanFeedback.innerHTML += task.tinyTaskCard(i)
-                    console.log("Nach feedback gerendert", task);
+
                 } else if (task.done) {
                     kambanDone.innerHTML += task.tinyTaskCard(i)
-                    console.log("Nach done gerendert", task);
+
                 } else {
                     task.todo = true;
                     task.feedback = false;

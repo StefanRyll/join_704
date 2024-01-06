@@ -25,10 +25,10 @@ function show(id) {
  */
 function filterTaskNames() {
     let search = document.getElementById('searchTask').value.toLowerCase();
-    let todoContainer = document.getElementById('ondropTodo');
-    let progressContainer = document.getElementById('ondropProgress');
-    let feedbackContainer = document.getElementById('ondropFeedback');
-    let doneContainer = document.getElementById('ondropDone');
+    let todoContainer = document.getElementById('kambanTodo');
+    let progressContainer = document.getElementById('kambanInprogress');
+    let feedbackContainer = document.getElementById('kambanFeedback');
+    let doneContainer = document.getElementById('kambanDone');
     clearInnerHTML(todoContainer, progressContainer, feedbackContainer, doneContainer);
     filterArrayFromBoard(search, todoContainer, progressContainer, feedbackContainer, doneContainer);
 }
@@ -74,7 +74,8 @@ function filterArrayFromBoard(search, todoContainer, progressContainer, feedback
 function searchTitleAndDescription(title, desc, search, todoContainer, progressContainer, feedbackContainer, doneContainer, r) {
     if (title.includes(search) || desc.includes(search)) {
         let taskCard = Join.tasks[r].tinyTaskCard(r);
-        console.log("Search", taskCard);
+
+
         if (Join.tasks[r].todo) {
             todoContainer.innerHTML += taskCard;
         } else if (Join.tasks[r].progress) {
@@ -275,11 +276,14 @@ function removeHighlight(id) {
  * Checks and updates the visibility of task categories and their empty indicators.
  */
 function checkDragArea() {
-    checkAreaTodo();
+    let todoContainer = document.getElementById('kambanTodo');
+    let progressContainer = document.getElementById('kambanInprogress');
+    let feedbackContainer = document.getElementById('kambanFeedback');
+    let doneContainer = document.getElementById('kambanDone');
+    checkAreaTodo(todoContainer);
     checkAreaProgress();
     checkAreaFeedback();
     checkAreaDone();
-    console.log("checkDragArea");
 }
 /**
  * Checks and updates the visibility of 'todo' tasks and its empty indicator.
