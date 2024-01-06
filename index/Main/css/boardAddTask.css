@@ -55,8 +55,18 @@
     font-weight: 400;
 }
 
-.show-bg-task {
-    transform: translateX(0);
+.hide-big-task {
+    animation: slideClose 225ms ease-in-out;
+}
+
+@keyframes slideClose {
+    0%{
+        transform: translateX(0%);
+    }
+    
+    100%{
+        transform: translateX(200%);
+    }
 }
 
 .add-task {

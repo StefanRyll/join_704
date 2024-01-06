@@ -6,7 +6,6 @@ function openAddTask(x = 0) {
     JoinBoard.renderAddTask(x)
 }
 
-
 function createTaskFromBoard(x = 0) {
     // const title = document.getElementById("boardTaskTitle").value;
     // const worker = readAssignedUsers()
@@ -185,9 +184,12 @@ function selectCategoryStory() {
 
 
 function closeAddTask() {
-    let slideAddTask = document.getElementById('slideAddTask')
-    slideAddTask.classList.remove('show-bg-task');
-    document.getElementById('addTask').classList.add("d-none")
+    let slideAddTask = document.getElementById('slideAddTask');
+    slideAddTask.classList.add('hide-big-task');
+
+    setTimeout(() => {
+        document.getElementById('addTask').classList.add("d-none");
+    }, 200);
 }
 
 
