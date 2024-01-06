@@ -176,12 +176,15 @@ function taskSaveChanges(x) {
 
 
 function closeTaskCard() {
-
-    closePopUpTaskCard();
+    let slideAddTask = document.getElementById('taskCard');
+    slideAddTask.classList.add('hide-big-task');
+    setTimeout(() => {
+        document.getElementById('addTask').classList.add("d-none");
+    }, 200);
     cleanUpAccountsCheck();
     setTimeout(() => {
         boardPage();
-    }, 100);
+    }, 200);
 }
 
 

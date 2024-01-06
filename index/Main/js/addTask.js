@@ -313,9 +313,9 @@ function showContact(x) {
 
 
 function openTask(x) {
-    setTimeout(() => {
-        openPopUpTaskCard();
-    }, 100);
+    // setTimeout(() => {
+    //     openPopUpTaskCard();
+    // }, 100);
     let task = Join.tasks[x];
     let addTask = document.getElementById("addTask");
     addTask.classList.remove("d-none")
