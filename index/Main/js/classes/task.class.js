@@ -88,7 +88,7 @@ class Task {
 
 
         return /*html*/ `
-            
+        <div class="bg-task">
             <div id="taskCard" class="taskCard">
                 <div class="taskCardHeader">
                     <div class="category-color">${this.Category}</div>
@@ -135,6 +135,7 @@ class Task {
                     <div class="editBtn" onclick="editTask(${x})"></div>
                 </div>
             </div>
+        </div>
         `
     }
     taskCardEdit(x) {
