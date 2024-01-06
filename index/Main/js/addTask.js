@@ -323,29 +323,31 @@ function openTask(x) {
 }
 
 
-function editTask(x) {
+function editTask(x) {  
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
 
-    const AssignedUsers = task.worker;
-    const JoinUsers = Join.accounts;
+    let AssignedUsers = task.worker;
+    let JoinUsers = Join.accounts;
 
-    for (const Worker of AssignedUsers) {
-        const gefundenerUser = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
-        if (gefundenerUser) {
-            gefundenerUser.checked = true;
+    for (let Worker of AssignedUsers) {
+        let usersFound = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
+        if (usersFound) {
+            usersFound.checked = true;
         }
     }
 
-    let containerShortName = document.getElementById('containerShortName')
+    let containerShortName = document.getElementById('containerShortName');
+    // let shortName = document.getElementById('editShortNames');
+    containerShortName.innerHTML = '';
     for (let i = 0; i < task.worker.length; i++) {
-        const assignedWorker = task.worker[i];
-        containerShortName.innerHTML += assignedWorker.accountTag()
+        let assignedWorker = task.worker[i];
+        containerShortName.innerHTML += assignedWorker.accountTag(i);
     }
     // Subtask
     for (let i = 0; i < task.subTasks.length; i++) {
-        const oldSubtask = task.subTasks[i];
+        let oldSubtask = task.subTasks[i];
         subtaskTemp.push(oldSubtask);
     }
     renderSubtasks()
@@ -360,9 +362,9 @@ function editTask(x) {
     prioTemp = task.prio;
 
     // Eventlistener
-    const urgent = document.getElementById('btnUrgentWhite');
-    const medium = document.getElementById('btnMediumWhite');
-    const low = document.getElementById('btnLowWhite');
+    let urgent = document.getElementById('btnUrgentWhite');
+    let medium = document.getElementById('btnMediumWhite');
+    let low = document.getElementById('btnLowWhite');
     urgent.addEventListener('click', () => {
         prioTemp = "Urgent";
     })
@@ -372,8 +374,6 @@ function editTask(x) {
     low.addEventListener('click', () => {
         prioTemp = "Low";
     })
-
-
 }
 
 
@@ -419,7 +419,12 @@ function renderShortNames(name, x) {
 
 function removeShortNames(x) {
     let removeName = document.getElementById(`editShortNames${x}`);
-    removeName.remove();
+    let removeShortNames = document.getElementById(`removeShortName${x}`);
+    if (removeName) {
+        removeName.remove();
+    } else {
+        removeShortNames.remove();
+    }
 }
 
 

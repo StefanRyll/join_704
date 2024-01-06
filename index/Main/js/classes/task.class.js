@@ -165,7 +165,7 @@ class Task {
                     <input type="date" id="taskCardEDate" value="${this.date}">
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
-                    ${JoinBoard.generateHTMLAddContactShortName()}
+                    ${JoinBoard.generateHTMLAddContactShortName(x)}
                     <div>
                         ${JoinBoard.generateHTMLPrioCategory()}
                     </div>
@@ -183,7 +183,7 @@ class Task {
             let rendertContacts = "";
 
             for (let i = 0; i < this.worker.length; i++) {
-                const worker = this.worker[i];
+                let worker = this.worker[i];
                 rendertContacts += worker.accountTag();
 
             }
@@ -305,6 +305,5 @@ class Task {
             this.feedback = false;
             this.done = false;
         }
-
     }
 }

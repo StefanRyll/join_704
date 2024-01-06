@@ -172,13 +172,7 @@ function taskSaveChanges(x) {
     saveTasks();
     closeTaskCard();
     cleanUpAll();
-
 }
-
-function tempTheSubtasks() {
-
-}
-
 
 
 function closeTaskCard() {
@@ -190,11 +184,13 @@ function closeTaskCard() {
     }, 100);
 }
 
+
 function cleanUpAll() {
     cleanUpAccountsCheck();
     subtaskTemp = [];
     prioTemp = "";
 }
+
 
 function cleanUpAccountsCheck() {
     for (let i = 0; i < Join.accounts.length; i++) {
