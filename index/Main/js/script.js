@@ -244,3 +244,26 @@ function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
+
+
+function nameValidation() {
+    // let logInButton = document.getElementById('logInValidation');
+    let email = document.getElementById('loginEmail');
+    let password = document.getElementById('loginPassword');
+
+    email.classList.remove('error', 'border-blue');
+    password.classList.remove('error', 'border-blue');
+
+
+    if (!email.value || !password.value) {
+        email.classList.add('error');
+        password.classList.add('error');
+    } else {
+        email.classList.add('border-blue');
+        password.classList.add('border-blue');
+    }
+
+    // logInButton.addEventListener('click', e => {
+    //     e.preventDefault()
+    // })
+}
