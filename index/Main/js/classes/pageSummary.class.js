@@ -1,7 +1,7 @@
 class Summary extends Page {
     summeryContent() {
         let daytime = Join.sayDaytime()
-        let nextDeadlineDate, nDDay, nDMonth, nDYear, fullDate, urlPrio , taskPrio;
+        let nextDeadlineDate, nDDay, nDMonth, nDYear, fullDate, urlPrio, taskPrio;
 
         let doneTasks = () => {
             let count = 0
@@ -24,205 +24,177 @@ class Summary extends Page {
             return count;
         }
         let nextDeadline = () => {
-            if (Join.tasks.length > 1) {
-                nextDeadlineDate = Join.tasks.sort((taskA, taskB) => {
-                    return taskA.date - taskB.date;
-                })   // Datum
-                let latestDeadline = nextDeadlineDate[0]
-                nDDay = latestDeadline.date.getDate()
-                nDMonth = latestDeadline.date.getMonth() + 1
-                nDYear = latestDeadline.date.getFullYear()
-                fullDate = () => {
-                    let monat;
-                    if (nDMonth == 1) {
-                        monat = "January";
-                    }
-                    else if (nDMonth == 2) {
-                        monat = "February"
-                    }
-                    else if (nDMonth == 3) {
-                        monat = "March"
-                    }
-                    else if (nDMonth == 4) {
-                        monat = "April"
-                    }
-                    else if (nDMonth == 5) {
-                        monat = "May"
-                    }
-                    else if (nDMonth == 6) {
-                        monat = "June"
-                    }
-                    else if (nDMonth == 7) {
-                        monat = "July"
-                    }
-                    else if (nDMonth == 8) {
-                        monat = "August"
-                    }
-                    else if (nDMonth == 9) {
-                        monat = "September"
-                    }
-                    else if (nDMonth == 10) {
-                        monat = "October"
-                    }
-                    else if (nDMonth == 11) {
-                        monat = "November"
-                    }
-                    else if (nDMonth == 12) {
-                        monat = "December"
-                    }
-        
-                    return `${monat} ${nDDay}, ${nDYear}`
-                }
+                if (Join.tasks.length > 1) {
+                    nextDeadlineDate = Join.tasks.sort((taskA, taskB) => {
+                            return taskA.date - taskB.date;
+                        }) // Datum
+                    let latestDeadline = nextDeadlineDate[0]
+                    nDDay = latestDeadline.date.getDate()
+                    nDMonth = latestDeadline.date.getMonth() + 1
+                    nDYear = latestDeadline.date.getFullYear()
+                    fullDate = () => {
+                        let monat;
+                        if (nDMonth == 1) {
+                            monat = "January";
+                        } else if (nDMonth == 2) {
+                            monat = "February"
+                        } else if (nDMonth == 3) {
+                            monat = "March"
+                        } else if (nDMonth == 4) {
+                            monat = "April"
+                        } else if (nDMonth == 5) {
+                            monat = "May"
+                        } else if (nDMonth == 6) {
+                            monat = "June"
+                        } else if (nDMonth == 7) {
+                            monat = "July"
+                        } else if (nDMonth == 8) {
+                            monat = "August"
+                        } else if (nDMonth == 9) {
+                            monat = "September"
+                        } else if (nDMonth == 10) {
+                            monat = "October"
+                        } else if (nDMonth == 11) {
+                            monat = "November"
+                        } else if (nDMonth == 12) {
+                            monat = "December"
+                        }
 
-                taskPrio = latestDeadline.prio
-                urlPrio = () => {
-                    let url;
-                    if (latestDeadline.prio === "Medium") {
-                        url = "./IMG/medium.png";
+                        return `${monat} ${nDDay}, ${nDYear}`
                     }
-                    else if (latestDeadline.prio === "Low") {
-                        url = "./IMG/low.png";
-                    }
-                    else {
-                        url = "./IMG/urgent.png"
-                    }
-                    return url;
-                }
-        
-                // return deadlines[0]
-            }
-            else if(Join.tasks.length == 1){
-                let onlyTasks = Join.tasks[0]
-                nextDeadlineDate = onlyTasks.date; // Datum
-                nDDay = nextDeadlineDate.getDate()
-                nDMonth = nextDeadlineDate.getMonth()
-                nDYear = nextDeadlineDate.getFullYear()
-                fullDate = () => {
-                    let monat;
-                    if (nDMonth == 1) {
-                        monat = "January";
-                    }
-                    else if (nDMonth == 2) {
-                        monat = "February"
-                    }
-                    else if (nDMonth == 3) {
-                        monat = "March"
-                    }
-                    else if (nDMonth == 4) {
-                        monat = "April"
-                    }
-                    else if (nDMonth == 5) {
-                        monat = "May"
-                    }
-                    else if (nDMonth == 6) {
-                        monat = "June"
-                    }
-                    else if (nDMonth == 7) {
-                        monat = "July"
-                    }
-                    else if (nDMonth == 8) {
-                        monat = "August"
-                    }
-                    else if (nDMonth == 9) {
-                        monat = "September"
-                    }
-                    else if (nDMonth == 10) {
-                        monat = "October"
-                    }
-                    else if (nDMonth == 11) {
-                        monat = "November"
-                    }
-                    else if (nDMonth == 12) {
-                        monat = "December"
-                    }
-        
-                    return `${monat} ${nDDay}, ${nDYear}`
-                }
-                urlPrio = () => {
-                    let url;
-                    if (onlyTasks.prio === "Medium") {
-                        url = "./IMG/medium.png";
-                    }
-                    else if (onlyTasks.prio === "Low") {
-                        url = "./IMG/low.png";
-                    }
-                    else {
-                        url = "./IMG/urgent.png"
-                    }
-                    return url;
-                }
 
-                taskPrio = onlyTasks.prio;
-            }
-            else{
-                nDDay = "No"
-                nDMonth = "Tasks"
-                nDYear = "here"
-                taskPrio = "Wichtig"
-                fullDate = ()=>{
-                    return "No Tasks Here"
+                    taskPrio = latestDeadline.prio
+                    urlPrio = () => {
+                        let url;
+                        if (latestDeadline.prio === "Medium") {
+                            url = "./IMG/medium.png";
+                        } else if (latestDeadline.prio === "Low") {
+                            url = "./IMG/low.png";
+                        } else {
+                            url = "./IMG/urgent.png"
+                        }
+                        return url;
+                    }
+
+                    // return deadlines[0]
+                } else if (Join.tasks.length == 1) {
+                    let onlyTasks = Join.tasks[0]
+                    nextDeadlineDate = onlyTasks.date; // Datum
+                    nDDay = nextDeadlineDate.getDate()
+                    nDMonth = nextDeadlineDate.getMonth()
+                    nDYear = nextDeadlineDate.getFullYear()
+                    fullDate = () => {
+                        let monat;
+                        if (nDMonth == 1) {
+                            monat = "January";
+                        } else if (nDMonth == 2) {
+                            monat = "February"
+                        } else if (nDMonth == 3) {
+                            monat = "March"
+                        } else if (nDMonth == 4) {
+                            monat = "April"
+                        } else if (nDMonth == 5) {
+                            monat = "May"
+                        } else if (nDMonth == 6) {
+                            monat = "June"
+                        } else if (nDMonth == 7) {
+                            monat = "July"
+                        } else if (nDMonth == 8) {
+                            monat = "August"
+                        } else if (nDMonth == 9) {
+                            monat = "September"
+                        } else if (nDMonth == 10) {
+                            monat = "October"
+                        } else if (nDMonth == 11) {
+                            monat = "November"
+                        } else if (nDMonth == 12) {
+                            monat = "December"
+                        }
+
+                        return `${monat} ${nDDay}, ${nDYear}`
+                    }
+                    urlPrio = () => {
+                        let url;
+                        if (onlyTasks.prio === "Medium") {
+                            url = "./IMG/medium.png";
+                        } else if (onlyTasks.prio === "Low") {
+                            url = "./IMG/low.png";
+                        } else {
+                            url = "./IMG/urgent.png"
+                        }
+                        return url;
+                    }
+
+                    taskPrio = onlyTasks.prio;
+                } else {
+                    nDDay = "No"
+                    nDMonth = "Tasks"
+                    nDYear = "here"
+                    taskPrio = "Wichtig"
+                    fullDate = () => {
+                        return "No Tasks Here"
+                    }
+                    urlPrio = () => {
+                        return "./IMG/noPrio.png"
+                    }
+                    return "";
                 }
-                urlPrio = ()=>{
-                    return "./IMG/noPrio.png"
-                }
-                return "";
             }
-        }
-        // let urlPrio = () => {
-        //     let url;
-        //     if (nextDeadline().prio === "Medium") {
-        //         url = "./IMG/medium.png";
-        //     }
-        //     else if (nextDeadline().prio === "Low") {
-        //         url = "./IMG/low.png";
-        //     }
-        //     else {
-        //         url = "./IMG/urgent.png"
-        //     }
-        //     return url;
-        // }
-        // let nextDeadlineDate = nextDeadline().date; // Datum
-        // let nDDay = nextDeadlineDate.getDate()
-        // let nDMonth = nextDeadlineDate.getMonth() + 1
-        // let nDYear = nextDeadlineDate.getFullYear()
-        // let fullDate = () => {
-        //     let monat;
-        //     if (nDMonth == 1) {
-        //         monat = "January";
-        //     }
-        //     else if (nDMonth == 2) {
-        //         monat = "February"
-        //     }
-        //     else if (nDMonth == 3) {
-        //         monat = "March"
-        //     }
-        //     else if (nDMonth == 4) {
-        //         monat = "April"
-        //     }
-        //     else if (nDMonth == 5) {
-        //         monat = "May"
-        //     }
-        //     else if (nDMonth == 6) {
-        //         monat = "June"
-        //     }
-        //     else if (nDMonth == 7) {
-        //         monat = "July"
-        //     }
-        //     else if (nDMonth == 8) {
-        //         monat = "August"
-        //     }
-        //     else if (nDMonth == 9) {
-        //         monat = "September"
-        //     }
-        //     else if (nDMonth == 10) {
-        //         monat = "October"
-        //     }
-        //     else if (nDMonth == 11) {
-        //         monat = "November"
-        //     }
-        //     else if (nDMonth == 12) {
-        //         monat = "December"
-        //     }
+            // let urlPrio = () => {
+            //     let url;
+            //     if (nextDeadline().prio === "Medium") {
+            //         url = "./IMG/medium.png";
+            //     }
+            //     else if (nextDeadline().prio === "Low") {
+            //         url = "./IMG/low.png";
+            //     }
+            //     else {
+            //         url = "./IMG/urgent.png"
+            //     }
+            //     return url;
+            // }
+            // let nextDeadlineDate = nextDeadline().date; // Datum
+            // let nDDay = nextDeadlineDate.getDate()
+            // let nDMonth = nextDeadlineDate.getMonth() + 1
+            // let nDYear = nextDeadlineDate.getFullYear()
+            // let fullDate = () => {
+            //     let monat;
+            //     if (nDMonth == 1) {
+            //         monat = "January";
+            //     }
+            //     else if (nDMonth == 2) {
+            //         monat = "February"
+            //     }
+            //     else if (nDMonth == 3) {
+            //         monat = "March"
+            //     }
+            //     else if (nDMonth == 4) {
+            //         monat = "April"
+            //     }
+            //     else if (nDMonth == 5) {
+            //         monat = "May"
+            //     }
+            //     else if (nDMonth == 6) {
+            //         monat = "June"
+            //     }
+            //     else if (nDMonth == 7) {
+            //         monat = "July"
+            //     }
+            //     else if (nDMonth == 8) {
+            //         monat = "August"
+            //     }
+            //     else if (nDMonth == 9) {
+            //         monat = "September"
+            //     }
+            //     else if (nDMonth == 10) {
+            //         monat = "October"
+            //     }
+            //     else if (nDMonth == 11) {
+            //         monat = "November"
+            //     }
+            //     else if (nDMonth == 12) {
+            //         monat = "December"
+            //     }
 
         //     return `${monat} ${nDDay}, ${nDYear}`
         // }
@@ -252,9 +224,12 @@ class Summary extends Page {
             }
             return count;
         }
-        let greetedUser = (Join.signedAccount.name === "Guest") ? "" : Join.signedAccount.name; 
+        let greetedUser = (Join.signedAccount.name === "Guest") ? "" : Join.signedAccount.name;
         return /*html*/ `
         <div id="summery" class="summery">
+        <div id="welcomeOverlay" class="welcome-animation-overlay d-none">
+            <h1>${daytime}</h1><h1 id="greetedUser">${greetedUser}</h1>
+        </div>
             <div class="summeryHeadline">
                 <h1 class="">Join 704</h1>
                 <img src="./IMG/Vector 3.png" alt="">
