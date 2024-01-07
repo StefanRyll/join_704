@@ -166,4 +166,25 @@ function addTaskPage() {
     // content.innerHTML = Join.generateHTMLaddTask();
     setActiveStyles('addTaskActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveAddTask', 'rgba(9, 25, 49, 1)');
+    changeCSSProperty();
+    // mediaQueryCSSProperty();
 }
+
+
+function changeCSSProperty() {
+    document.getElementById('hiddenSubtask').style.marginBottom = '80px';
+    document.getElementById('containerShortName').style.position = 'absolute';
+    document.getElementById('containerShortName').style.bottom = '200px';
+    document.getElementById('showSubtask').style.marginBottom = '80px';
+    document.getElementById('styleAddTask').style.marginBottom = '180px';
+}
+
+
+// function mediaQueryCSSProperty() {
+//     let mq = window.matchMedia("(max-width: 1330px)");
+//     if (mq.matches) {
+//         document.getElementById('styleAddTask').style.marginBottom = '0';
+//     } else {
+        
+//     }
+// }

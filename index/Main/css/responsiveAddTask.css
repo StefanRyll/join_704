@@ -15,6 +15,9 @@
     #content {
         padding: 0;
     }
+    .add-task {
+        gap: 40px;
+    }
     .field-required-text {
         position: relative;
     }
@@ -68,7 +71,7 @@
         margin-right: 48px;
     }
     #styleAddTask {
-        margin-bottom: 0;
+        margin-bottom: 0 !important;
     }
     .board-input-date {
         width: 40.2em;

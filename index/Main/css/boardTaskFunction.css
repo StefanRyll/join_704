@@ -123,20 +123,9 @@
 }
 
 .add-new-contact {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 10px;
     border: none;
-    width: 80%;
-    background-color: var(--version-2-main-color);
     color: white;
-    gap: 2em;
-    font-family: Inter;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
     padding: 0.4em 0.75em;
     margin-top: 158px;
 }

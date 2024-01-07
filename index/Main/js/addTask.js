@@ -329,7 +329,7 @@ function editTask(x) {
     taskCard.innerHTML = task.taskCardEdit(x);
     let AssignedUsers = task.worker;
     let JoinUsers = Join.accounts;
-    seperateChangeCSS(); 
+    changeCSSAttribute(); 
     for (let Worker of AssignedUsers) {
         let usersFound = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
         if (usersFound) {
@@ -375,14 +375,16 @@ function editTask(x) {
 }
 
 
-function seperateChangeCSS () {
+function changeCSSAttribute () {
     document.getElementById('selectContacts').classList.add('w-29');
     document.getElementById('hiddenSubtask').classList.add('w-29');
     document.getElementById('prioCategoryContainer').classList.add('w-29');
     document.getElementById('showContactsContainer').classList.add('w-29');
     document.getElementById('assignedToContacts').classList.add('w-29');
     document.getElementById('styleAddTask').style.marginBottom = '0';
-    // document.getElementById('closeContacts').style.display = 'block';
+    document.getElementById('closeContacts').style.position = 'relative';
+    document.getElementById('assignedToContacts').style.padding = '0';
+    document.getElementById('assignedToBottom').classList.add('w-29');
 }
 
 
