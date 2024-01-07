@@ -108,3 +108,9 @@
     font-size: 12px;
     margin-left: -10px;
 }
+.ok-button-container {
+    display: flex;
+    justify-content: right;
+    margin-right: 18px;
+    margin-bottom: 25px;
+}

@@ -173,7 +173,9 @@ class Task {
                     ${JoinBoard.generateHTMLSubtask()}
                     
                 </div>
-                <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
+                <div class="ok-button-container">
+                    <button class="btn-dark-blue" onclick="taskSaveChanges(${x})">Ok &checkmark;</button>
+                </div>
             </div>
         </div>
             `

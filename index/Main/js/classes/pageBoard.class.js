@@ -343,7 +343,7 @@ class Board extends Page {
 
     generateHTMLRenderShortNames(shortNames, x) {
         return /*html*/ `
-            <div id="editShortNames${x}" class="initials-logo" style="background-color: ${Join.accounts[x].color}; margin: 0 auto;">${shortNames}</div>
+            <div id="editShortNames${x}" class="initials-logo" style="background-color: ${Join.accounts[x].color}">${shortNames}</div>
         `
     }
 
@@ -575,7 +575,7 @@ class Board extends Page {
     generateHTMLAddSubtask(x = "test", m) {
         return /*html*/ `
             <div id="containerTodoSubtask${m}">
-                <ul>
+                <ul id="subtaskContainer">
                     <li id="todoSubtask${m}">${x}</li>
                     <div class="subtask-img">
                         <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">

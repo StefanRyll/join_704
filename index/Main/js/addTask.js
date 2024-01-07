@@ -385,6 +385,7 @@ function changeCSSAttribute () {
     document.getElementById('closeContacts').style.position = 'relative';
     document.getElementById('assignedToContacts').style.padding = '0';
     document.getElementById('assignedToBottom').classList.add('w-29');
+    document.getElementById('subtaskContainer').classList.add('w-29');
 }
 
 
