@@ -31,6 +31,7 @@ function createTaskFromBoard(x = 0) {
             closeAddTask()
             JoinBoard.renderTask()
                 // alert("Neuer Task Erstellt")
+            checkDragArea();
         }
     }
 }
@@ -383,7 +384,6 @@ function changeCSSAttribute () {
     
     let mq = window.matchMedia("(max-width: 520px)");
     if (mq.matches) {
-        
         createNewSubtask.style.width = '100%';
         createTask.style.width = '100%';
     }
