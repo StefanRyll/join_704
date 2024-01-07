@@ -72,6 +72,10 @@
 
 }
 
+.subtask-style {
+    width: 94% !important;
+}
+
 .progressContainer {
     width: 128px;
     height: 8px;

@@ -84,6 +84,10 @@
 }
 
 @media (max-width: 740px) {
+    .taskCard {
+        max-width: 100%;
+    }
+
     .frame-192 {
         padding-right: 0;
         margin-left: 20px;
@@ -121,6 +125,10 @@
 
     .lanes {
         width: 100%;
+    }
+
+    .board-task-input input {
+        font-size: 16px;
     }
 }
 
@@ -179,3 +187,4 @@
         width: 100%;
     }
 }
+

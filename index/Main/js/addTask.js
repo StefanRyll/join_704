@@ -7,19 +7,6 @@ function openAddTask(x = 0) {
 }
 
 function createTaskFromBoard(x = 0) {
-    // const title = document.getElementById("boardTaskTitle").value;
-    // const worker = readAssignedUsers()
-    // const desc = document.getElementById('boardTaskDescription').value;
-    // const date = document.getElementById('date').value;
-    // const prio = prioTemp;
-    // const category = document.getElementById('taskCategoryInput').value;
-    // const subTask = subtaskTemp;
-    // let newTask = new Task(title, worker, desc, date, prio, category, subTask);
-
-    // createNewTask(newTask, x);
-    // updateTaskWorkers(newTask);
-    // Join.tasks.push(newTask)
-    // clearInputs(title, desc, worker, date, category, subTask);
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -376,19 +363,30 @@ function editTask(x) {
 
 
 function changeCSSAttribute () {
+    let createTask = document.getElementById('createNewSubtask');
     document.getElementById('selectContacts').classList.add('w-29');
     document.getElementById('hiddenSubtask').classList.add('w-29');
     document.getElementById('prioCategoryContainer').classList.add('w-29');
     document.getElementById('showContactsContainer').classList.add('w-29');
+    document.getElementById('showSubtask').classList.add('w-29');
     document.getElementById('assignedToContacts').classList.add('w-29');
     document.getElementById('styleAddTask').style.marginBottom = '0';
     document.getElementById('closeContacts').style.position = 'relative';
     document.getElementById('assignedToContacts').style.padding = '0';
     document.getElementById('assignedToBottom').classList.add('w-29');
-    // let createNewSubtask = document.getElementById('createNewSubtask').querySelector('ul');
-    // if (createNewSubtask) {
-    //     createNewSubtask.style.width = '90%';
-    // }
+    createTask.style.position = 'relative';
+    createTask.style.width = '94%';
+    let createNewSubtask = document.querySelector('.create-subtask ul');
+    if (createNewSubtask) {
+        createNewSubtask.style.width = '100%';
+    }
+    
+    let mq = window.matchMedia("(max-width: 520px)");
+    if (mq.matches) {
+        
+        createNewSubtask.style.width = '100%';
+        createTask.style.width = '100%';
+    }
 }
 
 
