@@ -13,6 +13,11 @@ class Contact {
         this.checked = false;
         this.color = this.getColor()
     }
+
+    /**
+     * This function creates and random the bg-color of the initials container
+     * @returns 
+     */
     getColor() {
         const colors = [
             "#FF7A00",
@@ -36,6 +41,22 @@ class Contact {
         let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
         return colors[colorIndex];
     }
+
+    /**
+     * This function creates and sorts the user initials
+     * 
+     * @param {string} name - Is needed to recognize the initials from the user names. It is passed in renderContacts().
+     * @returns 
+     */
+    getInitials() {
+        let parts = this.name.split(" ");
+        let initials = parts[0][0];
+        if (parts.length > 1) {
+            initials += parts[parts.length - 1][0];
+        }
+        return initials.toUpperCase();
+    }
+
     generateHtmlContactDetails(i) {
         return /*html*/ `
             <div class="contactView">
@@ -111,14 +132,7 @@ class Contact {
     
         `
     }
-    getInitials() {
-        let parts = this.name.split(" ");
-        let initials = parts[0][0];
-        if (parts.length > 1) {
-            initials += parts[parts.length - 1][0];
-        }
-        return initials.toUpperCase();
-    }
+
     tinyCard(x) {
         return /*html*/ `
         <div class="tinyAccountTaskCard" onclick="showContact(${x})">
