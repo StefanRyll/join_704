@@ -43,6 +43,23 @@
     left: 45px;
 }
 
+.welcome-animation-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    animation: welcomeFadeIn 1.5s ease-out;
+    /* transition: transform 3.5s ease-in-out, opacity 3.5s ease-in-out; */
+    z-index: 10;
+}
+
 
 /* Animation */
 
@@ -60,9 +77,21 @@
 
 @keyframes fadeIn {
     from {
-        opacity: 1;
+        opacity: 100%;
     }
     to {
+        opacity: 0;
+    }
+}
+
+@keyframes welcomeFadeIn {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
         opacity: 0;
     }
 }

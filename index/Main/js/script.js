@@ -4,6 +4,7 @@ function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;
     summeryPage();
+    checkWelcomeRespon();
 }
 
 async function logInUser() {
@@ -20,8 +21,9 @@ async function logInUser() {
         if (userAccount.email === user) {
             if (pw === userAccount.password) {
                 Join.signedAccount = userAccount;
-                remember()
-                summeryPage()
+                remember();
+                summeryPage();
+                checkWelcomeRespon();
 
             } else {
                 console.log("Entweder Passwort oder Email stimmen nicht überein")
@@ -29,6 +31,22 @@ async function logInUser() {
         }
     }
 }
+
+function checkWelcomeRespon() {
+    if (window.innerWidth < 767) {
+        showWelcomeOverlay();
+    }
+}
+
+function showWelcomeOverlay() {
+    let welcomeOverlay = document.getElementById('welcomeOverlay');
+    welcomeOverlay.classList.remove('d-none');
+    setTimeout(() => {
+        welcomeOverlay.classList.add('d-none');
+    }, 1000);
+}
+
+
 
 // Sign Up
 async function createAccount() {
