@@ -15,6 +15,12 @@
     #content {
         padding: 0;
     }
+    .subtask-container {
+        width: 95%;
+    }
+    .create-subtask ul {
+        width: 100%;
+    }
     .add-task {
         gap: 40px;
     }
@@ -56,6 +62,7 @@
     .assign-container {
         width: 40em;
         background-color: white;
+        margin-bottom: 0 !important;
     }
     .open-assign-container {
         position: relative;

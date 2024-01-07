@@ -566,7 +566,7 @@ class Board extends Page {
     generateHTMLAddTaskButtons(x) {
         console.log("Vollständig geladen");
         return /*html*/ `
-            <div class="addTask-button addTask-button-window">
+            <div id="addtaskButton" class="addTask-button addTask-button-window">
                 <button class="btn-cancel btn-white" type="reset" onsubmit="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
@@ -574,8 +574,8 @@ class Board extends Page {
     }
     generateHTMLAddSubtask(x = "test", m) {
         return /*html*/ `
-            <div id="containerTodoSubtask${m}">
-                <ul id="subtaskContainer">
+            <div class="subtask-contianer" id="containerTodoSubtask${m}">
+                <ul>
                     <li id="todoSubtask${m}">${x}</li>
                     <div class="subtask-img">
                         <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">

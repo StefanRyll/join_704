@@ -171,10 +171,13 @@ function addTaskPage() {
 
 
 function changeCSSProperty() {
-    document.getElementById('hiddenSubtask').style.marginBottom = '80px';
+    // document.getElementById('hiddenSubtask').style.marginBottom = '80px';
     document.getElementById('containerShortName').style.position = 'absolute';
     document.getElementById('containerShortName').style.bottom = '200px';
-    document.getElementById('showSubtask').style.marginBottom = '80px';
+    // document.getElementById('showSubtask').style.marginBottom = '80px';
     document.getElementById('styleAddTask').style.marginBottom = '180px';
+    document.getElementById('addtaskButton').style.position = 'absolute';
+    document.getElementById('addtaskButton').style.left = '935px';
+    document.getElementById('addtaskButton').style.bottom = '35px';
 }
 
