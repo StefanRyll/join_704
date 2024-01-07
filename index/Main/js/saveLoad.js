@@ -10,6 +10,7 @@ const tasksKey = 'joinTask';
 async function saveAccounts(){
   const accounts = Join.accounts;
   await setItem(accountsKey, accounts);
+  // Commentare bleiben für den Fall dass php Verwendet
   // await fetch(MY_BACKEND_ACC, {
   //   method: 'POST',
   //   headers: {
@@ -52,7 +53,6 @@ async function saveTasks(){
 }
 
 async function loadAccounts(){
-  // let response = await fetch('./saves/Accounts.json')
   let responseAsJson = await getItem(accountsKey)
   let parsedResponse = JSON.parse(responseAsJson['data']['value'])
   let loadedAccounts = decodeAccounts(parsedResponse)

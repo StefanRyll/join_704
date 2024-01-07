@@ -30,8 +30,15 @@ function openSuccessOverlay() {
     document.getElementById('overlaySuccess').classList.add('show-success-overlay');
 }
 
+function openSuccessOverlayTask() {
+    document.getElementById('overlaySuccessTask').classList.add('show-success-overlay');
+}
+
 function closeSuccessOverlay() {
     document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
+}
+function closeSuccessOverlayTask() {
+    document.getElementById('overlaySuccessTask').classList.remove('show-success-overlay');
 }
 
 function openPopUpTaskCard() {
