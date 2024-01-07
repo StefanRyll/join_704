@@ -4,7 +4,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /* background-color: white; */
     background-color: var(--dark-blue);
     animation: fadeIn 1s ease-in-out;
     z-index: 10;
@@ -56,10 +55,8 @@
     text-align: center;
     background-color: white;
     animation: welcomeFadeIn 1.5s ease-out;
-    /* transition: transform 3.5s ease-in-out, opacity 3.5s ease-in-out; */
     z-index: 10;
 }
-
 
 /* Animation */
 

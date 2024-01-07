@@ -10,7 +10,6 @@
     justify-content: space-between;
     cursor: move;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.107);
-    /* z-index: 2; */
     margin-bottom: 20px;
     transition: transform 0.2s;
 }
@@ -49,7 +48,6 @@
 .tinyTaskCardContacts {
     display: flex;
     flex-direction: row;
-    /* margin-right: -50px; */
 }
 
 .tinyTaskCardDescription {

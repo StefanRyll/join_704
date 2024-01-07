@@ -10,8 +10,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 50px 0px;
-    /* padding-top: 50px;
-    padding-bottom: 50px; */
     color: #CDCDCD;
     font-family: sans-serif;
     font-weight: 300;
@@ -39,7 +37,6 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: flex-start; */
     width: 232px;
     padding-left: 30%;
     padding-right: -30%;
@@ -50,11 +47,6 @@ nav {
     background-color: #2A3D59;
     transition: 0.1s ease-in-out;
 }
-
-
-/* .bgDark{
-    background-color: #091931;
-} */
 
 .summary {
     background-image: url("../IMG/Summary.png");

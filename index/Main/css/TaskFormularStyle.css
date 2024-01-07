@@ -17,7 +17,6 @@
 }
 .taskWindowForm{
     display: flex;
-    /* justify-content: space-between; */
 }
 .inputParameter{
     display: flex;
@@ -37,7 +36,6 @@
     width: 440px;
     height: 48px;
     padding-left: 12px;
-    /* padding: 12px 21px 12px 21px; */
     font-size: 20px;
     color:  #D1D1D1;
 }
@@ -65,12 +63,3 @@
     display: flex;
     justify-content: end;
 }
-
-/* #hiddenSubtask {
-    margin-bottom: 90px;
-} */
-
-/* #styleAddTask {
-    margin-bottom: 160px;
-} */
-   

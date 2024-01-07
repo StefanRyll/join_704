@@ -1,6 +1,5 @@
 @media (max-width: 1520px) {
     .res-content-board {
-        /* width: 100%; */
         padding: 0;
         padding-top: 90px;
         padding-left: 90px;
@@ -10,7 +9,6 @@
         display: flex;
         justify-content: start;
         flex-wrap: wrap;
-        /* width: 100%; */
     }
 }
 

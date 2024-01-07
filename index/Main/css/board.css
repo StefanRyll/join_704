@@ -227,7 +227,6 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 254px; */
 }
 
 .empty-tasks {
