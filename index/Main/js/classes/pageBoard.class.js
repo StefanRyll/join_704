@@ -120,8 +120,20 @@ class Board extends Page {
             <div id="addTask" class="popUpTaskCard d-none">
 
             </div>
+            <div>
+                    <div class="overlay-success" id="overlaySuccessTask"></div>
+                </div>
+
 
                     `
+    }
+
+    generateHtmlSuccessInfoTask() {
+        return /*html*/ `
+            <div class="successInfoContainer">
+                <h3 class="font-size-normal mg-none">Task succesfully created</h3>
+            </div>
+        `
     }
 
     renderTask() {

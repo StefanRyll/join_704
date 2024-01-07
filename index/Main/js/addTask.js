@@ -29,10 +29,20 @@ function createTaskFromBoard(x = 0) {
         } finally {
             clearInputs(title, desc, worker, date, category, subTask);
             closeAddTask()
+            successOverlayTask()
             JoinBoard.renderTask()
                 // alert("Neuer Task Erstellt")
         }
     }
+}
+
+function successOverlayTask() {
+    let overlaySuccess = document.getElementById('overlaySuccessTask');
+    overlaySuccess.innerHTML = JoinBoard.generateHtmlSuccessInfoTask();
+    openSuccessOverlayTask();
+    setTimeout(() => {
+        closeSuccessOverlayTask();
+    }, 2000);
 }
 
 
@@ -208,7 +218,6 @@ function closeSubtask() {
 function createSubtask() {
     let inputSubtask = document.getElementById('inputSubtask');
     let subtaskText = inputSubtask.value.trim();
-    // Join.tasks.push(inputSubtask);
     if (subtaskText !== '') {
         let newSubtask = new Subtask(subtaskText)
         subtaskTemp.push(newSubtask);
