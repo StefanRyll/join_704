@@ -228,7 +228,7 @@ class Summary extends Page {
         return /*html*/ `
         <div id="summery" class="summery">
         <div id="welcomeOverlay" class="welcome-animation-overlay d-none">
-            <h1>${daytime}</h1><h1 id="greetedUser">${greetedUser}</h1>
+            <h1 class="welcome-respon-headline">${daytime}</h1><h1 class="welcome-respon-headline" id="greetedUser">${greetedUser}</h1>
         </div>
             <div class="summeryHeadline">
                 <h1 class="">Join 704</h1>
