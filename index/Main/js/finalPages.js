@@ -25,7 +25,6 @@ function startPage() {
     } finally {
 
         setState("login")
-
         body.innerHTML = JoinLogin.startAnimationOverlay();
         body.innerHTML = JoinLogin.startAnimation();
         body.innerHTML += JoinLogin.logInContent();

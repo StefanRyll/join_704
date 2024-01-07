@@ -31,7 +31,7 @@ function createTaskFromBoard(x = 0) {
             closeAddTask()
             successOverlayTask()
             JoinBoard.renderTask()
-                // alert("Neuer Task Erstellt")
+            // alert("Neuer Task Erstellt")
             checkDragArea();
         }
     }
@@ -320,13 +320,13 @@ function openTask(x) {
 }
 
 
-function editTask(x) { 
+function editTask(x) {
     let task = Join.tasks[x];
     let taskCard = document.getElementById("taskCard");
     taskCard.innerHTML = task.taskCardEdit(x);
     let AssignedUsers = task.worker;
     let JoinUsers = Join.accounts;
-    changeCSSAttribute(); 
+    changeCSSAttribute();
     for (let Worker of AssignedUsers) {
         let usersFound = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
         if (usersFound) {
@@ -349,10 +349,10 @@ function editTask(x) {
     prioTemp = task.prio;
     if (task.prio === "Urgent") {
         document.getElementById("btnUrgentWhite").click();
-    } else if (task.prio === "Medium") {
-        document.getElementById("btnMediumWhite").click();
     } else if (task.prio === "Low") {
         document.getElementById("btnLowWhite").click();
+    } else if (task.prio === "Medium") {
+        document.getElementById("btnMediumWhite").click();
     }
     prioTemp = task.prio;
 
@@ -363,16 +363,16 @@ function editTask(x) {
     urgent.addEventListener('click', () => {
         prioTemp = "Urgent";
     })
-    medium.addEventListener('click', () => {
-        prioTemp = "Medium";
-    })
     low.addEventListener('click', () => {
         prioTemp = "Low";
+    })
+    medium.addEventListener('click', () => {
+        prioTemp = "Medium";
     })
 }
 
 
-function changeCSSAttribute () {
+function changeCSSAttribute() {
     let createTask = document.getElementById('createNewSubtask');
     document.getElementById('selectContacts').classList.add('w-29');
     document.getElementById('hiddenSubtask').classList.add('w-29');
@@ -390,7 +390,7 @@ function changeCSSAttribute () {
     if (createNewSubtask) {
         createNewSubtask.style.width = '100%';
     }
-    
+
     let mq = window.matchMedia("(max-width: 520px)");
     if (mq.matches) {
         createNewSubtask.style.width = '100%';

@@ -108,9 +108,9 @@ a:hover {
     padding: 12px 21px 12px 21px;
 }
 
-.frame-14:focus-within {
+/* .frame-14:focus-within {
     border: 1px solid var(--lightblue);
-}
+} */
 
 .frame-157 {
     border: none;
