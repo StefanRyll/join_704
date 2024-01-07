@@ -5,7 +5,7 @@ class Contacts extends Page {
                     <button class="respon-button"><img src="./IMG/person_add.png"></button>
                 </div>
                 <div>
-                    <div onclick="closeContactMenu()" class="respon-overlay" id="responOverlay"></div>
+                    <div class="respon-overlay" id="responOverlay"></div>
                 </div>
                 <div>
                     <div class="overlay-style" id="overlay"></div>

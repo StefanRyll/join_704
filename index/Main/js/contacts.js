@@ -1,30 +1,15 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
-async function initContacts() {
-    await includeHTML();
-    renderContacts();
-}
-
 /**
  * This function generates the user array through a loop and renders it into html
- * contactsTemp.js = function generateHtmlContactList, line 1
+ * 
  */
 function renderContacts() {
-
-    console.log("Stefans Funktion", Join.accounts);
     let contactsList = "";
     let currentInitials = "";
 
-
     for (let i = 0; i < Join.accounts.length; i++) {
         const contact = Join.accounts[i];
-        const name = contact.name;
-        const mail = contact.email;
         const userInitials = contact.shortname;
-        // contact.color = getColor(contact.name); // .color ist eine CSS eigenschaft die später die farben ausdem array colors verwertet.
-        // if (!contact.color) {
-        //     // bedingung: hat der contact noch keine farbe (!).
-        //     contact.color = colors[Math.floor(Math.random() * colors.length)]; //es wird eine zufällige farbe aus dem array colors ausgewählt.
-        // }
 
         if (userInitials[0] !== currentInitials) {
             if (alphabet.includes(userInitials[0])) {
@@ -37,7 +22,6 @@ function renderContacts() {
                 contactsList += '<div class="contacts-container">';
             }
         }
-        // const color = contact.color;
         contactsList += contact.generateHtmlContactList(i);
     }
     if (contactsList !== "") {
@@ -47,35 +31,8 @@ function renderContacts() {
 }
 
 /**
- * This function creates and sorts the user initials
- * 
- * @param {string} name - Is needed to recognize the initials from the user names. It is passed in renderContacts().
- * @returns 
- */
-// function getInitials(name) {
-//     let parts = name.split(" ");
-//     let initials = parts[0][0];
-//     if (parts.length > 1) {
-//         initials += parts[parts.length - 1][0];
-//     }
-//     return initials.toUpperCase();
-// }
-
-/**
- * This function creates and random the bg-color of the initials container
- * 
- * @param {string} name - is needed to add up the first letters and assign them to the colors array.
- * @returns 
- */
-// function getColor(name) {
-//     let sum = name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
-//     let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
-//     return colors[colorIndex];
-// }
-
-/**
  * This function renders the user's detailed data
- * contactsTemp.js = function generateHtmlContactDetails, line 15
+ * 
  * @param {string} i - is required to access the individual users
  * @returns 
  */
@@ -84,11 +41,6 @@ function showDetails(i) {
         openContactDetails();
     }, 200);
     let contact = Join.accounts[i];
-    // let color = contact.color;
-    // let userInitials = contact.shortname;
-    // let name = contact.name;
-    // let mail = contact.email;
-    // let phone = contact.phone;
 
     if (window.innerWidth >= 1188) {
         let detailsContent = contact.generateHtmlContactDetails(i);
@@ -104,8 +56,7 @@ function showDetails(i) {
 
 /**
  * function for open and render the overlay to add new contact, edit Contact and delete Contact
- * contactsTemp.js = function generateHtmlAddContact, line 41
- * contactsTemp.js = function generateHtmlEditContact, line 77
+ * 
  */
 function openAddContact() {
     let addContactForm = document.getElementById('overlay');
@@ -118,11 +69,6 @@ function openAddContact() {
 
 function openEditContact(i) {
     let contact = Join.accounts[i];
-    // let color = contact.color;
-    // let userInitials = contact.shortname;
-    // let name = contact.name;
-    // let mail = contact.email;
-    // let phone = contact.tel;
     setTimeout(() => {
         openBigOverlay()
     }, 100);
@@ -140,25 +86,17 @@ function closeOverlay() {
         closeBigOverlay()
         closeResOverlay()
     }, 100);
-    initContacts();
+    contactsPage();
 }
 
 /**
- * Function for a new contact to the user array
+ * function for a new contact to the accounts[] array
  */
 function addContact() {
     let name = document.getElementById('name').value;
     let email = document.getElementById('mail').value;
     let phone = document.getElementById('phone').value;
-    // let randomColor = colors[Math.floor(Math.random() * colors.length)];
-
     let newUser = new Contact(name, email, phone)
-        // let newUser = { // erstellung eines neuen objektes, zur erleichterung des pushes zum user-array
-        //     name,
-        //     email,
-        //     phone,
-        //     randomColor
-        // };
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
@@ -171,8 +109,8 @@ function addContact() {
 }
 
 /**
- * Function for a edit contact to the user array
- * @param {string} i variable for the data in the user array
+ * Function for a edit contact to the accounts[] array
+ * @param {string} i variable for the data in the accounts[] array
  */
 function editContact(i) {
     let contact = Join.accounts[i];
@@ -192,8 +130,8 @@ function editContact(i) {
 }
 
 /**
- * Function for a delete contact to the user array
- * @param {string} i variable for the data in the user array
+ * Function for a delete contact to the accounts[] array
+ * @param {string} i variable for the data in the accounts[] array
  */
 function deleteContact(i) {
     Join.accounts.splice(i, 1);
@@ -210,7 +148,7 @@ function deleteContact(i) {
 
 /**
  *  function for render a little information overlay to addContact, editContact and deleteContact
- * contactsTemp.js = generateHtml-functions, line 142.
+ * 
  */
 function successOverlay() {
     let overlaySuccess = document.getElementById('overlaySuccess');
@@ -261,33 +199,5 @@ function closeContactMenu(event) {
     let optionsMenu = document.getElementById("optionsMenu");
     if (optionsMenu != undefined && !optionsMenu.contains(event.target)) {
         optionsMenu.classList.remove("show-options-menu");
-    }
-}
-
-// function createButtonRespon() {
-//     let closeBtnRes = document.getElementById("closeButtonRespon");
-//     let closeBtn = document.getElementById("closeButton");
-//     if (window.innerWidth >= 1330) {
-//         closeBtnRes.classList.remove('d-none');
-//         closeBtn.classList.add('d-none');
-//     }
-// }
-
-
-/**
- *  this function is required to render the header and sidebar
- */
-async function includeHTML() {
-    let includeElements = document.querySelectorAll("[w3-include-html]"); //  Wir rufen unseren DIV im Index auf
-    for (let i = 0; i < includeElements.length; i++) {
-        // hier iterieren wir alles Obejekte in diesem DIV container sprich alles was in dem Fall im Header Bereich ist
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // hier liest er den Wert im Index.Html "includes/header.html" aus. Und wir deieser Varibale file zugeordnet
-        let resp = await fetch(file); // hier laden wir die datei mit fetch
-        if (resp.ok) {
-            element.innerHTML = await resp.text(); // hier haben wir jetzt alles in der Variable contetn als Text gespeichert^
-        } else {
-            element.innerHTML = "Page not found";
-        }
     }
 }
