@@ -113,6 +113,11 @@ function closeOverlay() {
  * function for a new contact to the accounts[] array
  */
 function addContact() {
+    try {
+        loadAccounts()
+    } catch (error) {
+        console.log(error);
+    }
     let name = document.getElementById('name').value;
     let email = document.getElementById('mail').value;
     let phone = document.getElementById('phone').value;

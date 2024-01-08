@@ -21,7 +21,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form id="formLogin" class="login-container" onsubmit="logInUser(); nameValidation()">
+                        <form id="formLogin" class="login-container" onsubmit="nameValidation(); logInUser()">
                             <div class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       

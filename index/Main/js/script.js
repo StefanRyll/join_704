@@ -283,7 +283,6 @@ function nameValidation() {
     // let logInButton = document.getElementById('logInValidation');
     let email = document.getElementById('loginEmail');
     let password = document.getElementById('loginPassword');
-
     email.classList.remove('error', 'border-blue');
     password.classList.remove('error', 'border-blue');
 
