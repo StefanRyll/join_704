@@ -123,11 +123,11 @@ function decodeAccounts(responseAsJson){
   for (let i = 0; i < responseAsJson.length; i++) {
     const accountData = responseAsJson[i];
     if (accountData['password']){
-      let name = accountData['name']
-      let email = accountData['email']
-      let tel = accountData['tel']
-      let password = accountData['password']
-      let newAccount = new Account(name, email,tel,password)
+      const name = accountData['name']
+      const email = accountData['email']
+      const tel = accountData['tel']
+      const password = accountData['password']
+      const newAccount = new Account(name, email,tel,password)
       decAccounts.push(newAccount)
     }else{
       let name = accountData['name']

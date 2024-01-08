@@ -167,13 +167,6 @@ class Board extends Page {
                     task.progress = false;
                     task.done = false;
                     this.renderTask()
-                    // } else{
-                    //     task.todo = true;
-                    //     task.feedback = false;
-                    //     task.progress = false;
-                    //     task.done = false;
-                    //     this.renderTask()
-                    //     console.log("Nicht zutreffend", task);
 
                 }
                 if (task.subTasks) {
@@ -181,6 +174,7 @@ class Board extends Page {
                 }
             }
         }
+        checkDragArea();
     }
     renderAddSubtask() {
         let addSubTask = document.getElementById('addSubtask');
@@ -394,8 +388,6 @@ class Board extends Page {
                 <div class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <!-- <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="dd-MM-yyyy" value="dd-MM-yyyy"> -->
-                        <!-- <input type="date" id="date" name="datum" pattern="\d{2}/\d{2}/\d{4}" required placeholder="yyyy-MM-dd" value="yyyy-MM-dd"> -->
                              <input type="date" id="date" name="datum" pattern="\d{2}-\d{2}-\d{4}" required placeholder="dd-MM-yyyy" value="yyyy-MM-dd">
 
                     </div>

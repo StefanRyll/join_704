@@ -15,7 +15,6 @@ class Task {
     }
     taskCardNormal(x) {
         let formatedDate = () => {
-            // console.log("Date : ", date);
             let date = this.date;
             const day = date.getDate().toString().padStart(2, '0');
             const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -49,17 +48,17 @@ class Task {
                 if (subTask.done) {
                     htmlSnippet += /*html*/ `
                             <div class="subtask-list">
-                                <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox d-none " >
-                                <div class="style-checkbox-displayflex">
-                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt=""></div>
-                                    <div class="subtask-text">${subTask.text}</div>
+                                <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox d-none" >
+                                    <div class="style-checkbox-displayflex">
+                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt=""></div>
+                                        <div class="subtask-text">${subTask.text}</div>
+                                    </div>
                                 </div>
-                                
                                 <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox">
-                                <div class="style-checkbox-displayflex">
-                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt=""></div>
-                                    <div class="subtask-text">${subTask.text}</div>
-                                </div>
+                                    <div class="style-checkbox-displayflex">
+                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt=""></div>
+                                        <div class="subtask-text">${subTask.text}</div>
+                                    </div>
                                 </div>
                             </div>
                     `;
@@ -255,7 +254,7 @@ class Task {
         let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
         if (progressContainer) {
             let gesamtFortschritt;
-            let variable1 = this.subTasks.length; // Beispiel: Wert zwischen 0 und 100 für Variable 1
+            let variable1 = this.subTasks.length; 
             let variable2 = () => {
                 let countDone = 0;
                 for (let i = 0; i < this.subTasks.length; i++) {

@@ -3,7 +3,8 @@
  * @param {number} x - Optional parameter for rendering purposes.
  */
 function openAddTask(x = 0) {
-    JoinBoard.renderAddTask(x)
+    JoinBoard.renderAddTask(x);
+    
 }
 /**
  * Creates a task based on a specified board.
