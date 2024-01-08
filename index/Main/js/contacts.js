@@ -4,10 +4,6 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); // durch das split wird
  * 
  */
 function renderContacts() {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     let contactsList = "";
     let currentInitials = "";
 
@@ -205,8 +201,6 @@ function closeContactMenu(event) {
     if (optionsMenu != undefined && !optionsMenu.contains(event.target)) {
         optionsMenu.classList.remove("show-options-menu");
     }
-<<<<<<< Updated upstream
-=======
 }
 
 
@@ -227,5 +221,4 @@ async function includeHTML() {
             element.innerHTML = "Page not found";
         }
     }
->>>>>>> Stashed changes
 }
