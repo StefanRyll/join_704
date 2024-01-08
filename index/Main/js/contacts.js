@@ -137,7 +137,7 @@ function editContact(i) {
     contact.name = document.getElementById('editName').value;
     contact.email = document.getElementById('editMail').value;
     contact.tel = document.getElementById('editPhone').value;
-    
+
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
     closeContactDetails();
@@ -156,6 +156,7 @@ function editContact(i) {
  */
 function deleteContact(i) {
     Join.accounts.splice(i, 1);
+    console.log(Join.accounts[i]);
 
     closeOverlay();
     closeContactDetails();

@@ -1,5 +1,11 @@
-// Login
-
+/**
+ * Performs a guest login by creating a new Account object with default guest information,
+ * setting it as the signed account in the Join object, navigating to the summary page,
+ * and checking for a welcome response.
+ * @function
+ * @name guestLogin
+ * @returns {void}
+ */
 function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;
@@ -7,6 +13,15 @@ function guestLogin() {
     checkWelcomeRespon();
 }
 
+/**
+ * Logs in a user by comparing the entered login credentials with existing user accounts.
+ * Sets the signed account in the Join object, saves login information if the "Remember Me" option is enabled,
+ * navigates to the summary page, checks for a welcome response, and displays the welcome overlay if applicable.
+ * @async
+ * @function
+ * @name logInUser
+ * @returns {Promise<void>}
+ */
 async function logInUser() {
     const user = document.getElementById('loginEmail').value;
     const pw = document.getElementById('loginPassword').value;
@@ -32,12 +47,24 @@ async function logInUser() {
     }
 }
 
+/**
+ * Checks the window width and shows the welcome overlay if the width is less than 767 pixels.
+ * @function
+ * @name checkWelcomeResponse
+ * @returns {void}
+ */
 function checkWelcomeRespon() {
     if (window.innerWidth < 767) {
         showWelcomeOverlay();
     }
 }
 
+/**
+ * Displays the welcome overlay and hides it after a delay of 1000 milliseconds (1 second).
+ * @function
+ * @name showWelcomeOverlay
+ * @returns {void}
+ */
 function showWelcomeOverlay() {
     let welcomeOverlay = document.getElementById('welcomeOverlay');
     welcomeOverlay.classList.remove('d-none');
@@ -46,9 +73,15 @@ function showWelcomeOverlay() {
     }, 1000);
 }
 
-
-
-// Sign Up
+/**
+ * Asynchronously creates a new user account by loading existing accounts, performing password and privacy policy checks,
+ * and adding the new account to the Join object's list of accounts.
+ * Navigates to the next page on successful account creation.
+ * @async
+ * @function
+ * @name createAccount
+ * @returns {Promise<void>}
+ */
 async function createAccount() {
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
