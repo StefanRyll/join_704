@@ -1,7 +1,7 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
+
 /**
- * This function generates the user array through a loop and renders it into html
- * 
+ * Render contacts and organize them alphabetically with sections.
  */
 function renderContacts() {
     let contactsList = "";
@@ -13,22 +13,42 @@ function renderContacts() {
 
         if (userInitials[0] !== currentInitials) {
             if (alphabet.includes(userInitials[0])) {
-                // hier wird überprüft ob der anfangsbuchstabe aus dem userinitials bereits da ist.
-                if (contactsList !== "") {
-                    contactsList += "</div>";
-                }
-                contactsList += `<div class="alphabet-section" id="alphabet-${userInitials[0]}">${userInitials[0]}</div>`;
+                contactsList = handleAlphabetChange(contactsList, userInitials[0]);
                 currentInitials = userInitials[0];
-                contactsList += '<div class="contacts-container">';
             }
         }
         contactsList += contact.generateHtmlContactList(i);
     }
+    closeAlphabetSection(contactsList);
+    document.getElementById("contactsList").innerHTML = contactsList;
+}
+
+/**
+ * Handles the change in the alphabet section.
+ * @param {string} contactsList - The current contacts list HTML.
+ * @param {string} initial - The new alphabet section initial.
+ * @returns {string} Updated contacts list HTML.
+ */
+function handleAlphabetChange(contactsList, initial) {
     if (contactsList !== "") {
         contactsList += "</div>";
     }
-    document.getElementById("contactsList").innerHTML = contactsList;
+    contactsList += `<div class="alphabet-section" id="alphabet-${initial}">${initial}</div>`;
+    contactsList += '<div class="contacts-container">';
+    return contactsList;
 }
+
+/**
+ * Closes the current alphabet section.
+ * @param {string} contactsList - The current contacts list HTML.
+ */
+function closeAlphabetSection(contactsList) {
+    if (contactsList !== "") {
+        contactsList += "</div>";
+    }
+}
+
+
 
 /**
  * This function renders the user's detailed data
