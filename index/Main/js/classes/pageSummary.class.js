@@ -140,6 +140,7 @@ class Summary extends Page {
                     return "";
                 }
             }
+<<<<<<< Updated upstream
             // let urlPrio = () => {
             //     let url;
             //     if (nextDeadline().prio === "Medium") {
@@ -198,6 +199,9 @@ class Summary extends Page {
 
         //     return `${monat} ${nDDay}, ${nDYear}`
         // }
+=======
+        }
+>>>>>>> Stashed changes
 
 
 
@@ -268,7 +272,6 @@ class Summary extends Page {
                                 <p>Upcoming Deadline</p>
                             </div>
                         </div>
-                        <!-- <div class="greetingArea"><h3>{daytime}</h3><h4>{this.signedAccount.name}</h4></div> -->
                     </div>
                     <div class="chipsAreaRow">
                         <div class="chip3x" onclick="boardPage()">

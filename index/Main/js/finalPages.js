@@ -13,10 +13,6 @@ function setActiveStyles(id, backgroundColor, textColor) {
 
 
 function startPage() {
-    //  if (Join.accounts ){
-
-    //      saveTasks()
-    //  }
     try {
         loadAccounts()
         loadTasks()

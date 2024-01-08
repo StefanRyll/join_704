@@ -139,7 +139,6 @@ class Contact {
             <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
             <div>
                 <div class="contactName">${this.name}</div>
-                <!-- <div class="contactEmail">${this.email}</div> -->
             </div>
         </div>
         `
@@ -214,7 +213,8 @@ class Contact {
             </div>
             <div class="overlay-right-container-addContact">
                 <div class="close-button">${JoinContacts.closeButton()}</div>
-                <form class="addContact-form" onsubmit="editContact(${i})">
+
+                <form class="addContact-form" onsubmit="return editContact(${i})">
                     <div class="btn-underlay">
                         <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${this.name}">
                         <img class="input-icon" src="./IMG/person.png"> 
@@ -234,6 +234,7 @@ class Contact {
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
         `

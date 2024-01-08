@@ -3,7 +3,8 @@
  * @param {number} x - Optional parameter for rendering purposes.
  */
 function openAddTask(x = 0) {
-    JoinBoard.renderAddTask(x)
+    JoinBoard.renderAddTask(x);
+    
 }
 /**
  * Creates a task based on a specified board.
@@ -14,7 +15,36 @@ function createTaskFromBoard(x = 0) {
     try { loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
+<<<<<<< Updated upstream
         createTask(x);
+=======
+        const title = document.getElementById("boardTaskTitle").value;
+        const worker = readAssignedUsers();
+        const desc = document.getElementById('boardTaskDescription').value;
+        const date = document.getElementById('date').value;
+        const prio = () =>{
+            if (!prioTemp){
+                prioTemp = "Medium"
+            }
+            return prioTemp;
+        };
+        const category = document.getElementById('taskCategoryInput').value;
+        const subTask = subtaskTemp;
+        let newTask = new Task(title, worker, desc, date, prio(), category, subTask);
+
+        createNewTask(newTask, x);
+        updateTaskWorkers(newTask);
+        Join.tasks.push(newTask)
+        clearInputs(title, desc, worker, date, category, subTask);
+        try { saveTasks() } catch (e) {
+            console.log("Fehler", e)
+        } finally {
+            clearInputs(title, desc, worker, date, category, subTask);
+            closeAddTask()
+            successOverlayTask()
+            JoinBoard.renderTask()
+        }
+>>>>>>> Stashed changes
     }
 }
 /**
