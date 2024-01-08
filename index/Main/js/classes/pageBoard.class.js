@@ -208,7 +208,7 @@ class Board extends Page {
     generateHTMLaddTask(x) {
         return /*html*/ `
             <div id="slideAddTask" class="bg-task">
-                <div class="add-task">
+                <form class="add-task" onsubmit="createTaskFromBoard(${x}); return false">
                     <div class="headline-add-task">
                         <h3>Add Task</h3>
                         ${this.generateHTMLCloseButtonInSVG()}
@@ -224,7 +224,7 @@ class Board extends Page {
                         </div>
                         ${this.generateHTMLAddTaskButtons(x)}
                     </div>
-                </div>
+                </form>
             </div>
           `
     }
@@ -291,7 +291,7 @@ class Board extends Page {
         return /*html*/ `
                 <div class="input-description">
                     <p>Description</p>
-                    <textarea class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                    <textarea required class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </div>
                 
         `
@@ -389,7 +389,6 @@ class Board extends Page {
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
                              <input type="date" id="date" name="datum" pattern="\d{2}-\d{2}-\d{4}" required placeholder="dd-MM-yyyy" value="yyyy-MM-dd">
-
                     </div>
                 </div>
             `
@@ -572,7 +571,7 @@ class Board extends Page {
         return /*html*/ `
             <div id="addtaskButton" class="addTask-button addTask-button-window">
                 <button class="btn-cancel btn-white" type="reset" onsubmit="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
-                <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+                <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
         `
     }

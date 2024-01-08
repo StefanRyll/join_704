@@ -21,11 +21,11 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form id="formLogin" class="login-container" onsubmit="nameValidation(); logInUser()">
-                            <div class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
+                        <form id="formLogin" class="login-container" onsubmit="logInUser()">
+                            <div id="loginEmailValidation" class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
-                            <div class="frame-14" onclick="visibility()"><input  type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
+                            <div id="loginPasswordValidation" class="frame-14" onclick="visibility()"><input  type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
@@ -40,7 +40,7 @@ class Login extends Page {
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
-                                    <button id="logInValidation" class="login-btn log-in-side-button btn-dark-blue" type="submit">Log In</button>
+                                    <button  class="login-btn log-in-side-button btn-dark-blue" type="submit">Log In</button>
                                     <button class="guest-login-style btn-white" onclick="guestLogin()">Guest Log In</button>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@ class Login extends Page {
                     <footer class="login-footer">
                         <div class="frame-156-footer">
                             <p>Not a Join user?</p>
-                            <button class="log-in-side-button btn-dark-blue" onclick="signUp(); return false;">Sign up</button>
+                            <button class="log-in-side-button btn-dark-blue" onclick="signUp()">Sign up</button>
                         </div>
                         <div class="legalBtn-container">
                             <button onclick="privacyPage()" class="log-in-side-button text-button">Privacy Policy</button>
@@ -101,7 +101,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                    <form class="signUp-container" onsubmit="createAccount1()">
+                    <form class="signUp-container" onsubmit="createAccount1(); return false;">
                             <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                 <img class="input-icon" src="./IMG/person.png"> 
                             </div>
@@ -132,7 +132,7 @@ class Login extends Page {
                                 <button class="login-btn btn-dark-blue" type="submit">Sign Up</button>
                                 </div>
                             </div>
-                        </form>
+                    </form>
                 </div>
                 <footer class="login-footer">
                     <div class="legalBtn-container">
