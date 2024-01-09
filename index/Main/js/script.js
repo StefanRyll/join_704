@@ -294,6 +294,9 @@ function checkboxActivate() {
     Join.rememberMe = !Join.rememberMe;
 }
 
+/**
+ * Activates the checkbox for checked the policy accepted.
+ */
 function policyCheckbox() {
     policyCheck = !policyCheck;
 }
