@@ -278,3 +278,6 @@ function closeSelectContactsFromCard() {
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
 
+
+
+

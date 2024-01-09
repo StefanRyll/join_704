@@ -208,7 +208,7 @@ class Board extends Page {
     generateHTMLaddTask(x) {
         return /*html*/ `
             <div id="slideAddTask" class="bg-task">
-                <form class="add-task" onsubmit="createTaskFromBoard(${x}); return false">
+                <form id="formAddtask" class="add-task" onsubmit="createTaskFromBoard(${x}); return false">
                     <div class="headline-add-task">
                         <h3>Add Task</h3>
                         ${this.generateHTMLCloseButtonInSVG()}
@@ -281,7 +281,7 @@ class Board extends Page {
 
     generateHTMLTitle() {
         return /*html*/ `
-                <div  class="input-title board-task-input">
+                <div class="input-title board-task-input">
                     <label for="pflichtfeld">Title<sup>*</sup></label>
                     <input class="blue" type="text" id="boardTaskTitle" name="" required  placeholder="Enter a title">
                 </div>
