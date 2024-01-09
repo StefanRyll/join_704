@@ -145,12 +145,42 @@ function viewPassword() {
         passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
     } else {
         passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_off.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit an"
+        passStatus.src = './IMG/visibility_off.png';
     }
 }
-
-
-// Sidebar and Header
+/**
+ * Toggles the visibility of the password input and updates the eye icon accordingly.
+ */
+function viewPasswordSignUp1() {
+    let passwordInput = document.getElementById('signUpInputPassword');
+    let passStatus = document.getElementById('pass-status-eye');
+    console.log(passwordInput);
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+        passStatus.src = './IMG/visibility_on.png'; 
+    } else {
+        passwordInput.type = 'password';
+        passStatus.src = './IMG/visibility_off.png'; 
+    }
+}
+/**
+ * Toggles the visibility of the password input and updates the eye icon accordingly.
+ */
+function viewPasswordSignUp2() {
+    let passwordInput = document.getElementById('signUpInputPassword2');
+    let passStatus = document.getElementById('pass-status-eye');
+    
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+        passStatus.src = './IMG/visibility_on.png'; 
+    } else {
+        passwordInput.type = 'password';
+        passStatus.src = './IMG/visibility_off.png'; 
+    }
+}
+/**
+ * Displays the side and head components by updating the inner HTML of the 'SideAndHead' element.
+ */
 function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
@@ -183,15 +213,29 @@ function logout() {
 
 
 function checkboxActivate() {
-    Join.rememberMe = true;
+    Join.rememberMe = !Join.rememberMe;
 }
+function policyCheckbox(){
+    if (policyCheck) {
+        policyCheck = false;
 
+    }else{
+        policyCheck = true;
+        console.log(policyCheck);
 
+    }
+    
+}
+/**
+ * Deactivates the checkbox for remembering the user.
+ */
 function checkboxDeactivate() {
     Join.rememberMe = false;
 }
-
-
+/**
+ * Saves changes to the specified task and updates the task array.
+ * @param {number} x - The index of the task to be edited.
+ */
 function taskSaveChanges(x) {
     let eTask = Join.tasks[x]
     let eTaskWorker = () => {

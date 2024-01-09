@@ -1,4 +1,4 @@
-let subtaskTemp = []; 
+let subtaskTemp = [];
 let prioTemp = "";
 
 let body = document.getElementById('body')
