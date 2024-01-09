@@ -85,7 +85,6 @@ class Task {
         }
 
 
-
         return /*html*/ `
         <div class="bg-task">
             <div id="taskCard" class="taskCard">

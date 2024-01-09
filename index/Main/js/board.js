@@ -74,8 +74,6 @@ function filterArrayFromBoard(search, todoContainer, progressContainer, feedback
 function searchTitleAndDescription(title, desc, search, todoContainer, progressContainer, feedbackContainer, doneContainer, r) {
     if (title.includes(search) || desc.includes(search)) {
         let taskCard = Join.tasks[r].tinyTaskCard(r);
-
-
         if (Join.tasks[r].todo) {
             todoContainer.innerHTML += taskCard;
         } else if (Join.tasks[r].progress) {
