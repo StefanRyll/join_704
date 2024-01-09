@@ -8,3 +8,4 @@ let JoinSummary = new Summary();
 let JoinBoard = new Board();
 let JoinAbout = new About();
 let JoinContacts = new Contacts();
+let policyCheck = false;

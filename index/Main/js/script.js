@@ -125,6 +125,14 @@ async function createAccount() {
         let pw = passwordCheck();
         let policy = ppCheck();
         createNewAccount(pw, policy);
+        try {
+            saveAccounts()
+        } catch (error) {
+            console.log("Account kann nicht gespeichert werden: " + error)
+        }finally{
+            policyCheck = false;
+        }
+        return true;
     }
 }
 /**
@@ -177,11 +185,12 @@ function passwordCheck() {
  * @returns {boolean} - True if the checkbox is checked, false otherwise.
  */
 function ppCheck() {
-    let checkbox = document.getElementById('ppCheck');
-    if (checkbox.checked) {
+    // let checkbox = document.getElementById('ppCheck');
+    if (policyCheck) {
         return true;
     } else {
         return false;
+
     }
 }
 /**
@@ -204,6 +213,36 @@ function viewPassword() {
     } else {
         passwordInput.type = 'password';
         passStatus.src = './IMG/visibility_off.png';
+    }
+}
+/**
+ * Toggles the visibility of the password input and updates the eye icon accordingly.
+ */
+function viewPasswordSignUp1() {
+    let passwordInput = document.getElementById('signUpInputPassword');
+    let passStatus = document.getElementById('pass-status-eye');
+    console.log(passwordInput);
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+        passStatus.src = './IMG/visibility_on.png'; 
+    } else {
+        passwordInput.type = 'password';
+        passStatus.src = './IMG/visibility_off.png'; 
+    }
+}
+/**
+ * Toggles the visibility of the password input and updates the eye icon accordingly.
+ */
+function viewPasswordSignUp2() {
+    let passwordInput = document.getElementById('signUpInputPassword2');
+    let passStatus = document.getElementById('pass-status-eye');
+    
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+        passStatus.src = './IMG/visibility_on.png'; 
+    } else {
+        passwordInput.type = 'password';
+        passStatus.src = './IMG/visibility_off.png'; 
     }
 }
 /**
@@ -253,6 +292,17 @@ function logout() {
  */
 function checkboxActivate() {
     Join.rememberMe = true;
+}
+function policyCheckbox(){
+    if (policyCheck) {
+        policyCheck = false;
+
+    }else{
+        policyCheck = true;
+        console.log(policyCheck);
+
+    }
+    
 }
 /**
  * Deactivates the checkbox for remembering the user.

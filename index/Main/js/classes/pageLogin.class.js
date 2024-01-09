@@ -98,7 +98,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                    <form class="signUp-container" onsubmit="createAccount(); return false;">
+                    <form class="signUp-container" onsubmit="return createAccount();">
                             <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                 <img class="input-icon" src="./IMG/person.png"> 
                             </div>
@@ -106,19 +106,19 @@ class Login extends Page {
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>
                             <div class="frame-14" onclick="visibility()"><input type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
-                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
-                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
+                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">                      
+                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">                      
                             </div>
                             <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
-                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
-                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
+                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
+                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
                             </div>
                             <div class="d-flex-mid">
                                 <label id="ppCheck" class="sign-up-privacy-policy">
-                                    <div class="check-box" id="checkbox" onclick="checkboxActivate()">
+                                    <div class="check-box" id="checkbox" onclick="policyCheckbox()">
                                         <input class="checkbox" type="checkbox">
                                     </div>
-                                    <div class="check-box d-none" id="checkbox-active" onclick="checkboxDeactivate()">
+                                    <div class="check-box d-none" id="checkbox-active" onclick="policyCheckbox()">
                                         <input class="checkbox" type="checkbox">
                                     </div>
                                     <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
@@ -143,5 +143,4 @@ class Login extends Page {
     forceSignIn(x) {
         this.signedAccount = x;
     }
-
 }
