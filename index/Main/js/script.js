@@ -295,15 +295,7 @@ function checkboxActivate() {
 }
 
 function policyCheckbox() {
-    if (policyCheck) {
-        policyCheck = false;
-
-    } else {
-        policyCheck = true;
-        console.log(policyCheck);
-
-    }
-
+    policyCheck = !policyCheck;
 }
 
 /**
