@@ -159,7 +159,7 @@ function editContact(i) {
  * Function for a delete contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
  */
-function deleteContact(i) {
+async function deleteContact(i) {
     Join.accounts.splice(i, 1);
     console.log(Join.accounts[i]);
 
@@ -168,7 +168,7 @@ function deleteContact(i) {
     setTimeout(() => {
         deleteOverlay();
     }, 100);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
+    try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
 }
