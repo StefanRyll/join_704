@@ -145,7 +145,7 @@ function createNewAccount(pw, policy) {
  * @param {boolean} policy - The policy agreement flag.
  * @param {object} account - The account object to be added.
  */
-function isPasswordAndPolicyChecked(pw, policy, account) { 
+function isPasswordAndPolicyChecked(pw, policy, account) {
     if (pw === true && policy === true) {
         Join.accounts.push(account);
         startPage2()
@@ -200,10 +200,10 @@ function viewPassword() {
 
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_on.png'; 
+        passStatus.src = './IMG/visibility_on.png';
     } else {
         passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_off.png'; 
+        passStatus.src = './IMG/visibility_off.png';
     }
 }
 /**
@@ -237,13 +237,13 @@ function closeSideAndHeadMenu(event) {
  * Handles mouse down event to close side and head menu and contact menu.
  * @param {object} e - The event object.
  */
-window.onmousedown = function (e) {
-    closeSideAndHeadMenu(e);
-    closeContactMenu(e)
-}
-/**
- * Logs out the signed account and navigates to the start page.
- */
+window.onmousedown = function(e) {
+        closeSideAndHeadMenu(e);
+        closeContactMenu(e)
+    }
+    /**
+     * Logs out the signed account and navigates to the start page.
+     */
 function logout() {
     Join.signedAccount = "";
     startPage()
@@ -358,7 +358,3 @@ function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
-
-
-
-
