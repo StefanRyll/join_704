@@ -146,5 +146,4 @@ class Login extends Page {
     forceSignIn(x) {
         this.signedAccount = x;
     }
-
 }

@@ -36,8 +36,6 @@ class About extends Page {
                 </ol>
 
                 <h2>Enjoy using Join!</h2>
-
-
         `
     }
     privacyContent() {
@@ -103,14 +101,7 @@ class About extends Page {
 
             <p>This privacy policy may change. The current version is available on our website.</p>
 
-            <p>For privacy-related inquiries, please contact us at E-Mail: <a class="link-email" href="mailTo:info@beispielfirma.de">info@beispielfirma.de</a>.
-
-
-
-
-
-
-</p>
+            <p>For privacy-related inquiries, please contact us at E-Mail: <a class="link-email" href="mailTo:info@beispielfirma.de">info@beispielfirma.de</a></p>
         </div>
         `
     }
@@ -177,5 +168,4 @@ class About extends Page {
         </div>
         `
     }
-
 }

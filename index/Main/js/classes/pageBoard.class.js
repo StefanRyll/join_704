@@ -189,7 +189,6 @@ class Board extends Page {
         addTask.classList.remove("d-none")
         addTask.innerHTML += this.generateHTMLaddTask(x);
 
-        // Prio Funktion
         const urgent = document.getElementById('btnUrgentWhite');
         const medium = document.getElementById('btnMediumWhite');
         const low = document.getElementById('btnLowWhite');
@@ -202,8 +201,6 @@ class Board extends Page {
         low.addEventListener('click', () => {
             prioTemp = "Low";
         })
-
-
     }
     generateHTMLaddTask(x) {
         return /*html*/ `
@@ -273,12 +270,10 @@ class Board extends Page {
               </div>
           `
     }
-
     generateHTMLAddTaskHeadline() {
         return /*html*/ `
             <h1 class="add-task-headline">Add Task</h1>`
     }
-
     generateHTMLTitle() {
         return /*html*/ `
                 <div class="input-title board-task-input">
@@ -296,7 +291,6 @@ class Board extends Page {
                 
         `
     }
-
     generateHTMLAssignedTo(x) {
         return /*html*/ `
             <p class="assigned-style">Assigned to</p>
@@ -317,7 +311,6 @@ class Board extends Page {
             </div>
         `
     }
-
     generateHTMLSelectContactsToogleFunction() {
         return /*html*/ `
                     <div id="selectContacts" class="assign-container">
@@ -328,11 +321,7 @@ class Board extends Page {
     }
     generateHTMLCheckbox() {
         return /*html*/ `
-            <div id="taskContactList">
-
-            </div>
-            
-            
+            <div id="taskContactList"></div>
             `
     }
     generateHTMLAddToContactButton() {
@@ -340,19 +329,16 @@ class Board extends Page {
           <div class="add-new-contact"></div>
         `
     }
-
     generateHTMLAddContactShortName() {
         return /*html*/ `
             <div id="containerShortName" onload="renderShortNames()"></div>
         `
     }
-
     generateHTMLRenderShortNames(shortNames, x) {
         return /*html*/ `
             <div id="editShortNames${x}" class="initials-logo" style="background-color: ${Join.accounts[x].color}">${shortNames}</div>
         `
     }
-
     generateHTMLSeperator() {
         return /*html*/ `
               <div class="seperator-add-task">
@@ -362,18 +348,16 @@ class Board extends Page {
                   </div>
         `
     }
-    generateHTMLRightSide(x) {
+    generateHTMLRightSide() {
         return /*html*/ `
             <div class="right-side">
                   ${this.generateHTMLDateForm()}
                   ${this.generateHTMLPrioCategory()}
                   ${this.generateHTMLCategory()}
                   ${this.generateHTMLSubtask()}
-                  <!-- ${this.generateHTMLAddTaskButtonsResponsive(x)} -->
             </div>
           `
     }
-
     generateHTMLInfoRequired() {
         return /*html*/ `
             <div class="addTask-info-required">   
@@ -382,7 +366,6 @@ class Board extends Page {
             
         `
     }
-
     generateHTMLDateForm() {
         return /*html*/ `
                 <div class="input-date board-task-input">
@@ -393,7 +376,6 @@ class Board extends Page {
                 </div>
             `
     }
-
     generateHTMLPrioCategory() {
         return /*html*/ `
                   <div class="prio-category">
@@ -534,7 +516,6 @@ class Board extends Page {
               </div>
         `
     }
-
     generateHTMLSubtask() {
         return /*html*/ `
         <div class="board-task-input button-hover">
@@ -565,7 +546,6 @@ class Board extends Page {
             </div>
         `
     }
-
     generateHTMLAddTaskButtons(x) {
         console.log("Vollständig geladen");
         return /*html*/ `
@@ -599,7 +579,6 @@ class Board extends Page {
             </div>
         `
     }
-
     generateHTMLCloseButtonInSVG() {
         return /*html*/ `
                 <div class="style-closebutton-intask">
@@ -614,7 +593,6 @@ class Board extends Page {
                 </div>
           `
     }
-
     closeAddTask() {
         slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
     }
