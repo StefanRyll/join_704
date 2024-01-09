@@ -408,7 +408,7 @@ class Board extends Page {
     }
     generateHTMLUrgent() {
         return /*html*/ `
-        <button id="btnUrgentWhite" onclick="btnTaskPrio('btnUrgentWhite')" class="category-button category-button-standard">
+        <button id="btnUrgentWhite" type="button" onclick="btnTaskPrio('btnUrgentWhite')" class="category-button category-button-standard">
           <p>Urgent</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
             <g clip-path="url(#clip0_88061_5027)">
@@ -422,7 +422,7 @@ class Board extends Page {
             </defs>
           </svg>
         </button>
-        <button id="btnUrgentRed"  onclick="btnTaskPrio('btnUrgentRed')" class="category-button category-button-red d-none">
+        <button id="btnUrgentRed" type="button"  onclick="btnTaskPrio('btnUrgentRed')" class="category-button category-button-red d-none">
           <p>Urgent</p>
           <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
             <g clip-path="url(#clip0_88061_5027)">
@@ -440,7 +440,7 @@ class Board extends Page {
     }
     generateHTMLMedium() {
         return /*html*/ `
-        <button id="btnMediumWhite" onclick="btnTaskPrio('btnMediumWhite')" class="category-button category-button-standard d-none">
+        <button id="btnMediumWhite" type="button" onclick="btnTaskPrio('btnMediumWhite')" class="category-button category-button-standard d-none">
           <p>Medium</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8" fill="none">
               <g clip-path="url(#clip0_88061_5034)">

@@ -96,7 +96,16 @@ function updateHTML() {
     let ondropProgress = document.getElementById('ondropProgress');
     let ondropFeedback = document.getElementById('ondropFeedback');
     let ondropDone = document.getElementById('ondropDone');
-
+    filterTask();
+    let none = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false);
+    checkBooleanNone(none);
+    iterateAllTaskCard(ondropTodo, ondropProgress, ondropFeedback, ondropDone, todos, inProgress, awaitFeedback, done);
+}
+/**
+ * Filters tasks based on their status and clears corresponding HTML elements.
+ * @param {array} Join.tasks - The array of tasks.
+ */
+function filterTask() {
     let todos = Join.tasks.filter(s => s.todo === true);
     todos.innerHTML = '';
     let inProgress = Join.tasks.filter(s => s.progress === true);
@@ -105,9 +114,6 @@ function updateHTML() {
     awaitFeedback.innerHTML = '';
     let done = Join.tasks.filter(s => s.done === true);
     done.innerHTML = '';
-    let none = Join.tasks.filter(s => s.todo === false && s.progress === false && s.feedback === false && s.done === false);
-    checkBooleanNone(none);
-    iterateAllTaskCard(ondropTodo, ondropProgress, ondropFeedback, ondropDone, todos, inProgress, awaitFeedback, done);
 }
 /**
  * Sets boolean properties of tasks in the 'none' category.
