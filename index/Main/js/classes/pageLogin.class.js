@@ -22,7 +22,7 @@ class Login extends Page {
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
                         <form class="login-container" onsubmit="logInUser()">
-                            <div class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                            <div class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
                             <div class="frame-14" onclick="visibility()"><input  type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
