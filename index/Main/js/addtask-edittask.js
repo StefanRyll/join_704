@@ -34,10 +34,11 @@ function checkUser(AssignedUsers, JoinUsers) {
  */
 function checkWorker(task) {
     let containerShortName = document.getElementById('containerShortName');
+    // let editShortNames = document.getElementById(`editShortNames${x}`);
     containerShortName.innerHTML = '';
     for (let i = 0; i < task.worker.length; i++) {
         let assignedWorker = task.worker[i];
-        containerShortName.innerHTML += assignedWorker.accountTag(i);
+        containerShortName.innerHTML += assignedWorker.accountTag();
     }
 }
 /**

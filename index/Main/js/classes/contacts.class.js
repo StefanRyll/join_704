@@ -198,9 +198,9 @@ class Contact {
             </div>
         `
     }
-    accountTag(x) {
+    accountTag() {
         return /*html*/ `
-            <div id="removeShortName${x}" class="initials-logo accountTag" style="background-color: ${this.color}">${this.shortname}</div>
+            <div  class="initials-logo accountTag" style="background-color: ${this.color}">${this.shortname}</div>
 
         `
     }
