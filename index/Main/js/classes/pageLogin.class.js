@@ -98,7 +98,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                    <form class="signUp-container" onsubmit="return createAccount();">
+                    <form class="signUp-container" onsubmit="createAccount(); return false;">
                             <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                 <img class="input-icon" src="./IMG/person.png"> 
                             </div>
@@ -116,9 +116,6 @@ class Login extends Page {
                             <div class="d-flex-mid">
                                 <label id="ppCheck" class="sign-up-privacy-policy">
                                     <div class="check-box" id="checkbox" onclick="policyCheckbox()">
-                                        <input class="checkbox" type="checkbox">
-                                    </div>
-                                    <div class="check-box d-none" id="checkbox-active" onclick="policyCheckbox()">
                                         <input class="checkbox" type="checkbox">
                                     </div>
                                     <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
