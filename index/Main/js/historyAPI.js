@@ -24,29 +24,29 @@
 //         }
 //     }
 // }
-// window.onpopstate = function(event) {
-//     if (event.state) {
-//         if (event.state.page === 'summary') {
-//             summeryPage();
-//         } else if (event.state.page === 'Board') {
-//             boardPage()
-//         } else if (event.state.page === 'help') {
-//             helpPage()
-//         } else if (event.state.page === 'Privacy Policy') {
-//             privacyPage()
-//         } else if (event.state.page === 'Legal') {
-//             legalPage()
-//         } else if (event.state.page === 'login') {
-//             startPage2()
-//         } else if (event.state.page === 'signup') {
-//             signUp()
-//         } else if (event.state.page === 'addTask') {
-//             addTaskPage()
-//         } else if (event.state.page === 'Contacts') {
-//             addTaskPage()
-//         }
-//     }
-// }
+window.onpopstate = function(event) {
+    if (event.state) {
+        if (event.state.page === 'summary') {
+            summeryPage();
+        } else if (event.state.page === 'Board') {
+            boardPage()
+        } else if (event.state.page === 'help') {
+            helpPage()
+        } else if (event.state.page === 'Privacy Policy') {
+            privacyPage()
+        } else if (event.state.page === 'Legal') {
+            legalPage()
+        } else if (event.state.page === 'login') {
+            startPage2()
+        } else if (event.state.page === 'signup') {
+            signUp()
+        } else if (event.state.page === 'addTask') {
+            addTaskPage()
+        } else if (event.state.page === 'Contacts') {
+            addTaskPage()
+        }
+    }
+}
 
 
 
