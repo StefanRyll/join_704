@@ -6,7 +6,6 @@ class Page {
             this.tasks = [];
         }
         // Methoden
-
     sayDaytime() {
         const currentHour = new Date().getHours();
         let greeting = "";

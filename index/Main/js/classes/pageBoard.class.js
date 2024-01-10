@@ -326,7 +326,7 @@ class Board extends Page {
     }
     generateHTMLAddToContactButton() {
         return /*html*/ `
-          <div class="add-new-contact"></div>
+            <div class="add-new-contact"></div>
         `
     }
     generateHTMLAddContactShortName() {
@@ -341,11 +341,11 @@ class Board extends Page {
     }
     generateHTMLSeperator() {
         return /*html*/ `
-              <div class="seperator-add-task">
+            <div class="seperator-add-task">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
-                  <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round"/>
+                    <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round"/>
                 </svg>
-                  </div>
+            </div>
         `
     }
     generateHTMLRightSide() {
