@@ -88,17 +88,18 @@ async function createAccount() {
     } finally {
         let pw = passwordCheck();
         let policy = ppCheck();
-        if (pw === true && policy === true) {
-            let name = document.getElementById('signUpInputName').value;
-            let Email = document.getElementById('signUpInputEmail').value;
-            let password = document.getElementById('signUpInputPassword').value;
+        let name = document.getElementById('signUpInputName').value;
+        let Email = document.getElementById('signUpInputEmail').value;
+        let password = document.getElementById('signUpInputPassword').value;
+        if (pw != true) {
+            console.log('Passwort nicht valide')
+        } else if (policy != true) {
+            console.log('You must accept the Privacy Policy!')
+        } else if (pw === true && policy === true) {
             let account = new Account(name, Email, password);
             Join.accounts.push(account);
+            debugger
             startPage2();
-        } else if (pw != true) {
-            console.log('Passwort nicht valide')
-        } else {
-            console.log('You must accept the Privacy Policy!')
         }
     }
 }
@@ -217,15 +218,7 @@ function checkboxActivate() {
 }
 
 function policyCheckbox() {
-    if (policyCheck) {
-        policyCheck = false;
-
-    } else {
-        policyCheck = true;
-        console.log(policyCheck);
-
-    }
-
+    policyCheck = !policyCheck;
 }
 /**
  * Deactivates the checkbox for remembering the user.

@@ -118,9 +118,6 @@ class Login extends Page {
                                     <div class="check-box" id="checkbox" onclick="policyCheckbox()">
                                         <input class="checkbox" type="checkbox">
                                     </div>
-                                    <div class="check-box d-none" id="checkbox-active" onclick="policyCheckbox()">
-                                        <input class="checkbox" type="checkbox">
-                                    </div>
                                     <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
                                 </label>
                             </div>
