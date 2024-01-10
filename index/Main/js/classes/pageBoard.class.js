@@ -351,10 +351,10 @@ class Board extends Page {
     generateHTMLRightSide() {
         return /*html*/ `
             <div class="right-side">
-                  ${this.generateHTMLDateForm()}
-                  ${this.generateHTMLPrioCategory()}
-                  ${this.generateHTMLCategory()}
-                  ${this.generateHTMLSubtask()}
+                ${this.generateHTMLDateForm()}
+                ${this.generateHTMLPrioCategory()}
+                ${this.generateHTMLCategory()}
+                ${this.generateHTMLSubtask()}
             </div>
           `
     }
