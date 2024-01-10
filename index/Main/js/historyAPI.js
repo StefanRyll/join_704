@@ -27,9 +27,9 @@
 // window.onpopstate = function(event) {
 //     if (event.state) {
 //         if (event.state.page === 'summary') {
-//             summeryPage();
+//             await summeryPage();
 //         } else if (event.state.page === 'Board') {
-//             boardPage()
+//             await boardPage()
 //         } else if (event.state.page === 'help') {
 //             helpPage()
 //         } else if (event.state.page === 'Privacy Policy') {

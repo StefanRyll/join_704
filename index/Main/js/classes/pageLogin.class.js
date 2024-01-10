@@ -21,7 +21,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form class="login-container" onsubmit="logInUser()">
+                        <form class="login-container" onsubmit="logInUser(); return false;">
                             <div class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>                       
@@ -98,7 +98,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                    <form class="signUp-container" onsubmit="return createAccount();">
+                    <form class="signUp-container" onsubmit="createAccount();return false;">
                             <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                 <img class="input-icon" src="./IMG/person.png"> 
                             </div>

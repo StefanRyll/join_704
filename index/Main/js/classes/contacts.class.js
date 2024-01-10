@@ -214,7 +214,7 @@ class Contact {
             <div class="overlay-right-container-addContact">
                 <div class="close-button">${JoinContacts.closeButton()}</div>
 
-                <form class="addContact-form" onsubmit="return editContact(${i})">
+                <form class="addContact-form" onsubmit="editContact(${i}); return false;">
                     <div class="btn-underlay">
                         <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${this.name}">
                         <img class="input-icon" src="./IMG/person.png"> 

@@ -11,11 +11,11 @@ function openAddTask(x = 0) {
  * 
  * @param {number} x - The board parameter (default value is 0).
  */
-function createTaskFromBoard(x = 0) {
-    try { loadAccounts() } catch (e) {
+async function createTaskFromBoard(x = 0) {
+    try { await loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
-        createTask(x);
+        await createTask(x);
     }
 }
 /**
@@ -30,7 +30,7 @@ function createTaskFromBoard(x = 0) {
  * @param {string} category - The category of the task.
  * @param {boolean} subTask - A flag indicating if the task is a subtask.
  */
-function createTask(x) {
+async function createTask(x) {
     const title = document.getElementById("boardTaskTitle").value;
     const worker = readAssignedUsers();
     const desc = document.getElementById('boardTaskDescription').value;
@@ -39,7 +39,7 @@ function createTask(x) {
     const category = document.getElementById('taskCategoryInput').value;
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
-    updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
+    await updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
 }
 /**
  * Updates a task with new data, creates a new task, and performs additional operations.
@@ -54,12 +54,12 @@ function createTask(x) {
  * @param {string} category - The category of the task.
  * @param {boolean} subTask - A flag indicating if the task is a subtask.
  */
-function updateTask(newTask, x, title, worker, desc, date, prio, category, subTask) {
+async function updateTask(newTask, x, title, worker, desc, date, prio, category, subTask) {
     createNewTask(newTask, x);
     updateTaskWorkers(newTask);
     Join.tasks.push(newTask)
     clearInputs(title, desc, worker, date, category, subTask);
-    try { saveTasks() } catch (e) {
+    try { await saveTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
         clearInputs(title, desc, worker, date, category, subTask);
@@ -121,12 +121,13 @@ function updateTaskWorkers(newTask) {
  * 
  * @param {number} x - The index of the task to be deleted.
  */
-function deleteTask(x) {
+async function deleteTask(x) {
     Join.tasks.splice(x, 1)
     console.log("Task " + x + " wird gelöscht");
-    saveTasks()
-    boardPage()
-}
+    try { await saveTasks() } catch (e) {
+        console.log("Fehler", e)
+    await boardPage()
+}}
 /**
  * Reads and returns an array of assigned users (workers) from Join.accounts.
  * 

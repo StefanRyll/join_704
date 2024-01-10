@@ -6,10 +6,10 @@
  * @name guestLogin
  * @returns {void}
  */
-function guestLogin() {
+async function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;
-    summeryPage();
+    await summeryPage();
     checkWelcomeRespon();
 }
 
@@ -37,7 +37,7 @@ async function logInUser() {
             if (pw === userAccount.password) {
                 Join.signedAccount = userAccount;
                 remember();
-                summeryPage();
+                await summeryPage();
                 checkWelcomeRespon();
 
             } else {
@@ -83,7 +83,7 @@ function showWelcomeOverlay() {
  * @returns {Promise<void>}
  */
 async function createAccount() {
-    try { loadAccounts() } catch (e) {
+    try { await loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
         let pw = passwordCheck();
@@ -94,7 +94,7 @@ async function createAccount() {
             let password = document.getElementById('signUpInputPassword').value;
             let account = new Account(name, Email, password);
             Join.accounts.push(account);
-            startPage2();
+            await startPage2();
         } else if (pw != true) {
             console.log('Passwort nicht valide')
         } else {
@@ -206,9 +206,9 @@ window.onmousedown = function(e) {
 }
 
 
-function logout() {
+async function logout() {
     Join.signedAccount = "";
-    startPage()
+    await startPage()
 }
 
 
@@ -237,7 +237,7 @@ function checkboxDeactivate() {
  * Saves changes to the specified task and updates the task array.
  * @param {number} x - The index of the task to be edited.
  */
-function taskSaveChanges(x) {
+async function taskSaveChanges(x) {
     let eTask = Join.tasks[x]
     let eTaskWorker = () => {
         let checkedUsers = [];
@@ -265,21 +265,25 @@ function taskSaveChanges(x) {
 
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
 
-    saveTasks();
-    closeTaskCard();
+    try {
+        await saveTasks(); 
+    } catch (error) {
+        console.log(e)
+    }
+    await closeTaskCard();
     cleanUpAll();
 }
 
 
-function closeTaskCard() {
+async function closeTaskCard() {
     let slideAddTask = document.getElementById('taskCard');
     slideAddTask.classList.add('hide-big-task');
     setTimeout(() => {
         document.getElementById('addTask').classList.add("d-none");
     }, 200);
     cleanUpAccountsCheck();
-    setTimeout(() => {
-        boardPage();
+    setTimeout(async () => {
+        await boardPage();
     }, 200);
 }
 
@@ -299,7 +303,7 @@ function cleanUpAccountsCheck() {
 }
 
 
-function toggleCheckboxCard(task, subtask) {
+async function toggleCheckboxCard(task, subtask) {
     let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
     if (checkableSubtask.done) {
         checkableSubtask.subTaskUndone();
@@ -308,7 +312,11 @@ function toggleCheckboxCard(task, subtask) {
     }
     document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');
     document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');
-    saveTasks()
+    try {
+        await saveTasks(); 
+    } catch (error) {
+        console.log(e)
+    }
 }
 
 

@@ -99,22 +99,22 @@ function openEditContact(i) {
 /**
  *  function for close the overlays
  */
-function closeOverlay() {
+async function closeOverlay() {
     document.getElementById('overlay');
     document.getElementById('responOverlay');
     setTimeout(() => {
         closeBigOverlay()
         closeResOverlay()
     }, 100);
-    contactsPage();
+    await contactsPage();
 }
 
 /**
  * function for a new contact to the accounts[] array
  */
-function addContact() {
+async function addContact() {
     try {
-        loadAccounts()
+        await loadAccounts()
     } catch (error) {
         console.log(error);
     }
@@ -124,11 +124,11 @@ function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-    closeOverlay();
+    await closeOverlay();
     setTimeout(() => {
         successOverlay();
     }, 100);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
+    try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
 }
@@ -137,19 +137,19 @@ function addContact() {
  * Function for a edit contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
  */
-function editContact(i) {
+async function editContact(i) {
     let contact = Join.accounts[i];
     contact.name = document.getElementById('editName').value;
     contact.email = document.getElementById('editMail').value;
     contact.tel = document.getElementById('editPhone').value;
 
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-    closeOverlay();
+    await closeOverlay();
     closeContactDetails();
     setTimeout(() => {
         editOverlay();
     }, 100);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
+    try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
         console.log("Funktioniert", contact);
     }
@@ -163,7 +163,7 @@ async function deleteContact(i) {
     Join.accounts.splice(i, 1);
     console.log(Join.accounts[i]);
 
-    closeOverlay();
+    await closeOverlay();
     closeContactDetails();
     setTimeout(() => {
         deleteOverlay();

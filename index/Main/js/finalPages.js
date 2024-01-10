@@ -17,10 +17,10 @@ function setActiveStyles(id, backgroundColor, textColor) {
 /**
  * Initiates the page by loading accounts and tasks, starting animation, and attempting to retrieve stored JSON data.
  */
-function startPage() {
+async function startPage() {
     try {
-        loadAccounts()
-        loadTasks()
+        await loadAccounts()
+        await loadTasks()
     } catch (e) {
         console.log("Fehler", e)
     } finally {
@@ -55,8 +55,8 @@ function retrievesAStoredJSON() {
 /**
  * Initiates the second version of the page by loading accounts, displaying the logo, and rendering login content.
  */
-function startPage2() {
-    try { loadAccounts() } catch (e) {
+async function startPage2() {
+    try { await loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
         body.innerHTML = JoinLogin.logoLogin();
@@ -76,8 +76,8 @@ function signUp() {
 /**
  * Initiates the summary page by loading tasks and components for the summary.
  */
-function summeryPage() {
-    try { loadTasks() } catch (e) {
+async function summeryPage() {
+    try { await loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
         loadComponentsSummery();
@@ -105,8 +105,8 @@ function loadComponentsSummery() {
 /**
  * Initiates the board page by loading tasks and components for the board.
  */
-function boardPage() {
-    try { loadTasks() } catch (e) {
+async function boardPage() {
+    try { await loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
         loadComponentsBoard();
@@ -137,8 +137,8 @@ function loadComponentsBoard() {
 /**
  * Initiates the contacts page by loading accounts and components for contacts.
  */
-function contactsPage() {
-    try { loadAccounts() } catch (e) {
+async function contactsPage() {
+    try { await loadAccounts() } catch (e) {
         console.log("Fehler", e)
     } finally {
         loadComponentsContacts();
