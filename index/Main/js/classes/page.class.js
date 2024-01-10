@@ -6,20 +6,23 @@ class Page {
             this.tasks = [];
         }
         // Methoden
+
     sayDaytime() {
-            let datum = new Date();
-            let daytime = datum.getHours()
-            if (daytime <= 23 && daytime >= 18) {
-                return "Good&nbsp;Evening";
-            } else if (daytime >= 6 && daytime <= 12) {
-                return "Good&nbsp;Morning";
-            } else if (daytime >= 0 && daytime <= 5) {
-                return "Good&nbsp;Night"
-            } else {
-                return "Good&nbsp;Afternoon";
-            }
+        const currentHour = new Date().getHours();
+        let greeting = "";
+        if (currentHour >= 6 && currentHour < 12) {
+            greeting = "Good Morning";
+        } else if (currentHour >= 12 && currentHour < 18) {
+            greeting = "Good Afternoon";
+        } else if (currentHour >= 18 && currentHour < 21) {
+            greeting = "Good Evening";
+        } else {
+            greeting = "Good Night";
         }
-        // Components
+        return greeting;
+    }
+
+    // Components
     pageLayoutMain() {
         body.innerHTML = "";
         return /*html*/ `

@@ -94,11 +94,11 @@ async function createAccount() {
             let password = document.getElementById('signUpInputPassword').value;
             let account = new Account(name, Email, password);
             Join.accounts.push(account);
-            startPage2()
+            startPage2();
         } else if (pw != true) {
             console.log('Passwort nicht valide')
         } else {
-            console.log('You musst accept the Privacy Policy!')
+            console.log('You must accept the Privacy Policy!')
         }
     }
 }
@@ -157,10 +157,10 @@ function viewPasswordSignUp1() {
     console.log(passwordInput);
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_on.png'; 
+        passStatus.src = './IMG/visibility_on.png';
     } else {
         passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_off.png'; 
+        passStatus.src = './IMG/visibility_off.png';
     }
 }
 /**
@@ -169,13 +169,13 @@ function viewPasswordSignUp1() {
 function viewPasswordSignUp2() {
     let passwordInput = document.getElementById('signUpInputPassword2');
     let passStatus = document.getElementById('pass-status-eye');
-    
+
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_on.png'; 
+        passStatus.src = './IMG/visibility_on.png';
     } else {
         passwordInput.type = 'password';
-        passStatus.src = './IMG/visibility_off.png'; 
+        passStatus.src = './IMG/visibility_off.png';
     }
 }
 /**
@@ -215,16 +215,17 @@ function logout() {
 function checkboxActivate() {
     Join.rememberMe = !Join.rememberMe;
 }
-function policyCheckbox(){
+
+function policyCheckbox() {
     if (policyCheck) {
         policyCheck = false;
 
-    }else{
+    } else {
         policyCheck = true;
         console.log(policyCheck);
 
     }
-    
+
 }
 /**
  * Deactivates the checkbox for remembering the user.
@@ -321,4 +322,3 @@ function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
-

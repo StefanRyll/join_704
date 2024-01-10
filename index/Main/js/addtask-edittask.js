@@ -136,6 +136,7 @@ function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
     Join.accounts[x].checked = false;
+    console.log('Boolean is', Join.accounts[x].checked);
     renderTaskContacts()
 }
 /**
@@ -146,6 +147,7 @@ function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
     Join.accounts[x].checked = true;
+    console.log('Boolean is', Join.accounts[x].checked);
     renderTaskContacts()
 }
 /**
