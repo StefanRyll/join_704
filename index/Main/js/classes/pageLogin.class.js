@@ -42,7 +42,7 @@ class Login extends Page {
                             </label>
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
-                                    <button  class="login-btn log-in-side-button btn-dark-blue" type="submit">Log In</button>
+                                    <button class="login-btn log-in-side-button btn-dark-blue" type="submit">Log In</button>
                                     <button class="guest-login-style btn-white" onclick="guestLogin()">Guest Log In</button>
                                 </div>
                             </div>
