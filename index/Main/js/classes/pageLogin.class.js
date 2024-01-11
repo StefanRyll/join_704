@@ -21,14 +21,19 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Log In</h1>
                             <img class="login-underline" src="./IMG/vector-5.png">
                         </div>
-                        <form class="login-container" onsubmit="logInUser()">
-                            <div class="frame-14"><input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
+                        <form class="login-container" onsubmit="logInUser(); return false">
+                            <div class="frame-14">
+                                <input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
                                 <img class="input-icon" src="./IMG/mail.png"> 
-                            </div>                       
-                            <div class="frame-14" onclick="visibility()"><input  type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
-                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
-                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                             </div>
+                            <div class="passwordAndLabel">
+                                <div class="frame-14" onclick="visibility()" id="loginPasswordFrame">
+                                    <input  type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
+                                    <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
+                                    <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
+                                </div>
+                                <label class="falsePassword" for="loginPassword">Ups! Something went wrong, try again!</label>
+                            </div>                       
                             <label class="remember-me">
                             <div class="check-box" id="checkbox" onclick="checkboxActivate()">
                                 <input class="checkbox" type="checkbox">
