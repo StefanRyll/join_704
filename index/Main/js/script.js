@@ -31,19 +31,30 @@ async function logInUser() {
             localStorage.setItem("remember", userAsJson);
         }
     }
-    for (let i = 0; i < Join.accounts.length; i++) {
-        const userAccount = Join.accounts[i];
-        if (userAccount.email === user) {
-            if (pw === userAccount.password) {
-                Join.signedAccount = userAccount;
-                remember();
-                summeryPage();
-                checkWelcomeRespon();
+    let wentWrong = () =>{
+        let loginPasswordFrame = document.getElementById('loginPasswordFrame')
+        let label = document.querySelector(".falsePassword")
+        loginPasswordFrame.classList.add('redFrame');
+        label.classList.add('falsePasswordRed')
+}
+    let myAccount = Join.accounts.filter(userAccount => userAccount.email === user)
+    console.log(myAccount.length);
+    if (myAccount.length != 0){
+        myAccount = myAccount[0]
+        if (pw === myAccount.password) {
+            Join.signedAccount = myAccount;
+            remember();
+            summeryPage();
+            checkWelcomeRespon();
 
-            } else {
-                console.log("Entweder Passwort oder Email stimmen nicht überein")
-            }
+        } else {
+            wentWrong()
+            console.log("Wrong Password");
         }
+    }else{
+        wentWrong()
+        console.log("Wrong Account");
+
     }
 }
 
