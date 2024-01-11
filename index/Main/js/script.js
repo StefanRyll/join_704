@@ -93,7 +93,7 @@ async function createAccount() {
         let password = document.getElementById('signUpInputPassword').value;
         if (pw != true) {
             console.log('Passwort nicht valide')
-        } else if (policy != true) {
+        } else if (policy == true) {
             console.log('You must accept the Privacy Policy!')
         } else if (pw === true && policy === true) {
             let account = new Account(name, Email, password);

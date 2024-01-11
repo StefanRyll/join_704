@@ -201,7 +201,6 @@ class Contact {
     accountTag() {
         return /*html*/ `
             <div  class="initials-logo accountTag" style="background-color: ${this.color}">${this.shortname}</div>
-
         `
     }
     generateHtmlEditContact(i) {

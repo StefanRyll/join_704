@@ -104,9 +104,9 @@ function decodeTasks(responseAsJson) {
             let workers = []
             for (let y = 0; y < taskData['worker'].length; y++) {
                 const workerContact = taskData['worker'][y];
-                let name = workerContact['name']
-                let email = workerContact['email']
-                let tel = workerContact['tel']
+                let name = workerContact['name'];
+                let email = workerContact['email'];
+                let tel = workerContact['tel'];
                 let newContact = new Contact(name, email, tel)
                 workers.push(newContact)
             }

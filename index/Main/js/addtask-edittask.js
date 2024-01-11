@@ -189,12 +189,16 @@ function renderShortNames(name, x) {
  */
 function removeShortNames(x) {
     let removeName = document.getElementById(`editShortNames${x}`);
-    let removeShortNames = document.getElementById(`removeShortName${x}`);
-    if (removeName) {
-        removeName.remove();
-    } else {
-        removeShortNames.remove();
-    }
+    // let removeShortNames = document.getElementById(`removeShortName${x}`);
+    for (const filterContacts of Join.accounts) {
+        for (const filterWorker of Join.tasks[x].worker) {
+          if (filterContacts === filterWorker) {
+            removeName.remove();
+          } else {
+            removeName.remove();
+          }
+        }
+      }
 }
 /**
  * Filters contact names based on the search input and updates the displayed contact list.

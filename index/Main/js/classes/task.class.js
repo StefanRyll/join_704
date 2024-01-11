@@ -9,7 +9,7 @@ class Task {
         this.Category = Category;
         this.subTasks = subTasks;
         this.todo = todo;
-        this.progress = progress;
+        this.progress = progress; 
         this.feedback = feedback;
         this.done = done;
     }

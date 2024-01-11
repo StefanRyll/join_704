@@ -86,7 +86,7 @@ class Login extends Page {
     }
     signUpWindow() {
         return /*html*/ `
-            <div class="login-signUp-interface">
+            <form class="login-signUp-interface" onsubmit="createAccount(); return false;>
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow respon-frame-153">
                         <a class="backBtn" onclick="startPage2()">
@@ -98,7 +98,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                    <form class="signUp-container" onsubmit="createAccount(); return false;">
+                    <div class="signUp-container" ">
                             <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                 <img class="input-icon" src="./IMG/person.png"> 
                             </div>
@@ -126,7 +126,7 @@ class Login extends Page {
                                 <button class="login-btn btn-dark-blue" type="submit">Sign Up</button>
                                 </div>
                             </div>
-                    </form>
+                    </div>
                 </div>
                 <footer class="login-footer">
                     <div class="legalBtn-container">
@@ -134,7 +134,7 @@ class Login extends Page {
                         <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
                     </div>
                 </footer>
-            </div>
+        </form>
             `
     }
     forceSignIn(x) {
