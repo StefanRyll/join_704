@@ -172,6 +172,7 @@ function addNewContact() {
  * @param {number} x - The index associated with the name.
  */
 function addShortNames(name, x) {
+    assignedCheckNone(x);
     renderShortNames(name, x);
 }
 /**
@@ -188,17 +189,9 @@ function renderShortNames(name, x) {
  * @param {number} x - The index associated with the short names to be removed.
  */
 function removeShortNames(x) {
-    let removeName = document.getElementById(`editShortNames${x}`);
-    // let removeShortNames = document.getElementById(`removeShortName${x}`);
-    for (const filterContacts of Join.accounts) {
-        for (const filterWorker of Join.tasks[x].worker) {
-          if (filterContacts === filterWorker) {
-            removeName.remove();
-          } else {
-            removeName.remove();
-          }
-        }
-      }
+    Join.tasks[x].worker.splice(x, 1);
+    // renderShortNames(name, x);
+    // JoinBoard.generateHTMLRenderShortNames(name, x);
 }
 /**
  * Filters contact names based on the search input and updates the displayed contact list.
