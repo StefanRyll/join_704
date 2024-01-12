@@ -28,7 +28,7 @@ class Login extends Page {
                             </div>
                             <div class="passwordAndLabel">
                                 <div class="frame-14" onclick="visibility()" id="loginPasswordFrame">
-                                    <input  type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
+                                    <input type="password" autocomplete="current-password" class="frame-157" placeholder="Password" id="loginPassword" required>
                                     <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPassword()">                      
                                     <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPassword()">                      
                                 </div>
@@ -107,14 +107,14 @@ class Login extends Page {
                             <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                 <img class="input-icon" src="./IMG/person.png"> 
                             </div>
-                            <div class="frame-14"><input required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
+                            <div class="frame-14"><input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>
-                            <div class="frame-14" onclick="visibility()"><input type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
+                            <div class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">                      
                             </div>
-                            <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
+                            <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
                                 <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
                                 <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
                             </div>
