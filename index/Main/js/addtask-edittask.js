@@ -34,7 +34,6 @@ function checkUser(AssignedUsers, JoinUsers) {
  */
 function checkWorker(task) {
     let containerShortName = document.getElementById('containerShortName');
-    // let editShortNames = document.getElementById(`editShortNames${x}`);
     containerShortName.innerHTML = '';
     for (let i = 0; i < task.worker.length; i++) {
         let assignedWorker = task.worker[i];
@@ -172,8 +171,17 @@ function addNewContact() {
  * @param {number} x - The index associated with the name.
  */
 function addShortNames(name, x) {
-    assignedCheckNone(x);
-    renderShortNames(name, x);
+    for (let i = 0; i < Join.accounts.length; i++) {
+        let account = Join.accounts[i];
+        for (let j = 0; j < Join.tasks.length; j++) {
+            let workers = Join.tasks[j].worker;
+            if (account.checked) {
+                workers.push(account);
+                renderShortNames(name, x);
+                assignedCheckNone(x);
+            }   
+        } 
+    }
 }
 /**
  * Renders short names in the specified container for the given name and index.
@@ -188,10 +196,14 @@ function renderShortNames(name, x) {
  * Removes short names based on the specified index.
  * @param {number} x - The index associated with the short names to be removed.
  */
-function removeShortNames(x) {
-    Join.tasks[x].worker.splice(x, 1);
-    // renderShortNames(name, x);
-    // JoinBoard.generateHTMLRenderShortNames(name, x);
+function removeShortNames() {
+    for (let i = 0; i < Join.tasks.length; i++) {
+        let eWorker = Join.tasks[i].worker;
+        if (eWorker) {
+            eWorker.splice(i, 1);
+            checkWorker(Join.tasks[i]);
+        } 
+    }
 }
 /**
  * Filters contact names based on the search input and updates the displayed contact list.

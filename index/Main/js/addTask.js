@@ -124,8 +124,8 @@ function updateTaskWorkers(newTask) {
 function deleteTask(x) {
     Join.tasks.splice(x, 1)
     console.log("Task " + x + " wird gelöscht");
-    saveTasks()
-    boardPage()
+    saveTasks();
+    boardPage();
 }
 /**
  * Reads and returns an array of assigned users (workers) from Join.accounts.
@@ -135,7 +135,7 @@ function deleteTask(x) {
 function readAssignedUsers() {
     let workers = [];
     for (let i = 0; i < Join.accounts.length; i++) {
-        const account = Join.accounts[i]
+        const account = Join.accounts[i];
         if (account.checked) {
             workers.push(account);
         }
