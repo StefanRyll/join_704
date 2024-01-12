@@ -107,6 +107,11 @@ async function createAccount() {
         let policy = ppCheck();
         let name = document.getElementById('signUpInputName').value;
         let Email = document.getElementById('signUpInputEmail').value;
+        let emailCheck = () =>{
+            let existingAccounts = Join.accounts.filter(account => account.email = Email)
+            let exist = (existingAccounts.length != 0) ? true : false;
+            return exist;
+        }
         let password = document.getElementById('signUpInputPassword').value;
         console.log('pw is', pw, " and Policy is ", policy);
         if (pw != true) {
@@ -114,6 +119,9 @@ async function createAccount() {
             console.log('Passwort nicht valide')
         } else if (policy != true) {
             console.log('You must accept the Privacy Policy!')
+        } else if (emailCheck() === true){
+            console.log('Email already existing')
+        
         } else if (pw === true && policy === true) {
             let account = new Account(name, Email, password);
             Join.accounts.push(account);

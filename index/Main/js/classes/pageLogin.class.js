@@ -105,10 +105,12 @@ class Login extends Page {
                         </div>
                         <form onsubmit="createAccount(); return false;">
                             <div class="signUp-container">
-                                <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
+                                <div class="frame-14">
+                                    <input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
                                     <img class="input-icon" src="./IMG/person.png"> 
                                 </div>
-                                <div class="frame-14"><input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
+                                <div class="frame-14">
+                                    <input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
                                     <img class="input-icon" src="./IMG/mail.png"> 
                                 </div>
                                 <div class="frame-14" onclick="visibility()">
