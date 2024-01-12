@@ -111,13 +111,18 @@ class Login extends Page {
                                 <div class="frame-14"><input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
                                     <img class="input-icon" src="./IMG/mail.png"> 
                                 </div>
-                                <div class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
+                                <div class="frame-14" onclick="visibility()">
+                                    <input autocomplete="new-password" type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
                                     <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">                      
                                     <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">                      
                                 </div>
-                                <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
-                                    <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
-                                    <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
+                                <div class="passwordAndLabel">
+                                    <div id="passwordCheckArea" class="frame-14" onclick="visibility()">
+                                        <input autocomplete="new-password" type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
+                                        <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
+                                        <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
+                                    </div>
+                                    <label class="falsePassword" for="loginPassword">Ups! Something went wrong, try again!</label>
                                 </div>
                                 <div class="d-flex-mid">
                                     <label id="ppCheck" class="sign-up-privacy-policy">

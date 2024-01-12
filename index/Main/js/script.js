@@ -94,29 +94,37 @@ function showWelcomeOverlay() {
  * @returns {Promise<void>}
  */
 async function createAccount() {
-    try { loadAccounts() } catch (e) {
-        console.log("Fehler", e)
-    } finally {
+    let wentWrong = () => {
+        let loginPasswordFrame = document.getElementById('passwordCheckArea')
+        let label = document.querySelector(".falsePassword")
+        loginPasswordFrame.classList.add('redFrame');
+        label.classList.add('falsePasswordRed')
+    }
+
+    try { loadAccounts() } catch (e) {console.log("Fehler", e)}
+
         let pw = passwordCheck();
         let policy = ppCheck();
         let name = document.getElementById('signUpInputName').value;
         let Email = document.getElementById('signUpInputEmail').value;
         let password = document.getElementById('signUpInputPassword').value;
-        console.log('pw is', pw);
+        console.log('pw is', pw, " and Policy is ", policy);
         if (pw != true) {
+            wentWrong()
             console.log('Passwort nicht valide')
         } else if (policy != true) {
             console.log('You must accept the Privacy Policy!')
         } else if (pw === true && policy === true) {
             let account = new Account(name, Email, password);
             Join.accounts.push(account);
+            policyCheck = false
             startPage2();
+            saveAccounts()
         }
     }
-}
+
 
 function passwordCheck() {
-    debugger
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
     if (pw1.length >= 8) {
@@ -133,15 +141,10 @@ function passwordCheck() {
 
 
 function ppCheck() {
-    let checkbox = document.getElementById('ppCheck');
-    if (checkbox.checked) {
-        return true;
-    } else {
-        return false;
-    }
+    // let checkbox = document.getElementById('ppCheck');
+    let policy = policyCheck;
+    return policy
 }
-
-
 // Onload Funktion
 function visibility() {
     document.getElementById('pass-status').classList.add('d-none');
