@@ -102,6 +102,7 @@ async function createAccount() {
         let name = document.getElementById('signUpInputName').value;
         let Email = document.getElementById('signUpInputEmail').value;
         let password = document.getElementById('signUpInputPassword').value;
+        console.log('pw is', pw);
         if (pw != true) {
             console.log('Passwort nicht valide')
         } else if (policy != true) {
@@ -115,6 +116,7 @@ async function createAccount() {
 }
 
 function passwordCheck() {
+    debugger
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
     if (pw1.length >= 8) {

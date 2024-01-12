@@ -91,7 +91,7 @@ class Login extends Page {
     }
     signUpWindow() {
         return /*html*/ `
-            <form class="login-signUp-interface" onsubmit="createAccount(); return false;>
+            <div class="login-signUp-interface">
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow respon-frame-153">
                         <a class="backBtn" onclick="startPage2()">
@@ -103,35 +103,37 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                    <div class="signUp-container" ">
-                            <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
-                                <img class="input-icon" src="./IMG/person.png"> 
-                            </div>
-                            <div class="frame-14"><input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
-                                <img class="input-icon" src="./IMG/mail.png"> 
-                            </div>
-                            <div class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
-                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">                      
-                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">                      
-                            </div>
-                            <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
-                                <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
-                                <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
-                            </div>
-                            <div class="d-flex-mid">
-                                <label id="ppCheck" class="sign-up-privacy-policy">
-                                    <div class="check-box" id="checkbox" onclick="policyCheckbox()">
-                                        <input class="checkbox" type="checkbox">
+                        <form onsubmit="createAccount(); return false;">
+                            <div class="signUp-container">
+                                <div class="frame-14"><input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
+                                    <img class="input-icon" src="./IMG/person.png"> 
+                                </div>
+                                <div class="frame-14"><input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
+                                    <img class="input-icon" src="./IMG/mail.png"> 
+                                </div>
+                                <div class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
+                                    <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">                      
+                                    <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">                      
+                                </div>
+                                <div id="passwordCheckArea" class="frame-14" onclick="visibility()"><input autocomplete="new-password" type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
+                                    <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
+                                    <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
+                                </div>
+                                <div class="d-flex-mid">
+                                    <label id="ppCheck" class="sign-up-privacy-policy">
+                                        <div class="check-box" id="checkbox" onclick="policyCheckbox()">
+                                            <input class="checkbox" type="checkbox">
+                                        </div>
+                                        <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
+                                    </label>
+                                </div>
+                                <div class="frame-176">
+                                    <div class="sign-up-btn loginButtons">
+                                    <button class="login-btn btn-dark-blue" type="submit">Sign Up</button>
                                     </div>
-                                    <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
-                                </label>
-                            </div>
-                            <div class="frame-176">
-                                <div class="sign-up-btn loginButtons">
-                                <button class="login-btn btn-dark-blue" type="submit">Sign Up</button>
                                 </div>
                             </div>
-                    </div>
+                        </form>
                 </div>
                 <footer class="login-footer">
                     <div class="legalBtn-container">
@@ -139,7 +141,7 @@ class Login extends Page {
                         <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
                     </div>
                 </footer>
-        </form>
+            </div>
             `
     }
     forceSignIn(x) {
