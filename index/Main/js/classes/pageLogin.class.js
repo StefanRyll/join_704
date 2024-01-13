@@ -43,7 +43,7 @@ class Login extends Page {
                             <div class="frame-176">
                                 <div class="loginButtons mg-none">
                                     <button class="login-btn log-in-side-button btn-dark-blue" type="submit">Log In</button>
-                                    <button class="guest-login-style btn-white" onclick="guestLogin()">Guest Log In</button>
+                                    <button class="guest-login-style btn-white" type="button" onclick="guestLogin()">Guest Log In</button>
                                 </div>
                             </div>
                         </form>
@@ -89,7 +89,7 @@ class Login extends Page {
                 <div id="windowArea"></div>        
             `
     }
-    signUpWindow() {
+    signUpWindow(x) {
         return /*html*/ `
             <div class="login-signUp-interface">
                 <div id="logoMain" class="logoAnimationImg2"></div>
@@ -103,7 +103,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                        <form onsubmit="createAccount(); return false;">
+                        <form onsubmit="createAccount(${x}); return false;">
                             <div class="signUp-container">
                                 <div class="frame-14">
                                     <input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">

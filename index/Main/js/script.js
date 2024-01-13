@@ -108,8 +108,8 @@ async function createAccount() {
         let name = document.getElementById('signUpInputName').value;
         let Email = document.getElementById('signUpInputEmail').value;
         let emailCheck = () =>{
-            let existingAccounts = Join.accounts.filter(account => account.email = Email)
-            let exist = (existingAccounts.length != 0) ? true : false;
+            let existingAccounts = Join.accounts.filter(account => account.email === Email)
+            let exist = (existingAccounts.length !== 0) ? true : false;
             return exist;
         }
         let password = document.getElementById('signUpInputPassword').value;
