@@ -112,7 +112,7 @@ function createNewTask(newTask, x) {
 function updateTaskWorkers(newTask) {
     for (let i = 0; i < newTask.worker.length; i++) {
         let taskWorker = newTask.worker[i];
-        taskWorker.checked = false;
+        taskWorker.checked = true;
     }
 }
 /**
@@ -122,7 +122,6 @@ function updateTaskWorkers(newTask) {
  */
 function deleteTask(x) {
     Join.tasks.splice(x, 1)
-    console.log("Task " + x + " wird gelöscht");
     saveTasks();
     boardPage();
 }

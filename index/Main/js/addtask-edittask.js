@@ -136,7 +136,6 @@ function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
     Join.accounts[x].checked = false;
-    console.log('Boolean is', Join.accounts[x].checked);
     renderTaskContacts()
 }
 /**
@@ -146,9 +145,8 @@ function assignedCheck(x) {
 function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
-    Join.accounts[x].checked = true;
-    console.log('Boolean is', Join.accounts[x].checked);
-    renderTaskContacts()
+    Join.accounts[x].checked = true
+    renderTaskContacts();
 }
 /**
  * Updates the display for checked accounts without modifying the 'checked' property.
@@ -170,18 +168,23 @@ function addNewContact() {
  * @param {string} name - The name to render short names for.
  * @param {number} x - The index associated with the name.
  */
+// function addShortNames(name, x) {
+//     for (let i = 0; i < Join.accounts.length; i++) {
+//         let account = Join.accounts[i];
+//         for (let j = 0; j < Join.tasks.length; j++) {
+//             let workers = Join.tasks[j].worker;
+//             if (account.checked) {
+//                 workers.push(account);
+//                 renderShortNames(name, x);
+//                 assignedCheckNone(x);
+//             }
+//         }
+//     }
+// }
+
 function addShortNames(name, x) {
-    for (let i = 0; i < Join.accounts.length; i++) {
-        let account = Join.accounts[i];
-        for (let j = 0; j < Join.tasks.length; j++) {
-            let workers = Join.tasks[j].worker;
-            if (account.checked) {
-                workers.push(account);
-                renderShortNames(name, x);
-                assignedCheckNone(x);
-            }   
-        } 
-    }
+    renderShortNames(name, x);
+    // assignedCheckNone(x);
 }
 /**
  * Renders short names in the specified container for the given name and index.
@@ -196,15 +199,33 @@ function renderShortNames(name, x) {
  * Removes short names based on the specified index.
  * @param {number} x - The index associated with the short names to be removed.
  */
+
+// function removeShortNames(x) {
+//     let shortName = document.getElementById(`editShortNames${x}`);
+//     shortName.remove();
+// }
 function removeShortNames() {
     for (let i = 0; i < Join.tasks.length; i++) {
-        let eWorker = Join.tasks[i].worker;
-        if (eWorker) {
-            eWorker.splice(i, 1);
+        let workers = Join.tasks[i].worker;
+        if (workers) {
+            workers.splice(i, 1);
             checkWorker(Join.tasks[i]);
-        } 
+        }
     }
 }
+// function removeShortNames(x) {
+//     let removeName = document.getElementById(`editShortNames${x}`);
+//     // let removeShortNames = document.getElementById(`removeShortName${x}`);
+//     for (const filterContacts of Join.accounts) {
+//         for (const filterWorker of Join.tasks[x].worker) {
+//             if (filterContacts === filterWorker) {
+//                 filterWorker.splice(x, 1);
+//             } else {
+//                 removeName.remove();
+//             }
+//         }
+//     }
+// }
 /**
  * Filters contact names based on the search input and updates the displayed contact list.
  */

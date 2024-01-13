@@ -110,7 +110,6 @@ function boardPage() {
         console.log("Fehler", e)
     } finally {
         loadComponentsBoard();
-        styleCssMediaQuery();
     }
 }
 /**
@@ -134,16 +133,18 @@ function loadComponentsBoard() {
     setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
     checkDragArea();
+    // styleCssMediaQuery();
 }
-
-
-function styleCssMediaQuery() {
-    let tinyCardShortNames = document.getElementById('tinyCardShortNames');
-    let mediaQuery = window.matchMedia("(max-width: 1188px)");
-    if (mediaQuery.matches) {
-        tinyCardShortNames.style.marginLeft = '-10px';
-    }
-}
+/**
+ * Changes CSS properties for elements Boards.
+ */
+// function styleCssMediaQuery() {
+//     let tinyCardShortNames = document.getElementById('tinyCardShortNames');
+//     let mediaQuery = window.matchMedia("(max-width: 1188px)");
+//     if (mediaQuery.matches) {
+//         tinyCardShortNames.style.marginLeft = '-10px';
+//     }
+// }
 /**
  * Initiates the contacts page by loading accounts and components for contacts.
  */
