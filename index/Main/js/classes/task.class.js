@@ -241,7 +241,7 @@ class Task {
                 ${subtaskArea()}
 
                 <div class="contactsAndPrio">
-                    <div class="tinyTaskCardContacts">${contactTags()}</div>
+                    <div id="tinyCardShortNames" class="tinyTaskCardContacts">${contactTags()}</div>
                     <img src="${prioTag()}" class="prioIcon" alt="">
                 </div>
             </div>

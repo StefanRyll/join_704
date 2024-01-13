@@ -4,7 +4,6 @@
  */
 function openAddTask(x = 0) {
     JoinBoard.renderAddTask(x);
-    
 }
 /**
  * Creates a task based on a specified board.
