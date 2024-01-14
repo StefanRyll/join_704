@@ -97,30 +97,55 @@ async function createAccount() {
         label.classList.add('falsePasswordRed')
     }
 
-    try { loadAccounts() } catch (e) {console.log("Fehler", e)}
+    try { loadAccounts() } catch (e) { console.log("Fehler", e) }
 
-        let pw = passwordCheck();
-        let policy = ppCheck();
-        let name = document.getElementById('signUpInputName').value;
-        let Email = document.getElementById('signUpInputEmail').value;
-        let emailCheck = () =>{
-            let existingAccounts = Join.accounts.filter(account => account.email === Email)
-            let exist = (existingAccounts.length !== 0) ? true : false;
-            return exist;
-        }
-        let password = document.getElementById('signUpInputPassword').value;
-        if (pw != true) {
-            wentWrong()
-        } else if (policy != true) {
-        } else if (emailCheck() === true){
-        } else if (pw === true && policy === true) {
-            let account = new Account(name, Email,"", password);
-            Join.accounts.push(account);
-            policyCheck = false
-            startPage2();
-            saveAccounts()
-        }
+    let pw = passwordCheck();
+    let policy = ppCheck();
+    let name = document.getElementById('signUpInputName').value;
+    let Email = document.getElementById('signUpInputEmail').value;
+    let emailCheck = () => {
+        let existingAccounts = Join.accounts.filter(account => account.email === Email)
+        let exist = (existingAccounts.length !== 0) ? true : false;
+        return exist;
     }
+    let password = document.getElementById('signUpInputPassword').value;
+    console.log('pw is', pw, " and Policy is ", policy);
+    if (pw != true) {
+        wentWrong()
+        console.log('Passwort nicht valide')
+    } else if (policy != true) {
+        console.log('You must accept the Privacy Policy!')
+    } else if (emailCheck() === true) {
+        console.log('Email already existing')
+
+    } else if (pw === true && policy === true) {
+        let account = new Account(name, Email, "", password);
+        Join.accounts.push(account);
+        policyCheck = false
+        startPage2();
+        saveAccounts()
+    }
+}
+
+/**
+ *  function for render a little information overlay to createAccount
+ * 
+ */
+function successCreateAccount() {
+    document.getElementById('overlaySuccessCreateAccount').innerHTML = generateHtmlOverlaySuccessCreateAccount();
+    openSuccessCreateAccountOverlay();
+    setTimeout(() => {
+        closeSuccessCreateAccountOverlay();
+    }, 2000);
+}
+
+function generateHtmlOverlaySuccessCreateAccount() {
+    return /*html*/ `
+        <div class="successInfoContainer">
+            <h3 class="font-size-normal mg-none">You Signed Up successfully</h3>
+        </div>
+    `
+}
 
 
 function passwordCheck() {

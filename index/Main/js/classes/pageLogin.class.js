@@ -149,6 +149,9 @@ class Login extends Page {
                     </div>
                 </footer>
             </div>
+            <div>
+                <div class="overlay-success" id="overlaySuccessCreateAccount"></div>
+            </div>
             `
     }
     forceSignIn(x) {

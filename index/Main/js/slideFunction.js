@@ -37,6 +37,7 @@ function openSuccessOverlayTask() {
 function closeSuccessOverlay() {
     document.getElementById('overlaySuccess').classList.remove('show-success-overlay');
 }
+
 function closeSuccessOverlayTask() {
     document.getElementById('overlaySuccessTask').classList.remove('show-success-overlay');
 }
@@ -55,4 +56,12 @@ function openHeadMenu() {
 
 function closeHeadMenu(logoutWindow) {
     logoutWindow.classList.remove("show-popupAccount");
+}
+
+function openSuccessCreateAccountOverlay() {
+    document.getElementById('overlaySuccessCreateAccount').classList.add('show-success-overlay');
+}
+
+function closeSuccessCreateAccountOverlay() {
+    document.getElementById('overlaySuccessCreateAccount').classList.remove('show-success-overlay');
 }
