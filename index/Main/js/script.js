@@ -123,7 +123,7 @@ async function createAccount() {
             console.log('Email already existing')
         
         } else if (pw === true && policy === true) {
-            let account = new Account(name, Email, password);
+            let account = new Account(name, Email,"", password);
             Join.accounts.push(account);
             policyCheck = false
             startPage2();
