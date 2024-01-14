@@ -11,7 +11,7 @@ function openAddTask(x = 0) {
  * @param {number} x - The board parameter (default value is 0).
  */
 function createTaskFromBoard(x = 0) {
-    try { 
+    try {
         loadAccounts();
         loadTasks();
     } catch (e) {
@@ -39,11 +39,13 @@ function createTask(x) {
     const date = document.getElementById('date').value;
     const prio = prioTemp;
     const category = document.getElementById('taskCategoryInput').value;
+
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
     boardPage();
 }
+
 function createTaskPage() {
     const title = document.getElementById("boardTaskTitle").value;
     const worker = readAssignedUsers();
@@ -61,10 +63,10 @@ function createTaskPage() {
         }, 500);
     } catch (error) {
         console.log("Task speichern nicht möglich : " + error);
-    }finally{
+    } finally {
         clearInputs(title, desc, worker, date, category, subTask);
         successOverlayTask()
-        }
+    }
 }
 /**
  * Updates a task with new data, creates a new task, and performs additional operations.
@@ -431,5 +433,3 @@ function openTask(x) {
     addTask.classList.remove("d-none")
     addTask.innerHTML = task.taskCardNormal(x);
 }
-
-

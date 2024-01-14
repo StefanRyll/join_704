@@ -1,5 +1,5 @@
 .color-user,
-.category-color {
+.color-userStory {
     background-color: #0038FF;
 }
 
@@ -145,7 +145,6 @@
 .editTask label {
     font-size: 20px;
 }
-
 
 .accountTag {
     width: 42px;
