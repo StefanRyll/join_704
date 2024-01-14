@@ -168,19 +168,6 @@ function addNewContact() {
  * @param {string} name - The name to render short names for.
  * @param {number} x - The index associated with the name.
  */
-// function addShortNames(name, x) {
-//     for (let i = 0; i < Join.accounts.length; i++) {
-//         let account = Join.accounts[i];
-//         for (let j = 0; j < Join.tasks.length; j++) {
-//             let workers = Join.tasks[j].worker;
-//             if (account.checked) {
-//                 workers.push(account);
-//                 renderShortNames(name, x);
-//                 assignedCheckNone(x);
-//             }
-//         }
-//     }
-// }
 function addShortNames(name, x) {
     renderShortNames(name, x);
     assignedCheckNone(x);

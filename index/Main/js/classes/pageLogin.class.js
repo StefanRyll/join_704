@@ -148,9 +148,11 @@ class Login extends Page {
                         <button onclick="legalPage()" class="log-in-side-button text-button">Legal notice</button>
                     </div>
                 </footer>
-            </div>
-            <div>
-                <div class="overlay-success" id="overlaySuccessCreateAccount"></div>
+                <div class="overlay-success" id="overlaySuccessCreateAccount">
+                        <div class="successInfoContainer">
+                            <h3 class="font-size-normal mg-none">You Signed Up successfully</h3>
+                        </div>
+                    </div>
             </div>
             `
     }

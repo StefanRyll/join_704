@@ -121,30 +121,23 @@ async function createAccount() {
     } else if (pw === true && policy === true) {
         let account = new Account(name, Email, "", password);
         Join.accounts.push(account);
-        policyCheck = false
-        startPage2();
-        saveAccounts()
+        policyCheck = false;
+        setTimeout(() => {
+            startPage2();
+        }, 1700);
+        saveAccounts();
+        successCreateAccount();
     }
 }
-
 /**
  *  function for render a little information overlay to createAccount
  * 
  */
 function successCreateAccount() {
-    document.getElementById('overlaySuccessCreateAccount').innerHTML = generateHtmlOverlaySuccessCreateAccount();
     openSuccessCreateAccountOverlay();
     setTimeout(() => {
         closeSuccessCreateAccountOverlay();
-    }, 2000);
-}
-
-function generateHtmlOverlaySuccessCreateAccount() {
-    return /*html*/ `
-        <div class="successInfoContainer">
-            <h3 class="font-size-normal mg-none">You Signed Up successfully</h3>
-        </div>
-    `
+    }, 1500);
 }
 
 
