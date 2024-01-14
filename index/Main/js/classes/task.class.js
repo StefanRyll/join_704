@@ -7,6 +7,7 @@ class Task {
         this.date = new Date(date);
         this.prio = prio;
         this.Category = Category;
+        this.renderBgColorCategory();
         this.subTasks = subTasks;
         this.todo = todo;
         this.progress = progress;
@@ -14,13 +15,13 @@ class Task {
         this.done = done;
     }
     renderBgColorCategory() {
-        let categoryBg = document.getElementById('tinyTaskCategory');
+        let categoryBg = document.getElementById('test-color');
         if (this.Category === 'technicalTask') {
             categoryBg.classList.add('color-technical');
         } else if (this.Category === 'userStory') {
             categoryBg.classList.add('color-userStory');
         }
-        console.log(this.Category);
+        console.log('der kategorie heißt:', this.Category);
     }
     taskCardNormal(x) {
         let formatedDate = () => {
@@ -98,7 +99,7 @@ class Task {
         <div class="bg-task">
             <div id="taskCard" class="taskCard">
                 <div class="taskCardHeader">
-                    <div class="category-color">${this.Category}</div>
+                    <div id="test-color" class="category-color">${this.Category}</div>
                     <div onclick="closeTaskCard()">
                         <svg class="style-closebutton" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -256,8 +257,8 @@ class Task {
             </div>
 
         `
-
     }
+
     updateProgressBar(x) {
         let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
         if (progressContainer) {
