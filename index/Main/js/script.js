@@ -133,7 +133,6 @@ function passwordCheck() {
             return false;
         }
     } else {
-
         return false;
     }
 }
@@ -268,9 +267,7 @@ function taskSaveChanges(x) {
     let subtaskInput = subtaskTemp;
     let Category = eTask.Category;
     // // Merched Task
-
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
-
     saveTasks();
     closeTaskCard();
     cleanUpAll();

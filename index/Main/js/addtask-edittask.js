@@ -145,7 +145,7 @@ function assignedCheck(x) {
 function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.add('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
-    Join.accounts[x].checked = true
+    Join.accounts[x].checked = true;
     renderTaskContacts();
 }
 /**
@@ -181,10 +181,9 @@ function addNewContact() {
 //         }
 //     }
 // }
-
 function addShortNames(name, x) {
     renderShortNames(name, x);
-    // assignedCheckNone(x);
+    assignedCheckNone(x);
 }
 /**
  * Renders short names in the specified container for the given name and index.
@@ -200,19 +199,20 @@ function renderShortNames(name, x) {
  * @param {number} x - The index associated with the short names to be removed.
  */
 
-// function removeShortNames(x) {
-//     let shortName = document.getElementById(`editShortNames${x}`);
-//     shortName.remove();
-// }
-function removeShortNames() {
-    for (let i = 0; i < Join.tasks.length; i++) {
-        let workers = Join.tasks[i].worker;
-        if (workers) {
-            workers.splice(i, 1);
-            checkWorker(Join.tasks[i]);
-        }
-    }
+function removeShortNames(x) {
+    let shortName = document.getElementById(`editShortNames${x}`);
+    shortName.remove();
 }
+// function removeShortNames() {
+//     for (let i = 0; i < Join.tasks.length; i++) {
+//         let workers = Join.tasks[i].worker;
+//         if (workers) {
+//             workers.splice(i, 1);
+//             checkWorker(Join.tasks[i]);
+
+//         }
+//     }
+// }
 // function removeShortNames(x) {
 //     let removeName = document.getElementById(`editShortNames${x}`);
 //     // let removeShortNames = document.getElementById(`removeShortName${x}`);

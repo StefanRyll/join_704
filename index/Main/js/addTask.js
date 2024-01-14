@@ -42,6 +42,7 @@ function createTask(x) {
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
+    boardPage();
 }
 function createTaskPage() {
     const title = document.getElementById("boardTaskTitle").value;
@@ -55,6 +56,9 @@ function createTaskPage() {
     Join.tasks.push(newTask);
     try {
         saveTasks();
+        setTimeout(() => {
+            boardPage();
+        }, 500);
     } catch (error) {
         console.log("Task speichern nicht möglich : " + error);
     }finally{
