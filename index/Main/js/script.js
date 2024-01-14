@@ -38,7 +38,6 @@ async function logInUser() {
         label.classList.add('falsePasswordRed')
     }
     let myAccount = Join.accounts.filter(userAccount => userAccount.email === user)
-    console.log(myAccount.length);
     if (myAccount.length != 0) {
         myAccount = myAccount[0]
         if (pw === myAccount.password) {
@@ -48,13 +47,10 @@ async function logInUser() {
             checkWelcomeRespon();
 
         } else {
-            wentWrong()
-            console.log("Wrong Password");
+            wentWrong();
         }
     } else {
-        wentWrong()
-        console.log("Wrong Account");
-
+        wentWrong();
     }
 }
 
@@ -113,15 +109,10 @@ async function createAccount() {
             return exist;
         }
         let password = document.getElementById('signUpInputPassword').value;
-        console.log('pw is', pw, " and Policy is ", policy);
         if (pw != true) {
             wentWrong()
-            console.log('Passwort nicht valide')
         } else if (policy != true) {
-            console.log('You must accept the Privacy Policy!')
         } else if (emailCheck() === true){
-            console.log('Email already existing')
-        
         } else if (pw === true && policy === true) {
             let account = new Account(name, Email,"", password);
             Join.accounts.push(account);
@@ -178,7 +169,6 @@ function viewPassword() {
 function viewPasswordSignUp1() {
     let passwordInput = document.getElementById('signUpInputPassword');
     let passStatus = document.getElementById('pass-status-eye');
-    console.log(passwordInput);
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
         passStatus.src = './IMG/visibility_on.png';

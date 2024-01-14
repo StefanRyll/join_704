@@ -264,7 +264,6 @@ class Task {
                 }
                 return countDone;
             }
-            console.log("Taskbar update");
             if (variable1 == 0) {
                 progressContainer.classList.add('d-none')
                 variable1 = null
@@ -274,8 +273,6 @@ class Task {
                 let progressbar = document.getElementById(`progressBar${x}`);
                 progressbar.style.width = `${gesamtFortschritt}%`;
             }
-
-            console.log("Progressbar Updated", gesamtFortschritt, this.title);
         }
     }
 

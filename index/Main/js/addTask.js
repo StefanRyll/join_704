@@ -417,12 +417,6 @@ function renderContactsTasks() {
     }
 }
 /**
- * Renders contacts for tasks by updating the HTML content of 'contactsList' based on Join.accounts.
- */
-function showContact(x) {
-    console.log(x);
-}
-/**
  * Opens a task by updating the content and visibility of the 'addTask' element with the task card for the specified index.
  * 
  * @param {number} x - The index of the task to be opened.

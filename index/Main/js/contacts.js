@@ -11,7 +11,6 @@ function renderContacts() {
 
     for (let i = 0; i < Join.accounts.length; i++) {
         const contact = Join.accounts[i];
-        console.log(contact);
         const userInitials = contact.shortname;
 
         if (userInitials[0] !== currentInitials) {
@@ -76,13 +75,12 @@ function showDetails(i) {
         document.getElementById("responOverlay").innerHTML = detailsContent;
     }
 }
-
 /**
  * function for open and render the overlay to add new contact, edit Contact and delete Contact
  * 
  */
 function openAddContact() { 
-    let addContactForm = document.getElementById('overlay');
+    let addContactForm = document.getElementById('overlay'); 
     addContactForm.innerHTML = '';
     setTimeout(() => {
         openBigOverlay()
@@ -133,7 +131,6 @@ function addContact() {
     }, 100);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
-        console.log("addContact", Join.accounts)
     }
 }
 
@@ -165,8 +162,6 @@ function editContact(i) {
  */
 function deleteContact(i) {
     Join.accounts.splice(i, 1);
-    console.log();
-
     closeOverlay();
     closeContactDetails();
     setTimeout(() => {
@@ -174,7 +169,6 @@ function deleteContact(i) {
     }, 100);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
-        console.log("deleted", Join.accounts);
     }
 }
 

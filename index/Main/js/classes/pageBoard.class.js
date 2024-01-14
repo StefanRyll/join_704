@@ -261,9 +261,6 @@ class Board extends Page {
                         </div>
                         ${this.generateHTMLAddTaskButtons(x)}
                     </div>
-                    <!-- <div class="content-board-task-footer">
-                         
-                    </div> -->
             </div>
           `
     }
@@ -273,8 +270,7 @@ class Board extends Page {
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
-                ${this.generateHTMLAddContactShortName()}   
-                <!-- ${this.generateHTMLInfoRequired()}                                -->
+                ${this.generateHTMLAddContactShortName()}                        
               </div>
           `
     }
@@ -554,8 +550,7 @@ class Board extends Page {
             </div>
         `
     }
-    generateHTMLAddTaskButtons(x) {
-        console.log("Vollständig geladen");
+    generateHTMLAddTaskButtons() {
         return /*html*/ `
             <div id="addtaskButton" class="addTask-button addTask-button-window">
                 <button class="btn-cancel btn-white" type="reset" onsubmit="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
