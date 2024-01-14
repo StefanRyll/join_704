@@ -239,7 +239,7 @@ function addTaskPage() {
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
     let content = document.getElementById('content')
-    content.innerHTML = JoinBoard.generateHTMLaddTaskWindow();
+    content.innerHTML = JoinBoard.generateHTMLaddTaskWindowForm(4);
     showSideAndHead()
     setActiveStyles('addTaskActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveAddTask', 'rgba(9, 25, 49, 1)');
