@@ -512,7 +512,7 @@ class Board extends Page {
         return /*html*/ `
               <div class="select-category">
                 <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
-                  <span id="technicalTask">Techincal Task</span>
+                  <span id="technicalTask">Technical Task</span>
                 </div>
                 <div onclick="selectCategoryStory()" id="boardTaskStory" class="select-task-category-container">
                   <span id="userStory">User Story</span>

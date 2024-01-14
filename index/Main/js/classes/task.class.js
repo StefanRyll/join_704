@@ -13,6 +13,8 @@ class Task {
         this.feedback = feedback;
         this.done = done;
     }
+
+
     taskCardNormal(x) {
         let formatedDate = () => {
             let date = this.date;

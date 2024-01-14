@@ -2,23 +2,15 @@
     font-family: inter, sans-serif !important;
 }
 
-
-/* textarea:invalid::before {
-    border: 1px solid #FF001F;
-} */
-
 .frame-14:focus-within {
     border: 1px solid var(--lightblue); 
 }
 
 .border-success {
-    /* border-color: var(--lightblue); */
     border: 1px solid var(--lightblue); 
 }
 
-
 .input-error {
-    /* border-color: #ff001f; */
     border: 1px solid #FF001F;
 }
 

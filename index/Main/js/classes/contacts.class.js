@@ -13,7 +13,6 @@ class Contact {
         this.checked = false;
         this.color = this.getColor()
     }
-
     /**
      * This function creates and random the bg-color of the initials container
      * @returns 
@@ -212,7 +211,6 @@ class Contact {
             </div>
             <div class="overlay-right-container-addContact">
                 <div class="close-button">${JoinContacts.closeButton()}</div>
-
                 <form class="addContact-form" onsubmit="return editContact(${i})">
                     <div class="btn-underlay">
                         <input id="editName" required type="text" class="frame-157" placeholder="Name" value="${this.name}">
@@ -233,7 +231,6 @@ class Contact {
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
         `
