@@ -9,12 +9,19 @@ class Task {
         this.Category = Category;
         this.subTasks = subTasks;
         this.todo = todo;
-        this.progress = progress; 
+        this.progress = progress;
         this.feedback = feedback;
         this.done = done;
     }
-
-
+    renderBgColorCategory() {
+        let categoryBg = document.getElementById('tinyTaskCategory');
+        if (this.Category === 'technicalTask') {
+            categoryBg.classList.add('color-technical');
+        } else if (this.Category === 'userStory') {
+            categoryBg.classList.add('color-userStory');
+        }
+        console.log(this.Category);
+    }
     taskCardNormal(x) {
         let formatedDate = () => {
             let date = this.date;
@@ -234,7 +241,7 @@ class Task {
         return /*html*/ `
             <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
 
-                <div class="tiny-task-category">${this.Category}</div>
+                <div id="tinyTaskCategory" class="tiny-task-category">${this.Category}</div>
 
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
@@ -255,7 +262,7 @@ class Task {
         let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
         if (progressContainer) {
             let gesamtFortschritt;
-            let variable1 = this.subTasks.length; 
+            let variable1 = this.subTasks.length;
             let variable2 = () => {
                 let countDone = 0;
                 for (let i = 0; i < this.subTasks.length; i++) {

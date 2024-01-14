@@ -124,7 +124,7 @@ async function createAccount() {
         policyCheck = false;
         setTimeout(() => {
             startPage2();
-        }, 1700);
+        }, 2200);
         saveAccounts();
         successCreateAccount();
     }
@@ -137,7 +137,7 @@ function successCreateAccount() {
     openSuccessCreateAccountOverlay();
     setTimeout(() => {
         closeSuccessCreateAccountOverlay();
-    }, 1500);
+    }, 2000);
 }
 
 

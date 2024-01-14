@@ -225,8 +225,8 @@ class Board extends Page {
             </div>
           `
     }
-    generateHTMLaddTaskWindowForm(x){
-        return /*html*/`
+    generateHTMLaddTaskWindowForm(x) {
+        return /*html*/ `
             <form id="formAddtask" class="add-task" onsubmit="createTaskPage(); return false">
                 ${this.generateHTMLaddTaskWindow(x)}
             </form>
