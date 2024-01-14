@@ -11,7 +11,10 @@ function openAddTask(x = 0) {
  * @param {number} x - The board parameter (default value is 0).
  */
 function createTaskFromBoard(x = 0) {
-    try { loadAccounts() } catch (e) {
+    try { 
+        loadAccounts();
+        loadTasks();
+    } catch (e) {
         console.log("Fehler", e)
     } finally {
         createTask(x);
@@ -40,6 +43,25 @@ function createTask(x) {
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
 }
+function createTaskPage() {
+    const title = document.getElementById("boardTaskTitle").value;
+    const worker = readAssignedUsers();
+    const desc = document.getElementById('boardTaskDescription').value;
+    const date = document.getElementById('date').value;
+    const prio = prioTemp;
+    const category = document.getElementById('taskCategoryInput').value;
+    const subTask = subtaskTemp;
+    let newTask = new Task(title, worker, desc, date, prio, category, subTask, true);
+    Join.tasks.push(newTask);
+    try {
+        saveTasks();
+    } catch (error) {
+        console.log("Task speichern nicht möglich : " + error);
+    }finally{
+        clearInputs(title, desc, worker, date, category, subTask);
+        successOverlayTask()
+        }
+}
 /**
  * Updates a task with new data, creates a new task, and performs additional operations.
  * 
@@ -57,7 +79,6 @@ function updateTask(newTask, x, title, worker, desc, date, prio, category, subTa
     createNewTask(newTask, x);
     updateTaskWorkers(newTask);
     Join.tasks.push(newTask)
-    clearInputs(title, desc, worker, date, category, subTask);
     try { saveTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
