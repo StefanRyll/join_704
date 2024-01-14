@@ -231,6 +231,7 @@ function closeSideAndHeadMenu(event) {
     }
 }
 
+
 window.onmousedown = function(e) {
     closeSideAndHeadMenu(e);
     closeContactMenu(e)

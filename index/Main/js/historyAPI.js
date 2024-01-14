@@ -2,28 +2,6 @@
  * Handles the window popstate event to navigate between pages based on the state.
  * @param {object} event - The popstate event object.
  */
-
-// window.onpopstate = function(event) {
-//     if (event.state) {
-//         const pageFunctions = {
-//             'summary': summeryPage,
-//             'Board': boardPage,
-//             'help': helpPage,
-//             'Privacy Policy': privacyPage,
-//             'Legal': legalPage,
-//             'login': startPage2,
-//             'signup': signUp,
-//             'addTask': addTaskPage,
-//             'Contacts': addTaskPage
-//         };
-
-//         const selectedPageFunction = pageFunctions[event.state.page];
-
-//         if (selectedPageFunction) {
-//             selectedPageFunction();
-//         }
-//     }
-// }
 window.onpopstate = function(event) {
     if (event.state) {
         if (event.state.page === 'summary') {
@@ -47,7 +25,6 @@ window.onpopstate = function(event) {
         }
     }
 }
-
 
 
 function setState(x) {
