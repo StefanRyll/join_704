@@ -133,18 +133,7 @@ function loadComponentsBoard() {
     setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
     checkDragArea();
-    // styleCssMediaQuery();
 }
-/**
- * Changes CSS properties for elements Boards.
- */
-// function styleCssMediaQuery() {
-//     let tinyCardShortNames = document.getElementById('tinyCardShortNames');
-//     let mediaQuery = window.matchMedia("(max-width: 1188px)");
-//     if (mediaQuery.matches) {
-//         tinyCardShortNames.style.marginLeft = '-10px';
-//     }
-// }
 /**
  * Initiates the contacts page by loading accounts and components for contacts.
  */
@@ -255,5 +244,16 @@ function changeCSSProperty() {
     document.getElementById('addtaskButton').style.position = 'absolute';
     document.getElementById('addtaskButton').style.left = '935px';
     document.getElementById('addtaskButton').style.bottom = '35px';
+    cssMediaQuery();
+}
+
+
+function cssMediaQuery() {
+    let name = document.getElementById('containerShortName');
+    let mediaQuery = window.matchMedia("(max-width: 1330px)");
+    if (mediaQuery.matches) {
+        name.style.position = 'relative';
+        console.log('check', mediaQuery.matches);
+    }
 }
 
