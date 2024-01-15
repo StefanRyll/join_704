@@ -15,7 +15,7 @@ class Task {
         this.setCategoryColor();
     }
 
-  
+
     setCategoryColor() {
         console.log('Setze Kategoriefarbe für:', this.Category);
 
