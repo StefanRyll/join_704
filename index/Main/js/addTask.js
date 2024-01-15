@@ -44,6 +44,18 @@ function createTask(x) {
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
     boardPage();
+    setCategoryColor();
+}
+
+function setCategoryColor() {
+    let taskCard = document.getElementById('tinyTaskCategory');
+    let category = document.getElementById('taskCategoryInput');
+   
+    if (category === 'technicalTask') {
+        taskCard.classList.add('color-technical');
+    } else if (category === 'userStory') {
+        taskCard.classList.add('color-userStory');
+    }
 }
 
 function createTaskPage() {
@@ -64,8 +76,10 @@ function createTaskPage() {
     } catch (error) {
         console.log("Task speichern nicht möglich : " + error);
     } finally {
+        
         clearInputs(title, desc, worker, date, category, subTask);
-        successOverlayTask()
+        successOverlayTask();
+        setCategoryColor();
     }
 }
 /**

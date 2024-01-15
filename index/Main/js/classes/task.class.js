@@ -13,15 +13,8 @@ class Task {
         this.feedback = feedback;
         this.done = done;
     }
-    renderBgColorCategory() {
-        let categoryBg = document.getElementById('tinyTaskCategory');
-        if (this.Category === 'technicalTask') {
-            categoryBg.classList.add('color-technical');
-        } else if (this.Category === 'userStory') {
-            categoryBg.classList.add('color-userStory');
-        }
-        console.log(this.Category);
-    }
+    
+   
     taskCardNormal(x) {
         let formatedDate = () => {
             let date = this.date;
