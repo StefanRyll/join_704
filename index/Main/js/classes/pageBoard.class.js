@@ -8,16 +8,15 @@ class Board extends Page {
                             Board
                         </h2>
                         <button onclick="openAddTask(0)" class="mobile-res-button-add-task">
-                            <!-- <img src="IMG/plus_add_task_mobile.svg" alt="add task"> -->
                             <img src="./IMG/Capa-1.png" alt="add task">
                         </button>
                     </div>
                 <div class="frame-123">
                     <div class="input-search">
-                        <input type="search" name="find task" id="searchTask" placeholder="Find Task" onkeyup="filterTaskNames()">
+                        <input type="search" name="find task" id="searchTask" placeholder="Find Task">
                         <img class="separator-find-task" src="/assets/img/Vector 3.png" alt="separator searchfield">
                         <div class="search-icon">
-                            <img src="/assets/img/search.png" alt="search Image">
+                            <img onclick="filterTaskNames()" src="/assets/img/search.png" alt="search Image">
                         </div>
                     </div>
                     <button onclick="openAddTask(0)" class="button-add-task display-none">

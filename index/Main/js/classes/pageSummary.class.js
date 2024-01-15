@@ -17,7 +17,7 @@ class Summary extends Page {
             let count = 0;
             for (let i = 0; i < Join.tasks.length; i++) {
                 const taskElement = Join.tasks[i];
-                if (!taskElement.done) {
+                if (taskElement.todo) {
                     count++;
                 }
             }
