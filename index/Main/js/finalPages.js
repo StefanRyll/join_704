@@ -232,32 +232,5 @@ function addTaskPage() {
     showSideAndHead()
     setActiveStyles('addTaskActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveAddTask', 'rgba(9, 25, 49, 1)');
-    // changeCSSProperty();
 }
-/**
- * Changes CSS properties for elements related to adding tasks.
- */
-// function changeCSSProperty() {
-//     let name = document.getElementById('containerShortName');
-//     let button = document.getElementById('addtaskButton');
-//     cssMediaQuery(name, button);
-// }
-
-
-// function cssMediaQuery(name, button) {
-//     let mediaQuery = window.matchMedia("(max-width: 1330px)");
-//     let minMediaQuery = window.matchMedia("(min-width: 1331px)");
-//     if (mediaQuery.matches) {
-//         name.style.position = 'relative';
-//         name.style.bottom = '0';
-        
-//     } else if (minMediaQuery.matches) {
-//         name.style.position = 'absolute';
-//         name.style.bottom = '200px';
-//         document.getElementById('styleAddTask').style.marginBottom = '180px';
-//         button.style.position = 'absolute';
-//         button.style.left = '935px';
-//         button.style.bottom = '35px';
-//     }
-// }
 

@@ -12,7 +12,6 @@ function guestLogin() {
     summeryPage();
     checkWelcomeRespon();
 }
-
 /**
  * Logs in a user by comparing the entered login credentials with existing user accounts.
  * Sets the signed account in the Join object, saves login information if the "Remember Me" option is enabled,
@@ -139,8 +138,11 @@ function successCreateAccount() {
         closeSuccessCreateAccountOverlay();
     }, 2000);
 }
-
-
+/**
+ * Validates password input during sign-up.
+ * @function
+ * @returns {boolean} - Returns true if passwords are valid, otherwise false.
+ */
 function passwordCheck() {
     let pw1 = document.getElementById('signUpInputPassword').value;
     let pw2 = document.getElementById('signUpInputPassword2').value;
@@ -154,27 +156,37 @@ function passwordCheck() {
         return false;
     }
 }
-
-
+/**
+ * Checks if privacy policy checkbox is checked.
+ * @function
+ * @returns {boolean} - Returns the value of the global policyCheck variable.
+ */
 function ppCheck() {
     // let checkbox = document.getElementById('ppCheck');
     let policy = policyCheck;
     return policy
 }
-// Onload Funktion
+/**
+ * Hides password status and displays password visibility icon on page load.
+ * @function
+ * @returns {void}
+ */
 function visibility() {
     document.getElementById('pass-status').classList.add('d-none');
     document.getElementById('pass-status-eye').classList.remove('d-none');
 }
-
-
+/**
+ * Toggles the visibility of the password input.
+ * @function
+ * @returns {void}
+ */
 function viewPassword() {
     let passwordInput = document.getElementById('loginPassword');
     let passStatus = document.getElementById('pass-status-eye');
 
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_on.png'; // Ändern Sie den Pfad auf das Bild für "Sichtbarkeit aus"
+        passStatus.src = './IMG/visibility_on.png'; 
     } else {
         passwordInput.type = 'password';
         passStatus.src = './IMG/visibility_off.png';
@@ -216,38 +228,55 @@ function showSideAndHead() {
     const SNH = document.getElementById('SideAndHead');
     SNH.innerHTML = Join.SideAndHead();
 }
-
+/**
+ * Opens the side and head menu after a delay.
+ * @param {Event} event - The click event.
+ * @returns {void}
+ */
 function openSideAndHeadMenu(event) {
     event.stopPropagation();
     setTimeout(() => {
         openHeadMenu();
     }, 100);
 }
-
+/**
+ * Closes the side and head menu if the click event is outside the logout window.
+ * @param {Event} event - The click event.
+ * @returns {void}
+ */
 function closeSideAndHeadMenu(event) {
     let logoutWindow = document.getElementById("logoutWindow");
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
         closeHeadMenu(logoutWindow);
     }
 }
-
-
+/**
+ * Event handler for mouse down on the window, closing side and head menus.
+ * @param {MouseEvent} e - The mouse down event.
+ * @returns {void}
+ */
 window.onmousedown = function(e) {
     closeSideAndHeadMenu(e);
     closeContactMenu(e)
 }
-
-
+/**
+ * Logs out the current user by resetting the signed account and navigating to the start page.
+ * @returns {void}
+ */
 function logout() {
     Join.signedAccount = "";
     startPage()
 }
-
-
+/**
+ * Toggles the "Remember Me" checkbox status.
+ * @returns {void}
+ */
 function checkboxActivate() {
     Join.rememberMe = !Join.rememberMe;
 }
-
+/**
+ * Toggles the "Remember Me" checkbox status.
+ */
 function policyCheckbox() {
     policyCheck = !policyCheck;
 }
@@ -291,8 +320,9 @@ function taskSaveChanges(x) {
     closeTaskCard();
     cleanUpAll();
 }
-
-
+/**
+ * Closes the task card, hides the task card slide, and navigates back to the board page.
+ */
 function closeTaskCard() {
     let slideAddTask = document.getElementById('taskCard');
     slideAddTask.classList.add('hide-big-task');
@@ -304,23 +334,28 @@ function closeTaskCard() {
         boardPage();
     }, 200);
 }
-
-
+/**
+ * Cleans up temporary data and resets variables related to accounts and tasks.
+ */
 function cleanUpAll() {
     cleanUpAccountsCheck();
     subtaskTemp = [];
     prioTemp = "";
 }
-
-
+/**
+ * Resets the 'checked' property for all accounts in the Join application.
+ */
 function cleanUpAccountsCheck() {
     for (let i = 0; i < Join.accounts.length; i++) {
         const User = Join.accounts[i];
         User.checked = false;
     }
 }
-
-
+/**
+ * Toggles the completion status of a subtask associated with a task in the Join application.
+ * @param {number} task - The index of the task.
+ * @param {number} subtask - The index of the subtask.
+ */
 function toggleCheckboxCard(task, subtask) {
     let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
     if (checkableSubtask.done) {
@@ -332,14 +367,16 @@ function toggleCheckboxCard(task, subtask) {
     document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');
     saveTasks()
 }
-
-
+/**
+ * Displays the contact selection interface in the Join application.
+ */
 function openSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.add('d-none');
     document.getElementById('closeContactsFromCard').classList.remove('d-none');
 }
-
-
+/**
+ * Closes the contact selection interface in the Join application.
+ */
 function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
