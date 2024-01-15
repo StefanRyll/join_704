@@ -2,18 +2,32 @@
     font-family: inter, sans-serif !important;
 }
 
+
+/* textarea:invalid::before {
+    border: 1px solid #FF001F;
+} */
+
+.color-user,
+.color-userStory {
+    background-color: #0038FF;
+}
+
+.color-technical {
+    background-color: #1FD7C1;
+}
+
 .frame-14:focus-within {
-    border: 1px solid var(--lightblue); 
+    border: 1px solid var(--lightblue);
 }
 
 .border-success {
-    border: 1px solid var(--lightblue); 
+    /* border-color: var(--lightblue); */
+    border: 1px solid var(--lightblue);
 }
 
 .input-error {
     border: 1px solid #FF001F;
 }
-
 
 :root {
     --white: rgba(255, 255, 255, 1);
@@ -375,13 +389,11 @@ footer {
 }
 
 @media (max-width: 520px) {
-
     .btn-dark-blue,
     .btn-white {
         font-size: 12px;
         padding: 2px;
     }
-
     .btn-create-contacts {
         width: 180px !important;
     }
