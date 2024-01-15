@@ -393,6 +393,12 @@ footer {
     }
 }
 
+@media (max-width: 414px) {
+     ::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
 @media (max-width: 380px) {
     .accountIssues {
         width: 78px;

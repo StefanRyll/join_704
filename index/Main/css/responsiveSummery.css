@@ -242,7 +242,4 @@
     .chip3x:hover {
         transition: scale 0s ease-in-out;
     }
-     ::-webkit-scrollbar {
-        width: 0;
-    }
 }

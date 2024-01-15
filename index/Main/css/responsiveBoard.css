@@ -71,7 +71,9 @@
         margin-left: 20px;
     }
     .res-content-board {
-        padding-left: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
     }
     .display-none {
         display: none;
@@ -164,5 +166,14 @@
     }
     .empty-tasks {
         width: 100%;
+    }
+}
+
+@media (max-width: 414px) {
+    .mobile-res-board {
+        padding-right: 12px;
+    }
+    .lanes {
+        width: 96%;
     }
 }
