@@ -42,6 +42,7 @@
                 }
                 .res-contacts-detail {
                     margin-left: 32px;
+                    width: 100%;
                 }
                 .res-contacts-headline {
                     display: flex;

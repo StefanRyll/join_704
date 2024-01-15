@@ -17,7 +17,6 @@
     .frame-136 {
         margin-left: 62px;
     }
-
     .frame-192 {
         margin-left: 62px;
     }
@@ -27,12 +26,10 @@
     .res-content-board {
         padding-top: 90px;
     }
-
     .frame-192 {
         display: inline-table;
         padding-top: 0;
     }
-
     .frame-123 {
         justify-content: start;
     }
@@ -44,7 +41,6 @@
         align-items: start;
         gap: 18px;
     }
-
     .button-add-task {
         margin-left: 0;
     }
@@ -55,10 +51,8 @@
         padding-top: 0;
         padding-left: 0;
     }
-
     .frame-192 h2 {
         text-align: start;
-
     }
 }
 
@@ -72,45 +66,36 @@
     .taskCard {
         max-width: 100%;
     }
-
     .frame-192 {
         padding-right: 0;
         margin-left: 20px;
     }
-
     .res-content-board {
         padding-left: 0;
     }
-
     .display-none {
         display: none;
     }
-
     .res-button-add-task {
         background-color: white;
         border-style: none;
         margin-right: 20px;
     }
-
     .res-button-add-task:hover {
         cursor: pointer;
     }
-
     .frame-123 {
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
     }
-
     .frame-136 {
         margin-left: 20px;
     }
-
     .lanes {
         width: 100%;
     }
-
     .board-task-input input {
         font-size: 16px;
     }
@@ -127,52 +112,50 @@
         display: flex;
         justify-content: space-between;
     }
-
     .tinyTaskCard {
         width: 252px;
     }
-
     .frame-192 {
         margin-bottom: 2em;
     }
-
     .frame-192 h2 {
         margin-block-start: .2em;
         margin-block-end: .2em;
         font-size: 50px;
     }
-
     .res-button-add-task {
         display: none;
     }
-
+    .mobile-res-button-add-task-div {
+        display: flex;
+        align-items: center;
+    }
     .mobile-res-button-add-task {
-        background-color: white;
+        cursor: pointer;
+        /* background-color: white; */
         border-style: none;
     }
-
+    .mobile-res-button-add-task:hover {
+        /* background-color: var(--lightblue); */
+        filter: brightness(3.5);
+    }
     .frame-136 {
         justify-content: space-between;
     }
-
     .board-actionbar {
         width: 100%;
     }
-
     .frame-123 input {
         padding-right: 0;
         width: 100%;
     }
-
     .canban-style {
         flex-direction: row;
         overflow-x: auto;
         width: 100%;
         gap: 10px;
     }
-
     .empty-tasks {
         width: 100%;
     }
 }
-
