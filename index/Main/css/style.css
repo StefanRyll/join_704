@@ -392,3 +392,9 @@ footer {
         width: 180px !important;
     }
 }
+
+@media (max-width: 380px) {
+    .accountIssues {
+        width: 78px;
+    }
+}
