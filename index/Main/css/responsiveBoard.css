@@ -83,6 +83,10 @@
         width: 40px;
         height: 40px;
     }
+    .res-button-add-task:hover {
+        background-color: var(--dark-blue);
+        box-shadow: none;
+    }
     .res-button-add-task:active {
         background-color: var(--lightblue);
     }
@@ -134,6 +138,10 @@
         border-style: none;
         width: 40px;
         height: 40px;
+    }
+    .mobile-res-button-add-task:hover {
+        background-color: var(--dark-blue);
+        box-shadow: none;
     }
     .mobile-res-button-add-task:active {
         background-color: var(--lightblue);
