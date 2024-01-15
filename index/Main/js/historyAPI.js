@@ -28,10 +28,10 @@ window.onpopstate = function(event) {
 
 
 function setState(x) {
-    // let state = {page: `${x}`};
+    let state = {page: `${x}`};
     let title = `${x}`;
-    // let url = `${x.toLowerCase()}.html`;
-    // history.pushState(state, title, url)
+    let url = `${x.toLowerCase()}.html`;
+    history.pushState(state, title, url)
     document.title = "Join - " + capitalizeFirstLetter(title)
     return x;
 }
