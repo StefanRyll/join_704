@@ -18,7 +18,6 @@ class Task {
         let html ="";
             if (this.Category === 'Technical Task') {
                 html = /*html*/`<div class="tiny-task-category color-technical">${this.Category}</div>`
-                // taskCard.classList.add('color-technical');
             } else{
                 html = /*html*/`<div class="tiny-task-category color-userStory">${this.Category}</div>`
             }
