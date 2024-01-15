@@ -39,24 +39,56 @@ function createTask(x) {
     const date = document.getElementById('date').value;
     const prio = prioTemp;
     const category = document.getElementById('taskCategoryInput').value;
-
+    // setCategoryColor(category);
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
     boardPage();
-    setCategoryColor();
+    
 }
 
-function setCategoryColor() {
-    let taskCard = document.getElementById('tinyTaskCategory');
-    let category = document.getElementById('taskCategoryInput');
-   
-    if (category === 'technicalTask') {
-        taskCard.classList.add('color-technical');
-    } else if (category === 'userStory') {
-        taskCard.classList.add('color-userStory');
-    }
-}
+// function setCategoryColor(category) {
+//     let test = document.getElementById('test-color');
+//     if (category == 'User Story') {
+//         test.classList.add('color-userStory');
+//     } else {
+//         test.classList.add('color-technical');
+//     }
+// }
+
+// function setCategoryColor(category) {
+//     let taskCards = document.querySelectorAll('.tiny-task-category');
+
+//     taskCards.forEach(taskCard => {
+//         // taskCard.classList.remove('color-technical', 'color-userStory');
+
+//         if (category === "Technical Task") {
+//             console.log(category);
+//             taskCard.classList.add('color-technical');
+//         } else if (category === "User Story") {
+//             console.log(category);
+//             taskCard.classList.add('color-userStory');
+//         }
+//     });
+// }
+
+// function setCategoryColor(category) {
+//     let taskCards = document.querySelectorAll('.tiny-task-category');
+//     let technicalTask = document.getElementById('technicalTask').textContent;
+//     let userStory = document.getElementById('userStory').textContent;
+//     taskCards.forEach(taskCard => {
+//         taskCard.classList.remove('color-technical', 'color-userStory');
+//         if (category === technicalTask) {
+//             console.log(category);
+//             taskCard.classList.add('color-technical');
+//         } else if (category === userStory) {
+//             console.log(category);
+//             taskCard.classList.add('color-userStory');
+//         } else {
+//             console.error("Technical Task or User Story element not found");
+//         }
+//     });
+// }
 
 function createTaskPage() {
     const title = document.getElementById("boardTaskTitle").value;
@@ -65,6 +97,7 @@ function createTaskPage() {
     const date = document.getElementById('date').value;
     const prio = prioTemp;
     const category = document.getElementById('taskCategoryInput').value;
+    // setCategoryColor(category);
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask, true);
     Join.tasks.push(newTask);
@@ -79,7 +112,6 @@ function createTaskPage() {
         
         clearInputs(title, desc, worker, date, category, subTask);
         successOverlayTask();
-        setCategoryColor();
     }
 }
 /**

@@ -345,15 +345,6 @@ function closeSelectContactsFromCard() {
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
 
-function setCategoryColor(category) {
-    let tinyTaskCategory = document.getElementById('tinyTaskCategory');
-    tinyTaskCategory.classList.remove('color-userStory', 'color-technical');
 
-    if (category === 'userStory') {
-        tinyTaskCategory.classList.add('color-userStory');
-    } else if (category === 'technicalTask') {
-        tinyTaskCategory.classList.add('color-technical');
-    }
-}
 
 

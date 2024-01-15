@@ -2,12 +2,6 @@
     font-family: inter, sans-serif !important;
 }
 
-
-/* textarea:invalid::before {
-    border: 1px solid #FF001F;
-} */
-
-.color-user,
 .color-userStory {
     background-color: #0038FF;
 }

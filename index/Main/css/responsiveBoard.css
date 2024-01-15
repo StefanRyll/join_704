@@ -128,6 +128,10 @@
         justify-content: space-between;
     }
 
+    .tinyTaskCard {
+        width: 252px;
+    }
+
     .frame-192 {
         margin-bottom: 2em;
     }
