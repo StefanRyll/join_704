@@ -36,7 +36,7 @@ function startPage() {
  * @param {HTMLElement} body - The HTML body element.
  */
 function startAnimation() {
-    setState("login")
+    setState("LogIn")
     body.innerHTML = JoinLogin.startAnimationOverlay();
     body.innerHTML = JoinLogin.startAnimation();
     body.innerHTML += JoinLogin.logInContent();
@@ -69,7 +69,7 @@ function startPage2() {
  * @param {HTMLElement} body - The HTML body element.
  */
 function signUp() {
-    setState("signup");
+    setState("SignUp");
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
 }
@@ -92,7 +92,7 @@ function summeryPage() {
  * @param {function} setActiveStyles - Function to set active styles for specified elements.
  */
 function loadComponentsSummery() {
-    setState("summary");
+    setState("Summary");
     cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = JoinLogin.pageLayoutMain();
@@ -173,7 +173,7 @@ function loadComponentsContacts() {
  * @param {function} showSideAndHead - Function to display side and head components.
  */
 function helpPage() {
-    setState("help");
+    setState("Help");
     cleanUpAll();
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain();
@@ -205,7 +205,7 @@ function privacyPage() {
  * @param {function} setActiveStyles - Function to set active styles for specified elements.
  */
 function legalPage() {
-    setState("Legal")
+    setState("LegalNotice")
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain();
     let content = document.getElementById('content');
@@ -223,7 +223,7 @@ function legalPage() {
  * @param {function} changeCSSProperty - Function to change CSS properties.
  */
 function addTaskPage() {
-    setState("addTask");
+    setState("AddTask");
     cleanUpAll()
     body.innerHTML = "";
     body.innerHTML = Join.pageLayoutMain()
@@ -233,4 +233,3 @@ function addTaskPage() {
     setActiveStyles('addTaskActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveAddTask', 'rgba(9, 25, 49, 1)');
 }
-

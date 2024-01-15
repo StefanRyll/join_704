@@ -77,12 +77,14 @@
         display: none;
     }
     .res-button-add-task {
-        background-color: white;
+        cursor: pointer;
         border-style: none;
         margin-right: 20px;
+        width: 40px;
+        height: 40px;
     }
-    .res-button-add-task:hover {
-        cursor: pointer;
+    .res-button-add-task:active {
+        background-color: var(--lightblue);
     }
     .frame-123 {
         display: flex;
@@ -111,6 +113,7 @@
     .mobile-res-board {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
     .tinyTaskCard {
         width: 252px;
@@ -126,18 +129,14 @@
     .res-button-add-task {
         display: none;
     }
-    .mobile-res-button-add-task-div {
-        display: flex;
-        align-items: center;
-    }
     .mobile-res-button-add-task {
         cursor: pointer;
-        /* background-color: white; */
         border-style: none;
+        width: 40px;
+        height: 40px;
     }
-    .mobile-res-button-add-task:hover {
-        /* background-color: var(--lightblue); */
-        filter: brightness(3.5);
+    .mobile-res-button-add-task:active {
+        background-color: var(--lightblue);
     }
     .frame-136 {
         justify-content: space-between;

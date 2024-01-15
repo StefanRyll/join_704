@@ -33,7 +33,7 @@ function setState(newState) {
 }
 
 function setState(x) {
-    let state = {page: `${x}`};
+    let state = { page: `${x}` };
     let title = `${x}`;
     let url = `${x.toLowerCase()}.html`;
     history.pushState(state, title, url)
