@@ -12,23 +12,19 @@ class Task {
         this.progress = progress;
         this.feedback = feedback;
         this.done = done;
-        this.setCategoryColor();
     }
 
-  
-    setCategoryColor() {
-        console.log('Setze Kategoriefarbe für:', this.Category);
-
-        let taskCards = document.querySelectorAll('.color');
-
-        taskCards.forEach(taskCard => {
+    setCategoryColor(){
+        let html ="";
             if (this.Category === 'Technical Task') {
-                taskCard.classList.add('color-technical');
-            } else if (this.Category === 'User Story') {
-                taskCard.classList.add('color-technical');
+                html = /*html*/`<div class="tiny-task-category color-technical">${this.Category}</div>`
+                // taskCard.classList.add('color-technical');
+            } else{
+                html = /*html*/`<div class="tiny-task-category color-userStory">${this.Category}</div>`
             }
-        });
-    }
+
+        return html;
+    };
 
 
     taskCardNormal(x) {
@@ -105,7 +101,7 @@ class Task {
         <div class="bg-task">
             <div id="taskCard" class="taskCard">
                 <div class="taskCardHeader">
-                    <div class="tiny-task-category color">${this.Category}</div>
+            	    ${this.setCategoryColor()}
                     <div onclick="closeTaskCard()">
                         <svg class="style-closebutton" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -196,6 +192,7 @@ class Task {
     }
     tinyTaskCard(x = 0) {
 
+    
         let contactTags = () => {
             let rendertContacts = "";
 
@@ -248,8 +245,7 @@ class Task {
         return /*html*/ `
             <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
 
-                <div class="tiny-task-category color">${this.Category}</div>
-
+            	${this.setCategoryColor()}
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
