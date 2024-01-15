@@ -25,7 +25,33 @@ window.onpopstate = function(event) {
         }
     }
 }
+function stopReload() {
+    console.log("StopReload");
 
+    // Event-Handler für onbeforeunload-Ereignis
+    window.onbeforeunload = function (event) {
+        // Verhindere das Standard-Reload-Verhalten
+        event.preventDefault();
+
+        // Gib eine Meldung zurück (Browser-abhängig)
+        event.returnValue = '';
+
+        // Nach einer Verzögerung von 3 Sekunden den Zustand ändern
+        setTimeout(function () {
+            console.log("Neuer Reload");
+
+            // Annahme: setState ist eine Funktion, die definiert wurde
+            // Wenn setState eine asynchrone Funktion ist, kannst du await verwenden
+            setState("index");
+        }, 3000);
+    };
+}
+
+// Beispiel, wie setState aussehen könnte
+function setState(newState) {
+    console.log("Setze den Zustand auf:", newState);
+    // Hier kannst du den Zustand ändern oder weitere Aktionen ausführen
+}
 
 function setState(x) {
     let state = {page: `${x}`};
