@@ -241,14 +241,14 @@ class Board extends Page {
                         <h3>Add Task</h3>
                     </div>
                     <div class="board-task-middle">
-                        <div>
+                        <div class="left">
                             ${this.generateHTMLLeftSide(x)}
-                            <div class="field-required-text field-required-text-window responsive">
+                            <div class="field-required-text field-required-text-window responsive maxWidth">
                                 <sub>*</sub><span>This field is required</span>
                             </div>
                         </div>
                         ${this.generateHTMLSeperator()}
-                        <div>
+                        <div class="right">
                             ${this.generateHTMLRightSide(x)}
                             <div class="responsive">
                                 ${this.generateHTMLAddTaskButtons(x)}

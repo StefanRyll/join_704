@@ -39,7 +39,6 @@ function createTask(x) {
     const date = document.getElementById('date').value;
     const prio = prioTemp;
     const category = document.getElementById('taskCategoryInput').value;
-    // setCategoryColor(category);
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
@@ -47,48 +46,6 @@ function createTask(x) {
     
 }
 
-// function setCategoryColor(category) {
-//     let test = document.getElementById('test-color');
-//     if (category == 'User Story') {
-//         test.classList.add('color-userStory');
-//     } else {
-//         test.classList.add('color-technical');
-//     }
-// }
-
-// function setCategoryColor(category) {
-//     let taskCards = document.querySelectorAll('.tiny-task-category');
-
-//     taskCards.forEach(taskCard => {
-//         // taskCard.classList.remove('color-technical', 'color-userStory');
-
-//         if (category === "Technical Task") {
-//             console.log(category);
-//             taskCard.classList.add('color-technical');
-//         } else if (category === "User Story") {
-//             console.log(category);
-//             taskCard.classList.add('color-userStory');
-//         }
-//     });
-// }
-
-// function setCategoryColor(category) {
-//     let taskCards = document.querySelectorAll('.tiny-task-category');
-//     let technicalTask = document.getElementById('technicalTask').textContent;
-//     let userStory = document.getElementById('userStory').textContent;
-//     taskCards.forEach(taskCard => {
-//         taskCard.classList.remove('color-technical', 'color-userStory');
-//         if (category === technicalTask) {
-//             console.log(category);
-//             taskCard.classList.add('color-technical');
-//         } else if (category === userStory) {
-//             console.log(category);
-//             taskCard.classList.add('color-userStory');
-//         } else {
-//             console.error("Technical Task or User Story element not found");
-//         }
-//     });
-// }
 
 function createTaskPage() {
     const title = document.getElementById("boardTaskTitle").value;
@@ -97,7 +54,6 @@ function createTaskPage() {
     const date = document.getElementById('date').value;
     const prio = prioTemp;
     const category = document.getElementById('taskCategoryInput').value;
-    // setCategoryColor(category);
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask, true);
     Join.tasks.push(newTask);
@@ -479,3 +435,27 @@ function openTask(x) {
     addTask.classList.remove("d-none")
     addTask.innerHTML = task.taskCardNormal(x);
 }
+
+// function changeCSSProperty() {
+//     let name = document.getElementById('containerShortName');
+//     let button = document.getElementById('addtaskButton');
+//     cssMediaQuery(name, button);
+// }
+
+
+// function cssMediaQuery(name, button) {
+//     let mediaQuery = window.matchMedia("(max-width: 1330px)");
+//     let minMediaQuery = window.matchMedia("(min-width: 1331px)");
+//     if (mediaQuery.matches) {
+//         name.style.position = 'relative';
+//         name.style.bottom = '0';
+        
+//     } else if (minMediaQuery.matches) {
+//         name.style.position = 'absolute';
+//         name.style.bottom = '200px';
+//         document.getElementById('styleAddTask').style.marginBottom = '180px';
+//         button.style.position = 'absolute';
+//         button.style.left = '935px';
+//         button.style.bottom = '35px';
+//     }
+// }

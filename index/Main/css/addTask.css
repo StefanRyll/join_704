@@ -64,3 +64,20 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 140px;
+}
+
+.maxWidth {
+    position: absolute;
+    bottom: 20px;
+}

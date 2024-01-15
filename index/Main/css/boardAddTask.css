@@ -272,11 +272,15 @@
     color: #D1D1D1;
 }
 
-.field-required-text {
+.field-required-addtask {
     margin-left: 74px;
     display: flex;
     gap: 5px;
     align-items: baseline;
+}
+
+.field-required-text {
+    margin-left: 74px;
 }
 
 .field-required-text sub {
