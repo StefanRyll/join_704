@@ -8,29 +8,29 @@ window.onpopstate = function(event) {
             summeryPage();
         } else if (event.state.page === 'Board') {
             boardPage()
-        } else if (event.state.page === 'help') {
+        } else if (event.state.page === 'Help') {
             helpPage()
         } else if (event.state.page === 'Privacy Policy') {
             privacyPage()
-        } else if (event.state.page === 'Legal') {
+        } else if (event.state.page === 'LegalNotice') {
             legalPage()
-        } else if (event.state.page === 'login') {
+        } else if (event.state.page === 'logIn') {
             startPage2()
-        } else if (event.state.page === 'signup') {
+        } else if (event.state.page === 'SignUp') {
             signUp()
-        } else if (event.state.page === 'addTask') {
+        } else if (event.state.page === 'AddTask') {
             addTaskPage()
         } else if (event.state.page === 'Contacts') {
-            addTaskPage()
+            contactsPage()
         }
     }
 }
 
 // Beispiel, wie setState aussehen könnte
-function setState(newState) {
-    console.log("Setze den Zustand auf:", newState);
-    // Hier kannst du den Zustand ändern oder weitere Aktionen ausführen
-}
+// function setState(newState) {
+//     console.log("Setze den Zustand auf:", newState);
+//     // Hier kannst du den Zustand ändern oder weitere Aktionen ausführen
+// }
 
 function setState(x) {
     let state = { page: `${x}` };

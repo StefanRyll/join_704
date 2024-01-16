@@ -233,3 +233,7 @@ function loadSignedUser() {
 function deleteSignedUser(){
     localStorage.removeItem('signedAccount')
 }
+window.onbeforeunload = async ()=>{
+    await saveAccounts()
+    await saveTasks()
+}

@@ -6,6 +6,7 @@
  * @name guestLogin
  * @returns {void}
  */
+
 function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;

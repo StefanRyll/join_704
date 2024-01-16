@@ -28,10 +28,8 @@ async function startPage() {
             let responseLocal = loadSignedUser();
             Join.signedAccount = responseLocal;
             let myState = localStorage.getItem('state')
-            console.log("Join.signedAccount",Join.signedAccount);
 
             if (Join.signedAccount !== null){
-                console.log("myState",myState);
                 if (myState === "Summary"){
                     summeryPage();
                 }
