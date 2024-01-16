@@ -38,9 +38,13 @@ function setState(x) {
     let url = `${x.toLowerCase()}.html`;
     history.pushState(state, title, url)
     document.title = "Join - " + capitalizeFirstLetter(title)
+    saveState()
     return x;
 }
-
+function saveState(){
+    let actualState = history.state['page']
+    localStorage.setItem('state', actualState)
+}
 
 function capitalizeFirstLetter(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);

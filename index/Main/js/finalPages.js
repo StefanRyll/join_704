@@ -21,9 +21,43 @@ function startPage() {
     try {
         loadAccounts()
         loadTasks()
+        
     } catch (e) {
         console.log("Fehler", e)
     } finally {
+            let responseLocal = localStorage.getItem('signedAccount');
+            console.log(responseLocal);
+            if (responseLocal){
+                Join.signedAccount = responseLocal;
+                let myState = localStorage.getItem('state')
+                switch (myState) {
+                    case 'Summery':
+                        console.log("Summery");
+                        loadComponentsSummery()
+                        break;
+                    case 'LogIn':
+                        console.log("LogIn");
+                        break;
+                    case 'Board':
+                        console.log("Board");
+                        break;
+                    case 'AddTask':
+                        console.log("AddTask");
+                        break;
+                    case 'Contacts':
+                        console.log("Contacts");
+                        break;
+                    case 'Privacy Policy':
+                        console.log("Privacy Policy");
+                        break;
+                    case 'LegalNotice':
+                        console.log("LegalNotice");
+                        break;
+                    case 'Help':
+                        console.log("Help");
+                        break;
+            }
+        }
         startAnimation();
         try {
             retrievesAStoredJSON();
