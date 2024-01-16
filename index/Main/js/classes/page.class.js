@@ -89,7 +89,7 @@ class Page {
     }
     logoutWindow() {
         return /*html*/ `
-            <div id="logoutWindow" class="popupAccount">
+            <div id="logoutWindow" class="popupAccount d-none">
                 <div class="popupAccountBtn" onclick="legalPage()"><p>Legal Notice</p></div>
                 <div class="popupAccountBtn" onclick="privacyPage()"><p>Privacy Policy</p></div>
                 <div class="popupAccountBtn" onclick="logout()"><p>Log out</p></div>

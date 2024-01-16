@@ -50,8 +50,8 @@ function closePopUpTaskCard() {
     document.getElementById('addTask').classList.remove('showPopUpTaskCard');
 }
 
-function openHeadMenu() {
-    document.getElementById('logoutWindow').classList.add("show-popupAccount");
+function openHeadMenu(logOutWindow) {
+    logOutWindow.classList.add("show-popupAccount");
 }
 
 function closeHeadMenu(logoutWindow) {

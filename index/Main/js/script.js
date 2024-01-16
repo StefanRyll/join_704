@@ -189,7 +189,7 @@ function viewPassword() {
 
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
-        passStatus.src = './IMG/visibility_on.png'; 
+        passStatus.src = './IMG/visibility_on.png';
     } else {
         passwordInput.type = 'password';
         passStatus.src = './IMG/visibility_off.png';
@@ -237,9 +237,13 @@ function showSideAndHead() {
  * @returns {void}
  */
 function openSideAndHeadMenu(event) {
+    let logOutWindow = document.getElementById('logoutWindow');
     event.stopPropagation();
     setTimeout(() => {
-        openHeadMenu();
+        logOutWindow.classList.remove("d-none");
+        setInterval(() => {
+            openHeadMenu(logOutWindow);
+        }, 200);
     }, 100);
 }
 /**
@@ -252,6 +256,9 @@ function closeSideAndHeadMenu(event) {
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
         closeHeadMenu(logoutWindow);
     }
+    setTimeout(() => {
+        logoutWindow.classList.add("d-none");
+    }, 100);
 }
 /**
  * Event handler for mouse down on the window, closing side and head menus.
@@ -259,13 +266,13 @@ function closeSideAndHeadMenu(event) {
  * @returns {void}
  */
 window.onmousedown = function(e) {
-    closeSideAndHeadMenu(e);
-    closeContactMenu(e)
-}
-/**
- * Logs out the current user by resetting the signed account and navigating to the start page.
- * @returns {void}
- */
+        closeSideAndHeadMenu(e);
+        closeContactMenu(e)
+    }
+    /**
+     * Logs out the current user by resetting the signed account and navigating to the start page.
+     * @returns {void}
+     */
 function logout() {
     Join.signedAccount = "";
     deleteSignedUser()
@@ -385,7 +392,3 @@ function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
-
-
-
-
