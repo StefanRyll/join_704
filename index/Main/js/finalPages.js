@@ -17,14 +17,9 @@ function setActiveStyles(id, backgroundColor, textColor) {
 /**
  * Initiates the page by loading accounts and tasks, starting animation, and attempting to retrieve stored JSON data.
  */
-async function startPage() {
-    try {
-        await loadAccounts();
-        await loadTasks();
-        
-    } catch (e) {
-        console.log("Fehler", e)
-    } finally {
+function startPage() {
+    try { loadAccounts();} catch (e) { console.log("Fehler", e)}
+    try { loadTasks();} catch (e) { console.log("Fehler", e)}
             let responseLocal = loadSignedUser();
             Join.signedAccount = responseLocal;
             let myState = localStorage.getItem('state')
@@ -68,7 +63,7 @@ async function startPage() {
             retrievesAStoredJSON();
         } catch (e) { "Nothing to remember :" + e }
     }
-}
+
 /**
  * Initiates the animation for starting the login process.
  * @param {string} setState - The state to set for the animation.

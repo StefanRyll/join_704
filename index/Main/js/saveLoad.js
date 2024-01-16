@@ -95,6 +95,7 @@ async function loadAccounts() {
     let parsedResponse = JSON.parse(responseAsJson['data']['value'])
     let loadedAccounts = decodeAccounts(parsedResponse)
     Join.accounts = loadedAccounts.sort((a, b) => a.name.localeCompare(b.name));;
+    console.log("Accounts Geladen");
 }
 /**
  * Asynchronously loads tasks from local storage.
@@ -234,6 +235,8 @@ function deleteSignedUser(){
     localStorage.removeItem('signedAccount')
 }
 window.onbeforeunload = async ()=>{
-    await saveAccounts()
-    await saveTasks()
+    if (Join.signedAccount){
+        await saveAccounts()
+        await saveTasks()
+    }
 }
