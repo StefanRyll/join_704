@@ -207,3 +207,17 @@ function decodeAccounts(responseAsJson) {
     }
     return decAccounts
 }
+function saveSignedUser(){
+    let payloadSignedUser = JSON.stringify(Join.signedAccount);
+    localStorage.setItem("signedAccount", payloadSignedUser);
+    console.log(payloadSignedUser);
+}
+function laodSignedUser() {
+    let SignedUserAsJSON = JSON.parse(localStorage.getItem("signedAccount"))
+    let check = SignedUserAsJSON['checked']
+    console.log(check);
+    
+}
+function deleteSignedUser(){
+    localStorage.removeItem('signedAccount')
+}

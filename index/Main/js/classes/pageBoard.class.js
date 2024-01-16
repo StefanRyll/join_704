@@ -14,9 +14,9 @@ class Board extends Page {
                 <div class="frame-123">
                     <div class="input-search">
                         <input type="search" name="find task" id="searchTask" placeholder="Find Task">
-                        <img class="separator-find-task" src="/assets/img/Vector 3.png" alt="separator searchfield">
+                        <img class="separator-find-task" src="./IMG/assets/Vector 3.png" alt="separator searchfield">
                         <div class="search-icon">
-                            <img onclick="filterTaskNames()" src="/assets/img/search.png" alt="search Image">
+                            <img onclick="filterTaskNames()" src="./IMG/assets/search.png" alt="search Image">
                         </div>
                     </div>
                     <button onclick="openAddTask(0)" class="button-add-task display-none">
@@ -303,7 +303,7 @@ class Board extends Page {
                 <div id="closeContacts" class="open-assign-container  d-none">
                     <div id="showContactsContainer" class="assign-container assign-container-style bg-color-white">
                         <input id="searchContacts" type="search" onkeyup="filterContactNames(${x})">
-                        <img onclick="toggleContactsAssign()" src="/assets/img/arrow_dropdown.png" alt="">
+                        <img onclick="toggleContactsAssign()" src="./IMG/assets/arrow_dropdown.png" alt="">
                     </div>
                     <div id="assignedToContacts" class="checkbox-container">
                         ${this.generateHTMLCheckbox()} 
@@ -319,7 +319,7 @@ class Board extends Page {
         return /*html*/ `
                     <div id="selectContacts" class="assign-container">
                       <input onclick="toggleContactsAssign()" type="button" value="Select contacts to assign" id="">
-                      <img onclick="toggleContactsAssign()" src="/assets/img/arrow_drop_downaa.png" alt="">
+                      <img onclick="toggleContactsAssign()" src="./IMG/assets/arrow_drop_downaa.png" alt="">
                     </div>
         `
     }
@@ -488,7 +488,7 @@ class Board extends Page {
         return /*html*/ `
             <div id="hiddenSelectCategory" class="assign-container bg-color-white">
               <input id="taskCategoryInput" onclick="toggleCategory()" type="text" value="Select task category" >
-              <img onclick="toggleCategory()" src="/assets/img/arrow_drop_downaa.png" alt="">
+              <img onclick="toggleCategory()" src="./IMG/assets/arrow_drop_downaa.png" alt="">
             </div>
         `
     }
@@ -504,7 +504,7 @@ class Board extends Page {
         return /*html*/ `
               <div class="assign-container bg-color-white">
                 <input onclick="toggleCategory()" type="button" value="Select task category">
-                <img onclick="toggleCategory()" src="/assets/img/arrow_dropdown.png" alt="">
+                <img onclick="toggleCategory()" src="./IMG/assets/arrow_dropdown.png" alt="">
               </div>
         `
     }
@@ -526,15 +526,15 @@ class Board extends Page {
             <p>Subtasks</p>
             <div id="hiddenSubtask" class="assign-container bg-color-white">
                 <input onclick="openSubtask()" type="text" placeholder="Add new subtask">
-                <img onclick="openSubtask()" src="/assets/img/Subtasks icons11.png" alt="">
+                <img onclick="openSubtask()" src="./IMG/assets/Subtasks icons11.png" alt="">
             </div>
             <div>
                 <div id="showSubtask" class="assign-container open-subtask d-none bg-color-white">
                     <input id="inputSubtask" type="text" placeholder="Add new subtask">
                     <div class="subtask-style-position">
-                        <img onclick="closeSubtask()" src="/assets/img/subtask-close.png" alt="">
-                        <img class="subtask-line" src="/assets/img/subtask-line.png" alt="">
-                        <img onclick="createSubtask()" src="/assets/img/subtask-accept.png" alt="">
+                        <img onclick="closeSubtask()" src="./IMG/assets/subtask-close.png" alt="">
+                        <img class="subtask-line" src="./IMG/assets/subtask-line.png" alt="">
+                        <img onclick="createSubtask()" src="./IMG/assets/subtask-accept.png" alt="">
                     </div>
                 </div>
                 <div id="createNewSubtask" class="create-subtask" onload="renderSubtasks()"></div>
@@ -564,9 +564,9 @@ class Board extends Page {
                 <ul>
                     <li id="todoSubtask${m}">${x}</li>
                     <div class="subtask-img">
-                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
-                        <img src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask_pencil.png" alt="" onclick="changeSubtask(${m})">
+                        <img src="./IMG/assets/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
+                        <img src="./IMG/assets/subtask_seperator.png" alt="">
+                        <img src="./IMG/assets/subtask_pencil.png" alt="" onclick="changeSubtask(${m})">
                     </div>
                 </ul>
             </div>
@@ -574,9 +574,9 @@ class Board extends Page {
                 <form class="fix-container">
                         <input id="editFixSubtask" type="text" placeholder="" value="${x}">
                     <div class="fix-subtask-icons">
-                        <img src="/assets/img/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
-                        <img class="subtask-line" src="/assets/img/subtask_seperator.png" alt="">
-                        <img src="/assets/img/subtask-accept.png" alt="" onclick="fixSubtasks(${m})">
+                        <img src="./IMG/assets/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
+                        <img class="subtask-line" src="./IMG/assets/subtask_seperator.png" alt="">
+                        <img src="./IMG/assets/subtask-accept.png" alt="" onclick="fixSubtasks(${m})">
                     </div>
                 </form>
             </div>

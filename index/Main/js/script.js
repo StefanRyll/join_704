@@ -9,6 +9,7 @@
 function guestLogin() {
     const guest = new Account("Guest", "email@join.de", "");
     Join.signedAccount = guest;
+    saveSignedUser()
     summeryPage();
     checkWelcomeRespon();
 }
@@ -42,6 +43,7 @@ async function logInUser() {
         if (pw === myAccount.password) {
             Join.signedAccount = myAccount;
             remember();
+            saveSignedUser()
             summeryPage();
             checkWelcomeRespon();
 
@@ -265,6 +267,7 @@ window.onmousedown = function(e) {
  */
 function logout() {
     Join.signedAccount = "";
+    deleteSignedUser()
     startPage()
 }
 /**
