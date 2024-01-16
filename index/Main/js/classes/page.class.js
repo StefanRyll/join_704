@@ -27,6 +27,7 @@ class Page {
         return /*html*/ `
             <div id="SideAndHead"></div>
             <div id="content" class="content"></div>
+            ${this.showFooter()}
         `
     }
     SideAndHead() {
@@ -81,6 +82,23 @@ class Page {
                     ${accountArea()}
                 </div>
             </header>
+            
+            ${this.logoutWindow()}
+
+        `
+    }
+    logoutWindow() {
+        return /*html*/ `
+            <div id="logoutWindow" class="popupAccount">
+                <div class="popupAccountBtn" onclick="legalPage()"><p>Legal Notice</p></div>
+                <div class="popupAccountBtn" onclick="privacyPage()"><p>Privacy Policy</p></div>
+                <div class="popupAccountBtn" onclick="logout()"><p>Log out</p></div>
+            </div>
+
+        `
+    }
+    showFooter() {
+        return /*html*/ `
             <footer class="respon-footer">
                 <div id="responActiveSummery" class="respon-footer-buttons" onclick="summeryPage()">
                     <img src="./IMG/Summary.png">
@@ -99,17 +117,6 @@ class Page {
                     <p class="mg-none">Contacts</p>
                 </div>
             </footer>
-            ${this.logoutWindow()}
-        `
-    }
-    logoutWindow() {
-        return /*html*/ `
-            <div id="logoutWindow" class="popupAccount">
-                <div class="popupAccountBtn" onclick="legalPage()"><p>Legal Notice</p></div>
-                <div class="popupAccountBtn" onclick="privacyPage()"><p>Privacy Policy</p></div>
-                <div class="popupAccountBtn" onclick="logout()"><p>Log out</p></div>
-            </div>
-
         `
     }
 }

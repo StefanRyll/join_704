@@ -52,6 +52,8 @@
 
 .tinyTaskCardDescription {
     color: #A8A8A8;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .subtasks {

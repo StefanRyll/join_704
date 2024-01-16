@@ -46,7 +46,7 @@ body {
     box-sizing: border-box;
     background-color: var(--lightgrey);
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -270,7 +270,6 @@ h1 {
 
 footer {
     min-width: 300px;
-    position: absolute;
     bottom: 40px;
     display: inline-flex;
     justify-content: center;
@@ -279,7 +278,7 @@ footer {
 }
 
 #content {
-    height: 100vh;
+    height: 100%;
     margin-left: 232px;
     margin-top: 98px;
 }

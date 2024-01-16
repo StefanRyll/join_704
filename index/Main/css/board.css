@@ -33,7 +33,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .res-content-board {
-    padding: 90px;
+    padding: 40px 90px 90px 90px;
     display: flex;
     flex-direction: column;
     height: 70vh;
