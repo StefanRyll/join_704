@@ -118,9 +118,6 @@
             }
             
             @media (max-width: 1024px) {
-                .content-board-task-footer {
-                    gap: 80%;
-                }
                 .close-button {
                     display: none;
                 }

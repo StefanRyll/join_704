@@ -35,6 +35,12 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .content-board-task-footer {
+        gap: 80%;
+    }
+}
+
 @media (max-width: 900px) {
     .frame-123 {
         flex-direction: column;
