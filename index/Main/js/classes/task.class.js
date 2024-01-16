@@ -194,16 +194,16 @@ class Task {
 
         let contactTags = () => {
             let rendertContacts = "";
-            let addNumber = 1;
+            // let addNumber = 1;
 
             for (let i = 0; i < this.worker.length; i++) {
                 let worker = this.worker[i];
-                if (i < 3) {
-                    rendertContacts += worker.accountTag();
-                } else {
-                    rendertContacts += `+${addNumber}`;
-                    addNumber++;
-                }
+                // if (i < 3) {
+                rendertContacts += worker.accountTag();
+                // } else {
+                // rendertContacts += `+${addNumber}`;
+                // addNumber++;
+                // }
 
             }
             return rendertContacts;

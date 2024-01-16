@@ -23,7 +23,7 @@ class Login extends Page {
                         </div>
                         <form class="login-container" onsubmit="logInUser(); return false">
                             <div class="frame-14">
-                                <input  type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
+                                <input type="email" class="frame-157" autocomplete="username" placeholder="Email" id="loginEmail" required>
                                 <img class="input-icon" src="./IMG/mail.png"> 
                             </div>
                             <div class="passwordAndLabel">

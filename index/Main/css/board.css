@@ -269,4 +269,5 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .drag-area {
     min-height: 300px;
+    overflow-x: auto;
 }
