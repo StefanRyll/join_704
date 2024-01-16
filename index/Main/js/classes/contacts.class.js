@@ -6,17 +6,17 @@
  */
 class Contact {
     constructor(name, email, tel = "+49 1111 111 11 1") {
-        this.name = name;
-        this.email = email;
-        this.tel = tel;
-        this.shortname = this.getInitials()
-        this.checked = false;
-        this.color = this.getColor()
-    }
-    /**
-     * This function creates and random the bg-color of the initials container
-     * @returns 
-     */
+            this.name = name;
+            this.email = email;
+            this.tel = tel;
+            this.shortname = this.getInitials()
+            this.checked = false;
+            this.color = this.getColor()
+        }
+        /**
+         * This function creates and random the bg-color of the initials container
+         * @returns 
+         */
     getColor() {
         const colors = [
             "#FF7A00",
@@ -134,7 +134,7 @@ class Contact {
 
     tinyCard(x) {
         return /*html*/ `
-        <div class="tinyAccountTaskCard" onclick="showContact(${x})">
+        <div class="tinyAccountTaskCard">
             <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
             <div>
                 <div class="contactName">${this.name}</div>
