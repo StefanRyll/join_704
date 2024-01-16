@@ -14,13 +14,13 @@ class Task {
         this.done = done;
     }
 
-    setCategoryColor(){
-        let html ="";
-            if (this.Category === 'Technical Task') {
-                html = /*html*/`<div class="tiny-task-category color-technical">${this.Category}</div>`
-            } else{
-                html = /*html*/`<div class="tiny-task-category color-userStory">${this.Category}</div>`
-            }
+    setCategoryColor() {
+        let html = "";
+        if (this.Category === 'Technical Task') {
+            html = /*html*/ `<div class="tiny-task-category color-technical">${this.Category}</div>`
+        } else {
+            html = /*html*/ `<div class="tiny-task-category color-userStory">${this.Category}</div>`
+        }
 
         return html;
     };
@@ -191,13 +191,19 @@ class Task {
     }
     tinyTaskCard(x = 0) {
 
-    
+
         let contactTags = () => {
             let rendertContacts = "";
+            let addNumber = 1;
 
             for (let i = 0; i < this.worker.length; i++) {
                 let worker = this.worker[i];
-                rendertContacts += worker.accountTag();
+                if (i < 3) {
+                    rendertContacts += worker.accountTag();
+                } else {
+                    rendertContacts += `+${addNumber}`;
+                    addNumber++;
+                }
 
             }
             return rendertContacts;
