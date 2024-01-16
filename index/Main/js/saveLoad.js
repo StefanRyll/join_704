@@ -212,11 +212,23 @@ function saveSignedUser(){
     localStorage.setItem("signedAccount", payloadSignedUser);
     console.log(payloadSignedUser);
 }
-function laodSignedUser() {
+function loadSignedUser() {
     let SignedUserAsJSON = JSON.parse(localStorage.getItem("signedAccount"))
-    let check = SignedUserAsJSON['checked']
-    console.log(check);
+    if (SignedUserAsJSON !== null){
+        let name = SignedUserAsJSON['name']
+        let account = Join.accounts.filter(a => a.name === name)
+        if (account.length === 0 && name === 'Guest'){
+            account = new Account("Guest", "email@join.de", "");
     
+        }else if (account.length > 0){
+            account = account[0]
+        }else {
+            account = null;
+        }
+        return account    
+
+    }
+    return null;
 }
 function deleteSignedUser(){
     localStorage.removeItem('signedAccount')

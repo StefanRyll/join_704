@@ -17,48 +17,55 @@ function setActiveStyles(id, backgroundColor, textColor) {
 /**
  * Initiates the page by loading accounts and tasks, starting animation, and attempting to retrieve stored JSON data.
  */
-function startPage() {
+async function startPage() {
     try {
-        loadAccounts()
-        loadTasks()
+        await loadAccounts();
+        await loadTasks();
         
     } catch (e) {
         console.log("Fehler", e)
     } finally {
-            let responseLocal = localStorage.getItem('signedAccount');
-            console.log(responseLocal);
-            if (responseLocal){
-                Join.signedAccount = responseLocal;
-                let myState = localStorage.getItem('state')
-                switch (myState) {
-                    case 'Summery':
-                        console.log("Summery");
-                        loadComponentsSummery()
-                        break;
-                    case 'LogIn':
-                        console.log("LogIn");
-                        break;
-                    case 'Board':
-                        console.log("Board");
-                        break;
-                    case 'AddTask':
-                        console.log("AddTask");
-                        break;
-                    case 'Contacts':
-                        console.log("Contacts");
-                        break;
-                    case 'Privacy Policy':
-                        console.log("Privacy Policy");
-                        break;
-                    case 'LegalNotice':
-                        console.log("LegalNotice");
-                        break;
-                    case 'Help':
-                        console.log("Help");
-                        break;
+            let responseLocal = loadSignedUser();
+            Join.signedAccount = responseLocal;
+            let myState = localStorage.getItem('state')
+            console.log("Join.signedAccount",Join.signedAccount);
+
+            if (Join.signedAccount !== null){
+                console.log("myState",myState);
+                if (myState === "Summary"){
+                    summeryPage();
+                }
+                else if (myState === "Board"){
+                    boardPage()
+                }
+                else if (myState === "AddTask"){
+                    addTaskPage()
+                }
+                else if (myState === "Contacts"){
+                    contactsPage()
+                }
+                else if (myState === "Privacy Policy"){
+                    privacyPage()
+                }
+                else if (myState === "LegalNotice"){
+                    legalPage()
+                }
+                else if (myState === "Help"){
+                    helpPage()
+                }
+            }else{
+                if (myState === "SignUp"){
+                    
+                    signUp()
+                }
+                else if (myState === "LogIn"){
+                    startPage2()
+                }
+                else{
+                    startAnimation();
+                }
+
             }
-        }
-        startAnimation();
         try {
             retrievesAStoredJSON();
         } catch (e) { "Nothing to remember :" + e }
@@ -167,6 +174,7 @@ function loadComponentsBoard() {
     setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
     checkDragArea();
+    console.log("Board wird ausgeführt");
 }
 /**
  * Initiates the contacts page by loading accounts and components for contacts.
