@@ -1,15 +1,16 @@
 class Contacts extends Page {
     contactsContent() {
-            return /*html*/ `    
+            return /*html*/ `   
+            <div class="contacts-container"> 
                 <div class="respon-add-contact" onclick="openAddContact()">
                     <button class="respon-button"><img src="./IMG/person_add.png"></button>
                 </div>
-                <div>
+                <!-- <div>
                     <div class="respon-overlay" id="responOverlay"></div>
-                </div>
-                <div>
+                </div> -->
+                <!-- <div>
                     <div class="overlay-style" id="overlay"></div>
-                </div>
+                </div> -->
                 <div class="contacts-content">
                     <div class="contacts-list-section">
                         <div class="add-new-button" id="addNewButton">
@@ -29,6 +30,11 @@ class Contacts extends Page {
                 <div>
                     <div class="overlay-success" id="overlaySuccess"></div>
                 </div>
+                </div>
+                
+                    <div class="respon-overlay" id="responOverlay"></div>
+                    <div class="overlay-style" id="overlay"></div>
+                
         `
         }
         /**

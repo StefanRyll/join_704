@@ -1,3 +1,7 @@
+.contacts-container {
+    overflow: hidden;
+}
+
 .contactsMain {
     display: flex;
     flex-direction: row;
