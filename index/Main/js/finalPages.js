@@ -17,9 +17,10 @@ function setActiveStyles(id, backgroundColor, textColor) {
 /**
  * Initiates the page by loading accounts and tasks, starting animation, and attempting to retrieve stored JSON data.
  */
-function startPage() {
-    try { loadAccounts();} catch (e) { console.log("Fehler", e)}
-    try { loadTasks();} catch (e) { console.log("Fehler", e)}
+async function startPage() {
+    try { await loadAccounts().then( await loadTasks());} catch (e) { console.log("Fehler", e)}
+    console.log("Accounts: ", Join.accounts);
+    console.log("Tasks : ", Join.tasks);
             let responseLocal = loadSignedUser();
             Join.signedAccount = responseLocal;
             let myState = localStorage.getItem('state')

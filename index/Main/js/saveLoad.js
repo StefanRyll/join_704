@@ -92,7 +92,7 @@ async function saveTasks() {
  */
 async function loadAccounts() {
     let responseAsJson = await getItem(accountsKey)
-    let parsedResponse = JSON.parse(responseAsJson['data']['value'])
+    let parsedResponse = await JSON.parse(responseAsJson['data']['value'])
     let loadedAccounts = decodeAccounts(parsedResponse)
     Join.accounts = loadedAccounts.sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -217,13 +217,18 @@ function loadSignedUser() {
     if (SignedUserAsJSON !== null){
         let name = SignedUserAsJSON['name']
         let account = Join.accounts.filter(a => a.name === name)
+        console.log("name", name);
+        console.log("account", account);
         if (account.length === 0 && name === 'Guest'){
             account = new Account("Guest", "email@join.de", "");
-    
+            console.log("Kein Account gefunden -> ", account);
         }else if (account.length > 0){
             account = account[0]
+            console.log("Account gefunden -> ", account);
+
         }else {
             account = null;
+
         }
         return account    
 
@@ -233,9 +238,9 @@ function loadSignedUser() {
 function deleteSignedUser(){
     localStorage.removeItem('signedAccount')
 }
-window.onbeforeunload = async ()=>{
-    if (Join.signedAccount){
-        await saveAccounts()
-        await saveTasks()
-    }
-}
+// window.onbeforeunload = async ()=>{
+//     if (Join.signedAccount){
+//         await saveAccounts()
+//         await saveTasks()
+//     }
+// }

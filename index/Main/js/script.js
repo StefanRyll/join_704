@@ -24,7 +24,7 @@ function guestLogin() {
  * @returns {Promise<void>}
  */
 async function logInUser() {
-    const user = document.getElementById('loginEmail').value;
+    const user = document.getElementById('loginEmail').value.toLowerCase();
     const pw = document.getElementById('loginPassword').value;
     let remember = () => {
         if (Join.rememberMe) {
@@ -38,7 +38,7 @@ async function logInUser() {
         loginPasswordFrame.classList.add('redFrame');
         label.classList.add('falsePasswordRed')
     }
-    let myAccount = Join.accounts.filter(userAccount => userAccount.email === user)
+    let myAccount = Join.accounts.filter(userAccount => userAccount.email.toLowerCase() === user)
     if (myAccount.length != 0) {
         myAccount = myAccount[0]
         if (pw === myAccount.password) {
@@ -99,7 +99,7 @@ async function createAccount() {
         label.classList.add('falsePasswordRed')
     }
 
-    try { loadAccounts() } catch (e) { console.log("Fehler", e) }
+    try { await loadAccounts() } catch (e) { console.log("Fehler", e) }
 
     let pw = passwordCheck();
     let policy = ppCheck();
@@ -127,7 +127,7 @@ async function createAccount() {
         setTimeout(() => {
             startPage2();
         }, 2200);
-        saveAccounts();
+        await saveAccounts();
         successCreateAccount();
     }
 }
@@ -256,9 +256,9 @@ function closeSideAndHeadMenu(event) {
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
         closeHeadMenu(logoutWindow);
     }
-    setTimeout(() => {
-        logoutWindow.classList.add("d-none");
-    }, 100);
+    // setTimeout(() => {
+    //     logoutWindow.classList.add("d-none");
+    // }, 100);
 }
 /**
  * Event handler for mouse down on the window, closing side and head menus.
