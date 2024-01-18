@@ -16,55 +16,57 @@ function setActiveStyles(id, backgroundColor, textColor) {
 }
 /**
  * Initiates the page by loading accounts and tasks, starting animation, and attempting to retrieve stored JSON data.
+ * If you already been on Join, the startPage() redirects you to you former location.
+ * It stablises the History api in case of reloading. 
  */
 async function startPage() {
     try { await loadAccounts().then( await loadTasks());} catch (e) { console.log("Fehler", e)}
-    console.log("Accounts: ", Join.accounts);
-    console.log("Tasks : ", Join.tasks);
             let responseLocal = loadSignedUser();
             Join.signedAccount = responseLocal;
             let myState = localStorage.getItem('state')
-
-            if (Join.signedAccount !== null){
-                if (myState === "Summary"){
-                    summeryPage();
-                }
-                else if (myState === "Board"){
-                    boardPage()
-                }
-                else if (myState === "AddTask"){
-                    addTaskPage()
-                }
-                else if (myState === "Contacts"){
-                    contactsPage()
-                }
-                else if (myState === "Privacy Policy"){
-                    privacyPage()
-                }
-                else if (myState === "LegalNotice"){
-                    legalPage()
-                }
-                else if (myState === "Help"){
-                    helpPage()
-                }
-            }else{
-                if (myState === "SignUp"){
-                    
-                    signUp()
-                }
-                else if (myState === "LogIn"){
-                    startPage2()
-                }
-                else{
-                    startAnimation();
-                }
-
-            }
+            redirectUser(myState)
         try {
             retrievesAStoredJSON();
         } catch (e) { "Nothing to remember :" + e }
     }
 
+function redirectUser(myState){
+    if (Join.signedAccount !== null){
+        if (myState === "Summary"){
+            summeryPage()
+        }
+        else if (myState === "Board"){
+            boardPage()
+        }
+        else if (myState === "AddTask"){
+            addTaskPage()
+        }
+        else if (myState === "Contacts"){
+            contactsPage()
+        }
+        else if (myState === "Privacy Policy"){
+            privacyPage()
+        }
+        else if (myState === "LegalNotice"){
+            legalPage()
+        }
+        else if (myState === "Help"){
+            helpPage()
+        }
+    }else{
+        if (myState === "SignUp"){
+            
+            signUp()
+        }
+        else if (myState === "LogIn"){
+            startPage2()
+        }
+        else{
+            startAnimation();
+        }
+    }
+
+}
 /**
  * Initiates the animation for starting the login process.
  * @param {string} setState - The state to set for the animation.
@@ -140,8 +142,8 @@ function loadComponentsSummery() {
 /**
  * Initiates the board page by loading tasks and components for the board.
  */
-function boardPage() {
-    try { loadTasks() } catch (e) {
+async function boardPage() {
+    try { await loadTasks() } catch (e) {
         console.log("Fehler", e)
     } finally {
         loadComponentsBoard();
