@@ -105,7 +105,7 @@ async function loadAccounts() {
 async function loadTasks() {
     // let response = await fetch('./saves/Tasks.json')
     let responseAsJson = await getItem(tasksKey)
-    let parsedResponse = JSON.parse(responseAsJson['data']['value'])
+    let parsedResponse = await JSON.parse(responseAsJson['data']['value'])
     let loadedTasks = decodeTasks(parsedResponse)
     Join.tasks = loadedTasks;
     return null
