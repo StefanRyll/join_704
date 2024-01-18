@@ -25,6 +25,7 @@ function checkUser(AssignedUsers, JoinUsers) {
         let usersFound = JoinUsers.find((benutzer) => benutzer.email === Worker.email);
         if (usersFound) {
             usersFound.checked = true;
+            Worker.checked = true;
         }
     }
 }

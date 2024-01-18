@@ -167,7 +167,6 @@ function loadComponentsBoard() {
     setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
     checkDragArea();
-    console.log("Board wird ausgeführt");
 }
 /**
  * Initiates the contacts page by loading accounts and components for contacts.
