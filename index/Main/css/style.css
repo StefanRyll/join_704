@@ -272,6 +272,7 @@ h1 {
 footer {
     min-width: 300px;
     bottom: 40px;
+    position: absolute;
     display: inline-flex;
     justify-content: center;
     align-items: flex-start;
