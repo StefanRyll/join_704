@@ -24,7 +24,7 @@ function show(id) {
  * @param {string} search - The search input value.
  */
 function filterTaskNames() {
-    let search = document.getElementById('searchTask').value.toLowerCase();
+    let search = document.getElementById('searchTask').value;
     let todoContainer = document.getElementById('kambanTodo');
     let progressContainer = document.getElementById('kambanInprogress');
     let feedbackContainer = document.getElementById('kambanFeedback');

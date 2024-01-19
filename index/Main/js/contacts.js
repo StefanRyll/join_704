@@ -95,6 +95,7 @@ function openEditContact(i) {
     let editContactsContent = contact.generateHtmlEditContact(i);
     document.getElementById("overlay").innerHTML = editContactsContent;
 }
+
 /**
  *  function for close the overlays
  */
@@ -107,6 +108,7 @@ function closeOverlay() {
     }, 100);
     contactsPage();
 }
+
 /**
  * function for a new contact to the accounts[] array
  */
