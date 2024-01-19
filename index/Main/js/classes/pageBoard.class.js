@@ -13,7 +13,7 @@ class Board extends Page {
                     </div>
                 <div class="frame-123">
                     <div class="input-search">
-                        <input type="search" name="find task" id="searchTask" placeholder="Find Task">
+                        <input type="search" name="find task"  onfocus="this.value=''" id="searchTask" placeholder="Find Task">
                         <img class="separator-find-task" src="./IMG/assets/Vector 3.png" alt="separator searchfield">
                         <div class="search-icon">
                             <img onclick="filterTaskNames()" src="./IMG/assets/search.png" alt="search Image">

@@ -332,12 +332,22 @@ function taskSaveChanges(x) {
     // Edited Task
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
-    let dateInput = document.getElementById('taskCardEDate').value;
+    // let dateInput = document.getElementById('taskCardEDate').value;
+    let dateInput = () =>{
+        let inputfeld = document.getElementById('taskCardEDate').value;
+        // const pointZero = "Thu Jan 01 1970 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)"
+        if (inputfeld !== ''){
+            return inputfeld;
+        }else {
+            return eTask.date;
+        }
+    }
+    console.log("Datum", dateInput());
     let prioInput = prioTemp;
     let subtaskInput = subtaskTemp;
     let Category = eTask.Category;
     // // Merched Task
-    Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput, prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput(), prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
     saveTasks();
     closeTaskCard();
     cleanUpAll();

@@ -32,38 +32,45 @@ async function startPage() {
 
 function redirectUser(myState){
     if (Join.signedAccount !== null){
-        if (myState === "Summary"){
-            summeryPage()
-        }
-        else if (myState === "Board"){
-            boardPage()
-        }
-        else if (myState === "AddTask"){
-            addTaskPage()
-        }
-        else if (myState === "Contacts"){
-            contactsPage()
-        }
-        else if (myState === "Privacy Policy"){
-            privacyPage()
-        }
-        else if (myState === "LegalNotice"){
-            legalPage()
-        }
-        else if (myState === "Help"){
-            helpPage()
-        }
+        redirectSignedUser(myState)
     }else{
-        if (myState === "SignUp"){
-            
-            signUp()
-        }
-        else if (myState === "LogIn"){
-            startPage2()
-        }
-        else{
-            startAnimation();
-        }
+        redirectUnsignedUser(myState)
+    }
+
+}
+function redirectUnsignedUser(myState){
+    if (myState === "SignUp"){
+        signUp()
+    }
+    else if (myState === "LogIn"){
+        startPage2()
+    }
+    else{
+        startAnimation();
+    }
+
+}
+function redirectSignedUser(myState){
+    if (myState === "Summary"){
+        summeryPage()
+    }
+    else if (myState === "Board"){
+        boardPage()
+    }
+    else if (myState === "AddTask"){
+        addTaskPage()
+    }
+    else if (myState === "Contacts"){
+        contactsPage()
+    }
+    else if (myState === "Privacy Policy"){
+        privacyPage()
+    }
+    else if (myState === "LegalNotice"){
+        legalPage()
+    }
+    else if (myState === "Help"){
+        helpPage()
     }
 
 }
