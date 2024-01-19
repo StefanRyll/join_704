@@ -172,7 +172,7 @@ class Task {
                     <textarea class="blue textarea-resize" cols="30" rows="10" id="taskCardEDesc">${this.desc}</textarea>
 
                     <label for="taskCardEDate">Date Due:</label>
-                    <input type="date" id="taskCardEDate" value="${this.date}">
+                    <input type="date" id="taskCardEDate">
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
                     ${JoinBoard.generateHTMLAddContactShortName(x)}
