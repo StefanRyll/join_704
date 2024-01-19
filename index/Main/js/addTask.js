@@ -143,7 +143,7 @@ function updateTaskWorkers(newTask) {
  */
 async function deleteTask(x) {
     Join.tasks.splice(x, 1)
-    awaitsaveTasks();
+    await saveTasks();
     boardPage();
 }
 /**
