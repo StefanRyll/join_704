@@ -24,7 +24,6 @@ function renderContacts() {
     closeAlphabetSection(contactsList);
     document.getElementById("contactsList").innerHTML = contactsList;
 }
-
 /**
  * Handles the change in the alphabet section.
  * @param {string} contactsList - The current contacts list HTML.

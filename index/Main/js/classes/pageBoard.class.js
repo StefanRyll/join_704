@@ -367,7 +367,6 @@ class Board extends Page {
             <div class="addTask-info-required">   
                 <sup class="info-required">*</sup><span>This field is required</span>
             </div>
-            
         `
     }
     generateHTMLDateForm() {
@@ -375,7 +374,7 @@ class Board extends Page {
                 <div class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                             <input type="date" id="date" name="datum" pattern="\d{2}-\d{2}-\d{4}" required placeholder="dd-MM-yyyy" value="yyyy-MM-dd">
+                        <input type="date" id="date" name="datum" required placeholder="dd-MM-yyyy">
                     </div>
                 </div>
             `

@@ -120,7 +120,18 @@ async function createAccount() {
     } else if (emailCheck() === true) {
         console.log('Email already existing')
 
-    } else if (pw === true && policy === true) {
+    } else if (isPasswordPolicyTrue()) {
+        checkPasswordPolicy();
+
+    }
+
+    
+    function isPasswordPolicyTrue() {
+        pw === true && policy === true;
+    }
+
+
+    async function checkPasswordPolicy() {
         let account = new Account(name, Email, "", password);
         Join.accounts.push(account);
         policyCheck = false;
@@ -265,14 +276,14 @@ function closeSideAndHeadMenu(event) {
  * @param {MouseEvent} e - The mouse down event.
  * @returns {void}
  */
-window.onmousedown = function(e) {
-        closeSideAndHeadMenu(e);
-        closeContactMenu(e)
-    }
-    /**
-     * Logs out the current user by resetting the signed account and navigating to the start page.
-     * @returns {void}
-     */
+window.onmousedown = function (e) {
+    closeSideAndHeadMenu(e);
+    closeContactMenu(e)
+}
+/**
+ * Logs out the current user by resetting the signed account and navigating to the start page.
+ * @returns {void}
+ */
 function logout() {
     Join.signedAccount = "";
     deleteSignedUser()
