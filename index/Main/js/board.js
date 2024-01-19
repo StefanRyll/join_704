@@ -205,7 +205,7 @@ function allowDrop(ev) {
  * Moves the dragged task to the specified category.
  * @param {string} category - The target category ('Todo', 'Inprogress', 'Awaitfeedback', or 'Done').
  */
-function moveTo(category) {
+async function moveTo(category) {
     if (currentDraggedElement !== undefined) {
         if (category === "Todo") {
             moveToTodo(currentDraggedElement);
@@ -219,7 +219,7 @@ function moveTo(category) {
         else if (category === "Done") {
             moveToDone(currentDraggedElement);
         }
-        saveTasks()
+        await saveTasks()
         JoinBoard.renderTask();
     }
 }

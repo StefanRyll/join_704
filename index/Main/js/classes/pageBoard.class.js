@@ -136,7 +136,8 @@ class Board extends Page {
         `
     }
 
-    renderTask() {
+    async renderTask() {
+        try { await loadTasks();} catch (e) { console.log("Fehler", e)}
         let kambanTodo = document.getElementById('kambanTodo');
         let kambanInprogress = document.getElementById('kambanInprogress');
         let kambanFeedback = document.getElementById('kambanFeedback');
