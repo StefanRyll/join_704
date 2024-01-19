@@ -124,7 +124,6 @@ async function createAccount() {
         checkPasswordPolicy();
 
     }
-
     
     function isPasswordPolicyTrue() {
         pw === true && policy === true;
@@ -252,7 +251,7 @@ function openSideAndHeadMenu(event) {
     event.stopPropagation();
     setTimeout(() => {
         logOutWindow.classList.remove("d-none");
-        setInterval(() => {
+        setTimeout(() => {
             openHeadMenu(logOutWindow);
         }, 200);
     }, 100);
