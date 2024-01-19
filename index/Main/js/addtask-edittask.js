@@ -232,3 +232,8 @@ function filterContactNames() {
         }
     }
 }
+
+
+function backToPage() {
+    startPage();
+}

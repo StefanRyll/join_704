@@ -41,7 +41,9 @@ class About extends Page {
     privacyContent() {
         return /*html*/ `
         <div class="privacyContent">
-
+            <button onclick="backToPage()" class="res-left-arrow-btn pl-arrow">
+                <img src="./IMG/arrow-left-line.png" alt="">
+            </button>
             <h1>Privacy Policy</h1>
 
             <p>This privacy policy informs users about the nature, scope, and purposes of the collection 
@@ -108,6 +110,9 @@ class About extends Page {
     legalNoticeContent() {
         return /*html*/ `
         <div class="privacyContent">
+            <button onclick="backToPage()" class="res-left-arrow-btn pl-arrow">
+                <img src="./IMG/arrow-left-line.png" alt="">
+            </button>
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
             <ul>
