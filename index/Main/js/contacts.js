@@ -95,20 +95,19 @@ function openEditContact(i) {
     let editContactsContent = contact.generateHtmlEditContact(i);
     document.getElementById("overlay").innerHTML = editContactsContent;
 }
-
 /**
  *  function for close the overlays
  */
 function closeOverlay() {
-    document.getElementById('overlay');
-    document.getElementById('responOverlay');
     setTimeout(() => {
         closeBigOverlay()
         closeResOverlay()
     }, 100);
-    contactsPage();
+    setTimeout(() => {
+        contactsPage();
+    }, 225);
+    
 }
-
 /**
  * function for a new contact to the accounts[] array
  */
