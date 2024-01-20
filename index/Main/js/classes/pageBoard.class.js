@@ -291,7 +291,7 @@ class Board extends Page {
         return /*html*/ `
                 <div class="input-description">
                     <p>Description</p>
-                    <textarea required class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                    <textarea class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </div>
                 
         `
@@ -477,7 +477,7 @@ class Board extends Page {
         return /*html*/ `
           <div class="category board-task-input-button-style button-hover">
             <div class="category-sub">
-              <label for="category">Category<sub>*</sub></label>
+              <label for="category">Category</label>
             </div>
             ${this.generateHTMLHiddenCategory()}
             ${this.generateHTMLShowCategory()}

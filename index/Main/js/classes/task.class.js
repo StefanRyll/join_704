@@ -262,7 +262,6 @@ class Task {
                     <img src="${prioTag()}" class="prioIcon" alt="">
                 </div>
             </div>
-
         `
     }
 

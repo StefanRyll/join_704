@@ -333,4 +333,9 @@ function checkAreaDone(container) {
 
 
 
-
+let task = document.querySelectorAll('.tinyTaskCard');
+let dragAreas = document.querySelectorAll('.drag-area');
+dragAreas.forEach(area => {
+    let areaPos = area.getBoundingClientRect();
+    console.log(areaPos);
+});

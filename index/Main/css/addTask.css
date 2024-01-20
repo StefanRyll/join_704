@@ -2,6 +2,16 @@
     margin-right: 450px;
 }
 
+.input-description label {
+    display: flex;
+}
+
+.input-description label sup {
+    color: #FF8190;
+    font-size: 20px;
+    font-weight: 400;
+}
+
 .add-taskWindow {
     display: flex;
     justify-content: center;
