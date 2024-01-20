@@ -71,6 +71,16 @@
 .add-task {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    height: 870px;
+    border-radius: 30px;
+    gap: 57px;
+}
+
+.add-task-card {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     height: 870px;
     border-radius: 30px;
@@ -101,7 +111,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 32px;
 }
 
@@ -449,6 +459,7 @@
     color: #2A3647;
     width: 100%;
 }
+
 
 /* .create-subtask {
     position: absolute;
