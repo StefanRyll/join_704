@@ -4,7 +4,6 @@
     }
 }
 
-
 @media (min-width: 1331px) {
     .responsiveMin {
         display: none;
@@ -18,9 +17,9 @@
     .subtask-container {
         width: 95%;
     }
-    .create-subtask ul {
+    /* .create-subtask ul {
         width: 100%;
-    }
+    } */
     .add-task {
         gap: 40px;
     }
