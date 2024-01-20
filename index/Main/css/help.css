@@ -1,5 +1,6 @@
 .help-content {
     position: absolute;
-    height: 100%;
+    height: 78%;
     overflow-y: scroll;
+    padding: 80px 80px 80px 80px;
 }

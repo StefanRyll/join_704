@@ -2,6 +2,9 @@ class About extends Page {
     helpContent() {
         return /*html*/ `
             <div class="help-content">
+            <div class="res-left-arrow">
+                    <button onclick="closeOverlay()" class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
+                </div>
                 <h1>Help</h1>
                 <p>Welcome to the help page for Join, 
                     your guide to using our kanban project 
