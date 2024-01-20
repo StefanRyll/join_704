@@ -1,7 +1,11 @@
 class About extends Page {
     helpContent() {
         return /*html*/ `
-            <h1>Help</h1>
+            <div class="help-content">
+            <div class="res-left-arrow">
+                    <button onclick="closeOverlay()" class="res-left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
+                </div>
+                <h1>Help</h1>
                 <p>Welcome to the help page for Join, 
                     your guide to using our kanban project 
                     management tool. Here, we'll provide 
@@ -36,6 +40,7 @@ class About extends Page {
                 </ol>
 
                 <h2>Enjoy using Join!</h2>
+            </div>
         `
     }
     privacyContent() {
