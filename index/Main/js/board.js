@@ -219,7 +219,7 @@ async function moveTo(category) {
         else if (category === "Done") {
             moveToDone(currentDraggedElement);
         }
-        await saveTasks()
+        await saveTasks();
         JoinBoard.renderTask();
     }
 }
@@ -332,10 +332,114 @@ function checkAreaDone(container) {
 }
 
 
+// function startTouching(srcArray, srcIndex, event) {
+//     currentDraggedElement = { srcArray, srcIndex };
+//     cloneMoveTouch = event.currentTarget.cloneNode(true);
+//     cloneMoveTouch.classList.add("taskcard-clone");
+//     cloneMoveTouch.style.width = `${event.currentTarget.clientWidth}px`;
+//     document.body.appendChild(cloneMoveTouch);
+// }
 
-let task = document.querySelectorAll('.tinyTaskCard');
-let dragAreas = document.querySelectorAll('.drag-area');
-dragAreas.forEach(area => {
-    let areaPos = area.getBoundingClientRect();
-    console.log(areaPos);
-});
+// /**
+//  * Moves the selected task and makes the moving visible
+//  *
+//  * @param {touchmove} event
+//  */
+// function moveTouching(event) {
+//     cloneMoveTouch.xy = {
+//         x: event.touches[0].clientX,
+//         y: event.touches[0].clientY,
+//     };
+//     cloneMoveTouch.style.top = `${cloneMoveTouch.xy.y}px`;
+//     cloneMoveTouch.style.left = `${cloneMoveTouch.xy.x}px`;
+//     let activePanel = getTouchMoveInPanel();
+//     removeHighlight();
+//     if (activePanel != "") {
+//         highlight(activePanel);
+//     }
+//     checkAutoScroll(event);
+// }
+
+// /**
+//  * This function adds the taks to be moved to the target array and deletes it from the source array
+//  */
+// async function endTouching() {
+//     try {
+//         let targetArray = getTouchMoveInArrayName();
+//         if (targetArray != "") {
+//             tryMoveTaskToArray(targetArray);
+//         }
+//     } catch (error) {
+//         console.error(error);
+//     } finally {
+//         cancelTouch();
+//     }
+// }
+
+// /**
+//  * Cancel the touch drop action
+//  */
+// function cancelTouch() {
+//     currentDraggedElement = {};
+//     removeHighlight();
+//     document.querySelectorAll(".taskcard-clone").forEach((e) => e.remove());
+//     cloneMoveTouch.remove();
+// }
+
+// /**
+//  * get the name of the array which is related to the panel where task is droped
+//  * 
+//  * @returns the name of the array
+//  */
+// function getTouchMoveInArrayName() {
+//     let targetPanel = getTouchMoveInPanel();
+//     if (targetPanel == "") {
+//         return "";
+//     }
+//     return targetPanel.id.replace("awaitFeedback", "feedback");
+// }
+
+// /**
+//  * get the related panel where the touch move event is currently positioned
+//  * 
+//  * @returns panelobject or empty
+//  */
+// function getTouchMoveInPanel() {
+//     if (cloneMoveTouch.xy == undefined) {
+//         return "";
+//     }
+//     let panelList = document.querySelectorAll(".drag-area");
+//     for (let i = 0; i < panelList.length; i++) {
+//         const panel = panelList[i];
+//         let pXY = panel.getClientRects()[0];
+//         if (
+//             pXY.left < cloneMoveTouch.xy.x &&
+//             cloneMoveTouch.xy.x < pXY.right &&
+//             pXY.top < cloneMoveTouch.xy.y &&
+//             cloneMoveTouch.xy.y < pXY.bottom
+//         ) {
+//             return panel;
+//         }
+//     }
+//     return "";
+// }
+
+// /**
+//  * try to move the selected task to the new array
+//  * 
+//  * @param {string} targetArrayName 
+//  */
+// async function tryMoveTaskToArray(targetArrayName) {
+//     let sourceArrayName = currentDraggedElement.srcArray;
+//     let targetArray = taskLists[targetArrayName];
+//     let sourceArray = taskLists[sourceArrayName];
+//     let sourceIndex = currentDraggedElement.srcIndex;
+//     if (sourceArray != targetArray) {
+//         let taskToMove = sourceArray.splice(sourceIndex, 1);
+//         targetArray.push(taskToMove[0]);
+//         await setItem(targetArrayName, JSON.stringify(targetArray));
+//         await setItem(sourceArrayName, JSON.stringify(sourceArray));
+//         saveTasks();
+//         removeHighlight();
+//     }
+// }
