@@ -2,6 +2,15 @@
     font-family: inter, sans-serif !important;
 }
 
+.draggable {
+    transition: transform 0.2s;
+}
+
+.draggable:active {
+    transform: scale(1.05);
+    z-index: 1000;
+}
+
 .pl-arrow {
     position: absolute;
     right: 50px;
