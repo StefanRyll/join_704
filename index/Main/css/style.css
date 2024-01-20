@@ -1,3 +1,18 @@
+:root {
+    --white: rgba(255, 255, 255, 1);
+    --general-button-inactive: rgba(42, 54, 71, 1);
+    --general-button-hover: rgba(41, 171, 226, 1);
+    --general-button-active: rgba(9, 25, 49, 1);
+    --lightgrey: rgba(246, 247, 248, 1);
+    --placeholder: rgba(209, 209, 209, 1);
+    --lightblue: rgba(41, 171, 226, 1);
+    --white-btn-active: rgba(9, 25, 49, 1);
+    --text-button: rgba(168, 168, 168, 1);
+    --link-color: #29abe2;
+    --dark-blue: rgba(42, 54, 71, 1);
+    --grey: rgba(205, 205, 205, 1);
+}
+
 * {
     font-family: inter, sans-serif !important;
 }
@@ -41,21 +56,6 @@
 
 .input-error {
     border: 1px solid #FF001F;
-}
-
-:root {
-    --white: rgba(255, 255, 255, 1);
-    --general-button-inactive: rgba(42, 54, 71, 1);
-    --general-button-hover: rgba(41, 171, 226, 1);
-    --general-button-active: rgba(9, 25, 49, 1);
-    --lightgrey: rgba(246, 247, 248, 1);
-    --placeholder: rgba(209, 209, 209, 1);
-    --lightblue: rgba(41, 171, 226, 1);
-    --white-btn-active: rgba(9, 25, 49, 1);
-    --text-button: rgba(168, 168, 168, 1);
-    --link-color: #29abe2;
-    --dark-blue: rgba(42, 54, 71, 1);
-    --grey: rgba(205, 205, 205, 1);
 }
 
 html {
@@ -180,6 +180,10 @@ body {
     justify-content: center;
     gap: 40px;
     margin-top: 24px;
+}
+
+.text-lightblue {
+    color: var(--lightblue);
 }
 
 h1 {

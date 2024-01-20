@@ -13,3 +13,15 @@
 .help-headline {
     text-align: left;
 }
+
+@media (max-width: 573px) {
+    .help-content {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 414px) {
+    .help-content {
+        padding: 20px;
+    }
+}

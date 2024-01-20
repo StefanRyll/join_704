@@ -1,20 +1,24 @@
-.privacyContent{
+.privacyContent {
     text-align: left;
     padding: 90px;
     overflow-y: scroll;
     height: 70vh;
 }
-.privacyContent h1{
+
+.privacyContent h1 {
     text-align: left;
     margin-bottom: 1em;
 }
-.style-privacy, .style-legal {
+
+.style-privacy,
+.style-legal {
     display: flex;
     justify-content: center;
     width: 232px;
 }
+
 .container-privacy-legal {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
 }

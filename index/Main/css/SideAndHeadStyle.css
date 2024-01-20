@@ -141,6 +141,10 @@ nav {
     width: 104px
 }
 
+.legal-policy {
+    margin: 0;
+}
+
 .legal-policy:hover {
     cursor: pointer;
     color: var(--lightblue);
