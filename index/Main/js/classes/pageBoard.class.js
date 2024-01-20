@@ -137,7 +137,7 @@ class Board extends Page {
     }
 
     async renderTask() {
-        try { await loadTasks();} catch (e) { console.log("Fehler", e)}
+        try { await loadTasks(); } catch (e) { console.log("Fehler", e) }
         let kambanTodo = document.getElementById('kambanTodo');
         let kambanInprogress = document.getElementById('kambanInprogress');
         let kambanFeedback = document.getElementById('kambanFeedback');
@@ -206,7 +206,7 @@ class Board extends Page {
     generateHTMLaddTask(x) {
         return /*html*/ `
             <div id="slideAddTask" class="bg-task">
-                <form id="formAddtask" class="add-task" onsubmit="createTaskFromBoard(${x}); return false">
+                <form id="formAddtask" class="add-task-card" onsubmit="createTaskFromBoard(${x}); return false">
                     <div class="headline-add-task">
                         <h3>Add Task</h3>
                         ${this.generateHTMLCloseButtonInSVG()}
