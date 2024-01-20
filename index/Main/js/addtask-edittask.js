@@ -235,5 +235,6 @@ function filterContactNames() {
 
 
 function backToPage() {
-    startPage();
+    console.log("Toll");
+    window.history.go(-1)
 }
