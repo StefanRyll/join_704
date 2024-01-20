@@ -97,6 +97,9 @@
 }
 
 .board-task-middle {
+    height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     justify-content: space-between;
     margin-top: 32px;
@@ -447,9 +450,9 @@
     width: 100%;
 }
 
-.create-subtask {
+/* .create-subtask {
     position: absolute;
-}
+} */
 
 .create-subtask ul {
     display: flex;
@@ -584,6 +587,7 @@
 }
 
 .board-task-footer {
+    margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
     align-items: end;

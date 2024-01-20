@@ -1,16 +1,7 @@
-.content-add-task {
+/* .content-add-task {
     margin-right: 450px;
 }
-
-.input-description label {
-    display: flex;
-}
-
-.input-description label sup {
-    color: #FF8190;
-    font-size: 20px;
-    font-weight: 400;
-}
+ */
 
 .add-taskWindow {
     display: flex;
@@ -53,7 +44,6 @@
     justify-content: space-between;
     margin-left: 74px;
 }
-
 
 .content-headline-add-task h3 {
     font-size: 61px;

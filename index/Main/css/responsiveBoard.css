@@ -23,9 +23,6 @@
 }
 
 @media (max-width: 1180px) {
-    .res-content-board {
-        padding-top: 90px;
-    }
     .frame-192 {
         display: inline-table;
         padding-top: 0;
@@ -38,6 +35,10 @@
 @media (max-width: 1024px) {
     .content-board-task-footer {
         gap: 80%;
+    }
+
+    .res-content-board {
+        padding: 40px 90px 90px 0px;
     }
 }
 
@@ -71,6 +72,7 @@
 @media (max-width: 740px) {
     .taskCard {
         max-width: 100%;
+        padding: 10px;
     }
     .frame-192 {
         padding-right: 0;
@@ -122,6 +124,14 @@
 }
 
 @media (max-width: 670px) {
+    .drag-area {
+        overflow-x: auto;
+    }
+
+    .taskCard h1 {
+        font-size: 35px;
+    }
+
     .mobile-res-board {
         display: flex;
         justify-content: space-between;

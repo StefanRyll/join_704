@@ -248,7 +248,7 @@ class Task {
         }
 
         return /*html*/ `
-            <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})">
+            <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})" ontouchcancel="cancelTouch();" ontouchstart="startTouching('toDo', ${x}, event);" ontouchmove="moveTouching(event);" ontouchend="endTouching();" >
 
             	${this.setCategoryColor()}
                 <div class="tiny-title">
@@ -262,6 +262,7 @@ class Task {
                     <img src="${prioTag()}" class="prioIcon" alt="">
                 </div>
             </div>
+
         `
     }
 
