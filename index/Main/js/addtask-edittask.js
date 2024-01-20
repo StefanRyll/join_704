@@ -164,6 +164,16 @@ function addNewContact() {
     document.getElementById('closeContacts').classList.add('d-none');
     document.getElementById('selectContacts').classList.remove('d-none');
 }
+
+function addContactToTask(contactIndex) {
+    let currentTaskIndex = Join.tasks[contactIndex];
+    let contact = Join.accounts[contactIndex];
+
+    if (Join.tasks[currentTaskIndex] && contact) {
+        Join.tasks[currentTaskIndex].worker.push(contact);
+        saveTasks();
+    }
+}
 /**
  * Renders short names for the specified name and index.
  * @param {string} name - The name to render short names for.
@@ -172,6 +182,7 @@ function addNewContact() {
 function addShortNames(name, x) {
     renderShortNames(name, x);
     assignedCheckNone(x);
+    addContactToTask(x);
 }
 /**
  * Renders short names in the specified container for the given name and index.
@@ -187,9 +198,28 @@ function renderShortNames(name, x) {
  * @param {number} x - The index associated with the short names to be removed.
  */
 
-function removeShortNames(x) {
-    let shortName = document.getElementById(`editShortNames${x}`);
-    shortName.remove();
+// function removeShortNames(x) {
+//     let shortName = document.getElementById(`editShortNames${x}`);
+//     shortName.remove();
+// }
+
+function removeShortNames(contactIndex) {
+    let task = Join.tasks[contactIndex];
+    if (task && task.worker && task.worker.length > contactIndex) {
+        task.worker.splice(contactIndex, 1); 
+        updateTaskDisplay(contactIndex); 
+        saveTasks(); 
+    }
+}
+
+function updateTaskDisplay(taskIndex) {
+    let task = Join.tasks[taskIndex];
+    let containerShortName = document.getElementById('containerShortName');
+    containerShortName.innerHTML = '';
+
+    task.worker.forEach(worker => {
+        containerShortName.innerHTML += worker.accountTag(); 
+    });
 }
 // function removeShortNames() {
 //     for (let i = 0; i < Join.tasks.length; i++) {

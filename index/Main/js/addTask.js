@@ -41,7 +41,7 @@ function createTask(x) {
 }
 
 
-async function createTaskPage() {
+function createTaskPage() {
     const title = document.getElementById("boardTaskTitle").value;
     const worker = readAssignedUsers();
     const desc = document.getElementById('boardTaskDescription').value;
@@ -52,13 +52,14 @@ async function createTaskPage() {
     let newTask = new Task(title, worker, desc, date, prio, category, subTask, true);
     Join.tasks.push(newTask);
     try {
-        await saveTasks();
+        saveTasks();
         setTimeout(() => {
             boardPage();
         }, 500);
     } catch (error) {
         console.log("Task speichern nicht möglich : " + error);
     } finally {
+        
         clearInputs(title, desc, worker, date, category, subTask);
         successOverlayTask();
     }
@@ -322,7 +323,7 @@ function createSubtask() {
         let newSubtask = new Subtask(subtaskText)
         subtaskTemp.push(newSubtask);
         inputSubtask.value = '';
-        renderSubtasks()
+        renderSubtasks();
     }
 }
 /**

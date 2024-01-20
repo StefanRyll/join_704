@@ -311,9 +311,8 @@ function checkboxDeactivate() {
  * Saves changes to the specified task and updates the task array.
  * @param {number} x - The index of the task to be edited.
  */
-async function taskSaveChanges(x) {
-    console.log("Vor Änderung:", Join.tasks[x]);
-    let eTask = Join.tasks[x]
+function taskSaveChanges(x) {
+    let eTask = Join.tasks[x];
     let eTaskWorker = () => {
         let checkedUsers = [];
         for (let i = 0; i < Join.accounts.length; i++) {
@@ -324,7 +323,13 @@ async function taskSaveChanges(x) {
         }
         return checkedUsers;
     };
-
+    let updatedSubtasks = [];
+    for (let i = 0; i < eTask.subTasks.length; i++) {
+        let subtaskElement = document.getElementById(`todoSubtask${i}`);
+        if (subtaskElement) {
+            updatedSubtasks.push({ text: subtaskElement.textContent, done: eTask.subTasks[i].done });
+        }
+    }
     let eTaskTodo = eTask.todo; //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
@@ -332,6 +337,8 @@ async function taskSaveChanges(x) {
     // Edited Task
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
+    updateSubtasksInTask(x, updatedSubtasks);
+    // subtaskTemp.push(fixSubtasks(x));
     // let dateInput = document.getElementById('taskCardEDate').value;
     let dateInput = () =>{
         let inputfeld = document.getElementById('taskCardEDate').value;
@@ -343,13 +350,21 @@ async function taskSaveChanges(x) {
         }
     }
     let prioInput = prioTemp;
-    let subtaskInput = subtaskTemp;
+    let subtaskInput = updatedSubtasks;
     let Category = eTask.Category;
     // // Merched Task
     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput(), prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
-    await saveTasks();
+    saveTasks();
     closeTaskCard();
     cleanUpAll();
+}
+
+
+
+function updateSubtasksInTask(x, updatedSubtasks) {
+    let task = Join.tasks[x];
+    task.subTasks = updatedSubtasks;
+    saveTasks(); // Speichern der aktualisierten Task-Daten
 }
 /**
  * Closes the task card, hides the task card slide, and navigates back to the board page.
@@ -387,7 +402,7 @@ function cleanUpAccountsCheck() {
  * @param {number} task - The index of the task.
  * @param {number} subtask - The index of the subtask.
  */
-async function toggleCheckboxCard(task, subtask) {
+function toggleCheckboxCard(task, subtask) {
     let checkableSubtask = Join.tasks[task]['subTasks'][subtask];
     if (checkableSubtask.done) {
         checkableSubtask.subTaskUndone();
@@ -396,7 +411,7 @@ async function toggleCheckboxCard(task, subtask) {
     }
     document.getElementById(`cardCheckboxFalse${subtask}`).classList.toggle('d-none');
     document.getElementById(`cardCheckboxTrue${subtask}`).classList.toggle('d-none');
-    await saveTasks()
+    saveTasks()
 }
 /**
  * Displays the contact selection interface in the Join application.
