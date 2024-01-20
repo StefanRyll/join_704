@@ -337,7 +337,6 @@ footer {
     transform: translateX(0);
 }
 
-
 .overlay-success {
     position: absolute;
     left: 0;
@@ -354,6 +353,19 @@ footer {
 
 .show-success-overlay {
     transform: translateX(0);
+}
+
+.left-arrow-btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--lightgrey);
+    width: 50px;
+    height: 50px;
+}
+
+.left-arrow-btn:active {
+    background-color: var(--grey);
 }
 
 
