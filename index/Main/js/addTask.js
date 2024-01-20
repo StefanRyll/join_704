@@ -41,7 +41,7 @@ function createTask(x) {
 }
 
 
-function createTaskPage() {
+async function createTaskPage() {
     const title = document.getElementById("boardTaskTitle").value;
     const worker = readAssignedUsers();
     const desc = document.getElementById('boardTaskDescription').value;
@@ -52,14 +52,13 @@ function createTaskPage() {
     let newTask = new Task(title, worker, desc, date, prio, category, subTask, true);
     Join.tasks.push(newTask);
     try {
-        saveTasks();
+        await saveTasks();
         setTimeout(() => {
             boardPage();
         }, 500);
     } catch (error) {
         console.log("Task speichern nicht möglich : " + error);
     } finally {
-        
         clearInputs(title, desc, worker, date, category, subTask);
         successOverlayTask();
     }
