@@ -74,7 +74,6 @@
 @media (max-width: 740px) {
     .taskCard {
         max-width: 100%;
-        padding: 10px;
     }
     .frame-192 {
         padding-right: 0;
@@ -126,6 +125,9 @@
 }
 
 @media (max-width: 670px) {
+    .taskCard {
+        padding: 28px 20px 28px 20px;
+    }
     .drag-area {
         overflow-x: auto;
     }
@@ -191,6 +193,10 @@
     }
     .lanes {
         width: 96%;
+    }
+
+    .taskCard {
+        padding: 18px 10px 18px 10px;
     }
 }
 

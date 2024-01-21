@@ -462,9 +462,9 @@
 }
 
 
-/* .create-subtask {
-    position: absolute;
-} */
+.create-subtask {
+    width: 100%;
+}
 
 .create-subtask ul {
     display: flex;

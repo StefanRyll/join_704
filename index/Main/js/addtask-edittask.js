@@ -97,7 +97,6 @@ function taskPrioEventlistener(urgent, medium, low) {
  * Changes CSS attributes for various elements to adjust their styling.
  */
 function changeCSSAttribute() {
-    let createTask = document.getElementById('createNewSubtask');
     document.getElementById('selectContacts').classList.add('w-29');
     document.getElementById('hiddenSubtask').classList.add('w-29');
     document.getElementById('prioCategoryContainer').classList.add('w-29');
@@ -108,25 +107,6 @@ function changeCSSAttribute() {
     document.getElementById('closeContacts').style.position = 'relative';
     document.getElementById('assignedToContacts').style.padding = '0';
     document.getElementById('assignedToBottom').classList.add('w-29');
-    mediaQueryCss(createTask);
-}
-/**
- * Applies CSS changes based on media query conditions.
- * @param {object} createTask - The create task element.
- */
-function mediaQueryCss(createTask) {
-    createTask.style.position = 'relative';
-    createTask.style.width = '94%';
-    let createNewSubtask = document.querySelector('.create-subtask ul');
-    if (createNewSubtask) {
-        createNewSubtask.style.width = '100%';
-    }
-
-    let mq = window.matchMedia("(max-width: 520px)");
-    if (mq.matches) {
-        createNewSubtask.style.width = '100%';
-        createTask.style.width = '100%';
-    }
 }
 /**
  * Updates the display for unchecked accounts and sets the 'checked' property to false.
