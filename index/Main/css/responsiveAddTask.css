@@ -166,6 +166,7 @@
         margin-left: 10px;
     }
     .content-add-task {
+        width: 90%;
         height: 70vh;
         padding-left: 10px;
     }
@@ -187,6 +188,7 @@
         margin-right: 10px;
     }
     .board-task-middle {
+        width: 90%;
         height: 48vh;
     }
 }
@@ -302,7 +304,6 @@
         margin-right: 5px;
     }
     .add-task {
-        height: 550px;
         overflow-y: scroll;
     }
     .headline-add-task {
