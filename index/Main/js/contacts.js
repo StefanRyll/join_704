@@ -3,8 +3,8 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ".split(""); // durch das spli
 /**
  * Render contacts and organize them alphabetically with sections.
  */
-function renderContacts() {
-    loadAccounts()
+async function renderContacts() {
+    await loadAccounts()
     let contactsList = document.getElementById("contactsList").innerHTML;
     contactsList = ""
     let currentInitials = "";
@@ -111,9 +111,9 @@ function closeOverlay() {
 /**
  * function for a new contact to the accounts[] array
  */
-function addContact() {
+async function addContact() {
     try {
-        loadAccounts()
+        await loadAccounts()
     } catch (error) {
         console.log(error);
     }
@@ -123,11 +123,12 @@ function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+    console.log("newContact", newUser);
     closeOverlay();
     setTimeout(() => {
         successOverlay();
     }, 100);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
+    try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
 }
