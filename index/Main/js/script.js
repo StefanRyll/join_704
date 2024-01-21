@@ -313,13 +313,16 @@ function taskSaveChanges(x) {
         }
         return checkedUsers;
     };
-    let updatedSubtasks = [];
-    for (let i = 0; i < eTask.subTasks.length; i++) {
-        let subtaskElement = document.getElementById(`todoSubtask${i}`);
-        if (subtaskElement) {
-            updatedSubtasks.push({ text: subtaskElement.textContent, done: eTask.subTasks[i].done });
-        }
-    }
+    // let subtaskInput = () =>{
+    //     let allSubtasks = [];
+    //     for (let i = 0; i < subtaskTemp.length; i++) {
+    //         let subtaskElement = document.getElementById(`todoSubtask${i}`);
+    //         if (subtaskElement) {
+    //             allSubtasks.push({ text: subtaskElement.textContent, done: eTask.subTasks[i].done });
+    //         }
+    //     }
+    //     return allSubtasks;
+    // }
     let eTaskTodo = eTask.todo; //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
@@ -327,7 +330,7 @@ function taskSaveChanges(x) {
     // Edited Task
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
-    updateSubtasksInTask(x, updatedSubtasks);
+    // updateSubtasksInTask(x, updatedSubtasks);
     // subtaskTemp.push(fixSubtasks(x));
     // let dateInput = document.getElementById('taskCardEDate').value;
     let dateInput = () => {
@@ -340,10 +343,9 @@ function taskSaveChanges(x) {
         }
     }
     let prioInput = prioTemp;
-    let subtaskInput = updatedSubtasks;
     let Category = eTask.Category;
     // // Merched Task
-    Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput(), prioInput, Category, subtaskInput, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput(), prioInput, Category, subtaskTemp, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
     saveTasks();
     closeTaskCard();
     cleanUpAll();
@@ -365,7 +367,7 @@ function closeTaskCard() {
     setTimeout(() => {
         document.getElementById('addTask').classList.add("d-none");
     }, 200);
-    cleanUpAccountsCheck();
+    cleanUpAll()
     setTimeout(() => {
         boardPage();
     }, 200);
@@ -383,8 +385,7 @@ function cleanUpAll() {
  */
 function cleanUpAccountsCheck() {
     for (let i = 0; i < Join.accounts.length; i++) {
-        const User = Join.accounts[i];
-        User.checked = false;
+        Join.accounts[i].checked = false;
     }
 }
 /**

@@ -280,6 +280,7 @@ function closeAddTask() {
     setTimeout(() => {
         document.getElementById('addTask').classList.add("d-none");
     }, 200);
+    cleanUpAll();
 }
 /**
  * Retrieves the priority level based on the checked state of priority radio buttons.
@@ -353,14 +354,16 @@ function changeSubtask(m) {
  * @param {number} m - The index of the subtask to be changed.
  */
 function fixSubtasks(m) {
+    // Macht den Laden dicht
     let containerTodoSubtask = `containerTodoSubtask${m}`;
     let fixTodoSubtask = `fixTodoSubtask${m}`;
     document.getElementById(containerTodoSubtask).classList.remove('d-none');
     document.getElementById(fixTodoSubtask).classList.add('d-none');
-
+    // Ausgelesen
     let editFixSubtask = document.getElementById('editFixSubtask');
     let todoSubtask = document.getElementById(`todoSubtask${m}`);
     todoSubtask.textContent = editFixSubtask.value;
+    subtaskTemp[m].text = editFixSubtask.value;
     editFixSubtask.innerHTML = '';
 }
 /**
