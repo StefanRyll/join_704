@@ -597,6 +597,7 @@
 }
 
 .board-task-footer {
+    width: 100%;
     margin-bottom: 25px;
     display: flex;
     justify-content: space-between;

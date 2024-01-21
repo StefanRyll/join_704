@@ -343,13 +343,6 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-.btn-create {
-    width: 214px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .check-img-contacts {
     width: 24px;
     height: 24px;

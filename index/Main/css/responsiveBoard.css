@@ -36,7 +36,6 @@
     .content-board-task-footer {
         gap: 80%;
     }
-
     .res-content-board {
         padding: 40px 90px 90px 0px;
     }
@@ -54,6 +53,9 @@
 }
 
 @media (max-width: 768px) {
+    .style-closebutton-intask {
+        margin: 0;
+    }
     .res-content-board {
         padding-top: 0;
         padding-left: 0;
@@ -127,11 +129,9 @@
     .drag-area {
         overflow-x: auto;
     }
-
     .taskCard h1 {
         font-size: 35px;
     }
-
     .mobile-res-board {
         display: flex;
         justify-content: space-between;
@@ -191,5 +191,11 @@
     }
     .lanes {
         width: 96%;
+    }
+}
+
+@media (max-height: 896px) {
+    .add-task-card {
+        height: 100%;
     }
 }

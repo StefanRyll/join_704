@@ -124,7 +124,7 @@ async function createAccount() {
         checkPasswordPolicy();
 
     }
-    
+
     function isPasswordPolicyTrue() {
         pw === true && policy === true;
     }
@@ -275,14 +275,14 @@ function closeSideAndHeadMenu(event) {
  * @param {MouseEvent} e - The mouse down event.
  * @returns {void}
  */
-window.onmousedown = function (e) {
-    closeSideAndHeadMenu(e);
-    closeContactMenu(e)
-}
-/**
- * Logs out the current user by resetting the signed account and navigating to the start page.
- * @returns {void}
- */
+window.onmousedown = function(e) {
+        closeSideAndHeadMenu(e);
+        closeContactMenu(e)
+    }
+    /**
+     * Logs out the current user by resetting the signed account and navigating to the start page.
+     * @returns {void}
+     */
 function logout() {
     Join.signedAccount = "";
     deleteSignedUser()
@@ -340,12 +340,12 @@ function taskSaveChanges(x) {
     updateSubtasksInTask(x, updatedSubtasks);
     // subtaskTemp.push(fixSubtasks(x));
     // let dateInput = document.getElementById('taskCardEDate').value;
-    let dateInput = () =>{
+    let dateInput = () => {
         let inputfeld = document.getElementById('taskCardEDate').value;
         // const pointZero = "Thu Jan 01 1970 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)"
-        if (inputfeld !== ''){
+        if (inputfeld !== '') {
             return inputfeld;
-        }else {
+        } else {
             return eTask.date;
         }
     }
@@ -426,4 +426,8 @@ function openSelectContactsFromCard() {
 function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
+}
+
+function backToLastSite() {
+    window.history.back();
 }

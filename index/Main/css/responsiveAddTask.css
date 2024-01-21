@@ -1,9 +1,3 @@
-@media (max-width: 1420px) {
-    .content-add-task {
-        margin-left: 62px;
-    }
-}
-
 @media (min-width: 1331px) {
     .responsiveMin {
         display: none;
@@ -27,10 +21,8 @@
         position: relative;
     }
     .content-add-task {
-        padding-top: 90px;
         margin-right: 0;
         padding: 0;
-        padding-left: 90px;
         padding-top: 90px;
     }
     .board-task-middle {
@@ -98,13 +90,13 @@
     }
 }
 
-@media (max-width: 1188px) {
+@media (max-width: 1023px) {
     .add-task {
         width: 100%;
     }
     .content-add-task {
         padding-top: 50px;
-        padding-left: 50px;
+        /* padding-left: 50px; */
         margin-left: 0;
     }
     .input-title {
@@ -150,6 +142,9 @@
     .checkbox-container {
         width: 98%;
     }
+    .btn-create {
+        width: 163px !important;
+    }
 }
 
 @media (max-width: 850px) {
@@ -166,6 +161,9 @@
 }
 
 @media (max-width: 768px) {
+    .add-task-card {
+        padding: 0 28px 0 28px;
+    }
     .headline-add-task {
         margin-left: 10px;
     }
@@ -296,6 +294,12 @@
 }
 
 @media (max-width: 422px) {
+    .headline-add-task h3 {
+        margin-top: 20px;
+    }
+    .add-task-card {
+        padding: 0;
+    }
     .left-side {
         margin-right: 5px;
     }
@@ -313,7 +317,7 @@
         margin-bottom: 30px;
     }
     .style-closebutton-intask {
-        margin-right: 20px;
+        margin-right: 20px !important;
     }
 }
 
