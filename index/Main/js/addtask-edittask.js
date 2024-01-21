@@ -30,13 +30,13 @@ function checkUser(AssignedUsers, JoinUsers) {
 }
 /**
  * Checks and displays the assigned workers for the specified task in the containerShortName element.
- * @param {object} task - The task object.
  */
-function checkWorker(task) {
+function checkWorker() {
     let containerShortName = document.getElementById('containerShortName');
     containerShortName.innerHTML = '';
-    for (let i = 0; i < task.worker.length; i++) {
-        let assignedWorker = task.worker[i];
+    let filtertAccounts = Join.accounts.filter(user => user.checked === true)
+    for (let i = 0; i < filtertAccounts.length; i++) {
+        let assignedWorker = filtertAccounts[i];
         containerShortName.innerHTML += assignedWorker.accountTag();
     }
 }
@@ -137,6 +137,7 @@ function assignedCheck(x) {
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
     Join.accounts[x].checked = false;
     renderTaskContacts()
+    checkWorker()
 }
 /**
  * Updates the display for checked accounts and sets the 'checked' property to true.
@@ -147,6 +148,7 @@ function assignedCheckNone(x) {
     document.getElementById(`tinyAccountCardChecked${x}`).classList.remove('d-none');
     Join.accounts[x].checked = true;
     renderTaskContacts();
+    checkWorker()
 }
 /**
  * Updates the display for checked accounts without modifying the 'checked' property.
@@ -180,15 +182,6 @@ function addShortNames(name, x) {
 function renderShortNames(name, x) {
     let container = document.getElementById('containerShortName');
     container.innerHTML += JoinBoard.generateHTMLRenderShortNames(name, x);
-}
-/**
- * Removes short names based on the specified index.
- * @param {number} x - The index associated with the short names to be removed.
- */
-function removeShortNames(x) {
-    let shortNames = document.getElementById(`editShortNames${x}`);
-    shortNames.remove();
-
 }
 /**
  * Filters contact names based on the search input and updates the displayed contact list.
