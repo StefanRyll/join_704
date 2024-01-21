@@ -12,9 +12,6 @@
     .subtask-container {
         width: 95%;
     }
-    /* .create-subtask ul {
-        width: 100%;
-    } */
     .add-task {
         gap: 40px;
     }
@@ -90,18 +87,16 @@
         margin-bottom: 0;
     }
 
-@media (max-width: 1188px) {
+
+@media (max-width: 1023px) {
     .add-task-card {
         width: 100%;
     }
-}
-@media (max-width: 1023px) {
     .add-task {
         width: 100%;
     }
     .content-add-task {
         padding-top: 50px;
-        /* padding-left: 50px; */
         margin-left: 0;
     }
     .input-title {

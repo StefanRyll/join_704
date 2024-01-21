@@ -20,56 +20,56 @@ function setActiveStyles(id, backgroundColor, textColor) {
  * It stablises the History api in case of reloading. 
  */
 async function startPage() {
-    try { await loadAccounts().then( await loadTasks());} catch (e) { console.log("Fehler", e)}
-            let responseLocal = loadSignedUser();
-            Join.signedAccount = responseLocal;
-            let myState = localStorage.getItem('state')
-            redirectUser(myState)
-        try {
-            retrievesAStoredJSON();
-        } catch (e) { "Nothing to remember :" + e }
-    }
+    try { await loadAccounts().then(await loadTasks()); } catch (e) { console.log("Fehler", e) }
+    let responseLocal = loadSignedUser();
+    Join.signedAccount = responseLocal;
+    let myState = localStorage.getItem('state')
+    redirectUser(myState)
+    try {
+        retrievesAStoredJSON();
+    } catch (e) { "Nothing to remember :" + e }
+}
 
-function redirectUser(myState){
-    if (Join.signedAccount !== null){
+function redirectUser(myState) {
+    if (Join.signedAccount !== null) {
         redirectSignedUser(myState)
-    }else{
+    } else {
         redirectUnsignedUser(myState)
     }
 
 }
-function redirectUnsignedUser(myState){
-    if (myState === "SignUp"){
+function redirectUnsignedUser(myState) {
+    if (myState === "SignUp") {
         signUp()
     }
-    else if (myState === "LogIn"){
+    else if (myState === "LogIn") {
         startPage2()
     }
-    else{
+    else {
         startAnimation();
     }
 
 }
-function redirectSignedUser(myState){
-    if (myState === "Summary"){
+function redirectSignedUser(myState) {
+    if (myState === "Summary") {
         summeryPage()
     }
-    else if (myState === "Board"){
+    else if (myState === "Board") {
         boardPage()
     }
-    else if (myState === "AddTask"){
+    else if (myState === "AddTask") {
         addTaskPage()
     }
-    else if (myState === "Contacts"){
+    else if (myState === "Contacts") {
         contactsPage()
     }
-    else if (myState === "Privacy Policy"){
+    else if (myState === "Privacy Policy") {
         privacyPage()
     }
-    else if (myState === "LegalNotice"){
+    else if (myState === "LegalNotice") {
         legalPage()
     }
-    else if (myState === "Help"){
+    else if (myState === "Help") {
         helpPage()
     }
 
