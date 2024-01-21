@@ -9,6 +9,10 @@
         padding: 0;
     }
 
+    .fix-todo-subtask {
+        width: 100%;
+    }
+
     .subtask-container {
         width: 95%;
     }
@@ -291,7 +295,7 @@
         width: 92%;
     }
     .fix-container {
-        width: 98%;
+        width: 100%;
     }
     .fix-container input {
         font-size: 16px;
@@ -363,5 +367,10 @@
 @media (max-width: 330px) {
     .btn-create {
         width: 120px !important;
+    }
+
+    .fix-subtask-icons {
+        position: absolute;
+        right: 0;
     }
 }

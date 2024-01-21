@@ -149,6 +149,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .content-add-task {
     display: flex;
     padding-top: 90px;
+    padding-left: 90px;
     flex-direction: column;
     align-items: flex-start;
 }
