@@ -210,37 +210,25 @@ function decodeAccounts(responseAsJson) {
 function saveSignedUser(){
     let payloadSignedUser = JSON.stringify(Join.signedAccount);
     localStorage.setItem("signedAccount", payloadSignedUser);
-    console.log(payloadSignedUser);
 }
 function loadSignedUser() {
     let SignedUserAsJSON = JSON.parse(localStorage.getItem("signedAccount"))
     if (SignedUserAsJSON !== null){
         let name = SignedUserAsJSON['name']
         let account = Join.accounts.filter(a => a.name === name)
-        console.log("name", name);
-        console.log("account", account);
+
         if (account.length === 0 && name === 'Guest'){
             account = new Account("Guest", "email@join.de", "");
-            console.log("Kein Account gefunden -> ", account);
+
         }else if (account.length > 0){
             account = account[0]
-            console.log("Account gefunden -> ", account);
-
         }else {
             account = null;
-
         }
         return account    
-
     }
     return null;
 }
 function deleteSignedUser(){
     localStorage.removeItem('signedAccount')
 }
-// window.onbeforeunload = async ()=>{
-//     if (Join.signedAccount){
-//         await saveAccounts()
-//         await saveTasks()
-//     }
-// }
