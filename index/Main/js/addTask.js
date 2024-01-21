@@ -35,7 +35,6 @@ function createTask(x) {
     const category = document.getElementById('taskCategoryInput').value;
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
-    console.log("Neuer Task", newTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
     boardPage();
 }
@@ -159,7 +158,6 @@ function readAssignedUsers() {
     //         workers.push(account);
     //     }
     // }
-    console.log("read Assigned Users", workers);
     return workers;
 }
 /**

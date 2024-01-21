@@ -99,6 +99,9 @@
 }
 
 @media (max-width: 1188px) {
+    .add-task-card {
+        width: 100%;
+    }
     .add-task {
         width: 100%;
     }

@@ -336,7 +336,7 @@ class Board extends Page {
     }
     generateHTMLAddContactShortName() {
         return /*html*/ `
-            <div id="containerShortName"  onload="renderShortNames()"></div>
+            <div id="containerShortName"></div>
         `
     }
     generateHTMLRenderShortNames(shortNames, x) {
