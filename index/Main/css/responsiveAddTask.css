@@ -8,7 +8,7 @@
     #content {
         padding: 0;
     }
-}
+
     .subtask-container {
         width: 95%;
     }
@@ -22,10 +22,6 @@
         margin-right: 0;
         padding: 0;
         padding-top: 90px;
-    }
-    .board-task-middle {
-        display: flex;
-        flex-direction: column;
     }
     .seperator-add-task {
         display: none;
@@ -44,6 +40,8 @@
         width: 29.5em;
     }
     .board-task-middle {
+        display: flex;
+        flex-direction: column;
         height: 52vh;
         overflow-y: scroll;
         padding-bottom: 50px;
@@ -86,7 +84,7 @@
     #hiddenSubtask {
         margin-bottom: 0;
     }
-
+}
 
 @media (max-width: 1023px) {
     .add-task-card {

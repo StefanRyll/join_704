@@ -11,7 +11,7 @@ function openAddTask(x = 0) {
  * @param {number} x - The board parameter (default value is 0).
  */
 async function createTaskFromBoard(x = 0) {
-    try { await loadTasks();} catch (e) { console.log("Fehler", e)}
+    try { await loadTasks(); } catch (e) { console.log("Fehler", e) }
     createTask(x);
 }
 /**
@@ -58,7 +58,7 @@ function createTaskPage() {
     } catch (error) {
         console.log("Task speichern nicht möglich : " + error);
     } finally {
-        
+
         clearInputs(title, desc, worker, date, category, subTask);
         successOverlayTask();
     }
@@ -80,7 +80,7 @@ async function updateTask(newTask, x, title, worker, desc, date, prio, category,
     createNewTask(newTask, x);
     // updateTaskWorkers(newTask);
     Join.tasks.push(newTask)
-    try { await saveTasks() } catch (e) {console.log("Fehler", e)}
+    try { await saveTasks() } catch (e) { console.log("Fehler", e) }
     clearInputs(title, desc, worker, date, category, subTask);
     // closeAddTask()
     successOverlayTask()
