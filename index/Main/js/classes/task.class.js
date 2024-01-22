@@ -148,6 +148,12 @@ class Task {
         `
     }
     taskCardEdit(x) {
+        let getDate = ()=>{
+            let date = new Date()
+            let formattedDate = date.toISOString().split('T')[0];
+            return formattedDate
+        }
+
         return /*html*/ `  
         <div class="editTaskCard">   
             <div class="taskCardHeader" >
@@ -172,7 +178,7 @@ class Task {
                     <textarea class="blue textarea-resize" cols="30" rows="10" id="taskCardEDesc">${this.desc}</textarea>
 
                     <label for="taskCardEDate">Date Due:</label>
-                    <input type="date" id="taskCardEDate">
+                    <input type="date" min="${getDate()}" id="taskCardEDate">
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
                     ${JoinBoard.generateHTMLAddContactShortName(x)}
