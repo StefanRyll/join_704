@@ -20,7 +20,7 @@ function setActiveStyles(id, backgroundColor, textColor) {
  * It stablises the History api in case of reloading. 
  */
 async function startPage() {
-    try { await loadAccounts().then(await loadTasks()); } catch (e) { console.log("Fehler", e) }
+    try { await loadAccounts().then(await loadTasks()); } catch (e) { console.error("Fehler", e) }
     let responseLocal = loadSignedUser();
     Join.signedAccount = responseLocal;
     let myState = localStorage.getItem('state')
@@ -101,7 +101,7 @@ function retrievesAStoredJSON() {
  */
 function startPage2() {
     try { loadAccounts() } catch (e) {
-        console.log("Fehler", e)
+        console.error("Fehler", e)
     } finally {
         body.innerHTML = JoinLogin.logoLogin();
         body.innerHTML += JoinLogin.logInContent();
@@ -122,7 +122,7 @@ function signUp() {
  */
 function summeryPage() {
     try { loadTasks() } catch (e) {
-        console.log("Fehler", e)
+        console.error("Fehler", e)
     } finally {
         loadComponentsSummery();
     }
@@ -151,7 +151,7 @@ function loadComponentsSummery() {
  */
 async function boardPage() {
     try { await loadTasks() } catch (e) {
-        console.log("Fehler", e)
+        console.error("Fehler", e)
     } finally {
         loadComponentsBoard();
     }
@@ -183,7 +183,7 @@ function loadComponentsBoard() {
  */
 function contactsPage() {
     try { loadAccounts() } catch (e) {
-        console.log("Fehler", e)
+        console.error("Fehler", e)
     } finally {
         loadComponentsContacts();
     }
