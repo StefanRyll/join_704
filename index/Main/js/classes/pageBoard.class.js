@@ -424,11 +424,16 @@ class Board extends Page {
         `
     }
     generateHTMLDateForm() {
+        let getDate = ()=>{
+            let date = new Date()
+            let formattedDate = date.toISOString().split('T')[0];
+            return formattedDate
+        }
         return /*html*/ `
                 <div class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
-                        <input type="date" id="date" name="datum" required placeholder="dd-MM-yyyy">
+                        <input type="date" id="date" name="datum" min="${getDate()}" required placeholder="dd-MM-yyyy">
                     </div>
                 </div>
             `
