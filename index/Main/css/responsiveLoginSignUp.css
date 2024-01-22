@@ -75,3 +75,28 @@
         width: 20%;
     }
 }
+
+@media (max-width: 375px) {
+    .login-footer {
+        bottom: 5px;
+        gap: 5px;
+    }
+
+    .logoAnimationImg2 {
+        height: 40px;
+        width: 30px;
+        background-size: 30px, 40px;
+    }
+}
+
+@media (max-width: 330px) {
+
+    .login-footer {
+        bottom: 5px;
+        gap: 5px;
+    }
+
+    .login-signUp-interface {
+        margin-top: 3% !important;
+    }
+}

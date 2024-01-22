@@ -10,28 +10,35 @@
     .chip1x {
         padding: 1.5em 0.5em 1.5em 0.5em;
     }
+
     .chip2x {
         padding: 1em 0.5em 1em 0.5em;
     }
+
     .chip3x {
         padding: 1.5em 0.5em 1.5em 0.5em;
     }
+
     .chipIcon {
         background-size: 49px 49px;
         width: 49px;
         height: 49px;
     }
+
     .chipIcon2 {
         background-size: 49px 49px;
         width: 49px;
         height: 49px;
     }
+
     .chipData2x h1 {
         font-size: 50px;
     }
+
     .chipData3x h2 {
         font-size: 50px;
     }
+
     .chipData3x p {
         font-size: 16px;
     }
@@ -47,6 +54,7 @@
     .greetingArea {
         display: none;
     }
+
     .greetingAreaRes h3 {
         font-size: 35px;
         margin-block-start: 0;
@@ -58,6 +66,7 @@
     .summeryHeadline h1 {
         font-size: 50px;
     }
+
     .summeryHeadline p {
         font-size: 21px;
     }
@@ -67,17 +76,21 @@
     .summery {
         padding-top: 50px;
     }
+
     .summeryHeadline {
         flex-direction: column;
         align-items: center;
     }
+
     .summeryHeadline h1 {
         font-size: 40px;
     }
+
     .summeryHeadline img {
         height: 3px;
         width: 100%;
     }
+
     .chipsArea {
         row-gap: 20px;
     }
@@ -87,6 +100,7 @@
     .summery {
         padding-top: 15px;
     }
+
     .summeryHeadline {
         flex-direction: column;
         justify-content: flex-start;
@@ -94,32 +108,40 @@
         padding-left: 2em;
         padding-top: 2em;
     }
+
     .summeryHeadline img {
         display: none;
     }
+
     .summeryHeadline h1 {
         font-size: 47px;
         margin: 0;
         text-align: left;
     }
+
     .summeryHeadline p {
         font-size: 24px;
         margin: 0;
     }
+
     .chipData1x h2 {
         margin-block-start: 0;
         margin-block-end: 0;
         font-size: 16px;
     }
+
     .chipData1x p {
         font-size: 14px;
     }
+
     .chipData2x h1 {
         font-size: 40px;
     }
+
     .chipData3x h2 {
         font-size: 40px;
     }
+
     .chipData3x p {
         font-size: 12px;
     }
@@ -133,11 +155,13 @@
         padding: 10px;
         overflow-y: hidden;
     }
+
     .summeryHeadline {
         align-items: center;
         padding-left: 0;
         padding-top: 0;
     }
+
     .greetingAreaRes {
         display: none;
     }
@@ -166,53 +190,61 @@
     .summeryHeadline p {
         font-size: 16px;
     }
+
     .summeryHeadline h1 {
         font-size: 35px;
     }
-    .summery {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 10px;
-        margin-right: 20px;
-    }
+
+    
+
     .summeryHeadline {
         align-items: start;
         padding-left: 0;
         padding-top: 0;
     }
+
     .greetingAreaRes {
         display: none;
     }
+
     .chip2x {
         margin-left: 0;
         margin-right: 0;
         width: 44%;
     }
+
     .chip1x {
         padding: .8em 0.2em .8em 0.2em;
     }
+
     .chip2x {
         padding: .5em .2em .5em .2em;
     }
+
     .chip3x {
-        padding: .7em 0.1em .7em 0.1em;
+        padding: .7em 0.4em .7em 0.4em;
     }
+
     .chipData2x h1 {
         font-size: 26px;
     }
+
     .chipData3x h2 {
         font-size: 26px;
     }
+
     .chipIcon {
         background-size: 30px 30px;
         width: 30px;
         height: 30px;
     }
+
     .chipIcon2 {
         background-size: 30px 30px;
         width: 30px;
         height: 30px;
     }
+
     .chipData2x p {
         font-size: 16px;
     }
@@ -222,18 +254,20 @@
     .summery {
         overflow-y: scroll;
         height: 75vh;
-        margin-left: 2px;
-        margin-right: 2px;
     }
+
     .chipsArea {
         row-gap: 12px;
     }
+
     .chip2x:hover {
         transition: scale 0s ease-in-out;
     }
+
     .chip1x:hover {
         transition: scale 0s ease-in-out;
     }
+
     .chip3x:hover {
         transition: scale 0s ease-in-out;
     }

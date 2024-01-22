@@ -22,3 +22,34 @@
     flex-direction: column;
     gap: 16px;
 }
+
+@media (max-width: 430px) {
+    .privacyContent {
+        padding: 10px;
+        height: 75vh;
+    }
+
+    .privacyContent h1 {
+        text-align: left;
+        font-size: 26px;
+    }
+
+    .privacyContent h2 {
+        font-size: 20px;
+    }
+
+    .privacyContent h3 {
+        font-size: 18px;
+    }
+
+    .privacyContent h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 320px) {
+    .privacyContent {
+        padding: 10px;
+        height: 65vh;
+    }
+}
