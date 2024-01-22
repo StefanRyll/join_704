@@ -40,10 +40,10 @@ function redirectUser(myState) {
 }
 function redirectUnsignedUser(myState) {
     if (myState === "SignUp") {
-        signUp()
+        signUp();
     }
     else if (myState === "LogIn") {
-        startPage2()
+        startAnimation();
     }
     else {
         startAnimation();
