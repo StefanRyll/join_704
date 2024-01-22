@@ -115,7 +115,7 @@ async function addContact() {
     try {
         await loadAccounts()
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
     let name = document.getElementById('name').value;
     let email = document.getElementById('mail').value;

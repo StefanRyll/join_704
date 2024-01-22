@@ -1,4 +1,24 @@
 class Board extends Page {
+    renderAddTask(x) {
+        let addTask = document.getElementById('addTask');
+        addTask.innerHTML = '';
+        addTask.classList.remove("d-none")
+        addTask.innerHTML += this.generateHTMLaddTask(x);
+
+        const urgent = document.getElementById('btnUrgentWhite');
+        const medium = document.getElementById('btnMediumWhite');
+        const low = document.getElementById('btnLowWhite');
+
+        urgent.addEventListener('click', () => {
+            prioTemp = "Urgent";
+        })
+        medium.addEventListener('click', () => {
+            prioTemp = "Medium";
+        })
+        low.addEventListener('click', () => {
+            prioTemp = "Low";
+        })
+    }
     boardContent() {
         return /*html*/ `
          <div class="res-content-board">
@@ -127,7 +147,6 @@ class Board extends Page {
 
                     `
     }
-
     generateHtmlSuccessInfoTask() {
         return /*html*/ `
             <div class="successInfoContainer">
@@ -135,73 +154,109 @@ class Board extends Page {
             </div>
         `
     }
-
+    // ChatGPT hat mir da ja was geiles Rausgehauen
+    KAMBAN_IDS = {
+        TODO: 'kambanTodo',
+        INPROGRESS: 'kambanInprogress',
+        FEEDBACK: 'kambanFeedback',
+        DONE: 'kambanDone',
+    };
+    
     async renderTask() {
-        try { await loadTasks(); } catch (e) { console.log("Fehler", e) }
-        let kambanTodo = document.getElementById('kambanTodo');
-        let kambanInprogress = document.getElementById('kambanInprogress');
-        let kambanFeedback = document.getElementById('kambanFeedback');
-        let kambanDone = document.getElementById('kambanDone');
-        kambanTodo.innerHTML = "";
-        kambanInprogress.innerHTML = "";
-        kambanFeedback.innerHTML = "";
-        kambanDone.innerHTML = "";
-
-        if (Join.tasks.length > 0) {
-            for (let i = 0; i < Join.tasks.length; i++) {
-                const task = Join.tasks[i];
-                if (task.todo) {
-                    kambanTodo.innerHTML += task.tinyTaskCard(i)
-
-                } else if (task.progress) {
-                    kambanInprogress.innerHTML += task.tinyTaskCard(i)
-
-                } else if (task.feedback) {
-                    kambanFeedback.innerHTML += task.tinyTaskCard(i)
-
-                } else if (task.done) {
-                    kambanDone.innerHTML += task.tinyTaskCard(i)
-
-                } else {
-                    task.todo = true;
-                    task.feedback = false;
-                    task.progress = false;
-                    task.done = false;
-                    this.renderTask()
-
-                }
-                if (task.subTasks) {
-                    task.updateProgressBar(i);
-                }
-            }
-        }
-        checkDragArea();
+      try {
+        await loadTasks();
+      } catch (e) {
+        console.error("Fehler", e);
+      }
+    
+      this.clearKambanContent();
+      this.renderTasksByStatus();
+      checkDragArea();
     }
+    
+    clearKambanContent() {
+      for (const id of Object.values(this.KAMBAN_IDS)) {
+        const kambanElement = document.getElementById(id);
+        if (kambanElement) {
+          kambanElement.innerHTML = "";
+        }
+      }
+    }
+    
+    renderTasksByStatus() {
+      if (Join.tasks.length > 0) {
+        for (let i = 0; i < Join.tasks.length; i++) {
+          const task = Join.tasks[i];
+          const kambanElement = this.getKambanElement(task);
+          if (kambanElement) {
+            kambanElement.innerHTML += task.tinyTaskCard(i);
+          }
+    
+          if (task.subTasks) {
+            task.updateProgressBar(i);
+          }
+        }
+      }
+    }
+    
+    getKambanElement(task) {
+      if (task.todo) return document.getElementById(this.KAMBAN_IDS.TODO);
+      if (task.progress) return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
+      if (task.feedback) return document.getElementById(this.KAMBAN_IDS.FEEDBACK);
+      if (task.done) return document.getElementById(this.KAMBAN_IDS.DONE);
+    
+      // If no valid status is found, reset the task and re-render
+      task.todo = true;
+      task.feedback = false;
+      task.progress = false;
+      task.done = false;
+      this.renderTask();
+      return null;
+    }
+    
+    // async renderTask() {
+    //     try { await loadTasks(); } catch (e) { console.error("Fehler", e) }
+    //     let kambanTodo = document.getElementById('kambanTodo');
+    //     let kambanInprogress = document.getElementById('kambanInprogress');
+    //     let kambanFeedback = document.getElementById('kambanFeedback');
+    //     let kambanDone = document.getElementById('kambanDone');
+    //     kambanTodo.innerHTML = "";
+    //     kambanInprogress.innerHTML = "";
+    //     kambanFeedback.innerHTML = "";
+    //     kambanDone.innerHTML = "";
+
+    //     if (Join.tasks.length > 0) {
+    //         for (let i = 0; i < Join.tasks.length; i++) {
+    //             const task = Join.tasks[i];
+    //             if (task.todo) {
+    //                 kambanTodo.innerHTML += task.tinyTaskCard(i)
+    //             } else if (task.progress) {
+    //                 kambanInprogress.innerHTML += task.tinyTaskCard(i)
+    //             } else if (task.feedback) {
+    //                 kambanFeedback.innerHTML += task.tinyTaskCard(i)
+    //             } else if (task.done) {
+    //                 kambanDone.innerHTML += task.tinyTaskCard(i)
+    //             } else {
+    //                 task.todo = true;
+    //                 task.feedback = false;
+    //                 task.progress = false;
+    //                 task.done = false;
+    //                 this.renderTask()
+
+    //             }
+    //             if (task.subTasks) {
+    //                 task.updateProgressBar(i);
+    //             }
+    //         }
+    //     }
+    //     checkDragArea();
+    // }
     renderAddSubtask() {
         let addSubTask = document.getElementById('addSubtask');
         for (let m = 0; m < Join.tasks.length; m++) {
             const subtasksFromBoard = Join.tasks[m];
             addSubTask.innerHTML += subtasksFromBoard.generateHTMLAddSubtask()
         }
-    }
-    renderAddTask(x) {
-        let addTask = document.getElementById('addTask');
-        addTask.innerHTML = '';
-        addTask.classList.remove("d-none")
-        addTask.innerHTML += this.generateHTMLaddTask(x);
-
-        const urgent = document.getElementById('btnUrgentWhite');
-        const medium = document.getElementById('btnMediumWhite');
-        const low = document.getElementById('btnLowWhite');
-        urgent.addEventListener('click', () => {
-            prioTemp = "Urgent";
-        })
-        medium.addEventListener('click', () => {
-            prioTemp = "Medium";
-        })
-        low.addEventListener('click', () => {
-            prioTemp = "Low";
-        })
     }
     generateHTMLaddTask(x) {
         return /*html*/ `
@@ -231,9 +286,7 @@ class Board extends Page {
             <form id="formAddtask" class="add-task" onsubmit="createTaskPage(); return false">
                 ${this.generateHTMLaddTaskWindow(x)}
             </form>
-            <div class="overlay-success" id="overlaySuccessTask"></div>
-
-        `
+            <div class="overlay-success" id="overlaySuccessTask"></div>`
     }
     generateHTMLaddTaskWindow(x) {
         return /*html*/ `

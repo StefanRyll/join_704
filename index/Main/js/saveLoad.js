@@ -67,7 +67,7 @@ async function saveTasks() {
     try {
         await setItem(tasksKey, tasks)
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
     //  await fetch(MY_BACKEND_TAS, {
     // method: 'POST',
