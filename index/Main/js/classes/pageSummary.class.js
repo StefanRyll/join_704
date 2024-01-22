@@ -1,9 +1,9 @@
 class Summary extends Page {
     summeryContent() {
         let daytime = Join.sayDaytime()
-        let nextDeadlineDate, nDDay, nDMonth, nDYear, fullDate, urlPrio, taskPrio;
+        let nDDay, nDMonth, nDYear;
         let urgendTasks = ()=>{
-            let theTasks = Join.tasks.filter(t => t.prio === "urgend")
+            let theTasks = Join.tasks.filter(t => t.prio === "Urgent")
             return theTasks.length;
         }
         let doneTasks = () => {
@@ -28,52 +28,22 @@ class Summary extends Page {
         }
         let nextDeadline = () => {
             let allMonths = ["","January","February","March","April","May","June","July","August","September","October","November", "December"];
-
-                if (Join.tasks.length > 1) {
-                    nextDeadlineDate = Join.tasks.sort((taskA, taskB) => {
-                            return taskA.date - taskB.date;
-                        }) // Datum
-                    let latestDeadline = nextDeadlineDate[0]
-                    nDDay = latestDeadline.date.getDate()
-                    nDMonth = latestDeadline.date.getMonth() + 1
-                    nDYear = latestDeadline.date.getFullYear()
-                    fullDate = () => {
-
-                        return `${allMonths[nDMonth]} ${nDDay}, ${nDYear}`
-                    }
-
-                    taskPrio = latestDeadline.prio
-
-                    // return deadlines[0]
-                } else if (Join.tasks.length == 1) {
-                    let onlyTasks = Join.tasks[0]
-                    nextDeadlineDate = onlyTasks.date; // Datum
-                    nDDay = nextDeadlineDate.getDate()
-                    nDMonth = nextDeadlineDate.getMonth()
-                    nDYear = nextDeadlineDate.getFullYear()
-                    fullDate = () => {
-
-                        return `${allMonths[nDMonth]} ${nDDay}, ${nDYear}`
-                    }
-
-                    taskPrio = onlyTasks.prio;
-                } else {
-                    nDDay = "No"
-                    nDMonth = "Tasks"
-                    nDYear = "here"
-                    taskPrio = "Wichtig"
-                    fullDate = () => {
-                        return "No Tasks Here"
-                    }
-                    urlPrio = () => {
-                        return "./IMG/noPrio.png"
-                    }
-                    return "";
-                }
+            let getDeadlineDate = () =>{
+                let latestDeadline = Join.tasks.sort((taskA, taskB) => {
+                    return taskA.date - taskB.date;
+                })
+                latestDeadline = latestDeadline[0]
+                nDDay = latestDeadline.date.getDate()
+                nDMonth = latestDeadline.date.getMonth() + 1
+                nDYear = latestDeadline.date.getFullYear()
+                return `${allMonths[nDMonth]} ${nDDay}, ${nDYear}`
             }
-
-        nextDeadline()
-
+            if (Join.tasks.length > 0) {
+                return getDeadlineDate();                    
+            } else {
+                return `No Tasks, here`
+            }
+        }
         let progressCount = () => {
             let count = 0;
             for (let i = 0; i < Join.tasks.length; i++) {
@@ -133,12 +103,12 @@ class Summary extends Page {
                         <div class="chip1x" onclick="boardPage()">
                             <img class="chipIcon" src=${"./IMG/urgent.png"} alt="Nix">
                             <div>
-                                <h1 class="urgentCount">${urgendTasks()}</h1>
+                                <h1>${urgendTasks()}</h1>
                                 <p>Urgent</p>
                             </div>
                             <img src="./IMG/Vector 5.png" alt="">
                             <div class="chipData1x">
-                                <h2>${fullDate()}</h2>
+                                <h2>${nextDeadline()}</h2>
                                 <p>Upcoming Deadline</p>
                             </div>
                         </div>
