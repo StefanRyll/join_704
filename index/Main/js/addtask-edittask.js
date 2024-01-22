@@ -185,6 +185,5 @@ function filterContactNames() {
  * Navigiert den Browser eine Seite zurück und gibt eine Nachricht in der Konsole aus.
  */
 function backToPage() {
-    console.log("Toll");
     window.history.go(-1)
 }

@@ -123,7 +123,6 @@ async function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-    console.log("newContact", newUser);
     closeOverlay();
     setTimeout(() => {
         successOverlay();
@@ -151,7 +150,6 @@ function editContact(i) {
     }, 100);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
-        console.log("Funktioniert", contact);
     }
 }
 
