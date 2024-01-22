@@ -603,10 +603,10 @@ class Board extends Page {
             </div>
         `
     }
-    generateHTMLAddTaskButtons() {
+    generateHTMLAddTaskButtons(x) {
         return /*html*/ `
             <div id="addtaskButton" class="addTask-button addTask-button-window">
-                <button class="btn-cancel btn-white" type="reset" onsubmit="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
+                <button class="btn-cancel btn-white" type="reset" onclick="reset()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
         `

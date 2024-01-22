@@ -116,8 +116,8 @@ function assignedCheck(x) {
     document.getElementById(`tinyAccountCardCheckedNone${x}`).classList.remove('d-none');
     document.getElementById(`tinyAccountCardChecked${x}`).classList.add('d-none');
     Join.accounts[x].checked = false;
-    renderTaskContacts()
-    checkWorker()
+    renderTaskContacts();
+    checkWorker();
 }
 /**
  * Updates the display for checked accounts and sets the 'checked' property to true.

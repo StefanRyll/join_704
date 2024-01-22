@@ -282,6 +282,10 @@ function closeAddTask() {
     }, 200);
     cleanUpAll();
 }
+
+function reset() {
+    cleanUpAll();
+}
 /**
  * Retrieves the priority level based on the checked state of priority radio buttons.
  * 

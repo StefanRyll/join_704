@@ -313,16 +313,7 @@ function taskSaveChanges(x) {
         }
         return checkedUsers;
     };
-    // let subtaskInput = () =>{
-    //     let allSubtasks = [];
-    //     for (let i = 0; i < subtaskTemp.length; i++) {
-    //         let subtaskElement = document.getElementById(`todoSubtask${i}`);
-    //         if (subtaskElement) {
-    //             allSubtasks.push({ text: subtaskElement.textContent, done: eTask.subTasks[i].done });
-    //         }
-    //     }
-    //     return allSubtasks;
-    // }
+    
     let eTaskTodo = eTask.todo; //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
@@ -330,12 +321,8 @@ function taskSaveChanges(x) {
     // Edited Task
     let titleInput = document.getElementById('taskCardETitle').value;
     let descInput = document.getElementById('taskCardEDesc').value;
-    // updateSubtasksInTask(x, updatedSubtasks);
-    // subtaskTemp.push(fixSubtasks(x));
-    // let dateInput = document.getElementById('taskCardEDate').value;
     let dateInput = () => {
         let inputfeld = document.getElementById('taskCardEDate').value;
-        // const pointZero = "Thu Jan 01 1970 01:00:00 GMT+0100 (Mitteleuropäische Normalzeit)"
         if (inputfeld !== '') {
             return inputfeld;
         } else {
@@ -352,12 +339,11 @@ function taskSaveChanges(x) {
 }
 
 
-
-function updateSubtasksInTask(x, updatedSubtasks) {
-    let task = Join.tasks[x];
-    task.subTasks = updatedSubtasks;
-    saveTasks(); // Speichern der aktualisierten Task-Daten
-}
+// function updateSubtasksInTask(x, updatedSubtasks) {
+//     let task = Join.tasks[x];
+//     task.subTasks = updatedSubtasks;
+//     saveTasks(); 
+// }
 /**
  * Closes the task card, hides the task card slide, and navigates back to the board page.
  */

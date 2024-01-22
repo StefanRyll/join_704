@@ -145,6 +145,10 @@
     .chipData3x p {
         font-size: 12px;
     }
+
+    .chip1x h1 {
+        font-size: 40px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -230,6 +234,10 @@
     }
 
     .chipData3x h2 {
+        font-size: 26px;
+    }
+
+    .chip1x h1 {
         font-size: 26px;
     }
 
