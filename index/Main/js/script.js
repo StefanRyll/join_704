@@ -99,7 +99,7 @@ async function createAccount() {
         label.classList.add('falsePasswordRed')
     }
 
-    try { await loadAccounts() } catch (e) { console.log("Fehler", e) }
+    try { await loadAccounts() } catch (e) { console.error("Fehler", e) }
 
     let pw = passwordCheck();
     let policy = ppCheck();
