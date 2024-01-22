@@ -584,6 +584,10 @@
     .add-contact-headline {
         font-size: 28px;
     }
+
+    .respon-footer-buttons {
+        font-size: 10px;
+    }
 }
 
 @media (max-height: 730px) {
