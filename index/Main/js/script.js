@@ -26,54 +26,18 @@ function guestLogin() {
 async function logInUser() {
     const user = document.getElementById('loginEmail').value.toLowerCase();
     const pw = document.getElementById('loginPassword').value;
-    checkUserData(user, pw);
-}
-/**
- * Checks user data by calling a function to validate the user and password, and takes actions
- * based on the validation result.
- * 
- * @param {string} user - The user's username or identifier.
- * @param {string} pw - The user's password.
- */
-function checkUserData(user, pw) {
     let remember = () => {
-        rememberMe(user);
+        if (Join.rememberMe) {
+            let userAsJson = JSON.stringify(user);
+            localStorage.setItem("remember", userAsJson);
+        }
     }
     let wentWrong = () => {
-        showWorngFrame();
+        let loginPasswordFrame = document.getElementById('loginPasswordFrame')
+        let label = document.querySelector(".falsePassword")
+        loginPasswordFrame.classList.add('redFrame');
+        label.classList.add('falsePasswordRed')
     }
-    checkUser(user, pw, remember, wentWrong);
-    
-}
-/**
- * Stores the user's data in local storage for "Remember Me" functionality if enabled.
- * 
- * @param {string} user - The user's data to be stored (usually the username or identifier).
- */
-function rememberMe(user) {
-    if (Join.rememberMe) {
-        let userAsJson = JSON.stringify(user);
-        localStorage.setItem("remember", userAsJson);
-    }
-}
-/**
- * Shows a visual indication of a wrong password by adding CSS classes to elements.
- */
-function showWorngFrame() {
-    let loginPasswordFrame = document.getElementById('loginPasswordFrame')
-    let label = document.querySelector(".falsePassword")
-    loginPasswordFrame.classList.add('redFrame');
-    label.classList.add('falsePasswordRed')
-}
-/**
- * Validates user credentials (email and password) and takes actions based on the result.
- * 
- * @param {string} user - The user's email or identifier.
- * @param {string} pw - The user's password.
- * @param {function} remember - A callback function to be called if validation succeeds.
- * @param {function} wentWrong - A callback function to be called if validation fails.
- */
-function checkUser(user, pw, remember, wentWrong) {
     let myAccount = Join.accounts.filter(userAccount => userAccount.email.toLowerCase() === user)
     if (myAccount.length != 0) {
         myAccount = myAccount[0]
@@ -83,6 +47,7 @@ function checkUser(user, pw, remember, wentWrong) {
             saveSignedUser()
             summeryPage();
             checkWelcomeRespon();
+
         } else {
             wentWrong();
         }
@@ -90,6 +55,7 @@ function checkUser(user, pw, remember, wentWrong) {
         wentWrong();
     }
 }
+
 /**
  * Checks the window width and shows the welcome overlay if the width is less than 767 pixels.
  * @function
@@ -101,6 +67,7 @@ function checkWelcomeRespon() {
         showWelcomeOverlay();
     }
 }
+
 /**
  * Displays the welcome overlay and hides it after a delay of 1000 milliseconds (1 second).
  * @function
@@ -114,6 +81,7 @@ function showWelcomeOverlay() {
         welcomeOverlay.classList.add('d-none');
     }, 1000);
 }
+
 /**
  * Asynchronously creates a new user account by loading existing accounts, performing password and privacy policy checks,
  * and adding the new account to the Join object's list of accounts.
@@ -125,10 +93,14 @@ function showWelcomeOverlay() {
  */
 async function createAccount() {
     let wentWrong = () => {
-        accountWrong();
+        let loginPasswordFrame = document.getElementById('passwordCheckArea')
+        let label = document.querySelector(".falsePassword")
+        loginPasswordFrame.classList.add('redFrame');
+        label.classList.add('falsePasswordRed')
     }
+
     try { await loadAccounts() } catch (e) { console.error("Fehler", e) }
-    passwordPolicyCheck();
+
     let pw = passwordCheck();
     let policy = ppCheck();
     let name = document.getElementById('signUpInputName').value;
@@ -139,8 +111,14 @@ async function createAccount() {
         return exist;
     }
     let password = document.getElementById('signUpInputPassword').value;
+    console.log('pw is', pw, " and Policy is ", policy);
     if (pw != true) {
-        wentWrong();
+        wentWrong()
+        console.log('Passwort nicht valide')
+    } else if (policy != true) {
+        console.log('You must accept the Privacy Policy!')
+    } else if (emailCheck() === true) {
+        console.log('Email already existing')
 
     } else if (pw === true && policy === true) {
         let account = new Account(name, Email, "", password);
@@ -152,13 +130,6 @@ async function createAccount() {
         await saveAccounts();
         successCreateAccount();
     }
-}
-
-function accountWrong() {
-    let loginPasswordFrame = document.getElementById('passwordCheckArea')
-    let label = document.querySelector(".falsePassword")
-    loginPasswordFrame.classList.add('redFrame');
-    label.classList.add('falsePasswordRed')
 }
 /**
  *  function for render a little information overlay to createAccount
@@ -194,6 +165,7 @@ function passwordCheck() {
  * @returns {boolean} - Returns the value of the global policyCheck variable.
  */
 function ppCheck() {
+    // let checkbox = document.getElementById('ppCheck');
     let policy = policyCheck;
     return policy
 }
@@ -284,48 +256,23 @@ function closeSideAndHeadMenu(event) {
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
         closeHeadMenu(logoutWindow);
     }
-}
-/**
- * Closes the selectContacts from add Task or taskcard, if the click event is outside the logout window.
- * @param {Event} event - The click event.
- * @returns {void}
- */
-function closeAssigned(event) {
-    let closeContacts = document.getElementById('closeContacts');
-    let selectContacts = document.getElementById('selectContacts');
-    if (closeContacts != undefined && !closeContacts.contains(event.target)) {
-        closeContacts.classList.add('d-none');
-        selectContacts.classList.remove('d-none');
-    }
-}
-/**
- * Closes the Select of Category from add Task or taskcard, if the click event is outside the logout window.
- * @param {Event} event - The click event.
- * @returns {void}
- */
-function closeCategory(event) {
-    let showSelectCategory = document.getElementById('showSelectCategory');
-    let hiddenSelectCategory = document.getElementById('hiddenSelectCategory');
-    if (showSelectCategory != undefined && !showSelectCategory.contains(event.target)) {
-        showSelectCategory.classList.add('d-none');
-        hiddenSelectCategory.classList.remove('d-none');
-    }
+    // setTimeout(() => {
+    //     logoutWindow.classList.add("d-none");
+    // }, 100);
 }
 /**
  * Event handler for mouse down on the window, closing side and head menus.
  * @param {MouseEvent} e - The mouse down event.
  * @returns {void}
  */
-window.onmousedown = function(e) {
-        closeSideAndHeadMenu(e);
-        closeContactMenu(e);
-        closeAssigned(e);
-        closeCategory(e);
-    }
-    /**
-     * Logs out the current user by resetting the signed account and navigating to the start page.
-     * @returns {void}
-     */
+window.onmousedown = function (e) {
+    closeSideAndHeadMenu(e);
+    closeContactMenu(e)
+}
+/**
+ * Logs out the current user by resetting the signed account and navigating to the start page.
+ * @returns {void}
+ */
 function logout() {
     Join.signedAccount = "";
     deleteSignedUser()
@@ -366,7 +313,7 @@ function taskSaveChanges(x) {
         }
         return checkedUsers;
     };
-
+    
     let eTaskTodo = eTask.todo; //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
