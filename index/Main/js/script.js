@@ -26,18 +26,54 @@ function guestLogin() {
 async function logInUser() {
     const user = document.getElementById('loginEmail').value.toLowerCase();
     const pw = document.getElementById('loginPassword').value;
+    checkUserData(user, pw);
+}
+/**
+ * Checks user data by calling a function to validate the user and password, and takes actions
+ * based on the validation result.
+ * 
+ * @param {string} user - The user's username or identifier.
+ * @param {string} pw - The user's password.
+ */
+function checkUserData(user, pw) {
     let remember = () => {
-        if (Join.rememberMe) {
-            let userAsJson = JSON.stringify(user);
-            localStorage.setItem("remember", userAsJson);
-        }
+        rememberMe(user);
     }
     let wentWrong = () => {
-        let loginPasswordFrame = document.getElementById('loginPasswordFrame')
-        let label = document.querySelector(".falsePassword")
-        loginPasswordFrame.classList.add('redFrame');
-        label.classList.add('falsePasswordRed')
+        showWorngFrame();
     }
+    checkUser(user, pw, remember, wentWrong);
+    
+}
+/**
+ * Stores the user's data in local storage for "Remember Me" functionality if enabled.
+ * 
+ * @param {string} user - The user's data to be stored (usually the username or identifier).
+ */
+function rememberMe(user) {
+    if (Join.rememberMe) {
+        let userAsJson = JSON.stringify(user);
+        localStorage.setItem("remember", userAsJson);
+    }
+}
+/**
+ * Shows a visual indication of a wrong password by adding CSS classes to elements.
+ */
+function showWorngFrame() {
+    let loginPasswordFrame = document.getElementById('loginPasswordFrame')
+    let label = document.querySelector(".falsePassword")
+    loginPasswordFrame.classList.add('redFrame');
+    label.classList.add('falsePasswordRed')
+}
+/**
+ * Validates user credentials (email and password) and takes actions based on the result.
+ * 
+ * @param {string} user - The user's email or identifier.
+ * @param {string} pw - The user's password.
+ * @param {function} remember - A callback function to be called if validation succeeds.
+ * @param {function} wentWrong - A callback function to be called if validation fails.
+ */
+function checkUser(user, pw, remember, wentWrong) {
     let myAccount = Join.accounts.filter(userAccount => userAccount.email.toLowerCase() === user)
     if (myAccount.length != 0) {
         myAccount = myAccount[0]
@@ -47,7 +83,6 @@ async function logInUser() {
             saveSignedUser()
             summeryPage();
             checkWelcomeRespon();
-
         } else {
             wentWrong();
         }
@@ -55,7 +90,6 @@ async function logInUser() {
         wentWrong();
     }
 }
-
 /**
  * Checks the window width and shows the welcome overlay if the width is less than 767 pixels.
  * @function
@@ -67,7 +101,6 @@ function checkWelcomeRespon() {
         showWelcomeOverlay();
     }
 }
-
 /**
  * Displays the welcome overlay and hides it after a delay of 1000 milliseconds (1 second).
  * @function
@@ -81,7 +114,6 @@ function showWelcomeOverlay() {
         welcomeOverlay.classList.add('d-none');
     }, 1000);
 }
-
 /**
  * Asynchronously creates a new user account by loading existing accounts, performing password and privacy policy checks,
  * and adding the new account to the Join object's list of accounts.
@@ -93,14 +125,10 @@ function showWelcomeOverlay() {
  */
 async function createAccount() {
     let wentWrong = () => {
-        let loginPasswordFrame = document.getElementById('passwordCheckArea')
-        let label = document.querySelector(".falsePassword")
-        loginPasswordFrame.classList.add('redFrame');
-        label.classList.add('falsePasswordRed')
+        accountWrong();
     }
-
     try { await loadAccounts() } catch (e) { console.error("Fehler", e) }
-
+    passwordPolicyCheck();
     let pw = passwordCheck();
     let policy = ppCheck();
     let name = document.getElementById('signUpInputName').value;
@@ -111,10 +139,9 @@ async function createAccount() {
         return exist;
     }
     let password = document.getElementById('signUpInputPassword').value;
-    console.log('pw is', pw, " and Policy is ", policy);
     if (pw != true) {
         wentWrong();
-        
+
     } else if (pw === true && policy === true) {
         let account = new Account(name, Email, "", password);
         Join.accounts.push(account);
@@ -125,6 +152,13 @@ async function createAccount() {
         await saveAccounts();
         successCreateAccount();
     }
+}
+
+function accountWrong() {
+    let loginPasswordFrame = document.getElementById('passwordCheckArea')
+    let label = document.querySelector(".falsePassword")
+    loginPasswordFrame.classList.add('redFrame');
+    label.classList.add('falsePasswordRed')
 }
 /**
  *  function for render a little information overlay to createAccount
@@ -160,7 +194,6 @@ function passwordCheck() {
  * @returns {boolean} - Returns the value of the global policyCheck variable.
  */
 function ppCheck() {
-    // let checkbox = document.getElementById('ppCheck');
     let policy = policyCheck;
     return policy
 }
