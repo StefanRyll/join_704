@@ -1,5 +1,4 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ".split(""); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
-
 /**
  * Render contacts and organize them alphabetically with sections.
  */
@@ -38,7 +37,6 @@ function handleAlphabetChange(contactsList, initial) {
     contactsList += '<div class="contacts-container">';
     return contactsList;
 }
-
 /**
  * Closes the current alphabet section.
  * @param {string} contactsList - The current contacts list HTML.
@@ -48,9 +46,6 @@ function closeAlphabetSection(contactsList) {
         contactsList += "</div>";
     }
 }
-
-
-
 /**
  * This function renders the user's detailed data
  * 
@@ -109,6 +104,7 @@ function openAddContact() {
     addContactForm.innerHTML = JoinContacts.generateHtmlAddContact();
 }
 
+
 function openEditContact(i) {
     let contact = Join.accounts[i];
     setTimeout(() => {
@@ -153,7 +149,6 @@ async function addContact() {
         renderContacts();
     }
 }
-
 /**
  * Function for a edit contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
@@ -174,7 +169,6 @@ function editContact(i) {
         renderContacts();
     }
 }
-
 /**
  * Function for a delete contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
@@ -190,7 +184,6 @@ function deleteContact(i) {
         renderContacts();
     }
 }
-
 /**
  *  function for render a little information overlay to addContact, editContact and deleteContact
  * 
@@ -204,6 +197,7 @@ function successOverlay() {
     }, 2000);
 }
 
+
 function deleteOverlay() {
     let overlayDelete = document.getElementById('overlaySuccess');
     overlayDelete.innerHTML = JoinContacts.generateHtmlDeleteInfo();
@@ -213,6 +207,7 @@ function deleteOverlay() {
     }, 2000);
 }
 
+
 function editOverlay() {
     let overlayEdit = document.getElementById('overlaySuccess');
     overlayEdit.innerHTML = JoinContacts.generateHtmlEditInfo();
@@ -221,7 +216,6 @@ function editOverlay() {
         closeSuccessOverlay();
     }, 2000);
 }
-
 /**
  * Function for defining which characters are allowed in the input.
  * @param {string} phoneInput 
@@ -230,6 +224,7 @@ function validatePhoneNumber(phoneInput) {
     // Entferne alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
     phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
 }
+
 
 function openContactMenu(event) {
     event.stopPropagation(); // Verhindert, dass das Klick-Ereignis bis zum Dokument weitergeleitet wird
