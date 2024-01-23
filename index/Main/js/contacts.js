@@ -52,10 +52,15 @@ function closeAlphabetSection(contactsList) {
  * @param {string} i - is required to access the individual users
  * @returns 
  */
+
 function showDetails(i) {
+    neutralizeContactColor();
+    highlightContactColor(i);
+
     setTimeout(() => {
         openContactDetails();
     }, 200);
+
     let contact = Join.accounts[i];
 
     if (window.innerWidth >= 1188) {
@@ -69,12 +74,29 @@ function showDetails(i) {
         document.getElementById("responOverlay").innerHTML = detailsContent;
     }
 }
+
+function neutralizeContactColor() {
+    for (let j = 0; j < Join.accounts.length; j++) {
+        let contactField = document.getElementById(`contactField${j}`);
+        let contactName = document.getElementById(`contactName${j}`);
+        contactField.style.background = "white";
+        contactName.style.color = "black";
+    }
+}
+
+function highlightContactColor(i) {
+    let contactField = document.getElementById(`contactField${i}`);
+    let contactName = document.getElementById(`contactName${i}`);
+    contactField.style.background = "#2A3647";
+    contactName.style.color = "white";
+}
+
 /**
  * function for open and render the overlay to add new contact, edit Contact and delete Contact
  * 
  */
-function openAddContact() { 
-    let addContactForm = document.getElementById('overlay'); 
+function openAddContact() {
+    let addContactForm = document.getElementById('overlay');
     addContactForm.innerHTML = '';
     setTimeout(() => {
         openBigOverlay()
@@ -102,7 +124,7 @@ function closeOverlay() {
     setTimeout(() => {
         contactsPage();
     }, 225);
-    
+
 }
 /**
  * function for a new contact to the accounts[] array
@@ -219,4 +241,3 @@ function closeContactMenu(event) {
         optionsMenu.classList.remove("show-options-menu");
     }
 }
-

@@ -256,23 +256,48 @@ function closeSideAndHeadMenu(event) {
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
         closeHeadMenu(logoutWindow);
     }
-    // setTimeout(() => {
-    //     logoutWindow.classList.add("d-none");
-    // }, 100);
+}
+/**
+ * Closes the selectContacts from add Task or taskcard, if the click event is outside the logout window.
+ * @param {Event} event - The click event.
+ * @returns {void}
+ */
+function closeAssigned(event) {
+    let closeContacts = document.getElementById('closeContacts');
+    let selectContacts = document.getElementById('selectContacts');
+    if (closeContacts != undefined && !closeContacts.contains(event.target)) {
+        closeContacts.classList.add('d-none');
+        selectContacts.classList.remove('d-none');
+    }
+}
+/**
+ * Closes the Select of Category from add Task or taskcard, if the click event is outside the logout window.
+ * @param {Event} event - The click event.
+ * @returns {void}
+ */
+function closeCategory(event) {
+    let showSelectCategory = document.getElementById('showSelectCategory');
+    let hiddenSelectCategory = document.getElementById('hiddenSelectCategory');
+    if (showSelectCategory != undefined && !showSelectCategory.contains(event.target)) {
+        showSelectCategory.classList.add('d-none');
+        hiddenSelectCategory.classList.remove('d-none');
+    }
 }
 /**
  * Event handler for mouse down on the window, closing side and head menus.
  * @param {MouseEvent} e - The mouse down event.
  * @returns {void}
  */
-window.onmousedown = function (e) {
-    closeSideAndHeadMenu(e);
-    closeContactMenu(e)
-}
-/**
- * Logs out the current user by resetting the signed account and navigating to the start page.
- * @returns {void}
- */
+window.onmousedown = function(e) {
+        closeSideAndHeadMenu(e);
+        closeContactMenu(e);
+        closeAssigned(e);
+        closeCategory(e);
+    }
+    /**
+     * Logs out the current user by resetting the signed account and navigating to the start page.
+     * @returns {void}
+     */
 function logout() {
     Join.signedAccount = "";
     deleteSignedUser()
