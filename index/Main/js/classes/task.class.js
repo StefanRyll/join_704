@@ -200,17 +200,10 @@ class Task {
 
         let contactTags = () => {
             let rendertContacts = "";
-            // let addNumber = 1;
 
             for (let i = 0; i < this.worker.length; i++) {
                 let worker = this.worker[i];
-                // if (i < 3) {
                 rendertContacts += worker.accountTag();
-                // } else {
-                // rendertContacts += `+${addNumber}`;
-                // addNumber++;
-                // }
-
             }
             return rendertContacts;
         }
@@ -254,8 +247,7 @@ class Task {
         }
 
         return /*html*/ `
-            <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})" ontouchcancel="cancelTouch();" ontouchstart="startTouching('toDo', ${x}, event);" ontouchmove="moveTouching(event);" ontouchend="endTouching();" >
-
+            <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})"  ontouchstart="startTouching('toDo', ${x}, event);" ontouchmove="moveTouching(event);" ontouchend="endTouching(event);" >
             	${this.setCategoryColor()}
                 <div class="tiny-title">
                     <h1>${this.title}</h1>
@@ -268,7 +260,6 @@ class Task {
                     <img src="${prioTag()}" class="prioIcon" alt="">
                 </div>
             </div>
-
         `
     }
 

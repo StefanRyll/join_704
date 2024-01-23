@@ -161,6 +161,7 @@
 
     .tinyTaskCard {
         width: 252px;
+        max-height: none;
     }
 
     .frame-192 {

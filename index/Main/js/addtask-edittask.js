@@ -34,7 +34,7 @@ function checkUser(AssignedUsers, JoinUsers) {
 function checkWorker() {
     let containerShortName = document.getElementById('containerShortName');
     containerShortName.innerHTML = '';
-    let filtertAccounts = Join.accounts.filter(user => user.checked === true)
+    let filtertAccounts = Join.accounts.filter(user => user.checked === true);
     for (let i = 0; i < filtertAccounts.length; i++) {
         let assignedWorker = filtertAccounts[i];
         containerShortName.innerHTML += assignedWorker.accountTag();

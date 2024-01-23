@@ -406,7 +406,16 @@ footer {
     height: 60px;
 }
 
-
+.dragging {
+    opacity: 0.7; 
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); 
+    transform: scale(1.05); 
+    border: 2px solid #4A90E2; 
+    z-index: 1000; 
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.7;
+}
 /* ====================================================== </scrollbalken> =============================================================== */
 
 .respon-footer,
