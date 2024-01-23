@@ -30,14 +30,16 @@ async function startPage() {
     } catch (e) { "Nothing to remember :" + e }
 }
 
+
 function redirectUser(myState) {
     if (Join.signedAccount !== null) {
         redirectSignedUser(myState)
     } else {
         redirectUnsignedUser(myState)
     }
-
 }
+
+
 function redirectUnsignedUser(myState) {
     if (myState === "SignUp") {
         signUp();
@@ -48,8 +50,9 @@ function redirectUnsignedUser(myState) {
     else {
         startAnimation();
     }
-
 }
+
+
 function redirectSignedUser(myState) {
     if (myState === "Summary") {
         summeryPage()
@@ -72,7 +75,6 @@ function redirectSignedUser(myState) {
     else if (myState === "Help") {
         helpPage()
     }
-
 }
 /**
  * Initiates the animation for starting the login process.

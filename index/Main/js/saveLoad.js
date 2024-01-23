@@ -139,84 +139,73 @@ async function getItem(key) {
  * @param {Object} responseAsJson - JSON representation of tasks.
  * @returns {Array} - An array of Task objects.
  */
-function decodeTasks(responseAsJson) {
-    let decTasks = [];
-    for (let i = 0; i < responseAsJson.length; i++) {
-        const taskData = responseAsJson[i];
-        let title = taskData['title'];
-        let category = taskData['Category'];
-        let date = new Date(taskData['date']);
-        let desc = taskData['desc'];
-        let todo = taskData['todo'];
-        let done = taskData['done'];
-        let feedback = taskData['feedback'];
-        let prio = taskData['prio'];
-        let progress = taskData['progress'];
-        let subTasks = () => {
-            let subTask = [];
-            for (let i = 0; i < taskData['subTasks'].length; i++) {
-                const subtaskDecodet = taskData['subTasks'][i];
-                let name = subtaskDecodet['text'];
-                let done = subtaskDecodet['done'];
-                let newSubtask = new Subtask(name, done);
-                subTask.push(newSubtask);
-            }
-            return subTask;
-        }
-        let worker = () => {
-            let workers = []
-            for (let y = 0; y < taskData['worker'].length; y++) {
-                const workerContact = taskData['worker'][y];
-                let name = workerContact['name'];
-                let email = workerContact['email'];
-                let tel = workerContact['tel'];
-                let newContact = new Contact(name, email, tel)
-                workers.push(newContact)
-            }
-            return workers;
-        };
-        let newTask = new Task(title, worker(), desc, date, prio, category, subTasks(), todo, progress, feedback, done)
-        decTasks.push(newTask)
-    }
-    return decTasks;
-}
+
 /**
  * Decodes a JSON representation of accounts and creates an array of Account or Contact objects.
  * @function
  * @param {Object} responseAsJson - JSON representation of accounts.
  * @returns {Array} - An array of Account or Contact objects.
  */
-function decodeAccounts(responseAsJson) {
-    let decAccounts = []
-    for (let i = 0; i < responseAsJson.length; i++) {
-        const accountData = responseAsJson[i];
-        if (accountData['password']) {
-            const name = accountData['name']
-            const email = accountData['email']
-            const tel = accountData['tel']
-            const password = accountData['password']
-            const newAccount = new Account(name, email, tel, password)
-            decAccounts.push(newAccount)
-        } else {
-            let name = accountData['name']
-            let email = accountData['email']
-            let tel = accountData['tel']
-            let newContact = new Contact(name, email, tel)
-            decAccounts.push(newContact)
-        }
-    }
-    return decAccounts
+function decodeTasks(responseAsJson) {
+    return responseAsJson.map(taskData => {
+        let {
+            title,
+            Category: category,
+            date,
+            desc,
+            todo,
+            done,
+            feedback,
+            prio,
+            progress,
+            subTasks: rawSubTasks,
+            worker: rawWorkers
+        } = taskData;
+        const subTasks = rawSubTasks.map(subtask => new Subtask(subtask.text, subtask.done));
+        const workers = rawWorkers.map(worker => new Contact(worker.name, worker.email, worker.tel));
+        return new Task(title, workers, desc, new Date(date), prio, category, subTasks, todo, progress, feedback, done);
+    });
 }
+/**
+ * Processes a list of account data in JSON format and creates a list of account or contact objects.
+ * 
+ * @param {Array} responseAsJson - A list of account data in JSON format. Each element in this list
+ *                                 is an object with properties name, email, tel, and an optional password.
+ *
+ * @returns {Array} A list of account or contact objects. For each element in the input list:
+ *                   - If a password is present, an Account object is created.
+ *                   - If no password is present, a Contact object is created.
+ */
+function decodeAccounts(responseAsJson) {
+    return responseAsJson.map(accountData => {
+        const { name, email, tel, password } = accountData;
+
+        if (password) {
+            return new Account(name, email, tel, password);
+        } else {
+            return new Contact(name, email, tel);
+        }
+    });
+}
+/**
+ * Saves a signed user's data to the local storage.
+ * 
+ * @param {object} Join.signedAccount - The signed user's account data to be saved.
+ */
 function saveSignedUser(){
     let payloadSignedUser = JSON.stringify(Join.signedAccount);
     localStorage.setItem("signedAccount", payloadSignedUser);
 }
+/**
+ * Loads the signed user's data from local storage and returns the corresponding account object.
+ * 
+ * @returns {object|null} The signed user's account object, or null if no signed user data is found.
+ */
 function loadSignedUser() {
     let SignedUserAsJSON = JSON.parse(localStorage.getItem("signedAccount"))
     if (SignedUserAsJSON !== null){
-        let name = SignedUserAsJSON['name']
-        let account = Join.accounts.filter(a => a.name === name)
-
+        let name = SignedUserAsJSON['name'];
+        let account = Join.accounts.filter(a => a.name === name);
         if (account.length === 0 && name === 'Guest'){
             account = new Account("Guest", "email@join.de", "");
 
@@ -229,6 +218,75 @@ function loadSignedUser() {
     }
     return null;
 }
+/**
+ * Deletes the signed user's data from local storage.
+ */
 function deleteSignedUser(){
-    localStorage.removeItem('signedAccount')
+    localStorage.removeItem('signedAccount');
 }
+
+
+
+// function decodeTasks(responseAsJson) {
+//     let decTasks = [];
+//     for (let i = 0; i < responseAsJson.length; i++) {
+//         const taskData = responseAsJson[i];
+//         let title = taskData['title'];
+//         let category = taskData['Category'];
+//         let date = new Date(taskData['date']);
+//         let desc = taskData['desc'];
+//         let todo = taskData['todo'];
+//         let done = taskData['done'];
+//         let feedback = taskData['feedback'];
+//         let prio = taskData['prio'];
+//         let progress = taskData['progress'];
+//         let subTasks = () => {
+//             let subTask = [];
+//             for (let i = 0; i < taskData['subTasks'].length; i++) {
+//                 const subtaskDecodet = taskData['subTasks'][i];
+//                 let name = subtaskDecodet['text'];
+//                 let done = subtaskDecodet['done'];
+//                 let newSubtask = new Subtask(name, done);
+//                 subTask.push(newSubtask);
+//             }
+//             return subTask;
+//         }
+//         let worker = () => {
+//             let workers = []
+//             for (let y = 0; y < taskData['worker'].length; y++) {
+//                 const workerContact = taskData['worker'][y];
+//                 let name = workerContact['name'];
+//                 let email = workerContact['email'];
+//                 let tel = workerContact['tel'];
+//                 let newContact = new Contact(name, email, tel)
+//                 workers.push(newContact)
+//             }
+//             return workers;
+//         };
+//         let newTask = new Task(title, worker(), desc, date, prio, category, subTasks(), todo, progress, feedback, done)
+//         decTasks.push(newTask)
+//     }
+//     return decTasks;
+// }
+
+// function decodeAccounts(responseAsJson) {
+//     let decAccounts = []
+//     for (let i = 0; i < responseAsJson.length; i++) {
+//         const accountData = responseAsJson[i];
+//         if (accountData['password']) {
+//             const name = accountData['name']
+//             const email = accountData['email']
+//             const tel = accountData['tel']
+//             const password = accountData['password']
+//             const newAccount = new Account(name, email, tel, password)
+//             decAccounts.push(newAccount)
+//         } else {
+//             let name = accountData['name']
+//             let email = accountData['email']
+//             let tel = accountData['tel']
+//             let newContact = new Contact(name, email, tel)
+//             decAccounts.push(newContact)
+//         }
+//     }
+//     return decAccounts
+// }

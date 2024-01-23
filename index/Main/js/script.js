@@ -113,13 +113,8 @@ async function createAccount() {
     let password = document.getElementById('signUpInputPassword').value;
     console.log('pw is', pw, " and Policy is ", policy);
     if (pw != true) {
-        wentWrong()
-        console.log('Passwort nicht valide')
-    } else if (policy != true) {
-        console.log('You must accept the Privacy Policy!')
-    } else if (emailCheck() === true) {
-        console.log('Email already existing')
-
+        wentWrong();
+        
     } else if (pw === true && policy === true) {
         let account = new Account(name, Email, "", password);
         Join.accounts.push(account);

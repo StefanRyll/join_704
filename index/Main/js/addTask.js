@@ -78,13 +78,11 @@ function createTaskPage() {
  */
 async function updateTask(newTask, x, title, worker, desc, date, prio, category, subTask) {
     createNewTask(newTask, x);
-    // updateTaskWorkers(newTask);
-    Join.tasks.push(newTask)
+    Join.tasks.push(newTask);
     try { await saveTasks() } catch (e) { console.error("Fehler", e) }
     clearInputs(title, desc, worker, date, category, subTask);
-    // closeAddTask()
-    successOverlayTask()
-    JoinBoard.renderTask()
+    successOverlayTask();
+    JoinBoard.renderTask();
     checkDragArea();
 }
 /**
@@ -275,7 +273,9 @@ function closeAddTask() {
     }, 200);
     cleanUpAll();
 }
-
+/**
+ * reset all values in add task
+ */
 function resetButton() {
     cleanUpAll();
     checkWorker();
@@ -352,12 +352,10 @@ function changeSubtask(m) {
  * @param {number} m - The index of the subtask to be changed.
  */
 function fixSubtasks(m) {
-    // Macht den Laden dicht
     let containerTodoSubtask = `containerTodoSubtask${m}`;
     let fixTodoSubtask = `fixTodoSubtask${m}`;
     document.getElementById(containerTodoSubtask).classList.remove('d-none');
     document.getElementById(fixTodoSubtask).classList.add('d-none');
-    // Ausgelesen
     let editFixSubtask = document.getElementById('editFixSubtask');
     let todoSubtask = document.getElementById(`todoSubtask${m}`);
     todoSubtask.textContent = editFixSubtask.value;
