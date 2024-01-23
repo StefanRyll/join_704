@@ -313,7 +313,7 @@ function taskSaveChanges(x) {
         }
         return checkedUsers;
     };
-    
+
     let eTaskTodo = eTask.todo; //Wird behalten
     let eTaskProgress = eTask.progress; //Wird behalten
     let eTaskFeedback = eTask.feedback; //Wird behalten
