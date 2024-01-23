@@ -145,10 +145,10 @@ class Contact {
     generateHtmlContactList(i) {
         return /*html*/ `
             <div class="contactfield-wrapper">
-                <div class="contactfield" onclick="showDetails(${i})">
+                <div id="contactField${i}" class="contactfield" onclick="showDetails(${i})">
                     <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
                     <div class="contact">
-                        <span class="name">${this.name}</span>
+                        <span id="contactName${i}" class="name">${this.name}</span>
                         <span class="mail">${this.email}</span>
                     </div>
                 </div>
