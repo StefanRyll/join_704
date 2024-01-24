@@ -141,17 +141,6 @@ nav {
     width: 104px
 }
 
-.legal-policy {
-    margin: 0;
-}
-
-.legal-policy:hover {
-    cursor: pointer;
-    color: var(--lightblue);
-    transition: 0.1s ease-in-out;
-    transform: scale(1.1, 1.1);
-}
-
 .popupAccount {
     position: absolute;
     background-color: var(--dark-blue);

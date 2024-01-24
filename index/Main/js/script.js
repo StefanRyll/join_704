@@ -172,9 +172,9 @@ function showWelcomeOverlay() {
  * @returns {Promise<void>}
  */
 async function createAccount() {
-    try { 
-        await loadAccounts(); 
-    } catch (e) { 
+    try {
+        await loadAccounts();
+    } catch (e) {
         console.error("Fehler beim Laden der Konten", e);
         return;
     }
@@ -249,7 +249,7 @@ async function registerNewAccount() {
     const password = document.getElementById('signUpInputPassword').value;
     const account = new Account(name, email, "", password);
     Join.accounts.push(account);
-    policyCheck = false; 
+    policyCheck = false;
     setTimeout(() => {
         startPage2();
     }, 2200);
@@ -503,8 +503,8 @@ function taskSaveChanges(taskIndex) {
     const editedTitle = document.getElementById('taskCardETitle').value;
     const editedDescription = document.getElementById('taskCardEDesc').value;
     const editedDate = getEditedDate(existingTask.date);
-    const editedPriority = prioTemp; 
-    const taskCategory = existingTask.Category; 
+    const editedPriority = prioTemp;
+    const taskCategory = existingTask.Category;
 
     Join.tasks[taskIndex] = new Task(
         editedTitle,
@@ -513,7 +513,7 @@ function taskSaveChanges(taskIndex) {
         editedDate,
         editedPriority,
         taskCategory,
-        subtaskTemp, 
+        subtaskTemp,
         existingTask.todo,
         existingTask.progress,
         existingTask.feedback,
@@ -646,6 +646,6 @@ function closeSelectContactsFromCard() {
  * Navigates the browser back to the last visited page in the session history.
  * Uses the 'window.history.back()' method to achieve this.
  */
-function backToLastSite() {
-    window.history.back();
-}
+// function backToLastSite() {
+//     window.history.back();
+// }

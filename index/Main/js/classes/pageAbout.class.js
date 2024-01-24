@@ -3,7 +3,7 @@ class About extends Page {
         return /*html*/ `
             <div class="help-content">
                 <div class="left-arrow">
-                    <button onclick="backToLastSite()" class="left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
+                    <button onclick="backToPage()" class="left-arrow-btn"><img src="./IMG/arrow-left-line.png"></button>
                 </div>
                 <h1 class="help-headline">Help</h1>
                 <p>Welcome to the help page for <span class="text-lightblue">Join</span>, 
