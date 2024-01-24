@@ -24,37 +24,119 @@ function guestLogin() {
  * @returns {Promise<void>}
  */
 async function logInUser() {
-    const user = document.getElementById('loginEmail').value.toLowerCase();
-    const pw = document.getElementById('loginPassword').value;
-    let remember = () => {
-        if (Join.rememberMe) {
-            let userAsJson = JSON.stringify(user);
-            localStorage.setItem("remember", userAsJson);
-        }
-    }
-    let wentWrong = () => {
-        let loginPasswordFrame = document.getElementById('loginPasswordFrame')
-        let label = document.querySelector(".falsePassword")
-        loginPasswordFrame.classList.add('redFrame');
-        label.classList.add('falsePasswordRed')
-    }
-    let myAccount = Join.accounts.filter(userAccount => userAccount.email.toLowerCase() === user)
-    if (myAccount.length != 0) {
-        myAccount = myAccount[0]
-        if (pw === myAccount.password) {
-            Join.signedAccount = myAccount;
-            remember();
-            saveSignedUser()
-            summeryPage();
-            checkWelcomeRespon();
+    const userEmail = getEmailInputValue();
+    const userPassword = getPasswordInputValue();
 
-        } else {
-            wentWrong();
-        }
+    if (isValidAccount(userEmail, userPassword)) {
+        processSuccessfulLogin(userEmail);
     } else {
-        wentWrong();
+        handleFailedLogin();
     }
 }
+/**
+ * Retrieves the value of an HTML input field with the ID 'loginEmail', converts it to lowercase, and returns this value.
+ * This function is typically used to normalize email input, making it case-insensitive.
+ *
+ * @returns {string} The lowercase value of the input field with the ID 'loginEmail'.
+ */
+function getEmailInputValue() {
+    return document.getElementById('loginEmail').value.toLowerCase();
+}
+/**
+ * Retrieves the value of an HTML input field with the ID 'loginPassword'.
+ * This function is typically used to obtain the password input from a user.
+ *
+ * @returns {string} The value of the input field with the ID 'loginPassword'.
+ */
+function getPasswordInputValue() {
+    return document.getElementById('loginPassword').value;
+}
+/**
+ * Checks if the given email and password correspond to a valid account.
+ * This function searches for an account in the 'Join.accounts' array that matches the provided email (case-insensitive comparison). 
+ * If such an account is found, it checks if the provided password matches the account's password.
+ *
+ * @param {string} email - The email address to be checked. The comparison is case-insensitive.
+ * @param {string} password - The password to be verified against the found account.
+ * @returns {boolean} True if a matching account is found and the password is correct, otherwise false.
+ */
+function isValidAccount(email, password) {
+    const account = Join.accounts.find(account => account.email.toLowerCase() === email);
+    return account && password === account.password;
+}
+/**
+ * Processes actions following a successful login.
+ * This function finds and assigns the user's account details to 'Join.signedAccount'. It also performs additional steps 
+ * such as remembering the user (if requested), saving the signed-in user's details, navigating to the summary page, 
+ * and checking for a welcome response.
+ *
+ * @param {string} userEmail - The email address of the user who has successfully logged in.
+ * The email is used to find the user's account in the 'Join.accounts' array.
+ */
+function processSuccessfulLogin(userEmail) {
+    const account = Join.accounts.find(account => account.email.toLowerCase() === userEmail);
+    Join.signedAccount = account;
+    rememberUserIfRequested(userEmail);
+    saveSignedUser();
+    summeryPage();
+    checkWelcomeRespon();
+}
+/**
+ * Remembers the user's email in local storage if the 'remember me' option is enabled.
+ * Stores the email as a JSON string under the key "remember".
+ *
+ * @param {string} userEmail - The email of the user to be remembered.
+ */
+function rememberUserIfRequested(userEmail) {
+    if (Join.rememberMe) {
+        const userJson = JSON.stringify(userEmail);
+        localStorage.setItem("remember", userJson);
+    }
+}
+/**
+ * Handles the UI changes for a failed login attempt.
+ * Adds specific CSS classes to elements to indicate an error in password input.
+ * The 'loginPasswordFrame' gets a 'redFrame' class, and the 'falsePassword' label gets a 'falsePasswordRed' class.
+ */
+function handleFailedLogin() {
+    const loginPasswordFrame = document.getElementById('loginPasswordFrame');
+    const label = document.querySelector(".falsePassword");
+    loginPasswordFrame.classList.add('redFrame');
+    label.classList.add('falsePasswordRed');
+}
+
+// async function logInUser() {
+//     const user = document.getElementById('loginEmail').value.toLowerCase();
+//     const pw = document.getElementById('loginPassword').value;
+//     let remember = () => {
+//         if (Join.rememberMe) {
+//             let userAsJson = JSON.stringify(user);
+//             localStorage.setItem("remember", userAsJson);
+//         }
+//     }
+//     let wentWrong = () => {
+//         let loginPasswordFrame = document.getElementById('loginPasswordFrame')
+//         let label = document.querySelector(".falsePassword")
+//         loginPasswordFrame.classList.add('redFrame');
+//         label.classList.add('falsePasswordRed')
+//     }
+//     let myAccount = Join.accounts.filter(userAccount => userAccount.email.toLowerCase() === user)
+//     if (myAccount.length != 0) {
+//         myAccount = myAccount[0]
+//         if (pw === myAccount.password) {
+//             Join.signedAccount = myAccount;
+//             remember();
+//             saveSignedUser()
+//             summeryPage();
+//             checkWelcomeRespon();
+
+//         } else {
+//             wentWrong();
+//         }
+//     } else {
+//         wentWrong();
+//     }
+// }
 
 /**
  * Checks the window width and shows the welcome overlay if the width is less than 767 pixels.
@@ -67,7 +149,6 @@ function checkWelcomeRespon() {
         showWelcomeOverlay();
     }
 }
-
 /**
  * Displays the welcome overlay and hides it after a delay of 1000 milliseconds (1 second).
  * @function
@@ -81,7 +162,6 @@ function showWelcomeOverlay() {
         welcomeOverlay.classList.add('d-none');
     }, 1000);
 }
-
 /**
  * Asynchronously creates a new user account by loading existing accounts, performing password and privacy policy checks,
  * and adding the new account to the Join object's list of accounts.
@@ -92,45 +172,131 @@ function showWelcomeOverlay() {
  * @returns {Promise<void>}
  */
 async function createAccount() {
-    let wentWrong = () => {
-        let loginPasswordFrame = document.getElementById('passwordCheckArea')
-        let label = document.querySelector(".falsePassword")
-        loginPasswordFrame.classList.add('redFrame');
-        label.classList.add('falsePasswordRed')
+    try { 
+        await loadAccounts(); 
+    } catch (e) { 
+        console.error("Fehler beim Laden der Konten", e);
+        return;
     }
 
-    try { await loadAccounts() } catch (e) { console.error("Fehler", e) }
-
-    let pw = passwordCheck();
-    let policy = ppCheck();
-    let name = document.getElementById('signUpInputName').value;
-    let Email = document.getElementById('signUpInputEmail').value;
-    let emailCheck = () => {
-        let existingAccounts = Join.accounts.filter(account => account.email === Email)
-        let exist = (existingAccounts.length !== 0) ? true : false;
-        return exist;
+    if (!isPasswordValid()) {
+        handleInvalidPassword();
+        console.log('Passwort nicht valide');
+        return;
     }
-    let password = document.getElementById('signUpInputPassword').value;
-    console.log('pw is', pw, " and Policy is ", policy);
-    if (pw != true) {
-        wentWrong()
-        console.log('Passwort nicht valide')
-    } else if (policy != true) {
-        console.log('You must accept the Privacy Policy!')
-    } else if (emailCheck() === true) {
-        console.log('Email already existing')
 
-    } else if (pw === true && policy === true) {
-        let account = new Account(name, Email, "", password);
-        Join.accounts.push(account);
-        policyCheck = false;
-        setTimeout(() => {
-            startPage2();
-        }, 2200);
-        await saveAccounts();
-        successCreateAccount();
+    if (!isPrivacyPolicyAccepted()) {
+        console.log('You must accept the Privacy Policy!');
+        return;
     }
+
+    if (isEmailExisting()) {
+        console.log('Email already existing');
+        return;
+    }
+
+    await registerNewAccount();
 }
+/**
+ * Checks if the password is valid by calling the 'passwordCheck' function.
+ * This function serves as a wrapper for 'passwordCheck'.
+ *
+ * @returns {boolean} The result from 'passwordCheck', indicating if the password is valid or not.
+ */
+function isPasswordValid() {
+    return passwordCheck();
+}
+/**
+ * Checks if the privacy policy has been accepted.
+ * This function serves as a wrapper for 'ppCheck'.
+ *
+ * @returns {boolean} The result from 'ppCheck', indicating if the privacy policy is accepted or not.
+ */
+function isPrivacyPolicyAccepted() {
+    return ppCheck();
+}
+/**
+ * Checks if the provided email already exists in the 'Join.accounts' array.
+ * Retrieves the email from the input element with ID 'signUpInputEmail' and searches for matching emails in the accounts.
+ *
+ * @returns {boolean} True if the email already exists in the accounts, false otherwise.
+ */
+function isEmailExisting() {
+    const email = document.getElementById('signUpInputEmail').value;
+    const existingAccounts = Join.accounts.filter(account => account.email === email);
+    return existingAccounts.length !== 0;
+}
+/**
+ * Handles UI updates for an invalid password scenario.
+ * It applies visual feedback by adding CSS classes to indicate an error.
+ * The 'passwordCheckArea' gets a 'redFrame' class, and the 'falsePassword' label gets a 'falsePasswordRed' class.
+ */
+function handleInvalidPassword() {
+    const loginPasswordFrame = document.getElementById('passwordCheckArea');
+    const label = document.querySelector(".falsePassword");
+    loginPasswordFrame.classList.add('redFrame');
+    label.classList.add('falsePasswordRed');
+}
+/**
+ * Registers a new account asynchronously.
+ * Retrieves user input for name, email, and password, creates a new account, and adds it to 'Join.accounts'.
+ * Initiates a timeout before navigating to another page and then saves the accounts.
+ * Finally, it calls 'successCreateAccount' to handle post-registration success actions.
+ */
+async function registerNewAccount() {
+    const name = document.getElementById('signUpInputName').value;
+    const email = document.getElementById('signUpInputEmail').value;
+    const password = document.getElementById('signUpInputPassword').value;
+    const account = new Account(name, email, "", password);
+    Join.accounts.push(account);
+    policyCheck = false; 
+    setTimeout(() => {
+        startPage2();
+    }, 2200);
+    await saveAccounts();
+    successCreateAccount();
+}
+
+// async function createAccount() {
+//     let wentWrong = () => {
+//         let loginPasswordFrame = document.getElementById('passwordCheckArea')
+//         let label = document.querySelector(".falsePassword")
+//         loginPasswordFrame.classList.add('redFrame');
+//         label.classList.add('falsePasswordRed')
+//     }
+
+//     try { await loadAccounts() } catch (e) { console.error("Fehler", e) }
+
+//     let pw = passwordCheck();
+//     let policy = ppCheck();
+//     let name = document.getElementById('signUpInputName').value;
+//     let Email = document.getElementById('signUpInputEmail').value;
+//     let emailCheck = () => {
+//         let existingAccounts = Join.accounts.filter(account => account.email === Email)
+//         let exist = (existingAccounts.length !== 0) ? true : false;
+//         return exist;
+//     }
+//     let password = document.getElementById('signUpInputPassword').value;
+//     console.log('pw is', pw, " and Policy is ", policy);
+//     if (pw != true) {
+//         wentWrong()
+//         console.log('Passwort nicht valide')
+//     } else if (policy != true) {
+//         console.log('You must accept the Privacy Policy!')
+//     } else if (emailCheck() === true) {
+//         console.log('Email already existing')
+
+//     } else if (pw === true && policy === true) {
+//         let account = new Account(name, Email, "", password);
+//         Join.accounts.push(account);
+//         policyCheck = false;
+//         setTimeout(() => {
+//             startPage2();
+//         }, 2200);
+//         await saveAccounts();
+//         successCreateAccount();
+//     }
+// }
 /**
  *  function for render a little information overlay to createAccount
  * 
@@ -256,9 +422,6 @@ function closeSideAndHeadMenu(event) {
     if (logoutWindow != undefined && !logoutWindow.contains(event.target)) {
         closeHeadMenu(logoutWindow);
     }
-    // setTimeout(() => {
-    //     logoutWindow.classList.add("d-none");
-    // }, 100);
 }
 /**
  * Closes the selectContacts from add Task or taskcard, if the click event is outside the logout window.
@@ -326,51 +489,98 @@ function checkboxDeactivate() {
     Join.rememberMe = false;
 }
 /**
- * Saves changes to the specified task and updates the task array.
- * @param {number} x - The index of the task to be edited.
+ * Saves changes made to an existing task.
+ * Updates the task at the given index in 'Join.tasks' with new values for title, users, description, date, priority, and subtasks.
+ * It also retains certain properties of the existing task like category and status (todo, progress, feedback, done).
+ * After updating, it saves the tasks, closes the task card, and performs cleanup operations.
+ *
+ * @param {number} taskIndex - Index of the task in the 'Join.tasks' array to be updated.
  */
-function taskSaveChanges(x) {
-    let eTask = Join.tasks[x];
-    let eTaskWorker = () => {
-        let checkedUsers = [];
-        for (let i = 0; i < Join.accounts.length; i++) {
-            const User = Join.accounts[i];
-            if (User.checked) {
-                checkedUsers.push(User)
-            }
-        }
-        return checkedUsers;
-    };
+function taskSaveChanges(taskIndex) {
+    const existingTask = Join.tasks[taskIndex];
 
-    let eTaskTodo = eTask.todo; //Wird behalten
-    let eTaskProgress = eTask.progress; //Wird behalten
-    let eTaskFeedback = eTask.feedback; //Wird behalten
-    let eTaskDone = eTask.done; //Wird behalten
-    // Edited Task
-    let titleInput = document.getElementById('taskCardETitle').value;
-    let descInput = document.getElementById('taskCardEDesc').value;
-    let dateInput = () => {
-        let inputfeld = document.getElementById('taskCardEDate').value;
-        if (inputfeld !== '') {
-            return inputfeld;
-        } else {
-            return eTask.date;
-        }
-    }
-    let prioInput = prioTemp;
-    let Category = eTask.Category;
-    // // Merched Task
-    Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput(), prioInput, Category, subtaskTemp, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+    const checkedUsers = getCheckedUsers();
+    const editedTitle = document.getElementById('taskCardETitle').value;
+    const editedDescription = document.getElementById('taskCardEDesc').value;
+    const editedDate = getEditedDate(existingTask.date);
+    const editedPriority = prioTemp; 
+    const taskCategory = existingTask.Category; 
+
+    Join.tasks[taskIndex] = new Task(
+        editedTitle,
+        checkedUsers,
+        editedDescription,
+        editedDate,
+        editedPriority,
+        taskCategory,
+        subtaskTemp, 
+        existingTask.todo,
+        existingTask.progress,
+        existingTask.feedback,
+        existingTask.done
+    );
+
     saveTasks();
     closeTaskCard();
     cleanUpAll();
 }
+/**
+ * Retrieves all users from 'Join.accounts' who have the 'checked' property set to true.
+ * This function is typically used to get a list of users that have been selected in a UI context.
+ *
+ * @returns {Array} An array of user objects from 'Join.accounts' where the 'checked' property is true.
+ */
+function getCheckedUsers() {
+    return Join.accounts.filter(user => user.checked);
+}
+/**
+ * Gets the edited date from a date input field or uses a default date if the input field is empty.
+ * Retrieves the value from an input element with ID 'taskCardEDate' and checks if it's not empty.
+ * If it's empty, returns the provided default date.
+ *
+ * @param {string} defaultDate - The default date to return if no date is entered in the input field.
+ * @returns {string} The edited date from the input field or the default date.
+ */
+function getEditedDate(defaultDate) {
+    const dateInput = document.getElementById('taskCardEDate').value;
+    return dateInput !== '' ? dateInput : defaultDate;
+}
 
+// function taskSaveChanges(x) {
+//     let eTask = Join.tasks[x];
+//     let eTaskWorker = () => {
+//         let checkedUsers = [];
+//         for (let i = 0; i < Join.accounts.length; i++) {
+//             const User = Join.accounts[i];
+//             if (User.checked) {
+//                 checkedUsers.push(User)
+//             }
+//         }
+//         return checkedUsers;
+//     };
 
-// function updateSubtasksInTask(x, updatedSubtasks) {
-//     let task = Join.tasks[x];
-//     task.subTasks = updatedSubtasks;
-//     saveTasks(); 
+//     let eTaskTodo = eTask.todo; //Wird behalten
+//     let eTaskProgress = eTask.progress; //Wird behalten
+//     let eTaskFeedback = eTask.feedback; //Wird behalten
+//     let eTaskDone = eTask.done; //Wird behalten
+//     // Edited Task
+//     let titleInput = document.getElementById('taskCardETitle').value;
+//     let descInput = document.getElementById('taskCardEDesc').value;
+//     let dateInput = () => {
+//         let inputfeld = document.getElementById('taskCardEDate').value;
+//         if (inputfeld !== '') {
+//             return inputfeld;
+//         } else {
+//             return eTask.date;
+//         }
+//     }
+//     let prioInput = prioTemp;
+//     let Category = eTask.Category;
+//     // // Merched Task
+//     Join.tasks[x] = new Task(titleInput, eTaskWorker(), descInput, dateInput(), prioInput, Category, subtaskTemp, eTaskTodo, eTaskProgress, eTaskFeedback, eTaskDone)
+//     saveTasks();
+//     closeTaskCard();
+//     cleanUpAll();
 // }
 /**
  * Closes the task card, hides the task card slide, and navigates back to the board page.
@@ -432,7 +642,10 @@ function closeSelectContactsFromCard() {
     document.getElementById('showContactsFromCard').classList.remove('d-none');
     document.getElementById('closeContactsFromCard').classList.add('d-none');
 }
-
+/**
+ * Navigates the browser back to the last visited page in the session history.
+ * Uses the 'window.history.back()' method to achieve this.
+ */
 function backToLastSite() {
     window.history.back();
 }

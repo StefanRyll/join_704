@@ -1,6 +1,6 @@
 @media (max-width: 1330px) {
     .summery {
-        padding-top: 90px;
+        padding-top: 50px;
         padding-left: 90px;
         padding-right: 90px;
     }
@@ -55,7 +55,20 @@
         display: none;
     }
 
+    .greetingAreaRes {
+        display: flex;
+        gap: 50px;
+    }
+
+    .greetingAreaRes h4 {
+        color: #29ABE2;
+        font-size: 35px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
     .greetingAreaRes h3 {
+       
         font-size: 35px;
         margin-block-start: 0;
         margin-block-end: 0;
@@ -74,7 +87,7 @@
 
 @media (max-width: 880px) {
     .summery {
-        padding-top: 50px;
+        padding-top: 20px;
     }
 
     .summeryHeadline {

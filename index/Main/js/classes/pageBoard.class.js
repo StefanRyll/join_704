@@ -9,7 +9,6 @@ class Board extends Page {
         const medium = document.getElementById('btnMediumWhite');
         const low = document.getElementById('btnLowWhite');
         
-        clickPrio(urgent, medium, low);
         urgent.addEventListener('click', () => {
             prioTemp = "Urgent";
         })
