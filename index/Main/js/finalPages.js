@@ -43,11 +43,9 @@ function redirectUser(myState) {
 function redirectUnsignedUser(myState) {
     if (myState === "SignUp") {
         signUp();
-    }
-    else if (myState === "LogIn") {
+    } else if (myState === "LogIn") {
         startAnimation();
-    }
-    else {
+    } else {
         startAnimation();
     }
 }
@@ -56,23 +54,17 @@ function redirectUnsignedUser(myState) {
 function redirectSignedUser(myState) {
     if (myState === "Summary") {
         summeryPage()
-    }
-    else if (myState === "Board") {
+    } else if (myState === "Board") {
         boardPage()
-    }
-    else if (myState === "AddTask") {
+    } else if (myState === "AddTask") {
         addTaskPage()
-    }
-    else if (myState === "Contacts") {
+    } else if (myState === "Contacts") {
         contactsPage()
-    }
-    else if (myState === "Privacy Policy") {
+    } else if (myState === "Privacy Policy") {
         privacyPage()
-    }
-    else if (myState === "LegalNotice") {
+    } else if (myState === "LegalNotice") {
         legalPage()
-    }
-    else if (myState === "Help") {
+    } else if (myState === "Help") {
         helpPage()
     }
 }
@@ -143,8 +135,8 @@ function loadComponentsSummery() {
     body.innerHTML = "";
     body.innerHTML = JoinLogin.pageLayoutMain();
     let content = document.getElementById('content');
-    showSideAndHead();
     content.innerHTML = JoinSummary.summeryContent();
+    showSideAndHead();
     setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
     setActiveStyles('responActiveSummery', 'rgba(9, 25, 49, 1)');
 }
