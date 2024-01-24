@@ -1,4 +1,6 @@
 let currentDraggedElement;
+let isMoving = false;
+let lastTouchStartTime = 0;
 /**
  * Hides an HTML element by adding 'd-none' class.
  * @param {string} id - The ID of the element to hide.
@@ -337,7 +339,7 @@ function checkAreaDone(container) {
  * @param {Event} event - The event object associated with the touch action.
  */
 function startTouching(category, id, event) {
-    event.preventDefault(); 
+    lastTouchStartTime = new Date().getTime(); 
     currentDraggedElement = id; 
     let element = document.getElementById(`tinyTaskCard${id}`);
 
@@ -382,6 +384,7 @@ function moveGhostElement(x, y) {
  * @param {TouchEvent} event - The touch event containing the new touch coordinates.
  */
 function moveTouching(event) {
+    isMoving = true;
     let touchX = event.touches[0].clientX;
     let touchY = event.touches[0].clientY;
     moveGhostElement(touchX, touchY);
@@ -398,6 +401,7 @@ function endTouching(touchEvent) {
     if (ghostElement) {
         document.body.removeChild(ghostElement);
     }
+    isMoving = false;
 }
 /**
  * Determines the appropriate drop zone based on the touch event's coordinates.
@@ -429,4 +433,17 @@ function isInsideDropZone(x, y, dropZoneId) {
     );
 }
 
+
+function endTouchAndReset(event) {
+    endTouching(event);
+    setTimeout(() => { isMoving = false; }, 400);
+}
+
+
+function openTaskOnTouch(x) {
+    let currentTime = new Date().getTime();
+    if (currentTime - lastTouchStartTime < 400 && !isMoving) {
+        openTask(x);
+    }
+}
 

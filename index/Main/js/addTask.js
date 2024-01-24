@@ -420,6 +420,9 @@ function renderContactsTasks() {
  * @param {number} x - The index of the task to be opened.
  */
 function openTask(x) {
+    if (isMoving) {
+        return;
+    }
     let task = Join.tasks[x];
     let addTask = document.getElementById("addTask");
     addTask.classList.remove("d-none")

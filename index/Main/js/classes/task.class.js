@@ -254,7 +254,6 @@ class Task {
                     <span class="tinyTaskCardDescription">${this.desc.substring(0, 50)}</span>
                 </div>
                 ${subtaskArea()}
-
                 <div class="contactsAndPrio">
                     <div id="tinyCardShortNames" class="tinyTaskCardContacts">${contactTags()}</div>
                     <img src="${prioTag()}" class="prioIcon" alt="">

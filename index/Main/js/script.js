@@ -519,7 +519,6 @@ function taskSaveChanges(taskIndex) {
         existingTask.feedback,
         existingTask.done
     );
-
     saveTasks();
     closeTaskCard();
     cleanUpAll();
@@ -646,6 +645,3 @@ function closeSelectContactsFromCard() {
  * Navigates the browser back to the last visited page in the session history.
  * Uses the 'window.history.back()' method to achieve this.
  */
-// function backToLastSite() {
-//     window.history.back();
-// }
