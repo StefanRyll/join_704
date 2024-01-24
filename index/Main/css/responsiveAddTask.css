@@ -8,11 +8,9 @@
     #content {
         padding: 0;
     }
-
     .fix-todo-subtask {
         width: 100%;
     }
-
     .subtask-container {
         width: 95%;
     }
@@ -45,8 +43,8 @@
     .input-description textarea {
         height: 150px;
         width: 100%;
-        padding: 10px; 
-        box-sizing: border-box; 
+        padding: 10px;
+        box-sizing: border-box;
     }
     .board-task-middle {
         display: flex;
@@ -244,10 +242,10 @@
     .input-description textarea {
         font-size: 16px;
     }
-    .accountTag {
+    /* .accountTag {
         width: 32px;
         height: 32px;
-    }
+    } */
     .accountName {
         font-size: 16px;
     }
@@ -368,7 +366,6 @@
     .btn-create {
         width: 120px !important;
     }
-
     .fix-subtask-icons {
         position: absolute;
         right: 0;
