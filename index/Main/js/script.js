@@ -646,6 +646,13 @@ function closeSelectContactsFromCard() {
  * Navigates the browser back to the last visited page in the session history.
  * Uses the 'window.history.back()' method to achieve this.
  */
-// function backToLastSite() {
+function backToPage() {
+    window.history.back();
+}
+
+/**
+ * Navigiert den Browser eine Seite zurück und gibt eine Nachricht in der Konsole aus.
+ */
+// function backToPage() {
 //     window.history.back();
 // }
