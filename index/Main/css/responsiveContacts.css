@@ -485,23 +485,3 @@
         font-size: 10px;
     }
 }
-
-@media (max-height: 730px) {
-    .res-left-arrow {
-        margin: 0;
-        right: 16px;
-        top: 8px;
-    }
-    .res-contacts-headline {
-        margin: 8px 0 32px 0;
-    }
-    .mail-headline {
-        margin-top: 24px;
-    }
-    .options-btn-div {
-        bottom: 32px;
-    }
-    .loginButtons {
-        margin-top: 16px;
-    }
-}
