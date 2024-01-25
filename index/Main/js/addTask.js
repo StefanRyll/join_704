@@ -241,6 +241,7 @@ function isButtonLowWhite(prioBtn) {
         hide('btnLowGreen');
     }
 }
+
 /**
  * Selects the 'Technical' category for a task, updating input fields and visibility of category elements.
  */
@@ -428,5 +429,3 @@ function openTask(x) {
     addTask.classList.remove("d-none")
     addTask.innerHTML = task.taskCardNormal(x);
 }
-
-
