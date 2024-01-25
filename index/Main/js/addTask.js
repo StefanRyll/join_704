@@ -387,46 +387,6 @@ function deleteSubtask(m) {
     subtaskTemp.splice(m, 1)
     renderSubtasks();
 }
-/**
- * Enables editing for a subtask with the specified index and updates subtaskTemp on Enter key press.
- * 
- * @param {number} m - The index of the subtask to be edited.
- */
-function editSubtask(m) {
-    let editableTask = document.getElementById(`todoSubtask${m}`)
-    editableTask.setAttribute('contenteditable', true)
-    editableTask.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.keyCode === 13) {
-            if (editableTask.value != "")
-                subtaskTemp[m] = editableTask.textContent;
-            editableTask.setAttribute('contenteditable', false)
-            renderSubtasks()
-        }
-    })
-}
-/**
- * Renders contacts for tasks by updating the HTML content of 'contactsList' based on Join.accounts.
- */
-function renderContactsTasks() {
-    let contactsList = document.getElementById('contactsList')
-    for (let i = 0; i < Join.accounts.length; i++) {
-        let account = Join.accounts[i];
-        contactsList.innerHTML += account.tinyCard(i)
-    }
-}
-/**
- * Opens a task by updating the content and visibility of the 'addTask' element with the task card for the specified index.
- * 
- * @param {number} x - The index of the task to be opened.
- */
-function openTask(x) {
-    if (isMoving) {
-        return;
-    }
-    let task = Join.tasks[x];
-    let addTask = document.getElementById("addTask");
-    addTask.classList.remove("d-none")
-    addTask.innerHTML = task.taskCardNormal(x);
-}
+
 
 
