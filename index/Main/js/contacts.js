@@ -7,11 +7,9 @@ async function renderContacts() {
     let contactsList = document.getElementById("contactsList").innerHTML;
     contactsList = ""
     let currentInitials = "";
-
     for (let i = 0; i < Join.accounts.length; i++) {
         const contact = Join.accounts[i];
         const userInitials = contact.shortname;
-
         if (userInitials[0] !== currentInitials) {
             if (alphabet.includes(userInitials[0])) {
                 contactsList = handleAlphabetChange(contactsList, userInitials[0]);
@@ -23,6 +21,7 @@ async function renderContacts() {
     closeAlphabetSection(contactsList);
     document.getElementById("contactsList").innerHTML = contactsList;
 }
+
 /**
  * Handles the change in the alphabet section.
  * @param {string} contactsList - The current contacts list HTML.
@@ -66,7 +65,7 @@ function showDetails(i) {
 
 function manipulateResponsive(i) {
     let contact = Join.accounts[i];
-    
+
     if (window.innerWidth >= 1188) {
         let detailsContent = contact.generateHtmlContactDetails(i);
         document.getElementById("detailsContainer").innerHTML = detailsContent;
@@ -179,6 +178,7 @@ function editContact(i) {
         }, 800) 
     }
 }
+
 /**
  * Function for a delete contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
