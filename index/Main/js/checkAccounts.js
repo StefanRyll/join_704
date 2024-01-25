@@ -147,20 +147,8 @@ async function createAccount() {
 
     if (!isPasswordValid()) {
         handleInvalidPassword();
-        console.log('Passwort nicht valide');
         return;
     }
-
-    if (!isPrivacyPolicyAccepted()) {
-        console.log('You must accept the Privacy Policy!');
-        return;
-    }
-
-    if (isEmailExisting()) {
-        console.log('Email already existing');
-        return;
-    }
-
     await registerNewAccount();
 }
 /**

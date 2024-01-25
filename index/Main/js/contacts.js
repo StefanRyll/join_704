@@ -60,9 +60,13 @@ function showDetails(i) {
     setTimeout(() => {
         openContactDetails();
     }, 200);
+    manipulateResponsive(i);
+}
 
+
+function manipulateResponsive(i) {
     let contact = Join.accounts[i];
-
+    
     if (window.innerWidth >= 1188) {
         let detailsContent = contact.generateHtmlContactDetails(i);
         document.getElementById("detailsContainer").innerHTML = detailsContent;
@@ -75,6 +79,7 @@ function showDetails(i) {
     }
 }
 
+
 function neutralizeContactColor() {
     for (let j = 0; j < Join.accounts.length; j++) {
         let contactField = document.getElementById(`contactField${j}`);
@@ -84,13 +89,13 @@ function neutralizeContactColor() {
     }
 }
 
+
 function highlightContactColor(i) {
     let contactField = document.getElementById(`contactField${i}`);
     let contactName = document.getElementById(`contactName${i}`);
     contactField.style.background = "#2A3647";
     contactName.style.color = "white";
 }
-
 /**
  * function for open and render the overlay to add new contact, edit Contact and delete Contact
  * 
@@ -162,6 +167,8 @@ function editContact(i) {
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     closeOverlay();
     closeContactDetails();
+    neutralizeContactColor();
+    highlightContactColor(i);
     setTimeout(() => {
         editOverlay();
     }, 100);
@@ -221,13 +228,12 @@ function editOverlay() {
  * @param {string} phoneInput 
  */
 function validatePhoneNumber(phoneInput) {
-    // Entferne alle Zeichen, die keine Zahlen sind, aus dem Eingabewert.
     phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, '');
 }
 
 
 function openContactMenu(event) {
-    event.stopPropagation(); // Verhindert, dass das Klick-Ereignis bis zum Dokument weitergeleitet wird
+    event.stopPropagation();
     let optionsMenu = document.getElementById("optionsMenu");
     setTimeout(() => {
         optionsMenu.classList.add("show-options-menu");
