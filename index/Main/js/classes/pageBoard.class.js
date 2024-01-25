@@ -598,7 +598,7 @@ class Board extends Page {
             </div>
             <div id="fixTodoSubtask${m}" class="fix-todo-subtask d-none">
                 <form class="fix-container">
-                        <input id="editFixSubtask" type="text" placeholder="" value="${x}">
+                        <input id="editFixSubtask${m}" type="text" placeholder="" value="${x}">
                     <div class="fix-subtask-icons">
                         <img src="./IMG/assets/subtask_trash.png" alt="" onclick="deleteSubtask(${m})">
                         <img class="subtask-line" src="./IMG/assets/subtask_seperator.png" alt="">

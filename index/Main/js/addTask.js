@@ -356,7 +356,7 @@ function fixSubtasks(m) {
     let fixTodoSubtask = `fixTodoSubtask${m}`;
     document.getElementById(containerTodoSubtask).classList.remove('d-none');
     document.getElementById(fixTodoSubtask).classList.add('d-none');
-    let editFixSubtask = document.getElementById('editFixSubtask');
+    let editFixSubtask = document.getElementById(`editFixSubtask${m}`);
     let todoSubtask = document.getElementById(`todoSubtask${m}`);
     todoSubtask.textContent = editFixSubtask.value;
     subtaskTemp[m].text = editFixSubtask.value;
