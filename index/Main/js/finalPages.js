@@ -35,6 +35,7 @@ function redirectUser(myState) {
     if (Join.signedAccount !== null) {
         redirectSignedUser(myState)
     } else {
+        
         redirectUnsignedUser(myState)
     }
 }
