@@ -74,9 +74,9 @@ class Contact {
             </div>
             <div class="contactInformation">
                 <h3 class="font-size-normal mg-none">Contact Information</h3>
-                <h3 class="mail-headline">Email</h3><br>
+                <h3 class="mail-headline">Email</h3>
                 <p class="mail mg-none"><a href="mailTo:${this.email}">${this.email}</a></p>
-                <h3>Phone</h3>
+                <h3 class="mail-headline">Phone</h3>
                 <p><a class="phone-link" href="tel:${this.tel}">${this.tel}</a></p>
             </div>
         `
@@ -111,7 +111,7 @@ class Contact {
             <div class="contactInformation">
                 <h3 class="mail-headline">Email</h3><br>
                 <p class="mail mg-none"><a href="mailTo:${this.email}">${this.email}</a></p>
-                <h3>Phone</h3>
+                <h3 class="mail-headline">Phone</h3>
                 <p><a class="phone-link" href="tel:${this.tel}">${this.tel}</a></p>
             </div>
             <div class="options-btn-div">

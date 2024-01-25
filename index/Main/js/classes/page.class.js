@@ -34,7 +34,7 @@ class Page {
         let nav = () => {
             if (Join.signedAccount) {
                 return /*html*/ `
-                    <div id="summeryActive" class="navs bgDark " onclick="summeryPage()"><div class="summary"></div><h3>Summery</h3></div>
+                    <div id="summeryActive" class="navs bgDark " onclick="summeryPage()"><div class="summary"></div><h3>Summary</h3></div>
                     <div id="addTaskActive" class="navs" onclick="addTaskPage()"><div class="addTask"></div><h3>Add Task</h3></div>
                     <div id="boardActive" class="navs" onclick="boardPage()"><div class="board"></div><h3>Board</h3></div>
                     <div id="contactsActive" class="navs" onclick="contactsPage()"><div class="contacts"></div><h3>Contacts</h3></div>
@@ -102,7 +102,7 @@ class Page {
             <footer class="respon-footer">
                 <div id="responActiveSummery" class="respon-footer-buttons" onclick="summeryPage()">
                     <img src="./IMG/Summary.png">
-                    <p class="mg-none">Summery</p>
+                    <p class="mg-none">Summary</p>
                 </div>
                 <div id="responActiveBoard" class="respon-footer-buttons" onclick="boardPage()">
                     <img src="./IMG/Board.png">
