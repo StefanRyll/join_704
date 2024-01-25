@@ -128,7 +128,6 @@ function closeOverlay() {
     setTimeout(() => {
         contactsPage();
     }, 225);
-
 }
 /**
  * function for a new contact to the accounts[] array
@@ -145,10 +144,10 @@ async function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-    closeOverlay();
     setTimeout(() => {
-        successOverlay();
-    }, 100);
+        closeOverlay();
+    }, 230);
+    successOverlay();
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
@@ -164,11 +163,13 @@ function editContact(i) {
     contact.tel = document.getElementById('editPhone').value;
 
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-    closeOverlay();
-    closeContactDetails();
     setTimeout(() => {
-        editOverlay();
-    }, 100);
+        closeOverlay();
+    }, 400);
+    editOverlay();
+    closeContactDetails();
+    neutralizeContactColor();
+    highlightContactColor(i);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
@@ -180,11 +181,11 @@ function editContact(i) {
  */
 function deleteContact(i) {
     Join.accounts.splice(i, 1);
-    closeOverlay();
-    closeContactDetails();
+    deleteOverlay();
     setTimeout(() => {
-        deleteOverlay();
-    }, 100);
+        closeContactDetails();
+        closeOverlay();
+    }, 400);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts();
     }
