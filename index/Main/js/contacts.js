@@ -147,10 +147,12 @@ async function addContact() {
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     setTimeout(() => {
         closeOverlay();
-    }, 230);
+    }, 800);
     successOverlay();
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        renderContacts();
+        setTimeout(() => {
+            renderContacts();
+        }, 800)
     }
 }
 /**
@@ -166,13 +168,15 @@ function editContact(i) {
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
     setTimeout(() => {
         closeOverlay();
-    }, 400);
+    }, 800);
     editOverlay();
     closeContactDetails();
     neutralizeContactColor();
     highlightContactColor(i);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {  
-        renderContacts();
+    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally { 
+        setTimeout(() => {
+            renderContacts();
+        }, 800) 
     }
 }
 /**
@@ -185,9 +189,12 @@ function deleteContact(i) {
     setTimeout(() => {
         closeContactDetails();
         closeOverlay();
-    }, 400);
+    }, 800);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        renderContacts();
+        setTimeout(() => {
+            renderContacts();
+        }, 800);
+        
     }
 }
 /**
@@ -200,7 +207,7 @@ function successOverlay() {
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
-    }, 2000);
+    }, 700);
 }
 
 
@@ -210,7 +217,7 @@ function deleteOverlay() {
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
-    }, 2000);
+    }, 700);
 }
 
 
@@ -220,7 +227,7 @@ function editOverlay() {
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
-    }, 2000);
+    }, 700);
 }
 /**
  * Function for defining which characters are allowed in the input.
