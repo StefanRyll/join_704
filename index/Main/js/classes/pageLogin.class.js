@@ -89,12 +89,12 @@ class Login extends Page {
                 <div id="windowArea"></div>        
             `
     }
-    signUpWindow(x) {
+    signUpWindow() {
         return /*html*/ `
             <div class="login-signUp-interface">
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow respon-frame-153">
-                        <a class="backBtn" onclick="startPage2()">
+                        <a class="backBtn" onclick="backToStart()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                                 <path d="M10.4373 14.6667H25.3333C26.0696 14.6667 26.6666 15.2637 26.6666 16.0001C26.6666 16.7364 26.0696 17.3334 25.3333 17.3334H10.4373L16.6466 23.5427C17.1672 24.0634 17.1672 24.9074 16.6466 25.4281C16.126 25.9487 15.2819 25.9487 14.7613 25.4281L6.74746 17.4143C5.96642 16.6332 5.96642 15.3669 6.74747 14.5858L14.7613 6.57206C15.2819 6.05144 16.126 6.05144 16.6466 6.57206C17.1672 7.09268 17.1672 7.93677 16.6466 8.45739L10.4373 14.6667Z" fill="#29ABE2"/>
                             </svg>
@@ -103,7 +103,7 @@ class Login extends Page {
                             <h1 class="login-headline mg-none">Sign Up</h1>
                             <img src="./IMG/vector-5.png">
                         </div>
-                        <form onsubmit="createAccount(${x}); return false;">
+                        <form onsubmit="createAccount(); return false;">
                             <div class="signUp-container">
                                 <div class="frame-14">
                                     <input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">

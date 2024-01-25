@@ -24,6 +24,8 @@ async function startPage() {
     let responseLocal = loadSignedUser();
     Join.signedAccount = responseLocal;
     let myState = localStorage.getItem('state')
+    setState("LogIn")
+
     redirectUser(myState)
     try {
         retrievesAStoredJSON();
@@ -109,6 +111,7 @@ function startPage2() {
  */
 function signUp() {
     setState("SignUp");
+    policyCheck = false;
     body.innerHTML = JoinLogin.logoLogin();
     body.innerHTML = JoinLogin.signUpWindow();
 }
