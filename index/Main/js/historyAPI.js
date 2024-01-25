@@ -14,7 +14,7 @@ window.onpopstate = function(event) {
             privacyPage()
         } else if (event.state.page === 'LegalNotice') {
             legalPage()
-        } else if (event.state.page === 'logIn') {
+        } else if (event.state.page === 'LogIn') {
             startPage2()
         } else if (event.state.page === 'SignUp') {
             signUp()
