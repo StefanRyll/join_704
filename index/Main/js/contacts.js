@@ -2,7 +2,7 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ".split(""); // durch das spli
 /**
  * Render contacts and organize them alphabetically with sections.
  */
-async function renderContacts(obt) {
+async function renderContacts() {
     await loadAccounts()
     let contactsList = document.getElementById("contactsList").innerHTML;
     contactsList = ""
@@ -20,10 +20,14 @@ async function renderContacts(obt) {
     }
     closeAlphabetSection(contactsList);
     document.getElementById("contactsList").innerHTML = contactsList;
-    if (obt) {
-        showDetails(obt);
-    }
+    // conditionShowDetails(obt);
 }
+
+// function conditionShowDetails(obt) {
+//     if (obt) {
+//         showDetails(obt);
+//     }
+// }
 
 /**
  * Handles the change in the alphabet section.
@@ -128,6 +132,7 @@ function closeOverlay() {
         closeBigOverlay()
         closeResOverlay()
     }, 100);
+
 }
 /**
  * function for a new contact to the accounts[] array
@@ -163,13 +168,13 @@ function editContact(i) {
     contact.tel = document.getElementById('editPhone').value;
 
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-
+    neutralizeContactColor();
     closeOverlay();
     setTimeout(() => {
         editOverlay();
     }, 100);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        renderContacts(i);
+        contactsPage();
     }
 }
 
