@@ -30,16 +30,6 @@ class Contacts extends Page {
                 <div>
                     <div class="overlay-success" id="overlaySuccess"></div>
                 </div>
-        
-            <!-- <div>
-                    <div class="respon-overlay" id="responOverlay"></div>
-                </div>
-                <div>
-                    <div class="overlay-style" id="overlay"></div>
-                </div>
-                <div>
-                    <div class="overlay-success" id="overlaySuccess"></div>
-                </div> -->
         `
         }
         /**
@@ -58,7 +48,7 @@ class Contacts extends Page {
             `
     }
 
-    generateHtmlAddContact(i) {
+    generateHtmlAddContact() {
         return /*html*/ `
         <div class="overlay-container">
             ${this.generateLeftSide()}
@@ -69,7 +59,7 @@ class Contacts extends Page {
             </div>
             <div class="overlay-right-container-addContact">
                 <div class="close-button">${this.closeButton()}</div>
-                <form class="addContact-form"  onsubmit="addContact(${i}); return false">
+                <form class="addContact-form"  onsubmit="addContact(); return false">
                     <div class="btn-underlay">
                         <input id="name" required type="text" class="frame-157" placeholder="Name">
                         <img class="input-icon" src="./IMG/person.png"> 

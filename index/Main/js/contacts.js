@@ -128,9 +128,6 @@ function closeOverlay() {
         closeBigOverlay()
         closeResOverlay()
     }, 100);
-    // setTimeout(() => {
-    //     contactsPage();
-    // }, 225);
 }
 /**
  * function for a new contact to the accounts[] array
