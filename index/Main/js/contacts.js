@@ -144,8 +144,6 @@ async function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
-    Join.accounts.indexOf(newUser);
-    console.log(newUser);
     setTimeout(() => {
         closeOverlay();
     }, 800);
