@@ -50,11 +50,18 @@ class Contact {
     getInitials() {
         let parts = this.name.split(" ");
         let initials = parts[0][0];
-        if (parts.length > 1) {
-            initials += parts[parts.length - 1][0];
+        if (parts.length > 1 && parts[1]) { // Überprüft, ob es einen zweiten Namensteil gibt
+            initials += parts[1][0];
         }
         return initials.toUpperCase();
     }
+    //     let parts = this.name.split(" ");
+    //     let initials = parts[0][0];
+    //     if (parts.length > 1) {
+    //         initials += parts[parts.length - 1][0];
+    //     }
+    //     return initials.toUpperCase();
+    // }
 
     generateHtmlContactDetails(i) {
         return /*html*/ `
