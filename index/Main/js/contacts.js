@@ -155,11 +155,7 @@ async function addContact() {
     successOverlay();
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         setTimeout(() => {
-            // setTimeout(() => {
-            //     contactsPage();
-            // }, 225);
             renderContacts();
-            showDetails();
         }, 800)
     }
 }
@@ -178,13 +174,9 @@ function editContact(i) {
         closeOverlay();
     }, 800);
     editOverlay();
-    closeContactDetails();
-    // neutralizeContactColor();
-    // highlightContactColor(i);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         setTimeout(() => {
             renderContacts(i);
-            showDetails(i);
         }, 800)
     }
 }
