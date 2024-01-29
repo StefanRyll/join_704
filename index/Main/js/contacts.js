@@ -2,7 +2,7 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ".split(""); // durch das spli
 /**
  * Render contacts and organize them alphabetically with sections.
  */
-async function renderContacts() {
+async function renderContacts(obt) {
     await loadAccounts()
     let contactsList = document.getElementById("contactsList").innerHTML;
     contactsList = ""
@@ -20,6 +20,9 @@ async function renderContacts() {
     }
     closeAlphabetSection(contactsList);
     document.getElementById("contactsList").innerHTML = contactsList;
+    if (obt) {
+        showDetails(obt);
+    }
 }
 
 /**
@@ -125,9 +128,9 @@ function closeOverlay() {
         closeBigOverlay()
         closeResOverlay()
     }, 100);
-    setTimeout(() => {
-        contactsPage();
-    }, 225);
+    // setTimeout(() => {
+    //     contactsPage();
+    // }, 225);
 }
 /**
  * function for a new contact to the accounts[] array
@@ -144,13 +147,19 @@ async function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+    Join.accounts.indexOf(newUser);
+    console.log(newUser);
     setTimeout(() => {
         closeOverlay();
     }, 800);
     successOverlay();
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         setTimeout(() => {
+            // setTimeout(() => {
+            //     contactsPage();
+            // }, 225);
             renderContacts();
+            showDetails();
         }, 800)
     }
 }
@@ -170,12 +179,13 @@ function editContact(i) {
     }, 800);
     editOverlay();
     closeContactDetails();
-    neutralizeContactColor();
-    highlightContactColor(i);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally { 
+    // neutralizeContactColor();
+    // highlightContactColor(i);
+    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         setTimeout(() => {
-            renderContacts();
-        }, 800) 
+            renderContacts(i);
+            showDetails(i);
+        }, 800)
     }
 }
 
@@ -194,7 +204,7 @@ function deleteContact(i) {
         setTimeout(() => {
             renderContacts();
         }, 800);
-        
+
     }
 }
 /**
