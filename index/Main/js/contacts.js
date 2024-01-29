@@ -58,7 +58,6 @@ function closeAlphabetSection(contactsList) {
  * @param {string} i - is required to access the individual users
  * @returns 
  */
-
 function showDetails(i) {
     neutralizeContactColor();
     highlightContactColor(i);
