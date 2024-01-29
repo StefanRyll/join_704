@@ -41,21 +41,6 @@ const tasksKey = 'joinTask';
 async function saveAccounts() {
     const accounts = Join.accounts;
     await setItem(accountsKey, accounts);
-    // Commentare bleiben für den Fall dass php Verwendet
-    // await fetch(MY_BACKEND_ACC, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(accounts)
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data); // Optional: Verarbeite die Antwort vom Server
-    //   })
-    //   .catch(error => {
-    //     console.error('Fehler beim Senden der Daten:', error);
-    //   });
 }
 /**
  * Asynchronously saves tasks to local storage.
@@ -69,20 +54,6 @@ async function saveTasks() {
     } catch (e) {
         console.error(e);
     }
-    //  await fetch(MY_BACKEND_TAS, {
-    // method: 'POST',
-    // headers: {
-    // 'Content-Type': 'application/json'
-    // },
-    // body: JSON.stringify(tasks)
-    //  })
-    // .then(response => response.json())
-    // .then(data => {
-    // console.log(data); // Optional: Verarbeite die Antwort vom Server
-    // })
-    // .catch(error => {
-    // console.error('Fehler beim Senden der Daten:', error);
-    // });
     return null
 }
 /**
