@@ -36,7 +36,10 @@ function createTask(x) {
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
-    boardPage();
+    setTimeout(() => {
+
+        boardPage();
+    }, 800);
 }
 
 

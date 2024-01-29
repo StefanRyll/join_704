@@ -144,14 +144,12 @@ async function addContact() {
     let newUser = new Contact(name, email, phone)
     Join.accounts.push(newUser);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+    closeOverlay();
     setTimeout(() => {
-        closeOverlay();
-    }, 800);
-    successOverlay();
+        successOverlay();
+    }, 100);
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        setTimeout(() => {
-            renderContacts();
-        }, 800)
+        renderContacts();
     }
 }
 /**
@@ -165,14 +163,13 @@ function editContact(i) {
     contact.tel = document.getElementById('editPhone').value;
 
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+
+    closeOverlay();
     setTimeout(() => {
-        closeOverlay();
-    }, 800);
-    editOverlay();
+        editOverlay();
+    }, 100);
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        setTimeout(() => {
-            renderContacts(i);
-        }, 800)
+        renderContacts(i);
     }
 }
 
@@ -183,15 +180,10 @@ function editContact(i) {
 function deleteContact(i) {
     Join.accounts.splice(i, 1);
     deleteOverlay();
-    setTimeout(() => {
-        closeContactDetails();
-        closeOverlay();
-    }, 800);
+    closeContactDetails();
+    closeOverlay();
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        setTimeout(() => {
-            renderContacts();
-        }, 800);
-
+        renderContacts();
     }
 }
 /**
@@ -204,7 +196,7 @@ function successOverlay() {
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
-    }, 700);
+    }, 2000);
 }
 
 
@@ -214,7 +206,7 @@ function deleteOverlay() {
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
-    }, 700);
+    }, 2000);
 }
 
 
@@ -224,7 +216,7 @@ function editOverlay() {
     openSuccessOverlay();
     setTimeout(() => {
         closeSuccessOverlay();
-    }, 700);
+    }, 2000);
 }
 /**
  * Function for defining which characters are allowed in the input.
