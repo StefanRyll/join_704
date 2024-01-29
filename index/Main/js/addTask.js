@@ -13,6 +13,9 @@ function openAddTask(x = 0) {
 async function createTaskFromBoard(x = 0) {
     try { await loadTasks(); } catch (e) { console.error("Fehler", e) }
     createTask(x);
+    setTimeout(() => {
+        successOverlayTask();
+    }, 100);
 }
 /**
  * Creates a task using provided parameters and updates the task with the given index.
@@ -36,10 +39,7 @@ function createTask(x) {
     const subTask = subtaskTemp;
     let newTask = new Task(title, worker, desc, date, prio, category, subTask);
     updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
-    setTimeout(() => {
-
-        boardPage();
-    }, 800);
+    boardPage();
 }
 
 
@@ -56,14 +56,15 @@ function createTaskPage() {
     try {
         saveTasks();
         setTimeout(() => {
+            successOverlayTask();
+        }, 100);
+        setTimeout(() => {
             boardPage();
-        }, 500);
+        }, 2200);
     } catch (error) {
         console.error("Task speichern nicht möglich : " + error);
     } finally {
-
         clearInputs(title, desc, worker, date, category, subTask);
-        successOverlayTask();
     }
 }
 /**
