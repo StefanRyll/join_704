@@ -148,14 +148,32 @@ async function addContact() {
         successOverlay();
     }, 100);
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
+
         renderContacts();
+
     }
+}
+async function clickContact(name){
+    try {
+        await loadAccounts()
+    } catch (error) {
+        
+    }
+    let contactId = Join.accounts.find(a => a.name === `${name}`).id;
+    console.log('contactID : ', contactId);
+    const contact = document.getElementById(contactId);
+    contact.click();
 }
 /**
  * Function for a edit contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
  */
-function editContact(i) {
+async function editContact(i) {
+    try {
+        await loadAccounts()
+    } catch (error) {
+        console.error("Kann account nicht laden")
+    }
     let contact = Join.accounts[i];
     contact.name = document.getElementById('editName').value;
     contact.email = document.getElementById('editMail').value;
@@ -168,9 +186,11 @@ function editContact(i) {
     setTimeout(() => {
         editOverlay();
     }, 100);
-    try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
+    try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts(i);
-        showDetails(i);
+        clickContact(contact.name)
+
+        // showDetails(i);
     }
 }
 
