@@ -124,10 +124,9 @@ function openEditContact(i) {
  */
 function closeOverlay() {
     setTimeout(() => {
-        closeBigOverlay()
-        closeResOverlay()
+        closeBigOverlay();
+        closeResOverlay();
     }, 100);
-
 }
 /**
  * function for a new contact to the accounts[] array
