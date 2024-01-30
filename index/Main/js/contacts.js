@@ -20,7 +20,7 @@ async function renderContacts(obt) {
     }
     closeAlphabetSection(contactsList);
     document.getElementById("contactsList").innerHTML = contactsList;
-    if (obt) {
+    if (obt || obt === 0) {
         showDetails(obt);
     }
 }
@@ -148,22 +148,10 @@ async function addContact() {
         successOverlay();
     }, 100);
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-
         renderContacts();
+    }
+}
 
-    }
-}
-async function clickContact(name){
-    try {
-        await loadAccounts()
-    } catch (error) {
-        
-    }
-    let contactId = Join.accounts.find(a => a.name === `${name}`).id;
-    console.log('contactID : ', contactId);
-    const contact = document.getElementById(contactId);
-    contact.click();
-}
 /**
  * Function for a edit contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
@@ -188,9 +176,7 @@ async function editContact(i) {
     }, 100);
     try { await saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
         renderContacts(i);
-        clickContact(contact.name)
-
-        // showDetails(i);
+        showDetails(i);
     }
 }
 
@@ -204,7 +190,7 @@ function deleteContact(i) {
     closeContactDetails();
     closeOverlay();
     try { saveAccounts() } catch (e) { "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e } finally {
-        renderContacts();
+        contactsPage();
     }
 }
 /**
