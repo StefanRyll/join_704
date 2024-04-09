@@ -8,7 +8,7 @@ class Board extends Page {
         const urgent = document.getElementById('btnUrgentWhite');
         const medium = document.getElementById('btnMediumWhite');
         const low = document.getElementById('btnLowWhite');
-        
+
         urgent.addEventListener('click', () => {
             prioTemp = "Urgent";
         })
@@ -27,59 +27,59 @@ class Board extends Page {
         FEEDBACK: 'kambanFeedback',
         DONE: 'kambanDone',
     };
-    
+
     async renderTask() {
-      try {
-        await loadTasks();
-      } catch (e) {
-        console.error("Fehler", e);
-      }
-    
-      this.clearKambanContent();
-      this.renderTasksByStatus();
-      checkDragArea();
-    }
-    
-    clearKambanContent() {
-      for (const id of Object.values(this.KAMBAN_IDS)) {
-        const kambanElement = document.getElementById(id);
-        if (kambanElement) {
-          kambanElement.innerHTML = "";
+        try {
+            await loadTasks();
+        } catch (e) {
+            console.error("Fehler", e);
         }
-      }
-    }
-    
-    renderTasksByStatus() {
-      if (Join.tasks.length > 0) {
-        for (let i = 0; i < Join.tasks.length; i++) {
-          const task = Join.tasks[i];
-          const kambanElement = this.getKambanElement(task);
-          if (kambanElement) {
-            kambanElement.innerHTML += task.tinyTaskCard(i);
-          }
-    
-          if (task.subTasks) {
-            task.updateProgressBar(i);
-          }
-        }
-      }
-    }
-    
-    getKambanElement(task) {
-      if (task.todo) return document.getElementById(this.KAMBAN_IDS.TODO);
-      if (task.progress) return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
-      if (task.feedback) return document.getElementById(this.KAMBAN_IDS.FEEDBACK);
-      if (task.done) return document.getElementById(this.KAMBAN_IDS.DONE);
-    
-      task.todo = true;
-      task.feedback = false;
-      task.progress = false;
-      task.done = false;
-      this.renderTask();
-      return null;
+
+        this.clearKambanContent();
+        this.renderTasksByStatus();
+        checkDragArea();
     }
 
-    
+    clearKambanContent() {
+        for (const id of Object.values(this.KAMBAN_IDS)) {
+            const kambanElement = document.getElementById(id);
+            if (kambanElement) {
+                kambanElement.innerHTML = "";
+            }
+        }
+    }
+
+    renderTasksByStatus() {
+        if (Join.tasks.length > 0) {
+            for (let i = 0; i < Join.tasks.length; i++) {
+                const task = Join.tasks[i];
+                const kambanElement = this.getKambanElement(task);
+                if (kambanElement) {
+                    kambanElement.innerHTML += task.tinyTaskCard(i);
+                }
+
+                if (task.subTasks) {
+                    task.updateProgressBar(i);
+                }
+            }
+        }
+    }
+
+    getKambanElement(task) {
+        if (task.todo) return document.getElementById(this.KAMBAN_IDS.TODO);
+        if (task.progress) return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
+        if (task.feedback) return document.getElementById(this.KAMBAN_IDS.FEEDBACK);
+        if (task.done) return document.getElementById(this.KAMBAN_IDS.DONE);
+
+        task.todo = true;
+        task.feedback = false;
+        task.progress = false;
+        task.done = false;
+        this.renderTask();
+        return null;
+    }
+
+
     closeAddTask() {
         slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
     }
@@ -392,7 +392,7 @@ class Board extends Page {
         `
     }
     generateHTMLDateForm() {
-        let getDate = ()=>{
+        let getDate = () => {
             let date = new Date()
             let formattedDate = date.toISOString().split('T')[0];
             return formattedDate

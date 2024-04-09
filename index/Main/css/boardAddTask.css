@@ -340,6 +340,11 @@
     transition: 100ms ease-in-out;
 }
 
+#date {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
 .input-date {
     display: flex;
     flex-direction: column;
@@ -460,7 +465,6 @@
     color: #2A3647;
     width: 100%;
 }
-
 
 .create-subtask {
     width: 100%;

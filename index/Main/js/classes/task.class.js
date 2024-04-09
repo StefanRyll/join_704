@@ -148,7 +148,7 @@ class Task {
         `
     }
     taskCardEdit(x) {
-        let getDate = ()=>{
+        let getDate = () => {
             let date = new Date()
             let formattedDate = date.toISOString().split('T')[0];
             return formattedDate
