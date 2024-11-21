@@ -1,277 +1,255 @@
+// Global state
 let active = true;
+
 /**
- * Sets styles for an element if 'active' flag is true.
+ * Sets styles for an element if the 'active' flag is true.
  * @param {string} id - The ID of the HTML element.
  * @param {string} backgroundColor - The background color to set.
- * @param {string} textColor - The text color to set.
+ * @param {string} [textColor] - The text color to set (optional).
  */
-function setActiveStyles(id, backgroundColor, textColor) {
-    if (active) {
-        let element = document.getElementById(id);
-        if (element) {
-            element.style.backgroundColor = backgroundColor;
-            element.style.color = textColor;
-        }
+function setActiveStyles(id, backgroundColor, textColor = null) {
+  if (active) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.style.backgroundColor = backgroundColor;
+      if (textColor) {
+        element.style.color = textColor;
+      }
     }
+  }
 }
+
 /**
- * Initiates the page by loading accounts and tasks, starting animation, and attempting to retrieve stored JSON data.
- * If you already been on Join, the startPage() redirects you to you former location.
- * It stablises the History api in case of reloading. 
+ * Initializes the page, loads data, and redirects the user based on their state.
  */
 async function startPage() {
-    try { await loadAccounts().then(await loadTasks()); } catch (e) { console.error("Fehler", e) }
-    let responseLocal = loadSignedUser();
-    Join.signedAccount = responseLocal;
-    let myState = localStorage.getItem('state')
-    setState("LogIn")
+  try {
+    await loadAccounts();
+    await loadTasks();
+  } catch (error) {
+    console.error("Error loading accounts or tasks:", error);
+  }
 
-    redirectUser(myState)
-    try {
-        retrievesAStoredJSON();
-    } catch (e) { "Nothing to remember :" + e }
+  Join.signedAccount = loadSignedUser();
+  const currentState = localStorage.getItem("state");
+  setState("LogIn");
+  redirectUser(currentState);
+
+  try {
+    retrieveStoredJSON();
+  } catch (error) {
+    console.warn("No stored data to retrieve:", error);
+  }
 }
 
-
-function redirectUser(myState) {
-    if (Join.signedAccount !== null) {
-        redirectSignedUser(myState)
-    } else {
-
-        redirectUnsignedUser(myState)
-    }
-}
-
-
-function redirectUnsignedUser(myState) {
-    if (myState === "SignUp") {
-        signUp();
-    } else if (myState === "LogIn") {
-        startAnimation();
-    } else {
-        startAnimation();
-    }
-}
-
-
-function redirectSignedUser(myState) {
-    if (myState === "Summary") {
-        summeryPage()
-    } else if (myState === "Board") {
-        boardPage()
-    } else if (myState === "AddTask") {
-        addTaskPage()
-    } else if (myState === "Contacts") {
-        contactsPage()
-    } else if (myState === "Privacy Policy") {
-        privacyPage()
-    } else if (myState === "LegalNotice") {
-        legalPage()
-    } else if (myState === "Help") {
-        helpPage()
-    }
-}
 /**
- * Initiates the animation for starting the login process.
- * @param {string} setState - The state to set for the animation.
- * @param {HTMLElement} body - The HTML body element.
+ * Redirects the user based on their login status and the saved state.
+ * @param {string} currentState - The saved state.
+ */
+function redirectUser(currentState) {
+  if (Join.signedAccount) {
+    redirectSignedUser(currentState);
+  } else {
+    redirectUnsignedUser(currentState);
+  }
+}
+
+/**
+ * Handles redirection for unsigned users.
+ * @param {string} currentState - The saved state.
+ */
+function redirectUnsignedUser(currentState) {
+  if (currentState === "SignUp") {
+    signUp();
+  } else {
+    startAnimation();
+  }
+}
+
+/**
+ * Handles redirection for signed users.
+ * @param {string} currentState - The saved state.
+ */
+function redirectSignedUser(currentState) {
+  const pageActions = {
+    Summary: summeryPage,
+    Board: boardPage,
+    AddTask: addTaskPage,
+    Contacts: contactsPage,
+    "Privacy Policy": privacyPage,
+    LegalNotice: legalPage,
+    Help: helpPage,
+  };
+  const action = pageActions[currentState];
+  if (action) action();
+}
+
+/**
+ * Starts the login animation and renders login content.
  */
 function startAnimation() {
-    setState("LogIn")
-    body.innerHTML = JoinLogin.startAnimationOverlay();
-    body.innerHTML = JoinLogin.startAnimation();
-    body.innerHTML += JoinLogin.logInContent();
+  setState("LogIn");
+  body.innerHTML =
+    JoinLogin.startAnimationOverlay() +
+    JoinLogin.startAnimation() +
+    JoinLogin.logInContent();
 }
+
 /**
  * Retrieves and populates the login email field with stored JSON data.
- * @param {string} response - The stored JSON data.
- * @param {HTMLElement} loginEmail - The HTML element for the login email field.
  */
-function retrievesAStoredJSON() {
-    let response = localStorage.getItem("remember");
-    let loginEmail = document.getElementById('loginEmail')
-    let responseParsed = JSON.parse(response);
-    loginEmail.value = responseParsed;
+function retrieveStoredJSON() {
+  const response = localStorage.getItem("remember");
+  const loginEmail = document.getElementById("loginEmail");
+  loginEmail.value = JSON.parse(response);
 }
+
 /**
- * Initiates the second version of the page by loading accounts, displaying the logo, and rendering login content.
+ * Starts the initial login page.
  */
 function startPage2() {
-    try { loadAccounts() } catch (e) {
-        console.error("Fehler", e)
-    } finally {
-        body.innerHTML = JoinLogin.logoLogin();
-        body.innerHTML += JoinLogin.logInContent();
-    }
+  try {
+    loadAccounts();
+  } catch (error) {
+    console.error("Error loading accounts:", error);
+  } finally {
+    body.innerHTML = JoinLogin.logoLogin() + JoinLogin.logInContent();
+  }
 }
+
 /**
- * Initiates the sign-up process by setting the state, displaying the logo, and rendering the sign-up window.
- * @param {string} setState - The state to set for the sign-up process.
- * @param {HTMLElement} body - The HTML body element.
+ * Starts the sign-up process.
  */
 function signUp() {
-    setState("SignUp");
-    policyCheck = false;
-    body.innerHTML = JoinLogin.logoLogin();
-    body.innerHTML = JoinLogin.signUpWindow();
+  setState("SignUp");
+  policyCheck = false;
+  body.innerHTML = JoinLogin.logoLogin() + JoinLogin.signUpWindow();
 }
+
 /**
- * Initiates the summary page by loading tasks and components for the summary.
+ * Renders the summary page.
  */
 function summeryPage() {
-    try { loadTasks() } catch (e) {
-        console.error("Fehler", e)
-    } finally {
-        loadComponentsSummery();
-    }
+  try {
+    loadTasks();
+  } catch (error) {
+    console.error("Error loading tasks:", error);
+  } finally {
+    loadComponentsSummary();
+  }
 }
+
 /**
- * Loads components for the summary page, sets the state, cleans up, and renders the summary content.
- * @param {string} setState - The state to set for the summary page.
- * @param {function} cleanUpAll - Function to clean up the page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
- * @param {function} setActiveStyles - Function to set active styles for specified elements.
+ * Loads and displays the components for the summary page.
  */
-function loadComponentsSummery() {
-    setState("Summary");
-    cleanUpAll()
-    body.innerHTML = "";
-    body.innerHTML = JoinLogin.pageLayoutMain();
-    let content = document.getElementById('content');
-    content.innerHTML = JoinSummary.summeryContent();
-    showSideAndHead();
-    setActiveStyles('summeryActive', 'rgba(9, 25, 49, 1)');
-    setActiveStyles('responActiveSummery', 'rgba(9, 25, 49, 1)');
+function loadComponentsSummary() {
+  setState("Summary");
+  cleanUpAll();
+  body.innerHTML = JoinLogin.pageLayoutMain();
+  document.getElementById("content").innerHTML = JoinSummary.summeryContent();
+  showSideAndHead();
+  setActiveStyles("summeryActive", "rgba(9, 25, 49, 1)");
+  setActiveStyles("responActiveSummery", "rgba(9, 25, 49, 1)");
 }
+
 /**
- * Initiates the board page by loading tasks and components for the board.
+ * Renders the board page.
  */
 async function boardPage() {
-    try { await loadTasks() } catch (e) {
-        console.error("Fehler", e)
-    } finally {
-        loadComponentsBoard();
-    }
+  try {
+    await loadTasks();
+  } catch (error) {
+    console.error("Error loading tasks:", error);
+  } finally {
+    loadComponentsBoard();
+  }
 }
+
 /**
- * Loads components for the board page, sets the state, cleans up, and renders the board content.
- * @param {string} setState - The state to set for the board page.
- * @param {function} cleanUpAll - Function to clean up the page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
- * @param {function} setActiveStyles - Function to set active styles for specified elements.
- * @param {function} checkDragArea - Function to check the drag area.
+ * Loads and displays the components for the board page.
  */
 function loadComponentsBoard() {
-    setState("Board");
-    cleanUpAll()
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    content.innerHTML = JoinBoard.boardContent();
-    showSideAndHead();
-    JoinBoard.renderTask();
-    setActiveStyles('boardActive', 'rgba(9, 25, 49, 1)');
-    setActiveStyles('responActiveBoard', 'rgba(9, 25, 49, 1)');
-    checkDragArea();
+  setState("Board");
+  cleanUpAll();
+  body.innerHTML = Join.pageLayoutMain();
+  document.getElementById("content").innerHTML = JoinBoard.boardContent();
+  showSideAndHead();
+  JoinBoard.renderTask();
+  setActiveStyles("boardActive", "rgba(9, 25, 49, 1)");
+  setActiveStyles("responActiveBoard", "rgba(9, 25, 49, 1)");
+  checkDragArea();
 }
+
 /**
- * Initiates the contacts page by loading accounts and components for contacts.
+ * Renders the contacts page.
  */
 function contactsPage() {
-    try { loadAccounts() } catch (e) {
-        console.error("Fehler", e)
-    } finally {
-        loadComponentsContacts();
-    }
+  try {
+    loadAccounts();
+  } catch (error) {
+    console.error("Error loading accounts:", error);
+  } finally {
+    loadComponentsContacts();
+  }
 }
+
 /**
- * Loads components for the contacts page, sets the state, cleans up, and renders the contacts content.
- * @param {string} setState - The state to set for the contacts page.
- * @param {function} cleanUpAll - Function to clean up the page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
- * @param {function} setActiveStyles - Function to set active styles for specified elements.
- * @param {function} renderContacts - Function to render the contacts.
+ * Loads and displays the components for the contacts page.
  */
 function loadComponentsContacts() {
-    setState("Contacts");
-    cleanUpAll();
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    showSideAndHead();
-    content.innerHTML = JoinContacts.contactsContent();
-    renderContacts();
-    setActiveStyles('contactsActive', 'rgba(9, 25, 49, 1)');
-    setActiveStyles('responActiveContats', 'rgba(9, 25, 49, 1)');
+  setState("Contacts");
+  cleanUpAll();
+  body.innerHTML = Join.pageLayoutMain();
+  document.getElementById("content").innerHTML = JoinContacts.contactsContent();
+  renderContacts();
+  showSideAndHead();
+  setActiveStyles("contactsActive", "rgba(9, 25, 49, 1)");
+  setActiveStyles("responActiveContacts", "rgba(9, 25, 49, 1)");
 }
+
 /**
- * Initiates the help page by setting the state, cleaning up, and rendering the help content.
- * @param {string} setState - The state to set for the help page.
- * @param {function} cleanUpAll - Function to clean up the page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
+ * Renders the help page.
  */
 function helpPage() {
-    setState("Help");
-    cleanUpAll();
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain();
-    let content = document.getElementById('content');
-    showSideAndHead();
-    content.innerHTML = JoinAbout.helpContent();
+  setState("Help");
+  cleanUpAll();
+  body.innerHTML = Join.pageLayoutMain();
+  document.getElementById("content").innerHTML = JoinAbout.helpContent();
+  showSideAndHead();
 }
+
 /**
- * Initiates the privacy policy page by setting the state, rendering the privacy content, and setting active styles.
- * @param {string} setState - The state to set for the privacy policy page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
- * @param {function} setActiveStyles - Function to set active styles for specified elements.
+ * Renders the privacy policy page.
  */
 function privacyPage() {
-    setState("Privacy Policy")
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain();
-    let content = document.getElementById('content');
-    showSideAndHead();
-    content.innerHTML = JoinAbout.privacyContent();
-    setActiveStyles('privacy', 'rgba(9, 25, 49, 1)', '#A8A8A81');
+  setState("Privacy Policy");
+  body.innerHTML = Join.pageLayoutMain();
+  document.getElementById("content").innerHTML = JoinAbout.privacyContent();
+  showSideAndHead();
+  setActiveStyles("privacy", "rgba(9, 25, 49, 1)", "#A8A8A8");
 }
+
 /**
- * Initiates the legal notice page by setting the state, rendering the legal notice content, and setting active styles.
- * @param {string} setState - The state to set for the legal notice page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
- * @param {function} setActiveStyles - Function to set active styles for specified elements.
+ * Renders the legal notice page.
  */
 function legalPage() {
-    setState("LegalNotice")
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain();
-    let content = document.getElementById('content');
-    showSideAndHead();
-    content.innerHTML = JoinAbout.legalNoticeContent();
-    setActiveStyles('legal', 'rgba(9, 25, 49, 1)', '#A8A8A81');
+  setState("LegalNotice");
+  body.innerHTML = Join.pageLayoutMain();
+  document.getElementById("content").innerHTML = JoinAbout.legalNoticeContent();
+  showSideAndHead();
+  setActiveStyles("legal", "rgba(9, 25, 49, 1)", "#A8A8A8");
 }
+
 /**
- * Initiates the add task page by setting the state, cleaning up, and rendering the add task window.
- * @param {string} setState - The state to set for the add task page.
- * @param {function} cleanUpAll - Function to clean up the page.
- * @param {HTMLElement} body - The HTML body element.
- * @param {function} showSideAndHead - Function to display side and head components.
- * @param {function} setActiveStyles - Function to set active styles for specified elements.
- * @param {function} changeCSSProperty - Function to change CSS properties.
+ * Renders the add task page.
  */
 function addTaskPage() {
-    setState("AddTask");
-    cleanUpAll()
-    body.innerHTML = "";
-    body.innerHTML = Join.pageLayoutMain()
-    let content = document.getElementById('content')
-    content.innerHTML = JoinBoard.generateHTMLaddTaskWindowForm(4);
-    showSideAndHead()
-    setActiveStyles('addTaskActive', 'rgba(9, 25, 49, 1)');
-    setActiveStyles('responActiveAddTask', 'rgba(9, 25, 49, 1)');
+  setState("AddTask");
+  cleanUpAll();
+  body.innerHTML = Join.pageLayoutMain();
+  document.getElementById("content").innerHTML =
+    JoinBoard.generateHTMLaddTaskWindowForm(4);
+  showSideAndHead();
+  setActiveStyles("addTaskActive", "rgba(9, 25, 49, 1)");
+  setActiveStyles("responActiveAddTask", "rgba(9, 25, 49, 1)");
 }

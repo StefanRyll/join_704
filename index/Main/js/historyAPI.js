@@ -2,29 +2,29 @@
  * Handles the window popstate event to navigate between pages based on the state.
  * @param {object} event - The popstate event object.
  */
-window.onpopstate = function(event) {
-    if (event.state) {
-        if (event.state.page === 'summary') {
-            summeryPage();
-        } else if (event.state.page === 'Board') {
-            boardPage()
-        } else if (event.state.page === 'Help') {
-            helpPage()
-        } else if (event.state.page === 'Privacy Policy') {
-            privacyPage()
-        } else if (event.state.page === 'LegalNotice') {
-            legalPage()
-        } else if (event.state.page === 'LogIn') {
-            startPage2()
-        } else if (event.state.page === 'SignUp') {
-            signUp()
-        } else if (event.state.page === 'AddTask') {
-            addTaskPage()
-        } else if (event.state.page === 'Contacts') {
-            contactsPage()
-        }
+window.onpopstate = function (event) {
+  if (event.state) {
+    if (event.state.page === "summary") {
+      summeryPage();
+    } else if (event.state.page === "Board") {
+      boardPage();
+    } else if (event.state.page === "Help") {
+      helpPage();
+    } else if (event.state.page === "Privacy Policy") {
+      privacyPage();
+    } else if (event.state.page === "LegalNotice") {
+      legalPage();
+    } else if (event.state.page === "LogIn") {
+      startPage2();
+    } else if (event.state.page === "SignUp") {
+      signUp();
+    } else if (event.state.page === "AddTask") {
+      addTaskPage();
+    } else if (event.state.page === "Contacts") {
+      contactsPage();
     }
-}
+  }
+};
 /**
  * Setzt den aktuellen Zustand der Seite, aktualisiert die Browser-Historie und führt zugehörige Aktionen aus.
  *
@@ -32,20 +32,20 @@ window.onpopstate = function(event) {
  * @returns {string} Gibt den übergebenen Zustandsnamen zurück.
  */
 function setState(x) {
-    let state = { page: `${x}` };
-    let title = `${x}`;
-    let url = `${x.toLowerCase()}.html`;
-    history.pushState(state, title, url);
-    document.title = "Join - " + capitalizeFirstLetter(title);
-    saveState();
-    return x;
+  let state = { page: `${x}` };
+  let title = `${x}`;
+  let url = `${x.toLowerCase()}.html`;
+  history.pushState(state, title, url);
+  document.title = "Join - " + capitalizeFirstLetter(title);
+  saveState();
+  return x;
 }
 /**
  * Speichert den aktuellen Seitenzustand im lokalen Speicher des Browsers.
  */
-function saveState(){
-    let actualState = history.state['page'];
-    localStorage.setItem('state', actualState);
+function saveState() {
+  let actualState = history.state["page"];
+  localStorage.setItem("state", actualState);
 }
 /**
  * Kapitalisiert den ersten Buchstaben eines gegebenen Strings.
@@ -54,5 +54,5 @@ function saveState(){
  * @returns {string} Gibt den String mit dem ersten Buchstaben in Großbuchstaben zurück.
  */
 function capitalizeFirstLetter(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
+  return name.charAt(0).toUpperCase() + name.slice(1);
 }
