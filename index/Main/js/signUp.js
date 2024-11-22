@@ -1,4 +1,4 @@
-function backToStart(){
-    setState("LogIn")
-    startPage();
+function backToStart() {
+  setState("LogIn");
+  startPage();
 }

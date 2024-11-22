@@ -1,14 +1,14 @@
 class Login extends Page {
-    constructor() {
-            super()
-        }
-        /**
-         *  Diese Methode stellt das Log In Fenster da
-         * @returns {string} -- 
-         *
-         */
-    logInContent() {
-            return /*html*/ `
+  constructor() {
+    super();
+  }
+  /**
+   *  Diese Methode stellt das Log In Fenster da
+   * @returns {string} --
+   *
+   */
+  logInContent() {
+    return /*html*/ `
                 <header class="login-header">
                     <div class="frame-156">
                         <p>Not a Join user?</p>
@@ -59,38 +59,40 @@ class Login extends Page {
                         </div>
                     </footer>
                 </section>
-            `
-        }
-        /**
-         * Die Methode stellt die Logo Animation am anfang dar
-         * @returns {string}
-         */
-    startAnimation() {
-        body.innerHTML = "";
-        return /*html*/ `
-                    <div id="logoOverlay" class="logo-animation-overlay"></div>
-                    <div id="logoMain" class="logoAnimationImg"></div>
-            `
-    }
-    startAnimationOverlay() {
-        setTimeout(() => {
-            document.getElementById('logoOverlay').classList.add('d-none');
-        }, 1000);
-    }
-    logoLogin() {
-        return /*html*/ `
-                <div id="logoMain" class="logoAnimationImg2"></div>
-    
-            `
-    }
-    loginLayout() {
-        return /*html*/ `
-                <div id="logoArea"></div>
-                <div id="windowArea"></div>        
-            `
-    }
-    signUpWindow() {
-        return /*html*/ `
+            `;
+  }
+  /**
+   * Die Methode stellt die Logo Animation am anfang dar
+   * @returns {string}
+   */
+  startAnimation() {
+    body.innerHTML = "";
+    return /*html*/ `
+                      <div id="logoOverlay" class="logo-animation-overlay"></div>
+                      <div id="logoMain" class="logoAnimationImg"></div>
+              `;
+  }
+  startAnimationOverlay() {
+    setTimeout(() => {
+      document.getElementById("logoOverlay").classList.add("d-none");
+    }, 1000);
+    return ""; // Sicherstellen, dass etwas zurückgegeben wird
+  }
+
+  logoLogin() {
+    return /*html*/ `
+                  <div id="logoMain" class="logoAnimationImg2"></div>
+
+              `;
+  }
+  loginLayout() {
+    return /*html*/ `
+              <div id="logoArea"></div>
+              <div id="windowArea"></div>
+          `;
+  }
+  signUpWindow() {
+    return /*html*/ `
             <div class="login-signUp-interface">
                 <div id="logoMain" class="logoAnimationImg2"></div>
                 <div id="signUpWindow" class="signUpWindow respon-frame-153">
@@ -154,9 +156,9 @@ class Login extends Page {
                         </div>
                     </div>
             </div>
-            `
-    }
-    forceSignIn(x) {
-        this.signedAccount = x;
-    }
+            `;
+  }
+  forceSignIn(x) {
+    this.signedAccount = x;
+  }
 }
