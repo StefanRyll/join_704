@@ -76,7 +76,7 @@ function redirectSignedUser(currentState) {
     Board: boardPage,
     AddTask: addTaskPage,
     Contacts: contactsPage,
-    "Privacy Policy": privacyPage,
+    privacypolicy: privacyPage,
     LegalNotice: legalPage,
     Help: helpPage,
   };
@@ -225,7 +225,7 @@ function helpPage() {
  * Renders the privacy policy page.
  */
 function privacyPage() {
-  setState("Privacy Policy");
+  setState("privacypolicy");
   body.innerHTML = Join.pageLayoutMain();
   document.getElementById("content").innerHTML = JoinAbout.privacyContent();
   showSideAndHead();

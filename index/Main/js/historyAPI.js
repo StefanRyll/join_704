@@ -10,7 +10,7 @@ window.onpopstate = function (event) {
       boardPage();
     } else if (event.state.page === "Help") {
       helpPage();
-    } else if (event.state.page === "Privacy Policy") {
+    } else if (event.state.page === "privacypolicy") {
       privacyPage();
     } else if (event.state.page === "LegalNotice") {
       legalPage();
