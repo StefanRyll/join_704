@@ -101,6 +101,9 @@ function startAnimation() {
 function retrieveStoredJSON() {
   const response = localStorage.getItem("remember");
   const loginEmail = document.getElementById("loginEmail");
+
+  if (!loginEmail || !response) return;
+
   loginEmail.value = JSON.parse(response);
 }
 
