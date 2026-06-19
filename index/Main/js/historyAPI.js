@@ -6,7 +6,7 @@ window.onpopstate = function (event) {
   if (event.state) {
     if (event.state.page === "summary") {
       summeryPage();
-    } else if (event.state.page === "Board") {
+    } else if (event.state.page === "board") {
       boardPage();
     } else if (event.state.page === "Help") {
       helpPage();

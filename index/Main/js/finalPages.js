@@ -73,7 +73,7 @@ function redirectUnsignedUser(currentState) {
 function redirectSignedUser(currentState) {
   const pageActions = {
     Summary: summeryPage,
-    Board: boardPage,
+    board: boardPage,
     AddTask: addTaskPage,
     Contacts: contactsPage,
     privacypolicy: privacyPage,
@@ -172,7 +172,7 @@ async function boardPage() {
  * Loads and displays the components for the board page.
  */
 function loadComponentsBoard() {
-  setState("Board");
+  setState("board");
   cleanUpAll();
   body.innerHTML = Join.pageLayoutMain();
   document.getElementById("content").innerHTML = JoinBoard.boardContent();
