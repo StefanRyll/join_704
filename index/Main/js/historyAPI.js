@@ -8,19 +8,19 @@ window.onpopstate = function (event) {
       summeryPage();
     } else if (event.state.page === "board") {
       boardPage();
-    } else if (event.state.page === "Help") {
+    } else if (event.state.page === "help") {
       helpPage();
     } else if (event.state.page === "privacypolicy") {
       privacyPage();
-    } else if (event.state.page === "LegalNotice") {
+    } else if (event.state.page === "legalNotice") {
       legalPage();
-    } else if (event.state.page === "LogIn") {
+    } else if (event.state.page === "logIn") {
       startPage2();
-    } else if (event.state.page === "SignUp") {
+    } else if (event.state.page === "signUp") {
       signUp();
-    } else if (event.state.page === "AddTask") {
+    } else if (event.state.page === "addTask") {
       addTaskPage();
-    } else if (event.state.page === "Contacts") {
+    } else if (event.state.page === "contacts") {
       contactsPage();
     }
   }

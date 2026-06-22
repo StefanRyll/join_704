@@ -32,7 +32,7 @@ async function startPage() {
 
   Join.signedAccount = loadSignedUser();
   const currentState = localStorage.getItem("state");
-  setState("LogIn");
+  setState("logIn");
   redirectUser(currentState);
 
   try {
@@ -59,7 +59,7 @@ function redirectUser(currentState) {
  * @param {string} currentState - The saved state.
  */
 function redirectUnsignedUser(currentState) {
-  if (currentState === "SignUp") {
+  if (currentState === "signUp") {
     signUp();
   } else {
     startAnimation();
@@ -74,11 +74,11 @@ function redirectSignedUser(currentState) {
   const pageActions = {
     Summary: summeryPage,
     board: boardPage,
-    AddTask: addTaskPage,
-    Contacts: contactsPage,
+    addTask: addTaskPage,
+    contacts: contactsPage,
     privacypolicy: privacyPage,
-    LegalNotice: legalPage,
-    Help: helpPage,
+    legalNotice: legalPage,
+    help: helpPage,
   };
   const action = pageActions[currentState];
   if (action) action();
@@ -88,7 +88,7 @@ function redirectSignedUser(currentState) {
  * Starts the login animation and renders login content.
  */
 function startAnimation() {
-  setState("LogIn");
+  setState("logIn");
   body.innerHTML =
     JoinLogin.startAnimationOverlay() +
     JoinLogin.startAnimation() +
@@ -124,7 +124,7 @@ function startPage2() {
  * Starts the sign-up process.
  */
 function signUp() {
-  setState("SignUp");
+  setState("signUp");
   policyCheck = false;
   body.innerHTML = JoinLogin.logoLogin() + JoinLogin.signUpWindow();
 }
@@ -200,7 +200,7 @@ function contactsPage() {
  * Loads and displays the components for the contacts page.
  */
 function loadComponentsContacts() {
-  setState("Contacts");
+  setState("contacts");
   cleanUpAll();
   body.innerHTML = Join.pageLayoutMain();
   document.getElementById("content").innerHTML = JoinContacts.contactsContent();
@@ -214,7 +214,7 @@ function loadComponentsContacts() {
  * Renders the help page.
  */
 function helpPage() {
-  setState("Help");
+  setState("help");
   cleanUpAll();
   body.innerHTML = Join.pageLayoutMain();
   document.getElementById("content").innerHTML = JoinAbout.helpContent();
@@ -236,7 +236,7 @@ function privacyPage() {
  * Renders the legal notice page.
  */
 function legalPage() {
-  setState("LegalNotice");
+  setState("legalNotice");
   body.innerHTML = Join.pageLayoutMain();
   document.getElementById("content").innerHTML = JoinAbout.legalNoticeContent();
   showSideAndHead();
@@ -247,7 +247,7 @@ function legalPage() {
  * Renders the add task page.
  */
 function addTaskPage() {
-  setState("AddTask");
+  setState("addTask");
   cleanUpAll();
   body.innerHTML = Join.pageLayoutMain();
   document.getElementById("content").innerHTML =
