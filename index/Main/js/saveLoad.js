@@ -9,8 +9,7 @@ const TASKS_KEY = "joinTask";
  * @async
  */
 async function saveAccounts() {
-  const accounts = Join.accounts;
-  await setItem(ACCOUNTS_KEY, accounts);
+  await setItem(ACCOUNTS_KEY, Join.accounts);
 }
 
 /**
@@ -18,9 +17,8 @@ async function saveAccounts() {
  * @async
  */
 async function saveTasks() {
-  const tasks = Join.tasks;
   try {
-    await setItem(TASKS_KEY, tasks);
+    await setItem(TASKS_KEY, Join.tasks);
   } catch (error) {
     console.error("Error saving tasks:", error);
   }
@@ -32,7 +30,7 @@ async function saveTasks() {
  */
 async function loadAccounts() {
   const response = await getItem(ACCOUNTS_KEY);
-  const parsedData = JSON.parse(response.data.value);
+  const parsedData = parseStorageValue(response, ACCOUNTS_KEY);
   const decodedAccounts = decodeAccounts(parsedData);
   Join.accounts = decodedAccounts.sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -43,7 +41,7 @@ async function loadAccounts() {
  */
 async function loadTasks() {
   const response = await getItem(TASKS_KEY);
-  const parsedData = JSON.parse(response.data.value);
+  const parsedData = parseStorageValue(response, TASKS_KEY);
   const decodedTasks = decodeTasks(parsedData);
   Join.tasks = decodedTasks;
 }
@@ -56,10 +54,16 @@ async function loadTasks() {
  */
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
+
   const response = await fetch(STORAGE_URL, {
     method: "POST",
     body: JSON.stringify(payload),
   });
+
+  if (!response.ok) {
+    throw new Error(`Failed to save ${key}: ${response.status}`);
+  }
+
   return response.json();
 }
 
@@ -71,7 +75,27 @@ async function setItem(key, value) {
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${key}: ${response.status}`);
+  }
+
   return response.json();
+}
+
+/**
+ * Parses and validates data returned from remote storage.
+ * @param {Object} response - Response object from remote storage.
+ * @param {string} key - Storage key used for error reporting.
+ * @returns {Array|Object} Parsed storage data.
+ * @throws {Error} If no storage value is found.
+ */
+function parseStorageValue(response, key) {
+  if (!response?.data?.value) {
+    throw new Error(`No storage value found for ${key}`);
+  }
+
+  return JSON.parse(response.data.value);
 }
 
 /**
@@ -95,10 +119,10 @@ function decodeTasks(jsonData) {
       worker,
     }) => {
       const subTaskObjects = subTasks.map(
-        (st) => new Subtask(st.text, st.done)
+        (st) => new Subtask(st.text, st.done),
       );
       const workerObjects = worker.map(
-        (w) => new Contact(w.name, w.email, w.tel)
+        (w) => new Contact(w.name, w.email, w.tel),
       );
       return new Task(
         title,
@@ -111,9 +135,9 @@ function decodeTasks(jsonData) {
         todo,
         progress,
         feedback,
-        done
+        done,
       );
-    }
+    },
   );
 }
 
@@ -126,7 +150,7 @@ function decodeAccounts(jsonData) {
   return jsonData.map(({ name, email, tel, password }) =>
     password
       ? new Account(name, email, tel, password)
-      : new Contact(name, email, tel)
+      : new Contact(name, email, tel),
   );
 }
 
@@ -143,10 +167,13 @@ function saveSignedUser() {
  * @returns {Account|null} - The signed user's account or null if not found.
  */
 function loadSignedUser() {
-  const storedUser = JSON.parse(localStorage.getItem("signedAccount"));
-  if (!storedUser) return null;
+  const storedUserJson = localStorage.getItem("signedAccount");
 
+  if (!storedUserJson) return null;
+
+  const storedUser = JSON.parse(storedUserJson);
   const account = Join.accounts.find((a) => a.name === storedUser.name);
+
   if (account) return account;
 
   return storedUser.name === "Guest"
