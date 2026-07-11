@@ -1,0 +1,20 @@
+{
+  "name": "join",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite index/Main",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "firebase": "^12.15.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.3"
+  }
+}

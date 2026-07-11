@@ -1,1 +1,5 @@
 index/Main/css/responsiveAddTask.css
+
+node_modules/
+.env
+dist/

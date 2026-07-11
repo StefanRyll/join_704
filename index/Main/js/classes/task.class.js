@@ -1,65 +1,77 @@
+//task.class.js
+
 class Task {
-    constructor(title, worker, desc, date, prio = "Wichtig",
-        Category, subTasks, todo = false, progress = false, feedback = false, done = false) {
-        this.title = title;
-        this.worker = worker;
-        this.desc = desc;
-        this.date = new Date(date);
-        this.prio = prio;
-        this.Category = Category;
-        this.subTasks = subTasks;
-        this.todo = todo;
-        this.progress = progress;
-        this.feedback = feedback;
-        this.done = done;
+  constructor(
+    title,
+    worker,
+    desc,
+    date,
+    prio = "Wichtig",
+    Category,
+    subTasks,
+    todo = false,
+    progress = false,
+    feedback = false,
+    done = false,
+  ) {
+    this.title = title;
+    this.worker = worker;
+    this.desc = desc;
+    this.date = new Date(date);
+    this.prio = prio;
+    this.Category = Category;
+    this.subTasks = subTasks;
+    this.todo = todo;
+    this.progress = progress;
+    this.feedback = feedback;
+    this.done = done;
+  }
+
+  setCategoryColor() {
+    let html = "";
+    if (this.Category === "Technical Task") {
+      html = /*html*/ `<div class="tiny-task-category color-technical">${this.Category}</div>`;
+    } else {
+      html = /*html*/ `<div class="tiny-task-category color-userStory">${this.Category}</div>`;
     }
 
-    setCategoryColor() {
-        let html = "";
-        if (this.Category === 'Technical Task') {
-            html = /*html*/ `<div class="tiny-task-category color-technical">${this.Category}</div>`
-        } else {
-            html = /*html*/ `<div class="tiny-task-category color-userStory">${this.Category}</div>`
-        }
+    return html;
+  }
 
-        return html;
+  taskCardNormal(x) {
+    let formatedDate = () => {
+      let date = this.date;
+      const day = date.getDate().toString().padStart(2, "0");
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const year = date.getFullYear();
+      let formatedDate = `${day}/${month}/${year}`;
+      return formatedDate;
     };
-
-
-    taskCardNormal(x) {
-        let formatedDate = () => {
-            let date = this.date;
-            const day = date.getDate().toString().padStart(2, '0');
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const year = date.getFullYear();
-            let formatedDate = `${day}/${month}/${year}`;
-            return formatedDate;
-        };
-        let formatedPrio = () => {
-            let iconSrc;
-            if (this.prio === "Urgent") {
-                iconSrc = "./IMG/Property 1=urgent.svg"
-            } else if (this.prio === "Medium") {
-                iconSrc = "./IMG/Property 1=medium.svg"
-            } else {
-                iconSrc = "./IMG/Property 1=low.svg"
-            }
-            return iconSrc;
-        }
-        let renderWorker = () => {
-            let htmlSnippet = "";
-            for (let i = 0; i < this.worker.length; i++) {
-                const worker = this.worker[i];
-                htmlSnippet += worker.tinyCard()
-            }
-            return htmlSnippet;
-        }
-        let renderSubtasks = () => {
-            let htmlSnippet = "";
-            for (let j = 0; j < this.subTasks.length; j++) {
-                const subTask = this.subTasks[j];
-                if (subTask.done) {
-                    htmlSnippet += /*html*/ `
+    let formatedPrio = () => {
+      let iconSrc;
+      if (this.prio === "Urgent") {
+        iconSrc = "./IMG/Property 1=urgent.svg";
+      } else if (this.prio === "Medium") {
+        iconSrc = "./IMG/Property 1=medium.svg";
+      } else {
+        iconSrc = "./IMG/Property 1=low.svg";
+      }
+      return iconSrc;
+    };
+    let renderWorker = () => {
+      let htmlSnippet = "";
+      for (let i = 0; i < this.worker.length; i++) {
+        const worker = this.worker[i];
+        htmlSnippet += worker.tinyCard();
+      }
+      return htmlSnippet;
+    };
+    let renderSubtasks = () => {
+      let htmlSnippet = "";
+      for (let j = 0; j < this.subTasks.length; j++) {
+        const subTask = this.subTasks[j];
+        if (subTask.done) {
+          htmlSnippet += /*html*/ `
                             <div class="subtask-list">
                                 <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox d-none" >
                                     <div class="style-checkbox-displayflex">
@@ -75,8 +87,8 @@ class Task {
                                 </div>
                             </div>
                     `;
-                } else {
-                    htmlSnippet += /*html*/ `
+        } else {
+          htmlSnippet += /*html*/ `
                             <div class="subtask-list">
                                 <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox">
                                 <div class="style-checkbox-displayflex">
@@ -92,11 +104,11 @@ class Task {
                                 </div>
                             </div>
                     `;
-                }
-            }
-            return htmlSnippet;
         }
-        return /*html*/ `
+      }
+      return htmlSnippet;
+    };
+    return /*html*/ `
         <div class="bg-task">
             <div id="taskCard" class="taskCard">
                 <div class="taskCardHeader">
@@ -145,16 +157,16 @@ class Task {
                 </div>
             </div>
         </div>
-        `
-    }
-    taskCardEdit(x) {
-        let getDate = () => {
-            let date = new Date()
-            let formattedDate = date.toISOString().split('T')[0];
-            return formattedDate
-        }
+        `;
+  }
+  taskCardEdit(x) {
+    let getDate = () => {
+      let date = new Date();
+      let formattedDate = date.toISOString().split("T")[0];
+      return formattedDate;
+    };
 
-        return /*html*/ `  
+    return /*html*/ `  
         <div class="editTaskCard">   
             <div class="taskCardHeader" >
                 <div></div>
@@ -193,34 +205,32 @@ class Task {
                 </div>
             </div>
         </div>
-            `
-    }
-    tinyTaskCard(x = 0) {
+            `;
+  }
+  tinyTaskCard(x = 0) {
+    let contactTags = () => {
+      let rendertContacts = "";
 
-
-        let contactTags = () => {
-            let rendertContacts = "";
-
-            for (let i = 0; i < this.worker.length; i++) {
-                let worker = this.worker[i];
-                rendertContacts += worker.accountTag();
-            }
-            return rendertContacts;
-        }
-        let prioTag = () => {
-            let prioUrl;
-            if (this.prio == "Urgent") {
-                prioUrl = "./IMG/prioUrgentIcon.png"
-            } else if (this.prio == "Medium") {
-                prioUrl = "./IMG/prioMediumIcon.png"
-            } else {
-                prioUrl = "./IMG/prioLowIcon.png"
-            }
-            return prioUrl;
-        }
-        let subtaskArea = () => {
-            if (this.subTasks.length !== 0) {
-                return /*html*/ `
+      for (let i = 0; i < this.worker.length; i++) {
+        let worker = this.worker[i];
+        rendertContacts += worker.accountTag();
+      }
+      return rendertContacts;
+    };
+    let prioTag = () => {
+      let prioUrl;
+      if (this.prio == "Urgent") {
+        prioUrl = "./IMG/prioUrgentIcon.png";
+      } else if (this.prio == "Medium") {
+        prioUrl = "./IMG/prioMediumIcon.png";
+      } else {
+        prioUrl = "./IMG/prioLowIcon.png";
+      }
+      return prioUrl;
+    };
+    let subtaskArea = () => {
+      if (this.subTasks.length !== 0) {
+        return /*html*/ `
                 <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
                     <div class="tiny-task-label">
                         <div class="progressContainer" id="progressContainer">
@@ -230,23 +240,23 @@ class Task {
                     </div>
                 </div>
 
-                `
-            } else {
-                return "";
-            }
+                `;
+      } else {
+        return "";
+      }
+    };
+    let SubtasksDone = () => {
+      let countDone = 0;
+      for (let i = 0; i < this.subTasks.length; i++) {
+        const toCheck = this.subTasks[i];
+        if (toCheck.done) {
+          countDone++;
         }
-        let SubtasksDone = () => {
-            let countDone = 0;
-            for (let i = 0; i < this.subTasks.length; i++) {
-                const toCheck = this.subTasks[i];
-                if (toCheck.done) {
-                    countDone++;
-                }
-            }
-            return countDone;
-        }
+      }
+      return countDone;
+    };
 
-        return /*html*/ `
+    return /*html*/ `
             <div id="tinyTaskCard${x}" onclick="openTask(${x})" class="tinyTaskCard" draggable="true"  ondragstart="startDragging(${x})"  ontouchstart="startTouching('toDo', ${x}, event);" ontouchmove="moveTouching(event);" ontouchend="endTouching(event);" >
             	${this.setCategoryColor()}
                 <div class="tiny-title">
@@ -259,62 +269,64 @@ class Task {
                     <img src="${prioTag()}" class="prioIcon" alt="">
                 </div>
             </div>
-        `
-    }
+        `;
+  }
 
-    updateProgressBar(x) {
-        let progressContainer = document.getElementById(`tinyTaskCardSubtaskSection${x}`)
-        if (progressContainer) {
-            let gesamtFortschritt;
-            let variable1 = this.subTasks.length;
-            let variable2 = () => {
-                let countDone = 0;
-                for (let i = 0; i < this.subTasks.length; i++) {
-                    const toCheck = this.subTasks[i];
-                    if (toCheck.done) {
-                        countDone++;
-                    }
-                }
-                return countDone;
-            }
-            if (variable1 == 0) {
-                progressContainer.classList.add('d-none')
-                variable1 = null
-                variable2 = null;
-            } else if (variable1 > 0) {
-                gesamtFortschritt = (variable2() / variable1) * 100;
-                let progressbar = document.getElementById(`progressBar${x}`);
-                progressbar.style.width = `${gesamtFortschritt}%`;
-            }
+  updateProgressBar(x) {
+    let progressContainer = document.getElementById(
+      `tinyTaskCardSubtaskSection${x}`,
+    );
+    if (progressContainer) {
+      let gesamtFortschritt;
+      let variable1 = this.subTasks.length;
+      let variable2 = () => {
+        let countDone = 0;
+        for (let i = 0; i < this.subTasks.length; i++) {
+          const toCheck = this.subTasks[i];
+          if (toCheck.done) {
+            countDone++;
+          }
         }
+        return countDone;
+      };
+      if (variable1 == 0) {
+        progressContainer.classList.add("d-none");
+        variable1 = null;
+        variable2 = null;
+      } else if (variable1 > 0) {
+        gesamtFortschritt = (variable2() / variable1) * 100;
+        let progressbar = document.getElementById(`progressBar${x}`);
+        progressbar.style.width = `${gesamtFortschritt}%`;
+      }
     }
+  }
 
-    editTask() {
-        let taskCard = document.getElementById('taskCard')
-        taskCard.innerHTML = this.taskCardEdit()
-        taskCard.classList.add('d-none');
+  editTask() {
+    let taskCard = document.getElementById("taskCard");
+    taskCard.innerHTML = this.taskCardEdit();
+    taskCard.classList.add("d-none");
+  }
+  switchStatus(x = 0) {
+    if (x == "1") {
+      this.todo = false;
+      this.progress = true;
+      this.feedback = false;
+      this.done = false;
+    } else if (x == "2") {
+      this.todo = false;
+      this.progress = false;
+      this.feedback = true;
+      this.done = false;
+    } else if (x == "3") {
+      this.todo = false;
+      this.progress = false;
+      this.feedback = false;
+      this.done = true;
+    } else {
+      this.todo = true;
+      this.progress = false;
+      this.feedback = false;
+      this.done = false;
     }
-    switchStatus(x = 0) {
-        if (x == "1") {
-            this.todo = false;
-            this.progress = true;
-            this.feedback = false;
-            this.done = false;
-        } else if (x == "2") {
-            this.todo = false;
-            this.progress = false;
-            this.feedback = true;
-            this.done = false;
-        } else if (x == "3") {
-            this.todo = false;
-            this.progress = false;
-            this.feedback = false;
-            this.done = true;
-        } else {
-            this.todo = true;
-            this.progress = false;
-            this.feedback = false;
-            this.done = false;
-        }
-    }
+  }
 }

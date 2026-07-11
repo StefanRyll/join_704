@@ -128,7 +128,7 @@ function taskSaveChanges(taskIndex) {
     existingTask.todo,
     existingTask.progress,
     existingTask.feedback,
-    existingTask.done
+    existingTask.done,
   );
   saveTasks();
   closeTaskCard();
@@ -226,3 +226,5 @@ function closeSelectContactsFromCard() {
 function backToPage() {
   window.history.back();
 }
+
+console.log("halo i bims", window.db);

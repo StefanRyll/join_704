@@ -1,72 +1,89 @@
-class Summary extends Page {
-    summeryContent() {
-        let daytime = Join.sayDaytime()
-        let nDDay, nDMonth, nDYear;
-        let urgendTasks = ()=>{
-            let theTasks = Join.tasks.filter(t => t.prio === "Urgent")
-            return theTasks.length;
-        }
-        let doneTasks = () => {
-            let count = 0
-            for (let i = 0; i < Join.tasks.length; i++) {
-                const task = Join.tasks[i];
-                if (task.done) {
-                    count++
-                }
-            }
-            return count;
-        };
-        let todoTasks = () => {
-            let count = 0;
-            for (let i = 0; i < Join.tasks.length; i++) {
-                const taskElement = Join.tasks[i];
-                if (taskElement.todo) {
-                    count++;
-                }
-            }
-            return count;
-        }
-        let nextDeadline = () => {
-            let allMonths = ["","January","February","March","April","May","June","July","August","September","October","November", "December"];
-            let getDeadlineDate = () =>{
-                let latestDeadline = Join.tasks.sort((taskA, taskB) => {
-                    return taskA.date - taskB.date;
-                })
-                latestDeadline = latestDeadline[0]
-                nDDay = latestDeadline.date.getDate()
-                nDMonth = latestDeadline.date.getMonth() + 1
-                nDYear = latestDeadline.date.getFullYear()
-                return `${allMonths[nDMonth]} ${nDDay}, ${nDYear}`
-            }
-            if (Join.tasks.length > 0) {
-                return getDeadlineDate();                    
-            } else {
-                return `No Tasks, here`
-            }
-        }
-        let progressCount = () => {
-            let count = 0;
-            for (let i = 0; i < Join.tasks.length; i++) {
-                const taskElement = Join.tasks[i];
-                if (taskElement.progress) {
-                    count++;
-                }
-            }
-            return count;
-        }
-        let feedbackCount = () => {
-            let count = 0;
-            for (let i = 0; i < Join.tasks.length; i++) {
-                const taskElement = Join.tasks[i];
-                if (taskElement.feedback) {
-                    count++;
-                }
+// pageSummary.class.js
 
-            }
-            return count;
+class Summary extends Page {
+  summeryContent() {
+    let daytime = Join.sayDaytime();
+    let nDDay, nDMonth, nDYear;
+    let urgendTasks = () => {
+      let theTasks = Join.tasks.filter((t) => t.prio === "Urgent");
+      return theTasks.length;
+    };
+
+    let doneTasks = () => {
+      let count = 0;
+      for (let i = 0; i < Join.tasks.length; i++) {
+        const task = Join.tasks[i];
+        if (task.done) {
+          count++;
         }
-        let greetedUser = (Join.signedAccount.name === "Guest") ? "" : Join.signedAccount.name;
-        return /*html*/ `
+      }
+      return count;
+    };
+    let todoTasks = () => {
+      let count = 0;
+      for (let i = 0; i < Join.tasks.length; i++) {
+        const taskElement = Join.tasks[i];
+        if (taskElement.todo) {
+          count++;
+        }
+      }
+      return count;
+    };
+    let nextDeadline = () => {
+      let allMonths = [
+        "",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      let getDeadlineDate = () => {
+        let latestDeadline = Join.tasks.sort((taskA, taskB) => {
+          return taskA.date - taskB.date;
+        });
+        latestDeadline = latestDeadline[0];
+        nDDay = latestDeadline.date.getDate();
+        nDMonth = latestDeadline.date.getMonth() + 1;
+        nDYear = latestDeadline.date.getFullYear();
+        return `${allMonths[nDMonth]} ${nDDay}, ${nDYear}`;
+      };
+      if (Join.tasks.length > 0) {
+        return getDeadlineDate();
+      } else {
+        return `No Tasks, here`;
+      }
+    };
+    let progressCount = () => {
+      let count = 0;
+      for (let i = 0; i < Join.tasks.length; i++) {
+        const taskElement = Join.tasks[i];
+        if (taskElement.progress) {
+          count++;
+        }
+      }
+      return count;
+    };
+    let feedbackCount = () => {
+      let count = 0;
+      for (let i = 0; i < Join.tasks.length; i++) {
+        const taskElement = Join.tasks[i];
+        if (taskElement.feedback) {
+          count++;
+        }
+      }
+      return count;
+    };
+    let greetedUser =
+      Join.signedAccount.name === "Guest" ? "" : Join.signedAccount.name;
+    return /*html*/ `
         <div id="summery" class="summery">
         <div id="welcomeOverlay" class="welcome-animation-overlay d-none">
             <h1 class="welcome-respon-headline">${daytime}</h1><h1 class="welcome-respon-headline" id="greetedUser">${greetedUser}</h1>
@@ -142,18 +159,16 @@ class Summary extends Page {
             </div>
         </div>
 
-            `
+            `;
+  }
+  checkTasksDone() {
+    let count = 0;
+    for (let i = 0; i < this.tasks.length; i++) {
+      const task = this.tasks[i];
+      if (task.done) {
+        count++;
+      }
     }
-    checkTasksDone() {
-        let count = 0
-        for (let i = 0; i < this.tasks.length; i++) {
-            const task = this.tasks[i];
-            if (task.done) {
-                count++
-            }
-
-        }
-        return count;
-    }
-
+    return count;
+  }
 }

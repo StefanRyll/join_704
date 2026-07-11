@@ -1,8 +1,14 @@
+// saveLoad.js
+
 // Constants for storage configuration
 const STORAGE_TOKEN = "SSLOEY6VSHKBCAMT1R3MQGZLOIZ7TTBF66BZZQUS";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 const ACCOUNTS_KEY = "joinAccounts";
 const TASKS_KEY = "joinTask";
+
+// Firestore configuration
+const TASKS_COLLECTION = "tasks";
+const TASKS_DOCUMENT = "allTasks";
 
 /**
  * Saves accounts to remote storage.
@@ -10,18 +16,6 @@ const TASKS_KEY = "joinTask";
  */
 async function saveAccounts() {
   await setItem(ACCOUNTS_KEY, Join.accounts);
-}
-
-/**
- * Saves tasks to remote storage.
- * @async
- */
-async function saveTasks() {
-  try {
-    await setItem(TASKS_KEY, Join.tasks);
-  } catch (error) {
-    console.error("Error saving tasks:", error);
-  }
 }
 
 /**
@@ -36,14 +30,67 @@ async function loadAccounts() {
 }
 
 /**
- * Loads tasks from remote storage and updates the application state.
+ * Saves tasks to Firestore.
+ * @async
+ */
+async function saveTasks() {
+  // try {
+  //   await setItem(TASKS_KEY, Join.tasks);
+  // } catch (error) {
+  //   console.error("Error saving tasks:", error);
+  // }
+
+  try {
+    const taskDocument = window.firestoreDoc(
+      window.db,
+      TASKS_COLLECTION,
+      TASKS_DOCUMENT,
+    );
+
+    await window.firestoreSetDoc(taskDocument, {
+      tasks: serializeTasks(Join.tasks),
+      updatedAt: new Date().toISOString(),
+    });
+
+    console.log("Tasks in Firestore gespeichert");
+  } catch (error) {
+    console.error("Error saving tasks:", error);
+  }
+}
+
+/**
+ * Loads tasks from Firestore and updates the application state.
  * @async
  */
 async function loadTasks() {
-  const response = await getItem(TASKS_KEY);
-  const parsedData = parseStorageValue(response, TASKS_KEY);
-  const decodedTasks = decodeTasks(parsedData);
-  Join.tasks = decodedTasks;
+  //   // const response = await getItem(TASKS_KEY);
+  //   // const parsedData = parseStorageValue(response, TASKS_KEY);
+  //   // const decodedTasks = decodeTasks(parsedData);
+  //   // Join.tasks = decodedTasks;
+  try {
+    const taskDocument = window.firestoreDoc(
+      window.db,
+      TASKS_COLLECTION,
+      TASKS_DOCUMENT,
+    );
+
+    const taskSnapshot = await window.firestoreGetDoc(taskDocument);
+
+    if (!taskSnapshot.exists()) {
+      Join.tasks = [];
+      console.log("Noch keine Tasks in Firestore vorhanden");
+      return;
+    }
+
+    const firestoreData = taskSnapshot.data();
+
+    Join.tasks = decodeTasks(firestoreData.tasks);
+
+    console.log("Tasks aus Firestore geladen:", Join.tasks);
+  } catch (error) {
+    console.error("Fehler beim Laden der Tasks:", error);
+    Join.tasks = [];
+  }
 }
 
 /**
@@ -98,6 +145,14 @@ function parseStorageValue(response, key) {
   return JSON.parse(response.data.value);
 }
 
+function normalizeTaskDate(date) {
+  if (date?.toDate) {
+    return date.toDate();
+  }
+
+  return new Date(date);
+}
+
 /**
  * Decodes tasks from JSON into Task objects.
  * @param {Array} jsonData - JSON array representing tasks.
@@ -128,7 +183,7 @@ function decodeTasks(jsonData) {
         title,
         workerObjects,
         desc,
-        new Date(date),
+        normalizeTaskDate(date),
         prio,
         category,
         subTaskObjects,
@@ -139,6 +194,49 @@ function decodeTasks(jsonData) {
       );
     },
   );
+}
+
+// function serializeTasks(tasks) {
+//   return tasks.map((task) => ({
+//     title: task.title,
+//     Category: task.Category,
+//     date: task.date.toISOString(),
+//     desc: task.desc,
+//     todo: task.todo,
+//     done: task.done,
+//     feedback: task.feedback,
+//     prio: task.prio,
+//     progress: task.progress,
+//     subTasks: task.subTasks.map((st) => ({ text: st.text, done: st.done })),
+//     worker: task.worker.map((w) => ({
+//       name: w.name,
+//       email: w.email,
+//       tel: w.tel,
+//     })),
+//   }));
+// }
+
+function serializeTasks(tasks) {
+  return tasks.map((task) => {
+    console.log({
+      title: task.title,
+      date: task.date,
+    });
+
+    return {
+      title: task.title,
+      Category: task.Category,
+      date: task.date,
+      desc: task.desc,
+      todo: task.todo,
+      done: task.done,
+      feedback: task.feedback,
+      prio: task.prio,
+      progress: task.progress,
+      subTasks: task.subTasks,
+      worker: task.worker,
+    };
+  });
 }
 
 /**

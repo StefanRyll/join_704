@@ -1,3 +1,5 @@
+// finalPages.js
+
 // Global state
 let active = true;
 
@@ -132,9 +134,9 @@ function signUp() {
 /**
  * Renders the summary page.
  */
-function summeryPage() {
+async function summeryPage() {
   try {
-    loadTasks();
+    await loadTasks();
   } catch (error) {
     console.error("Error loading tasks:", error);
   } finally {
@@ -144,8 +146,7 @@ function summeryPage() {
 
 /**
  * Loads and displays the components for the summary page.
- */
-function loadComponentsSummary() {
+ */ function loadComponentsSummary() {
   setState("Summary");
   cleanUpAll();
   body.innerHTML = JoinLogin.pageLayoutMain();
