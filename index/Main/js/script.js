@@ -92,6 +92,11 @@ function checkboxActivate() {
  */
 function policyCheckbox() {
   policyCheck = !policyCheck;
+
+  if (policyCheck) {
+    document.getElementById("ppCheck").classList.remove("redPolicy");
+    document.querySelector(".falsePolicy").classList.remove("falsePolicyRed");
+  }
 }
 /**
  * Deactivates the checkbox for remembering the user.
@@ -116,6 +121,12 @@ function taskSaveChanges(taskIndex) {
   const editedDate = getEditedDate(existingTask.date);
   const editedPriority = prioTemp;
   const taskCategory = existingTask.Category;
+
+  const subtaskInput = document.getElementById("inputSubtask");
+
+  if (subtaskInput && subtaskInput.value.trim() !== "") {
+    createSubtask();
+  }
 
   Join.tasks[taskIndex] = new Task(
     editedTitle,

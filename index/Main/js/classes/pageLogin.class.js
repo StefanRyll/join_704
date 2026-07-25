@@ -109,22 +109,23 @@ class Login extends Page {
                             <div class="signUp-container">
                                 <div class="frame-14">
                                     <input required type="text" class="frame-157" placeholder="Name" id="signUpInputName">
-                                    <img class="input-icon" src="./IMG/person.png"> 
+                                    <img class="input-icon" src="./IMG/person.png">
                                 </div>
-                                <div class="frame-14">
+                                <div id="emailCheckArea" class="frame-14">
                                     <input autocomplete="username" required type="email" class="frame-157" placeholder="Email" id="signUpInputEmail">
-                                    <img class="input-icon" src="./IMG/mail.png"> 
+                                    <img class="input-icon" src="./IMG/mail.png">
                                 </div>
+                                    <label class="falseEmail">Email address already exists.</label>
                                 <div class="frame-14" onclick="visibility()">
                                     <input minlength="8" autocomplete="new-password" type="password" class="frame-157" placeholder="Password" id="signUpInputPassword">
-                                    <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">                      
-                                    <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">                      
+                                    <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp1()">
+                                    <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp1()">
                                 </div>
                                 <div class="passwordAndLabel">
                                     <div id="passwordCheckArea" class="frame-14" onclick="visibility()">
                                         <input minlength="8" autocomplete="new-password" type="password" class="frame-157" placeholder="Confirm Password" id="signUpInputPassword2">
-                                        <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">                      
-                                        <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">                      
+                                        <img class="input-icon curser-pointer" id="pass-status" src="./IMG/lock.png" onclick="viewPasswordSignUp2()">
+                                        <img class="curser-pointer input-icon d-none" id="pass-status-eye" src="./IMG/visibility_off.png" onclick="viewPasswordSignUp2()">
                                     </div>
                                     <label class="falsePassword" for="loginPassword">Ups! Something went wrong, try again!</label>
                                 </div>
@@ -133,7 +134,15 @@ class Login extends Page {
                                         <div class="check-box" id="checkbox" onclick="policyCheckbox()">
                                             <input class="checkbox" type="checkbox">
                                         </div>
-                                        <span class="checkbox-text">I accept the&nbsp;<a class="link-style" onclick="privacyPage()"> Privacy policy</a></span>
+                                        <span class="checkbox-text">
+                                            I accept the&nbsp;<a class="link-style" onclick="privacyPage()">Privacy policy</a>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex-mid">
+                                    <label class="falsePolicy">
+                                        Please accept the privacy policy.
                                     </label>
                                 </div>
                                 <div class="frame-176">

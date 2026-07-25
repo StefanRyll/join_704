@@ -1,91 +1,94 @@
 class Board extends Page {
-    renderAddTask(x) {
-        let addTask = document.getElementById('addTask');
-        addTask.innerHTML = '';
-        addTask.classList.remove("d-none")
-        addTask.innerHTML += this.generateHTMLaddTask(x);
+  renderAddTask(x) {
+    let addTask = document.getElementById("addTask");
+    addTask.innerHTML = "";
+    addTask.classList.remove("d-none");
+    addTask.innerHTML += this.generateHTMLaddTask(x);
 
-        const urgent = document.getElementById('btnUrgentWhite');
-        const medium = document.getElementById('btnMediumWhite');
-        const low = document.getElementById('btnLowWhite');
+    const urgent = document.getElementById("btnUrgentWhite");
+    const medium = document.getElementById("btnMediumWhite");
+    const low = document.getElementById("btnLowWhite");
 
-        urgent.addEventListener('click', () => {
-            prioTemp = "Urgent";
-        })
-        medium.addEventListener('click', () => {
-            prioTemp = "Medium";
-        })
-        low.addEventListener('click', () => {
-            prioTemp = "Low";
-        })
+    prioTemp = "Medium";
+
+    urgent.addEventListener("click", () => {
+      prioTemp = "Urgent";
+    });
+    medium.addEventListener("click", () => {
+      prioTemp = "Medium";
+    });
+    low.addEventListener("click", () => {
+      prioTemp = "Low";
+    });
+  }
+
+  KAMBAN_IDS = {
+    TODO: "kambanTodo",
+    INPROGRESS: "kambanInprogress",
+    FEEDBACK: "kambanFeedback",
+    DONE: "kambanDone",
+  };
+
+  async renderTask() {
+    try {
+      await loadTasks();
+    } catch (e) {
+      console.error("Fehler", e);
     }
 
+    this.clearKambanContent();
+    this.renderTasksByStatus();
+    checkDragArea();
+  }
 
-    KAMBAN_IDS = {
-        TODO: 'kambanTodo',
-        INPROGRESS: 'kambanInprogress',
-        FEEDBACK: 'kambanFeedback',
-        DONE: 'kambanDone',
-    };
+  clearKambanContent() {
+    for (const id of Object.values(this.KAMBAN_IDS)) {
+      const kambanElement = document.getElementById(id);
+      if (kambanElement) {
+        kambanElement.innerHTML = "";
+      }
+    }
+  }
 
-    async renderTask() {
-        try {
-            await loadTasks();
-        } catch (e) {
-            console.error("Fehler", e);
+  renderTasksByStatus() {
+    if (Join.tasks.length > 0) {
+      for (let i = 0; i < Join.tasks.length; i++) {
+        const task = Join.tasks[i];
+        const kambanElement = this.getKambanElement(task);
+        if (kambanElement) {
+          kambanElement.innerHTML += task.tinyTaskCard(i);
         }
 
-        this.clearKambanContent();
-        this.renderTasksByStatus();
-        checkDragArea();
-    }
-
-    clearKambanContent() {
-        for (const id of Object.values(this.KAMBAN_IDS)) {
-            const kambanElement = document.getElementById(id);
-            if (kambanElement) {
-                kambanElement.innerHTML = "";
-            }
+        if (task.subTasks) {
+          task.updateProgressBar(i);
         }
+      }
     }
+  }
 
-    renderTasksByStatus() {
-        if (Join.tasks.length > 0) {
-            for (let i = 0; i < Join.tasks.length; i++) {
-                const task = Join.tasks[i];
-                const kambanElement = this.getKambanElement(task);
-                if (kambanElement) {
-                    kambanElement.innerHTML += task.tinyTaskCard(i);
-                }
+  getKambanElement(task) {
+    if (task.todo) return document.getElementById(this.KAMBAN_IDS.TODO);
+    if (task.progress)
+      return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
+    if (task.feedback) return document.getElementById(this.KAMBAN_IDS.FEEDBACK);
+    if (task.done) return document.getElementById(this.KAMBAN_IDS.DONE);
 
-                if (task.subTasks) {
-                    task.updateProgressBar(i);
-                }
-            }
-        }
-    }
+    task.todo = true;
+    task.feedback = false;
+    task.progress = false;
+    task.done = false;
+    this.renderTask();
+    return null;
+  }
 
-    getKambanElement(task) {
-        if (task.todo) return document.getElementById(this.KAMBAN_IDS.TODO);
-        if (task.progress) return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
-        if (task.feedback) return document.getElementById(this.KAMBAN_IDS.FEEDBACK);
-        if (task.done) return document.getElementById(this.KAMBAN_IDS.DONE);
+  closeAddTask() {
+    slideAddTask = document
+      .getElementById("slideAddTask")
+      .classList.remove("show-bg-task");
+  }
 
-        task.todo = true;
-        task.feedback = false;
-        task.progress = false;
-        task.done = false;
-        this.renderTask();
-        return null;
-    }
-
-
-    closeAddTask() {
-        slideAddTask = document.getElementById('slideAddTask').classList.remove('show-bg-task');
-    }
-
-    boardContent() {
-        return /*html*/ `
+  boardContent() {
+    return /*html*/ `
          <div class="res-content-board">
             <div class="frame-192">
                     <div class="mobile-res-board">
@@ -210,24 +213,24 @@ class Board extends Page {
             </div>
 
 
-                    `
-    }
-    generateHtmlSuccessInfoTask() {
-        return /*html*/ `
+                    `;
+  }
+  generateHtmlSuccessInfoTask() {
+    return /*html*/ `
             <div class="successInfoContainer">
                 <h3 class="font-size-normal mg-none">Task succesfully created</h3>
             </div>
-        `
+        `;
+  }
+  renderAddSubtask() {
+    let addSubTask = document.getElementById("addSubtask");
+    for (let m = 0; m < Join.tasks.length; m++) {
+      const subtasksFromBoard = Join.tasks[m];
+      addSubTask.innerHTML += subtasksFromBoard.generateHTMLAddSubtask();
     }
-    renderAddSubtask() {
-        let addSubTask = document.getElementById('addSubtask');
-        for (let m = 0; m < Join.tasks.length; m++) {
-            const subtasksFromBoard = Join.tasks[m];
-            addSubTask.innerHTML += subtasksFromBoard.generateHTMLAddSubtask()
-        }
-    }
-    generateHTMLaddTask(x) {
-        return /*html*/ `
+  }
+  generateHTMLaddTask(x) {
+    return /*html*/ `
             <div id="slideAddTask" class="bg-task">
                 <form id="formAddtask" class="add-task-card" onsubmit="createTaskFromBoard(${x}); return false">
                     <div class="headline-add-task">
@@ -247,17 +250,17 @@ class Board extends Page {
                     </div>
                 </form>
             </div>
-          `
-    }
-    generateHTMLaddTaskWindowForm(x) {
-        return /*html*/ `
+          `;
+  }
+  generateHTMLaddTaskWindowForm(x) {
+    return /*html*/ `
             <form id="formAddtask" class="add-task" onsubmit="createTaskPage(); return false">
                 ${this.generateHTMLaddTaskWindow(x)}
             </form>
-            <div class="overlay-success" id="overlaySuccessTask"></div>`
-    }
-    generateHTMLaddTaskWindow(x) {
-        return /*html*/ `
+            <div class="overlay-success" id="overlaySuccessTask"></div>`;
+  }
+  generateHTMLaddTaskWindow(x) {
+    return /*html*/ `
            <div class="content-add-task">
                     <div class="content-headline-add-task">
                         <h3>Add Task</h3>
@@ -284,41 +287,41 @@ class Board extends Page {
                         ${this.generateHTMLAddTaskButtons(x)}
                     </div>
             </div>
-          `
-    }
-    generateHTMLLeftSide(x) {
-        return /*html*/ `
+          `;
+  }
+  generateHTMLLeftSide(x) {
+    return /*html*/ `
               <div class="left-side">
                 ${this.generateHTMLTitle()}
                 ${this.generateHTMLDescription()}
                 ${this.generateHTMLAssignedTo(x)}
                 ${this.generateHTMLAddContactShortName()}                        
               </div>
-          `
-    }
-    generateHTMLAddTaskHeadline() {
-        return /*html*/ `
-            <h1 class="add-task-headline">Add Task</h1>`
-    }
-    generateHTMLTitle() {
-        return /*html*/ `
+          `;
+  }
+  generateHTMLAddTaskHeadline() {
+    return /*html*/ `
+            <h1 class="add-task-headline">Add Task</h1>`;
+  }
+  generateHTMLTitle() {
+    return /*html*/ `
                 <div class="input-title board-task-input">
                     <label for="pflichtfeld">Title<sup>*</sup></label>
                     <input class="blue" type="text" id="boardTaskTitle" name="" required  placeholder="Enter a title">
                 </div>
-        `
-    }
-    generateHTMLDescription() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLDescription() {
+    return /*html*/ `
                 <div class="input-description">
                     <p>Description</p>
                     <textarea class="blue textarea-resize" name="" id="boardTaskDescription" cols="30" rows="10" placeholder="Enter a Description"></textarea>
                 </div>
                 
-        `
-    }
-    generateHTMLAssignedTo(x) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLAssignedTo(x) {
+    return /*html*/ `
             <p class="assigned-style">Assigned to</p>
             <div id="styleAddTask" class="board-task-input bg-color-white">
                 ${this.generateHTMLSelectContactsToogleFunction()}
@@ -335,79 +338,79 @@ class Board extends Page {
                     </div>
                 </div>
             </div>
-        `
-    }
-    generateHTMLSelectContactsToogleFunction() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLSelectContactsToogleFunction() {
+    return /*html*/ `
                     <div id="selectContacts" class="assign-container">
                       <input onclick="toggleContactsAssign()" type="button" value="Select contacts to assign" id="">
                       <img onclick="toggleContactsAssign()" src="./IMG/assets/arrow_drop_downaa.png" alt="">
                     </div>
-        `
-    }
-    generateHTMLCheckbox() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLCheckbox() {
+    return /*html*/ `
             <div id="taskContactList"></div>
-            `
-    }
-    generateHTMLAddToContactButton() {
-        return /*html*/ `
+            `;
+  }
+  generateHTMLAddToContactButton() {
+    return /*html*/ `
             <div class="add-new-contact"></div>
-        `
-    }
-    generateHTMLAddContactShortName() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLAddContactShortName() {
+    return /*html*/ `
             <div id="containerShortName"></div>
-        `
-    }
-    generateHTMLRenderShortNames(shortNames, x) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLRenderShortNames(shortNames, x) {
+    return /*html*/ `
             <div id="editShortNames${x}" class="initials-logo" style="background-color: ${Join.accounts[x].color}">${shortNames}</div>
-        `
-    }
-    generateHTMLSeperator() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLSeperator() {
+    return /*html*/ `
             <div class="seperator-add-task">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2" height="426" viewBox="0 0 2 426" fill="none">
                     <path d="M1.24805 1L1.24854 425" stroke="#D1D1D1" stroke-linecap="round"/>
                 </svg>
             </div>
-        `
-    }
-    generateHTMLRightSide() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLRightSide() {
+    return /*html*/ `
             <div class="right-side">
                 ${this.generateHTMLDateForm()}
                 ${this.generateHTMLPrioCategory()}
                 ${this.generateHTMLCategory()}
                 ${this.generateHTMLSubtask()}
             </div>
-          `
-    }
-    generateHTMLInfoRequired() {
-        return /*html*/ `
+          `;
+  }
+  generateHTMLInfoRequired() {
+    return /*html*/ `
             <div class="addTask-info-required">   
                 <sup class="info-required">*</sup><span>This field is required</span>
             </div>
-        `
-    }
-    generateHTMLDateForm() {
-        let getDate = () => {
-            let date = new Date()
-            let formattedDate = date.toISOString().split('T')[0];
-            return formattedDate
-        }
-        return /*html*/ `
+        `;
+  }
+  generateHTMLDateForm() {
+    let getDate = () => {
+      let date = new Date();
+      let formattedDate = date.toISOString().split("T")[0];
+      return formattedDate;
+    };
+    return /*html*/ `
                 <div class="input-date board-task-input">
                     <label for="pflichtfeld">Due date<sup>*</sup></label>
                     <div class="board-input-date">
                         <input type="date" id="date" name="datum" min="${getDate()}" required placeholder="dd-MM-yyyy">
                     </div>
                 </div>
-            `
-    }
-    generateHTMLPrioCategory() {
-        return /*html*/ `
+            `;
+  }
+  generateHTMLPrioCategory() {
+    return /*html*/ `
                   <div class="prio-category">
                     <p>Prio</p>
                     <div id="prioCategoryContainer" class="prio-category-container">
@@ -416,10 +419,10 @@ class Board extends Page {
                       ${this.generateHTMLPrio()}
                     </div>
                   </div>
-          `
-    }
-    generateHTMLUrgent() {
-        return /*html*/ `
+          `;
+  }
+  generateHTMLUrgent() {
+    return /*html*/ `
         <button id="btnUrgentWhite" type="button" onclick="btnTaskPrio('btnUrgentWhite')" class="category-button category-button-standard">
           <p>Urgent</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
@@ -448,10 +451,10 @@ class Board extends Page {
             </defs>
           </svg>
         </button>
-  `
-    }
-    generateHTMLMedium() {
-        return /*html*/ `
+  `;
+  }
+  generateHTMLMedium() {
+    return /*html*/ `
         <button id="btnMediumWhite" type="button" onclick="btnTaskPrio('btnMediumWhite')" class="category-button category-button-standard d-none">
           <p>Medium</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8" fill="none">
@@ -479,10 +482,10 @@ class Board extends Page {
                 </clipPath>
               </defs>
           </svg>
-        </button>`
-    }
-    generateHTMLPrio() {
-        return /*html*/ `
+        </button>`;
+  }
+  generateHTMLPrio() {
+    return /*html*/ `
         <button id="btnLowWhite" type="button" onclick="btnTaskPrio('btnLowWhite')" class="category-button category-button-standard">
           <p>Low</p>
           <svg class="activ-focus" xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
@@ -497,10 +500,10 @@ class Board extends Page {
             <path d="M10.2485 15.2547C10.0139 15.2551 9.7854 15.1802 9.59655 15.0412L0.693448 8.47142C0.459502 8.29863 0.30383 8.04005 0.260675 7.75257C0.217521 7.46509 0.290421 7.17225 0.463337 6.93848C0.636253 6.70471 0.895021 6.54915 1.18272 6.50603C1.47041 6.46291 1.76347 6.53575 1.99741 6.70854L10.2485 12.791L18.4997 6.70854C18.7336 6.53575 19.0267 6.46291 19.3144 6.50603C19.602 6.54915 19.8608 6.70471 20.0337 6.93848C20.2066 7.17225 20.2795 7.46509 20.2364 7.75257C20.1932 8.04005 20.0376 8.29863 19.8036 8.47142L10.9005 15.0412C10.7117 15.1802 10.4831 15.2551 10.2485 15.2547Z" fill="#FFF"/>
           </svg>
         </button>
-`
-    }
-    generateHTMLCategory() {
-        return /*html*/ `
+`;
+  }
+  generateHTMLCategory() {
+    return /*html*/ `
           <div class="category board-task-input-button-style button-hover">
             <div class="category-sub">
               <label for="category">Category</label>
@@ -508,34 +511,34 @@ class Board extends Page {
             ${this.generateHTMLHiddenCategory()}
             ${this.generateHTMLShowCategory()}
           </div>
-        `
-    }
-    generateHTMLHiddenCategory() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLHiddenCategory() {
+    return /*html*/ `
             <div id="hiddenSelectCategory" class="assign-container bg-color-white">
               <input id="taskCategoryInput" onclick="toggleCategory()" type="text" value="Select task category" >
               <img onclick="toggleCategory()" src="./IMG/assets/arrow_drop_downaa.png" alt="">
             </div>
-        `
-    }
-    generateHTMLShowCategory() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLShowCategory() {
+    return /*html*/ `
             <div id="showSelectCategory" class="d-none">
               ${this.generateHTMLToggleCategory()}
               ${this.generateHTMLSelectCategory()}
             </div>
-        `
-    }
-    generateHTMLToggleCategory() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLToggleCategory() {
+    return /*html*/ `
               <div class="assign-container bg-color-white">
                 <input onclick="toggleCategory()" type="button" value="Select task category">
                 <img onclick="toggleCategory()" src="./IMG/assets/arrow_dropdown.png" alt="">
               </div>
-        `
-    }
-    generateHTMLSelectCategory() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLSelectCategory() {
+    return /*html*/ `
               <div class="select-category">
                 <div onclick="selectCategoryTechnical()" id="boardTaskTechnical" class="select-task-category-container">
                   <span id="technicalTask">Technical Task</span>
@@ -544,10 +547,10 @@ class Board extends Page {
                   <span id="userStory">User Story</span>
                 </div>
               </div>
-        `
-    }
-    generateHTMLSubtask() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLSubtask() {
+    return /*html*/ `
         <div class="board-task-input button-hover">
             <p>Subtasks</p>
             <div id="hiddenSubtask" class="assign-container bg-color-white">
@@ -566,26 +569,26 @@ class Board extends Page {
                 <div id="createNewSubtask" class="create-subtask" onload="renderSubtasks()"></div>
             </div>
         </div>
-        `
-    }
-    generateHTMLAddTaskButtonsResponsive(x) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLAddTaskButtonsResponsive(x) {
+    return /*html*/ `
             <div class="addTask-button addTask-button-window responsiveNone">
                 <button class="btn-cancel btn-white" type="reset" onclick="closeAddTask()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" onclick="createTaskFromBoard(${x})" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
-        `
-    }
-    generateHTMLAddTaskButtons(x) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLAddTaskButtons(x) {
+    return /*html*/ `
             <div id="addtaskButton" class="addTask-button addTask-button-window">
                 <button class="btn-cancel btn-white" type="reset" value="Reset" onclick="resetButton()">Clear <img src="./IMG/cancel.png"></button>
                 <button class="btn-create btn-dark-blue" type="submit">Create&nbsp;Task <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
             </div>
-        `
-    }
-    generateHTMLAddSubtask(x = "test", m) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLAddSubtask(x = "test", m) {
+    return /*html*/ `
             <div class="subtask-contianer" id="containerTodoSubtask${m}">
                 <ul>
                     <li id="todoSubtask${m}">${x}</li>
@@ -606,10 +609,10 @@ class Board extends Page {
                     </div>
                 </form>
             </div>
-        `
-    }
-    generateHTMLCloseButtonInSVG() {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLCloseButtonInSVG() {
+    return /*html*/ `
                 <div class="style-closebutton-intask">
                   <svg  onclick="closeAddTask()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -620,6 +623,6 @@ class Board extends Page {
                       </g>
                   </svg>
                 </div>
-          `
-    }
+          `;
+  }
 }

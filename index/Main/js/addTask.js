@@ -18,6 +18,11 @@ async function createTaskFromBoard(x = 0) {
   } catch (e) {
     console.error("Fehler", e);
   }
+  const subtaskInput = document.getElementById("inputSubtask");
+
+  if (subtaskInput && subtaskInput.value.trim() !== "") {
+    createSubtask();
+  }
   createTask(x);
   setTimeout(() => {
     successOverlayTask();
@@ -43,6 +48,8 @@ function createTask(x) {
   const prio = prioTemp;
   const category = document.getElementById("taskCategoryInput").value;
   const subTask = subtaskTemp;
+  console.log("subtaskTemp:", subtaskTemp);
+  console.log("subTask:", subTask);
   let newTask = new Task(title, worker, desc, date, prio, category, subTask);
   updateTask(newTask, x, title, worker, desc, date, prio, category, subTask);
   console.log("ich bin ein newTask aus der addTask", newTask);
@@ -353,6 +360,7 @@ function createSubtask() {
   if (subtaskText !== "") {
     let newSubtask = new Subtask(subtaskText);
     subtaskTemp.push(newSubtask);
+    console.log("AAAAAAAAAsubtaskTemp:", subtaskTemp);
     inputSubtask.value = "";
     renderSubtasks();
   }

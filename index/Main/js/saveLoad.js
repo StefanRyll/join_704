@@ -9,24 +9,97 @@ const TASKS_KEY = "joinTask";
 // Firestore configuration
 const TASKS_COLLECTION = "tasks";
 const TASKS_DOCUMENT = "allTasks";
+const CONTACTS_COLLECTION = "contacts";
+const CONTACTS_DOCUMENT = "allContacts";
 
 /**
  * Saves accounts to remote storage.
  * @async
  */
+// async function saveAccounts() {
+//   await setItem(ACCOUNTS_KEY, Join.accounts);
+// }
+
+function serializeContacts(contacts) {
+  return contacts.map((contact) => ({
+    name: contact.name,
+    email: contact.email,
+    tel: contact.tel,
+  }));
+}
+
+function decodeContacts(contacts) {
+  return contacts.map(
+    (contact) => new Contact(contact.name, contact.email, contact.tel),
+  );
+}
+
+/**
+ * Saves contacts to Firestore.
+ * @async
+ */
 async function saveAccounts() {
-  await setItem(ACCOUNTS_KEY, Join.accounts);
+  try {
+    const contactsDocument = window.firestoreDoc(
+      window.db,
+      CONTACTS_COLLECTION,
+      CONTACTS_DOCUMENT,
+    );
+
+    await window.firestoreSetDoc(contactsDocument, {
+      contacts: serializeContacts(Join.accounts),
+      updatedAt: new Date().toISOString(),
+    });
+
+    console.log("Kontakte in Firestore gespeichert");
+  } catch (error) {
+    console.error("Fehler beim Speichern der Kontakte:", error);
+    throw error;
+  }
 }
 
 /**
  * Loads accounts from remote storage and updates the application state.
  * @async
  */
+// async function loadAccounts() {
+//   const response = await getItem(ACCOUNTS_KEY);
+//   const parsedData = parseStorageValue(response, ACCOUNTS_KEY);
+//   const decodedAccounts = decodeAccounts(parsedData);
+//   Join.accounts = decodedAccounts.sort((a, b) => a.name.localeCompare(b.name));
+// }
+
+/**
+ * Loads contacts from Firestore and updates the application state.
+ * @async
+ */
 async function loadAccounts() {
-  const response = await getItem(ACCOUNTS_KEY);
-  const parsedData = parseStorageValue(response, ACCOUNTS_KEY);
-  const decodedAccounts = decodeAccounts(parsedData);
-  Join.accounts = decodedAccounts.sort((a, b) => a.name.localeCompare(b.name));
+  try {
+    const contactsDocument = window.firestoreDoc(
+      window.db,
+      CONTACTS_COLLECTION,
+      CONTACTS_DOCUMENT,
+    );
+
+    const contactsSnapshot = await window.firestoreGetDoc(contactsDocument);
+
+    if (!contactsSnapshot.exists()) {
+      Join.accounts = [];
+      console.log("Noch keine Kontakte in Firestore vorhanden");
+      return;
+    }
+
+    const firestoreData = contactsSnapshot.data();
+
+    Join.accounts = decodeContacts(firestoreData.contacts).sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+
+    console.log("Kontakte aus Firestore geladen:", Join.accounts);
+  } catch (error) {
+    console.error("Fehler beim Laden der Kontakte:", error);
+    Join.accounts = [];
+  }
 }
 
 /**
@@ -223,6 +296,8 @@ function serializeTasks(tasks) {
       date: task.date,
     });
 
+    console.log("ich bin ein subtask", task.subTasks);
+
     return {
       title: task.title,
       Category: task.Category,
@@ -233,8 +308,12 @@ function serializeTasks(tasks) {
       feedback: task.feedback,
       prio: task.prio,
       progress: task.progress,
-      subTasks: task.subTasks,
-      worker: task.worker,
+      subTasks: task.subTasks.map((st) => ({ text: st.text, done: st.done })),
+      worker: task.worker.map((w) => ({
+        name: w.name,
+        email: w.email,
+        tel: w.tel,
+      })),
     };
   });
 }
@@ -244,13 +323,13 @@ function serializeTasks(tasks) {
  * @param {Array} jsonData - JSON array representing accounts.
  * @returns {Array<Account|Contact>} - Array of Account or Contact objects.
  */
-function decodeAccounts(jsonData) {
-  return jsonData.map(({ name, email, tel, password }) =>
-    password
-      ? new Account(name, email, tel, password)
-      : new Contact(name, email, tel),
-  );
-}
+// function decodeAccounts(jsonData) {
+//   return jsonData.map(({ name, email, tel, password }) =>
+//     password
+//       ? new Account(name, email, tel, password)
+//       : new Contact(name, email, tel),
+//   );
+// }
 
 /**
  * Saves the signed user's data to local storage.
