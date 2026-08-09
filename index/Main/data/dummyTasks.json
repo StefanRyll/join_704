@@ -1,0 +1,162 @@
+[
+  {
+    "title": "Update website navigation",
+    "Category": "Technical Task",
+    "date": "2026-09-15T00:00:00.000Z",
+    "desc": "Improve the navigation and check all links.",
+    "todo": true,
+    "done": false,
+    "feedback": false,
+    "prio": "Medium",
+    "progress": false,
+    "subTasks": [
+      {
+        "text": "Check navigation links",
+        "done": false
+      },
+      {
+        "text": "Test mobile navigation",
+        "done": false
+      }
+    ],
+    "worker": [
+      {
+        "name": "David Schneider",
+        "email": "david.schneider@example.com",
+        "tel": "+49 152 34567890"
+      }
+    ]
+  },
+  {
+    "title": "Prepare user feedback",
+    "Category": "User Story",
+    "date": "2026-09-18T00:00:00.000Z",
+    "desc": "Collect and organize feedback from users.",
+    "todo": true,
+    "done": false,
+    "feedback": false,
+    "prio": "Low",
+    "progress": false,
+    "subTasks": [],
+    "worker": [
+      {
+        "name": "Sophie Fischer",
+        "email": "sophie.fischer@example.com",
+        "tel": "+49 176 67890123"
+      }
+    ]
+  },
+  {
+    "title": "Implement search function",
+    "Category": "Technical Task",
+    "date": "2026-09-20T00:00:00.000Z",
+    "desc": "Add a search function to improve content discovery.",
+    "todo": false,
+    "done": false,
+    "feedback": false,
+    "prio": "Urgent",
+    "progress": true,
+    "subTasks": [
+      {
+        "text": "Create search input",
+        "done": true
+      },
+      {
+        "text": "Implement filtering",
+        "done": false
+      }
+    ],
+    "worker": [
+      {
+        "name": "Lucas Weber",
+        "email": "lucas.weber@example.com",
+        "tel": "+49 171 56789012"
+      }
+    ]
+  },
+  {
+    "title": "Optimize mobile layout",
+    "Category": "Technical Task",
+    "date": "2026-09-22T00:00:00.000Z",
+    "desc": "Improve the layout for smartphones and tablets.",
+    "todo": false,
+    "done": false,
+    "feedback": false,
+    "prio": "Medium",
+    "progress": true,
+    "subTasks": [],
+    "worker": [
+      {
+        "name": "Michael Hoffmann",
+        "email": "michael.hoffmann@example.com",
+        "tel": "+49 172 90123456"
+      }
+    ]
+  },
+  {
+    "title": "Review contact form",
+    "Category": "User Story",
+    "date": "2026-09-24T00:00:00.000Z",
+    "desc": "Review validation and usability of the contact form.",
+    "todo": false,
+    "done": false,
+    "feedback": true,
+    "prio": "Medium",
+    "progress": false,
+    "subTasks": [],
+    "worker": [
+      {
+        "name": "Anna Müller",
+        "email": "anna.mueller@example.com",
+        "tel": "+49 151 23456789"
+      }
+    ]
+  },
+  {
+    "title": "Create project documentation",
+    "Category": "Technical Task",
+    "date": "2026-09-10T00:00:00.000Z",
+    "desc": "Create documentation for the current project features.",
+    "todo": false,
+    "done": true,
+    "feedback": false,
+    "prio": "Low",
+    "progress": false,
+    "subTasks": [],
+    "worker": [
+      {
+        "name": "Sarah Klein",
+        "email": "sarah.klein@example.com",
+        "tel": "+49 163 12345670"
+      }
+    ]
+  },
+  {
+    "title": "Design dashboard concept",
+    "Category": "User Story",
+    "date": "2026-09-12T00:00:00.000Z",
+    "desc": "Create and review the new dashboard concept.",
+    "todo": false,
+    "done": true,
+    "feedback": false,
+    "prio": "Medium",
+    "progress": false,
+    "subTasks": [
+      {
+        "text": "Create first concept",
+        "done": true
+      },
+      {
+        "text": "Review final design",
+        "done": true
+      }
+    ],
+    "worker": [
+      {
+        "name": "Emily Johnson",
+        "email": "emily.johnson@example.com",
+        "tel": "+49 160 45678901"
+      }
+    ]
+  }
+]

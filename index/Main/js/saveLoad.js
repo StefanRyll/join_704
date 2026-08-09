@@ -34,6 +34,15 @@ function decodeContacts(contacts) {
   );
 }
 
+async function initializeDummyContacts() {
+  const response = await fetch("./data/dummyContacts.json");
+  const dummyContacts = await response.json();
+
+  Join.accounts = decodeContacts(dummyContacts);
+
+  await saveAccounts();
+}
+
 /**
  * Saves contacts to Firestore.
  * @async
@@ -269,6 +278,15 @@ function decodeTasks(jsonData) {
   );
 }
 
+async function initializeDummyTasks() {
+  const response = await fetch("./data/dummyTasks.json");
+  const dummyTasks = await response.json();
+
+  Join.tasks = decodeTasks(dummyTasks);
+
+  await saveTasks();
+}
+
 // function serializeTasks(tasks) {
 //   return tasks.map((task) => ({
 //     title: task.title,
@@ -330,6 +348,12 @@ function serializeTasks(tasks) {
 //       : new Contact(name, email, tel),
 //   );
 // }
+
+async function resetDemoData() {
+  await initializeDummyContacts();
+  await initializeDummyTasks();
+  console.log("Demo data successfully reset");
+}
 
 /**
  * Saves the signed user's data to local storage.

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Anna Müller",
+    "email": "anna.mueller@example.com",
+    "tel": "+49 151 23456789"
+  },
+  {
+    "name": "David Schneider",
+    "email": "david.schneider@example.com",
+    "tel": "+49 152 34567890"
+  },
+  {
+    "name": "Emily Johnson",
+    "email": "emily.johnson@example.com",
+    "tel": "+49 160 45678901"
+  },
+  {
+    "name": "Lucas Weber",
+    "email": "lucas.weber@example.com",
+    "tel": "+49 171 56789012"
+  },
+  {
+    "name": "Sophie Fischer",
+    "email": "sophie.fischer@example.com",
+    "tel": "+49 176 67890123"
+  },
+  {
+    "name": "Daniel Wagner",
+    "email": "daniel.wagner@example.com",
+    "tel": "+49 157 78901234"
+  },
+  {
+    "name": "Laura Becker",
+    "email": "laura.becker@example.com",
+    "tel": "+49 162 89012345"
+  },
+  {
+    "name": "Michael Hoffmann",
+    "email": "michael.hoffmann@example.com",
+    "tel": "+49 172 90123456"
+  },
+  {
+    "name": "Sarah Klein",
+    "email": "sarah.klein@example.com",
+    "tel": "+49 163 12345670"
+  },
+  {
+    "name": "Thomas Richter",
+    "email": "thomas.richter@example.com",
+    "tel": "+49 175 23456701"
+  }
+]
