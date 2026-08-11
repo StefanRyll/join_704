@@ -128,6 +128,8 @@ function rememberUserIfRequested(userEmail) {
   if (Join.rememberMe) {
     const userJson = JSON.stringify(userEmail);
     localStorage.setItem("remember", userJson);
+  } else {
+    localStorage.removeItem("remember");
   }
 }
 

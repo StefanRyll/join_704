@@ -36,7 +36,7 @@ class Login extends Page {
                             </div>                       
                             <label class="remember-me">
                             <div class="check-box" id="checkbox" onclick="checkboxActivate()">
-                                <input class="checkbox" type="checkbox">
+                                <input id="rememberCheckbox" class="checkbox" type="checkbox">
                             </div>
                                 <span class="checkbox-text">Remember me</span>
                             </label>

@@ -106,6 +106,8 @@ function retrieveStoredJSON() {
 
   if (!loginEmail || !response) return;
 
+  Join.rememberMe = true;
+  document.getElementById("rememberCheckbox").checked = true;
   loginEmail.value = JSON.parse(response);
 }
 
