@@ -362,6 +362,11 @@ function visibility() {
   document.getElementById("pass-status").classList.add("d-none");
   document.getElementById("pass-status-eye").classList.remove("d-none");
 }
+
+function visibilityConfirm() {
+  document.getElementById("pass-status-confirm").classList.add("d-none");
+  document.getElementById("pass-status-eye-confirm").classList.remove("d-none");
+}
 /**
  * Toggles the visibility of the password input.
  * @function
@@ -379,10 +384,11 @@ function viewPassword() {
     passStatus.src = "./IMG/visibility_off.png";
   }
 }
+
 /**
  * Toggles the visibility of the password input and updates the eye icon accordingly.
  */
-function viewPasswordSignUp1() {
+function viewPasswordSignUp() {
   let passwordInput = document.getElementById("signUpInputPassword");
   let passStatus = document.getElementById("pass-status-eye");
   if (passwordInput.type == "password") {
@@ -396,9 +402,9 @@ function viewPasswordSignUp1() {
 /**
  * Toggles the visibility of the password input and updates the eye icon accordingly.
  */
-function viewPasswordSignUp2() {
-  let passwordInput = document.getElementById("signUpInputPassword2");
-  let passStatus = document.getElementById("pass-status-eye");
+function viewPasswordSignUpConfirm() {
+  let passwordInput = document.getElementById("signUpInputPasswordConfirm");
+  let passStatus = document.getElementById("pass-status-eye-confirm");
 
   if (passwordInput.type == "password") {
     passwordInput.type = "text";
