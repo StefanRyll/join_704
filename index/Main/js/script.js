@@ -120,7 +120,8 @@ function taskSaveChanges(taskIndex) {
   const editedDescription = document.getElementById("taskCardEDesc").value;
   const editedDate = getEditedDate(existingTask.date);
   const editedPriority = prioTemp;
-  const taskCategory = existingTask.Category;
+  // const taskCategory = existingTask.Category;
+  const taskCategory = document.getElementById("taskCategoryInput").value;
 
   const subtaskInput = document.getElementById("inputSubtask");
 

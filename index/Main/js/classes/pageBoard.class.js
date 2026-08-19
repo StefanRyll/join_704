@@ -515,7 +515,7 @@ class Board extends Page {
   }
   generateHTMLHiddenCategory() {
     return /*html*/ `
-            <div id="hiddenSelectCategory" class="assign-container bg-color-white">
+            <div id="hiddenSelectCategory" class="assign-container w-29 bg-color-white">
               <input id="taskCategoryInput" onclick="toggleCategory()" type="text" value="Select task category" >
               <img onclick="toggleCategory()" src="./IMG/assets/arrow_drop_downaa.png" alt="">
             </div>

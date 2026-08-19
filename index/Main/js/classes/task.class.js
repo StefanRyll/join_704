@@ -194,6 +194,9 @@ class Task {
 
                     ${JoinBoard.generateHTMLAssignedTo(x)}
                     ${JoinBoard.generateHTMLAddContactShortName(x)}
+                                        <div>
+                        ${JoinBoard.generateHTMLCategory()}
+                    </div>
                     <div>
                         ${JoinBoard.generateHTMLPrioCategory()}
                     </div>

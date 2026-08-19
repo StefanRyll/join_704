@@ -291,6 +291,7 @@ function selectCategoryTechnical() {
   document.getElementById("hiddenSelectCategory").classList.remove("d-none");
   document.getElementById("showSelectCategory").classList.add("d-none");
   changeInputField.value = technicalTask;
+  console.log("technicalTask in edit:", technicalTask);
 }
 /**
  * Selects the 'User Story' category for a task, updating input fields and visibility of category elements.
@@ -301,6 +302,7 @@ function selectCategoryStory() {
   document.getElementById("hiddenSelectCategory").classList.remove("d-none");
   document.getElementById("showSelectCategory").classList.add("d-none");
   changeInputField.value = userStory;
+  console.log("userStory in edit:", userStory);
 }
 /**
  * Closes the 'Add Task' section by hiding the slide and adding a delay before setting it to 'display: none'.
