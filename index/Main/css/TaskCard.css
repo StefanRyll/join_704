@@ -179,9 +179,11 @@
   background-color: red;
   border: 2px solid white;
   border-radius: 45px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-weight: 700;
   color: white;
 }
@@ -189,10 +191,13 @@
 .tinyAccountTaskCard {
   width: 100%;
   height: 48px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
+
   gap: 12px;
+
   font-size: 17px;
 }
 
@@ -257,16 +262,25 @@
 
 /* EDIT TASK */
 
-#taskCardETitle {
-  display: flex;
-  padding: 8px 16px;
-  align-items: center;
-  gap: 10px;
+#taskCardETitle,
+#taskCardEDesc,
+#taskCardEDate,
+.assignContactsCard {
+  box-sizing: border-box;
+  width: 100%;
   align-self: stretch;
-  border-radius: 10px;
+
   border: 1px solid #d1d1d1;
-  background: #fff;
+  border-radius: 10px;
+
+  background-color: #fff;
   color: #000;
+}
+
+#taskCardETitle {
+  height: 48px;
+  padding: 8px 16px;
+
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -275,32 +289,24 @@
 }
 
 #taskCardEDesc {
-  display: flex;
   height: 120px;
   padding: 16px 14px;
-  align-items: flex-start;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  color: #000;
-  font-family: Open Sans;
-  font-size: 21px;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+
+  resize: none;
 }
 
 #taskCardEDate {
-  display: flex;
-  padding: 8px 14px;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  background: #fff;
-  color: #000;
+  position: relative;
+
+  height: 48px;
+  padding: 8px 44px 8px 14px;
+
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -308,22 +314,38 @@
   line-height: 120%;
 }
 
+#taskCardEDate::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 14px;
+
+  width: 20px;
+  height: 20px;
+
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+}
+
 .assignContactsCard {
   display: flex;
-  padding: 8px 14px;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  background: #fff;
-  color: #000;
+
+  min-height: 48px;
+  padding: 8px 14px;
 }
 
 .assignContactsCard input {
-  background-color: white;
+  flex: 1;
+  min-width: 0;
+
   border: none;
+  outline: none;
+
+  background-color: transparent;
   color: #000;
+
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -334,7 +356,29 @@
 .assignContactsCard img:hover {
   cursor: pointer;
   background-color: #d9d9d9;
-  border-radius: 100%;
+  border-radius: 50%;
+}
+
+/* Category und Priority im Edit-Modus */
+
+.style-task .category,
+.style-task .prio-category {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.style-task .category select {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.style-task .prio-category-container {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.select-edit-width {
+  width: 28.7em !important;
 }
 
 @media (max-width: 740px) {
@@ -342,15 +386,13 @@
     width: 100% !important;
   }
 
-  #taskCardETitle {
-    font-size: 16px;
-  }
-
-  #taskCardEDesc {
-    font-size: 16px;
-  }
-
+  #taskCardETitle,
+  #taskCardEDesc,
   #taskCardEDate {
+    font-size: 16px;
+  }
+
+  .assignContactsCard input {
     font-size: 16px;
   }
 
@@ -375,10 +417,13 @@
   .tinyAccountTaskCard {
     width: 100%;
     height: 56px;
+
     display: flex;
     flex-direction: row;
     align-items: center;
+
     gap: 16px;
+
     font-size: 16px;
   }
 }

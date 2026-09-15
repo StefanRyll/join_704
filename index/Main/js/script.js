@@ -75,7 +75,8 @@ window.onmousedown = function (e) {
  * Logs out the current user by resetting the signed account and navigating to the start page.
  * @returns {void}
  */
-function logout() {
+async function logout() {
+  await firebaseSignOut(firebaseAuth);
   Join.signedAccount = "";
   deleteSignedUser();
   startPage();

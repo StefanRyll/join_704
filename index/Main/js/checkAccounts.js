@@ -7,7 +7,9 @@
  * @returns {void}
  */
 
-function guestLogin() {
+async function guestLogin() {
+  await firebaseSignInAnonymously(firebaseAuth);
+
   const guest = new Account("Guest", "email@join.de", "");
   Join.signedAccount = guest;
   saveSignedUser();
@@ -271,17 +273,17 @@ async function registerNewAccount() {
   // successCreateAccount();
 
   try {
-    await loadAccounts();
+    // await loadAccounts();
 
-    const contactAlreadyExists = Join.accounts.some(
-      (contact) => contact.email.toLowerCase() === email.toLowerCase(),
-    );
+    // const contactAlreadyExists = Join.accounts.some(
+    //   (contact) => contact.email.toLowerCase() === email.toLowerCase(),
+    // );
 
-    if (contactAlreadyExists) {
-      console.log("Email already exists:", email);
-      handleExistingEmail();
-      return;
-    }
+    // if (contactAlreadyExists) {
+    //   console.log("Email already exists:", email);
+    //   handleExistingEmail();
+    //   return;
+    // }
 
     const userCredential = await window.firebaseCreateUserWithEmailAndPassword(
       window.firebaseAuth,
@@ -293,12 +295,14 @@ async function registerNewAccount() {
       displayName: name,
     });
 
+    await loadAccounts();
     const newContact = new Contact(name, email, "");
 
     Join.accounts.push(newContact);
     Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
 
     await saveAccounts();
+    await window.firebaseSignOut(window.firebaseAuth);
 
     console.log(
       "Benutzer in Firebase Authentication registriert:",
@@ -312,6 +316,11 @@ async function registerNewAccount() {
       startPage2();
     }, 2200);
   } catch (error) {
+    if (error.code === "auth/email-already-in-use") {
+      handleExistingEmail();
+      return;
+    }
+
     console.error("Registrierung fehlgeschlagen:", error);
   }
 }
@@ -332,7 +341,7 @@ function successCreateAccount() {
  */
 function passwordCheck() {
   let pw1 = document.getElementById("signUpInputPassword").value;
-  let pw2 = document.getElementById("signUpInputPassword2").value;
+  let pw2 = document.getElementById("signUpInputPasswordConfirm").value;
   if (pw1.length >= 8) {
     if (pw1 === pw2) {
       return true;

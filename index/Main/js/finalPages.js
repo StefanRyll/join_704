@@ -25,12 +25,12 @@ function setActiveStyles(id, backgroundColor, textColor = null) {
  * Initializes the page, loads data, and redirects the user based on their state.
  */
 async function startPage() {
-  try {
-    await loadAccounts();
-    await loadTasks();
-  } catch (error) {
-    console.error("Error loading accounts or tasks:", error);
-  }
+  // try {
+  //   await loadAccounts();
+  //   await loadTasks();
+  // } catch (error) {
+  //   console.error("Error loading accounts or tasks:", error);
+  // }
 
   Join.signedAccount = loadSignedUser();
   const currentState = localStorage.getItem("state");
@@ -115,13 +115,15 @@ function retrieveStoredJSON() {
  * Starts the initial login page.
  */
 function startPage2() {
-  try {
-    loadAccounts();
-  } catch (error) {
-    console.error("Error loading accounts:", error);
-  } finally {
-    body.innerHTML = JoinLogin.logoLogin() + JoinLogin.logInContent();
-  }
+  // try {
+  //   loadAccounts();
+  // } catch (error) {
+  //   console.error("Error loading accounts:", error);
+  // } finally {
+  //   body.innerHTML = JoinLogin.logoLogin() + JoinLogin.logInContent();
+  // }
+
+  body.innerHTML = JoinLogin.logoLogin() + JoinLogin.logInContent();
 }
 
 /**

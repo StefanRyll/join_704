@@ -6,6 +6,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  signInAnonymously,
+  signOut,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -57,6 +59,8 @@ window.firebaseCreateUserWithEmailAndPassword = createUserWithEmailAndPassword;
 window.firebaseSignInWithEmailAndPassword = signInWithEmailAndPassword;
 // for updating the user's profile data
 window.firebaseUpdateProfile = updateProfile;
+window.firebaseSignInAnonymously = signInAnonymously;
+window.firebaseSignOut = signOut;
 
 //nur zu testzwecken, später löschen!!
 // window.testFirebaseWrite = async function () {
