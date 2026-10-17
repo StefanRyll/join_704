@@ -322,6 +322,7 @@ function closeAddTask() {
 function resetButton() {
   cleanUpAll();
   checkWorker();
+  renderSubtasks();
 }
 /**
  * Retrieves the priority level based on the checked state of priority radio buttons.
