@@ -276,6 +276,10 @@
   border-radius: 10px;
 }
 
+.editTaskCard .assign-container {
+  width: 100%;
+}
+
 .assign-container:hover {
   border-color: var(--general-button-hover);
 }
