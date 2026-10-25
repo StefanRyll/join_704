@@ -32,14 +32,15 @@ window.firestoreDoc = doc;
 window.firestoreSetDoc = setDoc;
 // for loading a single document
 window.firestoreGetDoc = getDoc;
-
+// Provides access to Firebase Authentication
 window.firebaseAuth = auth;
-
 // for registering a user with email and password
 window.firebaseCreateUserWithEmailAndPassword = createUserWithEmailAndPassword;
 // for signing in a user with email and password
 window.firebaseSignInWithEmailAndPassword = signInWithEmailAndPassword;
 // for updating the user's profile data
 window.firebaseUpdateProfile = updateProfile;
+// Signs in a user anonymously
 window.firebaseSignInAnonymously = signInAnonymously;
+// Signs out the current user
 window.firebaseSignOut = signOut;
