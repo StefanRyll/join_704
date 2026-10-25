@@ -417,7 +417,7 @@ function renderTaskContacts() {
   console.log("ich bin hiiiiiieerrrr");
   let taskContactList = document.getElementById("taskContactList");
   taskContactList.innerHTML = "";
-  console.log("ich bin immernoch hiiiiiieerrrr");
+
   for (let i = 0; i < Join.accounts.length; i++) {
     console.log("Join.accounts[i]:", Join.accounts[i]);
     let account = Join.accounts[i];

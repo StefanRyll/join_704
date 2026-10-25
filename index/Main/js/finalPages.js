@@ -25,14 +25,29 @@ function setActiveStyles(id, backgroundColor, textColor = null) {
  * Initializes the page, loads data, and redirects the user based on their state.
  */
 async function startPage() {
-  // try {
-  //   await loadAccounts();
-  //   await loadTasks();
-  // } catch (error) {
-  //   console.error("Error loading accounts or tasks:", error);
-  // }
+  try {
+    await window.firebaseAuth.authStateReady();
+    console.log("Auth state is ready.");
+    if (window.firebaseAuth.currentUser) {
+      const firebaseUser = window.firebaseAuth.currentUser;
+      console.log("Benutzer angemeldet:", firebaseUser);
 
-  Join.signedAccount = loadSignedUser();
+      Join.signedAccount = new Account(
+        firebaseUser.displayName || firebaseUser.email,
+        firebaseUser.email,
+        "",
+        "",
+      );
+
+      console.log("Join.signedAccount:", Join.signedAccount);
+      await loadAccounts();
+      await loadTasks();
+    }
+  } catch (error) {
+    console.error("Error loading accounts or tasks:", error);
+  }
+
+  // Join.signedAccount = loadSignedUser();
   const currentState = localStorage.getItem("state");
   setState("logIn");
   redirectUser(currentState);
@@ -82,8 +97,8 @@ function redirectSignedUser(currentState) {
     legalNotice: legalPage,
     help: helpPage,
   };
-  const action = pageActions[currentState];
-  if (action) action();
+  const action = pageActions[currentState] || summeryPage;
+  action();
 }
 
 /**
@@ -140,6 +155,7 @@ function signUp() {
  */
 async function summeryPage() {
   try {
+    await loadAccounts();
     await loadTasks();
   } catch (error) {
     console.error("Error loading tasks:", error);
