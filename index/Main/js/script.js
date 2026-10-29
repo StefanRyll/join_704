@@ -113,7 +113,7 @@ function checkboxDeactivate() {
  *
  * @param {number} taskIndex - Index of the task in the 'Join.tasks' array to be updated.
  */
-function taskSaveChanges(taskIndex) {
+async function taskSaveChanges(taskIndex) {
   const existingTask = Join.tasks[taskIndex];
 
   const checkedUsers = getCheckedUsers();
@@ -121,7 +121,6 @@ function taskSaveChanges(taskIndex) {
   const editedDescription = document.getElementById("taskCardEDesc").value;
   const editedDate = getEditedDate(existingTask.date);
   const editedPriority = prioTemp;
-  // const taskCategory = existingTask.Category;
   const taskCategory = document.getElementById("taskCategoryInput").value;
 
   const subtaskInput = document.getElementById("inputSubtask");
@@ -143,9 +142,15 @@ function taskSaveChanges(taskIndex) {
     existingTask.feedback,
     existingTask.done,
   );
-  saveTasks();
-  closeTaskCard();
-  cleanUpAll();
+  try {
+    await saveTasks();
+
+    closeTaskCard();
+    cleanUpAll();
+  } catch (error) {
+    Join.tasks[taskIndex] = existingTask;
+    console.error("Error saving task changes:", error);
+  }
 }
 /**
  * Retrieves all users from 'Join.accounts' who have the 'checked' property set to true.
@@ -203,8 +208,9 @@ function cleanUpAccountsCheck() {
  * @param {number} task - The index of the task.
  * @param {number} subtask - The index of the subtask.
  */
-function toggleCheckboxCard(task, subtask) {
+async function toggleCheckboxCard(task, subtask) {
   let checkableSubtask = Join.tasks[task]["subTasks"][subtask];
+  const previousStatus = checkableSubtask.done;
   if (checkableSubtask.done) {
     checkableSubtask.subTaskUndone();
   } else {
@@ -216,7 +222,21 @@ function toggleCheckboxCard(task, subtask) {
   document
     .getElementById(`cardCheckboxTrue${subtask}`)
     .classList.toggle("d-none");
-  saveTasks();
+
+  try {
+    await saveTasks();
+  } catch (error) {
+    checkableSubtask.done = previousStatus;
+
+    document
+      .getElementById(`cardCheckboxFalse${subtask}`)
+      .classList.toggle("d-none");
+    document
+      .getElementById(`cardCheckboxTrue${subtask}`)
+      .classList.toggle("d-none");
+
+    console.error("Error saving task changes:", error);
+  }
 }
 /**
  * Displays the contact selection interface in the Join application.
@@ -239,5 +259,3 @@ function closeSelectContactsFromCard() {
 function backToPage() {
   window.history.back();
 }
-
-console.log("halo i bims", window.db);
