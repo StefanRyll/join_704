@@ -157,10 +157,9 @@ async function summeryPage() {
   try {
     await loadAccounts();
     await loadTasks();
+    loadComponentsSummary();
   } catch (error) {
     console.error("Error loading tasks:", error);
-  } finally {
-    loadComponentsSummary();
   }
 }
 
@@ -182,10 +181,9 @@ async function summeryPage() {
 async function boardPage() {
   try {
     await loadTasks();
+    loadComponentsBoard();
   } catch (error) {
     console.error("Error loading tasks:", error);
-  } finally {
-    loadComponentsBoard();
   }
 }
 

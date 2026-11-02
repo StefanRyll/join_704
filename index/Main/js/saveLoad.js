@@ -137,7 +137,7 @@ async function loadTasks() {
     console.log("Tasks loaded from Firestore:", Join.tasks);
   } catch (error) {
     console.error("Error loading tasks:", error);
-    Join.tasks = [];
+    throw error;
   }
 }
 

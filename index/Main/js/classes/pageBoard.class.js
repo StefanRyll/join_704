@@ -33,7 +33,8 @@ class Board extends Page {
     try {
       await loadTasks();
     } catch (e) {
-      console.error("Fehler", e);
+      console.error("Error loading tasks:", e);
+      return;
     }
 
     this.clearKambanContent();

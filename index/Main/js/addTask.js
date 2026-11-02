@@ -16,7 +16,8 @@ async function createTaskFromBoard(x = 0) {
   try {
     await loadTasks();
   } catch (e) {
-    console.error("Fehler", e);
+    console.error("Error", e);
+    return;
   }
   const subtaskInput = document.getElementById("inputSubtask");
 
@@ -120,7 +121,7 @@ async function updateTask(
   try {
     await saveTasks();
   } catch (e) {
-    console.error("Fehler", e);
+    console.error("Error", e);
   }
   clearInputs(title, desc, worker, date, category, subTask);
   successOverlayTask();
