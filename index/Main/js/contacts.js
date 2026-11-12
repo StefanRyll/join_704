@@ -166,8 +166,10 @@ async function editContact(i) {
   try {
     await loadAccounts();
   } catch (error) {
-    console.error("Kann account nicht laden");
+    console.error(error);
+    return;
   }
+  const originalContact = { ...Join.accounts[i] };
   let contact = Join.accounts[i];
   contact.name = document.getElementById("editName").value;
   contact.email = document.getElementById("editMail").value;
@@ -175,37 +177,53 @@ async function editContact(i) {
 
   Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
   neutralizeContactColor();
+
+  try {
+    await saveAccounts();
+  } catch (e) {
+    console.error("Error editing contacts:", e);
+
+    contact.name = originalContact.name;
+    contact.email = originalContact.email;
+    contact.tel = originalContact.tel;
+
+    Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+    return;
+  }
+
   closeOverlay();
 
   setTimeout(() => {
     editOverlay();
   }, 100);
-  try {
-    await saveAccounts();
-  } catch (e) {
-    "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e;
-  } finally {
-    renderContacts(i);
-    showDetails(i);
-  }
+  const currentIndex = Join.accounts.indexOf(contact);
+  await renderContacts(currentIndex);
 }
 
 /**
  * Function for a delete contact to the accounts[] array
  * @param {string} i variable for the data in the accounts[] array
  */
-function deleteContact(i) {
+async function deleteContact(i) {
+  const deletedContact = Join.accounts[i];
+
   Join.accounts.splice(i, 1);
+
+  try {
+    await saveAccounts();
+  } catch (error) {
+    console.error("Error deleting contact:", error);
+
+    Join.accounts.push(deletedContact);
+    Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+
+    return;
+  }
+
   deleteOverlay();
   closeContactDetails();
   closeOverlay();
-  try {
-    saveAccounts();
-  } catch (e) {
-    "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e;
-  } finally {
-    contactsPage();
-  }
+  contactsPage();
 }
 /**
  *  function for render a little information overlay to addContact, editContact and deleteContact
