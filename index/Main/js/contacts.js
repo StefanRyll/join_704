@@ -132,6 +132,7 @@ async function addContact() {
     await loadAccounts();
   } catch (error) {
     console.error(error);
+    return;
   }
   let name = document.getElementById("name").value;
   let email = document.getElementById("mail").value;
@@ -139,17 +140,22 @@ async function addContact() {
   let newUser = new Contact(name, email, phone);
   Join.accounts.push(newUser);
   Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
+
+  try {
+    await saveAccounts();
+  } catch (e) {
+    console.error("Error saving contacts:", e);
+    const index = Join.accounts.indexOf(newUser);
+    if (index !== -1) {
+      Join.accounts.splice(index, 1);
+    }
+    return;
+  }
   closeOverlay();
   setTimeout(() => {
     successOverlay();
   }, 100);
-  try {
-    await saveAccounts();
-  } catch (e) {
-    "Die Änderungen an join.accounts konnte nicht gespeichert werden: " + e;
-  } finally {
-    renderContacts();
-  }
+  await renderContacts();
 }
 
 /**

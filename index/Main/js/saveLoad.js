@@ -82,7 +82,7 @@ async function loadAccounts() {
     console.log("Contacts loaded from Firestore:", Join.accounts);
   } catch (error) {
     console.error("Error loading contacts:", error);
-    Join.accounts = [];
+    throw error;
   }
 }
 
