@@ -6,7 +6,6 @@
  * @name guestLogin
  * @returns {void}
  */
-
 async function guestLogin() {
   await firebaseSignInAnonymously(firebaseAuth);
 
@@ -16,26 +15,14 @@ async function guestLogin() {
   summeryPage();
   checkWelcomeRespon();
 }
+
 /**
- * Logs in a user by comparing the entered login credentials with existing user accounts.
- * Sets the signed account in the Join object, saves login information if the "Remember Me" option is enabled,
- * navigates to the summary page, checks for a welcome response, and displays the welcome overlay if applicable.
+ * Authenticates a user with Firebase Authentication.
+ * Saves the signed-in user and navigates to the summary page.
+ * Displays an error if authentication fails.
  * @async
- * @function
- * @name logInUser
  * @returns {Promise<void>}
  */
-// async function logInUser() {
-//   const userEmail = getEmailInputValue();
-//   const userPassword = getPasswordInputValue();
-
-//   if (isValidAccount(userEmail, userPassword)) {
-//     processSuccessfulLogin(userEmail);
-//   } else {
-//     handleFailedLogin();
-//   }
-// }
-
 async function logInUser() {
   const userEmail = getEmailInputValue();
   const userPassword = getPasswordInputValue();
@@ -61,10 +48,8 @@ async function logInUser() {
 
     await summeryPage();
     checkWelcomeRespon();
-
-    console.log("Benutzer erfolgreich über Firebase angemeldet:", firebaseUser);
   } catch (error) {
-    console.error("Firebase-Login fehlgeschlagen:", error);
+    console.error("Firebase login failed:", error);
     handleFailedLogin();
   }
 }
@@ -86,40 +71,7 @@ function getEmailInputValue() {
 function getPasswordInputValue() {
   return document.getElementById("loginPassword").value;
 }
-/**
- * Checks if the given email and password correspond to a valid account.
- * This function searches for an account in the 'Join.accounts' array that matches the provided email (case-insensitive comparison).
- * If such an account is found, it checks if the provided password matches the account's password.
- *
- * @param {string} email - The email address to be checked. The comparison is case-insensitive.
- * @param {string} password - The password to be verified against the found account.
- * @returns {boolean} True if a matching account is found and the password is correct, otherwise false.
- */
-function isValidAccount(email, password) {
-  const account = Join.accounts.find(
-    (account) => account.email.toLowerCase() === email,
-  );
-  return account && password === account.password;
-}
-/**
- * Processes actions following a successful login.
- * This function finds and assigns the user's account details to 'Join.signedAccount'. It also performs additional steps
- * such as remembering the user (if requested), saving the signed-in user's details, navigating to the summary page,
- * and checking for a welcome response.
- *
- * @param {string} userEmail - The email address of the user who has successfully logged in.
- * The email is used to find the user's account in the 'Join.accounts' array.
- */
-function processSuccessfulLogin(userEmail) {
-  const account = Join.accounts.find(
-    (account) => account.email.toLowerCase() === userEmail,
-  );
-  Join.signedAccount = account;
-  rememberUserIfRequested(userEmail);
-  saveSignedUser();
-  summeryPage();
-  checkWelcomeRespon();
-}
+
 /**
  * Remembers the user's email in local storage if the 'remember me' option is enabled.
  * Stores the email as a JSON string under the key "remember".
@@ -135,6 +87,9 @@ function rememberUserIfRequested(userEmail) {
   }
 }
 
+/**
+ * Highlights the email field when the address is already registered.
+ */
 function handleExistingEmail() {
   const frame = document.getElementById("emailCheckArea");
   const label = document.querySelector(".falseEmail");
@@ -154,6 +109,9 @@ function handleFailedLogin() {
   label.classList.add("falsePasswordRed");
 }
 
+/**
+ * Highlights the privacy policy checkbox when consent is missing.
+ */
 function handleMissingPolicy() {
   const policy = document.getElementById("ppCheck");
   const label = document.querySelector(".falsePolicy");
@@ -195,12 +153,6 @@ function showWelcomeOverlay() {
  * @returns {Promise<void>}
  */
 async function createAccount() {
-  //   try {
-  //     await loadAccounts();
-  //   } catch (e) {
-  //     console.error("Fehler beim Laden der Konten", e);
-  //     return;
-  //   }
   if (!isPrivacyPolicyAccepted()) {
     handleMissingPolicy();
     return;
@@ -253,38 +205,20 @@ function handleInvalidPassword() {
   loginPasswordFrame.classList.add("redFrame");
   label.classList.add("falsePasswordRed");
 }
+
 /**
- * Registers a new account asynchronously.
- * Retrieves user input for name, email, and password, creates a new account, and adds it to 'Join.accounts'.
- * Initiates a timeout before navigating to another page and then saves the accounts.
- * Finally, it calls 'successCreateAccount' to handle post-registration success actions.
+ * Registers a new user with Firebase Authentication.
+ * Creates a corresponding contact in Firestore.
+ * Signs out the newly registered user and displays a success message.
+ * @async
+ * @returns {Promise<void>}
  */
 async function registerNewAccount() {
   const name = document.getElementById("signUpInputName").value;
   const email = document.getElementById("signUpInputEmail").value;
   const password = document.getElementById("signUpInputPassword").value;
-  // const account = new Account(name, email, "", password);
-  // Join.accounts.push(account);
-  // policyCheck = false;
-  // setTimeout(() => {
-  //     startPage2();
-  // }, 2200);
-  // await saveAccounts();
-  // successCreateAccount();
 
   try {
-    // await loadAccounts();
-
-    // const contactAlreadyExists = Join.accounts.some(
-    //   (contact) => contact.email.toLowerCase() === email.toLowerCase(),
-    // );
-
-    // if (contactAlreadyExists) {
-    //   console.log("Email already exists:", email);
-    //   handleExistingEmail();
-    //   return;
-    // }
-
     const userCredential = await window.firebaseCreateUserWithEmailAndPassword(
       window.firebaseAuth,
       email,
@@ -304,11 +238,6 @@ async function registerNewAccount() {
     await saveAccounts();
     await window.firebaseSignOut(window.firebaseAuth);
 
-    console.log(
-      "Benutzer in Firebase Authentication registriert:",
-      userCredential.user,
-    );
-
     policyCheck = false;
     successCreateAccount();
 
@@ -320,8 +249,7 @@ async function registerNewAccount() {
       handleExistingEmail();
       return;
     }
-
-    console.error("Registrierung fehlgeschlagen:", error);
+    console.error("Registration failed:", error);
   }
 }
 /**
@@ -358,7 +286,6 @@ function passwordCheck() {
  * @returns {boolean} - Returns the value of the global policyCheck variable.
  */
 function ppCheck() {
-  // let checkbox = document.getElementById('ppCheck');
   let policy = policyCheck;
   return policy;
 }
@@ -372,6 +299,9 @@ function visibility() {
   document.getElementById("pass-status-eye").classList.remove("d-none");
 }
 
+/**
+ * Updates the password confirmation field's visibility icons.
+ */
 function visibilityConfirm() {
   document.getElementById("pass-status-confirm").classList.add("d-none");
   document.getElementById("pass-status-eye-confirm").classList.remove("d-none");
