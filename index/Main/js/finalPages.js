@@ -27,10 +27,8 @@ function setActiveStyles(id, backgroundColor, textColor = null) {
 async function startPage() {
   try {
     await window.firebaseAuth.authStateReady();
-    console.log("Auth state is ready.");
     if (window.firebaseAuth.currentUser) {
       const firebaseUser = window.firebaseAuth.currentUser;
-      console.log("Benutzer angemeldet:", firebaseUser);
 
       Join.signedAccount = new Account(
         firebaseUser.displayName || firebaseUser.email,
@@ -38,8 +36,6 @@ async function startPage() {
         "",
         "",
       );
-
-      console.log("Join.signedAccount:", Join.signedAccount);
       await loadAccounts();
       await loadTasks();
     }
@@ -47,7 +43,6 @@ async function startPage() {
     console.error("Error loading accounts or tasks:", error);
   }
 
-  // Join.signedAccount = loadSignedUser();
   const currentState = localStorage.getItem("state");
   setState("logIn");
   redirectUser(currentState);
@@ -130,14 +125,6 @@ function retrieveStoredJSON() {
  * Starts the initial login page.
  */
 function startPage2() {
-  // try {
-  //   loadAccounts();
-  // } catch (error) {
-  //   console.error("Error loading accounts:", error);
-  // } finally {
-  //   body.innerHTML = JoinLogin.logoLogin() + JoinLogin.logInContent();
-  // }
-
   body.innerHTML = JoinLogin.logoLogin() + JoinLogin.logInContent();
 }
 
@@ -159,7 +146,7 @@ async function summeryPage() {
     await loadTasks();
     loadComponentsSummary();
   } catch (error) {
-    console.error("Error loading tasks:", error);
+    console.error("Error loading accounts or tasks:", error);
   }
 }
 
@@ -205,13 +192,12 @@ function loadComponentsBoard() {
 /**
  * Renders the contacts page.
  */
-function contactsPage() {
+async function contactsPage() {
   try {
-    loadAccounts();
+    await loadAccounts();
+    loadComponentsContacts();
   } catch (error) {
     console.error("Error loading accounts:", error);
-  } finally {
-    loadComponentsContacts();
   }
 }
 

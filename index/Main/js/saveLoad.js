@@ -22,6 +22,9 @@ function decodeContacts(contacts) {
 
 async function initializeDummyContacts() {
   const response = await fetch("./data/dummyContacts.json");
+  if (!response.ok) {
+    throw new Error(`Failed to load dummy contacts: ${response.status}`);
+  }
   const dummyContacts = await response.json();
 
   Join.accounts = decodeContacts(dummyContacts);
@@ -194,6 +197,9 @@ function decodeTasks(jsonData) {
 
 async function initializeDummyTasks() {
   const response = await fetch("./data/dummyTasks.json");
+  if (!response.ok) {
+    throw new Error(`Failed to load dummy tasks: ${response.status}`);
+  }
   const dummyTasks = await response.json();
 
   Join.tasks = decodeTasks(dummyTasks);
@@ -235,25 +241,6 @@ async function resetDemoData() {
 function saveSignedUser() {
   const payload = JSON.stringify(Join.signedAccount);
   localStorage.setItem("signedAccount", payload);
-}
-
-/**
- * Loads the signed user's data from local storage.
- * @returns {Account|null} - The signed user's account or null if not found.
- */
-function loadSignedUser() {
-  const storedUserJson = localStorage.getItem("signedAccount");
-
-  if (!storedUserJson) return null;
-
-  const storedUser = JSON.parse(storedUserJson);
-  const account = Join.accounts.find((a) => a.name === storedUser.name);
-
-  if (account) return account;
-
-  return storedUser.name === "Guest"
-    ? new Account("Guest", "email@join.de", "")
-    : null;
 }
 
 /**
