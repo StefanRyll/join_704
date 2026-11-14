@@ -257,5 +257,9 @@ function closeSelectContactsFromCard() {
  * Uses the 'window.history.back()' method to achieve this.
  */
 function backToPage() {
-  window.history.back();
+  if (window.firebaseAuth?.currentUser) {
+    summeryPage();
+  } else {
+    window.location.href = "./login.html";
+  }
 }
