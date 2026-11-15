@@ -2,10 +2,10 @@ class Login extends Page {
   constructor() {
     super();
   }
+
   /**
-   *  Diese Methode stellt das Log In Fenster da
-   * @returns {string} --
-   *
+   * Generates the HTML content for the login page.
+   * @returns {string} HTML markup for the login form.
    */
   logInContent() {
     return /*html*/ `
@@ -61,9 +61,10 @@ class Login extends Page {
                 </section>
             `;
   }
+
   /**
-   * Die Methode stellt die Logo Animation am anfang dar
-   * @returns {string}
+   * Clears the page and generates the HTML for the login logo animation.
+   * @returns {string} HTML markup for the logo animation.
    */
   startAnimation() {
     body.innerHTML = "";
@@ -72,25 +73,33 @@ class Login extends Page {
                       <div id="logoMain" class="logoAnimationImg"></div>
               `;
   }
+
+  /**
+   * Hides the login logo overlay after one second.
+   * @returns {string} An empty string for HTML concatenation.
+   */
   startAnimationOverlay() {
     setTimeout(() => {
       document.getElementById("logoOverlay").classList.add("d-none");
     }, 1000);
-    return ""; // Sicherstellen, dass etwas zurückgegeben wird
+    return "";
   }
 
+  /**
+   * Generates the HTML container for the login logo.
+   * @returns {string} HTML markup for the logo container.
+   */
   logoLogin() {
     return /*html*/ `
                   <div id="logoMain" class="logoAnimationImg2"></div>
 
               `;
   }
-  loginLayout() {
-    return /*html*/ `
-              <div id="logoArea"></div>
-              <div id="windowArea"></div>
-          `;
-  }
+
+  /**
+   * Generates the HTML content for the user registration page.
+   * @returns {string} HTML markup for the registration form.
+   */
   signUpWindow() {
     return /*html*/ `
             <div class="login-signUp-interface">
@@ -166,8 +175,5 @@ class Login extends Page {
                     </div>
             </div>
             `;
-  }
-  forceSignIn(x) {
-    this.signedAccount = x;
   }
 }
