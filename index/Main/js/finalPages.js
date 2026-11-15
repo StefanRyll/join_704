@@ -192,13 +192,8 @@ function loadComponentsBoard() {
 /**
  * Renders the contacts page.
  */
-async function contactsPage() {
-  try {
-    await loadAccounts();
-    loadComponentsContacts();
-  } catch (error) {
-    console.error("Error loading accounts:", error);
-  }
+function contactsPage() {
+  loadComponentsContacts();
 }
 
 /**

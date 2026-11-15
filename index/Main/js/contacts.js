@@ -1,10 +1,16 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ".split(""); // durch das split wird das Alphabet in ein Array von Buchstaben aufgeteilt.
+
 /**
- * Render contacts and organize them alphabetically with sections.
+ * Renders contacts grouped alphabetically.
+ * @param {number} [obt] - Index of the contact to display after rendering.
  */
 async function renderContacts(obt) {
-  await loadAccounts();
-  let contactsList = document.getElementById("contactsList").innerHTML;
+  try {
+    await loadAccounts();
+  } catch (error) {
+    console.error("Error loading contacts:", error);
+    return;
+  }
   contactsList = "";
   let currentInitials = "";
   for (let i = 0; i < Join.accounts.length; i++) {
@@ -18,7 +24,7 @@ async function renderContacts(obt) {
     }
     contactsList += contact.generateHtmlContactList(i);
   }
-  closeAlphabetSection(contactsList);
+  contactsList = closeAlphabetSection(contactsList);
   document.getElementById("contactsList").innerHTML = contactsList;
   if (obt || obt === 0) {
     showDetails(obt);
@@ -47,12 +53,12 @@ function closeAlphabetSection(contactsList) {
   if (contactsList !== "") {
     contactsList += "</div>";
   }
+  return contactsList;
 }
+
 /**
- * This function renders the user's detailed data
- *
- * @param {string} i - is required to access the individual users
- * @returns
+ * Displays the details of a selected contact.
+ * @param {number} i - Index of the selected contact.
  */
 function showDetails(i) {
   neutralizeContactColor();
@@ -64,42 +70,53 @@ function showDetails(i) {
   manipulateResponsive(i);
 }
 
+/**
+ * Displays contact details based on the current screen width.
+ * @param {number} i - Index of the selected contact.
+ */
 function manipulateResponsive(i) {
-  let contact = Join.accounts[i];
+  const contact = Join.accounts[i];
 
   if (window.innerWidth >= 1188) {
-    let detailsContent = contact.generateHtmlContactDetails(i);
+    const detailsContent = contact.generateHtmlContactDetails(i);
     document.getElementById("detailsContainer").innerHTML = detailsContent;
   } else {
     setTimeout(() => {
       openResOverlay();
     }, 100);
-    let detailsContent = contact.generateMobileContactDetails(i);
+    const detailsContent = contact.generateMobileContactDetails(i);
     document.getElementById("responOverlay").innerHTML = detailsContent;
   }
 }
 
+/**
+ * Resets the background and text colors of all contact entries.
+ */
 function neutralizeContactColor() {
   for (let j = 0; j < Join.accounts.length; j++) {
-    let contactField = document.getElementById(`contactField${j}`);
-    let contactName = document.getElementById(`contactName${j}`);
+    const contactField = document.getElementById(`contactField${j}`);
+    const contactName = document.getElementById(`contactName${j}`);
     contactField.style.background = "white";
     contactName.style.color = "black";
   }
 }
 
+/**
+ * Highlights the selected contact in the contact list.
+ * @param {number} i - Index of the selected contact.
+ */
 function highlightContactColor(i) {
-  let contactField = document.getElementById(`contactField${i}`);
-  let contactName = document.getElementById(`contactName${i}`);
+  const contactField = document.getElementById(`contactField${i}`);
+  const contactName = document.getElementById(`contactName${i}`);
   contactField.style.background = "#2A3647";
   contactName.style.color = "white";
 }
+
 /**
- * function for open and render the overlay to add new contact, edit Contact and delete Contact
- *
+ * Renders and opens the form for adding a new contact.
  */
 function openAddContact() {
-  let addContactForm = document.getElementById("overlay");
+  const addContactForm = document.getElementById("overlay");
   addContactForm.innerHTML = "";
   setTimeout(() => {
     openBigOverlay();
@@ -107,16 +124,21 @@ function openAddContact() {
   addContactForm.innerHTML = JoinContacts.generateHtmlAddContact();
 }
 
+/**
+ * Renders and opens the edit form for a selected contact.
+ * @param {number} i - Index of the contact to edit.
+ */
 function openEditContact(i) {
-  let contact = Join.accounts[i];
+  const contact = Join.accounts[i];
   setTimeout(() => {
     openBigOverlay();
   }, 100);
   let editContactsContent = contact.generateHtmlEditContact(i);
   document.getElementById("overlay").innerHTML = editContactsContent;
 }
+
 /**
- *  function for close the overlays
+ * Closes the desktop and responsive contact overlays after a short delay.
  */
 function closeOverlay() {
   setTimeout(() => {
@@ -124,8 +146,11 @@ function closeOverlay() {
     closeResOverlay();
   }, 100);
 }
+
 /**
- * function for a new contact to the accounts[] array
+ * Creates a new contact, saves it to Firestore,
+ * and updates the contact list.
+ * Reverts the local change if saving fails.
  */
 async function addContact() {
   try {
@@ -134,10 +159,10 @@ async function addContact() {
     console.error(error);
     return;
   }
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("mail").value;
-  let phone = document.getElementById("phone").value;
-  let newUser = new Contact(name, email, phone);
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("mail").value;
+  const phone = document.getElementById("phone").value;
+  const newUser = new Contact(name, email, phone);
   Join.accounts.push(newUser);
   Join.accounts.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -159,8 +184,9 @@ async function addContact() {
 }
 
 /**
- * Function for a edit contact to the accounts[] array
- * @param {string} i variable for the data in the accounts[] array
+ * Updates an existing contact and saves the changes to Firestore.
+ * Restores the original contact data if saving fails.
+ * @param {number} i - Index of the contact to edit.
  */
 async function editContact(i) {
   try {
@@ -170,7 +196,7 @@ async function editContact(i) {
     return;
   }
   const originalContact = { ...Join.accounts[i] };
-  let contact = Join.accounts[i];
+  const contact = Join.accounts[i];
   contact.name = document.getElementById("editName").value;
   contact.email = document.getElementById("editMail").value;
   contact.tel = document.getElementById("editPhone").value;
@@ -201,8 +227,9 @@ async function editContact(i) {
 }
 
 /**
- * Function for a delete contact to the accounts[] array
- * @param {string} i variable for the data in the accounts[] array
+ * Deletes a contact and saves the changes to Firestore.
+ * Restores the deleted contact if saving fails.
+ * @param {number} i - Index of the contact to delete.
  */
 async function deleteContact(i) {
   const deletedContact = Join.accounts[i];
@@ -225,12 +252,13 @@ async function deleteContact(i) {
   closeOverlay();
   contactsPage();
 }
+
 /**
- *  function for render a little information overlay to addContact, editContact and deleteContact
- *
+ * Displays a success message after adding a contact
+ * and automatically closes it after two seconds.
  */
 function successOverlay() {
-  let overlaySuccess = document.getElementById("overlaySuccess");
+  const overlaySuccess = document.getElementById("overlaySuccess");
   overlaySuccess.innerHTML = JoinContacts.generateHtmlSuccessInfo();
   openSuccessOverlay();
   setTimeout(() => {
@@ -238,8 +266,12 @@ function successOverlay() {
   }, 2000);
 }
 
+/**
+ * Displays a confirmation message after deleting a contact
+ * and automatically closes it after two seconds.
+ */
 function deleteOverlay() {
-  let overlayDelete = document.getElementById("overlaySuccess");
+  const overlayDelete = document.getElementById("overlaySuccess");
   overlayDelete.innerHTML = JoinContacts.generateHtmlDeleteInfo();
   openSuccessOverlay();
   setTimeout(() => {
@@ -247,32 +279,47 @@ function deleteOverlay() {
   }, 2000);
 }
 
+/**
+ * Displays a confirmation message after editing a contact
+ * and automatically closes it after two seconds.
+ */
 function editOverlay() {
-  let overlayEdit = document.getElementById("overlaySuccess");
+  const overlayEdit = document.getElementById("overlaySuccess");
   overlayEdit.innerHTML = JoinContacts.generateHtmlEditInfo();
   openSuccessOverlay();
   setTimeout(() => {
     closeSuccessOverlay();
   }, 2000);
 }
+
 /**
- * Function for defining which characters are allowed in the input.
- * @param {string} phoneInput
+ * Removes invalid characters from a phone number input.
+ * Allows digits, plus signs, and spaces.
+ * @param {HTMLInputElement} phoneInput - The phone input element.
  */
 function validatePhoneNumber(phoneInput) {
   phoneInput.value = phoneInput.value.replace(/[^0-9+ ]/g, "");
 }
 
+/**
+ * Opens the contact options menu after a short delay.
+ * Prevents the click event from propagating to parent elements.
+ * @param {Event} event - The click event.
+ */
 function openContactMenu(event) {
   event.stopPropagation();
-  let optionsMenu = document.getElementById("optionsMenu");
+  const optionsMenu = document.getElementById("optionsMenu");
   setTimeout(() => {
     optionsMenu.classList.add("show-options-menu");
   }, 100);
 }
 
+/**
+ * Closes the contact options menu when clicking outside of it.
+ * @param {Event} event - The click event.
+ */
 function closeContactMenu(event) {
-  let optionsMenu = document.getElementById("optionsMenu");
+  const optionsMenu = document.getElementById("optionsMenu");
   if (optionsMenu != undefined && !optionsMenu.contains(event.target)) {
     optionsMenu.classList.remove("show-options-menu");
   }
