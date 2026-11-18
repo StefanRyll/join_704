@@ -1,12 +1,26 @@
 //task.class.js
 
 class Task {
+  /**
+   * Creates a task with its details, assigned contacts, and board status.
+   * @param {string} title - Task title.
+   * @param {Array} worker - Assigned contacts.
+   * @param {string} desc - Task description.
+   * @param {string|Date} date - Task due date.
+   * @param {string} prio - Task priority.
+   * @param {string} Category - Task category.
+   * @param {Array} subTasks - List of subtasks.
+   * @param {boolean} todo - Whether the task is in To Do.
+   * @param {boolean} progress - Whether the task is in Progress.
+   * @param {boolean} feedback - Whether the task is awaiting feedback.
+   * @param {boolean} done - Whether the task is completed.
+   */
   constructor(
     title,
     worker,
     desc,
     date,
-    prio = "Wichtig",
+    prio = "Medium",
     Category,
     subTasks,
     todo = false,
@@ -27,38 +41,57 @@ class Task {
     this.done = done;
   }
 
-  setCategoryColor() {
-    let html = "";
-    if (this.Category === "Technical Task") {
-      html = /*html*/ `<div class="tiny-task-category color-technical">${this.Category}</div>`;
-    } else {
-      html = /*html*/ `<div class="tiny-task-category color-userStory">${this.Category}</div>`;
+  /**
+   * Counts the completed subtasks of the current task.
+   * @returns {number} Number of completed subtasks.
+   */
+  countCompletedSubtasks() {
+    let completedCount = 0;
+    for (let i = 0; i < this.subTasks.length; i++) {
+      const subtask = this.subTasks[i];
+      if (subtask.done) {
+        completedCount++;
+      }
     }
-
-    return html;
+    return completedCount;
   }
 
+  /**
+   * Generates the HTML label with the appropriate task category color.
+   * @returns {string} HTML markup for the task category label.
+   */
+  setCategoryColor() {
+    if (this.Category === "Technical Task") {
+      return /*html*/ `<div class="tiny-task-category color-technical">${this.Category}</div>`;
+    }
+
+    return /*html*/ `<div class="tiny-task-category color-userStory">${this.Category}</div>`;
+  }
+
+  /**
+   * Generates the HTML for the detailed task card.
+   * @param {number} x - Index of the task in the task list.
+   * @returns {string} HTML markup for the detailed task card.
+   */
   taskCardNormal(x) {
-    let formatedDate = () => {
-      let date = this.date;
+    const formattedDate = () => {
+      const date = this.date;
       const day = date.getDate().toString().padStart(2, "0");
       const month = (date.getMonth() + 1).toString().padStart(2, "0");
       const year = date.getFullYear();
-      let formatedDate = `${day}/${month}/${year}`;
-      return formatedDate;
+      const formattedDate = `${day}/${month}/${year}`;
+      return formattedDate;
     };
-    let formatedPrio = () => {
-      let iconSrc;
+    const formattedPrio = () => {
       if (this.prio === "Urgent") {
-        iconSrc = "./IMG/Property 1=urgent.svg";
-      } else if (this.prio === "Medium") {
-        iconSrc = "./IMG/Property 1=medium.svg";
-      } else {
-        iconSrc = "./IMG/Property 1=low.svg";
+        return "./IMG/Property 1=urgent.svg";
       }
-      return iconSrc;
+      if (this.prio === "Medium") {
+        return "./IMG/Property 1=medium.svg";
+      }
+      return "./IMG/Property 1=low.svg";
     };
-    let renderWorker = () => {
+    const renderWorker = () => {
       let htmlSnippet = "";
       for (let i = 0; i < this.worker.length; i++) {
         const worker = this.worker[i];
@@ -66,45 +99,33 @@ class Task {
       }
       return htmlSnippet;
     };
-    let renderSubtasks = () => {
+    const renderSubtasks = () => {
       let htmlSnippet = "";
       for (let j = 0; j < this.subTasks.length; j++) {
         const subTask = this.subTasks[j];
-        if (subTask.done) {
-          htmlSnippet += /*html*/ `
-                            <div class="subtask-list">
-                                <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox d-none" >
-                                    <div class="style-checkbox-displayflex">
-                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt=""></div>
-                                        <div class="subtask-text">${subTask.text}</div>
-                                    </div>
-                                </div>
-                                <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox">
-                                    <div class="style-checkbox-displayflex">
-                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt=""></div>
-                                        <div class="subtask-text">${subTask.text}</div>
-                                    </div>
-                                </div>
-                            </div>
-                    `;
-        } else {
-          htmlSnippet += /*html*/ `
-                            <div class="subtask-list">
-                                <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox">
-                                <div class="style-checkbox-displayflex">
-                                    <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt=""></div>
-                                    <div class="subtask-text">${subTask.text}</div>
-                                </div>
-                                </div>
-                                <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox d-none" >
-                                <div class="style-checkbox-displayflex">
-                                        <div onclick="toggleCheckboxCard(${x},${j})"  class="check-box-task"> <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt=""></div>
-                                        <div class="subtask-text">${subTask.text}</div>
-                                </div>
-                                </div>
-                            </div>
-                    `;
-        }
+        const hideUnchecked = subTask.done ? "d-none" : "";
+        const hideChecked = subTask.done ? "" : "d-none";
+        htmlSnippet += /*html*/ `
+          <div class="subtask-list">
+            <div id="cardCheckboxFalse${j}" class="style-subtask-checkbox ${hideUnchecked}">
+              <div class="style-checkbox-displayflex">
+                <div onclick="toggleCheckboxCard(${x},${j})" class="check-box-task">
+                  <img class="checkbox-img-taskCard" src="./IMG/check_empty.svg" alt="">
+                </div>
+                <div class="subtask-text">${subTask.text}</div>
+              </div>
+            </div>
+
+            <div id="cardCheckboxTrue${j}" class="style-subtask-checkbox ${hideChecked}">
+              <div class="style-checkbox-displayflex">
+                <div onclick="toggleCheckboxCard(${x},${j})" class="check-box-task">
+                  <img class="checkbox-img-taskCard-check" src="./IMG/checkbox_check.svg" alt="">
+                </div>
+                <div class="subtask-text">${subTask.text}</div>
+              </div>
+            </div>
+          </div>
+`;
       }
       return htmlSnippet;
     };
@@ -130,12 +151,12 @@ class Task {
                 <div class="taskCard-date-prio">
                     <div class="taskCardAttribute">
                         <p>Due date: </p>
-                        <p>${formatedDate()}</p>
+                        <p>${formattedDate()}</p>
                     </div>
 
                     <div class="taskCardAttribute">
                         <p>Priority: </p>
-                        <img src="${formatedPrio()}">
+                        <img src="${formattedPrio()}">
                     </div>
                 </div>
                 <div class="taskCardAssignment">
@@ -159,11 +180,16 @@ class Task {
         </div>
         `;
   }
+
+  /**
+   * Generates the HTML form for editing an existing task.
+   * @param {number} x - Index of the task in the task list.
+   * @returns {string} HTML markup for the task editing form.
+   */
   taskCardEdit(x) {
-    let getDate = () => {
-      let date = new Date();
-      let formattedDate = date.toISOString().split("T")[0];
-      return formattedDate;
+    const getDate = () => {
+      const date = new Date();
+      return date.toISOString().split("T")[0];
     };
 
     return /*html*/ `  
@@ -210,28 +236,32 @@ class Task {
         </div>
             `;
   }
+
+  /**
+   * Generates the HTML for a task preview card on the Kanban board.
+   * @param {number} x - Index of the task in the task list.
+   * @returns {string} HTML markup for the task preview card.
+   */
   tinyTaskCard(x = 0) {
-    let contactTags = () => {
-      let rendertContacts = "";
+    const contactTags = () => {
+      let contactTagsHTML = "";
 
       for (let i = 0; i < this.worker.length; i++) {
-        let worker = this.worker[i];
-        rendertContacts += worker.accountTag();
+        const worker = this.worker[i];
+        contactTagsHTML += worker.accountTag();
       }
-      return rendertContacts;
+      return contactTagsHTML;
     };
-    let prioTag = () => {
-      let prioUrl;
-      if (this.prio == "Urgent") {
-        prioUrl = "./IMG/prioUrgentIcon.png";
-      } else if (this.prio == "Medium") {
-        prioUrl = "./IMG/prioMediumIcon.png";
-      } else {
-        prioUrl = "./IMG/prioLowIcon.png";
+    const prioTag = () => {
+      if (this.prio === "Urgent") {
+        return "./IMG/prioUrgentIcon.png";
       }
-      return prioUrl;
+      if (this.prio === "Medium") {
+        return "./IMG/prioMediumIcon.png";
+      }
+      return "./IMG/prioLowIcon.png";
     };
-    let subtaskArea = () => {
+    const subtaskArea = () => {
       if (this.subTasks.length !== 0) {
         return /*html*/ `
                 <div class="subtasks" id="tinyTaskCardSubtaskSection${x}">
@@ -239,24 +269,13 @@ class Task {
                         <div class="progressContainer" id="progressContainer">
                             <div class="progressBar" id="progressBar${x}"></div>
                         </div>
-                        <p>${SubtasksDone()}/${this.subTasks.length}&nbsp;Subtasks</p>
+                        <p>${this.countCompletedSubtasks()}/${this.subTasks.length}&nbsp;Subtasks</p>
                     </div>
                 </div>
 
                 `;
-      } else {
-        return "";
       }
-    };
-    let SubtasksDone = () => {
-      let countDone = 0;
-      for (let i = 0; i < this.subTasks.length; i++) {
-        const toCheck = this.subTasks[i];
-        if (toCheck.done) {
-          countDone++;
-        }
-      }
-      return countDone;
+      return "";
     };
 
     return /*html*/ `
@@ -275,61 +294,27 @@ class Task {
         `;
   }
 
+  /**
+   * Updates the progress bar based on completed subtasks.
+   * Hides the progress section if the task has no subtasks.
+   * @param {number} x - Index of the task on the board.
+   * @returns {void}
+   */
   updateProgressBar(x) {
-    let progressContainer = document.getElementById(
+    const progressContainer = document.getElementById(
       `tinyTaskCardSubtaskSection${x}`,
     );
     if (progressContainer) {
-      let gesamtFortschritt;
-      let variable1 = this.subTasks.length;
-      let variable2 = () => {
-        let countDone = 0;
-        for (let i = 0; i < this.subTasks.length; i++) {
-          const toCheck = this.subTasks[i];
-          if (toCheck.done) {
-            countDone++;
-          }
-        }
-        return countDone;
-      };
-      if (variable1 == 0) {
-        progressContainer.classList.add("d-none");
-        variable1 = null;
-        variable2 = null;
-      } else if (variable1 > 0) {
-        gesamtFortschritt = (variable2() / variable1) * 100;
-        let progressbar = document.getElementById(`progressBar${x}`);
-        progressbar.style.width = `${gesamtFortschritt}%`;
-      }
-    }
-  }
+      const totalSubtasks = this.subTasks.length;
 
-  editTask() {
-    let taskCard = document.getElementById("taskCard");
-    taskCard.innerHTML = this.taskCardEdit();
-    taskCard.classList.add("d-none");
-  }
-  switchStatus(x = 0) {
-    if (x == "1") {
-      this.todo = false;
-      this.progress = true;
-      this.feedback = false;
-      this.done = false;
-    } else if (x == "2") {
-      this.todo = false;
-      this.progress = false;
-      this.feedback = true;
-      this.done = false;
-    } else if (x == "3") {
-      this.todo = false;
-      this.progress = false;
-      this.feedback = false;
-      this.done = true;
-    } else {
-      this.todo = true;
-      this.progress = false;
-      this.feedback = false;
-      this.done = false;
+      if (totalSubtasks === 0) {
+        progressContainer.classList.add("d-none");
+      } else {
+        const overallProgress =
+          (this.countCompletedSubtasks() / totalSubtasks) * 100;
+        const progressbar = document.getElementById(`progressBar${x}`);
+        progressbar.style.width = `${overallProgress}%`;
+      }
     }
   }
 }
