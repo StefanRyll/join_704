@@ -69,8 +69,7 @@ class Board extends Page {
 
   getKambanElement(task) {
     if (task.todo) return document.getElementById(this.KAMBAN_IDS.TODO);
-    if (task.progress)
-      return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
+    if (task.progress) return document.getElementById(this.KAMBAN_IDS.INPROGRESS);
     if (task.feedback) return document.getElementById(this.KAMBAN_IDS.FEEDBACK);
     if (task.done) return document.getElementById(this.KAMBAN_IDS.DONE);
 
@@ -83,138 +82,189 @@ class Board extends Page {
   }
 
   closeAddTask() {
-    slideAddTask = document
-      .getElementById("slideAddTask")
-      .classList.remove("show-bg-task");
+    slideAddTask = document.getElementById("slideAddTask").classList.remove("show-bg-task");
   }
 
   boardContent() {
-    return /*html*/ `
-         <div class="res-content-board">
-            <div class="frame-192">
-                    <div class="mobile-res-board">
-                        <h2>
-                            Board
-                        </h2>
-                        <button onclick="openAddTask(0)" class="mobile-res-button-add-task btn-dark-blue">
-                            <img src="./IMG/Capa-1.png" alt="add task">
-                        </button>
-                    </div>
-                <div class="frame-123">
-                    <div class="input-search">
-                        <input type="search" name="find task"  onfocus="this.value=''" id="searchTask" placeholder="Find Task" onkeydown="filterTaskNames()">
-                        <img class="separator-find-task" src="./IMG/assets/Vector 3.png" alt="separator searchfield">
-                        <div class="search-icon">
-                            <img src="./IMG/assets/search.png" alt="search Image">
-                        </div>
-                    </div>
-                    <button onclick="openAddTask(0)" class="button-add-task display-none">
-                        <p>Add task</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <mask id="mask0_87727_3931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
-                              <rect width="32" height="32" fill="#D9D9D9"/>
-                            </mask>
-                            <g mask="url(#mask0_87727_3931)">
-                              <path d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z" fill="white"/>
-                            </g>
-                          </svg>
-                    </button>
-                    <button onclick="openAddTask(0)" class="res-button-add-task btn-dark-blue">
-                        <img id="addTaskImageRes" src="./IMG/Capa-1.png" alt="add task">
-                    </button>
-                </div>
+    return /* HTML */ `
+      <div class="res-content-board">
+        <div class="frame-192">
+          <div class="mobile-res-board">
+            <h2>Board</h2>
+            <button onclick="openAddTask(0)" class="mobile-res-button-add-task btn-dark-blue">
+              <img src="./IMG/Capa-1.png" alt="add task" />
+            </button>
+          </div>
+          <div class="frame-123">
+            <div class="input-search">
+              <input
+                type="search"
+                name="find task"
+                id="searchTask"
+                placeholder="Find Task"
+                oninput="filterTaskNames()"
+              />
+              <img class="separator-find-task" src="./IMG/assets/Vector 3.png" alt="separator searchfield" />
+              <div class="search-icon">
+                <img src="./IMG/assets/search.png" alt="search Image" />
+              </div>
             </div>
-
-    <!----------------------------- ACTION BAR - BOARD ----------------------------------->
-    
-    <div class="frame-136">
-        <div  class="board-actionbar"> 
-            <div class="lanes">
-                <p>To do</p>
-                <div class="border-plus" onclick="openAddTask(0)">
-                    <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                    <path  d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-            </div>
-            
-           
-            <div id="ondropTodo" ondrop="moveTo('Todo'); removeHighlight('ondropTodo'); checkDragArea()" ondragleave="removeHighlight('ondropTodo'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropTodo')" class="drag-area">
-                <div class="empty-tasks" id="emptyTaskTodo">
-                    <p>No tasks To do</p>
-                </div>
-                <div  class="canban-style" id="kambanTodo"></div>
-            </div>
+            <button onclick="openAddTask(0)" class="button-add-task display-none">
+              <p>Add task</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <mask
+                  id="mask0_87727_3931"
+                  style="mask-type:alpha"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="32"
+                  height="32"
+                >
+                  <rect width="32" height="32" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_87727_3931)">
+                  <path
+                    d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button onclick="openAddTask(0)" class="res-button-add-task btn-dark-blue">
+              <img id="addTaskImageRes" src="./IMG/Capa-1.png" alt="add task" />
+            </button>
+          </div>
         </div>
-        <div  class="board-actionbar">
+
+        <!----------------------------- ACTION BAR - BOARD ----------------------------------->
+
+        <div class="frame-136">
+          <div class="board-actionbar">
             <div class="lanes">
-                <p>In progress</p>
-                <div class="border-plus" onclick="openAddTask(1)">
-                    <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg"  width="11" height="11" viewBox="0 0 11 11" fill="none">
-                    <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
+              <p>To do</p>
+              <div class="border-plus" onclick="openAddTask(0)">
+                <svg
+                  class="hover-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 11 11"
+                  fill="none"
+                >
+                  <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                  <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
             </div>
 
-            
-            <div id="ondropProgress" ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress'); checkDragArea()" ondragleave="removeHighlight('ondropProgress'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropProgress')" class="drag-area">
-                <div class="empty-tasks" id="emptyTaskInprogress">
-                    <p>No tasks In progress</p>
-                </div>
-                <div class="canban-style" id="kambanInprogress"></div>
+            <div
+              id="ondropTodo"
+              ondrop="moveTo('Todo'); removeHighlight('ondropTodo'); checkDragArea()"
+              ondragleave="removeHighlight('ondropTodo'); checkDragArea()"
+              ondragover="allowDrop(event); highlight('ondropTodo')"
+              class="drag-area"
+            >
+              <div class="empty-tasks" id="emptyTaskTodo">
+                <p>No tasks To do</p>
+              </div>
+              <div class="canban-style" id="kambanTodo"></div>
             </div>
-        </div>
-        <div  class="board-actionbar">
+          </div>
+          <div class="board-actionbar">
             <div class="lanes">
-                <p>Await feedback</p>
-                <div class="border-plus" onclick="openAddTask(2)">
-                    <svg class="hover-svg" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                    <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
+              <p>In progress</p>
+              <div class="border-plus" onclick="openAddTask(1)">
+                <svg
+                  class="hover-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 11 11"
+                  fill="none"
+                >
+                  <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                  <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
             </div>
 
-            
-            <div id="ondropFeedback" ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback'); checkDragArea()" ondragleave="removeHighlight('ondropFeedback'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropFeedback')" class="drag-area">
-                <div class="empty-tasks" id="emptyTaskFeedback">
-                    <p>No tasks Await feedback</p>
-                </div>
-                <div  class="canban-style" id="kambanFeedback"></div>
+            <div
+              id="ondropProgress"
+              ondrop="moveTo('Inprogress'); removeHighlight('ondropProgress'); checkDragArea()"
+              ondragleave="removeHighlight('ondropProgress'); checkDragArea()"
+              ondragover="allowDrop(event); highlight('ondropProgress')"
+              class="drag-area"
+            >
+              <div class="empty-tasks" id="emptyTaskInprogress">
+                <p>No tasks In progress</p>
+              </div>
+              <div class="canban-style" id="kambanInprogress"></div>
             </div>
-        </div>
-        <div class="board-actionbar">
+          </div>
+          <div class="board-actionbar">
             <div class="lanes">
-                <p>Done</p>
+              <p>Await feedback</p>
+              <div class="border-plus" onclick="openAddTask(2)">
+                <svg
+                  class="hover-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="11"
+                  height="11"
+                  viewBox="0 0 11 11"
+                  fill="none"
+                >
+                  <path d="M5.6665 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                  <path d="M9.6665 5.57544L1.6665 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
             </div>
-            
-            <div id="ondropDone" ondrop="moveTo('Done'); removeHighlight('ondropDone'); checkDragArea()" ondragleave="removeHighlight('ondropDone'); checkDragArea()" ondragover="allowDrop(event); highlight('ondropDone')" class="drag-area">
-            <div class="empty-tasks" id="emptyTaskDone">
-                    <p>No tasks Done</p>
-                </div>
-                <div  class="canban-style" id="kambanDone" ></div>
+
+            <div
+              id="ondropFeedback"
+              ondrop="moveTo('Awaitfeedback'); removeHighlight('ondropFeedback'); checkDragArea()"
+              ondragleave="removeHighlight('ondropFeedback'); checkDragArea()"
+              ondragover="allowDrop(event); highlight('ondropFeedback')"
+              class="drag-area"
+            >
+              <div class="empty-tasks" id="emptyTaskFeedback">
+                <p>No tasks Await feedback</p>
+              </div>
+              <div class="canban-style" id="kambanFeedback"></div>
             </div>
+          </div>
+          <div class="board-actionbar">
+            <div class="lanes">
+              <p>Done</p>
+            </div>
+
+            <div
+              id="ondropDone"
+              ondrop="moveTo('Done'); removeHighlight('ondropDone'); checkDragArea()"
+              ondragleave="removeHighlight('ondropDone'); checkDragArea()"
+              ondragover="allowDrop(event); highlight('ondropDone')"
+              class="drag-area"
+            >
+              <div class="empty-tasks" id="emptyTaskDone">
+                <p>No tasks Done</p>
+              </div>
+              <div class="canban-style" id="kambanDone"></div>
+            </div>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
 
-            <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
+      <!----------------------------- RENDER ACTION BAR - BOARD ----------------------------------->
 
-            <div id="renderActionBar"></div>
+      <div id="renderActionBar"></div>
 
-            <!----------------------------- RENDER ADD TASK ----------------------------------->
+      <!----------------------------- RENDER ADD TASK ----------------------------------->
 
-            <div id="addTask" class="popUpTaskCard d-none">
-
-            </div>
-            <div>
-                <div class="overlay-success" id="overlaySuccessTask"></div>
-            </div>
-
-
-                    `;
+      <div id="addTask" class="popUpTaskCard d-none"></div>
+      <div>
+        <div class="overlay-success" id="overlaySuccessTask"></div>
+      </div>
+    `;
   }
   generateHtmlSuccessInfoTask() {
     return /*html*/ `
