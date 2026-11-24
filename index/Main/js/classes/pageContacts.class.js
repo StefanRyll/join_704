@@ -1,9 +1,9 @@
 class Contacts extends Page {
-    contactsContent() {
-            return /*html*/ `    
+  contactsContent() {
+    return /*html*/ `    
             
                 <div class="respon-add-contact" onclick="openAddContact()">
-                    <button class="respon-button"><img src="./IMG/person_add.png"></button>
+                    <button class="respon-button"><img src="./IMG/person_add.png" alt="Add Contact"></button>
                 </div>
                 <div>
                     <div class="respon-overlay" id="responOverlay"></div>
@@ -14,14 +14,14 @@ class Contacts extends Page {
                 <div class="contacts-content">
                     <div class="contacts-list-section">
                         <div class="add-new-button" id="addNewButton">
-                            <button onclick="openAddContact()" class="button-add-task button-width contacts-button-respon"><p>Add new contact</p><img src="./IMG/person_add.png"></button>
+                            <button onclick="openAddContact()" class="button-add-task button-width contacts-button-respon"><p>Add new contact</p><img src="./IMG/person_add.png" alt=""></button>
                         </div>
                         <nav class="contacts-list" id="contactsList"></nav>
                     </div>
                     <div class="contacts-view">
                         <div class="contacts-headline">
                             <h1 class="contacts-h1">Contacts</h1>
-                            <img class="vector-blue" src="./IMG/Vector-5blue (1).png">
+                            <img class="vector-blue" src="./IMG/Vector-5blue (1).png" alt="">
                             <p class="subtitle-contacts">Better with a team</p>
                         </div>
                         <div class="contact-container" id="detailsContainer"></div>
@@ -30,31 +30,31 @@ class Contacts extends Page {
                 <div>
                     <div class="overlay-success" id="overlaySuccess"></div>
                 </div>
-        `
-        }
-        /**
-         * templates for the overlay
-         * @returns to the generate functions
-         */
-    generateLeftSide() {
-        return /*html*/ `
+        `;
+  }
+  /**
+   * templates for the overlay
+   * @returns to the generate functions
+   */
+  generateLeftSide() {
+    return /*html*/ `
                 <div class="overlay-left-container">
                     <div class="close-btn-respon">${this.closeButtonRespon()}</div>
                     <img class="logo-overlay" src="./IMG/LogoWhite.png" alt="join-logo">
                     <h1 class="add-contact-headline">Add contact</h1>
                     <span class="subtitle-overlay-header">Tasks are better with a team</span>
-                    <img src="./IMG/vector-5.png">
+                    <img src="./IMG/vector-5.png" alt="">
                 </div>
-            `
-    }
+            `;
+  }
 
-    generateHtmlAddContact() {
-        return /*html*/ `
+  generateHtmlAddContact() {
+    return /*html*/ `
         <div class="overlay-container">
             ${this.generateLeftSide()}
             <div class ="overlay-mid-container">
                 <div class="add-Contact-logo">
-                    <img src="./IMG/person-white.png">
+                    <img src="./IMG/person-white.png" alt="">
                 </div>
             </div>
             <div class="overlay-right-container-addContact">
@@ -62,29 +62,29 @@ class Contacts extends Page {
                 <form class="addContact-form"  onsubmit="addContact(); return false">
                     <div class="btn-underlay">
                         <input id="name" required type="text" class="frame-157" placeholder="Name">
-                        <img class="input-icon" src="./IMG/person.png"> 
+                        <img class="input-icon" src="./IMG/person.png" alt=""> 
                     </div>
                     <div class="btn-underlay">
                         <input id="mail" required type="email" class="frame-157" placeholder="Email">
-                        <img class="input-icon" src="./IMG/mail.png"> 
+                        <img class="input-icon" src="./IMG/mail.png" alt=""> 
                     </div>
                     <div class="btn-underlay">
-                        <input id="phone" required type="number" class="frame-157" placeholder="Phone">
-                        <img class="input-icon" src="./IMG/call.png"> 
+                        <input id="phone" required type="tel" class="frame-157" placeholder="Phone" oninput="validatePhoneNumber(this)">
+                        <img class="input-icon" src="./IMG/call.png" alt=""> 
                     </div>
                     <div class="frame-176">
                         <div class="loginButtons">
-                            <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Cancel <img src="./IMG/cancel.png"></button>
-                            <button class="btn-create-contacts btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="./IMG/check-for-button.png"></button>
+                            <button class="btn-cancel btn-white" type="reset" onclick="closeOverlay()">Cancel <img src="./IMG/cancel.png" alt=""></button>
+                            <button class="btn-create-contacts btn-dark-blue" type="submit">Create&nbsp;contact <img class="check-img-contacts" src="./IMG/check-for-button.png" alt=""></button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        `
-    }
-    closeButton() {
-        return /*html*/ `
+        `;
+  }
+  closeButton() {
+    return /*html*/ `
             <div id="closeButton" class="style-closebutton">
                 <svg onclick="closeOverlay()" class="close-button-add-task cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -95,10 +95,10 @@ class Contacts extends Page {
                     </g>
                 </svg>
             </div>
-        `
-    }
-    closeButtonRespon() {
-        return /*html*/ `
+        `;
+  }
+  closeButtonRespon() {
+    return /*html*/ `
             <div id="closeButtonRespon" class="close-btn-respon-style">
                 <svg onclick="closeOverlay()" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <mask id="mask0_87491_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -109,28 +109,27 @@ class Contacts extends Page {
                     </g>
                 </svg>
             </div>
-        `
-    }
-    generateHtmlSuccessInfo() {
-        return /*html*/ `
+        `;
+  }
+  generateHtmlSuccessInfo() {
+    return /*html*/ `
             <div class="successInfoContainer">
-                <h3 class="font-size-normal mg-none">Contact succesfully created</h3>
+                <h3 class="font-size-normal mg-none">Contact successfully created</h3>
             </div>
-        `
-    }
-    generateHtmlDeleteInfo() {
-        return /*html*/ `
+        `;
+  }
+  generateHtmlDeleteInfo() {
+    return /*html*/ `
             <div class="successInfoContainer">
-                <h3 class="font-size-normal mg-none">Contact succesfully deleted</h3>
+                <h3 class="font-size-normal mg-none">Contact successfully deleted</h3>
             </div>
-        `
-    }
-    generateHtmlEditInfo() {
-        return /*html*/ `
+        `;
+  }
+  generateHtmlEditInfo() {
+    return /*html*/ `
             <div class="successInfoContainer">
-                <h3 class="font-size-normal mg-none">Contact succesfully edited</h3>
+                <h3 class="font-size-normal mg-none">Contact successfully edited</h3>
             </div>
-        `
-    }
-
+        `;
+  }
 }

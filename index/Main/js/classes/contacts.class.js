@@ -1,63 +1,64 @@
 /**
- * Contacts sind die Grundlage: 
- * Accounts sind eine Erweiterung "Vererbung" von Contacts, da diese ein Passwort haben sich anmelden können usw. 
+ * Contacts sind die Grundlage:
+ * Accounts sind eine Erweiterung "Vererbung" von Contacts, da diese ein Passwort haben sich anmelden können usw.
  * allerding wäre alles rund, wenn jeder, der als Contakt hinzugefügt wird Eine Email erhält, "Mach dir doch einen Account".
- * Zt Usability, kann halt keiner hinterher sagen, er hat von dem Projekt "nix gewusst". 
+ * Zt Usability, kann halt keiner hinterher sagen, er hat von dem Projekt "nix gewusst".
  */
 class Contact {
-    constructor(name, email, tel = "+49 1111 111 11 1") {
-            this.name = name;
-            this.email = email;
-            this.tel = tel;
-            this.shortname = this.getInitials()
-            this.checked = false;
-            this.color = this.getColor()
-        }
-        /**
-         * This function creates and random the bg-color of the initials container
-         * @returns 
-         */
-    getColor() {
-        const colors = [
-            "#FF7A00",
-            "#FF5EB3",
-            "#6E52FF",
-            "#9327FF",
-            "#00BEE8",
-            "#1FD7C1",
-            "#FF745E",
-            "#FFA35E",
-            "#FC71FF",
-            "#FFC701",
-            "#0038FF",
-            "#C3FF2B",
-            "#FFE62B",
-            "#FF4646",
-            "#FFBB2B",
-        ];
+  constructor(name, email, tel = "+49 1111 111 11 1") {
+    this.name = name;
+    this.email = email;
+    this.tel = tel;
+    this.shortname = this.getInitials();
+    this.checked = false;
+    this.color = this.getColor();
+  }
+  /**
+   * This function creates and random the bg-color of the initials container
+   * @returns
+   */
+  getColor() {
+    const colors = [
+      "#FF7A00",
+      "#FF5EB3",
+      "#6E52FF",
+      "#9327FF",
+      "#00BEE8",
+      "#1FD7C1",
+      "#FF745E",
+      "#FFA35E",
+      "#FC71FF",
+      "#FFC701",
+      "#0038FF",
+      "#C3FF2B",
+      "#FFE62B",
+      "#FF4646",
+      "#FFBB2B",
+    ];
 
-        let sum = this.name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
-        let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
-        return colors[colorIndex];
+    let sum = this.name.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0); //methode um die ersten Buchstaben in zahlen zu umwandeln.
+    let colorIndex = sum % colors.length; // hier werden die zahlen zusammen addiert und der array colors zusammenberechnet
+    return colors[colorIndex];
+  }
+
+  /**
+   * This function creates and sorts the user initials
+   *
+   * @param {string} name - Is needed to recognize the initials from the user names. It is passed in renderContacts().
+   * @returns
+   */
+  getInitials() {
+    let parts = this.name.split(" ");
+    let initials = parts[0][0];
+    if (parts.length > 1 && parts[1]) {
+      // Überprüft, ob es einen zweiten Namensteil gibt
+      initials += parts[1][0];
     }
+    return initials.toUpperCase();
+  }
 
-    /**
-     * This function creates and sorts the user initials
-     * 
-     * @param {string} name - Is needed to recognize the initials from the user names. It is passed in renderContacts().
-     * @returns 
-     */
-    getInitials() {
-        let parts = this.name.split(" ");
-        let initials = parts[0][0];
-        if (parts.length > 1 && parts[1]) { // Überprüft, ob es einen zweiten Namensteil gibt
-            initials += parts[1][0];
-        }
-        return initials.toUpperCase();
-    }
-
-    generateHtmlContactDetails(i) {
-        return /*html*/ `
+  generateHtmlContactDetails(i) {
+    return /*html*/ `
             <div class="contactView">
                 <div class="initials-logo logo-by-details" style="background-color: ${this.color}; margin: 0 auto;">${this.shortname}</div>
                 <div class="name">
@@ -75,10 +76,10 @@ class Contact {
                 <h3 class="mail-headline">Phone</h3>
                 <p><a class="phone-link" href="tel:${this.tel}">${this.tel}</a></p>
             </div>
-        `
-    }
-    generateMobileContactDetails(i) {
-        return /*html*/ `
+        `;
+  }
+  generateMobileContactDetails(i) {
+    return /*html*/ `
         <div class="res-contacts-detail">
             <div class="res-contacts-headline">
                 <div>
@@ -125,21 +126,21 @@ class Contact {
             </div>
         </div>
     
-        `
-    }
+        `;
+  }
 
-    tinyCard(x) {
-        return /*html*/ `
+  tinyCard(x) {
+    return /*html*/ `
         <div class="tinyAccountTaskCard">
             <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
             <div>
                 <div class="contactName">${this.name}</div>
             </div>
         </div>
-        `
-    }
-    generateHtmlContactList(i) {
-        return /*html*/ `
+        `;
+  }
+  generateHtmlContactList(i) {
+    return /*html*/ `
             <div class="contactfield-wrapper">
                 <div id="contactField${i}" class="contactfield" onclick="showDetails(${i})">
                     <div class="initials-logo" style="background-color: ${this.color}">${this.shortname}</div>
@@ -149,22 +150,22 @@ class Contact {
                     </div>
                 </div>
             </div>
-        `
-    }
-    nameTag() {
-        return /*html*/ `
+        `;
+  }
+  nameTag() {
+    return /*html*/ `
             <div class="accountTag">${this.shortname}</div>
 
-        `
-    }
-    tinyCardCheck(x) {
-        return /*html*/ `
+        `;
+  }
+  tinyCardCheck(x) {
+    return /*html*/ `
         ${this.generateHTMLCheckedNone(x)}
         ${this.generateHTMLChecked(x)}
-        `
-    }
-    generateHTMLCheckedNone(x) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLCheckedNone(x) {
+    return /*html*/ `
             <div onclick="addShortNames('${this.shortname}', ${x})" id="tinyAccountCardCheckedNone${x}" class="checked-none">
                 <div onclick="assignedCheckNone(${x})"  class="tinyAccountCard">
                     <div class="board-addtask-addcontact-contact">
@@ -176,10 +177,10 @@ class Contact {
                     </div>
                 </div>
             </div>
-        `
-    }
-    generateHTMLChecked(x) {
-        return /*html*/ `
+        `;
+  }
+  generateHTMLChecked(x) {
+    return /*html*/ `
             <div id="tinyAccountCardChecked${x}" class="checked d-none">
                 <div onclick="assignedCheck(${x})"  class="tinyAccountCardChecked" id="ac${x}">
                     <div class="board-addtask-addcontact-contact">
@@ -191,15 +192,15 @@ class Contact {
                     </div>        
                 </div>
             </div>
-        `
-    }
-    accountTag() {
-        return /*html*/ `
+        `;
+  }
+  accountTag() {
+    return /*html*/ `
             <div  class="initials-logo accountTag" style="background-color: ${this.color}">${this.shortname}</div>
-        `
-    }
-    generateHtmlEditContact(i) {
-        return /*html*/ `
+        `;
+  }
+  generateHtmlEditContact(i) {
+    return /*html*/ `
         <div class="overlay-container slide-in">
             ${JoinContacts.generateLeftSide()}
             <div class ="overlay-mid-container">
@@ -217,7 +218,7 @@ class Contact {
                         <img class="input-icon" src="./IMG/mail.png"> 
                     </div>
                     <div class="btn-underlay">
-                        <input id="editPhone" required type="text" class="frame-157" placeholder="Phone" value="${this.tel}" oninput="validatePhoneNumber(this)">
+                        <input id="editPhone" required type="tel" class="frame-157" placeholder="Phone" value="${this.tel}" oninput="validatePhoneNumber(this)">
                         <img class="input-icon" src="./IMG/call.png"> 
                     </div>
                     <div class="frame-176">
@@ -229,6 +230,6 @@ class Contact {
                 </form>
             </div>
         </div>
-        `
-    }
+        `;
+  }
 }
